@@ -1,6 +1,5 @@
 use chrono::prelude::{DateTime, Utc};
 use serde::Serialize;
-use std::ffi::OsString;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::time::SystemTime;
@@ -8,15 +7,12 @@ use uuid::Uuid;
 
 #[derive(Serialize, Debug)]
 pub struct Note {
-  id: NoteId,
+  id: Uuid,
   title: String,
   body: String,
   created_at: String,
   updated_at: String,
 }
-
-#[derive(Serialize, Debug)]
-pub struct NoteId(String);
 
 #[derive(Serialize, Debug)]
 pub enum NoteError {
@@ -32,8 +28,8 @@ fn get_path(id: &String) -> PathBuf {
 }
 
 fn format_date(metadata: fs::Metadata) -> (String, String) {
-  let created_at = metadata.created().unwrap();
-  let updated_at = metadata.modified().unwrap();
+  let created_at = metadata.created().expect("created field not available");
+  let updated_at = metadata.modified().expect("modified field not available");
 
   let convert = |time: SystemTime| -> DateTime<Utc> { time.into() };
   let format = |time| convert(time).format("%c").to_string();
@@ -42,13 +38,15 @@ fn format_date(metadata: fs::Metadata) -> (String, String) {
 }
 
 impl Note {
-  fn new(path: PathBuf, id: String, metadata: fs::Metadata) -> Note {
-    let file_contents = fs::read_to_string(path).unwrap();
+  fn new(path: PathBuf, id: String) -> Note {
+    let file_contents = fs::read_to_string(&path).expect("unable to read from path");
     let (title, body) = file_contents.split_once(&id).unwrap();
+
+    let metadata = path.metadata().expect("unable to get metadata");
     let (created_at, updated_at) = format_date(metadata);
 
     Note {
-      id: NoteId(id),
+      id: Uuid::parse_str(&id).expect("unable to parse id as uuid"),
       title: title.to_string(),
       body: body.to_string(),
       created_at,
@@ -60,7 +58,7 @@ impl Note {
     let notes_path = Path::new(".notes");
 
     if !notes_path.is_dir() {
-      fs::create_dir(notes_path).unwrap();
+      fs::create_dir(notes_path).expect("unable to create dir");
     }
 
     let id = Uuid::new_v4().to_string();
@@ -69,11 +67,7 @@ impl Note {
     let write_result = fs::write(&path, file_contents);
 
     match write_result {
-      Ok(_) => {
-        let metadata = fs::metadata(&path).unwrap();
-
-        Ok(Note::new(path, id, metadata))
-      }
+      Ok(_) => Ok(Note::new(path, id)),
       Err(e) => Err(NoteError::UnableToCreateFile(e.to_string())),
     }
   }
@@ -82,9 +76,9 @@ impl Note {
     let notes_path = Path::new(".notes");
 
     if notes_path.is_dir() {
-      let dir_contents = fs::read_dir(notes_path).unwrap();
+      let dir_contents = fs::read_dir(notes_path).expect("unable to read dir");
       let notes = dir_contents
-        .map(|x| Note::from(x.unwrap()))
+        .map(|entry| Note::from(entry.expect("unable to read dir entry")))
         .collect::<Vec<Note>>();
 
       Ok(notes)
@@ -94,23 +88,11 @@ impl Note {
   }
 
   pub fn get(id: String) -> Result<Note, NoteError> {
-    let file_path = get_path(&id);
-    let read_res = fs::read_to_string(&file_path);
+    let path = get_path(&id);
+    let read_res = fs::read_to_string(&path);
 
     match read_res {
-      Ok(nt) => {
-        let (title, body) = nt.split_once(&id).unwrap();
-        let note_metadata = fs::File::open(file_path).unwrap().metadata().unwrap();
-        let (created_at, updated_at) = format_date(note_metadata);
-
-        Ok(Note {
-          id: NoteId(id),
-          title: title.to_string(),
-          body: body.to_string(),
-          created_at,
-          updated_at,
-        })
-      }
+      Ok(_) => Ok(Note::new(path, id)),
       Err(e) => Err(NoteError::UnableToGetFile(e.to_string())),
     }
   }
@@ -130,11 +112,7 @@ impl Note {
     let write_res = fs::write(&path, title + &id + &body);
 
     match write_res {
-      Ok(_) => {
-        let metadata = fs::metadata(&path).unwrap();
-
-        Ok(Note::new(path, id, metadata))
-      }
+      Ok(_) => Ok(Note::new(path, id)),
       Err(e) => Err(NoteError::UnableToEditFile(e.to_string())),
     }
   }
@@ -142,16 +120,6 @@ impl Note {
 
 impl From<fs::DirEntry> for Note {
   fn from(entry: fs::DirEntry) -> Note {
-    Note::new(
-      entry.path(),
-      entry.file_name().into_string().unwrap(),
-      entry.metadata().unwrap(),
-    )
-  }
-}
-
-impl From<OsString> for NoteId {
-  fn from(os_string: OsString) -> NoteId {
-    NoteId(os_string.into_string().unwrap())
+    Note::new(entry.path(), entry.file_name().into_string().unwrap())
   }
 }
