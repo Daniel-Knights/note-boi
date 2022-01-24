@@ -50,4 +50,10 @@ async function editNote(title: string, body: string) {
   <button type="button" @click="editNote('Goodbye', 'Space')">Edit Note</button>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+body {
+  button {
+    margin: 10px;
+  }
+}
+</style>
