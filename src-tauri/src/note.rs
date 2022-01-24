@@ -144,7 +144,7 @@ impl From<fs::DirEntry> for Note {
   fn from(entry: fs::DirEntry) -> Note {
     Note::new(
       entry.path(),
-      entry.file_name().clone().into_string().unwrap(),
+      entry.file_name().into_string().unwrap(),
       entry.metadata().unwrap(),
     )
   }
