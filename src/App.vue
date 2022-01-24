@@ -1,18 +1,56 @@
+<template>
+  <h1>Notes</h1>
+  <button type="button" @click="newNote('Hello', 'World')">New Note</button>
+  <button type="button" @click="getAllNotes()">Get All Notes</button>
+  <ul>
+    <li v-for="note in notes" :key="note.id">
+      <h2>{{ note.title }}</h2>
+      <small>Created: {{ note.created_at }}</small
+      >&nbsp;<small>Last modified: {{ note.updated_at }}</small>
+      <p>{{ note.body }}</p>
+      <button type="button" @click="getNote(note.id)">Get Note</button>
+      <button type="button" @click="deleteNote(note.id)">Delete Note</button>
+      <button type="button" @click="editNote(note.id, 'Goodbye', 'Space')">
+        Edit Note
+      </button>
+    </li>
+  </ul>
+</template>
+
 <script setup lang="ts">
 import { invoke } from '@tauri-apps/api/tauri';
+import { onBeforeMount, ref } from 'vue';
+
+interface Note {
+  id: string;
+  title: string;
+  body: string;
+  created_at: string;
+  updated_at: string;
+}
+
+const notes = ref<Note[]>([]);
 
 async function newNote(title: string, body: string) {
-  const res = await invoke('new_note', { title, body }).catch((err) => {
+  const res = await invoke<Note>('new_note', { title, body }).catch((err) => {
     console.error(err);
   });
+
+  if (!res) return;
+
+  notes.value.push(res);
 
   console.log(res);
 }
 
 async function getAllNotes() {
-  const notes = await invoke('get_all_notes').catch((err) => {
+  const fetchedNotes = await invoke<Note[]>('get_all_notes').catch((err) => {
     console.error(err);
   });
+
+  if (!fetchedNotes) return;
+
+  notes.value = fetchedNotes;
 
   console.log(notes);
 }
@@ -30,25 +68,31 @@ async function deleteNote(id: string) {
     console.error(err);
   });
 
+  if (!res) return;
+
+  notes.value = notes.value.filter((note) => note.id !== id);
+
   console.log(res);
 }
 
-async function editNote(title: string, body: string) {
-  const res = await invoke('new_note', { title, body }).catch((err) => {
+async function editNote(id: string, title: string, body: string) {
+  const res = await invoke<Note>('edit_note', { id, title, body }).catch((err) => {
     console.error(err);
   });
 
+  if (!res) return;
+
+  notes.value = notes.value.map((note) => (note.id === id ? res : note));
+
   console.log(res);
 }
-</script>
 
-<template>
-  <button type="button" @click="newNote('Hello', 'World')">New Note</button>
-  <button type="button" @click="getAllNotes()">Get All Notes</button>
-  <button type="button" @click="getNote('Hello')">Get Note</button>
-  <button type="button" @click="deleteNote('Hello')">Delete Note</button>
-  <button type="button" @click="editNote('Goodbye', 'Space')">Edit Note</button>
-</template>
+onBeforeMount(async () => {
+  await getAllNotes();
+
+  console.log(notes.value);
+});
+</script>
 
 <style lang="scss" scoped>
 body {
