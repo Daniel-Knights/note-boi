@@ -12,7 +12,7 @@ pub struct Note {
   body: String,
   created_at: String,
   updated_at: String,
-  order: i64,
+  modified_timestamp: i64,
 }
 
 #[derive(Serialize, Debug)]
@@ -47,7 +47,7 @@ impl Note {
       body: body.to_string(),
       created_at: format_date(created),
       updated_at: format_date(modified),
-      order: DateTime::<Local>::from(modified).timestamp(),
+      modified_timestamp: DateTime::<Local>::from(modified).timestamp(),
     }
   }
 
@@ -78,7 +78,7 @@ impl Note {
         .map(|entry| Note::from(entry.expect("unable to read dir entry")))
         .collect::<Vec<Note>>();
 
-      notes.sort_by(|a, b| b.order.cmp(&a.order));
+      notes.sort_by(|a, b| b.modified_timestamp.cmp(&a.modified_timestamp));
 
       Ok(notes)
     } else {
