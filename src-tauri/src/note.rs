@@ -1,17 +1,18 @@
-use chrono::prelude::{DateTime, Utc};
+use chrono::{DateTime, Local};
 use serde::Serialize;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::time::SystemTime;
 use uuid::Uuid;
 
-#[derive(Serialize, Debug)]
+#[derive(Serialize, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Note {
   id: Uuid,
   title: String,
   body: String,
   created_at: String,
   updated_at: String,
+  order: i64,
 }
 
 #[derive(Serialize, Debug)]
@@ -27,14 +28,8 @@ fn get_path(id: &String) -> PathBuf {
   PathBuf::from(".notes/".to_owned() + id)
 }
 
-fn format_date(metadata: fs::Metadata) -> (String, String) {
-  let created_at = metadata.created().expect("created field not available");
-  let updated_at = metadata.modified().expect("modified field not available");
-
-  let convert = |time: SystemTime| -> DateTime<Utc> { time.into() };
-  let format = |time| convert(time).format("%c").to_string();
-
-  (format(created_at), format(updated_at))
+fn format_date(time: SystemTime) -> String {
+  DateTime::<Local>::from(time).format("%c").to_string()
 }
 
 impl Note {
@@ -43,14 +38,16 @@ impl Note {
     let (title, body) = file_contents.split_once(&id).unwrap();
 
     let metadata = path.metadata().expect("unable to get metadata");
-    let (created_at, updated_at) = format_date(metadata);
+    let created = metadata.created().expect("created field unavailable");
+    let modified = metadata.modified().expect("modified field unavailable");
 
     Note {
       id: Uuid::parse_str(&id).expect("unable to parse id as uuid"),
       title: title.to_string(),
       body: body.to_string(),
-      created_at,
-      updated_at,
+      created_at: format_date(created),
+      updated_at: format_date(modified),
+      order: DateTime::<Local>::from(modified).timestamp(),
     }
   }
 
@@ -77,9 +74,11 @@ impl Note {
 
     if notes_path.is_dir() {
       let dir_contents = fs::read_dir(notes_path).expect("unable to read dir");
-      let notes = dir_contents
+      let mut notes = dir_contents
         .map(|entry| Note::from(entry.expect("unable to read dir entry")))
         .collect::<Vec<Note>>();
+
+      notes.sort_by(|a, b| b.order.cmp(&a.order));
 
       Ok(notes)
     } else {

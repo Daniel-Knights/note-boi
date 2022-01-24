@@ -38,7 +38,7 @@ async function newNote(title: string, body: string) {
 
   if (!res) return;
 
-  notes.value.push(res);
+  notes.value.unshift(res);
 
   console.log(res);
 }
@@ -82,7 +82,8 @@ async function editNote(id: string, title: string, body: string) {
 
   if (!res) return;
 
-  notes.value = notes.value.map((note) => (note.id === id ? res : note));
+  notes.value = notes.value.filter((note) => note.id !== id);
+  notes.value.unshift(res);
 
   console.log(res);
 }
