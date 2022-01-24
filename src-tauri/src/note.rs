@@ -5,7 +5,7 @@ use std::path::{Path, PathBuf};
 use std::time::SystemTime;
 use uuid::Uuid;
 
-#[derive(Serialize, Debug, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Serialize, Debug)]
 pub struct Note {
   id: Uuid,
   title: String,
