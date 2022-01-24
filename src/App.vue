@@ -1,21 +1,53 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue';
+import { invoke } from '@tauri-apps/api/tauri';
+
+async function newNote(title: string, body: string) {
+  const res = await invoke('new_note', { title, body }).catch((err) => {
+    console.error(err);
+  });
+
+  console.log(res);
+}
+
+async function getAllNotes() {
+  const notes = await invoke('get_all_notes').catch((err) => {
+    console.error(err);
+  });
+
+  console.log(notes);
+}
+
+async function getNote(id: string) {
+  const note = await invoke('get_note', { id }).catch((err) => {
+    console.error(err);
+  });
+
+  console.log(note);
+}
+
+async function deleteNote(id: string) {
+  const res = await invoke('delete_note', { id }).catch((err) => {
+    console.error(err);
+  });
+
+  console.log(res);
+}
+
+async function editNote(title: string, body: string) {
+  const res = await invoke('new_note', { title, body }).catch((err) => {
+    console.error(err);
+  });
+
+  console.log(res);
+}
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <button type="button" @click="newNote('Hello', 'World')">New Note</button>
+  <button type="button" @click="getAllNotes()">Get All Notes</button>
+  <button type="button" @click="getNote('Hello')">Get Note</button>
+  <button type="button" @click="deleteNote('Hello')">Delete Note</button>
+  <button type="button" @click="editNote('Goodbye', 'Space')">Edit Note</button>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss" scoped></style>

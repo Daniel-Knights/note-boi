@@ -3,14 +3,19 @@
   windows_subsystem = "windows"
 )]
 
-#[tauri::command]
-fn my_custom_command() {
-  println!("I was invoked from JS!");
-}
+mod command;
+mod note;
+use crate::command::{delete_note, edit_note, get_all_notes, get_note, new_note};
 
 fn main() {
   tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![my_custom_command])
+    .invoke_handler(tauri::generate_handler![
+      delete_note,
+      edit_note,
+      get_all_notes,
+      get_note,
+      new_note
+    ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
