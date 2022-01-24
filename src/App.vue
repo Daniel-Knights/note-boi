@@ -1,18 +1,18 @@
 <template>
   <h1>Notes</h1>
-  <button type="button" @click="newNote('Hello', 'World')">New Note</button>
+  <input v-model="title" type="text" placeholder="Title" />
+  <textarea v-model="body" type="text" placeholder="Body"></textarea>
+  <button type="button" @click="newNote()">New Note</button>
   <button type="button" @click="getAllNotes()">Get All Notes</button>
   <ul>
     <li v-for="note in notes" :key="note.id">
       <h2>{{ note.title }}</h2>
       <small>Created: {{ note.created_at }}</small
       >&nbsp;<small>Last modified: {{ note.updated_at }}</small>
-      <p>{{ note.body }}</p>
+      <pre>{{ note.body }}</pre>
       <button type="button" @click="getNote(note.id)">Get Note</button>
       <button type="button" @click="deleteNote(note.id)">Delete Note</button>
-      <button type="button" @click="editNote(note.id, 'Goodbye', 'Space')">
-        Edit Note
-      </button>
+      <button type="button" @click="editNote(note.id)">Edit Note</button>
     </li>
   </ul>
 </template>
@@ -30,9 +30,14 @@ interface Note {
 }
 
 const notes = ref<Note[]>([]);
+const title = ref('');
+const body = ref('');
 
-async function newNote(title: string, body: string) {
-  const res = await invoke<Note>('new_note', { title, body }).catch((err) => {
+async function newNote() {
+  const res = await invoke<Note>('new_note', {
+    title: title.value,
+    body: body.value,
+  }).catch((err) => {
     console.error(err);
   });
 
@@ -75,8 +80,12 @@ async function deleteNote(id: string) {
   console.log(res);
 }
 
-async function editNote(id: string, title: string, body: string) {
-  const res = await invoke<Note>('edit_note', { id, title, body }).catch((err) => {
+async function editNote(id: string) {
+  const res = await invoke<Note>('edit_note', {
+    id,
+    title: title.value,
+    body: body.value,
+  }).catch((err) => {
     console.error(err);
   });
 
