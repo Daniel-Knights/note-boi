@@ -61,9 +61,9 @@ impl Note {
     let id = Uuid::new_v4().to_string();
     let path = get_path(&id);
     let file_contents = title + &id + &body;
-    let write_result = fs::write(&path, file_contents);
+    let write_res = fs::write(&path, file_contents);
 
-    match write_result {
+    match write_res {
       Ok(_) => Ok(Note::new(path, id)),
       Err(e) => Err(NoteError::UnableToCreateFile(e.to_string())),
     }
@@ -97,8 +97,8 @@ impl Note {
   }
 
   pub fn delete(id: String) -> Result<bool, NoteError> {
-    let file_path = get_path(&id);
-    let delete_res = fs::remove_file(file_path);
+    let path = get_path(&id);
+    let delete_res = fs::remove_file(path);
 
     match delete_res {
       Ok(_) => Ok(true),
