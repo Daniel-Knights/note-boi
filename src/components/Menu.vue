@@ -49,6 +49,7 @@ $new-note-height: 50px;
 
   &:hover,
   &--selected {
+    color: #fff;
     background-color: var(--color__interactive);
   }
 }
