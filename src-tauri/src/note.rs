@@ -49,8 +49,8 @@ impl Note {
     }
 
     let id = Uuid::new_v4().to_string();
-    let path = Note::get_path(&id, true);
-    let mut file = fs::File::create(&path).unwrap();
+    let path = Note::get_path(&id);
+    let mut file = fs::File::create(&path).expect("unable to create file");
 
     let note = Note::new(&path, id, title, body);
     let note_json = note.serialize();
@@ -80,7 +80,7 @@ impl Note {
   }
 
   pub fn get(id: String) -> Result<Note, NoteError> {
-    let path = Note::get_path(&id, true);
+    let path = Note::get_path(&id);
     let read_res = fs::read_to_string(&path);
 
     match read_res {
@@ -90,7 +90,7 @@ impl Note {
   }
 
   pub fn delete(id: String) -> Result<bool, NoteError> {
-    let path = Note::get_path(&id, true);
+    let path = Note::get_path(&id);
     let delete_res = fs::remove_file(path);
 
     match delete_res {
@@ -100,7 +100,7 @@ impl Note {
   }
 
   pub fn edit(id: String, title: String, body: String) -> Result<Note, NoteError> {
-    let path = Note::get_path(&id, true);
+    let path = Note::get_path(&id);
     let note = Note::new(&path, id, title, body);
     let note_json = note.serialize();
     let write_res = fs::write(path, note_json);
@@ -111,19 +111,15 @@ impl Note {
     }
   }
 
-  fn get_path(id: &String, with_ext: bool) -> PathBuf {
-    let mut path_str = ".notes/".to_owned() + id;
-
-    if with_ext {
-      path_str.push_str(".json");
-    }
-
-    PathBuf::from(path_str)
+  /// Returns `.notes/{id}.json`
+  fn get_path(id: &String) -> PathBuf {
+    PathBuf::from(".notes/".to_owned() + id + ".json")
   }
-
+  /// Serialize `Note` to a JSON string
   fn serialize(&self) -> String {
     serde_json::to_string(self).expect("unable to serialize note struct")
   }
+  /// Deserialize `Note` from a JSON string
   fn deserialize(note_json: &String) -> Note {
     serde_json::from_str::<Note>(note_json).expect("unable to deserialize note json")
   }
@@ -131,9 +127,7 @@ impl Note {
 
 impl From<fs::DirEntry> for Note {
   fn from(entry: fs::DirEntry) -> Note {
-    let file_name = entry.file_name().into_string().unwrap();
-    let path = Note::get_path(&file_name, false);
-    let note_json = fs::read_to_string(path).expect("unable to read file");
+    let note_json = fs::read_to_string(entry.path()).expect("unable to read file");
 
     Note::deserialize(&note_json)
   }
