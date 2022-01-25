@@ -25,8 +25,8 @@ export function selectNote(id: string): void {
 
 export async function newNote(): Promise<void> {
   const res = await invoke<Note>('new_note', {
-    title: state.selectedNote?.title,
-    body: state.selectedNote?.body,
+    title: '',
+    body: '',
   }).catch((err) => {
     console.error(err);
   });
@@ -34,6 +34,7 @@ export async function newNote(): Promise<void> {
   if (!res) return;
 
   state.notes.unshift(res);
+  state.selectedNote = res;
 
   console.log(res);
 }
@@ -58,9 +59,11 @@ export async function deleteNote(id: string): Promise<void> {
 
   if (!res) return;
 
-  state.notes = state.notes.filter((note) => note.id !== id);
+  const noteIndex = state.notes.findIndex((nt) => nt.id === id);
 
-  console.log(res);
+  delete state.notes[noteIndex];
+
+  console.log(state.notes);
 }
 
 export async function editNote(id: string): Promise<void> {
