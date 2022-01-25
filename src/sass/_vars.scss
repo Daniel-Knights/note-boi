@@ -1,0 +1,32 @@
+// Mixins
+@mixin flex-x($justify: false, $align: false) {
+  display: flex;
+  @if $justify {
+    justify-content: $justify;
+  }
+  @if $align {
+    align-items: $align;
+  }
+}
+@mixin flex-y($justify: false, $align: false) {
+  @include flex-x($justify, $align);
+  flex-direction: column;
+}
+
+@mixin equal-dimensions($dimensions) {
+  width: $dimensions;
+  height: $dimensions;
+}
+
+// Vars
+:root {
+  --color__primary: #fff;
+  --color__secondary: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color__primary: #000000;
+    --color__secondary: #fff;
+  }
+}
