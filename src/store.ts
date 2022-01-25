@@ -61,7 +61,7 @@ export async function deleteNote(id: string): Promise<void> {
 
   const noteIndex = state.notes.findIndex((nt) => nt.id === id);
 
-  delete state.notes[noteIndex];
+  state.notes.splice(noteIndex, 1);
 
   console.log(state.notes);
 }

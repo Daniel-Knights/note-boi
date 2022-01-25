@@ -6,7 +6,7 @@
         <small>Created: {{ note.created_at }}</small>
         <small>Modified: {{ note.updated_at }}</small>
         <p>{{ note.body }}</p>
-        <button class="delete-note" type="button" @click="deleteNote(note.id)">
+        <button class="delete-note" type="button" @click.stop="deleteNote(note.id)">
           <BinIcon />
         </button>
       </li>
@@ -72,5 +72,6 @@ small {
   height: $new-note-height;
   width: 100%;
   font-size: 30px;
+  color: #fff;
 }
 </style>
