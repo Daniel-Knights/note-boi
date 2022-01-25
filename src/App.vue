@@ -32,9 +32,6 @@ body {
 
 button {
   cursor: pointer;
-  font-size: 30px;
-  color: var(--color__secondary);
-  background-color: #2e2e2e;
 
   &:hover {
     opacity: 0.8;
@@ -43,7 +40,7 @@ button {
 
 #app {
   display: grid;
-  grid-template-columns: minmax(250px, 25%) auto;
+  grid-template-columns: minmax(260px, 25%) auto;
   margin: 0;
   @include v.equal-dimensions(100%);
   font-family: Verdana, Geneva, Tahoma, sans-serif;

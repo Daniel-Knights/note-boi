@@ -1,24 +1,27 @@
 <template>
   <div id="menu">
-    <ul>
-      <li v-for="note in state.notes" :key="note.id" @click="selectNote(note.id)">
+    <ul class="menu__note-list">
+      <li
+        v-for="note in state.notes"
+        :key="note.id"
+        @click="selectNote(note.id)"
+        class="menu__note"
+        :class="{ 'menu__note--selected': note.id === state.selectedNote?.id }"
+      >
         <h2>{{ note.title }}</h2>
-        <small>Created: {{ note.created_at }}</small>
-        <small>Modified: {{ note.updated_at }}</small>
         <p>{{ note.body }}</p>
-        <button class="delete-note" type="button" @click.stop="deleteNote(note.id)">
-          <BinIcon />
-        </button>
       </li>
     </ul>
-    <button class="new-note" @click="newNote">+</button>
+    <button class="menu__new-note" @click="newNote">
+      <PlusIcon />
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { state, selectNote, deleteNote, newNote } from '../store';
+import { state, selectNote, newNote } from '../store';
 
-import BinIcon from './svg/BinIcon.vue';
+import PlusIcon from './svg/PlusIcon.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -29,8 +32,7 @@ $new-note-height: 50px;
   max-height: 100vh;
 }
 
-ul {
-  padding: 12px;
+.menu__note-list {
   height: 100%;
   overflow-y: scroll;
   padding-bottom: $new-note-height;
@@ -40,38 +42,48 @@ ul {
   }
 }
 
-li {
-  > * {
-    display: block;
-    margin-bottom: 0.5rem;
-    white-space: nowrap;
-  }
+.menu__note {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 15px;
 
-  + li {
-    margin-top: 1rem;
+  &:hover,
+  &--selected {
+    background-color: var(--color__interactive);
   }
+}
+
+h2,
+p {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+p {
+  margin-top: 8px;
+  font-size: 12px;
 }
 
 small {
   font-size: 12px;
 }
 
-.delete-note {
+.menu__new-note {
   @include v.flex-x(center, center);
-  padding: 2px;
-
-  svg {
-    fill: red;
-    height: 20px;
-  }
-}
-
-.new-note {
   position: absolute;
   top: calc(100% - $new-note-height);
   height: $new-note-height;
   width: 100%;
   font-size: 30px;
   color: #fff;
+  background-color: var(--color__interactive);
 }
 </style>

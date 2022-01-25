@@ -22,11 +22,13 @@
 :root {
   --color__primary: #fff;
   --color__secondary: #000000;
+  --color__interactive: #2e2e2e;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --color__primary: #000000;
     --color__secondary: #fff;
+    --color__interactive: #2e2e2e;
   }
 }
