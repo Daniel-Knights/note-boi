@@ -20,7 +20,6 @@ pub struct Note {
 pub enum NoteError {
   DirNotFound,
   UnableToCreateFile(String),
-  UnableToGetFile(String),
   UnableToDeleteFile(String),
   UnableToEditFile(String),
 }
@@ -76,16 +75,6 @@ impl Note {
       Ok(notes)
     } else {
       Err(NoteError::DirNotFound)
-    }
-  }
-
-  pub fn get(id: String) -> Result<Note, NoteError> {
-    let path = Note::get_path(&id);
-    let read_res = fs::read_to_string(&path);
-
-    match read_res {
-      Ok(note_json) => Ok(Note::deserialize(&note_json)),
-      Err(e) => Err(NoteError::UnableToGetFile(e.to_string())),
     }
   }
 

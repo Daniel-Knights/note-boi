@@ -11,11 +11,6 @@ pub fn get_all_notes() -> Result<Vec<Note>, NoteError> {
 }
 
 #[tauri::command]
-pub fn get_note(id: String) -> Result<Note, NoteError> {
-  Note::get(id)
-}
-
-#[tauri::command]
 pub fn delete_note(id: String) -> Result<bool, NoteError> {
   Note::delete(id)
 }
