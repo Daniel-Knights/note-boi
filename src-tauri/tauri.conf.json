@@ -1,6 +1,6 @@
 {
   "package": {
-    "productName": "notes",
+    "productName": "NoteBoi",
     "version": "0.1.0"
   },
   "build": {
@@ -13,7 +13,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.daniel-knights.notes",
+      "identifier": "com.daniel-knights.note-boi",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -51,7 +51,7 @@
     "allowlist": {},
     "windows": [
       {
-        "title": "Notes",
+        "title": "NoteBoi",
         "width": 800,
         "height": 600,
         "minWidth": 600,

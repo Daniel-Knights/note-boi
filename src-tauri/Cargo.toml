@@ -1,11 +1,11 @@
 [package]
-name = "notes"
+name = "note-boi"
 version = "0.1.0"
 description = "A Notes App"
 authors = ["Daniel Knights"]
 license = "MIT"
-repository = "https://github.com/Daniel-Knights/notes"
-default-run = "notes"
+repository = "https://github.com/Daniel-Knights/note-boi"
+default-run = "note-boi"
 edition = "2021"
 build = "src/build.rs"
 
