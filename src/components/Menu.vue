@@ -1,10 +1,11 @@
 <template>
-  <div id="menu">
-    <ul class="menu__note-list">
+  <section id="menu">
+    <!-- TODO: contextmenu -->
+    <ul class="menu__note-list" @contextmenu.prevent>
       <li
         v-for="note in state.notes"
         :key="note.id"
-        @click="selectNote(note.id)"
+        @pointerup="selectNote(note.id)"
         class="menu__note"
         :class="{ 'menu__note--selected': note.id === state.selectedNote?.id }"
       >
@@ -12,10 +13,10 @@
         <p>{{ note.body }}</p>
       </li>
     </ul>
-    <button class="menu__new-note" @click="newNote">
+    <button class="menu__new-note" @pointerup="newNote">
       <PlusIcon />
     </button>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">

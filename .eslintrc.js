@@ -47,5 +47,6 @@ module.exports = {
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
     'operator-linebreak': 'off',
+    'lines-between-class-members': 'off',
   },
 };

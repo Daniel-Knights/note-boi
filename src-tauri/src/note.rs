@@ -28,7 +28,7 @@ impl Note {
   fn new(path: &PathBuf, id: String, title: String, body: String) -> Note {
     let metadata = path.metadata().expect("unable to get metadata");
     let created = metadata.created().expect("created field unavailable");
-    let modified = metadata.modified().expect("modified field unavailable");
+    let modified = SystemTime::now();
 
     Note {
       id: Uuid::parse_str(&id).expect("unable to parse id as uuid"),
@@ -40,7 +40,7 @@ impl Note {
     }
   }
 
-  pub fn write(title: String, body: String) -> Result<Note, NoteError> {
+  pub fn write(title: String, body: String) -> Result<(), NoteError> {
     let notes_path = Path::new(".notes");
 
     if !notes_path.is_dir() {
@@ -56,7 +56,7 @@ impl Note {
     let write_res = file.write(note_json.as_ref());
 
     match write_res {
-      Ok(_) => Ok(note),
+      Ok(_) => Ok(()),
       Err(e) => Err(NoteError::UnableToCreateFile(e.to_string())),
     }
   }
@@ -78,24 +78,24 @@ impl Note {
     }
   }
 
-  pub fn delete(id: String) -> Result<bool, NoteError> {
+  pub fn delete(id: String) -> Result<(), NoteError> {
     let path = Note::get_path(&id);
     let delete_res = fs::remove_file(path);
 
     match delete_res {
-      Ok(_) => Ok(true),
+      Ok(_) => Ok(()),
       Err(e) => Err(NoteError::UnableToDeleteFile(e.to_string())),
     }
   }
 
-  pub fn edit(id: String, title: String, body: String) -> Result<Note, NoteError> {
+  pub fn edit(id: String, title: String, body: String) -> Result<(), NoteError> {
     let path = Note::get_path(&id);
     let note = Note::new(&path, id, title, body);
     let note_json = note.serialize();
     let write_res = fs::write(path, note_json);
 
     match write_res {
-      Ok(_) => Ok(note),
+      Ok(_) => Ok(()),
       Err(e) => Err(NoteError::UnableToEditFile(e.to_string())),
     }
   }
