@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import { onBeforeMount } from 'vue';
+
 import { getAllNotes } from './store';
 
 import Menu from './components/Menu.vue';

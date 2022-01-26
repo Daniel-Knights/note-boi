@@ -51,7 +51,6 @@
     "allowlist": {},
     "windows": [
       {
-        "label": "main",
         "title": "NoteBoi",
         "width": 800,
         "height": 600,
@@ -59,24 +58,6 @@
         "minHeight": 400,
         "resizable": true,
         "fullscreen": false
-      },
-      {
-        "label": "about",
-        "title": "About NoteBoi",
-        "width": 300,
-        "height": 400,
-        "resizable": false,
-        "fullscreen": false,
-        "visible": false
-      },
-      {
-        "label": "preferences",
-        "title": "NoteBoi Preferences",
-        "width": 300,
-        "height": 400,
-        "resizable": false,
-        "fullscreen": false,
-        "visible": false
       }
     ],
     "security": {
