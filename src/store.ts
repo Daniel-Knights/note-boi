@@ -101,7 +101,7 @@ export function newNote(): void {
 }
 
 /** Edits note on `keyup`. */
-export function editNote(ev: KeyboardEvent, field: 'title' | 'body'): void {
+export function editNote(ev: Event, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
   if (target.innerText === state.selectedNote[field]) return;

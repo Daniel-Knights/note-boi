@@ -1,10 +1,10 @@
 <template>
   <section id="editor">
-    <h1 class="editor__title" contenteditable="true" @keyup="editNote($event, 'title')">
+    <h1 class="editor__title" contenteditable="true" @input="editNote($event, 'title')">
       {{ state.selectedNote.title }}
     </h1>
     <small class="editor__date">{{ formatDateTime(state.selectedNote.timestamp) }}</small>
-    <pre class="editor__body" contenteditable="true" @keyup="editNote($event, 'body')">{{
+    <pre class="editor__body" contenteditable="true" @input="editNote($event, 'body')">{{
       state.selectedNote.body
     }}</pre>
   </section>
