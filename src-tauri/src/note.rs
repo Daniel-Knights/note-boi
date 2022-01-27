@@ -34,11 +34,9 @@ impl Note {
 
     if notes_path.is_dir() {
       let dir_contents = fs::read_dir(notes_path).expect("unable to read dir");
-      let mut notes = dir_contents
+      let notes = dir_contents
         .map(|entry| Note::from(entry.expect("unable to read dir entry")))
         .collect::<Vec<Note>>();
-
-      notes.sort_by(|a, b| b.timestamp.cmp(&a.timestamp));
 
       Ok(notes)
     } else {

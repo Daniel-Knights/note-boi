@@ -20,6 +20,16 @@ export const state = reactive<State>({
   selectedNote: new Note(),
 });
 
+/** Sorts notes in descending order by timestamp. */
+function sortNotes() {
+  state.notes.sort((a, b) => b.timestamp - a.timestamp);
+}
+
+/** Finds note index within {@link state.notes}. */
+function findNoteIndex(id: string) {
+  return state.notes.findIndex((nt) => nt.id === id);
+}
+
 /**
  * Looks for note with given `id` in {@link state.notes},
  * and sets {@link state.selectedNote} with it.
@@ -38,11 +48,7 @@ export function clearEmptyNote(isNewNote?: boolean): void {
   const isValidClear = state.notes.length > 1 || isNewNote;
   const isEmpty = title === '' && body === '';
 
-  if (isValidClear && isEmpty) {
-    const noteIndex = state.notes.findIndex((nt) => nt.id === id);
-
-    state.notes.splice(noteIndex, 1);
-  }
+  if (isValidClear && isEmpty) deleteNote(id);
 }
 
 /** Fetches all notes and updates {@link state}. */
@@ -52,14 +58,19 @@ export async function getAllNotes(): Promise<void> {
   if (fetchedNotes.length <= 0) return newNote();
 
   state.notes = fetchedNotes;
-  [state.selectedNote] = fetchedNotes;
+
+  sortNotes();
+
+  [state.selectedNote] = state.notes;
 }
 
 /** Deletes note with the given `id`. */
 export function deleteNote(id: string): void {
-  const noteIndex = state.notes.findIndex((nt) => nt.id === id);
+  state.notes.splice(findNoteIndex(id), 1);
 
-  state.notes.splice(noteIndex, 1);
+  sortNotes();
+
+  invoke('delete_note', { id }).catch(console.error);
 }
 
 /** Creates an empty note. */
@@ -68,17 +79,23 @@ export function newNote(): void {
 
   state.notes.unshift(new Note());
   [state.selectedNote] = state.notes;
+
+  invoke('new_note', state.selectedNote).catch(console.error);
 }
 
 /** Edits note on `keyup` or `blur`. */
 export function editNote(ev: KeyboardEvent, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
-  // Hasn't changed
   if (target.innerText === state.selectedNote[field]) return;
 
-  const noteIndex = state.notes.findIndex((nt) => nt.id === state.selectedNote.id);
+  const noteIndex = findNoteIndex(state.selectedNote.id);
 
+  state.selectedNote.timestamp = new Date().getTime();
   state.notes[noteIndex] = state.selectedNote;
   state.selectedNote[field] = target.innerText;
+
+  sortNotes();
+
+  invoke('edit_note', state.selectedNote).catch(console.error);
 }
