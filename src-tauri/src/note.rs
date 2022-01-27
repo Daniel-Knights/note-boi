@@ -11,8 +11,7 @@ pub struct Note {
   id: Uuid,
   title: String,
   body: String,
-  created_at: String,
-  updated_at: String,
+  modified: String,
   modified_timestamp: i64,
 }
 
@@ -25,33 +24,29 @@ pub enum NoteError {
 }
 
 impl Note {
-  fn new(path: &PathBuf, id: String, title: String, body: String) -> Note {
-    let metadata = path.metadata().expect("unable to get metadata");
-    let created = metadata.created().expect("created field unavailable");
+  fn new(id: String, title: String, body: String) -> Note {
     let modified = SystemTime::now();
 
     Note {
       id: Uuid::parse_str(&id).expect("unable to parse id as uuid"),
       title,
       body,
-      created_at: created.to_date_format(),
-      updated_at: modified.to_date_format(),
+      modified: modified.to_date_format(),
       modified_timestamp: modified.to_date_time().timestamp(),
     }
   }
 
   pub fn write(title: String, body: String) -> Result<(), NoteError> {
     let notes_path = Path::new(".notes");
-
     if !notes_path.is_dir() {
       fs::create_dir(notes_path).expect("unable to create dir");
     }
 
     let id = Uuid::new_v4().to_string();
     let path = Note::get_path(&id);
-    let mut file = fs::File::create(&path).expect("unable to create file");
+    let mut file = fs::File::create(path).expect("unable to create file");
 
-    let note = Note::new(&path, id, title, body);
+    let note = Note::new(id, title, body);
     let note_json = note.serialize();
     let write_res = file.write(note_json.as_ref());
 
@@ -90,7 +85,7 @@ impl Note {
 
   pub fn edit(id: String, title: String, body: String) -> Result<(), NoteError> {
     let path = Note::get_path(&id);
-    let note = Note::new(&path, id, title, body);
+    let note = Note::new(id, title, body);
     let note_json = note.serialize();
     let write_res = fs::write(path, note_json);
 

@@ -5,8 +5,7 @@ class Note {
   readonly id = '';
   title = '';
   body = '';
-  readonly created_at = '';
-  updated_at = '';
+  modified = '';
   [key: string]: string; // eslint-disable-line no-undef
 }
 
@@ -23,22 +22,23 @@ export const state = reactive<State>({
 /**
  * Fetches all notes and updates {@link state}.
  *
- * @param updateExcludes Array of fields to skip updating for {@link state.selectedNote}.
+ * @param updateOnly Array of fields to update for {@link state.selectedNote}.
  */
 export async function getAllNotes(
-  updateExcludes?: Array<'title' | 'body' | 'updated_at'>
+  updateOnly?: Array<'title' | 'body' | 'modified'>
 ): Promise<void> {
   const fetchedNotes = await invoke<Note[]>('get_all_notes').catch(console.error);
   if (!fetchedNotes) return;
 
   state.notes = fetchedNotes;
 
-  Object.keys(fetchedNotes[0]).forEach((key) => {
-    const ex = updateExcludes as string[] | undefined;
-    if (ex?.includes(key)) return; // Skip excluded fields
-
-    state.selectedNote[key] = fetchedNotes[0][key];
-  });
+  if (updateOnly) {
+    updateOnly.forEach((field) => {
+      state.selectedNote[field] = fetchedNotes[0][field];
+    });
+  } else {
+    [state.selectedNote] = fetchedNotes;
+  }
 }
 
 /** Deletes note with the given `id`, then re-fetches. */
@@ -62,9 +62,6 @@ export async function newNote(): Promise<void> {
   await clearEmptyNote();
   await invoke<Note>('new_note', { ...new Note() }).catch(console.error);
 
-  // TODO: Spamming cause content flash
-  // TODO: Editing note then triggering this function causes edited note to be order as newer
-
   getAllNotes();
 }
 
@@ -75,18 +72,19 @@ export async function editNote(
 ): Promise<void> {
   const target = ev.target as HTMLElement;
   if (!target) return;
+  // Hasn't changed
+  if (target.innerText === state.selectedNote[field]) return;
 
   const payload = { ...state.selectedNote };
   payload[field] = target.innerText;
 
   await invoke<Note>('edit_note', payload).catch(console.error);
 
-  // Only exclude field if currently editing
-  if (ev.type === 'keyup') {
-    getAllNotes([field]);
-  } else {
-    getAllNotes(); // Update all on `blur`
-  }
+  const isKeyup = ev instanceof KeyboardEvent;
+  // Only update `modified` if currently editing
+  const updateOnly: 'modified'[] | undefined = isKeyup ? ['modified'] : undefined;
+
+  getAllNotes(updateOnly);
 }
 
 /**

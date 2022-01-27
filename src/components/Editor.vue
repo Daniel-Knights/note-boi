@@ -8,10 +8,7 @@
     >
       {{ state.selectedNote?.title }}
     </h1>
-    <div class="editor__dates">
-      <small>Created: {{ state.selectedNote?.created_at }}</small>
-      <small>Updated: {{ state.selectedNote?.updated_at }}</small>
-    </div>
+    <small class="editor__date">{{ state.selectedNote?.modified }}</small>
     <pre
       class="editor__body"
       contenteditable="true"
@@ -38,7 +35,7 @@ import { state, editNote } from '../store';
 
 .editor__title,
 .editor__body,
-.editor__dates {
+.editor__date {
   padding-left: 8px;
   padding-right: 8px;
 }
@@ -54,19 +51,12 @@ import { state, editNote } from '../store';
   padding-top: 8px;
 }
 
-.editor__dates {
+.editor__date {
+  display: block;
   padding-top: 10px;
   padding-bottom: 16px;
   font-size: 11px;
   border-bottom: 1px solid;
-
-  small {
-    display: block;
-
-    + small {
-      margin-top: 3px;
-    }
-  }
 }
 
 .editor__body {

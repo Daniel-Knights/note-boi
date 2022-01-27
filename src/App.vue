@@ -6,13 +6,14 @@
 <script setup lang="ts">
 import { onBeforeMount } from 'vue';
 
-import { getAllNotes } from './store';
+import { clearEmptyNote, getAllNotes } from './store';
 
 import Menu from './components/Menu.vue';
 import Editor from './components/Editor.vue';
 
-onBeforeMount(() => {
-  getAllNotes();
+onBeforeMount(async () => {
+  await getAllNotes();
+  clearEmptyNote();
 });
 </script>
 
