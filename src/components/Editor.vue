@@ -1,26 +1,18 @@
 <template>
   <section id="editor">
-    <h1
-      class="editor__title"
-      contenteditable="true"
-      @keyup="editNote($event, 'title')"
-      @blur="editNote($event, 'title')"
-    >
+    <h1 class="editor__title" contenteditable="true" @keyup="editNote($event, 'title')">
       {{ state.selectedNote?.title }}
     </h1>
-    <small class="editor__date">{{ state.selectedNote?.modified }}</small>
-    <pre
-      class="editor__body"
-      contenteditable="true"
-      @keyup="editNote($event, 'body')"
-      @blur="editNote($event, 'body')"
-      >{{ state.selectedNote?.body }}</pre
-    >
+    <small class="editor__date">{{ formatDateTime(state.selectedNote.timestamp) }}</small>
+    <pre class="editor__body" contenteditable="true" @keyup="editNote($event, 'body')">{{
+      state.selectedNote?.body
+    }}</pre>
   </section>
 </template>
 
 <script lang="ts" setup>
 import { state, editNote } from '../store';
+import { formatDateTime } from '../utils';
 </script>
 
 <style lang="scss" scoped>

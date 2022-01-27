@@ -48,5 +48,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'operator-linebreak': 'off',
     'lines-between-class-members': 'off',
+    'no-use-before-define': ['error', { functions: false }],
   },
 };

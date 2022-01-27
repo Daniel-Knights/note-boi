@@ -1,12 +1,13 @@
 import { reactive } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
+import { v4 as uuidv4 } from 'uuid';
 
 class Note {
-  readonly id = '';
+  readonly id = uuidv4();
   title = '';
   body = '';
-  modified = '';
-  [key: string]: string; // eslint-disable-line no-undef
+  timestamp = new Date().getTime();
+  [key: string]: string | number; // eslint-disable-line no-undef
 }
 
 interface State {
@@ -20,80 +21,59 @@ export const state = reactive<State>({
 });
 
 /**
- * Fetches all notes and updates {@link state}.
- *
- * @param updateOnly Array of fields to update for {@link state.selectedNote}.
+ * Looks for note with given `id` in {@link state.notes},
+ * and sets {@link state.selectedNote} with it.
  */
-export async function getAllNotes(
-  updateOnly?: Array<'title' | 'body' | 'modified'>
-): Promise<void> {
-  const fetchedNotes = await invoke<Note[]>('get_all_notes').catch(console.error);
-  if (!fetchedNotes) return;
+export function selectNote(id: string): void {
+  clearEmptyNote();
 
-  state.notes = fetchedNotes;
-
-  if (updateOnly) {
-    updateOnly.forEach((field) => {
-      state.selectedNote[field] = fetchedNotes[0][field];
-    });
-  } else {
-    [state.selectedNote] = fetchedNotes;
-  }
-}
-
-/** Deletes note with the given `id`, then re-fetches. */
-export async function deleteNote(id: string): Promise<void> {
-  await invoke('delete_note', { id }).catch(console.error);
-
-  getAllNotes();
+  const note = state.notes.find((nt) => nt.id === id);
+  if (note) state.selectedNote = note;
 }
 
 /** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
-export function clearEmptyNote(): Promise<void> {
-  if (state.selectedNote.title === '' && state.selectedNote.body === '') {
-    return deleteNote(state.selectedNote.id);
+export function clearEmptyNote(asNewNote?: boolean): void {
+  if (state.notes.length > 1 || asNewNote) {
+    const isEmpty = state.selectedNote.title === '' && state.selectedNote.body === '';
+
+    if (isEmpty) state.notes.shift();
   }
-
-  return Promise.resolve();
 }
 
-/** Creates a new, empty note, then re-fetches. */
-export async function newNote(): Promise<void> {
-  await clearEmptyNote();
-  await invoke<Note>('new_note', { ...new Note() }).catch(console.error);
+/** Fetches all notes and updates {@link state}. */
+export async function getAllNotes(): Promise<void> {
+  const fetchedNotes = await invoke<Note[]>('get_all_notes').catch(console.error);
+  if (!fetchedNotes) return;
+  if (fetchedNotes.length <= 0) return newNote();
 
-  getAllNotes();
+  state.notes = fetchedNotes;
+  [state.selectedNote] = fetchedNotes;
 }
 
-/** Edits note on `keyup` or `blur`, then re-fetches. */
-export async function editNote(
-  ev: KeyboardEvent | FocusEvent,
-  field: 'title' | 'body'
-): Promise<void> {
+/** Deletes note with the given `id`. */
+export function deleteNote(id: string): void {
+  const noteIndex = state.notes.findIndex((nt) => nt.id === id);
+
+  state.notes.splice(noteIndex, 1);
+}
+
+/** Creates an empty note. */
+export function newNote(): void {
+  clearEmptyNote(true);
+
+  state.notes.unshift(new Note());
+  [state.selectedNote] = state.notes;
+}
+
+/** Edits note on `keyup` or `blur`. */
+export function editNote(ev: KeyboardEvent, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
   // Hasn't changed
   if (target.innerText === state.selectedNote[field]) return;
 
-  const payload = { ...state.selectedNote };
-  payload[field] = target.innerText;
+  const noteIndex = state.notes.findIndex((nt) => nt.id === state.selectedNote.id);
 
-  await invoke<Note>('edit_note', payload).catch(console.error);
-
-  const isKeyup = ev instanceof KeyboardEvent;
-  // Only update `modified` if currently editing
-  const updateOnly: 'modified'[] | undefined = isKeyup ? ['modified'] : undefined;
-
-  getAllNotes(updateOnly);
-}
-
-/**
- * Looks for note with given `id` in {@link state.notes},
- * and sets {@link state.selectedNote} with it.
- */
-export async function selectNote(id: string): Promise<void> {
-  await clearEmptyNote();
-
-  const note = state.notes.find((nt) => nt.id === id);
-  if (note) state.selectedNote = note;
+  state.notes[noteIndex] = state.selectedNote;
+  state.selectedNote[field] = target.innerText;
 }

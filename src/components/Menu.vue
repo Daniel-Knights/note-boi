@@ -13,7 +13,7 @@
         <p>{{ note.body }}</p>
       </li>
     </ul>
-    <button class="menu__new-note" @click="newNote">
+    <button class="menu__new-note" @click="newNote()">
       <PlusIcon />
     </button>
   </section>
