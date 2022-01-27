@@ -1,11 +1,11 @@
 <template>
   <section id="editor">
     <h1 class="editor__title" contenteditable="true" @keyup="editNote($event, 'title')">
-      {{ state.selectedNote?.title }}
+      {{ state.selectedNote.title }}
     </h1>
     <small class="editor__date">{{ formatDateTime(state.selectedNote.timestamp) }}</small>
     <pre class="editor__body" contenteditable="true" @keyup="editNote($event, 'body')">{{
-      state.selectedNote?.body
+      state.selectedNote.body
     }}</pre>
   </section>
 </template>

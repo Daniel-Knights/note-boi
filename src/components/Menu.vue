@@ -7,7 +7,7 @@
         :key="note.id"
         @click="selectNote(note.id)"
         class="menu__note"
-        :class="{ 'menu__note--selected': note.id === state.selectedNote?.id }"
+        :class="{ 'menu__note--selected': note.id === state.selectedNote.id }"
       >
         <h2>{{ note.title }}</h2>
         <p>{{ note.body }}</p>
