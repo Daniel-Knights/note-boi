@@ -7,7 +7,6 @@ class Note {
   title = '';
   body = '';
   timestamp = new Date().getTime();
-  [key: string]: string | number; // eslint-disable-line no-undef
 }
 
 interface State {
@@ -32,7 +31,7 @@ function findNoteIndex(id: string) {
 
 /**
  * Looks for note with given `id` in {@link state.notes},
- * and sets {@link state.selectedNote} with it.
+ * and sets it to {@link state.selectedNote}.
  */
 export function selectNote(id: string): void {
   clearEmptyNote();
@@ -83,7 +82,7 @@ export function newNote(): void {
   invoke('new_note', state.selectedNote).catch(console.error);
 }
 
-/** Edits note on `keyup` or `blur`. */
+/** Edits note on `keyup`. */
 export function editNote(ev: KeyboardEvent, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
