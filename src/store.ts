@@ -31,7 +31,7 @@ function findNoteIndex(id: string) {
 
 /** Returns true if `title` and `body` are empty. */
 function isEmptyNote(note: Note) {
-  return note.title === '' && note.body === '';
+  return /^\s*$/.test(note.title) && /^\s*$/.test(note.body);
 }
 
 /**
@@ -72,6 +72,8 @@ export async function getAllNotes(): Promise<void> {
   sortNotes();
 
   [state.selectedNote] = state.notes;
+
+  if (fetchedNotes.length > 1) clearEmptyNote();
 }
 
 /** Deletes note with the given `id`. */

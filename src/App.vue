@@ -6,14 +6,13 @@
 <script setup lang="ts">
 import { onBeforeMount } from 'vue';
 
-import { state, clearEmptyNote, getAllNotes } from './store';
+import { getAllNotes } from './store';
 
 import Menu from './components/Menu.vue';
 import Editor from './components/Editor.vue';
 
 onBeforeMount(async () => {
   await getAllNotes();
-  if (state.notes.length > 1) clearEmptyNote();
 });
 </script>
 
