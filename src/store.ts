@@ -32,12 +32,15 @@ export function selectNote(id: string): void {
 }
 
 /** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
-export function clearEmptyNote(asNewNote?: boolean): void {
-  if (state.notes.length > 1 || asNewNote) {
-    const isEmpty = state.selectedNote.title === '' && state.selectedNote.body === '';
-    if (!isEmpty) return;
+export function clearEmptyNote(isNewNote?: boolean): void {
+  const { id, title, body } = state.selectedNote;
 
-    const noteIndex = state.notes.findIndex((nt) => nt.id === state.selectedNote.id);
+  const isValidClear = state.notes.length > 1 || isNewNote;
+  const isEmpty = title === '' && body === '';
+
+  if (isValidClear && isEmpty) {
+    const noteIndex = state.notes.findIndex((nt) => nt.id === id);
+
     state.notes.splice(noteIndex, 1);
   }
 }
