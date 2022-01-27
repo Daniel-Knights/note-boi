@@ -29,6 +29,11 @@ function findNoteIndex(id: string) {
   return state.notes.findIndex((nt) => nt.id === id);
 }
 
+/** Returns true if `title` and `body` are empty. */
+function isEmptyNote(note: Note) {
+  return note.title === '' && note.body === '';
+}
+
 /**
  * Looks for note with given `id` in {@link state.notes},
  * and sets it to {@link state.selectedNote}.
@@ -41,20 +46,26 @@ export function selectNote(id: string): void {
 }
 
 /** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
-export function clearEmptyNote(isNewNote?: boolean): void {
-  const { id, title, body } = state.selectedNote;
+export function clearEmptyNote(): void {
+  const isValidClear = state.notes.length > 1;
+  const isEmpty = isEmptyNote(state.selectedNote);
 
-  const isValidClear = state.notes.length > 1 || isNewNote;
-  const isEmpty = title === '' && body === '';
-
-  if (isValidClear && isEmpty) deleteNote(id);
+  if (isValidClear && isEmpty) {
+    deleteNote(state.selectedNote.id);
+  }
 }
 
 /** Fetches all notes and updates {@link state}. */
 export async function getAllNotes(): Promise<void> {
   const fetchedNotes = await invoke<Note[]>('get_all_notes').catch(console.error);
-  if (!fetchedNotes) return;
-  if (fetchedNotes.length <= 0) return newNote();
+
+  const hasNotes = fetchedNotes && fetchedNotes.length > 0;
+  if (!hasNotes) return newNote();
+
+  const hasOneEmptyNote = fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0]);
+  if (hasOneEmptyNote) {
+    fetchedNotes[0].timestamp = new Date().getTime();
+  }
 
   state.notes = fetchedNotes;
 
@@ -66,6 +77,7 @@ export async function getAllNotes(): Promise<void> {
 /** Deletes note with the given `id`. */
 export function deleteNote(id: string): void {
   state.notes.splice(findNoteIndex(id), 1);
+  [state.selectedNote] = state.notes;
 
   sortNotes();
 
@@ -74,7 +86,11 @@ export function deleteNote(id: string): void {
 
 /** Creates an empty note. */
 export function newNote(): void {
-  clearEmptyNote(true);
+  // Only update timestamp if selected note is empty
+  if (isEmptyNote(state.selectedNote)) {
+    state.selectedNote.timestamp = new Date().getTime();
+    return;
+  }
 
   state.notes.unshift(new Note());
   [state.selectedNote] = state.notes;
