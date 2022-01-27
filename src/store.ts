@@ -35,8 +35,10 @@ export function selectNote(id: string): void {
 export function clearEmptyNote(asNewNote?: boolean): void {
   if (state.notes.length > 1 || asNewNote) {
     const isEmpty = state.selectedNote.title === '' && state.selectedNote.body === '';
+    if (!isEmpty) return;
 
-    if (isEmpty) state.notes.shift();
+    const noteIndex = state.notes.findIndex((nt) => nt.id === state.selectedNote.id);
+    state.notes.splice(noteIndex, 1);
   }
 }
 
