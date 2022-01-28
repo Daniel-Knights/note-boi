@@ -75,16 +75,14 @@ $new-note-height: 50px;
   -webkit-user-select: none;
 }
 
-.menu__title {
+.menu__title,
+.menu__body {
   font-size: 18px;
 }
 
-.menu__body {
+.menu__body--with-title {
+  margin-top: 8px;
   font-size: 12px;
-
-  &--with-title {
-    margin-top: 8px;
-  }
 }
 
 small {
