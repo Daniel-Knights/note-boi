@@ -96,10 +96,9 @@ export function deleteNote(id: string): void {
 /** Creates an empty note. */
 export function newNote(): void {
   const note = findNote(state.selectedNote.id);
-  if (!note) return;
 
   // Only update timestamp if selected note is empty
-  if (isEmptyNote(note)) {
+  if (note && isEmptyNote(note)) {
     state.selectedNote.timestamp = new Date().getTime();
     return;
   }
