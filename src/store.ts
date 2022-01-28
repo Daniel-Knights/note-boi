@@ -29,6 +29,11 @@ function findNoteIndex(id: string) {
   return state.notes.findIndex((nt) => nt.id === id);
 }
 
+/** Finds note within {@link state.notes}. */
+function findNote(id: string) {
+  return state.notes.find((nt) => nt.id === id);
+}
+
 /** Returns true if `title` and `body` are empty. */
 function isEmptyNote(note: Note) {
   return /^\s*$/.test(note.title) && /^\s*$/.test(note.body);
@@ -41,16 +46,18 @@ function isEmptyNote(note: Note) {
 export function selectNote(id: string): void {
   clearEmptyNote();
 
-  const note = state.notes.find((nt) => nt.id === id);
+  const note = findNote(id);
   if (note) state.selectedNote = { ...note };
 }
 
 /** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
 export function clearEmptyNote(): void {
   const isValidClear = state.notes.length > 1;
-  const isEmpty = isEmptyNote(state.selectedNote);
 
-  if (isValidClear && isEmpty) {
+  const note = findNote(state.selectedNote.id);
+  if (!note) return;
+
+  if (isValidClear && isEmptyNote(note)) {
     deleteNote(state.selectedNote.id);
   }
 }
@@ -88,8 +95,11 @@ export function deleteNote(id: string): void {
 
 /** Creates an empty note. */
 export function newNote(): void {
+  const note = findNote(state.selectedNote.id);
+  if (!note) return;
+
   // Only update timestamp if selected note is empty
-  if (isEmptyNote(state.selectedNote)) {
+  if (isEmptyNote(note)) {
     state.selectedNote.timestamp = new Date().getTime();
     return;
   }
@@ -105,12 +115,14 @@ export function editNote(ev: Event, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
 
-  const noteIndex = findNoteIndex(state.selectedNote.id);
-  const note = state.notes[noteIndex];
+  const note = findNote(state.selectedNote.id);
 
-  if (target.innerText === note[field]) return;
+  if (!note || target.innerText === note[field]) return;
 
-  note.timestamp = new Date().getTime();
+  const timestamp = new Date().getTime();
+  note.timestamp = timestamp;
+  state.selectedNote.timestamp = timestamp;
+
   note[field] = target.innerText;
 
   sortNotes();
