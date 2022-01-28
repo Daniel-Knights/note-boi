@@ -1,17 +1,30 @@
 <template>
   <section id="editor">
-    <h1 class="editor__title" contenteditable="true" @input="editNote($event, 'title')">
+    <h1
+      class="editor__title"
+      :class="{
+        'editor__title--placeholder': findNote(state.selectedNote.id)?.title === '',
+      }"
+      contenteditable="true"
+      @input="editNote($event, 'title')"
+    >
       {{ state.selectedNote.title }}
     </h1>
     <small class="editor__date">{{ formatDateTime(state.selectedNote.timestamp) }}</small>
-    <pre class="editor__body" contenteditable="true" @input="editNote($event, 'body')">{{
-      state.selectedNote.body
-    }}</pre>
+    <pre
+      class="editor__body"
+      :class="{
+        'editor__body--placeholder': findNote(state.selectedNote.id)?.body === '',
+      }"
+      contenteditable="true"
+      @input="editNote($event, 'body')"
+      >{{ state.selectedNote.body }}</pre
+    >
   </section>
 </template>
 
 <script lang="ts" setup>
-import { state, editNote } from '../store';
+import { state, findNote, editNote } from '../store';
 import { formatDateTime } from '../utils';
 </script>
 
@@ -35,12 +48,20 @@ import { formatDateTime } from '../utils';
 .editor__title,
 .editor__body {
   outline: none;
+
+  &--placeholder {
+    color: rgba(136, 136, 136, 0.6);
+  }
 }
 
 .editor__title {
   font-size: 32px;
   font-weight: bold;
   padding-top: 8px;
+
+  &--placeholder::before {
+    content: 'Title';
+  }
 }
 
 .editor__date {
@@ -55,5 +76,9 @@ import { formatDateTime } from '../utils';
   padding-top: 16px;
   height: 100%;
   white-space: pre-wrap;
+
+  &--placeholder::before {
+    content: 'Body';
+  }
 }
 </style>

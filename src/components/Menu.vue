@@ -9,8 +9,14 @@
         class="menu__note"
         :class="{ 'menu__note--selected': note.id === state.selectedNote.id }"
       >
-        <h2>{{ note.title }}</h2>
-        <p>{{ note.body }}</p>
+        <h2 class="menu__title">{{ note.title || getPlaceholder(note) }}</h2>
+        <p
+          v-if="note.body !== ''"
+          class="menu__body"
+          :class="{ 'menu__body--with-title': note.title !== '' }"
+        >
+          {{ note.body }}
+        </p>
       </li>
     </ul>
     <button class="menu__new-note" @click="newNote()">
@@ -20,9 +26,13 @@
 </template>
 
 <script setup lang="ts">
-import { state, selectNote, newNote } from '../store';
+import { Note, state, isEmptyNote, selectNote, newNote } from '../store';
 
 import PlusIcon from './svg/PlusIcon.vue';
+
+function getPlaceholder(note: Note) {
+  return isEmptyNote(note) ? 'New note' : '';
+}
 </script>
 
 <style lang="scss" scoped>
@@ -55,8 +65,8 @@ $new-note-height: 50px;
   }
 }
 
-h2,
-p {
+.menu__title,
+.menu__body {
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -65,13 +75,16 @@ p {
   -webkit-user-select: none;
 }
 
-h2 {
+.menu__title {
   font-size: 18px;
 }
 
-p {
-  margin-top: 8px;
+.menu__body {
   font-size: 12px;
+
+  &--with-title {
+    margin-top: 8px;
+  }
 }
 
 small {

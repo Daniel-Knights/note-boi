@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
 
-class Note {
+export class Note {
   readonly id = uuidv4();
   title = '';
   body = '';
@@ -30,12 +30,12 @@ function findNoteIndex(id: string) {
 }
 
 /** Finds note within {@link state.notes}. */
-function findNote(id: string) {
+export function findNote(id: string): Note | undefined {
   return state.notes.find((nt) => nt.id === id);
 }
 
 /** Returns true if `title` and `body` are empty. */
-function isEmptyNote(note: Note) {
+export function isEmptyNote(note: Note): boolean {
   return /^\s*$/.test(note.title) && /^\s*$/.test(note.body);
 }
 
@@ -126,5 +126,5 @@ export function editNote(ev: Event, field: 'title' | 'body'): void {
 
   sortNotes();
 
-  invoke('edit_note', note).catch(console.error);
+  invoke('edit_note', { ...note }).catch(console.error);
 }
