@@ -1,7 +1,7 @@
 <template>
   <section id="menu">
     <!-- TODO: contextmenu -->
-    <ul class="menu__note-list" @contextmenu.prevent>
+    <ul class="menu__note-list">
       <li
         v-for="note in state.notes"
         :key="note.id"
