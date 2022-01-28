@@ -106,7 +106,7 @@ export function newNote(menuNoteList?: HTMLElement): void {
   }
 
   state.notes.unshift(new Note());
-  state.selectedNote = { ...state.notes[0] };
+  [state.selectedNote] = state.notes;
 
   invoke('new_note', state.selectedNote).catch(console.error);
 }
