@@ -42,7 +42,7 @@ export function selectNote(id: string): void {
   clearEmptyNote();
 
   const note = state.notes.find((nt) => nt.id === id);
-  if (note) state.selectedNote = note;
+  if (note) state.selectedNote = { ...note };
 }
 
 /** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
@@ -71,7 +71,7 @@ export async function getAllNotes(): Promise<void> {
 
   sortNotes();
 
-  [state.selectedNote] = state.notes;
+  state.selectedNote = { ...state.notes[0] };
 
   if (fetchedNotes.length > 1) clearEmptyNote();
 }
@@ -79,7 +79,7 @@ export async function getAllNotes(): Promise<void> {
 /** Deletes note with the given `id`. */
 export function deleteNote(id: string): void {
   state.notes.splice(findNoteIndex(id), 1);
-  [state.selectedNote] = state.notes;
+  state.selectedNote = { ...state.notes[0] };
 
   sortNotes();
 
@@ -95,7 +95,7 @@ export function newNote(): void {
   }
 
   state.notes.unshift(new Note());
-  [state.selectedNote] = state.notes;
+  state.selectedNote = { ...state.notes[0] };
 
   invoke('new_note', state.selectedNote).catch(console.error);
 }
@@ -104,15 +104,16 @@ export function newNote(): void {
 export function editNote(ev: Event, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
-  if (target.innerText === state.selectedNote[field]) return;
 
   const noteIndex = findNoteIndex(state.selectedNote.id);
+  const note = state.notes[noteIndex];
 
-  state.selectedNote.timestamp = new Date().getTime();
-  state.notes[noteIndex] = state.selectedNote;
-  state.selectedNote[field] = target.innerText;
+  if (target.innerText === note[field]) return;
+
+  note.timestamp = new Date().getTime();
+  note[field] = target.innerText;
 
   sortNotes();
 
-  invoke('edit_note', state.selectedNote).catch(console.error);
+  invoke('edit_note', note).catch(console.error);
 }
