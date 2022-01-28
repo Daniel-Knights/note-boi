@@ -2,6 +2,8 @@ import { reactive } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
 
+// TODO: Existing note with empty field, edit, the new note, edited field is still there
+
 export class Note {
   readonly id = uuidv4();
   title = '';
