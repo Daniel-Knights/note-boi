@@ -1,7 +1,7 @@
 <template>
   <section id="menu">
     <!-- TODO: contextmenu -->
-    <ul class="menu__note-list">
+    <ul class="menu__note-list" ref="noteList">
       <li
         v-for="note in state.notes"
         :key="note.id"
@@ -19,16 +19,19 @@
         </p>
       </li>
     </ul>
-    <button class="menu__new-note" @click="newNote()">
+    <button class="menu__new-note" @click="newNote(noteList)">
       <PlusIcon />
     </button>
   </section>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { Note, state, isEmptyNote, selectNote, newNote } from '../store';
 
 import PlusIcon from './svg/PlusIcon.vue';
+
+const noteList = ref(undefined);
 
 function getPlaceholder(note: Note) {
   return isEmptyNote(note) ? 'New note' : '';

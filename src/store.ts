@@ -94,8 +94,10 @@ export function deleteNote(id: string): void {
 }
 
 /** Creates an empty note. */
-export function newNote(): void {
+export function newNote(menuNoteList?: HTMLElement): void {
   const note = findNote(state.selectedNote.id);
+
+  menuNoteList?.scrollTo({ top: 0 });
 
   // Only update timestamp if selected note is empty
   if (note && isEmptyNote(note)) {
