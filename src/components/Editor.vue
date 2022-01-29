@@ -2,9 +2,7 @@
   <section id="editor">
     <h1
       class="editor__title"
-      :class="{
-        'editor__title--placeholder': findNote(state.selectedNote.id)?.title === '',
-      }"
+      :class="getPlaceholder('title')"
       contenteditable="true"
       @input="editNote($event, 'title')"
     >
@@ -13,9 +11,7 @@
     <small class="editor__date">{{ formatDateTime(state.selectedNote.timestamp) }}</small>
     <pre
       class="editor__body"
-      :class="{
-        'editor__body--placeholder': findNote(state.selectedNote.id)?.body === '',
-      }"
+      :class="getPlaceholder('body')"
       contenteditable="true"
       @input="editNote($event, 'body')"
       >{{ state.selectedNote.body }}</pre
@@ -25,7 +21,15 @@
 
 <script lang="ts" setup>
 import { state, findNote, editNote } from '../store';
-import { formatDateTime } from '../utils';
+import { formatDateTime, testWhitespace } from '../utils';
+
+function getPlaceholder(field: 'title' | 'body') {
+  const noteField = findNote(state.selectedNote.id)?.[field];
+
+  return {
+    [`editor__${field}--placeholder`]: testWhitespace(noteField),
+  };
+}
 </script>
 
 <style lang="scss" scoped>

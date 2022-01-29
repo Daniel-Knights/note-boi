@@ -2,6 +2,8 @@ import { reactive } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
 
+import { testWhitespace } from './utils';
+
 // TODO: Existing note with empty field, edit, the new note, edited field is still there
 
 export class Note {
@@ -38,7 +40,7 @@ export function findNote(id: string): Note | undefined {
 
 /** Returns true if `title` and `body` are empty. */
 export function isEmptyNote(note: Note): boolean {
-  return /^\s*$/.test(note.title) && /^\s*$/.test(note.body);
+  return testWhitespace(note.title) && testWhitespace(note.body);
 }
 
 /**
