@@ -55,6 +55,10 @@ function getPlaceholder(field: 'title' | 'body') {
 
   &--placeholder {
     color: rgba(136, 136, 136, 0.6);
+
+    &::before {
+      position: absolute;
+    }
   }
 }
 

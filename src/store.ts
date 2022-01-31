@@ -4,8 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { testWhitespace } from './utils';
 
-// TODO: Existing note with empty field, edit, the new note, edited field is still there
-
 export class Note {
   readonly id = uuidv4();
   title = '';
@@ -110,7 +108,7 @@ export function newNote(menuNoteList?: HTMLElement): void {
   }
 
   state.notes.unshift(new Note());
-  [state.selectedNote] = state.notes;
+  state.selectedNote = { ...state.notes[0] };
 
   invoke('new_note', state.selectedNote).catch(console.error);
 }
