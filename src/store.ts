@@ -48,18 +48,18 @@ export function isEmptyNote(note: Note): boolean {
 export function selectNote(id: string): void {
   clearEmptyNote();
 
-  const note = findNote(id);
-  if (note) state.selectedNote = { ...note };
+  const foundNote = findNote(id);
+  if (foundNote) state.selectedNote = { ...foundNote };
 }
 
 /** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
 export function clearEmptyNote(): void {
   const isValidClear = state.notes.length > 1;
 
-  const note = findNote(state.selectedNote.id);
-  if (!note) return;
+  const foundNote = findNote(state.selectedNote.id);
+  if (!foundNote) return;
 
-  if (isValidClear && isEmptyNote(note)) {
+  if (isValidClear && isEmptyNote(foundNote)) {
     deleteNote(state.selectedNote.id);
   }
 }
@@ -97,18 +97,19 @@ export function deleteNote(id: string): void {
 
 /** Creates an empty note. */
 export function newNote(menuNoteList?: HTMLElement): void {
-  const note = findNote(state.selectedNote.id);
+  const foundNote = findNote(state.selectedNote.id);
 
   menuNoteList?.scrollTo({ top: 0 });
 
   // Only update timestamp if selected note is empty
-  if (note && isEmptyNote(note)) {
+  if (foundNote && isEmptyNote(foundNote)) {
     state.selectedNote.timestamp = Date.now();
     return;
   }
 
-  state.notes.unshift(new Note());
-  state.selectedNote = { ...state.notes[0] };
+  const emptyNote = new Note();
+  state.notes.unshift(emptyNote);
+  state.selectedNote = { ...emptyNote };
 
   invoke('new_note', state.selectedNote).catch(console.error);
 }
@@ -118,17 +119,17 @@ export function editNote(ev: Event, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
 
-  const note = findNote(state.selectedNote.id);
+  const foundNote = findNote(state.selectedNote.id);
 
-  if (!note || target.innerText === note[field]) return;
+  if (!foundNote || target.innerText === foundNote[field]) return;
 
   const timestamp = Date.now();
-  note.timestamp = timestamp;
+  foundNote.timestamp = timestamp;
   state.selectedNote.timestamp = timestamp;
 
-  note[field] = target.innerText;
+  foundNote[field] = target.innerText;
 
   sortNotes();
 
-  invoke('edit_note', { ...note }).catch(console.error);
+  invoke('edit_note', { ...foundNote }).catch(console.error);
 }
