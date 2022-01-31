@@ -8,7 +8,7 @@ export class Note {
   readonly id = uuidv4();
   title = '';
   body = '';
-  timestamp = new Date().getTime();
+  timestamp = Date.now();
 }
 
 interface State {
@@ -73,7 +73,7 @@ export async function getAllNotes(): Promise<void> {
 
   const hasOneEmptyNote = fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0]);
   if (hasOneEmptyNote) {
-    fetchedNotes[0].timestamp = new Date().getTime();
+    fetchedNotes[0].timestamp = Date.now();
   }
 
   state.notes = fetchedNotes;
@@ -103,7 +103,7 @@ export function newNote(menuNoteList?: HTMLElement): void {
 
   // Only update timestamp if selected note is empty
   if (note && isEmptyNote(note)) {
-    state.selectedNote.timestamp = new Date().getTime();
+    state.selectedNote.timestamp = Date.now();
     return;
   }
 
@@ -122,7 +122,7 @@ export function editNote(ev: Event, field: 'title' | 'body'): void {
 
   if (!note || target.innerText === note[field]) return;
 
-  const timestamp = new Date().getTime();
+  const timestamp = Date.now();
   note.timestamp = timestamp;
   state.selectedNote.timestamp = timestamp;
 
