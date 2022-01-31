@@ -9,11 +9,11 @@
         class="menu__note"
         :class="{ 'menu__note--selected': note.id === state.selectedNote.id }"
       >
-        <h2 class="menu__title">{{ note.title || getPlaceholder(note) }}</h2>
+        <h2 class="menu__title">{{ isEmptyNote(note) ? 'New note' : note.title }}</h2>
         <p
-          v-if="note.body !== ''"
+          v-if="!testWhitespace(note.body)"
           class="menu__body"
-          :class="{ 'menu__body--with-title': note.title !== '' }"
+          :class="{ 'menu__body--with-title': !testWhitespace(note.title) }"
         >
           {{ note.body }}
         </p>
@@ -27,15 +27,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Note, state, isEmptyNote, selectNote, newNote } from '../store';
+import { state, isEmptyNote, selectNote, newNote } from '../store';
+import { testWhitespace } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';
 
 const noteList = ref(undefined);
-
-function getPlaceholder(note: Note) {
-  return isEmptyNote(note) ? 'New note' : '';
-}
 </script>
 
 <style lang="scss" scoped>
