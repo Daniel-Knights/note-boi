@@ -1,10 +1,19 @@
-export function formatDateTime(dateTime: number): string {
+import type { Note } from './store';
+
+/** Formats Unix time to date-time. */
+export function unixToDateTime(unixTime: number): string {
   return Intl.DateTimeFormat([], {
     dateStyle: 'medium',
-    timeStyle: 'short',
-  }).format(dateTime);
+    timeStyle: process.env.NODE_ENV === 'development' ? 'long' : 'short',
+  }).format(unixTime);
 }
 
-export function testWhitespace(text?: string): boolean {
-  return text?.trim().length === 0;
+/** Returns `true` if string consists of only whitespace characters or is empty. */
+export function isWhitespaceOnly(text?: string): boolean {
+  return !!text && /^\s*$/.test(text);
+}
+
+/** Returns true if `title` and `body` are empty. */
+export function isEmptyNote(note: Note): boolean {
+  return isWhitespaceOnly(note.title) && isWhitespaceOnly(note.body);
 }

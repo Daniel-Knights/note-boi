@@ -2,34 +2,43 @@
   <section id="editor">
     <h1
       class="editor__title"
-      :class="getPlaceholder('title')"
+      :class="comp.titlePlaceholder"
       contenteditable="true"
       @input="editNote($event, 'title')"
     >
-      {{ state.selectedNote.title }}
+      {{ comp.selectedNote?.title }}
     </h1>
-    <small class="editor__date">{{ formatDateTime(state.selectedNote.timestamp) }}</small>
+    <small class="editor__date">{{
+      unixToDateTime(comp.selectedNote?.timestamp || 0)
+    }}</small>
     <pre
       class="editor__body"
-      :class="getPlaceholder('body')"
+      :class="comp.bodyPlaceholder"
       contenteditable="true"
       @input="editNote($event, 'body')"
-      >{{ state.selectedNote.body }}</pre
+      >{{ comp.selectedNote?.body }}</pre
     >
   </section>
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue';
 import { state, findNote, editNote } from '../store';
-import { formatDateTime, testWhitespace } from '../utils';
+import { unixToDateTime, isWhitespaceOnly } from '../utils';
 
-function getPlaceholder(field: 'title' | 'body') {
-  const noteField = findNote(state.selectedNote.id)?.[field];
+const comp = computed(() => {
+  const note = findNote(state.selectedId);
 
   return {
-    [`editor__${field}--placeholder`]: testWhitespace(noteField),
+    titlePlaceholder: {
+      'editor__title--placeholder': isWhitespaceOnly(note?.title),
+    },
+    bodyPlaceholder: {
+      'editor__body--placeholder': isWhitespaceOnly(note?.body),
+    },
+    selectedNote: note,
   };
-}
+});
 </script>
 
 <style lang="scss" scoped>

@@ -1,38 +1,44 @@
 <template>
   <section id="menu">
-    <!-- TODO: contextmenu -->
     <ul class="menu__note-list" ref="noteList">
       <li
         v-for="note in state.notes"
         :key="note.id"
         @click="selectNote(note.id)"
         class="menu__note"
-        :class="{ 'menu__note--selected': note.id === state.selectedNote.id }"
+        :class="{ 'menu__note--selected': note.id === state.selectedId }"
       >
         <h2 class="menu__title">{{ isEmptyNote(note) ? 'New note' : note.title }}</h2>
         <p
-          v-if="!testWhitespace(note.body)"
+          v-if="!isWhitespaceOnly(note.body)"
           class="menu__body"
-          :class="{ 'menu__body--with-title': !testWhitespace(note.title) }"
+          :class="{ 'menu__body--with-title': !isWhitespaceOnly(note.title) }"
         >
           {{ note.body }}
         </p>
       </li>
     </ul>
-    <button class="menu__new-note" @click="newNote(noteList)">
+    <button class="menu__new-note" @click="newNote">
       <PlusIcon />
     </button>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { state, isEmptyNote, selectNote, newNote } from '../store';
-import { testWhitespace } from '../utils';
+import { ref, watchEffect } from 'vue';
+import { state, selectNote, newNote } from '../store';
+import { isWhitespaceOnly, isEmptyNote } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';
 
-const noteList = ref(undefined);
+const noteList = ref<HTMLElement | undefined>(undefined);
+
+// Scroll to top when selected note moves to top
+watchEffect(() => {
+  if (state.selectedId !== state.notes[0]?.id) return;
+
+  noteList.value?.scrollTo({ top: 0 });
+});
 </script>
 
 <style lang="scss" scoped>

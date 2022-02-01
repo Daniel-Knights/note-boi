@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
 
-import { testWhitespace } from './utils';
+import { isEmptyNote } from './utils';
 
 export class Note {
   readonly id = uuidv4();
@@ -13,12 +13,12 @@ export class Note {
 
 interface State {
   notes: Note[];
-  selectedNote: Note;
+  selectedId: string;
 }
 
 export const state = reactive<State>({
   notes: [],
-  selectedNote: new Note(),
+  selectedId: '',
 });
 
 /** Sorts notes in descending order by timestamp. */
@@ -36,9 +36,16 @@ export function findNote(id: string): Note | undefined {
   return state.notes.find((nt) => nt.id === id);
 }
 
-/** Returns true if `title` and `body` are empty. */
-export function isEmptyNote(note: Note): boolean {
-  return testWhitespace(note.title) && testWhitespace(note.body);
+/** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
+function clearEmptyNote(): void {
+  const isValidClear = state.notes.length > 1;
+
+  const foundNote = findNote(state.selectedId);
+  if (!foundNote) return;
+
+  if (isValidClear && isEmptyNote(foundNote)) {
+    deleteNote(state.selectedId);
+  }
 }
 
 /**
@@ -46,22 +53,12 @@ export function isEmptyNote(note: Note): boolean {
  * and sets it to {@link state.selectedNote}.
  */
 export function selectNote(id: string): void {
+  if (state.selectedId === id) return;
+
   clearEmptyNote();
 
   const foundNote = findNote(id);
-  if (foundNote) state.selectedNote = { ...foundNote };
-}
-
-/** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
-export function clearEmptyNote(): void {
-  const isValidClear = state.notes.length > 1;
-
-  const foundNote = findNote(state.selectedNote.id);
-  if (!foundNote) return;
-
-  if (isValidClear && isEmptyNote(foundNote)) {
-    deleteNote(state.selectedNote.id);
-  }
+  if (foundNote) state.selectedId = id;
 }
 
 /** Fetches all notes and updates {@link state}. */
@@ -71,24 +68,20 @@ export async function getAllNotes(): Promise<void> {
   const hasNotes = fetchedNotes && fetchedNotes.length > 0;
   if (!hasNotes) return newNote();
 
-  const hasOneEmptyNote = fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0]);
-  if (hasOneEmptyNote) {
-    fetchedNotes[0].timestamp = Date.now();
-  }
-
   state.notes = fetchedNotes;
 
   sortNotes();
 
-  state.selectedNote = { ...state.notes[0] };
+  if (isEmptyNote(fetchedNotes[0])) {
+    state.notes[0].timestamp = Date.now();
+  }
 
-  if (fetchedNotes.length > 1) clearEmptyNote();
+  state.selectedId = state.notes[0].id;
 }
 
 /** Deletes note with the given `id`. */
 export function deleteNote(id: string): void {
   state.notes.splice(findNoteIndex(id), 1);
-  state.selectedNote = { ...state.notes[0] };
 
   sortNotes();
 
@@ -96,37 +89,33 @@ export function deleteNote(id: string): void {
 }
 
 /** Creates an empty note. */
-export function newNote(menuNoteList?: HTMLElement): void {
-  const foundNote = findNote(state.selectedNote.id);
-
-  menuNoteList?.scrollTo({ top: 0 });
+export function newNote(): void {
+  const foundNote = findNote(state.selectedId);
 
   // Only update timestamp if selected note is empty
   if (foundNote && isEmptyNote(foundNote)) {
-    state.selectedNote.timestamp = Date.now();
+    state.notes[0].timestamp = Date.now();
     return;
   }
 
-  const emptyNote = new Note();
-  state.notes.unshift(emptyNote);
-  state.selectedNote = { ...emptyNote };
+  const freshNote = new Note();
 
-  invoke('new_note', state.selectedNote).catch(console.error);
+  state.notes.unshift(freshNote);
+  state.selectedId = freshNote.id;
+
+  invoke('new_note', { ...freshNote }).catch(console.error);
 }
 
-/** Edits note on `keyup`. */
+/** Edits note on `input`. */
 export function editNote(ev: Event, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
 
-  const foundNote = findNote(state.selectedNote.id);
+  const foundNote = findNote(state.selectedId);
 
   if (!foundNote || target.innerText === foundNote[field]) return;
 
-  const timestamp = Date.now();
-  foundNote.timestamp = timestamp;
-  state.selectedNote.timestamp = timestamp;
-
+  foundNote.timestamp = Date.now();
   foundNote[field] = target.innerText;
 
   sortNotes();
