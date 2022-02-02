@@ -10,7 +10,7 @@ export function unixToDateTime(unixTime: number): string {
 
 /** Returns `true` if string consists of only whitespace characters or is empty. */
 export function isWhitespaceOnly(text?: string): boolean {
-  return !!text && /^\s*$/.test(text);
+  return text?.trim() === '';
 }
 
 /** Returns true if `title` and `body` are empty. */
