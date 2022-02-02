@@ -6,7 +6,8 @@
     "vite:build": "vue-tsc --noEmit && vite build",
     "vite:preview": "vite preview",
     "dev": "tauri dev",
-    "build": "tauri build"
+    "build": "tauri build",
+    "icon": "tauri icon ./artwork/icon.png"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.0.0-beta.8",
