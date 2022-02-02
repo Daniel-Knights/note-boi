@@ -6,7 +6,7 @@
         :key="note.id"
         @click="selectNote(note.id)"
         class="menu__note"
-        :class="{ 'menu__note--selected': note.id === state.selectedId }"
+        :class="{ 'menu__note--selected': note.id === state.selectedNote.id }"
       >
         <h2 class="menu__title">{{ isEmptyNote(note) ? 'New note' : note.title }}</h2>
         <p
@@ -35,7 +35,7 @@ const noteList = ref<HTMLElement | undefined>(undefined);
 
 // Scroll to top when selected note moves to top
 watchEffect(() => {
-  if (state.selectedId !== state.notes[0]?.id) return;
+  if (state.selectedNote.id !== state.notes[0]?.id) return;
 
   noteList.value?.scrollTo({ top: 0 });
 });

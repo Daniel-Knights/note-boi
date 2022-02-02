@@ -2,42 +2,51 @@
   <section id="editor">
     <h1
       class="editor__title"
-      :class="comp.titlePlaceholder"
+      :class="{ 'editor__title--placeholder': comp.titlePlaceholder }"
       contenteditable="true"
       @input="editNote($event, 'title')"
+      ref="noteTitle"
     >
-      {{ comp.selectedNote?.title }}
+      {{ state.selectedNote.title }}
     </h1>
     <small class="editor__date">{{
-      unixToDateTime(comp.selectedNote?.timestamp || 0)
+      unixToDateTime(state.selectedNote.timestamp || 0)
     }}</small>
     <pre
       class="editor__body"
-      :class="comp.bodyPlaceholder"
+      :class="{ 'editor__body--placeholder': comp.bodyPlaceholder }"
       contenteditable="true"
       @input="editNote($event, 'body')"
-      >{{ comp.selectedNote?.body }}</pre
+      ref="noteBody"
+      >{{ state.selectedNote.body }}</pre
     >
   </section>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { state, findNote, editNote } from '../store';
-import { unixToDateTime, isWhitespaceOnly } from '../utils';
+import { computed, ref, watchEffect } from 'vue';
+
+import { state, editNote, findNote } from '../store';
+import { unixToDateTime, isWhitespaceOnly, isEmptyNote } from '../utils';
+
+const noteTitle = ref<HTMLElement | undefined>(undefined);
+const noteBody = ref<HTMLElement | undefined>(undefined);
 
 const comp = computed(() => {
-  const note = findNote(state.selectedId);
+  const foundNote = findNote(state.selectedNote.id);
 
   return {
-    titlePlaceholder: {
-      'editor__title--placeholder': isWhitespaceOnly(note?.title),
-    },
-    bodyPlaceholder: {
-      'editor__body--placeholder': isWhitespaceOnly(note?.body),
-    },
-    selectedNote: note,
+    titlePlaceholder: isWhitespaceOnly(foundNote?.title),
+    bodyPlaceholder: isWhitespaceOnly(foundNote?.body),
   };
+});
+
+// Cleanup previously typed content
+watchEffect(() => {
+  if (!isEmptyNote(state.selectedNote)) return;
+
+  if (noteTitle.value) noteTitle.value.innerText = '';
+  if (noteBody.value) noteBody.value.innerText = '';
 });
 </script>
 

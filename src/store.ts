@@ -13,12 +13,12 @@ export class Note {
 
 interface State {
   notes: Note[];
-  selectedId: string;
+  selectedNote: Note;
 }
 
 export const state = reactive<State>({
   notes: [],
-  selectedId: '',
+  selectedNote: new Note(),
 });
 
 /** Sorts notes in descending order by timestamp. */
@@ -40,11 +40,11 @@ export function findNote(id: string): Note | undefined {
 function clearEmptyNote(): void {
   const isValidClear = state.notes.length > 1;
 
-  const foundNote = findNote(state.selectedId);
+  const foundNote = findNote(state.selectedNote.id);
   if (!foundNote) return;
 
   if (isValidClear && isEmptyNote(foundNote)) {
-    deleteNote(state.selectedId);
+    deleteNote(state.selectedNote.id);
   }
 }
 
@@ -53,12 +53,12 @@ function clearEmptyNote(): void {
  * and sets it to {@link state.selectedNote}.
  */
 export function selectNote(id: string): void {
-  if (state.selectedId === id) return;
+  if (state.selectedNote.id === id) return;
 
   clearEmptyNote();
 
   const foundNote = findNote(id);
-  if (foundNote) state.selectedId = id;
+  if (foundNote) state.selectedNote = { ...foundNote };
 }
 
 /** Fetches all notes and updates {@link state}. */
@@ -76,12 +76,13 @@ export async function getAllNotes(): Promise<void> {
     state.notes[0].timestamp = Date.now();
   }
 
-  state.selectedId = state.notes[0].id;
+  state.selectedNote = { ...state.notes[0] };
 }
 
 /** Deletes note with the given `id`. */
 export function deleteNote(id: string): void {
   state.notes.splice(findNoteIndex(id), 1);
+  state.selectedNote = { ...state.notes[0] };
 
   sortNotes();
 
@@ -90,18 +91,18 @@ export function deleteNote(id: string): void {
 
 /** Creates an empty note. */
 export function newNote(): void {
-  const foundNote = findNote(state.selectedId);
+  const foundNote = findNote(state.selectedNote.id);
 
   // Only update timestamp if selected note is empty
   if (foundNote && isEmptyNote(foundNote)) {
-    state.notes[0].timestamp = Date.now();
+    state.selectedNote.timestamp = Date.now();
     return;
   }
 
   const freshNote = new Note();
 
   state.notes.unshift(freshNote);
-  state.selectedId = freshNote.id;
+  state.selectedNote = { ...freshNote };
 
   invoke('new_note', { ...freshNote }).catch(console.error);
 }
@@ -111,11 +112,14 @@ export function editNote(ev: Event, field: 'title' | 'body'): void {
   const target = ev.target as HTMLElement;
   if (!target) return;
 
-  const foundNote = findNote(state.selectedId);
+  const foundNote = findNote(state.selectedNote.id);
 
   if (!foundNote || target.innerText === foundNote[field]) return;
 
-  foundNote.timestamp = Date.now();
+  const timestamp = Date.now();
+  foundNote.timestamp = timestamp;
+  state.selectedNote.timestamp = timestamp;
+
   foundNote[field] = target.innerText;
 
   sortNotes();
