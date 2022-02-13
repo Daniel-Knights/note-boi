@@ -7,15 +7,16 @@
     "vite:preview": "vite preview",
     "dev": "tauri dev",
     "build": "tauri build",
-    "icon": "tauri icon ./artwork/icon.png"
+    "icon": "tauri icon ./artwork/icon.png",
+    "info": "tauri info"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.0.0-beta.8",
+    "@tauri-apps/api": "^1.0.0-rc.0",
     "uuid": "^8.3.2",
     "vue": "^3.2.25"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.0.0-beta.10",
+    "@tauri-apps/cli": "^1.0.0-rc.2",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
