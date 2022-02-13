@@ -10,7 +10,8 @@ mod window;
 
 use crate::command::{delete_note, edit_note, get_all_notes, new_note};
 use crate::config::Config;
-use tauri::{WindowBuilder, WindowEvent, WindowUrl};
+use tauri::{WindowBuilder, WindowUrl};
+use window::WindowState;
 
 fn main() {
   tauri::Builder::default()
@@ -38,22 +39,7 @@ fn main() {
         attr,
       )
     })
-    .on_window_event(|e| match e.event() {
-      WindowEvent::Moved(pos) => {
-        let mut current_config = Config::get();
-        current_config.window_state.position = (pos.x.into(), pos.y.into());
-
-        Config::set(current_config).expect("unable to set new window position");
-      }
-      WindowEvent::Resized(_) => {
-        let mut current_config = Config::get();
-        let size = e.window().inner_size().expect("msg");
-        current_config.window_state.size = (size.width.into(), size.height.into());
-
-        Config::set(current_config).expect("unable to set new window size");
-      }
-      _ => {}
-    })
+    .on_window_event(|ev| WindowState::handle_event(ev))
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
