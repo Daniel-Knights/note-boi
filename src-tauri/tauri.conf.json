@@ -49,20 +49,8 @@
       "active": false
     },
     "allowlist": {},
-    "windows": [
-      {
-        "title": "NoteBoi",
-        "width": 800,
-        "height": 600,
-        "minWidth": 600,
-        "minHeight": 400,
-        "resizable": true,
-        "fullscreen": false,
-        "alwaysOnTop": true
-      }
-    ],
     "security": {
-      "csp": "default-src blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
+      "csp": "default-src 'self'"
     }
   }
 }

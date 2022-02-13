@@ -1,7 +1,9 @@
 use serde::{Deserialize, Serialize};
-use std::fs;
-use std::io::Write;
-use std::path::{Path, PathBuf};
+use std::{
+  fs,
+  io::Write,
+  path::{Path, PathBuf},
+};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Note {
