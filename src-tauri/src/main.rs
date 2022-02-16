@@ -6,8 +6,15 @@
 mod command;
 mod note;
 
+use std::path::PathBuf;
+
 use crate::command::{delete_note, edit_note, get_all_notes, new_note};
-use tauri::{WindowBuilder, WindowUrl};
+use tauri::{Manager, WindowBuilder, WindowUrl};
+
+#[derive(Debug)]
+pub struct AppState {
+  app_dir: PathBuf,
+}
 
 fn main() {
   tauri::Builder::default()
@@ -27,6 +34,15 @@ fn main() {
           .visible(false),
         attr,
       )
+    })
+    .setup(|app| {
+      let state = AppState {
+        app_dir: app.path_resolver().app_dir().unwrap(),
+      };
+
+      app.manage(state);
+
+      Ok(())
     })
     .plugin(tauri_plugin_window_state::WindowState::default())
     .run(tauri::generate_context!())

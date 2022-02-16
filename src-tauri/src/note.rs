@@ -1,9 +1,5 @@
 use serde::{Deserialize, Serialize};
-use std::{
-  fs,
-  io::Write,
-  path::{Path, PathBuf},
-};
+use std::{fs, io::Write, path::PathBuf};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Note {
@@ -21,6 +17,8 @@ pub enum NoteError {
   UnableToEditFile(String),
 }
 
+const NOTE_DIR: &str = ".notes";
+
 impl Note {
   fn new(id: String, title: String, body: String, timestamp: i64) -> Note {
     Note {
@@ -31,8 +29,8 @@ impl Note {
     }
   }
 
-  pub fn get_all() -> Result<Vec<Note>, NoteError> {
-    let notes_path = Path::new(".notes");
+  pub fn get_all(app_dir: &PathBuf) -> Result<Vec<Note>, NoteError> {
+    let notes_path = app_dir.join(NOTE_DIR);
 
     if notes_path.is_dir() {
       let dir_contents = fs::read_dir(notes_path).expect("unable to read dir");
@@ -46,17 +44,17 @@ impl Note {
     }
   }
 
-  pub fn write(id: String, title: String, body: String, timestamp: i64) -> Result<(), NoteError> {
-    let notes_path = Path::new(".notes");
+  pub fn write(app_dir: &PathBuf, note: Note) -> Result<(), NoteError> {
+    let notes_path = app_dir.join(NOTE_DIR);
     if !notes_path.is_dir() {
-      fs::create_dir(notes_path).expect("unable to create dir");
+      fs::create_dir(&notes_path).expect("unable to create dir");
     }
 
-    let path = Note::get_path(&id);
+    let path = Note::get_path(app_dir, &note.id);
     let mut file = fs::File::create(path).expect("unable to create file");
 
-    let note = Note::new(id, title, body, timestamp);
-    let note_json = note.serialize();
+    let new_note = Note::new(note.id, note.title, note.body, note.timestamp);
+    let note_json = new_note.serialize();
     let write_res = file.write(note_json.as_ref());
 
     match write_res {
@@ -65,10 +63,10 @@ impl Note {
     }
   }
 
-  pub fn edit(id: String, title: String, body: String, timestamp: i64) -> Result<(), NoteError> {
-    let path = Note::get_path(&id);
-    let note = Note::new(id, title, body, timestamp);
-    let note_json = note.serialize();
+  pub fn edit(app_dir: &PathBuf, note: Note) -> Result<(), NoteError> {
+    let path = Note::get_path(app_dir, &note.id);
+    let new_note = Note::new(note.id, note.title, note.body, note.timestamp);
+    let note_json = new_note.serialize();
     let write_res = fs::write(path, note_json);
 
     match write_res {
@@ -77,8 +75,8 @@ impl Note {
     }
   }
 
-  pub fn delete(id: String) -> Result<(), NoteError> {
-    let path = Note::get_path(&id);
+  pub fn delete(app_dir: &PathBuf, id: String) -> Result<(), NoteError> {
+    let path = Note::get_path(app_dir, &id);
     let delete_res = fs::remove_file(path);
 
     match delete_res {
@@ -87,9 +85,12 @@ impl Note {
     }
   }
 
-  /// Returns `.notes/{id}.json`
-  fn get_path(id: &String) -> PathBuf {
-    PathBuf::from(".notes/".to_owned() + id + ".json")
+  /// Returns `{NOTE_DIR}/{id}.json`
+  fn get_path(app_dir: &PathBuf, id: &String) -> PathBuf {
+    let mut filename = id.clone();
+    filename.push_str(".json");
+
+    app_dir.join(NOTE_DIR).join(filename)
   }
   /// Serialize `Note` to a JSON string
   fn serialize(&self) -> String {

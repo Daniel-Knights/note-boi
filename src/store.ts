@@ -104,7 +104,7 @@ export function newNote(): void {
   state.notes.unshift(freshNote);
   state.selectedNote = { ...freshNote };
 
-  invoke('new_note', { ...freshNote }).catch(console.error);
+  invoke('new_note', { note: { ...freshNote } }).catch(console.error);
 }
 
 /** Edits note on `input`. */
@@ -124,5 +124,5 @@ export function editNote(ev: Event, field: 'title' | 'body'): void {
 
   sortNotes();
 
-  invoke('edit_note', { ...foundNote }).catch(console.error);
+  invoke('edit_note', { note: { ...foundNote } }).catch(console.error);
 }
