@@ -85,7 +85,7 @@ impl Note {
     }
   }
 
-  /// Returns `{NOTE_DIR}/{id}.json`
+  /// Returns `{app_dir}/{NOTE_DIR}/{id}.json`
   fn get_path(app_dir: &PathBuf, id: &String) -> PathBuf {
     let mut filename = id.clone();
     filename.push_str(".json");
