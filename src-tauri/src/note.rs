@@ -1,6 +1,8 @@
 use serde::{Deserialize, Serialize};
 use std::{fs, io::Write, path::PathBuf};
 
+const NOTE_DIR: &str = ".notes";
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Note {
   id: String,
@@ -13,22 +15,11 @@ pub struct Note {
 pub enum NoteError {
   DirNotFound,
   UnableToCreateFile(String),
-  UnableToDeleteFile(String),
   UnableToEditFile(String),
+  UnableToDeleteFile(String),
 }
 
-const NOTE_DIR: &str = ".notes";
-
 impl Note {
-  fn new(id: String, title: String, body: String, timestamp: i64) -> Note {
-    Note {
-      id,
-      title,
-      body,
-      timestamp,
-    }
-  }
-
   pub fn get_all(app_dir: &PathBuf) -> Result<Vec<Note>, NoteError> {
     let notes_path = app_dir.join(NOTE_DIR);
 
@@ -36,7 +27,7 @@ impl Note {
       let dir_contents = fs::read_dir(notes_path).expect("unable to read dir");
       let notes = dir_contents
         .map(|entry| Note::from(entry.expect("unable to read dir entry")))
-        .collect::<Vec<Note>>();
+        .collect();
 
       Ok(notes)
     } else {
@@ -52,10 +43,7 @@ impl Note {
 
     let path = Note::get_path(app_dir, &note.id);
     let mut file = fs::File::create(path).expect("unable to create file");
-
-    let new_note = Note::new(note.id, note.title, note.body, note.timestamp);
-    let note_json = new_note.serialize();
-    let write_res = file.write(note_json.as_ref());
+    let write_res = file.write(note.serialize().as_ref());
 
     match write_res {
       Ok(_) => Ok(()),
@@ -65,9 +53,7 @@ impl Note {
 
   pub fn edit(app_dir: &PathBuf, note: Note) -> Result<(), NoteError> {
     let path = Note::get_path(app_dir, &note.id);
-    let new_note = Note::new(note.id, note.title, note.body, note.timestamp);
-    let note_json = new_note.serialize();
-    let write_res = fs::write(path, note_json);
+    let write_res = fs::write(path, note.serialize());
 
     match write_res {
       Ok(_) => Ok(()),
