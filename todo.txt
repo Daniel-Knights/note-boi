@@ -2,5 +2,4 @@ Search/filter
 Context menu
 Settings
 WYSIWYG
-Save window position
 Tests
