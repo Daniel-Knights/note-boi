@@ -42,25 +42,14 @@ onMounted(() => {
     theme: 'snow',
   });
 
-  quillEditor.on('editor-change', () => {
-    if (!quillEditor) return;
-    if (isNoteSelect) {
-      isNoteSelect = false;
-      return;
-    }
-    console.log(quillEditor, isNoteSelect);
-
-    const delta = quillEditor.getContents();
-    const text = quillEditor.root.innerText;
-
-    editBody(JSON.stringify(delta), text);
-  });
   quillEditor.on('text-change', () => {
-    if (!quillEditor) return;
+    // TODO: formatter buttons don't edit note
+    console.trace(isNoteSelect);
     if (isNoteSelect) {
       isNoteSelect = false;
       return;
     }
+    if (!quillEditor) return;
 
     const delta = quillEditor.getContents();
     const text = quillEditor.root.innerText;

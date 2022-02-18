@@ -14,7 +14,7 @@
         <h2 class="menu__title">{{ note.body.text.split(/\n+/)[0] }}</h2>
         <p
           class="menu__body"
-          :class="{ 'menu__body--empty': note.body.text.split(/\n+/)[1].trim() === '' }"
+          :class="{ 'menu__body--empty': !note.body.text.split(/\n+/)[1] }"
         >
           {{ note.body.text.split(/\n+/)[1] }}
         </p>
