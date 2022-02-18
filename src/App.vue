@@ -13,6 +13,8 @@ getAllNotes();
 </script>
 
 <style lang="scss">
+@use 'quill/dist/quill.snow.css';
+
 @use './sass/reset';
 
 html,
@@ -33,6 +35,11 @@ button {
   &:hover {
     opacity: 0.8;
   }
+}
+
+a,
+.ql-snow .ql-editor a {
+  color: #06c;
 }
 
 #app {
