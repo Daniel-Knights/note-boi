@@ -19,13 +19,6 @@ const noteTitle = ref<HTMLElement | undefined>(undefined);
 let quillEditor: Quill | undefined;
 let isNoteSelect = false;
 
-// Cleanup previously typed content
-watchEffect(() => {
-  if (!isEmptyNote(state.selectedNote)) return;
-
-  if (noteTitle.value) noteTitle.value.innerText = '';
-});
-
 document.addEventListener('note-change', () => {
   const parsedBody = JSON.parse(state.selectedNote.body.delta || '[]');
 
@@ -57,6 +50,13 @@ onMounted(() => {
 
     editBody(JSON.stringify(delta), text);
   });
+});
+
+// Cleanup previously typed content
+watchEffect(() => {
+  if (!isEmptyNote(state.selectedNote)) return;
+
+  if (noteTitle.value) noteTitle.value.innerText = '';
 });
 </script>
 
