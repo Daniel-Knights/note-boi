@@ -18,7 +18,7 @@ let quillEditor: Quill | undefined;
 let isNoteSelect = false;
 
 document.addEventListener('note-change', () => {
-  const parsedBody = JSON.parse(state.selectedNote.body.delta || '[]');
+  const parsedBody = JSON.parse(state.selectedNote.content.delta || '[]');
 
   quillEditor?.setContents(parsedBody);
 });
@@ -44,9 +44,9 @@ onMounted(() => {
 
     if (!quillEditor) return;
     const delta = quillEditor.getContents();
-    const text = quillEditor.root.innerText;
+    const text = quillEditor.root.innerText.split(/\n+/);
 
-    editBody(JSON.stringify(delta), text);
+    editBody(JSON.stringify(delta), text[0], text[1]);
   });
 });
 </script>

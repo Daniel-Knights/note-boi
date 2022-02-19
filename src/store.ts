@@ -6,9 +6,10 @@ import { isEmptyNote } from './utils';
 
 export class Note {
   readonly id = uuidv4();
-  body = {
+  content = {
     delta: '',
-    text: '',
+    title: '',
+    body: '',
   };
   timestamp = Date.now();
 }
@@ -82,8 +83,9 @@ export async function getAllNotes(): Promise<void> {
 
   if (isEmptyNote(fetchedNotes[0])) {
     state.notes[0].timestamp = Date.now();
-    state.notes[0].body.text = '';
-    state.notes[0].body.delta = '';
+    state.notes[0].content.delta = '';
+    state.notes[0].content.title = '';
+    state.notes[0].content.body = '';
   }
 
   state.selectedNote = { ...state.notes[0] };
@@ -122,15 +124,15 @@ export function newNote(): void {
 }
 
 /** Edits note body on Quill `text-change`. */
-export function editBody(delta: string, text: string): void {
+export function editBody(delta: string, title: string, body: string): void {
   const foundNote = findNote(state.selectedNote.id);
-  if (!foundNote || delta === foundNote.body.delta) return;
+  if (!foundNote || delta === foundNote.content.delta) return;
 
   const timestamp = Date.now();
   foundNote.timestamp = timestamp;
   state.selectedNote.timestamp = timestamp;
 
-  foundNote.body = { delta, text };
+  foundNote.content = { delta, title, body };
 
   sortNotes();
 

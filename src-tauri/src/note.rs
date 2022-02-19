@@ -4,15 +4,16 @@ use std::{fs, io::Write, path::PathBuf};
 const NOTE_DIR: &str = ".notes";
 
 #[derive(Serialize, Deserialize, Debug)]
-struct NoteBody {
+struct NoteContent {
   delta: String,
-  text: String,
+  title: String,
+  body: String,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Note {
   id: String,
-  body: NoteBody,
+  content: NoteContent,
   timestamp: i64,
 }
 

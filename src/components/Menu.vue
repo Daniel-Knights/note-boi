@@ -11,12 +11,9 @@
           'menu__note--empty': isEmptyNote(note),
         }"
       >
-        <h2 class="menu__title">{{ note.body.text.split(/\n+/)[0] }}</h2>
-        <p
-          class="menu__body"
-          :class="{ 'menu__body--empty': !note.body.text.split(/\n+/)[1] }"
-        >
-          {{ note.body.text.split(/\n+/)[1] }}
+        <h2 class="menu__title">{{ note.content.title }}</h2>
+        <p class="menu__body" :class="{ 'menu__body--empty': !note.content.body }">
+          {{ note.content.body }}
         </p>
       </li>
     </ul>

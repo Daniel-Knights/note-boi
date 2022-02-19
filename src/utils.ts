@@ -15,5 +15,5 @@ export function isWhitespaceOnly(text?: string): boolean {
 
 /** Returns true if note content is empty. */
 export function isEmptyNote(note: Note): boolean {
-  return note.body.text.trim() === '';
+  return isWhitespaceOnly(note.content.title);
 }
