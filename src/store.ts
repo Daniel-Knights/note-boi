@@ -6,12 +6,12 @@ import { isEmptyNote } from './utils';
 
 export class Note {
   readonly id = uuidv4();
+  timestamp = Date.now();
   content = {
     delta: '',
     title: '',
     body: '',
   };
-  timestamp = Date.now();
 }
 
 interface State {

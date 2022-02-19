@@ -13,8 +13,8 @@ struct NoteContent {
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Note {
   id: String,
-  content: NoteContent,
   timestamp: i64,
+  content: NoteContent,
 }
 
 #[derive(Serialize, Debug)]
