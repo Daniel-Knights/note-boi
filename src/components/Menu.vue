@@ -6,15 +6,14 @@
         :key="note.id"
         @click="selectNote(note.id)"
         class="menu__note"
-        :class="{ 'menu__note--selected': note.id === state.selectedNote.id }"
+        :class="{
+          'menu__note--selected': note.id === state.selectedNote.id,
+          'menu__note--empty': isEmptyNote(note),
+        }"
       >
-        <h2 class="menu__title">{{ isEmptyNote(note) ? 'New note' : note.title }}</h2>
-        <p
-          v-if="!isWhitespaceOnly(note.body)"
-          class="menu__body"
-          :class="{ 'menu__body--with-title': !isWhitespaceOnly(note.title) }"
-        >
-          {{ note.body }}
+        <h2 class="menu__title">{{ note.content.title }}</h2>
+        <p class="menu__body" :class="{ 'menu__body--empty': !note.content.body }">
+          {{ note.content.body }}
         </p>
       </li>
     </ul>
@@ -27,7 +26,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue';
 import { state, selectNote, newNote } from '../store';
-import { isWhitespaceOnly, isEmptyNote } from '../utils';
+import { isEmptyNote } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';
 
@@ -69,11 +68,14 @@ $new-note-height: 50px;
     color: #fff;
     background-color: var(--color__interactive);
   }
+
+  &--empty::before {
+    content: 'New note';
+  }
 }
 
 .menu__title,
 .menu__body {
-  display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -81,18 +83,17 @@ $new-note-height: 50px;
   -webkit-user-select: none;
 }
 
-.menu__title,
-.menu__body {
+.menu__title {
   font-size: 18px;
 }
 
-.menu__body--with-title {
-  margin-top: 8px;
-  font-size: 12px;
-}
+.menu__body {
+  margin-top: 3px;
+  font-size: 15px;
 
-small {
-  font-size: 12px;
+  &--empty {
+    display: none;
+  }
 }
 
 .menu__new-note {

@@ -4,11 +4,17 @@ use std::{fs, io::Write, path::PathBuf};
 const NOTE_DIR: &str = ".notes";
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Note {
-  id: String,
+struct NoteContent {
+  delta: String,
   title: String,
   body: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Note {
+  id: String,
   timestamp: i64,
+  content: NoteContent,
 }
 
 #[derive(Serialize, Debug)]
@@ -26,7 +32,15 @@ impl Note {
     if notes_path.is_dir() {
       let dir_contents = fs::read_dir(notes_path).expect("unable to read dir");
       let notes = dir_contents
-        .map(|entry| Note::from(entry.expect("unable to read dir entry")))
+        // Unwrap
+        .map(|entry| entry.expect("unable to read dir entry"))
+        // Filter JSON files
+        .filter(|entry| match entry.path().extension() {
+          Some(ext) => ext.to_str().unwrap() == "json",
+          _ => false,
+        })
+        // Convert
+        .map(|entry| Note::from(entry))
         .collect();
 
       Ok(notes)

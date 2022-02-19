@@ -13,6 +13,8 @@ getAllNotes();
 </script>
 
 <style lang="scss">
+@use 'quill/dist/quill.snow.css';
+
 @use './sass/reset';
 
 html,
