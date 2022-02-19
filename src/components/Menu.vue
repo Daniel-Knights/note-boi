@@ -74,7 +74,6 @@ $new-note-height: 50px;
 
   &--empty::before {
     content: 'New note';
-    color: var(--color__tertiary);
   }
 }
 
