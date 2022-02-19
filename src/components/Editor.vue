@@ -34,7 +34,7 @@ onMounted(() => {
     modules: {
       toolbar: true,
     },
-    placeholder: 'Body',
+    placeholder: 'New note...',
     theme: 'snow',
   });
 
@@ -69,10 +69,12 @@ watchEffect(() => {
     display: none;
   }
 
+  $text-padding: 8px;
+
   .editor__date,
   .ql-editor {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: $text-padding;
+    padding-right: $text-padding;
   }
 
   .editor__date {
@@ -83,6 +85,11 @@ watchEffect(() => {
     font-size: 11px;
     color: var(--color__tertiary);
     border-bottom: 1px solid var(--color__tertiary);
+  }
+
+  .ql-editor.ql-blank::before {
+    color: var(--color__tertiary);
+    left: $text-padding;
   }
 
   .ql-toolbar,

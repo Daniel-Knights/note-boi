@@ -82,6 +82,8 @@ export async function getAllNotes(): Promise<void> {
 
   if (isEmptyNote(fetchedNotes[0])) {
     state.notes[0].timestamp = Date.now();
+    state.notes[0].body.text = '';
+    state.notes[0].body.delta = '';
   }
 
   state.selectedNote = { ...state.notes[0] };
