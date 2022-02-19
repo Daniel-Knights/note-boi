@@ -8,13 +8,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, watchEffect } from 'vue';
+import { onMounted } from 'vue';
 import Quill from 'quill';
 
 import { state, editBody } from '../store';
-import { unixToDateTime, isEmptyNote } from '../utils';
-
-const noteTitle = ref<HTMLElement | undefined>(undefined);
+import { unixToDateTime } from '../utils';
 
 let quillEditor: Quill | undefined;
 let isNoteSelect = false;
@@ -50,13 +48,6 @@ onMounted(() => {
 
     editBody(JSON.stringify(delta), text);
   });
-});
-
-// Cleanup previously typed content
-watchEffect(() => {
-  if (!isEmptyNote(state.selectedNote)) return;
-
-  if (noteTitle.value) noteTitle.value.innerText = '';
 });
 </script>
 
