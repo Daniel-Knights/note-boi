@@ -56,8 +56,11 @@ onMounted(() => {
   height: 100%;
   overflow-y: scroll;
 
-  &::-webkit-scrollbar {
-    display: none;
+  &,
+  .ql-editor {
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   $text-padding: 8px;
@@ -85,6 +88,12 @@ onMounted(() => {
 
   .ql-toolbar,
   .ql-container {
+    border: none;
+  }
+
+  .ql-tooltip {
+    left: 50% !important;
+    transform: translate(-50%, 50%);
     border: none;
   }
 }
