@@ -26,10 +26,13 @@ watchEffect(() => {
   if (noteTitle.value) noteTitle.value.innerText = '';
 });
 
-document.addEventListener('note-select', () => {
+document.addEventListener('note-change', () => {
   const parsedBody = JSON.parse(state.selectedNote.body.delta || '[]');
 
   quillEditor?.setContents(parsedBody);
+});
+
+document.addEventListener('note-select', () => {
   isNoteSelect = true;
 });
 
@@ -43,14 +46,12 @@ onMounted(() => {
   });
 
   quillEditor.on('text-change', () => {
-    // TODO: formatter buttons don't edit note
-    console.trace(isNoteSelect);
     if (isNoteSelect) {
       isNoteSelect = false;
       return;
     }
-    if (!quillEditor) return;
 
+    if (!quillEditor) return;
     const delta = quillEditor.getContents();
     const text = quillEditor.root.innerText;
 

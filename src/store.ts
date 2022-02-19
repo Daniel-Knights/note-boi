@@ -51,6 +51,7 @@ function clearEmptyNote(): void {
 }
 
 const selectEvent = new CustomEvent('note-select');
+const changeEvent = new CustomEvent('note-change');
 
 /**
  * Looks for note with given `id` in {@link state.notes},
@@ -65,6 +66,7 @@ export function selectNote(id: string): void {
   if (foundNote) state.selectedNote = { ...foundNote };
 
   document.dispatchEvent(selectEvent);
+  document.dispatchEvent(changeEvent);
 }
 
 /** Fetches all notes and updates {@link state}. */
@@ -84,7 +86,7 @@ export async function getAllNotes(): Promise<void> {
 
   state.selectedNote = { ...state.notes[0] };
 
-  document.dispatchEvent(selectEvent);
+  document.dispatchEvent(changeEvent);
 }
 
 /** Deletes note with the given `id`. */
@@ -114,13 +116,13 @@ export function newNote(): void {
 
   invoke('new_note', { note: { ...freshNote } }).catch(console.error);
 
-  document.dispatchEvent(selectEvent);
+  document.dispatchEvent(changeEvent);
 }
 
 /** Edits note body on Quill `text-change`. */
 export function editBody(delta: string, text: string): void {
   const foundNote = findNote(state.selectedNote.id);
-  if (!foundNote || text === foundNote.body.text) return;
+  if (!foundNote || delta === foundNote.body.delta) return;
 
   const timestamp = Date.now();
   foundNote.timestamp = timestamp;
