@@ -37,11 +37,6 @@ button {
   }
 }
 
-a,
-.ql-snow .ql-editor a {
-  color: #06c;
-}
-
 #app {
   display: grid;
   grid-template-columns: minmax(260px, 25%) auto;
