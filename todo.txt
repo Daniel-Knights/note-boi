@@ -2,3 +2,5 @@ Search/filter
 Context menu
 Settings
 Tests
+README
+Release
