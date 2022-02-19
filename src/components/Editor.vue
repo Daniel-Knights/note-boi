@@ -44,9 +44,9 @@ onMounted(() => {
 
     if (!quillEditor) return;
     const delta = quillEditor.getContents();
-    const text = quillEditor.root.innerText.split(/\n+/);
+    const [title, body] = quillEditor.root.innerText.split(/\n+/);
 
-    editBody(JSON.stringify(delta), text[0], text[1]);
+    editBody(JSON.stringify(delta), title, body);
   });
 });
 </script>
