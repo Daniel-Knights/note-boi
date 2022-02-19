@@ -1,5 +1,4 @@
 Search/filter
 Context menu
 Settings
-WYSIWYG
 Tests
