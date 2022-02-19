@@ -18,6 +18,9 @@ interface State {
   selectedNote: Note;
 }
 
+const selectEvent = new CustomEvent('note-select');
+const changeEvent = new CustomEvent('note-change');
+
 export const state = reactive<State>({
   notes: [],
   selectedNote: new Note(),
@@ -38,7 +41,7 @@ export function findNote(id: string): Note | undefined {
   return state.notes.find((nt) => nt.id === id);
 }
 
-/** Deletes {@link state.selectedNote} when both `title` and `body` are empty. */
+/** Deletes {@link state.selectedNote} when note is empty. */
 function clearEmptyNote(): void {
   const isValidClear = state.notes.length > 1;
 
@@ -49,9 +52,6 @@ function clearEmptyNote(): void {
     deleteNote(state.selectedNote.id);
   }
 }
-
-const selectEvent = new CustomEvent('note-select');
-const changeEvent = new CustomEvent('note-change');
 
 /**
  * Looks for note with given `id` in {@link state.notes},
