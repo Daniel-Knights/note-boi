@@ -1,3 +1,5 @@
 Context menu/Settings
+Cloud implementation
+
 README
 Release
