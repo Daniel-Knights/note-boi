@@ -19,8 +19,9 @@ interface State {
   selectedNote: Note;
 }
 
-const selectEvent = new CustomEvent('note-select');
-const changeEvent = new CustomEvent('note-change');
+const newNoteEvent = new CustomEvent('note-new');
+const selectNoteEvent = new CustomEvent('note-select');
+const changeNoteEvent = new CustomEvent('note-change');
 
 export const state = reactive<State>({
   notes: [],
@@ -66,8 +67,8 @@ export function selectNote(id: string): void {
   const foundNote = findNote(id);
   if (foundNote) state.selectedNote = { ...foundNote };
 
-  document.dispatchEvent(selectEvent);
-  document.dispatchEvent(changeEvent);
+  document.dispatchEvent(selectNoteEvent);
+  document.dispatchEvent(changeNoteEvent);
 }
 
 /** Fetches all notes and updates {@link state}. */
@@ -90,7 +91,7 @@ export async function getAllNotes(): Promise<void> {
 
   state.selectedNote = { ...state.notes[0] };
 
-  document.dispatchEvent(changeEvent);
+  document.dispatchEvent(changeNoteEvent);
 }
 
 /** Deletes note with the given `id`. */
@@ -120,7 +121,8 @@ export function newNote(): void {
 
   invoke('new_note', { note: { ...freshNote } }).catch(console.error);
 
-  document.dispatchEvent(changeEvent);
+  document.dispatchEvent(changeNoteEvent);
+  document.dispatchEvent(newNoteEvent);
 }
 
 /** Edits note body on Quill `text-change`. */
