@@ -4,6 +4,7 @@
 )]
 
 mod command;
+mod menu;
 mod note;
 
 use std::path::PathBuf;
@@ -34,6 +35,11 @@ fn main() {
           .visible(false),
         attr,
       )
+    })
+    .menu(menu::get_menu())
+    .on_menu_event(move |ev| match ev.menu_item_id() {
+      "reload" => ev.window().emit("reload", {}).unwrap(),
+      _ => {}
     })
     .setup(|app| {
       let state = AppState {

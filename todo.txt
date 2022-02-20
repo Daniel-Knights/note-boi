@@ -1,6 +1,3 @@
-Search/filter
-Context menu
-Settings
-Tests
+Context menu/Settings
 README
 Release
