@@ -37,8 +37,10 @@ fn main() {
       )
     })
     .menu(menu::get_menu())
-    .on_menu_event(move |ev| match ev.menu_item_id() {
+    .on_menu_event(|ev| match ev.menu_item_id() {
       "reload" => ev.window().emit("reload", {}).unwrap(),
+      "new-note" => ev.window().emit("new-note", {}).unwrap(),
+      "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
       _ => {}
     })
     .setup(|app| {
