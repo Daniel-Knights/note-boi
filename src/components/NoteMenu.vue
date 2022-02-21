@@ -1,23 +1,35 @@
 <template>
-  <section id="menu">
-    <ul class="menu__note-list" ref="noteList">
+  <section id="note-menu">
+    <ul
+      class="note-menu__note-list"
+      ref="noteList"
+      @contextmenu.prevent="showContextMenu"
+    >
       <li
         v-for="note in state.notes"
         :key="note.id"
         @click="selectNote(note.id)"
-        class="menu__note"
+        class="note-menu__note"
         :class="{
-          'menu__note--selected': note.id === state.selectedNote.id,
-          'menu__note--empty': isEmptyNote(note),
+          'note-menu__note--selected': note.id === state.selectedNote.id,
+          'note-menu__note--empty': isEmptyNote(note),
         }"
       >
-        <h2 class="menu__title">{{ note.content.title }}</h2>
-        <p class="menu__body" :class="{ 'menu__body--empty': !note.content.body }">
+        <h2 class="note-menu__title">{{ note.content.title }}</h2>
+        <p
+          class="note-menu__body"
+          :class="{ 'note-menu__body--empty': !note.content.body }"
+        >
           {{ note.content.body }}
         </p>
       </li>
     </ul>
-    <button class="menu__new-note" @click="newNote">
+    <ContextMenu
+      v-if="contextMenuIsVisible"
+      :top="contextMenuTop"
+      :left="contextMenuLeft"
+    />
+    <button class="note-menu__new-note" @click="newNote">
       <PlusIcon />
     </button>
   </section>
@@ -29,8 +41,18 @@ import { state, selectNote, newNote } from '../store';
 import { isEmptyNote } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';
+import ContextMenu from './ContextMenu.vue';
 
 const noteList = ref<HTMLElement | undefined>(undefined);
+const contextMenuIsVisible = ref(false);
+const contextMenuTop = ref(0);
+const contextMenuLeft = ref(0);
+
+function showContextMenu(ev: MouseEvent) {
+  contextMenuIsVisible.value = true;
+  contextMenuTop.value = ev.clientY;
+  contextMenuLeft.value = ev.clientX;
+}
 
 // Scroll to top when selected note moves to top
 watchEffect(() => {
@@ -43,12 +65,12 @@ watchEffect(() => {
 <style lang="scss" scoped>
 $new-note-height: 50px;
 
-#menu {
+#note-menu {
   position: relative;
   max-height: 100vh;
 }
 
-.menu__note-list {
+.note-menu__note-list {
   height: 100%;
   overflow-y: scroll;
   padding-bottom: $new-note-height;
@@ -58,7 +80,7 @@ $new-note-height: 50px;
   }
 }
 
-.menu__note {
+.note-menu__note {
   cursor: pointer;
   position: relative;
   padding: 12px 15px;
@@ -74,8 +96,8 @@ $new-note-height: 50px;
   }
 }
 
-.menu__title,
-.menu__body {
+.note-menu__title,
+.note-menu__body {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -83,11 +105,11 @@ $new-note-height: 50px;
   -webkit-user-select: none;
 }
 
-.menu__title {
+.note-menu__title {
   font-size: 18px;
 }
 
-.menu__body {
+.note-menu__body {
   margin-top: 3px;
   font-size: 15px;
 
@@ -96,7 +118,7 @@ $new-note-height: 50px;
   }
 }
 
-.menu__new-note {
+.note-menu__new-note {
   @include v.flex-x(center, center);
   position: absolute;
   top: calc(100% - $new-note-height);

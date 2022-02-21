@@ -1,12 +1,12 @@
 <template>
-  <Menu />
+  <NoteMenu />
   <Editor />
 </template>
 
 <script setup lang="ts">
 import { getAllNotes } from './store';
 
-import Menu from './components/Menu.vue';
+import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
 
 getAllNotes();
