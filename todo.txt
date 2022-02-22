@@ -2,6 +2,8 @@ Cloud implementation
 Safer error handling
 Prevent opening context menu off bottom of screen
 Better colour themes
+alt+click and cmd/ctrl+click note list functionality
+Deleting note selects next most recent note
 
 README
 Release

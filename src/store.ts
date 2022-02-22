@@ -100,6 +100,9 @@ export async function getAllNotes(): Promise<void> {
 /** Deletes note with the given `id`. */
 export function deleteNote(id: string): void {
   state.notes.splice(findNoteIndex(id), 1);
+
+  if (state.notes.length === 0) newNote();
+
   state.selectedNote = { ...state.notes[0] };
 
   sortNotes();

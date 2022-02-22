@@ -18,7 +18,10 @@ let quillEditor: Quill | undefined;
 let isNoteSelect = false;
 
 document.addEventListener('note-new', () => {
-  quillEditor?.setSelection(0, 0);
+  // Timeout prevents weird bug where cursor line ignores padding
+  setTimeout(() => {
+    quillEditor?.setSelection(0, 0);
+  });
 });
 document.addEventListener('note-change', () => {
   const parsedBody = JSON.parse(state.selectedNote.content.delta || '[]');

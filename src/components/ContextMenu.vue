@@ -1,7 +1,12 @@
 <template>
   <ul v-if="show" class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
     <li @click="newNote">New Note</li>
-    <li @click="deleteNote(clickedNoteId!)">Delete Note</li>
+    <li
+      :class="{ 'context-menu__item--disabled': comp?.hasOneEmptyNote }"
+      @click="deleteNote(clickedNoteId!)"
+    >
+      Delete Note
+    </li>
     <li class="context-menu__has-sub-menu">
       Theme
       <ul>
@@ -19,9 +24,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 
-import { newNote, deleteNote } from '../store';
+import { findNote, newNote, deleteNote } from '../store';
+import { isEmptyNote } from '../utils';
 
 const clickedNoteId = ref<string | undefined>(undefined);
 const show = ref(false);
@@ -33,6 +39,17 @@ const props = defineProps({
     type: MouseEvent || undefined,
     default: undefined,
   },
+});
+
+const comp = computed(() => {
+  if (!clickedNoteId.value) return;
+
+  const foundNote = findNote(clickedNoteId.value);
+  if (!foundNote) return;
+
+  return {
+    hasOneEmptyNote: isEmptyNote(foundNote),
+  };
 });
 
 type Theme = 'Light' | 'Dark' | 'System';
@@ -94,19 +111,22 @@ li {
   }
 }
 
+.context-menu__item--disabled {
+  pointer-events: none;
+  color: var(--color__tertiary);
+}
+
 .context-menu__has-sub-menu {
   position: relative;
-
-  &:hover {
-    > ul {
-      display: block;
-    }
-  }
 
   > ul {
     display: none;
     top: -$list-padding;
     left: calc(100% + $list-padding);
+  }
+
+  &:hover > ul {
+    display: block;
   }
 }
 
