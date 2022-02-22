@@ -37,10 +37,12 @@ type Theme = 'Light' | 'Dark' | 'System';
 const colorThemes: Theme[] = ['Light', 'Dark', 'System'];
 const selectedTheme = ref(localStorage.getItem('theme') || 'System');
 
+document.body.classList.add(`theme--${selectedTheme.value.toLowerCase()}`);
+
 function setTheme(theme: Theme) {
-  localStorage.setItem('theme', theme);
-  document.body.classList.add(`theme--${theme.toLowerCase()}`);
   document.body.classList.remove(`theme--${selectedTheme.value.toLowerCase()}`);
+  document.body.classList.add(`theme--${theme.toLowerCase()}`);
+  localStorage.setItem('theme', theme);
   selectedTheme.value = theme;
 }
 
