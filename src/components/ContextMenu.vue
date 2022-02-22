@@ -103,6 +103,6 @@ li {
 
 .context-menu__theme--selected {
   color: var(--color__primary);
-  background-color: var(--color__secondary);
+  background-color: var(--color__tertiary);
 }
 </style>
