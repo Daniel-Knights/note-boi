@@ -1,30 +1,45 @@
 <template>
-  <ul class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
-    <li>New Note</li>
-    <li>Delete Note</li>
+  <ul v-if="show" class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
+    <li><button>New Note</button></li>
+    <li><button>Delete Note</button></li>
     <li class="context-menu__has-sub-menu">
-      Theme
+      <button>Theme</button>
       <ul>
-        <li>Light</li>
-        <li>Dark</li>
-        <li>System</li>
+        <li><button>Light</button></li>
+        <li><button>Dark</button></li>
+        <li><button>System</button></li>
       </ul>
     </li>
   </ul>
 </template>
 
 <script lang="ts" setup>
-defineProps({
-  top: {
-    type: Number,
-    default: 0,
-    required: true,
+import { ref, watch } from 'vue';
+
+const show = ref(false);
+const top = ref(0);
+const left = ref(0);
+
+const props = defineProps({
+  ev: {
+    type: MouseEvent || undefined,
+    default: undefined,
   },
-  left: {
-    type: Number,
-    default: 0,
-    required: true,
-  },
+});
+
+function hide() {
+  show.value = false;
+  document.removeEventListener('click', hide);
+}
+
+watch(props, () => {
+  if (!props.ev) return;
+
+  show.value = true;
+  top.value = props.ev.clientY;
+  left.value = props.ev.clientX;
+
+  document.addEventListener('click', hide);
 });
 </script>
 
@@ -34,21 +49,22 @@ $list-bg-color: var(--color__interactive);
 
 ul {
   position: absolute;
+  width: 133px;
   color: var(--color__secondary);
   background-color: $list-bg-color;
-  z-index: 10;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
 
-  li {
-    cursor: pointer;
-    padding: 0.5em 1em;
-    white-space: nowrap;
-    border: $list-padding solid $list-bg-color;
+li {
+  cursor: pointer;
+  padding: 0.5em 1em;
+  white-space: nowrap;
+  border: $list-padding solid $list-bg-color;
 
-    &:hover {
-      color: var(--color__primary);
-      background-color: var(--color__tertiary);
-    }
+  &:hover {
+    color: var(--color__primary);
+    background-color: var(--color__tertiary);
   }
 }
 
@@ -63,7 +79,7 @@ ul {
 
   > ul {
     display: none;
-    top: 0;
+    top: -$list-padding;
     left: calc(100% + $list-padding);
   }
 }

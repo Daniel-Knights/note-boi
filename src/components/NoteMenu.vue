@@ -3,7 +3,7 @@
     <ul
       class="note-menu__note-list"
       ref="noteList"
-      @contextmenu.prevent="showContextMenu"
+      @contextmenu.prevent="contextMenuEv = $event"
     >
       <li
         v-for="note in state.notes"
@@ -24,11 +24,7 @@
         </p>
       </li>
     </ul>
-    <ContextMenu
-      v-if="contextMenuIsVisible"
-      :top="contextMenuTop"
-      :left="contextMenuLeft"
-    />
+    <ContextMenu :ev="contextMenuEv" />
     <button class="note-menu__new-note" @click="newNote">
       <PlusIcon />
     </button>
@@ -44,15 +40,7 @@ import PlusIcon from './svg/PlusIcon.vue';
 import ContextMenu from './ContextMenu.vue';
 
 const noteList = ref<HTMLElement | undefined>(undefined);
-const contextMenuIsVisible = ref(false);
-const contextMenuTop = ref(0);
-const contextMenuLeft = ref(0);
-
-function showContextMenu(ev: MouseEvent) {
-  contextMenuIsVisible.value = true;
-  contextMenuTop.value = ev.clientY;
-  contextMenuLeft.value = ev.clientX;
-}
+const contextMenuEv = ref<MouseEvent | undefined>(undefined);
 
 // Scroll to top when selected note moves to top
 watchEffect(() => {
