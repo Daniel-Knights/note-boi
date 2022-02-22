@@ -101,6 +101,8 @@ export function deleteNote(id: string): void {
 
   sortNotes();
 
+  document.dispatchEvent(changeNoteEvent);
+
   invoke('delete_note', { id }).catch(console.error);
 }
 

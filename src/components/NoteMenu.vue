@@ -14,6 +14,7 @@
           'note-menu__note--selected': note.id === state.selectedNote.id,
           'note-menu__note--empty': isEmptyNote(note),
         }"
+        :data-note-id="note.id"
       >
         <h2 class="note-menu__title">{{ note.content.title }}</h2>
         <p

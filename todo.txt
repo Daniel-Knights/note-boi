@@ -1,5 +1,8 @@
 Context menu/Settings
 Cloud implementation
+Safer error handling
+Prevent opening context menu off bottom of screen
+Better colour themes
 
 README
 Release

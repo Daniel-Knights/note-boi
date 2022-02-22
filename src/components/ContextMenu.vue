@@ -1,7 +1,7 @@
 <template>
   <ul v-if="show" class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
-    <li>New Note</li>
-    <li>Delete Note</li>
+    <li @click="newNote">New Note</li>
+    <li @click="deleteNote(clickedNoteId!)">Delete Note</li>
     <li class="context-menu__has-sub-menu">
       Theme
       <ul>
@@ -21,6 +21,9 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 
+import { newNote, deleteNote } from '../store';
+
+const clickedNoteId = ref<string | undefined>(undefined);
 const show = ref(false);
 const top = ref(0);
 const left = ref(0);
@@ -54,9 +57,13 @@ function hide() {
 watch(props, () => {
   if (!props.ev) return;
 
+  const target = props.ev.target as HTMLElement;
+  const closestNote = target?.closest('[data-note-id]') as HTMLElement;
+
   show.value = true;
   top.value = props.ev.clientY;
   left.value = props.ev.clientX;
+  clickedNoteId.value = closestNote?.dataset.noteId;
 
   document.addEventListener('click', hide);
 });
