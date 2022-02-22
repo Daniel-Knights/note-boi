@@ -84,6 +84,7 @@ export async function getAllNotes(): Promise<void> {
 
   if (isEmptyNote(fetchedNotes[0])) {
     state.notes[0].timestamp = Date.now();
+    // Clear these fields as whitespace-only can affect empty note checks
     state.notes[0].content.delta = '';
     state.notes[0].content.title = '';
     state.notes[0].content.body = '';
