@@ -1,13 +1,18 @@
 <template>
   <ul v-if="show" class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
-    <li><button>New Note</button></li>
-    <li><button>Delete Note</button></li>
+    <li>New Note</li>
+    <li>Delete Note</li>
     <li class="context-menu__has-sub-menu">
-      <button>Theme</button>
+      Theme
       <ul>
-        <li><button>Light</button></li>
-        <li><button>Dark</button></li>
-        <li><button>System</button></li>
+        <li
+          v-for="theme in colorThemes"
+          :key="theme"
+          :class="{ 'context-menu__theme--selected': theme === selectedTheme }"
+          @click="setTheme(theme)"
+        >
+          {{ theme }}
+        </li>
       </ul>
     </li>
   </ul>
@@ -26,6 +31,18 @@ const props = defineProps({
     default: undefined,
   },
 });
+
+type Theme = 'Light' | 'Dark' | 'System';
+
+const colorThemes: Theme[] = ['Light', 'Dark', 'System'];
+const selectedTheme = ref(localStorage.getItem('theme') || 'System');
+
+function setTheme(theme: Theme) {
+  localStorage.setItem('theme', theme);
+  document.body.classList.add(`theme--${theme.toLowerCase()}`);
+  document.body.classList.remove(`theme--${selectedTheme.value.toLowerCase()}`);
+  selectedTheme.value = theme;
+}
 
 function hide() {
   show.value = false;
@@ -82,5 +99,10 @@ li {
     top: -$list-padding;
     left: calc(100% + $list-padding);
   }
+}
+
+.context-menu__theme--selected {
+  color: var(--color__primary);
+  background-color: var(--color__secondary);
 }
 </style>
