@@ -22,7 +22,6 @@ document.addEventListener('note-new', () => {
 });
 document.addEventListener('note-change', () => {
   const parsedBody = JSON.parse(state.selectedNote.content.delta || '[]');
-  console.log('ppp');
 
   quillEditor?.setContents(parsedBody);
 });
