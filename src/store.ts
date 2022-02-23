@@ -17,6 +17,7 @@ export class Note {
 interface State {
   notes: Note[];
   selectedNote: Note;
+  extraSelectedNotes: Note[];
 }
 
 const newNoteEvent = new CustomEvent('note-new');
@@ -26,6 +27,7 @@ const changeNoteEvent = new CustomEvent('note-change');
 export const state = reactive<State>({
   notes: [],
   selectedNote: new Note(),
+  extraSelectedNotes: [],
 });
 
 /** Sorts notes in descending order by timestamp. */
@@ -34,12 +36,12 @@ function sortNotes() {
 }
 
 /** Finds note index within {@link state.notes}. */
-function findNoteIndex(id: string) {
+export function findNoteIndex(id?: string): number {
   return state.notes.findIndex((nt) => nt.id === id);
 }
 
 /** Finds note within {@link state.notes}. */
-export function findNote(id: string): Note | undefined {
+export function findNote(id?: string): Note | undefined {
   return state.notes.find((nt) => nt.id === id);
 }
 
@@ -104,8 +106,6 @@ export function deleteNote(id: string): void {
   if (state.notes.length === 0) newNote();
 
   state.selectedNote = { ...state.notes[0] };
-
-  sortNotes();
 
   document.dispatchEvent(changeNoteEvent);
 

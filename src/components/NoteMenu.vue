@@ -4,14 +4,14 @@
       class="note-menu__note-list"
       ref="noteList"
       @contextmenu.prevent="contextMenuEv = $event"
+      @mouseup="handleMouseUp"
     >
       <li
         v-for="note in state.notes"
         :key="note.id"
-        @click="selectNote(note.id)"
         class="note-menu__note"
         :class="{
-          'note-menu__note--selected': note.id === state.selectedNote.id,
+          'note-menu__note--selected': isSelectedNote(note),
           'note-menu__note--empty': isEmptyNote(note),
         }"
         :data-note-id="note.id"
@@ -34,7 +34,8 @@
 
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue';
-import { state, selectNote, newNote } from '../store';
+
+import { state, selectNote, newNote, Note, findNoteIndex, findNote } from '../store';
 import { isEmptyNote } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';
@@ -42,6 +43,71 @@ import ContextMenu from './ContextMenu.vue';
 
 const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
+
+function isSelectedNote(note: Note) {
+  return (
+    note.id === state.selectedNote.id ||
+    state.extraSelectedNotes.some((nt) => nt.id === note.id)
+  );
+}
+
+function handleMouseUp(ev: MouseEvent) {
+  const target = ev.target as HTMLElement | null;
+  const closestNote = target?.closest<HTMLElement>('.note-menu__note');
+  const noteId = closestNote?.dataset.noteId;
+  if (!noteId) return;
+
+  const clearExtraNotes = (e: MouseEvent) => {
+    if (e.button !== 0) return; // Only clear on left click
+    if (e.metaKey || e.ctrlKey) return;
+
+    state.extraSelectedNotes = [];
+
+    document.removeEventListener('mousedown', clearExtraNotes);
+  };
+
+  if (ev.altKey) {
+    const noteIndex = findNoteIndex(noteId);
+
+    if (noteIndex >= 0) {
+      const selectedNoteIndex = findNoteIndex(state.selectedNote.id);
+
+      if (selectedNoteIndex >= 0) {
+        const lowestIndex = Math.min(selectedNoteIndex, noteIndex);
+        const highestIndex = Math.max(selectedNoteIndex, noteIndex);
+        state.extraSelectedNotes.push(
+          ...state.notes.slice(lowestIndex, highestIndex + 1)
+        );
+
+        document.addEventListener('mousedown', clearExtraNotes);
+      }
+    }
+
+    return;
+  }
+
+  if (ev.metaKey || ev.ctrlKey) {
+    const alreadySelectedIndex = state.extraSelectedNotes.findIndex(
+      (nt) => nt.id === noteId
+    );
+
+    if (alreadySelectedIndex >= 0) {
+      state.extraSelectedNotes.splice(alreadySelectedIndex, 1);
+    } else {
+      const foundNote = findNote(noteId);
+
+      if (foundNote) {
+        state.extraSelectedNotes.push(foundNote);
+
+        document.addEventListener('mousedown', clearExtraNotes);
+      }
+    }
+
+    return;
+  }
+
+  selectNote(noteId);
+}
 
 // Scroll to top when selected note moves to top
 watchEffect(() => {

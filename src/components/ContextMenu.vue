@@ -3,7 +3,7 @@
     <li @click="newNote">New Note</li>
     <li
       :class="{ 'context-menu__item--disabled': comp?.hasOneEmptyNote }"
-      @click="deleteNote(clickedNoteId!)"
+      @click="handleDeleteNote"
     >
       Delete Note
     </li>
@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 
-import { findNote, newNote, deleteNote } from '../store';
+import { state, findNote, newNote, deleteNote } from '../store';
 import { isEmptyNote } from '../utils';
 
 const clickedNoteId = ref<string | undefined>(undefined);
@@ -66,6 +66,16 @@ function setTheme(theme: Theme) {
   selectedTheme.value = theme;
 }
 
+function handleDeleteNote() {
+  deleteNote(clickedNoteId.value!);
+
+  if (state.extraSelectedNotes.length > 0) {
+    state.extraSelectedNotes.forEach((nt) => {
+      deleteNote(nt.id);
+    });
+  }
+}
+
 function hide() {
   show.value = false;
   document.removeEventListener('click', hide);
@@ -74,8 +84,8 @@ function hide() {
 watch(props, () => {
   if (!props.ev) return;
 
-  const target = props.ev.target as HTMLElement;
-  const closestNote = target?.closest('[data-note-id]') as HTMLElement;
+  const target = props.ev.target as HTMLElement | null;
+  const closestNote = target?.closest<HTMLElement>('[data-note-id]');
 
   show.value = true;
   top.value = props.ev.clientY;

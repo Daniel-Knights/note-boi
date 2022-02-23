@@ -33,6 +33,7 @@ module.exports = {
 
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'off',
 
     'require-await': 'warn',
 
