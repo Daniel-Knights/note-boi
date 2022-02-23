@@ -142,7 +142,7 @@ export function editBody(delta: string, title: string, body: string): void {
   foundNote.timestamp = timestamp;
   state.selectedNote.timestamp = timestamp;
 
-  foundNote.content = { delta, title, body };
+  foundNote.content = { delta, title, body: body || '' };
 
   sortNotes();
 
