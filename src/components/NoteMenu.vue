@@ -94,7 +94,8 @@ function handleMouseUp(ev: MouseEvent) {
     if (alreadySelectedIndex >= 0) {
       state.extraSelectedNotes.splice(alreadySelectedIndex, 1);
     } else if (state.selectedNote.id === noteId && state.extraSelectedNotes.length > 0) {
-      [state.selectedNote] = state.extraSelectedNotes;
+      selectNote(state.extraSelectedNotes[0].id);
+
       state.extraSelectedNotes.splice(0, 1);
     } else {
       const foundNote = findNote(noteId);
