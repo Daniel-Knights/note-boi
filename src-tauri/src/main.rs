@@ -18,7 +18,7 @@ pub struct AppState {
 }
 
 fn main() {
-  tauri::Builder::default()
+  let mut builder = tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![
       delete_note,
       edit_note,
@@ -35,14 +35,21 @@ fn main() {
           .visible(false),
         attr,
       )
-    })
-    .menu(menu::get_menu())
-    .on_menu_event(|ev| match ev.menu_item_id() {
-      "reload" => ev.window().emit("reload", {}).unwrap(),
-      "new-note" => ev.window().emit("new-note", {}).unwrap(),
-      "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
-      _ => {}
-    })
+    });
+
+  if cfg!(target_os = "macos") {
+    builder = builder
+      // Only add OS menu for macos
+      .menu(menu::get_menu())
+      .on_menu_event(|ev| match ev.menu_item_id() {
+        "reload" => ev.window().emit("reload", {}).unwrap(),
+        "new-note" => ev.window().emit("new-note", {}).unwrap(),
+        "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
+        _ => {}
+      });
+  }
+
+  builder
     .setup(|app| {
       let state = AppState {
         app_dir: app.path_resolver().app_dir().unwrap(),
