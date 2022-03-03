@@ -4,7 +4,7 @@
       class="note-menu__note-list"
       ref="noteList"
       @contextmenu.prevent="contextMenuEv = $event"
-      @mouseup="handleMouseUp"
+      @click="handleNoteSelect"
     >
       <li
         v-for="note in state.notes"
@@ -51,21 +51,22 @@ function isSelectedNote(note: Note) {
   );
 }
 
-function handleMouseUp(ev: MouseEvent) {
+function handleNoteSelect(ev: MouseEvent) {
   const target = ev.target as HTMLElement | null;
   const closestNote = target?.closest<HTMLElement>('.note-menu__note');
   const noteId = closestNote?.dataset.noteId;
   if (!noteId) return;
 
-  const clearExtraNotes = (e: MouseEvent) => {
-    if (e.button !== 0) return; // Only clear on left click
-    if (e.metaKey || e.ctrlKey) return;
+  function clearExtraNotes(innerEv: MouseEvent) {
+    if (innerEv.button !== 0) return; // Only clear on left click
+    if (innerEv.metaKey || innerEv.ctrlKey) return;
 
     state.extraSelectedNotes = [];
 
-    document.removeEventListener('mousedown', clearExtraNotes);
-  };
+    document.removeEventListener('click', clearExtraNotes);
+  }
 
+  // Alt key + click
   if (ev.altKey) {
     const noteIndex = findNoteIndex(noteId);
 
@@ -75,17 +76,27 @@ function handleMouseUp(ev: MouseEvent) {
       if (selectedNoteIndex >= 0) {
         const lowestIndex = Math.min(selectedNoteIndex, noteIndex);
         const highestIndex = Math.max(selectedNoteIndex, noteIndex);
-        state.extraSelectedNotes.push(
-          ...state.notes.slice(lowestIndex, highestIndex + 1)
-        );
 
-        document.addEventListener('mousedown', clearExtraNotes);
+        let noteSlice: Note[] = [];
+
+        // Use offset to prevent `selectedNote` being pushed to `extraSelectedNotes`
+        if (lowestIndex === selectedNoteIndex) {
+          noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1);
+        } else if (highestIndex === selectedNoteIndex) {
+          noteSlice = state.notes.slice(lowestIndex, highestIndex);
+        }
+
+        state.extraSelectedNotes.push(...noteSlice);
+
+        ev.stopImmediatePropagation(); // Prevent `clearExtraNotes` firing immediately
+        document.addEventListener('click', clearExtraNotes);
       }
     }
 
     return;
   }
 
+  // Ctrl key + click
   if (ev.metaKey || ev.ctrlKey) {
     const alreadySelectedIndex = state.extraSelectedNotes.findIndex(
       (nt) => nt.id === noteId
@@ -103,13 +114,14 @@ function handleMouseUp(ev: MouseEvent) {
       if (foundNote) {
         state.extraSelectedNotes.push(foundNote);
 
-        document.addEventListener('mousedown', clearExtraNotes);
+        document.addEventListener('click', clearExtraNotes);
       }
     }
 
     return;
   }
 
+  // Single click
   selectNote(noteId);
 }
 
