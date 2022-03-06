@@ -36,7 +36,7 @@
 import { ref, watchEffect } from 'vue';
 
 import { state, selectNote, newNote, Note, findNoteIndex, findNote } from '../store';
-import { isEmptyNote } from '../utils';
+import { isEmptyNote, last } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';
 import ContextMenu from './ContextMenu.vue';
@@ -57,6 +57,14 @@ function handleNoteSelect(ev: MouseEvent) {
   const noteId = closestNote?.dataset.noteId;
   if (!noteId) return;
 
+  const hasExtraNotes = state.extraSelectedNotes.length > 0;
+
+  function pushExtraNotes(...notes: Note[]) {
+    state.extraSelectedNotes.push(...notes);
+    // Prevent duplicates
+    state.extraSelectedNotes = [...new Set(state.extraSelectedNotes)];
+  }
+
   function clearExtraNotes(innerEv: MouseEvent) {
     if (innerEv.button !== 0) return; // Only clear on left click
     if (innerEv.metaKey || innerEv.ctrlKey) return;
@@ -71,7 +79,10 @@ function handleNoteSelect(ev: MouseEvent) {
     const noteIndex = findNoteIndex(noteId);
 
     if (noteIndex >= 0) {
-      const selectedNoteIndex = findNoteIndex(state.selectedNote.id);
+      const lastSelectedNote = hasExtraNotes
+        ? last(state.extraSelectedNotes)?.id
+        : state.selectedNote.id;
+      const selectedNoteIndex = findNoteIndex(lastSelectedNote);
 
       if (selectedNoteIndex >= 0) {
         const lowestIndex = Math.min(selectedNoteIndex, noteIndex);
@@ -81,12 +92,13 @@ function handleNoteSelect(ev: MouseEvent) {
 
         // Use offset to prevent `selectedNote` being pushed to `extraSelectedNotes`
         if (lowestIndex === selectedNoteIndex) {
-          noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1);
+          // Reverse to ensure correct selection order
+          noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1).reverse();
         } else if (highestIndex === selectedNoteIndex) {
           noteSlice = state.notes.slice(lowestIndex, highestIndex);
         }
 
-        state.extraSelectedNotes.push(...noteSlice);
+        pushExtraNotes(...noteSlice);
 
         ev.stopImmediatePropagation(); // Prevent `clearExtraNotes` firing immediately
         document.addEventListener('click', clearExtraNotes);
@@ -104,7 +116,13 @@ function handleNoteSelect(ev: MouseEvent) {
 
     if (alreadySelectedIndex >= 0) {
       state.extraSelectedNotes.splice(alreadySelectedIndex, 1);
-    } else if (state.selectedNote.id === noteId && state.extraSelectedNotes.length > 0) {
+
+      if (state.selectedNote.id === noteId) {
+        selectNote(state.extraSelectedNotes[0]?.id);
+      }
+
+      // Select next extra note when current selected note is deselected
+    } else if (state.selectedNote.id === noteId && hasExtraNotes) {
       selectNote(state.extraSelectedNotes[0].id);
 
       state.extraSelectedNotes.splice(0, 1);
@@ -112,7 +130,7 @@ function handleNoteSelect(ev: MouseEvent) {
       const foundNote = findNote(noteId);
 
       if (foundNote) {
-        state.extraSelectedNotes.push(foundNote);
+        pushExtraNotes(foundNote);
 
         document.addEventListener('click', clearExtraNotes);
       }

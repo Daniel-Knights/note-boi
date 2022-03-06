@@ -17,6 +17,7 @@ export class Note {
 interface State {
   notes: Note[];
   selectedNote: Note;
+  /** `0` = next in queue */
   extraSelectedNotes: Note[];
 }
 
@@ -61,7 +62,7 @@ function clearEmptyNote(): void {
  * Looks for note with given `id` in {@link state.notes},
  * and sets it to {@link state.selectedNote}.
  */
-export function selectNote(id: string): void {
+export function selectNote(id?: string): void {
   if (state.selectedNote.id === id) return;
 
   clearEmptyNote();

@@ -17,3 +17,5 @@ export function isWhitespaceOnly(text?: string): boolean {
 export function isEmptyNote(note: Note): boolean {
   return isWhitespaceOnly(note.content.title);
 }
+
+export const last = <T>(arr: T[]): T | undefined => arr[arr.length - 1];
