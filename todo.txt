@@ -1,10 +1,12 @@
-Cloud implementation
-Safer error handling
-Prevent opening context menu off bottom of screen
-Better colour themes
 Deleting note selects next most recent note
-Updater
+Cloud implementation
+  Compare timestamps
+Safer error handling
+  Try again?
+Better colour themes
 Recycle bin
+Updater
+Prevent opening context menu off bottom of screen
 
 README
 Release
