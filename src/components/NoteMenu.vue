@@ -54,15 +54,16 @@ function isSelectedNote(note: Note) {
 function handleNoteSelect(ev: MouseEvent) {
   const target = ev.target as HTMLElement | null;
   const closestNote = target?.closest<HTMLElement>('.note-menu__note');
-  const noteId = closestNote?.dataset.noteId;
-  if (!noteId) return;
+  const targetNoteId = closestNote?.dataset.noteId;
+  if (!targetNoteId) return;
 
   const hasExtraNotes = state.extraSelectedNotes.length > 0;
 
-  function pushExtraNotes(...notes: Note[]) {
-    state.extraSelectedNotes.push(...notes);
-    // Prevent duplicates
-    state.extraSelectedNotes = [...new Set(state.extraSelectedNotes)];
+  function pushExtraNotes(...noteSlice: Note[]) {
+    // Prevent selected note being pushed
+    const filteredSlice = noteSlice.filter((nt) => nt.id !== state.selectedNote.id);
+    // Use `Set` to prevent duplicates
+    state.extraSelectedNotes.push(...new Set(filteredSlice));
   }
 
   function clearExtraNotes(innerEv: MouseEvent) {
@@ -76,23 +77,22 @@ function handleNoteSelect(ev: MouseEvent) {
 
   // Alt key + click
   if (ev.altKey) {
-    const noteIndex = findNoteIndex(noteId);
+    const targetNoteIndex = findNoteIndex(targetNoteId);
 
-    if (noteIndex >= 0) {
+    if (targetNoteIndex >= 0) {
       const lastSelectedNote = hasExtraNotes
         ? last(state.extraSelectedNotes)?.id
         : state.selectedNote.id;
       const selectedNoteIndex = findNoteIndex(lastSelectedNote);
 
       if (selectedNoteIndex >= 0) {
-        const lowestIndex = Math.min(selectedNoteIndex, noteIndex);
-        const highestIndex = Math.max(selectedNoteIndex, noteIndex);
+        const lowestIndex = Math.min(selectedNoteIndex, targetNoteIndex);
+        const highestIndex = Math.max(selectedNoteIndex, targetNoteIndex);
 
         let noteSlice: Note[] = [];
 
-        // Use offset to prevent `selectedNote` being pushed to `extraSelectedNotes`
         if (lowestIndex === selectedNoteIndex) {
-          // Reverse to ensure correct selection order
+          // Reverse to ensure correct selection order, `0` = next in queue
           noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1).reverse();
         } else if (highestIndex === selectedNoteIndex) {
           noteSlice = state.notes.slice(lowestIndex, highestIndex);
@@ -111,25 +111,26 @@ function handleNoteSelect(ev: MouseEvent) {
   // Ctrl key + click
   if (ev.metaKey || ev.ctrlKey) {
     const alreadySelectedIndex = state.extraSelectedNotes.findIndex(
-      (nt) => nt?.id === noteId
+      (nt) => nt?.id === targetNoteId
     );
 
     // Deselect
     if (alreadySelectedIndex >= 0) {
       state.extraSelectedNotes.splice(alreadySelectedIndex, 1);
 
-      if (state.selectedNote.id === noteId) {
+      if (state.selectedNote.id === targetNoteId) {
         selectNote(state.extraSelectedNotes[0]?.id);
       }
 
       // Select next extra note when current selected note is deselected
-    } else if (state.selectedNote.id === noteId && hasExtraNotes) {
+    } else if (state.selectedNote.id === targetNoteId && hasExtraNotes) {
       selectNote(state.extraSelectedNotes[0]?.id);
 
       state.extraSelectedNotes.splice(0, 1);
+
       // Add to selection
     } else {
-      const foundNote = findNote(noteId);
+      const foundNote = findNote(targetNoteId);
 
       if (foundNote) {
         pushExtraNotes(foundNote);
@@ -142,7 +143,7 @@ function handleNoteSelect(ev: MouseEvent) {
   }
 
   // Single click
-  selectNote(noteId);
+  selectNote(targetNoteId);
 }
 
 // Scroll to top when selected note moves to top
