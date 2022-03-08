@@ -114,6 +114,7 @@ function handleNoteSelect(ev: MouseEvent) {
       (nt) => nt?.id === noteId
     );
 
+    // Deselect
     if (alreadySelectedIndex >= 0) {
       state.extraSelectedNotes.splice(alreadySelectedIndex, 1);
 
@@ -126,6 +127,7 @@ function handleNoteSelect(ev: MouseEvent) {
       selectNote(state.extraSelectedNotes[0]?.id);
 
       state.extraSelectedNotes.splice(0, 1);
+      // Add to selection
     } else {
       const foundNote = findNote(noteId);
 
