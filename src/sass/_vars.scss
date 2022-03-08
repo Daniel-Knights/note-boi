@@ -19,14 +19,14 @@
 }
 
 @mixin light-theme {
-  --color__primary: #fff;
-  --color__secondary: #000000;
+  --color__primary: var(--white);
+  --color__secondary: var(--black);
   --color__tertiary: #6e6e6e;
   --color__interactive: #727272;
 }
 @mixin dark-theme {
-  --color__primary: #000000;
-  --color__secondary: #fff;
+  --color__primary: var(--black);
+  --color__secondary: var(--white);
   --color__tertiary: #bebebe;
   --color__interactive: #2e2e2e;
 }
@@ -34,6 +34,9 @@
 // Vars
 :root {
   @include light-theme;
+
+  --white: #eeeeee;
+  --black: #141313;
 }
 @media (prefers-color-scheme: dark) {
   :root {
