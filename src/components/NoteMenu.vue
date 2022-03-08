@@ -59,11 +59,10 @@ function handleNoteSelect(ev: MouseEvent) {
 
   const hasExtraNotes = state.extraSelectedNotes.length > 0;
 
-  function pushExtraNotes(...noteSlice: Note[]) {
-    // Prevent selected note being pushed
-    const filteredSlice = noteSlice.filter((nt) => nt.id !== state.selectedNote.id);
-    // Use `Set` to prevent duplicates
-    state.extraSelectedNotes.push(...new Set(filteredSlice));
+  function pushExtraNotes(noteSlice: Note[]) {
+    const withoutDuplicates = noteSlice.filter((nt) => !isSelectedNote(nt));
+
+    state.extraSelectedNotes.push(...withoutDuplicates);
   }
 
   function clearExtraNotes(innerEv: MouseEvent) {
@@ -98,7 +97,7 @@ function handleNoteSelect(ev: MouseEvent) {
           noteSlice = state.notes.slice(lowestIndex, highestIndex);
         }
 
-        pushExtraNotes(...noteSlice);
+        pushExtraNotes(noteSlice);
 
         ev.stopImmediatePropagation(); // Prevent `clearExtraNotes` firing immediately
         document.addEventListener('click', clearExtraNotes);
@@ -133,7 +132,7 @@ function handleNoteSelect(ev: MouseEvent) {
       const foundNote = findNote(targetNoteId);
 
       if (foundNote) {
-        pushExtraNotes(foundNote);
+        pushExtraNotes([foundNote]);
 
         document.addEventListener('click', clearExtraNotes);
       }

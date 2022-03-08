@@ -115,6 +115,15 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
   invoke('delete_note', { id }).catch(console.error);
 }
 
+/** Deletes {@link state.selectedNote} and all notes in {@link state.extraSelectedNotes} */
+export function deleteAllNotes(): void {
+  deleteNote(state.selectedNote.id, true);
+
+  state.extraSelectedNotes.forEach((nt) => {
+    if (nt) deleteNote(nt.id, false);
+  });
+}
+
 /** Creates an empty note. */
 export function newNote(): void {
   const foundNote = findNote(state.selectedNote.id);

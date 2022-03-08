@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 
-import { state, findNote, newNote, deleteNote } from '../store';
+import { state, findNote, newNote, deleteNote, deleteAllNotes } from '../store';
 import { isEmptyNote } from '../utils';
 
 const clickedNoteId = ref<string | undefined>(undefined);
@@ -69,17 +69,11 @@ function setTheme(theme: Theme) {
 }
 
 function handleDeleteNote() {
-  if (!clickedNoteId.value) return;
-
   // If multiple notes are selected, delete all of them
   if (state.extraSelectedNotes.length > 0) {
-    deleteNote(state.selectedNote.id, true);
-
-    state.extraSelectedNotes.forEach((nt) => {
-      if (nt) deleteNote(nt.id, false);
-    });
-  } else {
-    // Delete clicked note and select next if note is currently selected
+    deleteAllNotes();
+  } else if (clickedNoteId.value) {
+    // Delete clicked note and select next note if currently selected
     deleteNote(clickedNoteId.value, clickedNoteId.value === state.selectedNote.id);
   }
 }
