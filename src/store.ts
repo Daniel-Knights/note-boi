@@ -74,6 +74,17 @@ export function selectNote(id?: string): void {
   document.dispatchEvent(changeNoteEvent);
 }
 
+/**
+ * Returns true if note is either {@link state.selectedNote}
+ * or within {@link state.extraSelectedNotes}
+ */
+export function isSelectedNote(note: Note): boolean {
+  return (
+    note.id === state.selectedNote.id ||
+    state.extraSelectedNotes.some((nt) => nt?.id === note.id)
+  );
+}
+
 /** Fetches all notes and updates {@link state}. */
 export async function getAllNotes(): Promise<void> {
   const fetchedNotes = await invoke<Note[]>('get_all_notes').catch(console.error);

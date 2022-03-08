@@ -35,7 +35,15 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue';
 
-import { state, selectNote, newNote, Note, findNoteIndex, findNote } from '../store';
+import {
+  state,
+  selectNote,
+  newNote,
+  Note,
+  findNoteIndex,
+  findNote,
+  isSelectedNote,
+} from '../store';
 import { isEmptyNote, last } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';
@@ -43,13 +51,6 @@ import ContextMenu from './ContextMenu.vue';
 
 const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
-
-function isSelectedNote(note: Note) {
-  return (
-    note.id === state.selectedNote.id ||
-    state.extraSelectedNotes.some((nt) => nt?.id === note.id)
-  );
-}
 
 function handleNoteSelect(ev: MouseEvent) {
   const target = ev.target as HTMLElement | null;
