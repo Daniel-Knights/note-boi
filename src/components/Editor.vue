@@ -37,14 +37,12 @@ document.addEventListener('note-select', () => {
 onMounted(() => {
   quillEditor = new Quill('.editor__body', {
     modules: {
-      toolbar: {
-        container: [
-          [{ header: [1, 2, 3, false] }],
-          ['bold', 'italic', 'underline', 'strike'],
-          [{ list: 'ordered' }, { list: 'bullet' }],
-          ['clean'],
-        ],
-      },
+      toolbar: [
+        [{ header: [1, 2, 3, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['clean'],
+      ],
     },
     placeholder: 'New note...',
     theme: 'snow',
