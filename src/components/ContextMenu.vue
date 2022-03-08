@@ -62,17 +62,25 @@ document.body.classList.add(`theme--${selectedTheme.value.toLowerCase()}`);
 function setTheme(theme: Theme) {
   document.body.classList.remove(`theme--${selectedTheme.value.toLowerCase()}`);
   document.body.classList.add(`theme--${theme.toLowerCase()}`);
+
   localStorage.setItem('theme', theme);
+
   selectedTheme.value = theme;
 }
 
 function handleDeleteNote() {
-  deleteNote(clickedNoteId.value!);
+  if (!clickedNoteId.value) return;
 
+  // If multiple notes are selected, delete all of them
   if (state.extraSelectedNotes.length > 0) {
+    deleteNote(state.selectedNote.id, true);
+
     state.extraSelectedNotes.forEach((nt) => {
-      if (nt) deleteNote(nt.id);
+      if (nt) deleteNote(nt.id, false);
     });
+  } else {
+    // Delete clicked note and select next if note is currently selected
+    deleteNote(clickedNoteId.value, clickedNoteId.value === state.selectedNote.id);
   }
 }
 

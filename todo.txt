@@ -1,4 +1,3 @@
-Deleting note selects next most recent note
 Cloud implementation
   Compare timestamps
 Safer error handling
@@ -8,6 +7,8 @@ Recycle bin
 Updater
 Prevent opening context menu off bottom of screen
 Custom colour themes
+Use arrow keys to navigate notes
+Tab key functionality
 
 README
 Release
