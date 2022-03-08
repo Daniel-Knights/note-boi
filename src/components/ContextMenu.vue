@@ -71,7 +71,7 @@ function handleDeleteNote() {
 
   if (state.extraSelectedNotes.length > 0) {
     state.extraSelectedNotes.forEach((nt) => {
-      deleteNote(nt.id);
+      if (nt) deleteNote(nt.id);
     });
   }
 }

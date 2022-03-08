@@ -18,7 +18,7 @@ interface State {
   notes: Note[];
   selectedNote: Note;
   /** `0` = next in queue */
-  extraSelectedNotes: Note[];
+  extraSelectedNotes: (Note | undefined)[];
 }
 
 const newNoteEvent = new CustomEvent('note-new');

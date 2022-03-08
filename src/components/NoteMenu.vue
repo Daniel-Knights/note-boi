@@ -47,7 +47,7 @@ const contextMenuEv = ref<MouseEvent | undefined>(undefined);
 function isSelectedNote(note: Note) {
   return (
     note.id === state.selectedNote.id ||
-    state.extraSelectedNotes.some((nt) => nt.id === note.id)
+    state.extraSelectedNotes.some((nt) => nt?.id === note.id)
   );
 }
 
@@ -111,7 +111,7 @@ function handleNoteSelect(ev: MouseEvent) {
   // Ctrl key + click
   if (ev.metaKey || ev.ctrlKey) {
     const alreadySelectedIndex = state.extraSelectedNotes.findIndex(
-      (nt) => nt.id === noteId
+      (nt) => nt?.id === noteId
     );
 
     if (alreadySelectedIndex >= 0) {
@@ -123,7 +123,7 @@ function handleNoteSelect(ev: MouseEvent) {
 
       // Select next extra note when current selected note is deselected
     } else if (state.selectedNote.id === noteId && hasExtraNotes) {
-      selectNote(state.extraSelectedNotes[0].id);
+      selectNote(state.extraSelectedNotes[0]?.id);
 
       state.extraSelectedNotes.splice(0, 1);
     } else {
