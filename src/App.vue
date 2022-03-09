@@ -1,13 +1,15 @@
 <template>
   <NoteMenu />
   <Editor />
+  <SyncButton />
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { getAllNotes } from './store';
 
 import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
+import SyncButton from './components/SyncButton.vue';
 
 getAllNotes();
 </script>

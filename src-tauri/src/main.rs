@@ -45,6 +45,7 @@ fn main() {
         "reload" => ev.window().emit("reload", {}).unwrap(),
         "new-note" => ev.window().emit("new-note", {}).unwrap(),
         "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
+        "sync-notes" => ev.window().emit("sync-notes", {}).unwrap(),
         _ => {}
       });
   }

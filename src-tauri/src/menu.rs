@@ -9,7 +9,8 @@ pub fn get_menu() -> Menu {
 
   let file_menu = Menu::new()
     .add_item(CustomMenuItem::new("new-note", "New Note"))
-    .add_item(CustomMenuItem::new("delete-note", "Delete Note"));
+    .add_item(CustomMenuItem::new("delete-note", "Delete Note"))
+    .add_item(CustomMenuItem::new("sync-notes", "Sync Notes"));
 
   let edit_menu = Menu::new()
     .add_native_item(MenuItem::Undo)
