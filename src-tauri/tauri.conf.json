@@ -51,6 +51,11 @@
     "allowlist": {
       "shell": {
         "open": true
+      },
+      "http": {
+        "all": false,
+        "request": true,
+        "scope": ["http://localhost:8000/api/key"]
       }
     },
     "security": {

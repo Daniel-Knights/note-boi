@@ -12,14 +12,24 @@
 </template>
 
 <script lang="ts" setup>
-import { event } from '@tauri-apps/api';
+import { http, event } from '@tauri-apps/api';
+import { ResponseType } from '@tauri-apps/api/http';
 
-function syncNotes() {
+async function syncNotes() {
   const key = localStorage.getItem('key');
 
   if (!key) {
     console.log('Generating key...');
-    localStorage.setItem('key', crypto.randomUUID());
+
+    await http
+      .fetch('http://localhost:8000/api/key', {
+        method: 'GET',
+        responseType: ResponseType.Text,
+      })
+      .then((data) => {
+        console.log('Key generated:', data);
+        // localStorage.setItem('key', data.key);
+      });
   } else {
     console.log('Syncing notes...');
   }
