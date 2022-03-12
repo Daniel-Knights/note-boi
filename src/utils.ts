@@ -1,4 +1,4 @@
-import type { Note } from './store';
+import type { Note } from './store/note';
 
 /** Formats Unix time to date-time. */
 export function unixToDateTime(unixTime: number): string {

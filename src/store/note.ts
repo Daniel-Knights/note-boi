@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
 
-import { isEmptyNote } from './utils';
+import { isEmptyNote } from '../utils';
 
 export class Note {
   readonly id = uuidv4();

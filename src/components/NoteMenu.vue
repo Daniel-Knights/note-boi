@@ -43,7 +43,7 @@ import {
   findNoteIndex,
   findNote,
   isSelectedNote,
-} from '../store';
+} from '../store/note';
 import { isEmptyNote, last } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';

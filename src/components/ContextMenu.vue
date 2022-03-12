@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 
-import { state, findNote, newNote, deleteNote, deleteAllNotes } from '../store';
+import { state, findNote, newNote, deleteNote, deleteAllNotes } from '../store/note';
 import { isEmptyNote } from '../utils';
 
 const clickedNoteId = ref<string | undefined>(undefined);

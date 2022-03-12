@@ -11,7 +11,7 @@
 import { onMounted } from 'vue';
 import Quill from 'quill';
 
-import { state, editBody } from '../store';
+import { state, editBody } from '../store/note';
 import { unixToDateTime } from '../utils';
 
 let quillEditor: Quill | undefined;
@@ -24,9 +24,9 @@ document.addEventListener('note-new', () => {
   });
 });
 document.addEventListener('note-change', () => {
-  const parsedBody = JSON.parse(state.selectedNote.content.delta || '[]');
+  const parsedNoteContent = JSON.parse(state.selectedNote.content.delta || '[]');
 
-  quillEditor?.setContents(parsedBody);
+  quillEditor?.setContents(parsedNoteContent);
 });
 document.addEventListener('note-select', () => {
   isNoteSelect = true;

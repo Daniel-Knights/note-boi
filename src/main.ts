@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { event } from '@tauri-apps/api';
 
-import { newNote, deleteAllNotes } from './store';
+import { newNote, deleteAllNotes } from './store/note';
 import App from './App.vue';
 
 event.listen('reload', () => {
