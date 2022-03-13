@@ -1,14 +1,16 @@
-Cloud implementation
-  Compare timestamps
+*Before release*
+Sync
+  Compare timestamps?
 Safer error handling
   Try again?
 Better colour themes
 Recycle bin
 Updater
+Tests
+README
+
+*Whenever*
 Prevent opening context menu off bottom of screen
 Custom colour themes
 Use arrow keys to navigate notes
 Tab key functionality
-
-README
-Release
