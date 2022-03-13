@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getAllNotes } from './store';
+import { getAllNotes } from './store/note';
 
 import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
