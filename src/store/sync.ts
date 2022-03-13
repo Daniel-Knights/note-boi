@@ -31,36 +31,6 @@ function parseErrorRes(res: Response<Record<string, unknown>>) {
   return typeof res.data.error === 'string' ? res.data.error : unknownErrorMessage;
 }
 
-export async function signup(): Promise<void> {
-  state.isSyncing = true;
-
-  const res = await http.fetch<Record<string, string>>('/signup', {
-    method: 'POST',
-    body: {
-      type: 'json',
-      payload: {
-        username: state.username,
-        password: state.password,
-      },
-    },
-  });
-
-  state.isSyncing = false;
-
-  if (res.ok) {
-    state.username = res.data.username;
-    state.token = res.data.token;
-    state.password = '';
-
-    localStorage.setItem('username', state.username);
-    localStorage.setItem('token', state.token);
-  } else {
-    state.error = parseErrorRes(res);
-
-    console.error(res.data);
-  }
-}
-
 export async function login(): Promise<void> {
   state.isSyncing = true;
 
@@ -89,6 +59,36 @@ export async function login(): Promise<void> {
   state.isSyncing = false;
 
   if (!res.ok) {
+    state.error = parseErrorRes(res);
+
+    console.error(res.data);
+  }
+}
+
+export async function signup(): Promise<void> {
+  state.isSyncing = true;
+
+  const res = await http.fetch<Record<string, string>>('/signup', {
+    method: 'POST',
+    body: {
+      type: 'json',
+      payload: {
+        username: state.username,
+        password: state.password,
+      },
+    },
+  });
+
+  state.isSyncing = false;
+
+  if (res.ok) {
+    state.username = res.data.username;
+    state.token = res.data.token;
+    state.password = '';
+
+    localStorage.setItem('username', state.username);
+    localStorage.setItem('token', state.token);
+  } else {
     state.error = parseErrorRes(res);
 
     console.error(res.data);
