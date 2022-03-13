@@ -1,7 +1,7 @@
 <template>
   <NoteMenu />
   <Editor />
-  <SyncButton />
+  <SyncStatus />
 </template>
 
 <script lang="ts" setup>
@@ -12,7 +12,7 @@ import { state, push } from './store/sync';
 
 import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
-import SyncButton from './components/SyncButton.vue';
+import SyncStatus from './components/SyncStatus.vue';
 
 getAllNotes();
 
