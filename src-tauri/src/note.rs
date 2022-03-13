@@ -23,6 +23,7 @@ pub enum NoteError {
   UnableToCreateFile(String),
   UnableToEditFile(String),
   UnableToDeleteFile(String),
+  UnableToSyncFile(Box<NoteError>),
 }
 
 impl Note {
@@ -65,7 +66,7 @@ impl Note {
     }
   }
 
-  pub fn edit(app_dir: &PathBuf, note: Note) -> Result<(), NoteError> {
+  pub fn edit(app_dir: &PathBuf, note: &Note) -> Result<(), NoteError> {
     let path = Note::get_path(app_dir, &note.id);
     let write_res = fs::write(path, note.serialize());
 
@@ -83,6 +84,20 @@ impl Note {
       Ok(_) => Ok(()),
       Err(e) => Err(NoteError::UnableToDeleteFile(e.to_string())),
     }
+  }
+
+  pub fn sync_all(app_dir: &PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
+    for nt in notes.iter() {
+      let edit_res = Note::edit(app_dir, nt);
+
+      if edit_res.is_err() {
+        let err = edit_res.unwrap_err();
+
+        return Err(NoteError::UnableToSyncFile(Box::new(err)));
+      }
+    }
+
+    Ok(())
   }
 
   /// Returns `{app_dir}/{NOTE_DIR}/{id}.json`

@@ -20,5 +20,10 @@ pub fn delete_note(state: tauri::State<AppState>, id: String) -> Result<(), Note
 
 #[tauri::command]
 pub fn edit_note(state: tauri::State<AppState>, note: Note) -> Result<(), NoteError> {
-  Note::edit(&state.app_dir, note)
+  Note::edit(&state.app_dir, &note)
+}
+
+#[tauri::command]
+pub fn sync_all_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(), NoteError> {
+  Note::sync_all(&state.app_dir, notes)
 }

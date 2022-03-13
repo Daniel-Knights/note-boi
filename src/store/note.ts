@@ -24,6 +24,7 @@ interface State {
 const newNoteEvent = new CustomEvent('note-new');
 const selectNoteEvent = new CustomEvent('note-select');
 const changeNoteEvent = new CustomEvent('note-change');
+const unsyncedEvent = new CustomEvent('note-unsynced');
 
 export const state = reactive<State>({
   notes: [],
@@ -122,6 +123,7 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
   }
 
   document.dispatchEvent(changeNoteEvent);
+  document.dispatchEvent(unsyncedEvent);
 
   invoke('delete_note', { id }).catch(console.error);
 }
@@ -150,10 +152,11 @@ export function newNote(): void {
   state.notes.unshift(freshNote);
   state.selectedNote = { ...freshNote };
 
-  invoke('new_note', { note: { ...freshNote } }).catch(console.error);
-
   document.dispatchEvent(changeNoteEvent);
   document.dispatchEvent(newNoteEvent);
+  document.dispatchEvent(unsyncedEvent);
+
+  invoke('new_note', { note: { ...freshNote } }).catch(console.error);
 }
 
 /** Edits note body on Quill `text-change`. */
@@ -168,6 +171,8 @@ export function editBody(delta: string, title: string, body: string): void {
   foundNote.content = { delta, title, body: body || '' };
 
   sortNotes();
+
+  document.dispatchEvent(unsyncedEvent);
 
   invoke('edit_note', { note: { ...foundNote } }).catch(console.error);
 }

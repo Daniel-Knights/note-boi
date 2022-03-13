@@ -17,7 +17,7 @@ import SyncButton from './components/SyncButton.vue';
 getAllNotes();
 
 tauriWindow.appWindow.listen('tauri://close-requested', () => {
-  if (!state.token) {
+  if (!state.token || !state.hasUnsyncedNotes) {
     tauriWindow.appWindow.close();
   }
 

@@ -9,7 +9,7 @@ mod note;
 
 use std::path::PathBuf;
 
-use crate::command::{delete_note, edit_note, get_all_notes, new_note};
+use crate::command::{delete_note, edit_note, get_all_notes, new_note, sync_all_notes};
 use tauri::{Manager, WindowBuilder, WindowUrl};
 
 #[derive(Debug)]
@@ -23,7 +23,8 @@ fn main() {
       delete_note,
       edit_note,
       get_all_notes,
-      new_note
+      new_note,
+      sync_all_notes
     ])
     .create_window("main", WindowUrl::App("".into()), |win, attr| {
       (
