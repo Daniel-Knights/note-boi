@@ -55,7 +55,13 @@
       "http": {
         "all": false,
         "request": true,
-        "scope": ["http://localhost:8000/api/key"]
+        "scope": ["http://localhost:8000/api/*"]
+      },
+      "dialog": {
+        "ask": true
+      },
+      "window": {
+        "close": true
       }
     },
     "security": {

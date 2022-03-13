@@ -5,13 +5,35 @@
 </template>
 
 <script lang="ts" setup>
-import { getAllNotes } from './store/note';
+import { window as tauriWindow, dialog, event } from '@tauri-apps/api';
+
+import { getAllNotes, newNote, deleteAllNotes } from './store/note';
+import { state, push } from './store/sync';
 
 import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
 import SyncButton from './components/SyncButton.vue';
 
 getAllNotes();
+
+tauriWindow.appWindow.listen('tauri://close-requested', () => {
+  if (!state.token) {
+    tauriWindow.appWindow.close();
+  }
+
+  dialog.ask('Sync changes before leaving?').then(async (shouldSync) => {
+    if (shouldSync) await push();
+
+    tauriWindow.appWindow.close();
+  });
+});
+event.listen('reload', () => {
+  window.location.reload();
+});
+event.listen('new-note', () => {
+  newNote();
+});
+event.listen('delete-note', deleteAllNotes);
 </script>
 
 <style lang="scss">

@@ -5,19 +5,17 @@ interface State {
   token: string;
 }
 
-const state = reactive<State>({
+export const state = reactive<State>({
   username: localStorage.getItem('username') || '',
   token: localStorage.getItem('token') || '',
 });
 
-async function signup(): Promise<void> {}
+export async function signup(): Promise<void> {}
 
-async function login(): Promise<void> {}
+export async function login(): Promise<void> {}
 
-async function logout(): Promise<void> {}
+export async function logout(): Promise<void> {}
 
-async function pull(): Promise<void> {}
+export async function pull(): Promise<void> {}
 
-async function push(): Promise<void> {}
-
-export default { state, signup, login, logout, pull, push };
+export async function push(): Promise<void> {}
