@@ -35,6 +35,8 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'warn',
     '@typescript-eslint/no-non-null-assertion': 'off',
 
+    'vue/multi-word-component-names': 'off',
+
     'require-await': 'warn',
 
     // Airbnb overrides
