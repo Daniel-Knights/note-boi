@@ -8,7 +8,7 @@
         <input type="submit" value="Submit" />
       </form>
       <button @click="isLogin = !isLogin">
-        {{ isLogin ? 'login' : 'signup' }}
+        {{ isLogin ? 'Signup' : 'Login' }}
       </button>
     </div>
   </Popup>

@@ -11,7 +11,7 @@
       v-else-if="state.error !== ''"
       class="sync-status__sync-button"
       title="Sync error"
-      @click="showErrorModal"
+      @click="emit('popup-error')"
     >
       Error icon
     </button>
@@ -42,16 +42,14 @@ import { pull, push, state } from '../store/sync';
 
 if (state.token) pull();
 
+const emit = defineEmits(['popup-auth', 'popup-error']);
+
 async function syncNotes() {
   if (!state.token) {
-    // Trigger login modal
+    emit('popup-auth');
   } else {
     await push();
   }
-}
-
-function showErrorModal() {
-  //
 }
 
 event.listen('sync-notes', syncNotes);
