@@ -4,13 +4,22 @@ import type { Response } from '@tauri-apps/api/http';
 
 import { getAllNotes, Note, state as noteState } from './note';
 
+export enum ErrorType {
+  None,
+  Auth,
+  Sync,
+}
+
 interface State {
   username: string;
   password: string;
   token: string;
   hasUnsyncedNotes: boolean;
   isSyncing: boolean;
-  error: string;
+  error: {
+    type: ErrorType;
+    message: string;
+  };
 }
 
 export const state = reactive<State>({
@@ -19,10 +28,15 @@ export const state = reactive<State>({
   token: localStorage.getItem('token') || '',
   hasUnsyncedNotes: false,
   isSyncing: false,
-  error: '',
+  error: {
+    type: ErrorType.None,
+    message: '',
+  },
 });
 
-/** Parses an error response and returns a formatted message */
+// Utils //
+
+/** Parses an error response and returns a formatted message. */
 function parseErrorRes(res: Response<Record<string, unknown>>) {
   const unknownErrorMessage = 'Unknown error, please try again';
 
@@ -31,18 +45,36 @@ function parseErrorRes(res: Response<Record<string, unknown>>) {
   return typeof res.data.error === 'string' ? res.data.error : unknownErrorMessage;
 }
 
+/** Resets {@link state.error}. */
+export function resetError(): void {
+  state.error = { type: ErrorType.None, message: '' };
+}
+
+/** Wrapper for {@link http.fetch}. */
+function tauriFetch<T>(
+  endpoint: string,
+  method: 'POST' | 'PUT',
+  payload?: Record<string, unknown> | Note[]
+): Promise<Response<T>> {
+  const baseUrl = 'http://localhost:8000';
+
+  return http.fetch<T>(`${baseUrl}/api${endpoint}`, {
+    method,
+    body: {
+      type: 'Json',
+      payload,
+    },
+  });
+}
+
+// Routes //
+
 export async function login(): Promise<void> {
   state.isSyncing = true;
 
-  const res = await http.fetch<Record<string, string | Note[]>>('/login', {
-    method: 'POST',
-    body: {
-      type: 'json',
-      payload: {
-        username: state.username,
-        password: state.password,
-      },
-    },
+  const res = await tauriFetch<Record<string, string | Note[]>>('/login', 'POST', {
+    username: state.username,
+    password: state.password,
   });
 
   if (res.ok) {
@@ -59,7 +91,10 @@ export async function login(): Promise<void> {
   state.isSyncing = false;
 
   if (!res.ok) {
-    state.error = parseErrorRes(res);
+    state.error = {
+      type: ErrorType.Auth,
+      message: parseErrorRes(res),
+    };
 
     console.error(res.data);
   }
@@ -68,15 +103,9 @@ export async function login(): Promise<void> {
 export async function signup(): Promise<void> {
   state.isSyncing = true;
 
-  const res = await http.fetch<Record<string, string>>('/signup', {
-    method: 'POST',
-    body: {
-      type: 'json',
-      payload: {
-        username: state.username,
-        password: state.password,
-      },
-    },
+  const res = await tauriFetch<Record<string, string>>('/signup', 'POST', {
+    username: state.username,
+    password: state.password,
   });
 
   state.isSyncing = false;
@@ -89,7 +118,10 @@ export async function signup(): Promise<void> {
     localStorage.setItem('username', state.username);
     localStorage.setItem('token', state.token);
   } else {
-    state.error = parseErrorRes(res);
+    state.error = {
+      type: ErrorType.Auth,
+      message: parseErrorRes(res),
+    };
 
     console.error(res.data);
   }
@@ -106,15 +138,9 @@ export function logout(): void {
 export async function pull(): Promise<void> {
   state.isSyncing = true;
 
-  const res = await http.fetch<Record<string, string | Note[]>>('/notes', {
-    method: 'POST',
-    body: {
-      type: 'json',
-      payload: {
-        username: state.username,
-        token: state.token,
-      },
-    },
+  const res = await tauriFetch<Record<string, string | Note[]>>('/notes', 'POST', {
+    username: state.username,
+    token: state.token,
   });
 
   if (res.ok) {
@@ -125,7 +151,10 @@ export async function pull(): Promise<void> {
   state.isSyncing = false;
 
   if (!res.ok) {
-    state.error = parseErrorRes(res);
+    state.error = {
+      type: ErrorType.Sync,
+      message: parseErrorRes(res),
+    };
 
     console.error(res.data);
   }
@@ -136,17 +165,21 @@ export async function push(): Promise<void> {
 
   await invoke('sync_all_notes', { notes: noteState.notes }).catch(console.error);
 
-  const res = await http.fetch<Record<string, never | string>>('/notes', {
-    method: 'PUT',
-    body: { type: 'json', payload: noteState.notes },
-  });
+  const res = await tauriFetch<Record<string, never | string>>(
+    '/notes',
+    'PUT',
+    noteState.notes
+  );
 
   state.isSyncing = false;
 
   if (res.ok) {
     state.hasUnsyncedNotes = false;
   } else {
-    state.error = parseErrorRes(res);
+    state.error = {
+      type: ErrorType.Sync,
+      message: parseErrorRes(res),
+    };
 
     console.error(res.data);
   }
