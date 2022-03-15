@@ -1,5 +1,5 @@
 <template>
-  <Teleport to="body">
+  <Teleport to="#app">
     <div id="popup">
       <div class="popup__content">
         <slot />

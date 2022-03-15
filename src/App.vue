@@ -1,17 +1,23 @@
 <template>
   <NoteMenu />
   <Editor />
-  <SyncStatus @popup-auth="popupAuth = true" @popup-error="popupError = true" />
-  <SyncAuth v-if="popupAuth" @close="popupAuth = false" />
-  <SyncError v-if="popupError" @close="popupError = false" />
+  <SyncStatus @popup-auth="popup.auth = true" @popup-error="popup.error = true" />
+  <SyncAuth
+    v-if="popup.auth"
+    @close="
+      popup.auth = false;
+      resetError();
+    "
+  />
+  <SyncError v-if="popup.error" @close="popup.error = false" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import { window as tauriWindow, dialog, event } from '@tauri-apps/api';
 
 import { getAllNotes, newNote, deleteAllNotes } from './store/note';
-import { state, push } from './store/sync';
+import { resetError, state, push } from './store/sync';
 
 import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
@@ -19,8 +25,10 @@ import SyncStatus from './components/SyncStatus.vue';
 import SyncAuth from './components/SyncAuth.vue';
 import SyncError from './components/SyncError.vue';
 
-const popupAuth = ref(false);
-const popupError = ref(false);
+const popup = reactive({
+  auth: false,
+  error: false,
+});
 
 getAllNotes();
 

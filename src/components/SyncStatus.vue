@@ -8,10 +8,13 @@
       Loading...
     </div>
     <button
-      v-else-if="state.error !== ''"
-      class="sync-status__sync-button"
-      title="Sync error"
+      v-else-if="state.error.type !== ErrorType.None"
       @click="emit('popup-error')"
+      class="sync-status__error"
+      :class="{
+        'sync-status__error--clickable': state.error.type === ErrorType.Sync,
+      }"
+      title="Sync error"
     >
       Error icon
     </button>
@@ -20,9 +23,9 @@
     </div>
     <button
       v-else
+      @click="syncNotes"
       class="sync-status__sync-button"
       title="Sync changes"
-      @click="syncNotes"
     >
       <svg viewBox="0 0 28 22">
         <!-- eslint-disable max-len -->
@@ -38,7 +41,7 @@
 
 <script lang="ts" setup>
 import { event } from '@tauri-apps/api';
-import { pull, push, state } from '../store/sync';
+import { ErrorType, pull, push, state } from '../store/sync';
 
 if (state.token) pull();
 
@@ -67,8 +70,14 @@ event.listen('sync-notes', syncNotes);
   }
 }
 
+.sync-status__error {
+  pointer-events: none;
+}
+
+.sync-status__error--clickable,
 .sync-status__sync-button {
   cursor: pointer;
+  pointer-events: all;
 
   &:hover {
     opacity: 0.8;
