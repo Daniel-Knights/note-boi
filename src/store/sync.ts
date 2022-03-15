@@ -56,7 +56,8 @@ function tauriFetch<T>(
   method: 'POST' | 'PUT',
   payload?: Record<string, unknown> | Note[]
 ): Promise<Response<T>> {
-  const baseUrl = 'http://localhost:8000';
+  const isDev = process.env.NODE_ENV === 'development';
+  const baseUrl = isDev ? 'http://localhost:8000' : 'TODO';
 
   return http.fetch<T>(`${baseUrl}/api${endpoint}`, {
     method,
