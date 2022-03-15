@@ -1,6 +1,5 @@
 *Before release*
 Sync
-  Compare timestamps?
 Safer error handling
   Try again?
 Better colour themes
@@ -10,6 +9,8 @@ Tests
 README
 
 *Whenever*
+Automatic syncing
+  Compare timestamps?
 Prevent opening context menu off bottom of screen
 Custom colour themes
 Use arrow keys to navigate notes
