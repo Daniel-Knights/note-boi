@@ -3,6 +3,7 @@ import { http, invoke } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 
 import { getAllNotes, Note, state as noteState } from './note';
+import { isDev } from '../utils';
 
 export enum ErrorType {
   None,
@@ -56,8 +57,7 @@ function tauriFetch<T>(
   method: 'POST' | 'PUT',
   payload?: Record<string, unknown> | Note[]
 ): Promise<Response<T>> {
-  const isDev = process.env.NODE_ENV === 'development';
-  const baseUrl = isDev ? 'http://localhost:8000' : 'TODO';
+  const baseUrl = isDev() ? 'http://localhost:8000' : 'TODO';
 
   return http.fetch<T>(`${baseUrl}/api${endpoint}`, {
     method,

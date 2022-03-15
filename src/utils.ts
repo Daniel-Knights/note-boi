@@ -1,10 +1,15 @@
 import type { Note } from './store/note';
 
+/** `process.env.NODE_ENV === 'development'` */
+export function isDev(): boolean {
+  return process.env.NODE_ENV === 'development';
+}
+
 /** Formats Unix time to date-time. */
 export function unixToDateTime(unixTime: number): string {
   return Intl.DateTimeFormat([], {
     dateStyle: 'medium',
-    timeStyle: process.env.NODE_ENV === 'development' ? 'long' : 'short',
+    timeStyle: isDev() ? 'long' : 'short',
   }).format(unixTime);
 }
 
