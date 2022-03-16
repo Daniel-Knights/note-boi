@@ -82,6 +82,7 @@ button {
   grid-template-columns: minmax(260px, 25%) auto;
   margin: 0;
   @include v.equal-dimensions(100%);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, 'Helvetica Neue', sans-serif;
 }
 </style>

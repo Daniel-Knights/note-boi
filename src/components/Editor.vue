@@ -100,6 +100,7 @@ onMounted(() => {
 
   .ql-toolbar,
   .ql-container {
+    font-family: inherit;
     border: none;
   }
 
