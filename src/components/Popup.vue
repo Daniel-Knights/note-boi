@@ -12,10 +12,10 @@
 const emit = defineEmits(['close']);
 
 function keyboardCloseHandler(event: KeyboardEvent) {
-  if (event.key === 'Escape' || event.key === 'Enter') {
-    emit('close');
-
+  if (event.key === 'Escape') {
     document.removeEventListener('keydown', keyboardCloseHandler);
+
+    emit('close');
   }
 }
 function clickCloseHandler(event: MouseEvent) {
