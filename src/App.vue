@@ -32,19 +32,24 @@ const popup = reactive({
 
 getAllNotes();
 
-tauriWindow.appWindow.listen('tauri://close-requested', () => {
+function confirmDialog(cb: () => void) {
   if (!state.token || !state.hasUnsyncedNotes) {
-    tauriWindow.appWindow.close();
+    cb();
+    return;
   }
 
   dialog.ask('Sync changes before leaving?').then(async (shouldSync) => {
     if (shouldSync) await push();
 
-    tauriWindow.appWindow.close();
+    cb();
   });
+}
+
+tauriWindow.appWindow.listen('tauri://close-requested', () => {
+  confirmDialog(() => tauriWindow.appWindow.close());
 });
 event.listen('reload', () => {
-  window.location.reload();
+  confirmDialog(() => window.location.reload());
 });
 event.listen('new-note', () => {
   newNote();
