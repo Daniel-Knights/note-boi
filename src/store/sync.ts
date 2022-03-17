@@ -55,7 +55,7 @@ export function resetError(): void {
 function tauriFetch<T>(
   endpoint: string,
   method: 'POST' | 'PUT',
-  payload?: Record<string, unknown> | Note[]
+  payload?: Record<string, unknown>
 ): Promise<Response<T>> {
   const baseUrl = isDev() ? 'http://localhost:8000' : 'TODO';
 
@@ -79,7 +79,7 @@ export async function login(): Promise<void> {
   });
 
   if (res.ok) {
-    await invoke('sync_all_notes', { notes: res.data.notes }).catch(console.error);
+    await invoke('sync_all_local_notes', { notes: res.data.notes }).catch(console.error);
     await getAllNotes().catch(console.error);
 
     state.token = res.data.token as string;
@@ -145,7 +145,7 @@ export async function pull(): Promise<void> {
   });
 
   if (res.ok) {
-    await invoke('sync_all_notes', { notes: res.data.notes }).catch(console.error);
+    await invoke('sync_all_local_notes', { notes: res.data.notes }).catch(console.error);
     await getAllNotes().catch(console.error);
   }
 
@@ -164,13 +164,11 @@ export async function pull(): Promise<void> {
 export async function push(): Promise<void> {
   state.isSyncing = true;
 
-  await invoke('sync_all_notes', { notes: noteState.notes }).catch(console.error);
-
-  const res = await tauriFetch<Record<string, never | string>>(
-    '/notes',
-    'PUT',
-    noteState.notes
-  );
+  const res = await tauriFetch<Record<string, never | string>>('/notes', 'PUT', {
+    username: state.username,
+    token: state.token,
+    notes: noteState.notes,
+  });
 
   state.isSyncing = false;
 

@@ -23,7 +23,7 @@ pub enum NoteError {
   UnableToCreateFile(String),
   UnableToEditFile(String),
   UnableToDeleteFile(String),
-  UnableToSyncFile(Box<NoteError>),
+  UnableToSyncLocalFiles(String),
 }
 
 impl Note {
@@ -50,7 +50,7 @@ impl Note {
     }
   }
 
-  pub fn write(app_dir: &PathBuf, note: Note) -> Result<(), NoteError> {
+  pub fn write(app_dir: &PathBuf, note: &Note) -> Result<(), NoteError> {
     let notes_path = app_dir.join(NOTE_DIR);
     if !notes_path.is_dir() {
       fs::create_dir(&notes_path).expect("unable to create dir");
@@ -66,7 +66,7 @@ impl Note {
     }
   }
 
-  pub fn edit(app_dir: &PathBuf, note: &Note) -> Result<(), NoteError> {
+  pub fn edit(app_dir: &PathBuf, note: Note) -> Result<(), NoteError> {
     let path = Note::get_path(app_dir, &note.id);
     let write_res = fs::write(path, note.serialize());
 
@@ -86,14 +86,20 @@ impl Note {
     }
   }
 
-  pub fn sync_all(app_dir: &PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
+  pub fn sync_all_local(app_dir: &PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
+    let notes_dir = app_dir.join(NOTE_DIR);
+
+    let rm_res = fs::remove_dir_all(&notes_dir);
+    if rm_res.is_err() {
+      return Err(NoteError::UnableToSyncLocalFiles(
+        rm_res.unwrap_err().to_string(),
+      ));
+    }
+
     for nt in notes.iter() {
-      let edit_res = Note::edit(app_dir, nt);
-
-      if edit_res.is_err() {
-        let err = edit_res.unwrap_err();
-
-        return Err(NoteError::UnableToSyncFile(Box::new(err)));
+      let write_res = Note::write(app_dir, nt);
+      if write_res.is_err() {
+        return Err(write_res.unwrap_err());
       }
     }
 
