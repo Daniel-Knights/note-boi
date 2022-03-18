@@ -14,10 +14,11 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { window as tauriWindow, dialog, event } from '@tauri-apps/api';
+import { window as tauriWindow, dialog } from '@tauri-apps/api';
 
 import { getAllNotes, newNote, deleteAllNotes } from './store/note';
 import { resetError, state, push } from './store/sync';
+import { tauriListen } from './utils';
 
 import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
@@ -48,13 +49,13 @@ function confirmDialog(cb: () => void) {
 tauriWindow.appWindow.listen('tauri://close-requested', () => {
   confirmDialog(() => tauriWindow.appWindow.close());
 });
-event.listen('reload', () => {
+tauriListen('reload', () => {
   confirmDialog(() => window.location.reload());
 });
-event.listen('new-note', () => {
+tauriListen('new-note', () => {
   newNote();
 });
-event.listen('delete-note', deleteAllNotes);
+tauriListen('delete-note', deleteAllNotes);
 </script>
 
 <style lang="scss">

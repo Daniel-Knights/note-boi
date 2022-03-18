@@ -23,7 +23,7 @@
     </div>
     <button
       v-else
-      @click="syncNotes"
+      @click="pushNotes"
       class="sync-status__sync-button"
       title="Sync changes"
     >
@@ -40,14 +40,19 @@
 </template>
 
 <script lang="ts" setup>
-import { event } from '@tauri-apps/api';
-import { ErrorType, pull, push, state } from '../store/sync';
+import { ErrorType, logout, pull, push, state } from '../store/sync';
+import { tauriEmit, tauriListen } from '../utils';
 
-if (state.token) pull();
+if (state.token) {
+  tauriEmit('login');
+  pull();
+} else {
+  tauriEmit('logout');
+}
 
 const emit = defineEmits(['popup-auth', 'popup-error']);
 
-async function syncNotes() {
+async function pushNotes() {
   if (!state.token) {
     emit('popup-auth');
   } else {
@@ -55,7 +60,17 @@ async function syncNotes() {
   }
 }
 
-event.listen('sync-notes', syncNotes);
+tauriListen('push-notes', pushNotes);
+tauriListen('pull-notes', pull);
+tauriListen('login', () => {
+  state.isLogin = true;
+  emit('popup-auth');
+});
+tauriListen('logout', logout);
+tauriListen('signup', () => {
+  state.isLogin = false;
+  emit('popup-auth');
+});
 </script>
 
 <style lang="scss" scoped>

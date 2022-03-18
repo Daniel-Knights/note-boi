@@ -9,8 +9,7 @@ pub fn get_menu() -> Menu {
 
   let file_menu = Menu::new()
     .add_item(CustomMenuItem::new("new-note", "New Note"))
-    .add_item(CustomMenuItem::new("delete-note", "Delete Note"))
-    .add_item(CustomMenuItem::new("sync-notes", "Sync Notes"));
+    .add_item(CustomMenuItem::new("delete-note", "Delete Note"));
 
   let edit_menu = Menu::new()
     .add_native_item(MenuItem::Undo)
@@ -26,9 +25,17 @@ pub fn get_menu() -> Menu {
     .add_native_item(MenuItem::Zoom)
     .add_native_item(MenuItem::EnterFullScreen);
 
+  let sync_menu = Menu::new()
+    .add_item(CustomMenuItem::new("push-notes", "Push Notes"))
+    .add_item(CustomMenuItem::new("pull-notes", "Pull Notes"))
+    .add_item(CustomMenuItem::new("login", "Login"))
+    .add_item(CustomMenuItem::new("logout", "Logout"))
+    .add_item(CustomMenuItem::new("signup", "Signup"));
+
   Menu::new()
     .add_submenu(Submenu::new("", app_menu))
     .add_submenu(Submenu::new("File", file_menu))
     .add_submenu(Submenu::new("Edit", edit_menu))
     .add_submenu(Submenu::new("View", view_menu))
+    .add_submenu(Submenu::new("Sync", sync_menu))
 }

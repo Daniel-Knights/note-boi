@@ -46,7 +46,11 @@ fn main() {
         "reload" => ev.window().emit("reload", {}).unwrap(),
         "new-note" => ev.window().emit("new-note", {}).unwrap(),
         "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
-        "sync-notes" => ev.window().emit("sync-notes", {}).unwrap(),
+        "push-notes" => ev.window().emit("push-notes", {}).unwrap(),
+        "pull-notes" => ev.window().emit("pull-notes", {}).unwrap(),
+        "login" => ev.window().emit("login", {}).unwrap(),
+        "logout" => ev.window().emit("logout", {}).unwrap(),
+        "signup" => ev.window().emit("signup", {}).unwrap(),
         _ => {}
       });
   }
@@ -58,6 +62,24 @@ fn main() {
       };
 
       app.manage(state);
+
+      let menu_handle = app.get_window("main").unwrap().menu_handle();
+
+      let toggle_sync_menu = move |b: bool| {
+        menu_handle.get_item("login").set_enabled(b).unwrap();
+        menu_handle.get_item("signup").set_enabled(b).unwrap();
+        menu_handle.get_item("push-notes").set_enabled(!b).unwrap();
+        menu_handle.get_item("pull-notes").set_enabled(!b).unwrap();
+        menu_handle.get_item("logout").set_enabled(!b).unwrap();
+      };
+      let toggle_sync_menu_clone = toggle_sync_menu.clone();
+
+      app.listen_global("login", move |_ev| {
+        toggle_sync_menu(false);
+      });
+      app.listen_global("logout", move |_ev| {
+        toggle_sync_menu_clone(true);
+      });
 
       Ok(())
     })

@@ -1,11 +1,11 @@
 <template>
   <Popup>
     <div id="sync-auth">
-      <h2>{{ isLogin ? 'Login' : 'Signup' }}</h2>
+      <h2>{{ state.isLogin ? 'Login' : 'Signup' }}</h2>
       <form @submit.prevent="handleSubmit" class="sync-auth__form">
         <input v-model="state.username" type="text" placeholder="Username" />
         <input v-model="state.password" type="password" placeholder="Password" />
-        <input v-if="!isLogin" v-model="confirmPassword" type="password" />
+        <input v-if="!state.isLogin" v-model="confirmPassword" type="password" />
         <p v-if="state.error.type === ErrorType.Auth" class="sync-auth__error">
           {{ state.error.message }}
         </p>
@@ -13,11 +13,11 @@
       </form>
       <button
         @click="
-          isLogin = !isLogin;
+          state.isLogin = !state.isLogin;
           resetError();
         "
       >
-        Switch to {{ isLogin ? 'signup' : 'login' }}
+        Switch to {{ state.isLogin ? 'signup' : 'login' }}
       </button>
     </div>
   </Popup>
@@ -30,11 +30,10 @@ import { ErrorType, resetError, state, login, signup } from '../store/sync';
 
 import Popup from './Popup.vue';
 
-const isLogin = ref(true);
 const confirmPassword = ref('');
 
 function handleSubmit() {
-  if (isLogin.value) {
+  if (state.isLogin) {
     login();
   } else {
     if (confirmPassword.value !== state.password) {

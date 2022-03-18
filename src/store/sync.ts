@@ -3,7 +3,7 @@ import { http, invoke } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 
 import { getAllNotes, Note, state as noteState } from './note';
-import { isDev } from '../utils';
+import { isDev, tauriEmit } from '../utils';
 
 export enum ErrorType {
   None,
@@ -17,6 +17,7 @@ interface State {
   token: string;
   hasUnsyncedNotes: boolean;
   isSyncing: boolean;
+  isLogin: boolean; // For switching login/signup form
   error: {
     type: ErrorType;
     message: string;
@@ -29,6 +30,7 @@ export const state = reactive<State>({
   token: localStorage.getItem('token') || '',
   hasUnsyncedNotes: false,
   isSyncing: false,
+  isLogin: true,
   error: {
     type: ErrorType.None,
     message: '',
@@ -79,6 +81,8 @@ export async function login(): Promise<void> {
   });
 
   if (res.ok) {
+    tauriEmit('login');
+
     await invoke('sync_all_local_notes', { notes: res.data.notes }).catch(console.error);
     await getAllNotes().catch(console.error);
 
@@ -112,6 +116,8 @@ export async function signup(): Promise<void> {
   state.isSyncing = false;
 
   if (res.ok) {
+    tauriEmit('login');
+
     state.username = res.data.username;
     state.token = res.data.token;
     state.password = '';
@@ -129,6 +135,8 @@ export async function signup(): Promise<void> {
 }
 
 export function logout(): void {
+  tauriEmit('logout');
+
   state.username = '';
   state.token = '';
 
