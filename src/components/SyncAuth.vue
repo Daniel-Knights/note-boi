@@ -46,4 +46,18 @@ function handleSubmit() {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#sync-auth,
+.sync-auth__form {
+  color: var(--color__primary);
+
+  > * + * {
+    margin-top: 1em;
+  }
+}
+
+.sync-auth__form {
+  display: flex;
+  flex-direction: column;
+}
+</style>

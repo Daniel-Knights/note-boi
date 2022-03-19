@@ -40,11 +40,14 @@ setTimeout(() => {
   position: fixed;
   @include v.cover;
   @include v.equal-dimensions(100%);
+  background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 100;
 }
 
 .popup__content {
   pointer-events: all;
+  padding: 1em;
+  background-color: var(--color__secondary);
 }
 </style>
