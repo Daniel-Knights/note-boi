@@ -1,12 +1,6 @@
 <template>
   <div id="sync-status">
-    <div
-      v-if="state.isSyncing"
-      class="sync-status__loading-spinner"
-      title="Syncing changes"
-    >
-      Loading...
-    </div>
+    <div v-if="state.isSyncing" class="sync-status__loading-spinner"></div>
     <button
       v-else-if="state.error.type !== ErrorType.None"
       @click="emit('popup-error')"
@@ -16,10 +10,12 @@
       }"
       title="Sync error"
     >
-      Error icon
+      <svg aria-hidden="true" role="img" viewBox="0 0 24 24">
+        <CloudErrorIcon />
+      </svg>
     </button>
     <div v-else-if="state.token !== '' && !state.hasUnsyncedNotes" title="Changes synced">
-      Cloud with tick
+      <CloudTickIcon />
     </div>
     <button
       v-else
@@ -27,14 +23,7 @@
       class="sync-status__sync-button"
       title="Sync changes"
     >
-      <svg viewBox="0 0 28 22">
-        <!-- eslint-disable max-len -->
-        <path
-          fill="currentColor"
-          d="M23,8.29A9,9,0,0,0,5.37,6.45,8,8,0,0,0,8,22H21A7,7,0,0,0,23,8.29Zm-4.68,7.42-2-2a1,1,0,0,1-.21-1.09A1,1,0,0,1,17,12h.86A4,4,0,0,0,14,9a4,4,0,0,0-1.6.33,1,1,0,1,1-.8-1.83A5.93,5.93,0,0,1,14,7a6,6,0,0,1,5.91,5H21a1,1,0,0,1,.92.62,1,1,0,0,1-.21,1.09l-2,2a1,1,0,0,1-1.42,0Zm-12-3.42,2-2a1,1,0,0,1,1.42,0l2,2a1,1,0,0,1,.21,1.09A1,1,0,0,1,11,14h-.86a4,4,0,0,0,5.46,2.67,1,1,0,0,1,.8,1.83A6,6,0,0,1,8.09,14H7a1,1,0,0,1-.92-.62A1,1,0,0,1,6.29,12.29Z"
-        />
-        <!-- eslint-enable max-len -->
-      </svg>
+      <CloudSyncIcon />
     </button>
   </div>
 </template>
@@ -42,6 +31,10 @@
 <script lang="ts" setup>
 import { ErrorType, logout, pull, push, state } from '../store/sync';
 import { tauriEmit, tauriListen } from '../utils';
+
+import CloudSyncIcon from './svg/CloudSyncIcon.vue';
+import CloudTickIcon from './svg/CloudTickIcon.vue';
+import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 
 if (state.token) {
   tauriEmit('login');
@@ -78,10 +71,25 @@ tauriListen('signup', () => {
   position: absolute;
   bottom: 12px;
   right: 24px;
-  @include v.equal-dimensions(32px);
 
-  > * {
-    @include v.equal-dimensions(100%);
+  &,
+  svg,
+  .sync-status__loading-spinner {
+    @include v.equal-dimensions(32px);
+  }
+}
+
+.sync-status__loading-spinner {
+  display: block;
+  border: 5px solid var(--color__interactive);
+  border-bottom-color: var(--color__secondary);
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
   }
 }
 
