@@ -1,4 +1,4 @@
-use tauri::{CustomMenuItem, Menu, MenuItem, Submenu};
+use tauri::{App, Builder, CustomMenuItem, Manager, Menu, MenuItem, Submenu, Wry};
 
 pub fn get_menu() -> Menu {
   let app_menu = Menu::new()
@@ -38,4 +38,42 @@ pub fn get_menu() -> Menu {
     .add_submenu(Submenu::new("Edit", edit_menu))
     .add_submenu(Submenu::new("View", view_menu))
     .add_submenu(Submenu::new("Sync", sync_menu))
+}
+
+/// Sets the menu to use on all windows and handles any menu events
+pub fn set_menu(builder: Builder<Wry>) -> Builder<Wry> {
+  builder
+    .menu(get_menu())
+    .on_menu_event(|ev| match ev.menu_item_id() {
+      "reload" => ev.window().emit("reload", {}).unwrap(),
+      "new-note" => ev.window().emit("new-note", {}).unwrap(),
+      "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
+      "push-notes" => ev.window().emit("push-notes", {}).unwrap(),
+      "pull-notes" => ev.window().emit("pull-notes", {}).unwrap(),
+      "login" => ev.window().emit("login", {}).unwrap(),
+      "logout" => ev.window().emit("logout", {}).unwrap(),
+      "signup" => ev.window().emit("signup", {}).unwrap(),
+      _ => {}
+    })
+}
+
+/// Toggles enabled sync menu items
+pub fn toggle_sync_items(app: &mut App<Wry>) {
+  let menu_handle = app.get_window("main").unwrap().menu_handle();
+
+  let toggle_fn = move |b: bool| {
+    menu_handle.get_item("login").set_enabled(b).unwrap();
+    menu_handle.get_item("signup").set_enabled(b).unwrap();
+    menu_handle.get_item("push-notes").set_enabled(!b).unwrap();
+    menu_handle.get_item("pull-notes").set_enabled(!b).unwrap();
+    menu_handle.get_item("logout").set_enabled(!b).unwrap();
+  };
+  let toggle_fn_clone = toggle_fn.clone();
+
+  app.listen_global("login", move |_ev| {
+    toggle_fn(false);
+  });
+  app.listen_global("logout", move |_ev| {
+    toggle_fn_clone(true);
+  });
 }

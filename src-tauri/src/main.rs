@@ -7,9 +7,8 @@ mod command;
 mod menu;
 mod note;
 
-use std::path::PathBuf;
-
 use crate::command::{delete_note, edit_note, get_all_notes, new_note, sync_all_local_notes};
+use std::path::PathBuf;
 use tauri::{Manager, WindowBuilder, WindowUrl};
 
 #[derive(Debug)]
@@ -39,20 +38,8 @@ fn main() {
     });
 
   if cfg!(target_os = "macos") {
-    builder = builder
-      // Only add OS menu for macos
-      .menu(menu::get_menu())
-      .on_menu_event(|ev| match ev.menu_item_id() {
-        "reload" => ev.window().emit("reload", {}).unwrap(),
-        "new-note" => ev.window().emit("new-note", {}).unwrap(),
-        "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
-        "push-notes" => ev.window().emit("push-notes", {}).unwrap(),
-        "pull-notes" => ev.window().emit("pull-notes", {}).unwrap(),
-        "login" => ev.window().emit("login", {}).unwrap(),
-        "logout" => ev.window().emit("logout", {}).unwrap(),
-        "signup" => ev.window().emit("signup", {}).unwrap(),
-        _ => {}
-      });
+    // Only set menu for MacOS
+    builder = menu::set_menu(builder);
   }
 
   builder
@@ -63,23 +50,9 @@ fn main() {
 
       app.manage(state);
 
-      let menu_handle = app.get_window("main").unwrap().menu_handle();
-
-      let toggle_sync_menu = move |b: bool| {
-        menu_handle.get_item("login").set_enabled(b).unwrap();
-        menu_handle.get_item("signup").set_enabled(b).unwrap();
-        menu_handle.get_item("push-notes").set_enabled(!b).unwrap();
-        menu_handle.get_item("pull-notes").set_enabled(!b).unwrap();
-        menu_handle.get_item("logout").set_enabled(!b).unwrap();
-      };
-      let toggle_sync_menu_clone = toggle_sync_menu.clone();
-
-      app.listen_global("login", move |_ev| {
-        toggle_sync_menu(false);
-      });
-      app.listen_global("logout", move |_ev| {
-        toggle_sync_menu_clone(true);
-      });
+      if cfg!(target_os = "macos") {
+        menu::toggle_sync_items(app);
+      }
 
       Ok(())
     })
