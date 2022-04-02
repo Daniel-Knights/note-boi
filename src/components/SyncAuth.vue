@@ -30,34 +30,24 @@ import { ErrorType, resetError, state, login, signup } from '../store/sync';
 
 import Popup from './Popup.vue';
 
+const emit = defineEmits(['close']);
+
 const confirmPassword = ref('');
 
-function handleSubmit() {
+async function handleSubmit() {
   if (state.isLogin) {
-    login();
+    await login();
   } else {
     if (confirmPassword.value !== state.password) {
       state.error = { type: ErrorType.Auth, message: "Passwords don't match" };
       return;
     }
 
-    signup();
+    await signup();
   }
+
+  emit('close');
 }
 </script>
 
-<style lang="scss">
-#sync-auth,
-.sync-auth__form {
-  color: var(--color__primary);
-
-  > * + * {
-    margin-top: 1em;
-  }
-}
-
-.sync-auth__form {
-  display: flex;
-  flex-direction: column;
-}
-</style>
+<style lang="scss"></style>
