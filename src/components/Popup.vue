@@ -11,18 +11,19 @@
 <script lang="ts" setup>
 const emit = defineEmits(['close']);
 
-function keyboardCloseHandler(event: KeyboardEvent) {
-  if (event.key === 'Escape') {
-    document.removeEventListener('keydown', keyboardCloseHandler);
+function closePopup() {
+  document.removeEventListener('keydown', keyboardCloseHandler);
+  document.removeEventListener('click', clickCloseHandler);
 
-    emit('close');
-  }
+  emit('close');
+}
+
+function keyboardCloseHandler(event: KeyboardEvent) {
+  if (event.key === 'Escape') closePopup();
 }
 function clickCloseHandler(event: MouseEvent) {
-  if (!(event.target as HTMLElement)?.closest('#popup')) {
-    document.removeEventListener('click', clickCloseHandler);
-
-    emit('close');
+  if (!(event.target as HTMLElement)?.closest('.popup__content')) {
+    closePopup();
   }
 }
 
@@ -35,7 +36,6 @@ setTimeout(() => {
 
 <style lang="scss" scoped>
 #popup {
-  pointer-events: none;
   @include v.flex-x(center, center);
   position: fixed;
   @include v.cover;
@@ -46,8 +46,8 @@ setTimeout(() => {
 }
 
 .popup__content {
-  pointer-events: all;
   padding: 1em;
+  color: var(--color__primary);
   background-color: var(--color__secondary);
 }
 </style>
