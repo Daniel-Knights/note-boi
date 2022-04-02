@@ -1,6 +1,6 @@
 <template>
   <div id="sync-status">
-    <div v-if="state.isSyncing" class="sync-status__loading-spinner"></div>
+    <div v-if="state.isLoading" class="sync-status__loading-spinner"></div>
     <button
       v-else-if="state.error.type !== ErrorType.None"
       @click="emit('popup-error')"

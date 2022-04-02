@@ -8,7 +8,9 @@ import { isDev, tauriEmit } from '../utils';
 export enum ErrorType {
   None,
   Auth,
-  Sync,
+  Push,
+  Pull,
+  Logout,
 }
 
 interface State {
@@ -16,7 +18,7 @@ interface State {
   password: string;
   token: string;
   hasUnsyncedNotes: boolean;
-  isSyncing: boolean;
+  isLoading: boolean;
   isLogin: boolean; // For switching login/signup form
   error: {
     type: ErrorType;
@@ -29,7 +31,7 @@ export const state = reactive<State>({
   password: '',
   token: localStorage.getItem('token') || '',
   hasUnsyncedNotes: false,
-  isSyncing: false,
+  isLoading: false,
   isLogin: true,
   error: {
     type: ErrorType.None,
@@ -73,7 +75,7 @@ function tauriFetch<T>(
 // Routes //
 
 export async function login(): Promise<void> {
-  state.isSyncing = true;
+  state.isLoading = true;
 
   const res = await tauriFetch<Record<string, string | Note[]>>('/login', 'POST', {
     username: state.username,
@@ -93,7 +95,7 @@ export async function login(): Promise<void> {
     localStorage.setItem('token', state.token);
   }
 
-  state.isSyncing = false;
+  state.isLoading = false;
 
   if (!res.ok) {
     state.error = {
@@ -106,14 +108,14 @@ export async function login(): Promise<void> {
 }
 
 export async function signup(): Promise<void> {
-  state.isSyncing = true;
+  state.isLoading = true;
 
   const res = await tauriFetch<Record<string, string>>('/signup', 'POST', {
     username: state.username,
     password: state.password,
   });
 
-  state.isSyncing = false;
+  state.isLoading = false;
 
   if (res.ok) {
     tauriEmit('login');
@@ -134,18 +136,34 @@ export async function signup(): Promise<void> {
   }
 }
 
-export function logout(): void {
-  tauriEmit('logout');
+export async function logout(): Promise<void> {
+  state.isLoading = true;
 
-  state.username = '';
-  state.token = '';
+  const res = await tauriFetch<Record<string, never | string>>('/logout', 'POST', {
+    username: state.username,
+    token: state.token,
+  });
 
-  localStorage.removeItem('username');
-  localStorage.removeItem('token');
+  state.isLoading = false;
+
+  if (res.ok) {
+    tauriEmit('logout');
+
+    state.username = '';
+    state.token = '';
+
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+  } else {
+    state.error = {
+      type: ErrorType.Logout,
+      message: parseErrorRes(res),
+    };
+  }
 }
 
 export async function pull(): Promise<void> {
-  state.isSyncing = true;
+  state.isLoading = true;
 
   const res = await tauriFetch<Record<string, string | Note[]>>('/notes', 'POST', {
     username: state.username,
@@ -157,11 +175,11 @@ export async function pull(): Promise<void> {
     await getAllNotes().catch(console.error);
   }
 
-  state.isSyncing = false;
+  state.isLoading = false;
 
   if (!res.ok) {
     state.error = {
-      type: ErrorType.Sync,
+      type: ErrorType.Pull,
       message: parseErrorRes(res),
     };
 
@@ -170,7 +188,7 @@ export async function pull(): Promise<void> {
 }
 
 export async function push(): Promise<void> {
-  state.isSyncing = true;
+  state.isLoading = true;
 
   const res = await tauriFetch<Record<string, never | string>>('/notes', 'PUT', {
     username: state.username,
@@ -178,13 +196,13 @@ export async function push(): Promise<void> {
     notes: noteState.notes,
   });
 
-  state.isSyncing = false;
+  state.isLoading = false;
 
   if (res.ok) {
     state.hasUnsyncedNotes = false;
   } else {
     state.error = {
-      type: ErrorType.Sync,
+      type: ErrorType.Push,
       message: parseErrorRes(res),
     };
 
