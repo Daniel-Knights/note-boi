@@ -75,8 +75,12 @@ body {
   background-color: var(--color__primary);
 }
 
-button {
+button,
+input[type='submit'] {
+  -webkit-appearance: none;
   cursor: pointer;
+  border: 0;
+  border-radius: 0;
 
   &:hover {
     opacity: 0.8;
