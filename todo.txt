@@ -1,5 +1,4 @@
 *Before release*
-Sync
 Safer error handling
   Try again?
 Better colour themes
