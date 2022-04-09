@@ -38,7 +38,7 @@
   --color__interactive: #2e2e2e;
 }
 
-// Vars
+// CSS Vars
 :root {
   @include light-theme;
 
@@ -57,3 +57,7 @@
 .theme--dark {
   @include dark-theme;
 }
+
+// Sass Vars
+$sync-icon-dimensions: 32px;
+$sync-icon-right: 18px;

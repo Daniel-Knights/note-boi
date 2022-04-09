@@ -77,20 +77,18 @@ onMounted(() => {
 
   $text-padding: 8px;
 
-  .editor__date,
-  .ql-editor {
-    padding-left: $text-padding;
-    padding-right: $text-padding;
-  }
-
   .editor__date {
     display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px $text-padding;
     text-align: center;
     font-size: 11px;
     color: var(--color__tertiary);
     border-bottom: 1px solid var(--color__tertiary);
+  }
+
+  .ql-editor {
+    padding-left: $text-padding;
+    padding-right: 60px;
   }
 
   .ql-editor.ql-blank::before {

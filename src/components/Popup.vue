@@ -13,7 +13,7 @@ const emit = defineEmits(['close']);
 
 function closePopup() {
   document.removeEventListener('keydown', keyboardCloseHandler);
-  document.removeEventListener('click', clickCloseHandler);
+  document.removeEventListener('mousedown', clickCloseHandler);
 
   emit('close');
 }
@@ -30,7 +30,7 @@ function clickCloseHandler(event: MouseEvent) {
 // setTimeout prevents immediate close
 setTimeout(() => {
   document.addEventListener('keydown', keyboardCloseHandler);
-  document.addEventListener('click', clickCloseHandler);
+  document.addEventListener('mousedown', clickCloseHandler);
 });
 </script>
 
@@ -47,6 +47,7 @@ setTimeout(() => {
 
 .popup__content {
   padding: 1em;
+  max-width: 400px;
   color: var(--color__primary);
   background-color: var(--color__secondary);
 }

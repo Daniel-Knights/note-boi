@@ -1,22 +1,21 @@
 <template>
   <div id="sync-status">
+    <!-- Loading -->
     <div v-if="state.isLoading" class="sync-status__loading-spinner"></div>
+    <!-- Error -->
     <button
-      v-else-if="state.error.type !== ErrorType.None"
+      v-else-if="isSyncError"
       @click="emit('popup-error')"
       class="sync-status__error"
-      :class="{
-        'sync-status__error--clickable': state.error.type === ErrorType.Sync,
-      }"
       title="Sync error"
     >
-      <svg aria-hidden="true" role="img" viewBox="0 0 24 24">
-        <CloudErrorIcon />
-      </svg>
+      <CloudErrorIcon />
     </button>
+    <!-- Sync successful -->
     <div v-else-if="state.token !== '' && !state.hasUnsyncedNotes" title="Changes synced">
       <CloudTickIcon />
     </div>
+    <!-- Sync ready -->
     <button
       v-else
       @click="pushNotes"
@@ -29,6 +28,8 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue';
+
 import { ErrorType, logout, pull, push, state } from '../store/sync';
 import { tauriEmit, tauriListen } from '../utils';
 
@@ -44,6 +45,16 @@ if (state.token) {
 }
 
 const emit = defineEmits(['popup-auth', 'popup-error']);
+const isSyncError = computed(() => {
+  switch (state.error.type) {
+    case ErrorType.Logout:
+    case ErrorType.Pull:
+    case ErrorType.Push:
+      return true;
+    default:
+      return false;
+  }
+});
 
 async function pushNotes() {
   if (!state.token) {
@@ -70,12 +81,12 @@ tauriListen('signup', () => {
 #sync-status {
   position: absolute;
   bottom: 12px;
-  right: 24px;
+  right: v.$sync-icon-right;
 
   &,
   svg,
   .sync-status__loading-spinner {
-    @include v.equal-dimensions(32px);
+    @include v.equal-dimensions(v.$sync-icon-dimensions);
   }
 }
 
@@ -93,11 +104,7 @@ tauriListen('signup', () => {
   }
 }
 
-.sync-status__error {
-  pointer-events: none;
-}
-
-.sync-status__error--clickable,
+.sync-status__error,
 .sync-status__sync-button {
   cursor: pointer;
   pointer-events: all;

@@ -1,7 +1,7 @@
 <template>
-  <Popup>
-    <div>{{ state.error }}</div>
-    <button @click="tryAgain">Try Again?</button>
+  <Popup @close="emit('close')">
+    <div class="sync-error__message">Error: {{ state.error.message }}</div>
+    <button @click="tryAgain" class="sync-error__button">Try again?</button>
   </Popup>
 </template>
 
@@ -31,4 +31,19 @@ function tryAgain() {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.sync-error__message {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.sync-error__button {
+  margin-top: 12px;
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+</style>

@@ -26,7 +26,7 @@
       </li>
     </ul>
     <ContextMenu :ev="contextMenuEv" />
-    <button class="note-menu__new-note" @click="newNote">
+    <button class="note-menu__new-note button--default" @click="newNote">
       <PlusIcon />
     </button>
   </section>
@@ -217,7 +217,5 @@ $new-note-height: 50px;
   height: $new-note-height;
   width: 100%;
   font-size: 30px;
-  color: #fff;
-  background-color: var(--color__interactive);
 }
 </style>

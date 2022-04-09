@@ -1,6 +1,7 @@
 <template>
   <NoteMenu />
   <Editor />
+  <Logout />
   <SyncStatus @popup-auth="popup.auth = true" @popup-error="popup.error = true" />
   <SyncAuth
     v-if="popup.auth"
@@ -25,6 +26,7 @@ import Editor from './components/Editor.vue';
 import SyncStatus from './components/SyncStatus.vue';
 import SyncAuth from './components/SyncAuth.vue';
 import SyncError from './components/SyncError.vue';
+import Logout from './components/Logout.vue';
 
 const popup = reactive({
   auth: false,
@@ -82,9 +84,24 @@ input[type='submit'] {
   border: 0;
   border-radius: 0;
 
+  &.button--default {
+    padding: 5px 20px;
+    line-height: 1;
+    color: #fff;
+    background-color: var(--color__interactive);
+  }
+
   &:hover {
     opacity: 0.8;
   }
+}
+
+input:not([type='submit']),
+textarea {
+  -webkit-appearance: none;
+  padding: 5px;
+  border: 1px solid var(--color__primary);
+  border-radius: 0;
 }
 
 #app {

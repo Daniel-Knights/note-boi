@@ -72,6 +72,14 @@ function tauriFetch<T>(
   });
 }
 
+function clientSideLogout() {
+  state.token = '';
+  state.username = '';
+
+  localStorage.removeItem('token');
+  localStorage.removeItem('username');
+}
+
 // Routes //
 
 export async function login(): Promise<void> {
@@ -113,6 +121,7 @@ export async function signup(): Promise<void> {
   const res = await tauriFetch<Record<string, string>>('/signup', 'POST', {
     username: state.username,
     password: state.password,
+    notes: noteState.notes,
   });
 
   state.isLoading = false;
@@ -120,7 +129,6 @@ export async function signup(): Promise<void> {
   if (res.ok) {
     tauriEmit('login');
 
-    state.username = res.data.username;
     state.token = res.data.token;
     state.password = '';
 
@@ -137,6 +145,8 @@ export async function signup(): Promise<void> {
 }
 
 export async function logout(): Promise<void> {
+  if (!state.token) return; // Prevent bug where event.emit triggers event.listen('logout')
+
   state.isLoading = true;
 
   const res = await tauriFetch<Record<string, never | string>>('/logout', 'POST', {
@@ -148,12 +158,8 @@ export async function logout(): Promise<void> {
 
   if (res.ok) {
     tauriEmit('logout');
-
-    state.username = '';
-    state.token = '';
-
-    localStorage.removeItem('username');
-    localStorage.removeItem('token');
+    clientSideLogout();
+    resetError();
   } else {
     state.error = {
       type: ErrorType.Logout,
@@ -182,6 +188,9 @@ export async function pull(): Promise<void> {
       type: ErrorType.Pull,
       message: parseErrorRes(res),
     };
+
+    // User not found
+    if (res.status === 404) clientSideLogout();
 
     console.error(res.data);
   }
