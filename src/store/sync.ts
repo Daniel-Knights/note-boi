@@ -91,6 +91,7 @@ export async function login(): Promise<void> {
   });
 
   if (res.ok) {
+    resetError();
     tauriEmit('login');
 
     await invoke('sync_all_local_notes', { notes: res.data.notes }).catch(console.error);
@@ -127,6 +128,7 @@ export async function signup(): Promise<void> {
   state.isLoading = false;
 
   if (res.ok) {
+    resetError();
     tauriEmit('login');
 
     state.token = res.data.token;
@@ -145,7 +147,7 @@ export async function signup(): Promise<void> {
 }
 
 export async function logout(): Promise<void> {
-  if (!state.token) return; // Prevent bug where event.emit triggers event.listen('logout')
+  if (!state.token) return; // Prevent bug where event.emit triggers event.listen
 
   state.isLoading = true;
 
@@ -157,9 +159,9 @@ export async function logout(): Promise<void> {
   state.isLoading = false;
 
   if (res.ok) {
+    resetError();
     tauriEmit('logout');
     clientSideLogout();
-    resetError();
   } else {
     state.error = {
       type: ErrorType.Logout,
@@ -177,6 +179,7 @@ export async function pull(): Promise<void> {
   });
 
   if (res.ok) {
+    resetError();
     await invoke('sync_all_local_notes', { notes: res.data.notes }).catch(console.error);
     await getAllNotes().catch(console.error);
   }
@@ -208,6 +211,7 @@ export async function push(): Promise<void> {
   state.isLoading = false;
 
   if (res.ok) {
+    resetError();
     state.hasUnsyncedNotes = false;
   } else {
     state.error = {

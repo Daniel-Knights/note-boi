@@ -2,7 +2,7 @@
   <NoteMenu />
   <Editor />
   <Logout />
-  <SyncStatus @popup-auth="popup.auth = true" @popup-error="popup.error = true" />
+  <SyncStatus @popup-auth="handlePopupAuthEvent" @popup-error="popup.error = true" />
   <SyncAuth
     v-if="popup.auth"
     @close="
@@ -10,7 +10,13 @@
       resetError();
     "
   />
-  <SyncError v-if="popup.error" @close="popup.error = false" />
+  <SyncError
+    v-if="popup.error"
+    @close="
+      popup.error = false;
+      resetError();
+    "
+  />
 </template>
 
 <script lang="ts" setup>
@@ -28,12 +34,19 @@ import SyncAuth from './components/SyncAuth.vue';
 import SyncError from './components/SyncError.vue';
 import Logout from './components/Logout.vue';
 
+getAllNotes();
+
 const popup = reactive({
   auth: false,
   error: false,
 });
 
-getAllNotes();
+function handlePopupAuthEvent() {
+  // Prevent bug where event.emit triggers event.listen
+  if (!state.token) {
+    popup.auth = true;
+  }
+}
 
 function confirmDialog(cb: () => void) {
   if (!state.token || !state.hasUnsyncedNotes) {
