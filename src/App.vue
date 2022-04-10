@@ -24,7 +24,7 @@ import { reactive } from 'vue';
 import { window as tauriWindow, dialog } from '@tauri-apps/api';
 
 import { getAllNotes, newNote, deleteAllNotes } from './store/note';
-import { resetError, state, push } from './store/sync';
+import { resetError, state, push, ErrorType } from './store/sync';
 import { tauriListen } from './utils';
 
 import NoteMenu from './components/NoteMenu.vue';
@@ -56,8 +56,7 @@ function confirmDialog(cb: () => void) {
 
   dialog.ask('Sync changes before leaving?').then(async (shouldSync) => {
     if (shouldSync) await push();
-
-    cb();
+    if (state.error.type === ErrorType.None) cb();
   });
 }
 
