@@ -11,6 +11,7 @@ build = "build.rs"
 rust-version = "1.57"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+# cargo outdated -m src-tauri/Cargo.toml
 
 [build-dependencies]
 tauri-build = { version = "1.0.0-rc", features = [] }

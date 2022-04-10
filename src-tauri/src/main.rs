@@ -35,7 +35,8 @@ fn main() {
           .visible(false),
         attr,
       )
-    });
+    })
+    .unwrap();
 
   if cfg!(target_os = "macos") {
     // Only set menu for MacOS
