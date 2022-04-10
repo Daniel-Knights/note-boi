@@ -39,7 +39,8 @@ import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 
 if (state.token) {
   tauriEmit('login');
-  pull();
+
+  if (state.autoSyncEnabled) pull();
 } else {
   tauriEmit('logout');
 }

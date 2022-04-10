@@ -13,10 +13,27 @@
         <li
           v-for="theme in colorThemes"
           :key="theme"
-          :class="{ 'context-menu__theme--selected': theme === selectedTheme }"
+          :class="{ 'context-menu__item--selected': theme === selectedTheme }"
           @click="setTheme(theme)"
         >
           {{ theme }}
+        </li>
+      </ul>
+    </li>
+    <li class="context-menu__has-sub-menu">
+      Auto-sync
+      <ul>
+        <li
+          :class="{ 'context-menu__item--selected': syncState.autoSyncEnabled }"
+          @click="setAutoSync(true)"
+        >
+          On
+        </li>
+        <li
+          :class="{ 'context-menu__item--selected': !syncState.autoSyncEnabled }"
+          @click="setAutoSync(false)"
+        >
+          Off
         </li>
       </ul>
     </li>
@@ -26,7 +43,14 @@
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue';
 
-import { state, findNote, newNote, deleteNote, deleteAllNotes } from '../store/note';
+import {
+  state as noteState,
+  findNote,
+  newNote,
+  deleteNote,
+  deleteAllNotes,
+} from '../store/note';
+import { state as syncState, setAutoSync } from '../store/sync';
 import { isEmptyNote } from '../utils';
 
 const clickedNoteId = ref<string | undefined>(undefined);
@@ -70,11 +94,11 @@ function setTheme(theme: Theme) {
 
 function handleDeleteNote() {
   // If multiple notes are selected, delete all of them
-  if (state.extraSelectedNotes.length > 0) {
+  if (noteState.extraSelectedNotes.length > 0) {
     deleteAllNotes();
   } else if (clickedNoteId.value) {
     // Delete clicked note and select next note if currently selected
-    deleteNote(clickedNoteId.value, clickedNoteId.value === state.selectedNote.id);
+    deleteNote(clickedNoteId.value, clickedNoteId.value === noteState.selectedNote.id);
   }
 }
 
@@ -142,7 +166,7 @@ li {
   }
 }
 
-.context-menu__theme--selected {
+.context-menu__item--selected {
   color: var(--color__primary);
   background-color: var(--color__tertiary);
 }

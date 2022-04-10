@@ -20,11 +20,14 @@ interface State {
   hasUnsyncedNotes: boolean;
   isLoading: boolean;
   isLogin: boolean; // For switching login/signup form
+  autoSyncEnabled: boolean;
   error: {
     type: ErrorType;
     message: string;
   };
 }
+
+const autoSync = localStorage.getItem('auto-sync');
 
 export const state = reactive<State>({
   username: localStorage.getItem('username') || '',
@@ -33,6 +36,7 @@ export const state = reactive<State>({
   hasUnsyncedNotes: false,
   isLoading: false,
   isLogin: true,
+  autoSyncEnabled: autoSync !== null ? autoSync === 'true' : true,
   error: {
     type: ErrorType.None,
     message: '',
@@ -78,6 +82,11 @@ function clientSideLogout() {
 
   localStorage.removeItem('token');
   localStorage.removeItem('username');
+}
+
+export function setAutoSync(enabled: boolean): void {
+  state.autoSyncEnabled = enabled;
+  localStorage.setItem('auto-sync', enabled ? 'true' : 'false');
 }
 
 // Routes //
