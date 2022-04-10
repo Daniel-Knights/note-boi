@@ -4,6 +4,7 @@ Tests
 README
 
 *Whenever*
+Drag note menu width
 Recycle bin
 Updater
 Prevent opening context menu off bottom of screen
