@@ -5,14 +5,24 @@
       <form @submit.prevent="handleSubmit" class="sync-auth__form">
         <input
           v-model="state.username"
+          @input="validateFields"
+          :class="{ 'sync-auth__input--error': !validation.username }"
           type="text"
           placeholder="Username"
           ref="usernameInput"
         />
-        <input v-model="state.password" type="password" placeholder="Password" />
+        <input
+          v-model="state.password"
+          @input="validateFields"
+          :class="{ 'sync-auth__input--error': !validation.password }"
+          type="password"
+          placeholder="Password"
+        />
         <input
           v-if="!state.isLogin"
           v-model="confirmPassword"
+          @input="validateFields"
+          :class="{ 'sync-auth__input--error': !validation.confirmPassword }"
           type="password"
           placeholder="Confirm Password"
         />
@@ -35,7 +45,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 
 import { ErrorType, resetError, state, login, signup } from '../store/sync';
 
@@ -46,10 +56,32 @@ const emit = defineEmits(['close']);
 const usernameInput = ref<HTMLInputElement | null>(null);
 const confirmPassword = ref('');
 
+const validation = reactive({
+  username: true,
+  password: true,
+  confirmPassword: true,
+});
+
+function validateFields() {
+  validation.username = !!state.username;
+  validation.password = !!state.password;
+  if (!state.isLogin) validation.confirmPassword = !!confirmPassword.value;
+}
+
 async function handleSubmit() {
+  validateFields();
+
+  if (!validation.username || !validation.password) {
+    return;
+  }
+
   if (state.isLogin) {
     await login();
   } else {
+    if (!confirmPassword.value) {
+      validation.confirmPassword = false;
+      return;
+    }
     if (confirmPassword.value !== state.password) {
       state.error = { type: ErrorType.Auth, message: "Passwords don't match" };
       return;
@@ -83,8 +115,12 @@ onMounted(() => {
   @include v.flex-y(false, center);
 }
 
+.sync-auth__input--error {
+  border-color: var(--color__error);
+}
+
 .sync-auth__error {
-  color: #e71414;
+  color: var(--color__error);
 }
 
 .sync-auth__switch {

@@ -30,12 +30,14 @@
   --color__secondary: var(--black);
   --color__tertiary: #6e6e6e;
   --color__interactive: #727272;
+  --color__error: #e71414;
 }
 @mixin dark-theme {
   --color__primary: var(--black);
   --color__secondary: var(--white);
   --color__tertiary: #bebebe;
   --color__interactive: #2e2e2e;
+  --color__error: #e71414;
 }
 
 // CSS Vars
