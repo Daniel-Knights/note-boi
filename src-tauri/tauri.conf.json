@@ -53,7 +53,10 @@
       "http": {
         "all": false,
         "request": true,
-        "scope": ["http://localhost:8000/api/*"]
+        "scope": [
+          "http://localhost:8000/api/*",
+          "https://note-boi-server.herokuapp.com/api/*"
+        ]
       },
       "dialog": {
         "ask": true

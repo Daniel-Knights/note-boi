@@ -65,7 +65,9 @@ function tauriFetch<T>(
   method: 'POST' | 'PUT',
   payload?: Record<string, unknown>
 ): Promise<Response<T>> {
-  const baseUrl = isDev() ? 'http://localhost:8000' : 'TODO';
+  const baseUrl = isDev()
+    ? 'http://localhost:8000'
+    : 'https://note-boi-server.herokuapp.com';
 
   return http.fetch<T>(`${baseUrl}/api${endpoint}`, {
     method,
