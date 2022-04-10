@@ -5,7 +5,7 @@
       <form @submit.prevent="handleSubmit" class="sync-auth__form">
         <input
           v-model="state.username"
-          @input="validateFields"
+          @input="validateFields.username"
           :class="{ 'sync-auth__input--error': !validation.username }"
           type="text"
           placeholder="Username"
@@ -13,7 +13,7 @@
         />
         <input
           v-model="state.password"
-          @input="validateFields"
+          @input="validateFields.password"
           :class="{ 'sync-auth__input--error': !validation.password }"
           type="password"
           placeholder="Password"
@@ -21,7 +21,7 @@
         <input
           v-if="!state.isLogin"
           v-model="confirmPassword"
-          @input="validateFields"
+          @input="validateFields.confirmPassword"
           :class="{ 'sync-auth__input--error': !validation.confirmPassword }"
           type="password"
           placeholder="Confirm Password"
@@ -62,14 +62,22 @@ const validation = reactive({
   confirmPassword: true,
 });
 
-function validateFields() {
-  validation.username = !!state.username;
-  validation.password = !!state.password;
-  if (!state.isLogin) validation.confirmPassword = !!confirmPassword.value;
-}
+const validateFields = {
+  username() {
+    validation.username = !!state.username;
+  },
+  password() {
+    validation.password = !!state.password;
+  },
+  confirmPassword() {
+    if (!state.isLogin) validation.confirmPassword = !!confirmPassword.value;
+  },
+};
 
 async function handleSubmit() {
-  validateFields();
+  validateFields.username();
+  validateFields.password();
+  validateFields.confirmPassword();
 
   if (!validation.username || !validation.password) {
     return;
