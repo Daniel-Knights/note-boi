@@ -27,7 +27,7 @@ interface State {
   };
 }
 
-const autoSync = localStorage.getItem('auto-sync');
+const autoSync = localStorage.getItem('auto-sync') as 'true' | 'false' | null;
 
 export const state = reactive<State>({
   username: localStorage.getItem('username') || '',
@@ -84,6 +84,7 @@ function clientSideLogout() {
   localStorage.removeItem('username');
 }
 
+/** Sets user preference for auto-syncing to {@link state} and `localStorage` */
 export function setAutoSync(enabled: boolean): void {
   state.autoSyncEnabled = enabled;
   localStorage.setItem('auto-sync', enabled ? 'true' : 'false');
