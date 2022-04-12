@@ -10,6 +10,7 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import Quill from 'quill';
+import punycode from 'punycode/';
 
 import { state, editBody } from '../store/note';
 import { unixToDateTime } from '../utils';
@@ -24,7 +25,9 @@ document.addEventListener('note-new', () => {
   });
 });
 document.addEventListener('note-change', () => {
-  const parsedNoteContent = JSON.parse(state.selectedNote.content.delta || '[]');
+  const parsedNoteContent = JSON.parse(
+    punycode.decode(state.selectedNote.content.delta) || '[]'
+  );
 
   quillEditor?.setContents(parsedNoteContent);
 });
@@ -58,7 +61,7 @@ onMounted(() => {
     const delta = quillEditor.getContents();
     const [title, body] = quillEditor.root.innerText.split(/\n+/);
 
-    editBody(JSON.stringify(delta), title, body);
+    editBody(punycode.encode(JSON.stringify(delta)), title, body);
   });
 });
 </script>
