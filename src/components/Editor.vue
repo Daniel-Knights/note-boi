@@ -66,6 +66,7 @@ onMounted(() => {
 });
 </script>
 
+<!-- Can't be scoped, affects Quill styles -->
 <style lang="scss">
 #editor {
   flex-grow: 1;
@@ -82,6 +83,7 @@ onMounted(() => {
   $text-padding: 8px;
 
   .editor__date {
+    user-select: none;
     display: block;
     padding: 10px $text-padding;
     text-align: center;
