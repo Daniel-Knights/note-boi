@@ -1,10 +1,10 @@
 <template>
-  <section id="note-menu">
+  <section id="note-menu" :style="{ width: noteListWidth }">
     <ul
+      @click="handleNoteSelect"
+      @contextmenu.prevent="contextMenuEv = $event"
       class="note-menu__note-list"
       ref="noteList"
-      @contextmenu.prevent="contextMenuEv = $event"
-      @click="handleNoteSelect"
     >
       <li
         v-for="note in state.notes"
@@ -29,6 +29,7 @@
     <button class="note-menu__new-note button--default" @click="newNote">
       <PlusIcon />
     </button>
+    <div @mousedown="handleDragBar" class="note-menu__drag-bar"></div>
   </section>
 </template>
 
@@ -51,6 +52,8 @@ import ContextMenu from './ContextMenu.vue';
 
 const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
+const isDragging = ref(false);
+const noteListWidth = ref(localStorage.getItem('note-list-width') || '260px');
 
 function handleNoteSelect(ev: MouseEvent) {
   const target = ev.target as HTMLElement | null;
@@ -146,6 +149,24 @@ function handleNoteSelect(ev: MouseEvent) {
   selectNote(targetNoteId);
 }
 
+function handleDragBar() {
+  isDragging.value = true;
+
+  document.addEventListener(
+    'mouseup',
+    () => {
+      isDragging.value = false;
+      localStorage.setItem('note-list-width', noteListWidth.value);
+    },
+    { once: true }
+  );
+  document.addEventListener('mousemove', (ev) => {
+    if (!isDragging.value || ev.clientX < 150) return;
+
+    noteListWidth.value = `${ev.clientX}px`;
+  });
+}
+
 // Scroll to top when selected note moves to top
 watchEffect(() => {
   if (state.selectedNote.id !== state.notes[0]?.id) return;
@@ -155,17 +176,21 @@ watchEffect(() => {
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:math';
+
 $new-note-height: 50px;
 
 #note-menu {
   position: relative;
   max-height: 100vh;
+  max-width: 50vw;
+  z-index: 25;
 }
 
 .note-menu__note-list {
   height: 100%;
-  overflow-y: scroll;
   padding-bottom: $new-note-height;
+  overflow-y: scroll;
 
   &::-webkit-scrollbar {
     display: none;
@@ -217,5 +242,28 @@ $new-note-height: 50px;
   height: $new-note-height;
   width: 100%;
   font-size: 30px;
+}
+
+.note-menu__drag-bar {
+  $width: 20px;
+
+  cursor: w-resize;
+  position: absolute;
+  top: 0;
+  // + 2 to account for line
+  right: ($width * -0.5) + 2;
+  height: 100%;
+  width: $width;
+
+  &::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: math.div($width, 2);
+    height: 100%;
+    width: 1px;
+    border: 1px solid var(--color__interactive);
+  }
 }
 </style>

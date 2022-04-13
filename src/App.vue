@@ -117,8 +117,7 @@ textarea {
 }
 
 #app {
-  display: grid;
-  grid-template-columns: minmax(260px, 25%) auto;
+  display: flex;
   margin: 0;
   @include v.equal-dimensions(100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
