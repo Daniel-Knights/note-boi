@@ -78,6 +78,17 @@ function tauriFetch<T>(
   });
 }
 
+/** Catches hanging requests (e.g. due to server error) */
+function catchHang(err: unknown, type: ErrorType) {
+  console.error(err);
+
+  state.isLoading = false;
+  state.error = {
+    type,
+    message: 'Request failed',
+  };
+}
+
 function clientSideLogout() {
   state.token = '';
   state.username = '';
@@ -100,7 +111,9 @@ export async function login(): Promise<void> {
   const res = await tauriFetch<Record<string, string | Note[]>>('/login', 'POST', {
     username: state.username,
     password: state.password,
-  });
+  }).catch((err) => catchHang(err, ErrorType.Auth));
+
+  if (!res) return;
 
   if (res.ok) {
     resetError();
@@ -135,7 +148,9 @@ export async function signup(): Promise<void> {
     username: state.username,
     password: state.password,
     notes: noteState.notes,
-  });
+  }).catch((err) => catchHang(err, ErrorType.Auth));
+
+  if (!res) return;
 
   state.isLoading = false;
 
@@ -166,7 +181,9 @@ export async function logout(): Promise<void> {
   const res = await tauriFetch<Record<string, never | string>>('/logout', 'POST', {
     username: state.username,
     token: state.token,
-  });
+  }).catch((err) => catchHang(err, ErrorType.Logout));
+
+  if (!res) return;
 
   state.isLoading = false;
 
@@ -188,7 +205,9 @@ export async function pull(): Promise<void> {
   const res = await tauriFetch<Record<string, string | Note[]>>('/notes', 'POST', {
     username: state.username,
     token: state.token,
-  });
+  }).catch((err) => catchHang(err, ErrorType.Pull));
+
+  if (!res) return;
 
   if (res.ok) {
     resetError();
@@ -218,7 +237,9 @@ export async function push(): Promise<void> {
     username: state.username,
     token: state.token,
     notes: noteState.notes,
-  });
+  }).catch((err) => catchHang(err, ErrorType.Push));
+
+  if (!res) return;
 
   state.isLoading = false;
 
