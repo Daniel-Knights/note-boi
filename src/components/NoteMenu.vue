@@ -1,5 +1,5 @@
 <template>
-  <section id="note-menu" :style="{ width: noteListWidth }">
+  <section @click="handleListFocus" id="note-menu" :style="{ width: noteListWidth }">
     <ul
       @click="handleNoteSelect"
       @contextmenu.prevent="contextMenuEv = $event"
@@ -53,7 +53,18 @@ import ContextMenu from './ContextMenu.vue';
 const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
 const isDragging = ref(false);
+const listIsFocused = ref(false);
 const noteListWidth = ref(localStorage.getItem('note-list-width') || '260px');
+
+function handleListFocus() {
+  listIsFocused.value = true;
+
+  window.addEventListener('click', (ev) => {
+    if (!(ev.target as HTMLElement)?.closest('#note-menu')) {
+      listIsFocused.value = false;
+    }
+  });
+}
 
 function handleNoteSelect(ev: MouseEvent) {
   const target = ev.target as HTMLElement | null;
@@ -172,6 +183,21 @@ watchEffect(() => {
   if (state.selectedNote.id !== state.notes[0]?.id) return;
 
   noteList.value?.scrollTo({ top: 0 });
+});
+
+// Navigate notes with up/down arrow keys
+window.addEventListener('keydown', (ev) => {
+  if (!listIsFocused.value) return;
+
+  const keyDirection = {
+    ArrowUp: 1,
+    ArrowDown: -1,
+  };
+
+  const directionIndex: number | undefined =
+    keyDirection[ev.key as keyof typeof keyDirection];
+
+  selectNote(state.notes[findNoteIndex(state.selectedNote.id) - directionIndex]?.id);
 });
 </script>
 

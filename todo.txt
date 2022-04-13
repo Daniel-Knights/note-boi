@@ -8,5 +8,4 @@ Recycle bin
 Updater
 Prevent opening context menu off bottom of screen
 Custom colour themes
-Use arrow keys to navigate notes
 Tab key functionality
