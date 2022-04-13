@@ -9,6 +9,8 @@
 </template>
 
 <script lang="ts" setup>
+import { onBeforeUnmount } from 'vue';
+
 const emit = defineEmits(['close']);
 
 function closePopup() {
@@ -32,6 +34,8 @@ setTimeout(() => {
   document.addEventListener('keydown', keyboardCloseHandler);
   document.addEventListener('mousedown', clickCloseHandler);
 });
+
+onBeforeUnmount(closePopup);
 </script>
 
 <style lang="scss" scoped>
