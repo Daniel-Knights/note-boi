@@ -84,6 +84,7 @@ onMounted(() => {
 
   .editor__date {
     user-select: none;
+    -webkit-user-select: none;
     display: block;
     padding: 10px $text-padding;
     text-align: center;
