@@ -1,5 +1,5 @@
 <template>
-  <section @click="handleListFocus" id="note-menu" :style="{ width: noteListWidth }">
+  <section @click="listIsFocused = true" id="note-menu" :style="{ width: noteListWidth }">
     <ul
       @click="handleNoteSelect"
       @contextmenu.prevent="contextMenuEv = $event"
@@ -45,7 +45,7 @@ import {
   findNote,
   isSelectedNote,
 } from '../store/note';
-import { isEmptyNote, last } from '../utils';
+import { isEmptyNote } from '../utils';
 
 import PlusIcon from './svg/PlusIcon.vue';
 import ContextMenu from './ContextMenu.vue';
@@ -53,19 +53,22 @@ import ContextMenu from './ContextMenu.vue';
 const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
 const isDragging = ref(false);
-const listIsFocused = ref(false);
+const listIsFocused = ref(true);
 const noteListWidth = ref(localStorage.getItem('note-list-width') || '260px');
 
-function handleListFocus() {
-  listIsFocused.value = true;
+// Clear all extra notes and remove event listener
+function clearExtraNotes(ev?: MouseEvent) {
+  if (ev) {
+    if (ev.button !== 0) return; // Only clear on left click
+    if (ev.metaKey || ev.ctrlKey) return;
+  }
 
-  window.addEventListener('click', (ev) => {
-    if (!(ev.target as HTMLElement)?.closest('#note-menu')) {
-      listIsFocused.value = false;
-    }
-  });
+  state.extraSelectedNotes = [];
+
+  document.removeEventListener('click', clearExtraNotes);
 }
 
+// Single or multiple note selection handler
 function handleNoteSelect(ev: MouseEvent) {
   const target = ev.target as HTMLElement | null;
   const closestNote = target?.closest<HTMLElement>('.note-menu__note');
@@ -74,28 +77,13 @@ function handleNoteSelect(ev: MouseEvent) {
 
   const hasExtraNotes = state.extraSelectedNotes.length > 0;
 
-  function pushExtraNotes(noteSlice: Note[]) {
-    const withoutDuplicates = noteSlice.filter((nt) => !isSelectedNote(nt));
-
-    state.extraSelectedNotes.push(...withoutDuplicates);
-  }
-
-  function clearExtraNotes(innerEv: MouseEvent) {
-    if (innerEv.button !== 0) return; // Only clear on left click
-    if (innerEv.metaKey || innerEv.ctrlKey) return;
-
-    state.extraSelectedNotes = [];
-
-    document.removeEventListener('click', clearExtraNotes);
-  }
-
   // Alt key + click
   if (ev.altKey) {
     const targetNoteIndex = findNoteIndex(targetNoteId);
 
     if (targetNoteIndex >= 0) {
       const lastSelectedNote = hasExtraNotes
-        ? last(state.extraSelectedNotes)?.id
+        ? state.extraSelectedNotes[0]?.id
         : state.selectedNote.id;
       const selectedNoteIndex = findNoteIndex(lastSelectedNote);
 
@@ -112,7 +100,9 @@ function handleNoteSelect(ev: MouseEvent) {
           noteSlice = state.notes.slice(lowestIndex, highestIndex);
         }
 
-        pushExtraNotes(noteSlice);
+        const withoutDuplicates = noteSlice.filter((nt) => !isSelectedNote(nt));
+
+        state.extraSelectedNotes.push(...withoutDuplicates);
 
         ev.stopImmediatePropagation(); // Prevent `clearExtraNotes` firing immediately
         document.addEventListener('click', clearExtraNotes);
@@ -147,7 +137,7 @@ function handleNoteSelect(ev: MouseEvent) {
       const foundNote = findNote(targetNoteId);
 
       if (foundNote) {
-        pushExtraNotes([foundNote]);
+        state.extraSelectedNotes.unshift(foundNote);
 
         document.addEventListener('click', clearExtraNotes);
       }
@@ -160,6 +150,7 @@ function handleNoteSelect(ev: MouseEvent) {
   selectNote(targetNoteId);
 }
 
+// Drag bar functionality
 function handleDragBar() {
   isDragging.value = true;
 
@@ -197,7 +188,21 @@ window.addEventListener('keydown', (ev) => {
   const directionIndex: number | undefined =
     keyDirection[ev.key as keyof typeof keyDirection];
 
-  selectNote(state.notes[findNoteIndex(state.selectedNote.id) - directionIndex]?.id);
+  if (directionIndex) {
+    const lastSelectedNoteId = state.extraSelectedNotes[0]?.id || state.selectedNote.id;
+    // Index of the note we're selecting
+    const toIndex = findNoteIndex(lastSelectedNoteId) - directionIndex;
+
+    selectNote(state.notes[toIndex]?.id);
+    clearExtraNotes();
+  }
+});
+
+// Register list blur
+window.addEventListener('click', (ev) => {
+  if (!(ev.target as HTMLElement)?.closest('#note-menu')) {
+    listIsFocused.value = false;
+  }
 });
 </script>
 

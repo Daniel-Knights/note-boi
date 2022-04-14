@@ -26,8 +26,6 @@ export function isEmptyNote(note: Note): boolean {
   return isWhitespaceOnly(note.content.title);
 }
 
-export const last = <T>(arr: T[]): T | undefined => arr[arr.length - 1];
-
 /** Calls {@link event.emit}, with stronger typing for `id` */
 export function tauriEmit<T>(id: 'login' | 'logout', payload?: T): void {
   event.emit(id, payload);
