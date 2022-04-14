@@ -105,6 +105,7 @@ export function setAutoSync(enabled: boolean): void {
 
 // Routes //
 
+// Login
 export async function login(): Promise<void> {
   state.isLoading = true;
 
@@ -141,6 +142,7 @@ export async function login(): Promise<void> {
   }
 }
 
+// Signup
 export async function signup(): Promise<void> {
   state.isLoading = true;
 
@@ -173,6 +175,7 @@ export async function signup(): Promise<void> {
   }
 }
 
+// Logout
 export async function logout(): Promise<void> {
   if (!state.token) return; // Prevent bug where event.emit triggers event.listen
 
@@ -199,6 +202,7 @@ export async function logout(): Promise<void> {
   }
 }
 
+// Pull
 export async function pull(): Promise<void> {
   state.isLoading = true;
 
@@ -230,6 +234,7 @@ export async function pull(): Promise<void> {
   }
 }
 
+// Push
 export async function push(): Promise<void> {
   state.isLoading = true;
 
@@ -256,6 +261,17 @@ export async function push(): Promise<void> {
   }
 }
 
+// Auto-syncing
+let timeout: number | undefined;
+
+export function autoPush(): void {
+  if (!state.autoSyncEnabled || !state.username) return;
+
+  clearTimeout(timeout);
+  timeout = window.setTimeout(push, 500);
+}
+
+// Keep track of notes with unsynced changes
 document.addEventListener('note-unsynced', () => {
   if (state.token) {
     state.hasUnsyncedNotes = true;

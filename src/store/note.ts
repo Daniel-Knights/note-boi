@@ -3,6 +3,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
 
 import { isEmptyNote } from '../utils';
+import { autoPush } from './sync';
 
 export class Note {
   readonly id = uuidv4();
@@ -125,7 +126,7 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
   document.dispatchEvent(changeNoteEvent);
   document.dispatchEvent(unsyncedEvent);
 
-  invoke('delete_note', { id }).catch(console.error);
+  invoke('delete_note', { id }).then(autoPush).catch(console.error);
 }
 
 /** Deletes {@link state.selectedNote} and all notes in {@link state.extraSelectedNotes} */
@@ -174,5 +175,7 @@ export function editBody(delta: string, title: string, body: string): void {
 
   document.dispatchEvent(unsyncedEvent);
 
-  invoke('edit_note', { note: { ...foundNote } }).catch(console.error);
+  invoke('edit_note', { note: { ...foundNote } })
+    .then(autoPush)
+    .catch(console.error);
 }
