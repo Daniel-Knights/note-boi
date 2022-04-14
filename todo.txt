@@ -1,5 +1,4 @@
 *Before release*
-Better colour themes
 Tests
 README
 

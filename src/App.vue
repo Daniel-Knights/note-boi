@@ -85,8 +85,8 @@ body {
 
 body {
   margin: 0;
-  color: var(--color__secondary);
-  background-color: var(--color__primary);
+  color: var(--colour__secondary);
+  background-color: var(--colour__primary);
 }
 
 button,
@@ -100,7 +100,7 @@ input[type='submit'] {
     padding: 5px 20px;
     line-height: 1;
     color: #fff;
-    background-color: var(--color__interactive);
+    background-color: var(--colour__interactive);
   }
 
   &:hover {
@@ -112,7 +112,7 @@ input:not([type='submit']),
 textarea {
   -webkit-appearance: none;
   padding: 5px;
-  border: 1px solid var(--color__primary);
+  border: 1px solid var(--colour__primary);
   border-radius: 0;
 }
 

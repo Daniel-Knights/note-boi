@@ -93,8 +93,8 @@ tauriListen('signup', () => {
 
 .sync-status__loading-spinner {
   display: block;
-  border: 5px solid var(--color__interactive);
-  border-bottom-color: var(--color__secondary);
+  border: 5px solid var(--colour__interactive);
+  border-bottom-color: var(--colour__secondary);
   border-radius: 50%;
   animation: rotation 1s linear infinite;
 }

@@ -11,7 +11,7 @@
       Theme
       <ul>
         <li
-          v-for="theme in colorThemes"
+          v-for="theme in colourThemes"
           :key="theme"
           :class="{ 'context-menu__item--selected': theme === selectedTheme }"
           @click="setTheme(theme)"
@@ -78,7 +78,7 @@ const comp = computed(() => {
 
 type Theme = 'Light' | 'Dark' | 'System';
 
-const colorThemes: Theme[] = ['Light', 'Dark', 'System'];
+const colourThemes: Theme[] = ['Light', 'Dark', 'System'];
 const selectedTheme = ref(localStorage.getItem('theme') || 'System');
 
 document.body.classList.add(`theme--${selectedTheme.value.toLowerCase()}`);
@@ -124,13 +124,13 @@ watch(props, () => {
 
 <style lang="scss" scoped>
 $list-padding: 3px;
-$list-bg-color: var(--color__interactive);
+$list-bg-colour: var(--colour__interactive);
 
 ul {
   position: absolute;
   width: 133px;
-  color: var(--color__secondary);
-  background-color: $list-bg-color;
+  color: var(--colour__white);
+  background-color: $list-bg-colour;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   z-index: 10;
 }
@@ -139,17 +139,16 @@ li {
   cursor: pointer;
   padding: 0.5em 1em;
   white-space: nowrap;
-  border: $list-padding solid $list-bg-color;
+  border: $list-padding solid $list-bg-colour;
 
   &:hover {
-    color: var(--color__primary);
-    background-color: var(--color__tertiary);
+    background-color: var(--colour__tertiary);
   }
 }
 
 .context-menu__item--disabled {
   pointer-events: none;
-  color: var(--color__tertiary);
+  color: var(--colour__tertiary);
 }
 
 .context-menu__has-sub-menu {
@@ -167,7 +166,6 @@ li {
 }
 
 .context-menu__item--selected {
-  color: var(--color__primary);
-  background-color: var(--color__tertiary);
+  background-color: var(--colour__tertiary);
 }
 </style>

@@ -231,7 +231,7 @@ $new-note-height: 50px;
   &:hover,
   &--selected {
     color: #fff;
-    background-color: var(--color__interactive);
+    background-color: var(--colour__interactive);
   }
 
   &--empty::before {
@@ -289,7 +289,7 @@ $new-note-height: 50px;
     left: math.div($width, 2);
     height: 100%;
     width: 1px;
-    border: 1px solid var(--color__interactive);
+    border: 1px solid var(--colour__interactive);
   }
 }
 </style>

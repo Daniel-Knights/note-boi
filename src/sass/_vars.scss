@@ -1,3 +1,16 @@
+@use 'sass:color' as color;
+
+// Sass Vars
+$black: #141313;
+$white: #eeeeee;
+$primary: $black;
+$secondary: $white;
+$tertiary: #6e7677;
+$interactive: #53595a;
+
+$sync-icon-dimensions: 32px;
+$sync-icon-right: 18px;
+
 // Mixins
 @mixin flex-x($justify: false, $align: false) {
   display: flex;
@@ -26,26 +39,25 @@
 }
 
 @mixin light-theme {
-  --color__primary: var(--white);
-  --color__secondary: var(--black);
-  --color__tertiary: #6e6e6e;
-  --color__interactive: #727272;
-  --color__error: #e71414;
+  --colour__primary: #{color.invert($primary)};
+  --colour__secondary: #{color.invert($secondary)};
+  --colour__tertiary: #{color.scale($tertiary, $lightness: -5%)};
+  --colour__interactive: #{color.scale($interactive, $lightness: 30%)};
 }
 @mixin dark-theme {
-  --color__primary: var(--black);
-  --color__secondary: var(--white);
-  --color__tertiary: #bebebe;
-  --color__interactive: #2e2e2e;
-  --color__error: #e71414;
+  --colour__primary: #{$primary};
+  --colour__secondary: #{$secondary};
+  --colour__tertiary: #{$tertiary};
+  --colour__interactive: #{$interactive};
 }
 
 // CSS Vars
 :root {
   @include light-theme;
 
-  --white: #eeeeee;
-  --black: #141313;
+  --colour__white: #{$white};
+  --colour__black: #{$black};
+  --colour__error: #e71414;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -59,7 +71,3 @@
 .theme--dark {
   @include dark-theme;
 }
-
-// Sass Vars
-$sync-icon-dimensions: 32px;
-$sync-icon-right: 18px;

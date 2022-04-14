@@ -52,7 +52,7 @@ onBeforeUnmount(closePopup);
 .popup__content {
   padding: 1em;
   max-width: 400px;
-  color: var(--color__primary);
-  background-color: var(--color__secondary);
+  color: var(--colour__primary);
+  background-color: var(--colour__secondary);
 }
 </style>

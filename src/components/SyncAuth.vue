@@ -124,11 +124,11 @@ onMounted(() => {
 }
 
 .sync-auth__input--error {
-  border-color: var(--color__error);
+  border-color: var(--colour__error);
 }
 
 .sync-auth__error {
-  color: var(--color__error);
+  color: var(--colour__error);
 }
 
 .sync-auth__switch {
