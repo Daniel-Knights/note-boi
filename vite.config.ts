@@ -29,4 +29,7 @@ export default defineConfig({
     // don't minify for debug builds
     minify: !process.env.TAURI_DEBUG,
   },
+  test: {
+    environment: 'jsdom',
+  },
 });

@@ -8,7 +8,9 @@
     "dev": "tauri dev",
     "build": "tauri build",
     "icon": "tauri icon ./artwork/icon.png",
-    "info": "tauri info"
+    "info": "tauri info",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.0.0-rc.3",
@@ -34,10 +36,12 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.6.0",
+    "jsdom": "^19.0.0",
     "prettier": "^2.6.2",
     "sass": "^1.50.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.5",
+    "vitest": "^0.9.3",
     "vue-eslint-parser": "^8.3.0",
     "vue-tsc": "^0.34.6"
   }
