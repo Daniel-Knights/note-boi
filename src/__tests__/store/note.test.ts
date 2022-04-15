@@ -1,10 +1,10 @@
-import { randomFillSync } from 'crypto';
 import { assert, beforeAll, describe, expect, it, vi } from 'vitest';
 import { mockIPC } from '@tauri-apps/api/mocks';
 
 import * as noteStore from '../../store/note';
 import localNotes from '../notes.json';
 import { isEmptyNote } from '../../utils';
+import { setCrypto } from '../utils';
 
 const emptyNote = new noteStore.Note();
 const existingNoteIndexSorted = 2;
@@ -35,13 +35,7 @@ function mockInvokes(notes: noteStore.Note[] | undefined) {
   });
 }
 
-// jsdom doesn't come with a WebCrypto implementation
-beforeAll(() => {
-  window.crypto = {
-    // @ts-expect-error strict typing unnecessary here
-    getRandomValues: (array) => randomFillSync(array),
-  };
-});
+beforeAll(setCrypto);
 
 describe('Note store', () => {
   it('Constructs a new note', () => {
