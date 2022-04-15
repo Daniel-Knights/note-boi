@@ -5,7 +5,7 @@ import { isEmptyNote, isWhitespaceOnly, unixToDateTime } from '../utils';
 
 describe('Utils', () => {
   it('Formats Unix time to date-time', () => {
-    assert.equal(unixToDateTime(1650003060221), '15 Apr 2022, 07:11');
+    assert.strictEqual(unixToDateTime(1650003060221), '15 Apr 2022, 07:11');
   });
 
   it('Checks if a string is only whitespace', () => {
