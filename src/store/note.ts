@@ -51,11 +51,12 @@ export function findNote(id?: string): Note | undefined {
 /** Deletes {@link state.selectedNote} when note is empty. */
 function clearEmptyNote(): void {
   const isValidClear = state.notes.length > 1;
+  if (!isValidClear) return;
 
   const foundNote = findNote(state.selectedNote.id);
   if (!foundNote) return;
 
-  if (isValidClear && isEmptyNote(foundNote)) {
+  if (isEmptyNote(foundNote)) {
     deleteNote(state.selectedNote.id, true);
   }
 }
@@ -70,7 +71,9 @@ export function selectNote(id?: string): void {
   clearEmptyNote();
 
   const foundNote = findNote(id);
-  if (foundNote) state.selectedNote = { ...foundNote };
+  if (!foundNote) return;
+
+  state.selectedNote = { ...foundNote };
 
   document.dispatchEvent(selectNoteEvent);
   document.dispatchEvent(changeNoteEvent);
@@ -129,13 +132,15 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
   invoke('delete_note', { id }).then(autoPush).catch(console.error);
 }
 
-/** Deletes {@link state.selectedNote} and all notes in {@link state.extraSelectedNotes} */
+/** Deletes {@link state.selectedNote} and all notes in {@link state.extraSelectedNotes}. */
 export function deleteAllNotes(): void {
   deleteNote(state.selectedNote.id, true);
 
   state.extraSelectedNotes.forEach((nt) => {
     if (nt) deleteNote(nt.id, false);
   });
+
+  state.extraSelectedNotes = [];
 }
 
 /** Creates an empty note. */
