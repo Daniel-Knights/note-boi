@@ -12,7 +12,7 @@ import { onMounted } from 'vue';
 import Quill from 'quill';
 import punycode from 'punycode/';
 
-import { state, editBody } from '../store/note';
+import { state, editNote } from '../store/note';
 import { unixToDateTime } from '../utils';
 
 let quillEditor: Quill | undefined;
@@ -61,7 +61,7 @@ onMounted(() => {
     const delta = quillEditor.getContents();
     const [title, body] = quillEditor.root.innerText.split(/\n+/);
 
-    editBody(punycode.encode(JSON.stringify(delta)), title, body);
+    editNote(punycode.encode(JSON.stringify(delta)), title, body);
   });
 });
 </script>

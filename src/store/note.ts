@@ -161,7 +161,7 @@ export function newNote(): void {
 }
 
 /** Edits note body on Quill `text-change`. */
-export function editBody(delta: string, title: string, body: string): void {
+export function editNote(delta: string, title: string, body: string): void {
   const foundNote = findNote(state.selectedNote.id);
   if (!foundNote || delta === foundNote.content.delta) return;
 
