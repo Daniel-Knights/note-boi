@@ -158,9 +158,9 @@ export function newNote(): void {
   state.notes.unshift(freshNote);
   state.selectedNote = { ...freshNote };
 
+  document.dispatchEvent(selectNoteEvent);
   document.dispatchEvent(changeNoteEvent);
   document.dispatchEvent(newNoteEvent);
-  document.dispatchEvent(unsyncedEvent);
 
   invoke('new_note', { note: { ...freshNote } }).catch(console.error);
 }
