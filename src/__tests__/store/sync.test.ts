@@ -330,4 +330,42 @@ describe('Sync', () => {
       assert.isNotEmpty(syncStore.state.error.message);
     });
   });
+
+  describe('push', () => {
+    it('Pushes notes to the server', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.token = 'token';
+      mockInvokes(localNotes);
+      await syncStore.login();
+
+      await syncStore.push();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.deepEqual(noteStore.state.notes, localNotes);
+      assert.isFalse(syncStore.state.hasUnsyncedNotes);
+      assert.strictEqual(syncStore.state.username, 'd');
+      assert.strictEqual(syncStore.state.token, 'token');
+      assert.strictEqual(localStorage.getItem('username'), 'd');
+      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
+      assert.isEmpty(syncStore.state.error.message);
+    });
+
+    it('With server error', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.token = 'token';
+      mockInvokes(localNotes);
+      await syncStore.login();
+
+      mockInvokes([], 500);
+      await syncStore.push();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.deepEqual(noteStore.state.notes, localNotes);
+      assert.strictEqual(syncStore.state.username, 'd');
+      assert.strictEqual(syncStore.state.token, 'token');
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Push);
+      assert.isNotEmpty(syncStore.state.error.message);
+    });
+  });
 });
