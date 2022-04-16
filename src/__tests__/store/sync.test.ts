@@ -195,4 +195,43 @@ describe('Sync', () => {
       assert.isNotEmpty(syncStore.state.error.message);
     });
   });
+
+  describe('logout', () => {
+    it('Logs a user out and clears user-based state', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.password = '1';
+      syncStore.state.token = 'token';
+      mockInvokes();
+      await syncStore.login();
+
+      await syncStore.logout();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.isEmpty(syncStore.state.token);
+      assert.isEmpty(syncStore.state.username);
+      assert.isNull(localStorage.getItem('username'));
+      assert.isNull(localStorage.getItem('token'));
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
+      assert.isEmpty(syncStore.state.error.message);
+    });
+
+    it('With server error', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.password = '1';
+      syncStore.state.token = 'token';
+      mockInvokes();
+      await syncStore.login();
+      mockInvokes(undefined, true);
+
+      await syncStore.logout();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.strictEqual(syncStore.state.token, 'token');
+      assert.strictEqual(syncStore.state.username, 'd');
+      assert.strictEqual(localStorage.getItem('username'), 'd');
+      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Logout);
+      assert.isNotEmpty(syncStore.state.error.message);
+    });
+  });
 });
