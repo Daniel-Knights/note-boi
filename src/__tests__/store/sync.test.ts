@@ -4,7 +4,7 @@ import { mockIPC } from '@tauri-apps/api/mocks';
 import * as syncStore from '../../store/sync';
 import * as noteStore from '../../store/note';
 import { isEmptyNote } from '../../utils';
-import { setCrypto } from '../utils';
+import { mockPromise, setCrypto } from '../utils';
 import localNotes from '../notes.json';
 
 function mockInvokes(notes?: noteStore.Note[], httpError?: boolean) {
@@ -37,13 +37,9 @@ function mockInvokes(notes?: noteStore.Note[], httpError?: boolean) {
         }
         break;
       case 'get_all_notes':
-        return new Promise<noteStore.Note[] | undefined>((res) => {
-          res(notes);
-        });
+        return mockPromise(notes);
       case 'sync_all_local_notes':
-        return new Promise<void>((res) => {
-          res();
-        });
+        return mockPromise();
       // no default
     }
   });
