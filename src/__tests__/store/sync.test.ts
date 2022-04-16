@@ -316,8 +316,8 @@ describe('Sync', () => {
       syncStore.state.token = 'token';
       mockInvokes(localNotes);
       await syncStore.login();
-
       mockInvokes([], 404);
+
       await syncStore.pull();
 
       assert.isFalse(syncStore.state.isLoading);
