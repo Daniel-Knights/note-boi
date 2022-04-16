@@ -199,6 +199,8 @@ export async function logout(): Promise<void> {
       type: ErrorType.Logout,
       message: parseErrorRes(res),
     };
+
+    console.error(res.data);
   }
 }
 

@@ -1,4 +1,4 @@
-import { assert, beforeAll, beforeEach, describe, it } from 'vitest';
+import { assert, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockIPC } from '@tauri-apps/api/mocks';
 
 import * as syncStore from '../../store/sync';
@@ -7,16 +7,26 @@ import { isEmptyNote } from '../../utils';
 import { mockPromise, resetNoteStore, setCrypto } from '../utils';
 import localNotes from '../notes.json';
 
+const mockEmitLogin = vi.fn(() => undefined);
+const mockEmitLogout = vi.fn(() => undefined);
+
 function mockInvokes(notes?: noteStore.Note[], httpError?: boolean) {
   mockIPC((cmd, args) => {
+    const reqMessage = args.message as
+      | {
+          cmd?: string;
+          event?: string;
+          options?: { url?: string; method?: string };
+        }
+      | undefined;
+
     switch (cmd) {
       case 'tauri':
-        switch ((args.message as { cmd: string }).cmd) {
+        switch (reqMessage?.cmd) {
           case 'httpRequest':
             return new Promise<Record<string, unknown>>((res) => {
-              const reqType = (
-                args.message as { options: { url: string } }
-              )?.options?.url.split('/api/')[1];
+              const reqOptions = reqMessage?.options;
+              const reqType = reqOptions?.url?.split('/api/')[1];
 
               const resData: { notes?: noteStore.Note[]; token?: string } = {};
 
@@ -36,6 +46,17 @@ function mockInvokes(notes?: noteStore.Note[], httpError?: boolean) {
                 data: httpError ? 'Error' : JSON.stringify(resData),
               });
             });
+          case 'emit':
+            switch (reqMessage?.event) {
+              case 'login':
+                mockEmitLogin();
+                break;
+              case 'logout':
+                mockEmitLogout();
+                break;
+              // no default
+            }
+            break;
           // no default
         }
         break;
@@ -85,6 +106,7 @@ describe('Sync', () => {
     it('Logs in with no notes', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
+      vi.clearAllMocks();
       mockInvokes([]);
 
       await syncStore.login();
@@ -100,11 +122,13 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
+      expect(mockEmitLogin).toHaveBeenCalled();
     });
 
     it('Logs in with notes', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
+      vi.clearAllMocks();
       mockInvokes(localNotes);
 
       await syncStore.login();
@@ -118,11 +142,13 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
+      expect(mockEmitLogin).toHaveBeenCalled();
     });
 
     it('Fails to log in, with a server error', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
+      vi.clearAllMocks();
       mockInvokes(localNotes, true);
 
       await syncStore.login();
@@ -136,6 +162,7 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem('token'));
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Auth);
       assert.isNotEmpty(syncStore.state.error.message);
+      expect(mockEmitLogin).not.toHaveBeenCalled();
     });
   });
 
@@ -143,6 +170,7 @@ describe('Sync', () => {
     it('With empty notes', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
+      vi.clearAllMocks();
       mockInvokes([]);
 
       await syncStore.signup();
@@ -156,11 +184,13 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
+      expect(mockEmitLogin).toHaveBeenCalled();
     });
 
     it('With notes', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
+      vi.clearAllMocks();
       mockInvokes(localNotes);
       await noteStore.getAllNotes();
 
@@ -175,11 +205,13 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
+      expect(mockEmitLogin).toHaveBeenCalled();
     });
 
     it('With server error', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
+      vi.clearAllMocks();
       mockInvokes(undefined, true);
 
       await syncStore.signup();
@@ -193,6 +225,7 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem('token'));
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Auth);
       assert.isNotEmpty(syncStore.state.error.message);
+      expect(mockEmitLogin).not.toHaveBeenCalled();
     });
   });
 
@@ -201,6 +234,7 @@ describe('Sync', () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       syncStore.state.token = 'token';
+      vi.clearAllMocks();
       mockInvokes();
       await syncStore.login();
 
@@ -213,12 +247,14 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem('token'));
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
+      expect(mockEmitLogout).toHaveBeenCalled();
     });
 
     it('With server error', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       syncStore.state.token = 'token';
+      vi.clearAllMocks();
       mockInvokes();
       await syncStore.login();
       mockInvokes(undefined, true);
@@ -232,6 +268,7 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Logout);
       assert.isNotEmpty(syncStore.state.error.message);
+      expect(mockEmitLogout).not.toHaveBeenCalled();
     });
   });
 });
