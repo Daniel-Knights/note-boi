@@ -1,30 +1,27 @@
-import { assert, beforeAll, describe, expect, it, vi } from 'vitest';
+import { assert, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockIPC } from '@tauri-apps/api/mocks';
 
 import * as noteStore from '../../store/note';
 import localNotes from '../notes.json';
 import { isEmptyNote } from '../../utils';
-import { setCrypto } from '../utils';
+import { mockPromise, setCrypto } from '../utils';
 
 const emptyNote = new noteStore.Note();
 const existingNoteIndexSorted = 2;
 const existingNote = localNotes[8];
+const mockChange = vi.fn(() => undefined);
+const mockNew = vi.fn(() => undefined);
+const mockSelect = vi.fn(() => undefined);
+const mockUnsynced = vi.fn(() => undefined);
 
 function mockInvokes(notes: noteStore.Note[] | undefined) {
   mockIPC((cmd, args) => {
     switch (cmd) {
       case 'get_all_notes':
-        return new Promise<noteStore.Note[] | undefined>((res) => {
-          res(notes);
-        });
+        return mockPromise(notes);
       case 'delete_note':
-        return new Promise<void>((res) => {
-          res();
-        });
       case 'new_note':
-        return new Promise<void>((res) => {
-          res();
-        });
+        return mockPromise();
       case 'edit_note':
         return new Promise<void>((res) => {
           noteStore.state.selectedNote = args.note as noteStore.Note;
@@ -35,10 +32,23 @@ function mockInvokes(notes: noteStore.Note[] | undefined) {
   });
 }
 
-beforeAll(setCrypto);
+beforeAll(() => {
+  setCrypto();
+  document.addEventListener('note-change', mockChange);
+  document.addEventListener('note-new', mockNew);
+  document.addEventListener('note-select', mockSelect);
+  document.addEventListener('note-unsynced', mockUnsynced);
+});
+
+beforeEach(() => {
+  noteStore.state.notes = [];
+  noteStore.state.selectedNote = new noteStore.Note();
+  noteStore.state.extraSelectedNotes = [];
+  vi.clearAllMocks(); // Ensure mock checks are clear
+});
 
 describe('Note store', () => {
-  it('Constructs a new note', () => {
+  it('new Note()', () => {
     const timestamp = Date.now();
 
     assert.strictEqual(typeof emptyNote.id, 'string');
@@ -60,31 +70,39 @@ describe('Note store', () => {
   });
 
   // Runs here to ensure subsequent tests have a populated store
-  it('Gets all local notes', async () => {
-    const mockChange = vi.fn(() => undefined);
-    document.addEventListener('note-change', mockChange);
+  describe('getAllNotes', () => {
+    it('with undefined notes', async () => {
+      mockInvokes(undefined);
+      await noteStore.getAllNotes();
+      assert.strictEqual(noteStore.state.notes.length, 1);
+      assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
+      assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
+      expect(mockNew).toHaveBeenCalled();
+    });
 
-    mockInvokes(undefined);
-    await noteStore.getAllNotes();
-    assert.strictEqual(noteStore.state.notes.length, 1);
-    assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
-    assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
-    expect(mockChange).toHaveBeenCalled();
+    it('with empty note array', async () => {
+      mockInvokes([]);
+      await noteStore.getAllNotes();
+      assert.strictEqual(noteStore.state.notes.length, 1);
+      assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
+      assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
+      expect(mockNew).toHaveBeenCalled();
+    });
 
-    mockInvokes([]);
-    await noteStore.getAllNotes();
-    assert.strictEqual(noteStore.state.notes.length, 1);
-    assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
-    assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
-
-    mockInvokes(localNotes);
-    await noteStore.getAllNotes();
-    assert.strictEqual(noteStore.state.notes.length, 10);
-    assert.deepEqual(noteStore.state.notes[0], localNotes[0]);
-    assert.deepEqual(noteStore.state.notes[0], noteStore.state.selectedNote);
+    it('with notes', async () => {
+      mockInvokes(localNotes);
+      await noteStore.getAllNotes();
+      assert.strictEqual(noteStore.state.notes.length, 10);
+      assert.deepEqual(noteStore.state.notes[0], localNotes[0]);
+      assert.deepEqual(noteStore.state.notes[0], noteStore.state.selectedNote);
+      expect(mockChange).toHaveBeenCalled();
+    });
   });
 
-  it('Finds note index within state.notes by id', () => {
+  it('findNoteIndex', async () => {
+    mockInvokes(localNotes);
+    await noteStore.getAllNotes();
+
     const index = noteStore.findNoteIndex(existingNote.id);
 
     assert.strictEqual(index, existingNoteIndexSorted);
@@ -92,7 +110,10 @@ describe('Note store', () => {
     assert.strictEqual(noteStore.findNoteIndex(), -1);
   });
 
-  it('Finds note within state.notes by id', () => {
+  it('findNote', async () => {
+    mockInvokes(localNotes);
+    await noteStore.getAllNotes();
+
     const foundNote = noteStore.findNote(existingNote.id);
 
     assert.isDefined(foundNote);
@@ -100,19 +121,12 @@ describe('Note store', () => {
     assert.isUndefined(noteStore.findNote(new noteStore.Note().id));
   });
 
-  it('Selects a note with given id', () => {
-    const mockSelect = vi.fn(() => undefined);
-    const mockChange = vi.fn(() => undefined);
+  it('selectNote', async () => {
+    mockInvokes(localNotes);
+    await noteStore.getAllNotes();
+    noteStore.state.notes.push(new noteStore.Note());
 
-    document.addEventListener('note-select', mockSelect);
-    document.addEventListener('note-change', mockChange);
-
-    noteStore.state.notes.push(emptyNote);
-    noteStore.selectNote(emptyNote.id);
-
-    assert.deepEqual(noteStore.state.selectedNote, emptyNote);
-    expect(mockSelect).toHaveBeenCalled();
-    expect(mockChange).toHaveBeenCalled();
+    vi.clearAllMocks(); // Ensure mock checks are clear
 
     noteStore.selectNote(existingNote.id);
 
@@ -120,12 +134,25 @@ describe('Note store', () => {
       noteStore.state.selectedNote,
       noteStore.state.notes[existingNoteIndexSorted]
     );
+    expect(mockSelect).toHaveBeenCalled();
+    expect(mockChange).toHaveBeenCalled();
+
+    vi.clearAllMocks(); // Ensure mock checks are clear
 
     // Ensure clearNote works
-    assert.isFalse(isEmptyNote(noteStore.state.notes[9]));
+    noteStore.selectNote(noteStore.state.notes[10].id);
+    noteStore.selectNote(noteStore.state.notes[9].id);
+
+    assert.isUndefined(noteStore.state.notes[10]);
+    expect(mockSelect).toHaveBeenCalled();
+    expect(mockChange).toHaveBeenCalled();
   });
 
-  it('Checks if note with given id is currently selected', () => {
+  it('isSelectedNote', async () => {
+    mockInvokes(localNotes);
+    await noteStore.getAllNotes();
+
+    noteStore.selectNote(existingNote.id);
     assert.isTrue(noteStore.isSelectedNote(existingNote));
 
     noteStore.state.notes.push(emptyNote);
@@ -135,12 +162,11 @@ describe('Note store', () => {
     assert.isFalse(noteStore.isSelectedNote(existingNote));
   });
 
-  it('Deletes note with given id', () => {
-    const mockChange = vi.fn(() => undefined);
-    const mockUnsynced = vi.fn(() => undefined);
+  it('deleteNote', async () => {
+    mockInvokes(localNotes);
+    await noteStore.getAllNotes();
 
-    document.addEventListener('note-change', mockChange);
-    document.addEventListener('note-unsynced', mockUnsynced);
+    vi.clearAllMocks(); // Ensure mock checks are clear
 
     assert.isDefined(noteStore.findNote(existingNote.id));
 
@@ -152,13 +178,8 @@ describe('Note store', () => {
     expect(mockUnsynced).toHaveBeenCalled();
   });
 
-  it('Deletes selected note and any extra selected notes', () => {
-    const mockChange = vi.fn(() => undefined);
-    const mockUnsynced = vi.fn(() => undefined);
+  it('deleteAllNotes', () => {
     const currentSelectedNote = noteStore.state.selectedNote;
-
-    document.addEventListener('note-change', mockChange);
-    document.addEventListener('note-unsynced', mockUnsynced);
 
     noteStore.state.extraSelectedNotes = noteStore.state.notes.slice(2, 5);
     noteStore.deleteAllNotes();
@@ -169,39 +190,46 @@ describe('Note store', () => {
     expect(mockUnsynced).toHaveBeenCalled();
   });
 
-  it('Creates a new note', () => {
-    const mockChange = vi.fn(() => undefined);
-    const mockNew = vi.fn(() => undefined);
-    const mockUnsynced = vi.fn(() => undefined);
+  describe('newNote', () => {
+    it("When selected note isn't empty", async () => {
+      mockInvokes(localNotes);
+      await noteStore.getAllNotes();
+      noteStore.selectNote(existingNote.id);
 
-    document.addEventListener('note-change', mockChange);
-    document.addEventListener('note-new', mockNew);
-    document.addEventListener('note-unsynced', mockUnsynced);
+      vi.clearAllMocks(); // Ensure mock checks are clear
 
-    noteStore.selectNote(emptyNote.id);
-    noteStore.newNote();
+      noteStore.newNote();
 
-    assert.strictEqual(noteStore.state.selectedNote.id, emptyNote.id);
-    assert.deepEqual(noteStore.state.selectedNote.content, emptyNote.content);
-    assert.notStrictEqual(noteStore.state.selectedNote.timestamp, emptyNote.timestamp);
-    assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
+      assert.notStrictEqual(noteStore.state.selectedNote.id, emptyNote.id);
+      assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
+      assert.deepEqual(noteStore.state.selectedNote, noteStore.state.notes[0]);
+      expect(mockSelect).toHaveBeenCalled();
+      expect(mockChange).toHaveBeenCalled();
+      expect(mockNew).toHaveBeenCalled();
+    });
 
-    noteStore.selectNote(existingNote.id);
-    noteStore.newNote();
+    it('Only updates the timestamp if called with an already empty note selected', async () => {
+      mockInvokes(localNotes);
+      await noteStore.getAllNotes();
+      noteStore.state.notes.push(emptyNote);
+      noteStore.selectNote(emptyNote.id);
 
-    assert.notStrictEqual(noteStore.state.selectedNote.id, emptyNote.id);
-    assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
-    assert.deepEqual(noteStore.state.selectedNote, noteStore.state.notes[0]);
-    expect(mockChange).toHaveBeenCalled();
-    expect(mockNew).toHaveBeenCalled();
-    expect(mockUnsynced).toHaveBeenCalled();
+      vi.clearAllMocks(); // Ensure mock checks are clear
+
+      noteStore.newNote();
+
+      assert.strictEqual(noteStore.state.selectedNote.id, emptyNote.id);
+      assert.deepEqual(noteStore.state.selectedNote.content, emptyNote.content);
+      assert.notStrictEqual(noteStore.state.selectedNote.timestamp, emptyNote.timestamp);
+      assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
+      expect(mockSelect).not.toHaveBeenCalled();
+      expect(mockChange).not.toHaveBeenCalled();
+      expect(mockNew).not.toHaveBeenCalled();
+    });
   });
 
-  it('Edits currently selected note', () => {
-    const mockUnsynced = vi.fn(() => undefined);
+  it('editNote', () => {
     const currentSelectedNote = noteStore.state.selectedNote;
-
-    document.addEventListener('note-unsynced', mockUnsynced);
 
     vi.useFakeTimers();
     setTimeout(() => {

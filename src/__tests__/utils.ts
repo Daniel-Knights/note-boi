@@ -7,3 +7,9 @@ export function setCrypto(): void {
     getRandomValues: (array) => randomFillSync(array),
   };
 }
+
+export function mockPromise<T>(resValue?: T): Promise<T | void> {
+  return new Promise((res) => {
+    res(resValue);
+  });
+}
