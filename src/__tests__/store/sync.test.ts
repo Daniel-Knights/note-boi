@@ -10,7 +10,7 @@ import localNotes from '../notes.json';
 const mockEmitLogin = vi.fn(() => undefined);
 const mockEmitLogout = vi.fn(() => undefined);
 
-function mockInvokes(notes?: noteStore.Note[], httpError?: boolean) {
+function mockInvokes(notes?: noteStore.Note[], httpStatus = 200) {
   mockIPC((cmd, args) => {
     const reqMessage = args.message as
       | {
@@ -38,12 +38,17 @@ function mockInvokes(notes?: noteStore.Note[], httpError?: boolean) {
                 case 'signup':
                   resData.token = 'token';
                   break;
+                case 'notes': {
+                  if (reqOptions?.method === 'POST') {
+                    resData.notes = localNotes;
+                  }
+                }
                 // no default
               }
 
               res({
-                status: httpError ? 500 : 200,
-                data: httpError ? 'Error' : JSON.stringify(resData),
+                status: httpStatus,
+                data: httpStatus > 299 ? 'Error' : JSON.stringify(resData),
               });
             });
           case 'emit':
@@ -149,7 +154,7 @@ describe('Sync', () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       vi.clearAllMocks();
-      mockInvokes(localNotes, true);
+      mockInvokes(localNotes, 500);
 
       await syncStore.login();
 
@@ -212,7 +217,7 @@ describe('Sync', () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       vi.clearAllMocks();
-      mockInvokes(undefined, true);
+      mockInvokes(undefined, 500);
 
       await syncStore.signup();
 
@@ -257,7 +262,7 @@ describe('Sync', () => {
       vi.clearAllMocks();
       mockInvokes();
       await syncStore.login();
-      mockInvokes(undefined, true);
+      mockInvokes(undefined, 500);
 
       await syncStore.logout();
 
@@ -269,6 +274,60 @@ describe('Sync', () => {
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Logout);
       assert.isNotEmpty(syncStore.state.error.message);
       expect(mockEmitLogout).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('pull', () => {
+    it('Pulls notes from the server', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.token = 'token';
+      mockInvokes(localNotes);
+      await syncStore.login();
+
+      await syncStore.pull();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.deepEqual(noteStore.state.notes, localNotes);
+      assert.strictEqual(syncStore.state.username, 'd');
+      assert.strictEqual(syncStore.state.token, 'token');
+      assert.strictEqual(localStorage.getItem('username'), 'd');
+      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
+      assert.isEmpty(syncStore.state.error.message);
+    });
+
+    it('With server error', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.token = 'token';
+      mockInvokes(localNotes, 500);
+
+      await syncStore.pull();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.isEmpty(noteStore.state.notes);
+      assert.strictEqual(syncStore.state.username, 'd');
+      assert.strictEqual(syncStore.state.token, 'token');
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Pull);
+      assert.isNotEmpty(syncStore.state.error.message);
+    });
+
+    it('User not found', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.token = 'token';
+      mockInvokes(localNotes);
+      await syncStore.login();
+
+      mockInvokes([], 404);
+      await syncStore.pull();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.deepEqual(noteStore.state.notes, localNotes);
+      assert.isEmpty(syncStore.state.username);
+      assert.isEmpty(syncStore.state.token);
+      assert.isNull(localStorage.getItem('username'));
+      assert.isNull(localStorage.getItem('token'));
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Pull);
+      assert.isNotEmpty(syncStore.state.error.message);
     });
   });
 });
