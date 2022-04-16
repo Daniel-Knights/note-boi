@@ -71,7 +71,9 @@ describe('Note store', () => {
   describe('getAllNotes', () => {
     it('with undefined notes', async () => {
       mockInvokes(undefined);
+
       await noteStore.getAllNotes();
+
       assert.strictEqual(noteStore.state.notes.length, 1);
       assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
       assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
@@ -80,7 +82,9 @@ describe('Note store', () => {
 
     it('with empty note array', async () => {
       mockInvokes([]);
+
       await noteStore.getAllNotes();
+
       assert.strictEqual(noteStore.state.notes.length, 1);
       assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
       assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
@@ -89,7 +93,9 @@ describe('Note store', () => {
 
     it('with notes', async () => {
       mockInvokes(localNotes);
+
       await noteStore.getAllNotes();
+
       assert.strictEqual(noteStore.state.notes.length, 10);
       assert.deepEqual(noteStore.state.notes[0], localNotes[0]);
       assert.deepEqual(noteStore.state.notes[0], noteStore.state.selectedNote);
@@ -123,7 +129,6 @@ describe('Note store', () => {
     mockInvokes(localNotes);
     await noteStore.getAllNotes();
     noteStore.state.notes.push(new noteStore.Note());
-
     vi.clearAllMocks(); // Ensure mock checks are clear
 
     noteStore.selectNote(existingNote.id);
@@ -134,7 +139,6 @@ describe('Note store', () => {
     );
     expect(mockSelect).toHaveBeenCalled();
     expect(mockChange).toHaveBeenCalled();
-
     vi.clearAllMocks(); // Ensure mock checks are clear
 
     // Ensure clearNote works
@@ -149,8 +153,8 @@ describe('Note store', () => {
   it('isSelectedNote', async () => {
     mockInvokes(localNotes);
     await noteStore.getAllNotes();
-
     noteStore.selectNote(existingNote.id);
+
     assert.isTrue(noteStore.isSelectedNote(existingNote));
 
     noteStore.state.notes.push(emptyNote);
@@ -163,9 +167,7 @@ describe('Note store', () => {
   it('deleteNote', async () => {
     mockInvokes(localNotes);
     await noteStore.getAllNotes();
-
     vi.clearAllMocks(); // Ensure mock checks are clear
-
     assert.isDefined(noteStore.findNote(existingNote.id));
 
     noteStore.deleteNote(existingNote.id, true);
@@ -178,8 +180,8 @@ describe('Note store', () => {
 
   it('deleteAllNotes', () => {
     const currentSelectedNote = noteStore.state.selectedNote;
-
     noteStore.state.extraSelectedNotes = noteStore.state.notes.slice(2, 5);
+
     noteStore.deleteAllNotes();
 
     assert.notDeepEqual(noteStore.state.selectedNote, currentSelectedNote);
@@ -193,7 +195,6 @@ describe('Note store', () => {
       mockInvokes(localNotes);
       await noteStore.getAllNotes();
       noteStore.selectNote(existingNote.id);
-
       vi.clearAllMocks(); // Ensure mock checks are clear
 
       noteStore.newNote();
@@ -211,7 +212,6 @@ describe('Note store', () => {
       await noteStore.getAllNotes();
       noteStore.state.notes.push(emptyNote);
       noteStore.selectNote(emptyNote.id);
-
       vi.clearAllMocks(); // Ensure mock checks are clear
 
       noteStore.newNote();
@@ -226,23 +226,22 @@ describe('Note store', () => {
     });
   });
 
-  it('editNote', () => {
-    const currentSelectedNote = noteStore.state.selectedNote;
+  it('editNote', async () => {
+    mockInvokes(localNotes);
+    await noteStore.getAllNotes();
+    const currentSelectedNote = { ...noteStore.state.selectedNote };
 
-    vi.useFakeTimers();
-    setTimeout(() => {
-      noteStore.editNote('{"ops":[{"insert":"Title\nBody"}]}-', 'Title', 'Body');
+    noteStore.editNote('{"ops":[{"insert":"Title\nBody"}]}-', 'Title', 'Body');
 
-      assert.notDeepEqual(noteStore.state.selectedNote, currentSelectedNote);
-      assert.notDeepEqual(
-        noteStore.state.selectedNote.content,
-        currentSelectedNote.content
-      );
-      assert.notStrictEqual(
-        noteStore.state.selectedNote.timestamp,
-        currentSelectedNote.timestamp
-      );
-      expect(mockUnsynced).toHaveBeenCalled();
-    });
+    assert.notDeepEqual(noteStore.state.selectedNote, currentSelectedNote);
+    assert.notDeepEqual(
+      noteStore.state.selectedNote.content,
+      currentSelectedNote.content
+    );
+    assert.notStrictEqual(
+      noteStore.state.selectedNote.timestamp,
+      currentSelectedNote.timestamp
+    );
+    expect(mockUnsynced).toHaveBeenCalled();
   });
 });
