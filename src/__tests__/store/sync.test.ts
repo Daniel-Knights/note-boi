@@ -335,6 +335,7 @@ describe('Sync', () => {
     it('Pushes notes to the server', async () => {
       syncStore.state.username = 'd';
       syncStore.state.token = 'token';
+      syncStore.state.hasUnsyncedNotes = true;
       mockInvokes(localNotes);
       await syncStore.login();
 
@@ -356,8 +357,8 @@ describe('Sync', () => {
       syncStore.state.token = 'token';
       mockInvokes(localNotes);
       await syncStore.login();
-
       mockInvokes([], 500);
+
       await syncStore.push();
 
       assert.isFalse(syncStore.state.isLoading);
