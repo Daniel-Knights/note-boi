@@ -4,7 +4,7 @@ import { mockIPC } from '@tauri-apps/api/mocks';
 import * as syncStore from '../../store/sync';
 import * as noteStore from '../../store/note';
 import { isEmptyNote } from '../../utils';
-import { mockPromise, setCrypto } from '../utils';
+import { mockPromise, resetNoteStore, setCrypto } from '../utils';
 import localNotes from '../notes.json';
 
 function mockInvokes(notes?: noteStore.Note[], httpError?: boolean) {
@@ -23,6 +23,9 @@ function mockInvokes(notes?: noteStore.Note[], httpError?: boolean) {
               switch (reqType) {
                 case 'login':
                   resData.notes = localNotes;
+                  resData.token = 'token';
+                  break;
+                case 'signup':
                   resData.token = 'token';
                   break;
                 // no default
@@ -59,10 +62,11 @@ beforeEach(() => {
   syncStore.state.isLogin = true;
   syncStore.state.autoSyncEnabled = true;
   syncStore.state.error = { type: syncStore.ErrorType.None, message: '' };
+  resetNoteStore();
 });
 
 describe('Sync', () => {
-  describe('Auto-sync preference', () => {
+  describe('setAutoSync', () => {
     it('Sets auto-sync preference to true', () => {
       syncStore.setAutoSync(true);
 
@@ -77,8 +81,8 @@ describe('Sync', () => {
     });
   });
 
-  describe('Logs a user in', () => {
-    it('Logs in a user with no notes', async () => {
+  describe('login', () => {
+    it('Logs in with no notes', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       mockInvokes([]);
@@ -86,7 +90,7 @@ describe('Sync', () => {
       await syncStore.login();
 
       assert.isFalse(syncStore.state.isLoading);
-      assert.deepEqual(noteStore.state.notes.length, 1);
+      assert.strictEqual(noteStore.state.notes.length, 1);
       assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
       assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
       assert.strictEqual(syncStore.state.token, 'token');
@@ -98,7 +102,7 @@ describe('Sync', () => {
       assert.isEmpty(syncStore.state.error.message);
     });
 
-    it('Logs in a user with notes', async () => {
+    it('Logs in with notes', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       mockInvokes(localNotes);
@@ -116,7 +120,7 @@ describe('Sync', () => {
       assert.isEmpty(syncStore.state.error.message);
     });
 
-    it('Fails to log in a user, with a server error', async () => {
+    it('Fails to log in, with a server error', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       mockInvokes(localNotes, true);
@@ -124,7 +128,64 @@ describe('Sync', () => {
       await syncStore.login();
 
       assert.isFalse(syncStore.state.isLoading);
+      assert.isEmpty(noteStore.state.notes);
+      assert.isEmpty(syncStore.state.token);
+      assert.strictEqual(syncStore.state.username, 'd');
+      assert.strictEqual(syncStore.state.password, '1');
+      assert.isNull(localStorage.getItem('username'));
+      assert.isNull(localStorage.getItem('token'));
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Auth);
+      assert.isNotEmpty(syncStore.state.error.message);
+    });
+  });
+
+  describe('signup', () => {
+    it('With empty notes', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.password = '1';
+      mockInvokes([]);
+
+      await syncStore.signup();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.isEmpty(noteStore.state.notes);
+      assert.strictEqual(syncStore.state.token, 'token');
+      assert.strictEqual(syncStore.state.username, 'd');
+      assert.isEmpty(syncStore.state.password);
+      assert.strictEqual(localStorage.getItem('username'), 'd');
+      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
+      assert.isEmpty(syncStore.state.error.message);
+    });
+
+    it('With notes', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.password = '1';
+      mockInvokes(localNotes);
+      await noteStore.getAllNotes();
+
+      await syncStore.signup();
+
+      assert.isFalse(syncStore.state.isLoading);
       assert.deepEqual(noteStore.state.notes, localNotes);
+      assert.strictEqual(syncStore.state.token, 'token');
+      assert.strictEqual(syncStore.state.username, 'd');
+      assert.isEmpty(syncStore.state.password);
+      assert.strictEqual(localStorage.getItem('username'), 'd');
+      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
+      assert.isEmpty(syncStore.state.error.message);
+    });
+
+    it('With server error', async () => {
+      syncStore.state.username = 'd';
+      syncStore.state.password = '1';
+      mockInvokes(undefined, true);
+
+      await syncStore.signup();
+
+      assert.isFalse(syncStore.state.isLoading);
+      assert.isEmpty(noteStore.state.notes);
       assert.isEmpty(syncStore.state.token);
       assert.strictEqual(syncStore.state.username, 'd');
       assert.strictEqual(syncStore.state.password, '1');

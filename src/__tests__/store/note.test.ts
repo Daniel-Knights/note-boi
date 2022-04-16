@@ -2,9 +2,9 @@ import { assert, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 import { mockIPC } from '@tauri-apps/api/mocks';
 
 import * as noteStore from '../../store/note';
-import localNotes from '../notes.json';
 import { isEmptyNote } from '../../utils';
-import { mockPromise, setCrypto } from '../utils';
+import { mockPromise, resetNoteStore, setCrypto } from '../utils';
+import localNotes from '../notes.json';
 
 const emptyNote = new noteStore.Note();
 const existingNoteIndexSorted = 2;
@@ -41,9 +41,7 @@ beforeAll(() => {
 });
 
 beforeEach(() => {
-  noteStore.state.notes = [];
-  noteStore.state.selectedNote = new noteStore.Note();
-  noteStore.state.extraSelectedNotes = [];
+  resetNoteStore();
   vi.clearAllMocks(); // Ensure mock checks are clear
 });
 

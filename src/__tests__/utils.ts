@@ -1,5 +1,7 @@
 import { randomFillSync } from 'crypto';
 
+import * as noteStore from '../store/note';
+
 // jsdom doesn't come with a WebCrypto implementation
 export function setCrypto(): void {
   window.crypto = {
@@ -12,4 +14,10 @@ export function mockPromise<T>(resValue?: T): Promise<T | void> {
   return new Promise((res) => {
     res(resValue);
   });
+}
+
+export function resetNoteStore(): void {
+  noteStore.state.notes = [];
+  noteStore.state.selectedNote = new noteStore.Note();
+  noteStore.state.extraSelectedNotes = [];
 }
