@@ -1,9 +1,10 @@
 <template>
   <ul v-if="show" class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
-    <li @click="newNote">New Note</li>
+    <li @click="newNote" data-test-id="new">New Note</li>
     <li
       :class="{ 'context-menu__item--disabled': comp?.hasOneEmptyNote }"
       @click="handleDeleteNote"
+      data-test-id="delete"
     >
       Delete Note
     </li>
