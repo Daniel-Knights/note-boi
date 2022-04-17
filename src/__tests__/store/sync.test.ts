@@ -1,78 +1,16 @@
 import { assert, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
-import { mockIPC } from '@tauri-apps/api/mocks';
 
+import { resetNoteStore, setCrypto } from '../utils';
+import { isEmptyNote } from '../../utils';
+import { mockTauriApi } from '../tauri';
 import * as syncStore from '../../store/sync';
 import * as noteStore from '../../store/note';
-import { isEmptyNote } from '../../utils';
-import { mockPromise, resetNoteStore, setCrypto } from '../utils';
 import localNotes from '../notes.json';
 
-const mockEmitLogin = vi.fn(() => undefined);
-const mockEmitLogout = vi.fn(() => undefined);
-
-function mockInvokes(notes?: noteStore.Note[], httpStatus = 200) {
-  mockIPC((cmd, args) => {
-    const reqMessage = args.message as
-      | {
-          cmd?: string;
-          event?: string;
-          options?: { url?: string; method?: string };
-        }
-      | undefined;
-
-    switch (cmd) {
-      case 'tauri':
-        switch (reqMessage?.cmd) {
-          case 'httpRequest':
-            return new Promise<Record<string, unknown>>((res) => {
-              const reqOptions = reqMessage?.options;
-              const reqType = reqOptions?.url?.split('/api/')[1];
-
-              const resData: { notes?: noteStore.Note[]; token?: string } = {};
-
-              switch (reqType) {
-                case 'login':
-                  resData.notes = localNotes;
-                  resData.token = 'token';
-                  break;
-                case 'signup':
-                  resData.token = 'token';
-                  break;
-                case 'notes': {
-                  if (reqOptions?.method === 'POST') {
-                    resData.notes = localNotes;
-                  }
-                }
-                // no default
-              }
-
-              res({
-                status: httpStatus,
-                data: httpStatus > 299 ? 'Error' : JSON.stringify(resData),
-              });
-            });
-          case 'emit':
-            switch (reqMessage?.event) {
-              case 'login':
-                mockEmitLogin();
-                break;
-              case 'logout':
-                mockEmitLogout();
-                break;
-              // no default
-            }
-            break;
-          // no default
-        }
-        break;
-      case 'get_all_notes':
-        return mockPromise(notes);
-      case 'sync_all_local_notes':
-        return mockPromise();
-      // no default
-    }
-  });
-}
+const mockEmits = {
+  login: vi.fn(() => undefined),
+  logout: vi.fn(() => undefined),
+};
 
 beforeAll(setCrypto);
 
@@ -112,7 +50,7 @@ describe('Sync', () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       vi.clearAllMocks();
-      mockInvokes([]);
+      mockTauriApi([], mockEmits);
 
       await syncStore.login();
 
@@ -127,14 +65,14 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
-      expect(mockEmitLogin).toHaveBeenCalled();
+      expect(mockEmits.login).toHaveBeenCalled();
     });
 
     it('Logs in with notes', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       vi.clearAllMocks();
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes, mockEmits);
 
       await syncStore.login();
 
@@ -147,14 +85,14 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
-      expect(mockEmitLogin).toHaveBeenCalled();
+      expect(mockEmits.login).toHaveBeenCalled();
     });
 
     it('Fails to log in, with a server error', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       vi.clearAllMocks();
-      mockInvokes(localNotes, 500);
+      mockTauriApi(localNotes, mockEmits, 500);
 
       await syncStore.login();
 
@@ -167,7 +105,7 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem('token'));
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Auth);
       assert.isNotEmpty(syncStore.state.error.message);
-      expect(mockEmitLogin).not.toHaveBeenCalled();
+      expect(mockEmits.login).not.toHaveBeenCalled();
     });
   });
 
@@ -176,7 +114,7 @@ describe('Sync', () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       vi.clearAllMocks();
-      mockInvokes([]);
+      mockTauriApi([], mockEmits);
 
       await syncStore.signup();
 
@@ -189,14 +127,14 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
-      expect(mockEmitLogin).toHaveBeenCalled();
+      expect(mockEmits.login).toHaveBeenCalled();
     });
 
     it('With notes', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       vi.clearAllMocks();
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes, mockEmits);
       await noteStore.getAllNotes();
 
       await syncStore.signup();
@@ -210,14 +148,14 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
-      expect(mockEmitLogin).toHaveBeenCalled();
+      expect(mockEmits.login).toHaveBeenCalled();
     });
 
     it('With server error', async () => {
       syncStore.state.username = 'd';
       syncStore.state.password = '1';
       vi.clearAllMocks();
-      mockInvokes(undefined, 500);
+      mockTauriApi(undefined, mockEmits, 500);
 
       await syncStore.signup();
 
@@ -230,7 +168,7 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem('token'));
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Auth);
       assert.isNotEmpty(syncStore.state.error.message);
-      expect(mockEmitLogin).not.toHaveBeenCalled();
+      expect(mockEmits.login).not.toHaveBeenCalled();
     });
   });
 
@@ -240,7 +178,7 @@ describe('Sync', () => {
       syncStore.state.password = '1';
       syncStore.state.token = 'token';
       vi.clearAllMocks();
-      mockInvokes();
+      mockTauriApi(undefined, mockEmits);
       await syncStore.login();
 
       await syncStore.logout();
@@ -252,7 +190,7 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem('token'));
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.None);
       assert.isEmpty(syncStore.state.error.message);
-      expect(mockEmitLogout).toHaveBeenCalled();
+      expect(mockEmits.logout).toHaveBeenCalled();
     });
 
     it('With server error', async () => {
@@ -260,9 +198,9 @@ describe('Sync', () => {
       syncStore.state.password = '1';
       syncStore.state.token = 'token';
       vi.clearAllMocks();
-      mockInvokes();
+      mockTauriApi();
       await syncStore.login();
-      mockInvokes(undefined, 500);
+      mockTauriApi(undefined, mockEmits, 500);
 
       await syncStore.logout();
 
@@ -273,7 +211,7 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(syncStore.state.error.type, syncStore.ErrorType.Logout);
       assert.isNotEmpty(syncStore.state.error.message);
-      expect(mockEmitLogout).not.toHaveBeenCalled();
+      expect(mockEmits.logout).not.toHaveBeenCalled();
     });
   });
 
@@ -281,7 +219,7 @@ describe('Sync', () => {
     it('Pulls notes from the server', async () => {
       syncStore.state.username = 'd';
       syncStore.state.token = 'token';
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes);
       await syncStore.login();
 
       await syncStore.pull();
@@ -299,7 +237,7 @@ describe('Sync', () => {
     it('With server error', async () => {
       syncStore.state.username = 'd';
       syncStore.state.token = 'token';
-      mockInvokes(localNotes, 500);
+      mockTauriApi(localNotes, undefined, 500);
 
       await syncStore.pull();
 
@@ -314,9 +252,9 @@ describe('Sync', () => {
     it('User not found', async () => {
       syncStore.state.username = 'd';
       syncStore.state.token = 'token';
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes);
       await syncStore.login();
-      mockInvokes([], 404);
+      mockTauriApi([], undefined, 404);
 
       await syncStore.pull();
 
@@ -336,7 +274,7 @@ describe('Sync', () => {
       syncStore.state.username = 'd';
       syncStore.state.token = 'token';
       syncStore.state.hasUnsyncedNotes = true;
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes);
       await syncStore.login();
 
       await syncStore.push();
@@ -355,9 +293,9 @@ describe('Sync', () => {
     it('With server error', async () => {
       syncStore.state.username = 'd';
       syncStore.state.token = 'token';
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes);
       await syncStore.login();
-      mockInvokes([], 500);
+      mockTauriApi([], undefined, 500);
 
       await syncStore.push();
 

@@ -1,7 +1,7 @@
 import { assert, describe, it } from 'vitest';
 
-import { Note } from '../store/note';
 import { isEmptyNote, isWhitespaceOnly, unixToDateTime } from '../utils';
+import { Note } from '../store/note';
 
 describe('Utils', () => {
   it('Formats Unix time to date-time', () => {

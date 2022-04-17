@@ -1,9 +1,9 @@
 import { assert, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
-import { mockIPC } from '@tauri-apps/api/mocks';
 
-import * as noteStore from '../../store/note';
+import { resetNoteStore, setCrypto } from '../utils';
 import { isEmptyNote } from '../../utils';
-import { mockPromise, resetNoteStore, setCrypto } from '../utils';
+import { mockTauriApi } from '../tauri';
+import * as noteStore from '../../store/note';
 import localNotes from '../notes.json';
 
 const emptyNote = new noteStore.Note();
@@ -13,24 +13,6 @@ const mockChange = vi.fn(() => undefined);
 const mockNew = vi.fn(() => undefined);
 const mockSelect = vi.fn(() => undefined);
 const mockUnsynced = vi.fn(() => undefined);
-
-function mockInvokes(notes: noteStore.Note[] | undefined) {
-  mockIPC((cmd, args) => {
-    switch (cmd) {
-      case 'get_all_notes':
-        return mockPromise(notes);
-      case 'delete_note':
-      case 'new_note':
-        return mockPromise();
-      case 'edit_note':
-        return new Promise<void>((res) => {
-          noteStore.state.selectedNote = args.note as noteStore.Note;
-          res();
-        });
-      // no default
-    }
-  });
-}
 
 beforeAll(() => {
   setCrypto();
@@ -70,7 +52,7 @@ describe('Note store', () => {
   // Runs here to ensure subsequent tests have a populated store
   describe('getAllNotes', () => {
     it('with undefined notes', async () => {
-      mockInvokes(undefined);
+      mockTauriApi(undefined);
 
       await noteStore.getAllNotes();
 
@@ -81,7 +63,7 @@ describe('Note store', () => {
     });
 
     it('with empty note array', async () => {
-      mockInvokes([]);
+      mockTauriApi([]);
 
       await noteStore.getAllNotes();
 
@@ -92,7 +74,7 @@ describe('Note store', () => {
     });
 
     it('with notes', async () => {
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes);
 
       await noteStore.getAllNotes();
 
@@ -104,7 +86,7 @@ describe('Note store', () => {
   });
 
   it('findNoteIndex', async () => {
-    mockInvokes(localNotes);
+    mockTauriApi(localNotes);
     await noteStore.getAllNotes();
 
     const index = noteStore.findNoteIndex(existingNote.id);
@@ -115,7 +97,7 @@ describe('Note store', () => {
   });
 
   it('findNote', async () => {
-    mockInvokes(localNotes);
+    mockTauriApi(localNotes);
     await noteStore.getAllNotes();
 
     const foundNote = noteStore.findNote(existingNote.id);
@@ -126,7 +108,7 @@ describe('Note store', () => {
   });
 
   it('selectNote', async () => {
-    mockInvokes(localNotes);
+    mockTauriApi(localNotes);
     await noteStore.getAllNotes();
     noteStore.state.notes.push(new noteStore.Note());
     vi.clearAllMocks(); // Ensure mock checks are clear
@@ -151,7 +133,7 @@ describe('Note store', () => {
   });
 
   it('isSelectedNote', async () => {
-    mockInvokes(localNotes);
+    mockTauriApi(localNotes);
     await noteStore.getAllNotes();
     noteStore.selectNote(existingNote.id);
 
@@ -165,7 +147,7 @@ describe('Note store', () => {
   });
 
   it('deleteNote', async () => {
-    mockInvokes(localNotes);
+    mockTauriApi(localNotes);
     await noteStore.getAllNotes();
     vi.clearAllMocks(); // Ensure mock checks are clear
     assert.isDefined(noteStore.findNote(existingNote.id));
@@ -192,7 +174,7 @@ describe('Note store', () => {
 
   describe('newNote', () => {
     it("When selected note isn't empty", async () => {
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes);
       await noteStore.getAllNotes();
       noteStore.selectNote(existingNote.id);
       vi.clearAllMocks(); // Ensure mock checks are clear
@@ -208,7 +190,7 @@ describe('Note store', () => {
     });
 
     it('Only updates the timestamp if called with an already empty note selected', async () => {
-      mockInvokes(localNotes);
+      mockTauriApi(localNotes);
       await noteStore.getAllNotes();
       noteStore.state.notes.push(emptyNote);
       noteStore.selectNote(emptyNote.id);
@@ -227,7 +209,7 @@ describe('Note store', () => {
   });
 
   it('editNote', async () => {
-    mockInvokes(localNotes);
+    mockTauriApi(localNotes);
     await noteStore.getAllNotes();
     const currentSelectedNote = { ...noteStore.state.selectedNote };
 
