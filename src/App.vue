@@ -55,8 +55,17 @@ function confirmDialog(cb: () => void) {
   }
 
   dialog.ask('Sync changes before leaving?').then(async (shouldSync) => {
-    if (shouldSync) await push();
-    if (state.error.type === ErrorType.None) cb();
+    if (shouldSync) {
+      await push();
+
+      if (state.error.type === ErrorType.Push) {
+        popup.error = true;
+      } else {
+        cb();
+      }
+    } else {
+      cb();
+    }
   });
 }
 
