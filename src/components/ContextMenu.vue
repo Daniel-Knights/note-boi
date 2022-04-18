@@ -10,7 +10,7 @@
     </li>
     <li class="context-menu__has-sub-menu">
       Theme
-      <ul>
+      <ul data-test-id="theme">
         <li
           v-for="theme in colourThemes"
           :key="theme"
@@ -23,7 +23,7 @@
     </li>
     <li class="context-menu__has-sub-menu">
       Auto-sync
-      <ul>
+      <ul data-test-id="auto-sync">
         <li
           :class="{ 'context-menu__item--selected': syncState.autoSyncEnabled }"
           @click="setAutoSync(true)"

@@ -6,6 +6,7 @@ import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
 import { getByTestId, resetNoteStore, setCrypto } from '../utils';
 import * as noteStore from '../../store/note';
+import * as syncStore from '../../store/sync';
 import localNotes from '../notes.json';
 
 async function mountContextMenu(attachTo?: HTMLElement) {
@@ -19,7 +20,14 @@ async function mountContextMenu(attachTo?: HTMLElement) {
   const wrapper = mount(ContextMenu, { attachTo });
   await wrapper.setProps({ ev });
 
-  return { wrapper, ev };
+  const element = wrapper.element as HTMLUListElement;
+
+  const assertionError =
+    !wrapper.isVisible() ||
+    element.style.top !== `${ev.clientY}px` ||
+    element.style.left !== `${ev.clientX}px`;
+
+  return { wrapper, assertionError };
 }
 
 beforeAll(setCrypto);
@@ -29,31 +37,22 @@ describe('ContextMenu', () => {
   it('Mounts without passed ev', () => {
     const wrapper = mount(ContextMenu);
 
-    assert.isDefined(wrapper);
     assert.isFalse(wrapper.isVisible());
   });
 
   it('Mounts with ev', async () => {
-    const { wrapper, ev } = await mountContextMenu();
-    const element = wrapper.element as HTMLUListElement;
+    const { assertionError } = await mountContextMenu();
 
-    assert.isDefined(wrapper);
-    assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(element.style.top, `${ev.clientY}px`);
-    assert.strictEqual(element.style.left, `${ev.clientX}px`);
+    if (assertionError) assert.fail();
   });
 
   it('Creates a new note', async () => {
-    const { wrapper, ev } = await mountContextMenu();
-    const element = wrapper.element as HTMLUListElement;
-
-    assert.isDefined(wrapper);
-    assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(element.style.top, `${ev.clientY}px`);
-    assert.strictEqual(element.style.left, `${ev.clientX}px`);
+    const { wrapper, assertionError } = await mountContextMenu();
+    if (assertionError) assert.fail();
 
     await mockTauriApi(localNotes);
     await noteStore.getAllNotes();
+
     assert.isFalse(isEmptyNote(noteStore.state.selectedNote));
     assert.isFalse(isEmptyNote(noteStore.state.notes[0]));
 
@@ -63,6 +62,22 @@ describe('ContextMenu', () => {
     assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
   });
 
+  it('Delete button disabled with no notes', async () => {
+    await mockTauriApi();
+    await noteStore.getAllNotes();
+
+    const div = document.createElement('div');
+    div.dataset.noteId = noteStore.state.notes[0].id;
+
+    const { wrapper, assertionError } = await mountContextMenu(div);
+    if (assertionError) assert.fail();
+
+    const deleteButton = getByTestId(wrapper, 'delete');
+
+    assert.isTrue(wrapper.vm.comp?.hasOneEmptyNote);
+    assert.isTrue(deleteButton.element.className.includes('--disabled'));
+  });
+
   it('Deletes a note', async () => {
     await mockTauriApi(localNotes);
     await noteStore.getAllNotes();
@@ -70,16 +85,14 @@ describe('ContextMenu', () => {
     const noteToDelete = { ...localNotes[0] };
     const div = document.createElement('div');
     div.dataset.noteId = noteToDelete.id;
-    const { wrapper, ev } = await mountContextMenu(div);
-    const element = wrapper.element as HTMLUListElement;
 
-    assert.isDefined(wrapper);
-    assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(element.style.top, `${ev.clientY}px`);
-    assert.strictEqual(element.style.left, `${ev.clientX}px`);
+    const { wrapper, assertionError } = await mountContextMenu(div);
+    if (assertionError) assert.fail();
 
-    await noteStore.selectNote(noteToDelete.id);
+    noteStore.selectNote(noteToDelete.id);
+
     const noteToDeleteIndex = noteStore.findNoteIndex(noteToDelete.id);
+
     assert.deepEqual(noteStore.state.selectedNote, noteToDelete);
     assert.deepEqual(noteStore.state.notes[noteToDeleteIndex], noteToDelete);
 
@@ -90,23 +103,41 @@ describe('ContextMenu', () => {
     assert.notDeepNestedInclude(noteStore.state.notes, noteToDelete);
   });
 
-  it.todo('Sets theme preference', async () => {
-    const { wrapper, ev } = await mountContextMenu();
-    const element = wrapper.element as HTMLUListElement;
+  it('Sets theme preference', async () => {
+    const { wrapper, assertionError } = await mountContextMenu();
+    if (assertionError) assert.fail();
 
-    assert.isDefined(wrapper);
-    assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(element.style.top, `${ev.clientY}px`);
-    assert.strictEqual(element.style.left, `${ev.clientX}px`);
+    const themeMenu = getByTestId(wrapper, 'theme');
+
+    const firstThemeEl = themeMenu.get(':first-child');
+    const firstTheme = firstThemeEl.element.innerHTML;
+    await firstThemeEl.trigger('click');
+
+    assert.strictEqual(wrapper.vm.selectedTheme, firstTheme);
+    assert.strictEqual(localStorage.getItem('theme'), firstTheme);
+
+    const secondThemeEl = themeMenu.get(':nth-child(2)');
+    const secondTheme = secondThemeEl.element.innerHTML;
+    await secondThemeEl.trigger('click');
+
+    assert.strictEqual(wrapper.vm.selectedTheme, secondTheme);
+    assert.strictEqual(localStorage.getItem('theme'), secondTheme);
   });
 
-  it.todo('Sets auto-sync preference', async () => {
-    const { wrapper, ev } = await mountContextMenu();
-    const element = wrapper.element as HTMLUListElement;
+  it('Sets auto-sync preference', async () => {
+    const { wrapper, assertionError } = await mountContextMenu();
+    if (assertionError) assert.fail();
 
-    assert.isDefined(wrapper);
-    assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(element.style.top, `${ev.clientY}px`);
-    assert.strictEqual(element.style.left, `${ev.clientX}px`);
+    const autoSyncMenu = getByTestId(wrapper, 'auto-sync');
+
+    await autoSyncMenu.get(':first-child').trigger('click');
+
+    assert.isTrue(syncStore.state.autoSyncEnabled);
+    assert.strictEqual(localStorage.getItem('auto-sync'), 'true');
+
+    await autoSyncMenu.get(':nth-child(2)').trigger('click');
+
+    assert.isFalse(syncStore.state.autoSyncEnabled);
+    assert.strictEqual(localStorage.getItem('auto-sync'), 'false');
   });
 });

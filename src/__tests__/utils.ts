@@ -25,7 +25,7 @@ export function resetNoteStore(): void {
 
 export function getByTestId(
   wrapper: VueWrapper,
-  id: 'new' | 'delete'
+  id: 'new' | 'delete' | 'theme' | 'auto-sync'
 ): Omit<DOMWrapper<Element>, 'exists'> {
   return wrapper.get(`[data-test-id="${id}"]`);
 }

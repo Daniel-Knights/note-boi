@@ -18,6 +18,7 @@ describe('Utils', () => {
   it('Checks if a note is empty', () => {
     const note = new Note();
 
+    assert.isTrue(isEmptyNote());
     assert.isTrue(isEmptyNote(note));
     note.timestamp = 1650003060221;
     assert.isTrue(isEmptyNote(note));
