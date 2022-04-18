@@ -1,5 +1,3 @@
-import { assert, describe, it } from 'vitest';
-
 import { isEmptyNote, isWhitespaceOnly, unixToDateTime } from '../utils';
 import { Note } from '../store/note';
 

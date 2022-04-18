@@ -1,4 +1,3 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
 import { mockIPC } from '@tauri-apps/api/mocks';
 import { mount } from '@vue/test-utils';
 

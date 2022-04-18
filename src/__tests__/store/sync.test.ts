@@ -1,5 +1,3 @@
-import { assert, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
-
 import { resetNoteStore, setCrypto } from '../utils';
 import { isEmptyNote } from '../../utils';
 import { mockTauriApi } from '../tauri';

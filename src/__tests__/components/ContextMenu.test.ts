@@ -1,4 +1,3 @@
-import { describe, it, assert, beforeAll, beforeEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 
 import ContextMenu from '../../components/ContextMenu.vue';
