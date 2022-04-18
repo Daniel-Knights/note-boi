@@ -10,7 +10,7 @@ beforeEach(() => {
   mockIPC(() => undefined);
 });
 
-describe('SyncStatus', () => {
+describe.todo('SyncStatus', () => {
   it('Mounts', () => {
     const wrapper = mount(SyncStatus);
 

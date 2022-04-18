@@ -3,17 +3,19 @@
     <small class="editor__date">{{
       unixToDateTime(state.selectedNote.timestamp || 0)
     }}</small>
-    <div class="editor__body"></div>
+    <div class="editor__body" ref="editorBody"></div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import Quill from 'quill';
 import punycode from 'punycode/';
 
 import { state, editNote } from '../store/note';
 import { unixToDateTime } from '../utils';
+
+const editorBody = ref<HTMLDivElement | null>(null);
 
 let quillEditor: Quill | undefined;
 let isNoteSelect = false;
@@ -38,7 +40,7 @@ document.addEventListener('note-select', () => {
 });
 
 onMounted(() => {
-  quillEditor = new Quill('.editor__body', {
+  quillEditor = new Quill(editorBody.value!, {
     modules: {
       toolbar: [
         [{ header: [1, 2, 3, false] }],
