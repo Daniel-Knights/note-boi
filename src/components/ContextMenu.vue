@@ -67,10 +67,7 @@ const props = defineProps({
 });
 
 const comp = computed(() => {
-  if (!clickedNoteId.value) return;
-
   const foundNote = findNote(clickedNoteId.value);
-  if (!foundNote) return;
 
   return {
     hasOneEmptyNote: isEmptyNote(foundNote),
