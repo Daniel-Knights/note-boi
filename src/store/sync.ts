@@ -13,29 +13,15 @@ export enum ErrorType {
   Logout,
 }
 
-interface State {
-  username: string;
-  password: string;
-  token: string;
-  hasUnsyncedNotes: boolean;
-  isLoading: boolean;
-  isLogin: boolean; // For switching login/signup form
-  autoSyncEnabled: boolean;
-  error: {
-    type: ErrorType;
-    message: string;
-  };
-}
-
 const autoSync = localStorage.getItem('auto-sync') as 'true' | 'false' | null;
 
-export const state = reactive<State>({
+export const state = reactive({
   username: localStorage.getItem('username') || '',
   password: '',
   token: localStorage.getItem('token') || '',
   hasUnsyncedNotes: false,
   isLoading: false,
-  isLogin: true,
+  isLogin: true, // For switching login/signup form
   autoSyncEnabled: autoSync !== null ? autoSync === 'true' : true,
   error: {
     type: ErrorType.None,
