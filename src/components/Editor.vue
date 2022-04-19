@@ -1,6 +1,6 @@
 <template>
   <section id="editor">
-    <small class="editor__date">{{
+    <small class="editor__date" data-test-id="timestamp">{{
       unixToDateTime(state.selectedNote.timestamp || 0)
     }}</small>
     <div class="editor__body" ref="editorBody"></div>
@@ -12,7 +12,7 @@ import { onMounted, ref } from 'vue';
 import Quill from 'quill';
 import punycode from 'punycode/';
 
-import { state, editNote } from '../store/note';
+import { noteEvents, state, editNote } from '../store/note';
 import { unixToDateTime } from '../utils';
 
 const editorBody = ref<HTMLDivElement | null>(null);
@@ -20,20 +20,20 @@ const editorBody = ref<HTMLDivElement | null>(null);
 let quillEditor: Quill | undefined;
 let isNoteSelect = false;
 
-document.addEventListener('note-new', () => {
+document.addEventListener(noteEvents.new, () => {
   // Timeout prevents weird bug where cursor line ignores padding
   setTimeout(() => {
     quillEditor?.setSelection(0, 0);
   });
 });
-document.addEventListener('note-change', () => {
+document.addEventListener(noteEvents.change, () => {
   const parsedNoteContent = JSON.parse(
     punycode.decode(state.selectedNote.content.delta) || '[]'
   );
 
   quillEditor?.setContents(parsedNoteContent);
 });
-document.addEventListener('note-select', () => {
+document.addEventListener(noteEvents.select, () => {
   isNoteSelect = true;
 
   quillEditor?.blur(); // Prevent focus bug after new note
@@ -61,7 +61,7 @@ onMounted(() => {
 
     if (!quillEditor) return;
     const delta = quillEditor.getContents();
-    const [title, body] = quillEditor.root.innerText.split(/\n+/);
+    const [title, body] = quillEditor.getText().split(/\n+/);
 
     editNote(punycode.encode(JSON.stringify(delta)), title, body);
   });

@@ -14,10 +14,10 @@ const mockUnsynced = vi.fn(() => undefined);
 
 beforeAll(() => {
   setCrypto();
-  document.addEventListener('note-change', mockChange);
-  document.addEventListener('note-new', mockNew);
-  document.addEventListener('note-select', mockSelect);
-  document.addEventListener('note-unsynced', mockUnsynced);
+  document.addEventListener(noteStore.noteEvents.change, mockChange);
+  document.addEventListener(noteStore.noteEvents.new, mockNew);
+  document.addEventListener(noteStore.noteEvents.select, mockSelect);
+  document.addEventListener(noteStore.noteEvents.unsynced, mockUnsynced);
 });
 
 beforeEach(() => {

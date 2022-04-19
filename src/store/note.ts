@@ -15,22 +15,23 @@ export class Note {
   };
 }
 
-interface State {
-  notes: Note[];
-  selectedNote: Note;
-  /** `0` = next in queue */
-  extraSelectedNotes: (Note | undefined)[];
-}
+export const noteEvents = {
+  new: 'note-new',
+  select: 'note-select',
+  change: 'note-change',
+  unsynced: 'note-unsynced',
+};
 
-const newNoteEvent = new CustomEvent('note-new');
-const selectNoteEvent = new CustomEvent('note-select');
-const changeNoteEvent = new CustomEvent('note-change');
-const unsyncedEvent = new CustomEvent('note-unsynced');
+const newNoteEvent = new CustomEvent(noteEvents.new);
+const selectNoteEvent = new CustomEvent(noteEvents.select);
+const changeNoteEvent = new CustomEvent(noteEvents.change);
+const unsyncedEvent = new CustomEvent(noteEvents.unsynced);
 
-export const state = reactive<State>({
-  notes: [],
+export const state = reactive({
+  notes: <Note[]>[],
   selectedNote: new Note(),
-  extraSelectedNotes: [],
+  /** `0` = next in queue */
+  extraSelectedNotes: <Note[]>[],
 });
 
 /** Sorts notes in descending order by timestamp. */
