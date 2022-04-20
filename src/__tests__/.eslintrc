@@ -1,0 +1,12 @@
+{
+  "globals": {
+    "describe": "readonly",
+    "it": "readonly",
+    "test": "readonly",
+    "expect": "readonly",
+    "beforeEach": "readonly",
+    "beforeAll": "readonly",
+    "vi": "readonly",
+    "assert": "readonly"
+  }
+}

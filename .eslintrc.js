@@ -18,16 +18,8 @@ module.exports = {
     'airbnb-base',
   ],
   globals: {
-    mapboxgl: 'readonly',
     defineProps: 'readonly',
     defineEmits: 'readonly',
-    describe: 'readonly',
-    it: 'readonly',
-    expect: 'readonly',
-    beforeEach: 'readonly',
-    beforeAll: 'readonly',
-    vi: 'readonly',
-    assert: 'readonly',
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
