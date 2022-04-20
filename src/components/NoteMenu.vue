@@ -87,7 +87,7 @@ function handleNoteSelect(ev: MouseEvent) {
 
     if (targetNoteIndex >= 0) {
       const lastSelectedNote = hasExtraNotes
-        ? state.extraSelectedNotes[0]?.id
+        ? state.extraSelectedNotes[state.extraSelectedNotes.length - 1]?.id
         : state.selectedNote.id;
       const selectedNoteIndex = findNoteIndex(lastSelectedNote);
 
@@ -98,10 +98,10 @@ function handleNoteSelect(ev: MouseEvent) {
         let noteSlice: Note[] = [];
 
         if (lowestIndex === selectedNoteIndex) {
-          // Reverse to ensure correct selection order, `0` = next in queue
-          noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1).reverse();
+          noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1);
         } else if (highestIndex === selectedNoteIndex) {
-          noteSlice = state.notes.slice(lowestIndex, highestIndex);
+          // Reverse to ensure correct selection order, `0` = next in queue
+          noteSlice = state.notes.slice(lowestIndex, highestIndex).reverse();
         }
 
         const withoutDuplicates = noteSlice.filter((nt) => !isSelectedNote(nt));
@@ -141,7 +141,7 @@ function handleNoteSelect(ev: MouseEvent) {
       const foundNote = findNote(targetNoteId);
 
       if (foundNote) {
-        state.extraSelectedNotes.unshift(foundNote);
+        state.extraSelectedNotes.push(foundNote);
 
         document.addEventListener('click', clearExtraNotes);
       }
