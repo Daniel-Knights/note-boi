@@ -12,16 +12,12 @@ beforeAll(setCrypto);
 describe('Logout', () => {
   it('Mounts', () => {
     const wrapper = mount(Logout);
-
-    assert.isDefined(wrapper);
     assert.isFalse(wrapper.isVisible());
   });
 
   it('Logs out on click', async () => {
     mockTauriApi(localNotes);
     const wrapper = mount(Logout);
-
-    assert.isDefined(wrapper);
     assert.isFalse(wrapper.isVisible());
 
     syncStore.state.username = 'd';

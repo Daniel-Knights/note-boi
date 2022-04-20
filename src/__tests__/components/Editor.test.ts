@@ -12,8 +12,6 @@ beforeAll(setCrypto);
 describe('Editor', () => {
   it('Mounts', () => {
     const wrapper = mount(Editor);
-
-    assert.isDefined(wrapper);
     assert.isTrue(wrapper.isVisible());
   });
 

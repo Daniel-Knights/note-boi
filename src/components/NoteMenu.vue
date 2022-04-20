@@ -26,7 +26,11 @@
       </li>
     </ul>
     <ContextMenu :ev="contextMenuEv" />
-    <button class="note-menu__new-note button--default" @click="newNote">
+    <button
+      @click="newNote"
+      class="note-menu__new-note button--default"
+      data-test-id="new"
+    >
       <PlusIcon />
     </button>
     <div @mousedown="handleDragBar" class="note-menu__drag-bar"></div>
@@ -173,7 +177,10 @@ function handleDragBar() {
 watchEffect(() => {
   if (state.selectedNote.id !== state.notes[0]?.id) return;
 
-  noteList.value?.scrollTo({ top: 0 });
+  // scrollTo is undefined in tests
+  if (noteList.value?.scrollTo) {
+    noteList.value.scrollTo({ top: 0 });
+  }
 });
 
 // Navigate notes with up/down arrow keys
