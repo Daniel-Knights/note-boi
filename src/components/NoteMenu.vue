@@ -137,7 +137,7 @@ function handleNoteSelect(ev: MouseEvent) {
       state.extraSelectedNotes.splice(0, 1);
 
       // Add to selection
-    } else {
+    } else if (state.selectedNote.id !== targetNoteId) {
       const foundNote = findNote(targetNoteId);
 
       if (foundNote) {
