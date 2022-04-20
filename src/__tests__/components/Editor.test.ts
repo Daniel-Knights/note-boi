@@ -4,7 +4,7 @@ import Editor from '../../components/Editor.vue';
 import { unixToDateTime } from '../../utils';
 import { mockTauriApi } from '../tauri';
 import { getByTestId, setCrypto } from '../utils';
-import * as noteStore from '../../store/note';
+import * as n from '../../store/note';
 import localNotes from '../notes.json';
 
 beforeAll(setCrypto);
@@ -29,22 +29,22 @@ describe('Editor', () => {
     assert.isEmpty(editorBody.text());
 
     await mockTauriApi(localNotes);
-    await noteStore.getAllNotes();
+    await n.getAllNotes();
 
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
 
-    noteStore.selectNote(localNotes[1].id);
+    n.selectNote(localNotes[1].id);
 
     assert.include(editorBody.text(), localNotes[1].content.body);
   });
 
   it('Edits a note on text-change', () => {
-    const editSpy = vi.spyOn(noteStore, 'editNote');
+    const editSpy = vi.spyOn(n, 'editNote');
 
     mount(Editor);
     expect(editSpy).not.toHaveBeenCalled();
 
-    document.dispatchEvent(new Event(noteStore.noteEvents.change));
+    document.dispatchEvent(new Event(n.noteEvents.change));
 
     expect(editSpy).toHaveBeenCalled();
   });

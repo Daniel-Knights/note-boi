@@ -4,7 +4,7 @@ import { mount } from '@vue/test-utils';
 import Logout from '../../components/Logout.vue';
 import { mockTauriApi } from '../tauri';
 import { setCrypto } from '../utils';
-import * as syncStore from '../../store/sync';
+import * as s from '../../store/sync';
 import localNotes from '../notes.json';
 
 beforeAll(setCrypto);
@@ -20,9 +20,9 @@ describe('Logout', () => {
     const wrapper = mount(Logout);
     assert.isFalse(wrapper.isVisible());
 
-    syncStore.state.username = 'd';
-    syncStore.state.password = '1';
-    await syncStore.login();
+    s.state.username = 'd';
+    s.state.password = '1';
+    await s.login();
 
     assert.isTrue(wrapper.isVisible());
 
@@ -30,13 +30,13 @@ describe('Logout', () => {
 
     // Workaround for awaiting logout call
     function awaitLogout(): Promise<void> | void {
-      if (syncStore.state.isLoading) {
+      if (s.state.isLoading) {
         return nextTick().then(awaitLogout);
       }
     }
 
     await awaitLogout();
 
-    assert.isEmpty(syncStore.state.token);
+    assert.isEmpty(s.state.token);
   });
 });

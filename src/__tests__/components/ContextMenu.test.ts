@@ -4,8 +4,8 @@ import ContextMenu from '../../components/ContextMenu.vue';
 import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
 import { getByTestId, resetNoteStore, setCrypto } from '../utils';
-import * as noteStore from '../../store/note';
-import * as syncStore from '../../store/sync';
+import * as n from '../../store/note';
+import * as s from '../../store/sync';
 import localNotes from '../notes.json';
 
 async function mountContextMenu(attachTo?: HTMLElement) {
@@ -50,23 +50,23 @@ describe('ContextMenu', () => {
     if (assertionError) assert.fail();
 
     await mockTauriApi(localNotes);
-    await noteStore.getAllNotes();
+    await n.getAllNotes();
 
-    assert.isFalse(isEmptyNote(noteStore.state.selectedNote));
-    assert.isFalse(isEmptyNote(noteStore.state.notes[0]));
+    assert.isFalse(isEmptyNote(n.state.selectedNote));
+    assert.isFalse(isEmptyNote(n.state.notes[0]));
 
     await getByTestId(wrapper, 'new').trigger('click');
 
-    assert.isTrue(isEmptyNote(noteStore.state.selectedNote));
-    assert.isTrue(isEmptyNote(noteStore.state.notes[0]));
+    assert.isTrue(isEmptyNote(n.state.selectedNote));
+    assert.isTrue(isEmptyNote(n.state.notes[0]));
   });
 
   it('Delete button disabled with no notes', async () => {
     await mockTauriApi();
-    await noteStore.getAllNotes();
+    await n.getAllNotes();
 
     const div = document.createElement('div');
-    div.dataset.noteId = noteStore.state.notes[0].id;
+    div.dataset.noteId = n.state.notes[0].id;
 
     const { wrapper, assertionError } = await mountContextMenu(div);
     if (assertionError) assert.fail();
@@ -79,7 +79,7 @@ describe('ContextMenu', () => {
 
   it('Deletes a note', async () => {
     await mockTauriApi(localNotes);
-    await noteStore.getAllNotes();
+    await n.getAllNotes();
 
     const noteToDelete = { ...localNotes[0] };
     const div = document.createElement('div');
@@ -88,18 +88,18 @@ describe('ContextMenu', () => {
     const { wrapper, assertionError } = await mountContextMenu(div);
     if (assertionError) assert.fail();
 
-    noteStore.selectNote(noteToDelete.id);
+    n.selectNote(noteToDelete.id);
 
-    const noteToDeleteIndex = noteStore.findNoteIndex(noteToDelete.id);
+    const noteToDeleteIndex = n.findNoteIndex(noteToDelete.id);
 
-    assert.deepEqual(noteStore.state.selectedNote, noteToDelete);
-    assert.deepEqual(noteStore.state.notes[noteToDeleteIndex], noteToDelete);
+    assert.deepEqual(n.state.selectedNote, noteToDelete);
+    assert.deepEqual(n.state.notes[noteToDeleteIndex], noteToDelete);
 
     await getByTestId(wrapper, 'delete').trigger('click');
 
-    assert.notDeepEqual(noteStore.state.selectedNote, noteToDelete);
-    assert.notDeepEqual(noteStore.state.notes[0], noteToDelete);
-    assert.notDeepNestedInclude(noteStore.state.notes, noteToDelete);
+    assert.notDeepEqual(n.state.selectedNote, noteToDelete);
+    assert.notDeepEqual(n.state.notes[0], noteToDelete);
+    assert.notDeepNestedInclude(n.state.notes, noteToDelete);
   });
 
   it('Sets theme preference', async () => {
@@ -131,12 +131,12 @@ describe('ContextMenu', () => {
 
     await autoSyncMenu.get(':first-child').trigger('click');
 
-    assert.isTrue(syncStore.state.autoSyncEnabled);
+    assert.isTrue(s.state.autoSyncEnabled);
     assert.strictEqual(localStorage.getItem('auto-sync'), 'true');
 
     await autoSyncMenu.get(':nth-child(2)').trigger('click');
 
-    assert.isFalse(syncStore.state.autoSyncEnabled);
+    assert.isFalse(s.state.autoSyncEnabled);
     assert.strictEqual(localStorage.getItem('auto-sync'), 'false');
   });
 });
