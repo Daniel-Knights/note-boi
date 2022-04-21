@@ -12,7 +12,7 @@ const mockEmits = {
 
 beforeAll(setCrypto);
 
-beforeEach(() => {
+afterEach(() => {
   localStorage.removeItem('auto-sync');
   localStorage.removeItem('username');
   localStorage.removeItem('token');

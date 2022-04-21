@@ -30,7 +30,7 @@ async function mountContextMenu(attachTo?: HTMLElement) {
 }
 
 beforeAll(setCrypto);
-beforeEach(resetNoteStore);
+afterEach(resetNoteStore);
 
 describe('ContextMenu', () => {
   it('Mounts without passed ev', () => {

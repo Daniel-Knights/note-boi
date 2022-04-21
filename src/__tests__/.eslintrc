@@ -5,6 +5,7 @@
     "test": "readonly",
     "expect": "readonly",
     "beforeEach": "readonly",
+    "afterEach": "readonly",
     "beforeAll": "readonly",
     "vi": "readonly",
     "assert": "readonly"

@@ -20,7 +20,7 @@ beforeAll(() => {
   document.addEventListener(n.noteEvents.unsynced, mockUnsynced);
 });
 
-beforeEach(() => {
+afterEach(() => {
   resetNoteStore();
   vi.clearAllMocks(); // Ensure mock checks are clear
 });
