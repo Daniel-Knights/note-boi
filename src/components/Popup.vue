@@ -32,7 +32,7 @@ function clickCloseHandler(event: MouseEvent) {
 // setTimeout prevents immediate close
 setTimeout(() => {
   document.addEventListener('keydown', keyboardCloseHandler);
-  document.addEventListener('mousedown', clickCloseHandler);
+  document.body.addEventListener('mousedown', clickCloseHandler);
 });
 
 onBeforeUnmount(closePopup);
