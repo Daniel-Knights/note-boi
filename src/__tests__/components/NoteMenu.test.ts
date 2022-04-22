@@ -320,7 +320,17 @@ describe('NoteMenu', () => {
     assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
   });
 
-  // it('Sets contextmenu ev', async () => {});
+  it('Sets contextmenu ev', async () => {
+    const wrapper = shallowMount(NoteMenu);
+    assert.isTrue(wrapper.isVisible());
+
+    assert.isUndefined(wrapper.vm.contextMenuEv);
+
+    const listEl = wrapper.get({ ref: 'noteList' });
+    await listEl.trigger('contextmenu');
+
+    assert.isTrue(wrapper.vm.contextMenuEv instanceof MouseEvent);
+  });
 
   // it('Sets menu width with drag-bar', async () => {});
 });
