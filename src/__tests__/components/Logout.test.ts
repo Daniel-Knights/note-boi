@@ -1,11 +1,12 @@
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 
-import Logout from '../../components/Logout.vue';
 import { mockTauriApi } from '../tauri';
 import { setCrypto } from '../utils';
 import * as s from '../../store/sync';
 import localNotes from '../notes.json';
+
+import Logout from '../../components/Logout.vue';
 
 beforeAll(setCrypto);
 

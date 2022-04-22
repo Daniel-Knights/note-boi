@@ -1,11 +1,12 @@
 import { mount } from '@vue/test-utils';
 
-import Editor from '../../components/Editor.vue';
 import { unixToDateTime } from '../../utils';
 import { mockTauriApi } from '../tauri';
 import { getByTestId, setCrypto } from '../utils';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
+
+import Editor from '../../components/Editor.vue';
 
 beforeAll(setCrypto);
 

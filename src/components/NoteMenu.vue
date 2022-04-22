@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect } from 'vue';
+import { onUnmounted, ref, watchEffect } from 'vue';
 
 import {
   state,
@@ -173,18 +173,8 @@ function handleDragBar() {
   });
 }
 
-// Scroll to top when selected note moves to top
-watchEffect(() => {
-  if (state.selectedNote.id !== state.notes[0]?.id) return;
-
-  // scrollTo is undefined in tests
-  if (noteList.value?.scrollTo) {
-    noteList.value.scrollTo({ top: 0 });
-  }
-});
-
 // Navigate notes with up/down arrow keys
-window.addEventListener('keydown', (ev) => {
+function navigateWithArrowKeys(ev: KeyboardEvent) {
   if (!listIsFocused.value) return;
 
   const keyDirection = {
@@ -203,6 +193,16 @@ window.addEventListener('keydown', (ev) => {
     selectNote(state.notes[toIndex]?.id);
     clearExtraNotes();
   }
+}
+
+// Scroll to top when selected note moves to top
+watchEffect(() => {
+  if (state.selectedNote.id !== state.notes[0]?.id) return;
+
+  // scrollTo is undefined in tests
+  if (noteList.value?.scrollTo) {
+    noteList.value.scrollTo({ top: 0 });
+  }
 });
 
 // Register list blur
@@ -210,6 +210,12 @@ window.addEventListener('click', (ev) => {
   if (!(ev.target as HTMLElement)?.closest('#note-menu')) {
     listIsFocused.value = false;
   }
+});
+
+window.addEventListener('keydown', navigateWithArrowKeys);
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', navigateWithArrowKeys);
 });
 </script>
 

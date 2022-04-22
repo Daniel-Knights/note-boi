@@ -1,12 +1,13 @@
 import { mount } from '@vue/test-utils';
 
-import ContextMenu from '../../components/ContextMenu.vue';
 import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
 import { getByTestId, resetNoteStore, setCrypto } from '../utils';
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import localNotes from '../notes.json';
+
+import ContextMenu from '../../components/ContextMenu.vue';
 
 async function mountContextMenu(attachTo?: HTMLElement) {
   const ev: MouseEvent = new MouseEvent('contextmenu', {

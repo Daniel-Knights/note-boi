@@ -1,11 +1,12 @@
-import { shallowMount, VueWrapper } from '@vue/test-utils';
+import { enableAutoUnmount, shallowMount, VueWrapper } from '@vue/test-utils';
 
-import NoteMenu from '../../components/NoteMenu.vue';
 import { getByTestId, resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
 import { isEmptyNote } from '../../utils';
+
+import NoteMenu from '../../components/NoteMenu.vue';
 
 const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 
@@ -22,6 +23,7 @@ beforeEach(async () => {
   assert.isEmpty(n.state.extraSelectedNotes);
 });
 
+enableAutoUnmount(afterEach);
 afterEach(resetNoteStore);
 
 // Tests
@@ -281,7 +283,42 @@ describe('NoteMenu', () => {
     );
   });
 
-  // it('Navigates notes with up/down arrow keys', async () => {});
+  it('Navigates notes with up/down arrow keys', async () => {
+    const wrapper = shallowMount(NoteMenu);
+    assert.isTrue(wrapper.isVisible());
+
+    function keyNav(direction: 'Up' | 'Down') {
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: `Arrow${direction}` }));
+    }
+
+    assert.deepEqual(n.state.selectedNote, n.state.notes[0]);
+    keyNav('Down');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[1]);
+    n.selectNote(n.state.notes[6].id);
+    keyNav('Down');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[7]);
+    keyNav('Up');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[6]);
+    n.selectNote(n.state.notes[6].id);
+    keyNav('Up');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+
+    document.body.click();
+
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+    keyNav('Up');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+    keyNav('Down');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+
+    await wrapper.trigger('click');
+
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+    keyNav('Up');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[4]);
+    keyNav('Down');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+  });
 
   // it('Sets contextmenu ev', async () => {});
 
