@@ -332,5 +332,50 @@ describe('NoteMenu', () => {
     assert.isTrue(wrapper.vm.contextMenuEv instanceof MouseEvent);
   });
 
-  // it('Sets menu width with drag-bar', async () => {});
+  it('Sets menu width with drag-bar', async () => {
+    const wrapper = shallowMount(NoteMenu);
+    assert.isTrue(wrapper.isVisible());
+
+    const initialWidth = wrapper.vm.menuWidth;
+    assert.match(initialWidth, /^\d+px$/);
+
+    assert.isFalse(wrapper.vm.isDragging);
+
+    document.dispatchEvent(new MouseEvent('mouseup'));
+
+    assert.isFalse(wrapper.vm.isDragging);
+    assert.strictEqual(initialWidth, wrapper.vm.menuWidth);
+
+    document.dispatchEvent(new MouseEvent('mousemove'));
+
+    assert.isFalse(wrapper.vm.isDragging);
+    assert.strictEqual(initialWidth, wrapper.vm.menuWidth);
+
+    const dragBar = getByTestId(wrapper, 'drag-bar');
+    await dragBar.trigger('mousedown');
+
+    assert.isTrue(wrapper.vm.isDragging);
+
+    document.dispatchEvent(new MouseEvent('mouseup'));
+
+    assert.isFalse(wrapper.vm.isDragging);
+    assert.isNotNull(localStorage.getItem('note-menu-width'));
+
+    await dragBar.trigger('mousedown');
+
+    assert.isTrue(wrapper.vm.isDragging);
+
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 100 }));
+
+    assert.strictEqual(initialWidth, wrapper.vm.menuWidth);
+
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 400 }));
+
+    assert.strictEqual(wrapper.vm.menuWidth, '400px');
+
+    document.dispatchEvent(new MouseEvent('mouseup'));
+
+    assert.isFalse(wrapper.vm.isDragging);
+    assert.strictEqual(localStorage.getItem('note-menu-width'), '400px');
+  });
 });

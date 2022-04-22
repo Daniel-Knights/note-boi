@@ -1,5 +1,5 @@
 <template>
-  <section @click="listIsFocused = true" id="note-menu" :style="{ width: noteListWidth }">
+  <section @click="listIsFocused = true" id="note-menu" :style="{ width: menuWidth }">
     <ul
       @click="handleNoteSelect"
       @contextmenu.prevent="contextMenuEv = $event"
@@ -33,7 +33,11 @@
     >
       <PlusIcon />
     </button>
-    <div @mousedown="handleDragBar" class="note-menu__drag-bar"></div>
+    <div
+      @mousedown="handleDragBar"
+      class="note-menu__drag-bar"
+      data-test-id="drag-bar"
+    ></div>
   </section>
 </template>
 
@@ -58,7 +62,7 @@ const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
 const isDragging = ref(false);
 const listIsFocused = ref(true);
-const noteListWidth = ref(localStorage.getItem('note-list-width') || '260px');
+const menuWidth = ref(localStorage.getItem('note-menu-width') || '260px');
 
 // Clear all extra notes and remove event listener
 function clearExtraNotes(ev?: MouseEvent) {
@@ -158,19 +162,19 @@ function handleNoteSelect(ev: MouseEvent) {
 function handleDragBar() {
   isDragging.value = true;
 
+  document.addEventListener('mousemove', (ev) => {
+    if (!isDragging.value || ev.clientX < 150) return;
+
+    menuWidth.value = `${ev.clientX}px`;
+  });
   document.addEventListener(
     'mouseup',
     () => {
       isDragging.value = false;
-      localStorage.setItem('note-list-width', noteListWidth.value);
+      localStorage.setItem('note-menu-width', menuWidth.value);
     },
     { once: true }
   );
-  document.addEventListener('mousemove', (ev) => {
-    if (!isDragging.value || ev.clientX < 150) return;
-
-    noteListWidth.value = `${ev.clientX}px`;
-  });
 }
 
 // Navigate notes with up/down arrow keys
