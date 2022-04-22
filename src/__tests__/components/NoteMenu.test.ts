@@ -9,104 +9,7 @@ import { isEmptyNote } from '../../utils';
 
 const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 
-/** Triggers click with cmd/ctrl key and returns a boolean indicating the result. */
-async function testMetaKeySelects(
-  wrapper: VueWrapper,
-  notesToSelect: n.Note[],
-  isDeselect?: boolean
-) {
-  const assertPromises = notesToSelect.map(async (note) => {
-    const noteItem = wrapper.get(getDataNoteId(note.id));
-
-    if (!noteItem.isVisible() || n.state.selectedNote.id === note.id) {
-      return false;
-    }
-
-    await noteItem.trigger('click', { metaKey: true });
-
-    const isExtraSelectedNote =
-      n.state.extraSelectedNotes.includes(note) &&
-      n.state.selectedNote.id !== note.id &&
-      noteItem.classes().join(' ').includes('--selected');
-
-    return isDeselect ? !isExtraSelectedNote : isExtraSelectedNote;
-  });
-
-  const assertResults = await Promise.all(assertPromises);
-  return !assertResults.includes(false);
-}
-
-const indexesToSelect = [2, 4, 7];
-const lowestIndex = indexesToSelect[0];
-const highestIndex = indexesToSelect[indexesToSelect.length - 1];
-const expectedLength = highestIndex - lowestIndex + 1;
-
-/**
- * Triggers click with cmd/ctrl key and alt key, from lowest index
- * to highest, then returns a boolean indicating the result.
- */
-async function testMetaAltKeySelectsLowerToHigher(wrapper: VueWrapper) {
-  if (!wrapper.isVisible()) return false;
-
-  const notesToSelect = indexesToSelect.map((i) => n.state.notes[i]);
-
-  // Select with cmd/ctrl
-  const assertResult = await testMetaKeySelects(wrapper, notesToSelect);
-  if (!assertResult) return false;
-
-  // Select with alt
-  const noteItem = wrapper.get(getDataNoteId(n.state.notes[lowestIndex].id));
-  await noteItem.trigger('click', { altKey: true });
-
-  if (n.state.extraSelectedNotes.length !== expectedLength) return false;
-
-  // Ensure correct order
-  const expectedNoteOrder = [...notesToSelect];
-
-  for (let i = highestIndex; i > lowestIndex; i -= 1) {
-    if (!indexesToSelect.includes(i)) {
-      expectedNoteOrder.push(n.state.notes[i]);
-    }
-  }
-
-  return n.state.extraSelectedNotes.every(
-    (note, i) => note.id === expectedNoteOrder[i].id
-  );
-}
-
-/**
- * Triggers click with cmd/ctrl key and alt key, from highest index
- * to lowest, then returns a boolean indicating the result.
- */
-async function testMetaAltKeySelectsHigherToLower(wrapper: VueWrapper) {
-  if (!wrapper.isVisible()) return false;
-
-  const notesToSelect = indexesToSelect.map((i) => n.state.notes[i]).reverse();
-
-  // Select with cmd/ctrl
-  const assertResult = await testMetaKeySelects(wrapper, notesToSelect);
-  if (!assertResult) return false;
-
-  // Select with alt
-  const noteItem = wrapper.get(getDataNoteId(n.state.notes[highestIndex].id));
-  await noteItem.trigger('click', { altKey: true });
-
-  if (n.state.extraSelectedNotes.length !== expectedLength) return false;
-
-  // Ensure correct order
-  const expectedNoteOrder = [...notesToSelect];
-
-  for (let i = lowestIndex; i < highestIndex; i += 1) {
-    if (!indexesToSelect.includes(i)) {
-      expectedNoteOrder.push(n.state.notes[i]);
-    }
-  }
-
-  return n.state.extraSelectedNotes.every(
-    (note, i) => note.id === expectedNoteOrder[i].id
-  );
-}
-
+// Hooks
 beforeAll(setCrypto);
 
 beforeEach(async () => {
@@ -121,6 +24,7 @@ beforeEach(async () => {
 
 afterEach(resetNoteStore);
 
+// Tests
 describe('NoteMenu', () => {
   it('Mounts', () => {
     const wrapper = shallowMount(NoteMenu);
@@ -193,72 +97,41 @@ describe('NoteMenu', () => {
     assert.isTrue(noteItem.classes().join(' ').includes('--selected'));
   });
 
-  describe('Selects extra notes', () => {
-    it('With cmd/ctrl', async () => {
-      const wrapper = shallowMount(NoteMenu);
-      assert.isTrue(wrapper.isVisible());
+  describe('Selects/deselects extra notes', () => {
+    /**
+     * Triggers clicks with cmd/ctrl key and
+     * returns a boolean indicating the result.
+     */
+    async function testMetaKeySelects(
+      wrapper: VueWrapper,
+      notesToSelect: n.Note[],
+      isDeselect?: boolean
+    ) {
+      const assertPromises = notesToSelect.map(async (note) => {
+        const noteItem = wrapper.get(getDataNoteId(note.id));
 
-      const notesToSelect = [localNotes[2], localNotes[4], localNotes[7]];
-      const assertResult = await testMetaKeySelects(wrapper, notesToSelect);
+        if (!noteItem.isVisible() || n.state.selectedNote.id === note.id) {
+          return false;
+        }
 
-      assert.isTrue(assertResult);
-    });
+        await noteItem.trigger('click', { metaKey: true });
 
-    describe('With alt', () => {
-      const wrapper = shallowMount(NoteMenu);
-      assert.isTrue(wrapper.isVisible());
+        const isExtraSelectedNote =
+          n.state.extraSelectedNotes.includes(note) &&
+          n.state.selectedNote.id !== note.id &&
+          noteItem.classes().join(' ').includes('--selected');
 
-      it('Lower index to higher', async () => {
-        const noteItem = wrapper.get(getDataNoteId(n.state.notes[6].id));
-        await noteItem.trigger('click', { altKey: true });
-
-        assert.strictEqual(n.state.extraSelectedNotes.length, 6);
-
-        n.state.extraSelectedNotes.forEach((note, i) => {
-          assert.strictEqual(note.id, n.state.notes[i + 1].id);
-        });
+        return isDeselect ? !isExtraSelectedNote : isExtraSelectedNote;
       });
 
-      it('Higher index to lower', async () => {
-        n.selectNote(n.state.notes[6].id);
+      const assertResults = await Promise.all(assertPromises);
+      return !assertResults.includes(false);
+    }
 
-        const noteItem = wrapper.get(getDataNoteId(n.state.notes[0].id));
-        await noteItem.trigger('click', { altKey: true });
-
-        assert.strictEqual(n.state.extraSelectedNotes.length, 6);
-
-        n.state.extraSelectedNotes.reverse().forEach((note, i) => {
-          assert.strictEqual(note.id, n.state.notes[i].id);
-        });
-      });
-    });
-
-    describe('With cmd/ctrl and alt', () => {
-      it('Lower index to higher', async () => {
-        const wrapper = shallowMount(NoteMenu);
-        const assertResult = await testMetaAltKeySelectsLowerToHigher(wrapper);
-        assert.isTrue(assertResult);
-      });
-
-      it('Higher index to lower', async () => {
-        const wrapper = shallowMount(NoteMenu);
-        const assertResult = await testMetaAltKeySelectsHigherToLower(wrapper);
-        assert.isTrue(assertResult);
-      });
-    });
-  });
-
-  describe('Deselects extra notes', () => {
-    it('Not single selected note', async () => {
-      const wrapper = shallowMount(NoteMenu);
-      assert.isTrue(wrapper.isVisible());
-
-      const selectedNoteItem = wrapper.get(getDataNoteId(n.state.selectedNote.id));
-      await selectedNoteItem.trigger('click', { metaKey: true });
-
-      assert.isEmpty(n.state.extraSelectedNotes);
-    });
-
+    /**
+     * Triggers clicks of already selected items with cmd/ctrl
+     * key and returns a boolean indicating the result.
+     */
     async function testMetaKeyDeselects(wrapper: VueWrapper) {
       const currentSelectedNote = n.state.selectedNote;
       const nextSelectedNote = n.state.extraSelectedNotes[0];
@@ -279,7 +152,85 @@ describe('NoteMenu', () => {
       );
     }
 
-    it('Notes selected with cmd/ctrl', async () => {
+    /**
+     * Triggers clicks with cmd/ctrl and alt keys,
+     * then returns a boolean indicating the result.
+     */
+    function testMetaAltKeySelects(wrapper: VueWrapper) {
+      const indexesToSelect = [2, 4, 7];
+      const lowestIndex = indexesToSelect[0];
+      const highestIndex = indexesToSelect[indexesToSelect.length - 1];
+      const expectedLength = highestIndex - lowestIndex + 1;
+
+      let notesToSelect = indexesToSelect.map((i) => n.state.notes[i]);
+      let noteItemIndex = lowestIndex;
+      let expectedNoteOrder = [...notesToSelect];
+
+      let assertResult = true;
+
+      if (!wrapper.isVisible()) assertResult = false;
+
+      function pushNoteOrder(i: number) {
+        if (indexesToSelect.includes(i)) return;
+        expectedNoteOrder.push(n.state.notes[i]);
+      }
+
+      /** Sets data for checking from lowest index to highest. */
+      function setLowerToHigher() {
+        for (let i = highestIndex; i > lowestIndex; i -= 1) {
+          pushNoteOrder(i);
+        }
+      }
+
+      /** Sets data for checking from highest index to lowest. */
+      function setHigherToLower() {
+        notesToSelect = notesToSelect.reverse();
+        noteItemIndex = highestIndex;
+        expectedNoteOrder = [...notesToSelect];
+
+        for (let i = lowestIndex; i < highestIndex; i += 1) {
+          pushNoteOrder(i);
+        }
+      }
+
+      /** Runs the test. */
+      async function run() {
+        // Select with cmd/ctrl
+        const assertResultSelect = await testMetaKeySelects(wrapper, notesToSelect);
+        if (!assertResultSelect) assertResult = false;
+
+        // Select with alt
+        const noteItem = wrapper.get(getDataNoteId(n.state.notes[noteItemIndex].id));
+        await noteItem.trigger('click', { altKey: true });
+
+        if (n.state.extraSelectedNotes.length !== expectedLength) assertResult = false;
+
+        // Ensure correct order
+        const isCorrectOrder = n.state.extraSelectedNotes.every(
+          (note, i) => note.id === expectedNoteOrder[i].id
+        );
+
+        if (!isCorrectOrder) assertResult = false;
+
+        return assertResult;
+      }
+
+      return { setLowerToHigher, setHigherToLower, run };
+    }
+
+    // Tests //
+
+    it('Not single selected note', async () => {
+      const wrapper = shallowMount(NoteMenu);
+      assert.isTrue(wrapper.isVisible());
+
+      const selectedNoteItem = wrapper.get(getDataNoteId(n.state.selectedNote.id));
+      await selectedNoteItem.trigger('click', { metaKey: true });
+
+      assert.isEmpty(n.state.extraSelectedNotes);
+    });
+
+    it('With cmd/ctrl', async () => {
       const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());
 
@@ -293,7 +244,7 @@ describe('NoteMenu', () => {
       assert.isTrue(assertResultDeselect);
     });
 
-    it('Notes selected with alt', async () => {
+    it('With alt', async () => {
       const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());
 
@@ -311,27 +262,23 @@ describe('NoteMenu', () => {
       assert.isTrue(assertResult);
     });
 
-    describe('Notes selected with cmd/ctrl and alt', () => {
-      it('Lower index to higher', async () => {
-        const wrapper = shallowMount(NoteMenu);
+    describe.each(['setLowerToHigher', 'setHigherToLower'] as const)(
+      'With cmd/ctrl and alt',
+      (testSelectsMethodName) => {
+        it(testSelectsMethodName, async () => {
+          const wrapper = shallowMount(NoteMenu);
 
-        const assertResultSelect = await testMetaAltKeySelectsLowerToHigher(wrapper);
-        assert.isTrue(assertResultSelect);
+          const testSelects = testMetaAltKeySelects(wrapper);
+          testSelects[testSelectsMethodName]();
 
-        const assertResultDeselect = await testMetaKeyDeselects(wrapper);
-        assert.isTrue(assertResultDeselect);
-      });
+          const assertResultSelect = await testSelects.run();
+          assert.isTrue(assertResultSelect);
 
-      it('Higher index to lower', async () => {
-        const wrapper = shallowMount(NoteMenu);
-
-        const assertResultSelect = await testMetaAltKeySelectsHigherToLower(wrapper);
-        assert.isTrue(assertResultSelect);
-
-        const assertResultDeselect = await testMetaKeyDeselects(wrapper);
-        assert.isTrue(assertResultDeselect);
-      });
-    });
+          const assertResultDeselect = await testMetaKeyDeselects(wrapper);
+          assert.isTrue(assertResultDeselect);
+        });
+      }
+    );
   });
 
   // it('Navigates notes with up/down arrow keys', async () => {});
