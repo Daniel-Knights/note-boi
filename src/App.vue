@@ -3,20 +3,8 @@
   <Editor />
   <Logout />
   <SyncStatus @popup-auth="handlePopupAuthEvent" @popup-error="popup.error = true" />
-  <SyncAuth
-    v-if="popup.auth"
-    @close="
-      popup.auth = false;
-      resetError();
-    "
-  />
-  <SyncError
-    v-if="popup.error"
-    @close="
-      popup.error = false;
-      resetError();
-    "
-  />
+  <SyncAuth v-if="popup.auth" @close="closeSyncPopup('auth')" />
+  <SyncError v-if="popup.error" @close="closeSyncPopup('error')" />
 </template>
 
 <script lang="ts" setup>
@@ -46,6 +34,11 @@ function handlePopupAuthEvent() {
   if (!state.token) {
     popup.auth = true;
   }
+}
+
+function closeSyncPopup(field: keyof typeof popup) {
+  popup[field] = false;
+  resetError();
 }
 
 function confirmDialog(cb: () => void) {
