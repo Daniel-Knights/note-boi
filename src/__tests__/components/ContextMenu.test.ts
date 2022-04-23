@@ -36,7 +36,6 @@ afterEach(resetNoteStore);
 describe('ContextMenu', () => {
   it('Mounts without passed ev', () => {
     const wrapper = mount(ContextMenu);
-
     assert.isFalse(wrapper.isVisible());
   });
 
@@ -44,6 +43,21 @@ describe('ContextMenu', () => {
     const { assertionError } = await mountContextMenu();
 
     if (assertionError) assert.fail();
+  });
+
+  it('Hides on click', async () => {
+    const addListenerSpy = vi.spyOn(document, 'addEventListener');
+    const removeListenerSpy = vi.spyOn(document, 'removeEventListener');
+    const { wrapper, assertionError } = await mountContextMenu();
+    if (assertionError) assert.fail();
+
+    expect(addListenerSpy).toHaveBeenCalledWith('click', wrapper.vm.hide);
+
+    // Manually trigger hide function as there doesn't seem
+    // to be a way to trigger it through a click event
+    wrapper.vm.hide();
+    assert.isFalse(wrapper.vm.show);
+    expect(removeListenerSpy).toHaveBeenCalledWith('click', wrapper.vm.hide);
   });
 
   it('Creates a new note', async () => {
