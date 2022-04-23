@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 
+import { getByTestId, setCrypto } from '../utils';
 import { unixToDateTime } from '../../utils';
 import { mockTauriApi } from '../tauri';
-import { getByTestId, setCrypto } from '../utils';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
 

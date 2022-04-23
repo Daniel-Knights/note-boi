@@ -1,6 +1,6 @@
 import { resetNoteStore, resetSyncStore, setCrypto } from '../utils';
-import { isEmptyNote } from '../../utils';
 import { mockTauriApi } from '../tauri';
+import { isEmptyNote } from '../../utils';
 import * as s from '../../store/sync';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 
-import { mockTauriApi } from '../tauri';
 import { awaitSyncLoad, setCrypto } from '../utils';
+import { mockTauriApi } from '../tauri';
 import * as s from '../../store/sync';
 import localNotes from '../notes.json';
 
