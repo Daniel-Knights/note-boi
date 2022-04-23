@@ -1,7 +1,8 @@
 import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 import { randomFillSync } from 'crypto';
 
-import * as noteStore from '../store/note';
+import * as n from '../store/note';
+import * as s from '../store/sync';
 
 // jsdom doesn't come with a WebCrypto implementation
 export function setCrypto(): void {
@@ -18,14 +19,37 @@ export function mockPromise<T>(resValue?: T): Promise<T | void> {
 }
 
 export function resetNoteStore(): void {
-  noteStore.state.notes = [];
-  noteStore.state.selectedNote = new noteStore.Note();
-  noteStore.state.extraSelectedNotes = [];
+  n.state.notes = [];
+  n.state.selectedNote = new n.Note();
+  n.state.extraSelectedNotes = [];
 }
 
-export function getByTestId(
+export function resetSyncStore(): void {
+  localStorage.removeItem('auto-sync');
+  localStorage.removeItem('username');
+  localStorage.removeItem('token');
+  s.state.username = '';
+  s.state.password = '';
+  s.state.token = '';
+  s.state.hasUnsyncedNotes = false;
+  s.state.isLoading = false;
+  s.state.isLogin = true;
+  s.state.autoSyncEnabled = true;
+  s.state.error = { type: s.ErrorType.None, message: '' };
+}
+
+const formatTestId = (id: string) => `[data-test-id="${id}"]`;
+
+export function getByTestId<T extends Node>(
   wrapper: VueWrapper,
-  id: 'new' | 'delete' | 'theme' | 'auto-sync' | 'timestamp' | 'drag-bar'
-): Omit<DOMWrapper<Element>, 'exists'> {
-  return wrapper.get(`[data-test-id="${id}"]`);
+  id: string
+): Omit<DOMWrapper<T>, 'exists'> {
+  return wrapper.get<T>(formatTestId(id));
+}
+
+export function findByTestId<T extends Element>(
+  wrapper: VueWrapper,
+  id: string
+): DOMWrapper<T> {
+  return wrapper.find<T>(formatTestId(id));
 }

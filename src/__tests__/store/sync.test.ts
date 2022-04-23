@@ -1,4 +1,4 @@
-import { resetNoteStore, setCrypto } from '../utils';
+import { resetNoteStore, resetSyncStore, setCrypto } from '../utils';
 import { isEmptyNote } from '../../utils';
 import { mockTauriApi } from '../tauri';
 import * as s from '../../store/sync';
@@ -13,17 +13,7 @@ const mockEmits = {
 beforeAll(setCrypto);
 
 afterEach(() => {
-  localStorage.removeItem('auto-sync');
-  localStorage.removeItem('username');
-  localStorage.removeItem('token');
-  s.state.username = '';
-  s.state.password = '';
-  s.state.token = '';
-  s.state.hasUnsyncedNotes = false;
-  s.state.isLoading = false;
-  s.state.isLogin = true;
-  s.state.autoSyncEnabled = true;
-  s.state.error = { type: s.ErrorType.None, message: '' };
+  resetSyncStore();
   resetNoteStore();
 });
 
