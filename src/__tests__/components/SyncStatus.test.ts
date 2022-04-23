@@ -1,4 +1,3 @@
-import { mockIPC } from '@tauri-apps/api/mocks';
 import { mount } from '@vue/test-utils';
 
 import {
@@ -8,7 +7,7 @@ import {
   resetSyncStore,
   setCrypto,
 } from '../utils';
-import { mockTauriApi } from '../tauri';
+import { mockTauriApi, testTauriListen } from '../tauri';
 import * as s from '../../store/sync';
 
 import SyncStatus from '../../components/SyncStatus.vue';
@@ -110,24 +109,13 @@ describe('SyncStatus', async () => {
   );
 
   it('Listens to Tauri events', () => {
-    const listenResults = {
-      'push-notes': false,
-      'pull-notes': false,
-      login: false,
-      logout: false,
-      signup: false,
-    };
-
-    mockIPC((cmd, args) => {
-      if (cmd !== 'tauri') return;
-
-      const message = args.message as Record<string, string>;
-      const typedEvent = message.event as keyof typeof listenResults;
-
-      if (message.cmd === 'listen' && listenResults[typedEvent] !== undefined) {
-        listenResults[typedEvent] = true;
-      }
-    });
+    const listenResults = testTauriListen([
+      'push-notes',
+      'pull-notes',
+      'login',
+      'logout',
+      'signup',
+    ]);
 
     const wrapper = mount(SyncStatus);
     assert.isTrue(wrapper.isVisible());

@@ -82,3 +82,28 @@ export function mockTauriApi(
     }
   });
 }
+
+/**
+ * Intercepts calls to `event.listen` and returns an object
+ * of whether or not each `events` item has been called.
+ */
+export function testTauriListen(events: string[]): Record<string, boolean> {
+  const listenResults: Record<string, boolean> = {};
+
+  events.forEach((event) => {
+    listenResults[event] = false;
+  });
+
+  mockIPC((cmd, args) => {
+    if (cmd !== 'tauri') return;
+
+    const message = args.message as Record<string, string>;
+    const typedEvent = message.event as keyof typeof listenResults;
+
+    if (message.cmd === 'listen' && listenResults[typedEvent] !== undefined) {
+      listenResults[typedEvent] = true;
+    }
+  });
+
+  return listenResults;
+}
