@@ -24,6 +24,7 @@ describe('SyncAuth', () => {
   });
 
   it('Switches between login/signup', async () => {
+    const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountSyncAuth();
     assert.isTrue(wrapper.isVisible());
 
@@ -37,6 +38,7 @@ describe('SyncAuth', () => {
 
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Signup');
     assert.isTrue(findByTestId(wrapper, 'confirm-password').exists());
+    expect(resetErrorSpy).toHaveBeenCalled();
   });
 
   describe('Validates fields', () => {
