@@ -72,7 +72,7 @@ describe('ContextMenu', () => {
     const { wrapper, assertionError } = await mountContextMenu(div);
     if (assertionError) assert.fail();
 
-    const deleteButton = getByTestId(wrapper, 'delete');
+    const deleteButton = getByTestId<HTMLButtonElement>(wrapper, 'delete');
 
     assert.isTrue(wrapper.vm.comp?.hasOneEmptyNote);
     assert.isTrue(deleteButton.element.className.includes('--disabled'));
