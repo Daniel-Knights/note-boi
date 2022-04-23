@@ -1,8 +1,7 @@
-import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 
 import { mockTauriApi } from '../tauri';
-import { setCrypto } from '../utils';
+import { awaitSyncLoad, setCrypto } from '../utils';
 import * as s from '../../store/sync';
 import localNotes from '../notes.json';
 
@@ -28,15 +27,7 @@ describe('Logout', () => {
     assert.isTrue(wrapper.isVisible());
 
     await wrapper.trigger('click');
-
-    // Workaround for awaiting logout call
-    function awaitLogout(): Promise<void> | void {
-      if (s.state.isLoading) {
-        return nextTick().then(awaitLogout);
-      }
-    }
-
-    await awaitLogout();
+    await awaitSyncLoad();
 
     assert.isEmpty(s.state.token);
   });

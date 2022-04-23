@@ -1,5 +1,6 @@
 import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 import { randomFillSync } from 'crypto';
+import { nextTick } from 'vue';
 
 import * as n from '../store/note';
 import * as s from '../store/sync';
@@ -52,4 +53,11 @@ export function findByTestId<T extends Element>(
   id: string
 ): DOMWrapper<T> {
   return wrapper.find<T>(formatTestId(id));
+}
+
+/** Simulates awaiting a sync operation */
+export function awaitSyncLoad(): Promise<void> | void {
+  if (s.state.isLoading) {
+    return nextTick().then(awaitSyncLoad);
+  }
 }
