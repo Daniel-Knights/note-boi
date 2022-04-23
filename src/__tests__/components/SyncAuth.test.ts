@@ -140,13 +140,26 @@ describe('SyncAuth', () => {
       assert.isTrue(wrapper.vm.validation.password);
       assert.isFalse(wrapper.vm.validation.confirmPassword);
 
-      confirmPasswordInput.setValue('World');
+      confirmPasswordInput.setValue('Hello');
 
       assert.isTrue(wrapper.vm.validation.username);
       assert.isTrue(wrapper.vm.validation.password);
       assert.isTrue(wrapper.vm.validation.confirmPassword);
 
       await mockTauriApi([]);
+      await formEl.trigger('submit');
+
+      assert.strictEqual(s.state.error.type, s.ErrorType.Auth);
+      assert.isNotEmpty(s.state.error.message);
+
+      confirmPasswordInput.setValue('World');
+
+      assert.isTrue(wrapper.vm.validation.username);
+      assert.isTrue(wrapper.vm.validation.password);
+      assert.isTrue(wrapper.vm.validation.confirmPassword);
+      expect(spyLogin).not.toHaveBeenCalled();
+      expect(spySignup).not.toHaveBeenCalled();
+
       await formEl.trigger('submit');
 
       expect(spyLogin).not.toHaveBeenCalled();
