@@ -1,7 +1,11 @@
 <template>
   <Popup @close="emit('close')">
-    <div class="sync-error__message">Error: {{ state.error.message }}</div>
-    <button @click="tryAgain" class="sync-error__button">Try again?</button>
+    <div class="sync-error__message" data-test-id="error-message">
+      Error: {{ state.error.message }}
+    </div>
+    <button @click="tryAgain" class="sync-error__button" data-test-id="try-again">
+      Try again?
+    </button>
   </Popup>
 </template>
 
