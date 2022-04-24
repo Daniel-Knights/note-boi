@@ -63,10 +63,10 @@ function confirmDialog(cb: () => void) {
 }
 
 tauriWindow.appWindow.listen('tauri://close-requested', () => {
-  confirmDialog(tauriWindow.appWindow.close);
+  confirmDialog(() => tauriWindow.appWindow.close());
 });
 tauriListen('reload', () => {
-  confirmDialog(window.location.reload);
+  confirmDialog(() => window.location.reload());
 });
 tauriListen('new-note', newNote);
 tauriListen('delete-note', deleteAllNotes);
