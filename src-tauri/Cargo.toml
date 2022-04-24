@@ -8,7 +8,7 @@ repository = "https://github.com/Daniel-Knights/note-boi"
 default-run = "note-boi"
 edition = "2021"
 build = "build.rs"
-rust-version = "1.57"
+rust-version = "1.60"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
