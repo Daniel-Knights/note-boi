@@ -181,7 +181,7 @@ function handleDragBar() {
 function navigateWithArrowKeys(ev: KeyboardEvent) {
   if (!listIsFocused.value) return;
 
-  ev.preventDefault();
+  ev.preventDefault(); // Prevents noise on Mac
 
   const keyDirection = {
     ArrowUp: 1,
