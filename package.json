@@ -6,10 +6,11 @@
     "vite:build": "vue-tsc --noEmit && vite build",
     "vite:preview": "vite preview",
     "dev": "tauri dev",
-    "build": "tauri build",
+    "build": "npm run test:build && tauri build",
     "icon": "tauri icon ./artwork/icon.png",
     "info": "tauri info",
     "test": "vitest",
+    "test:build": "vitest run",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
