@@ -49,15 +49,19 @@ describe('ContextMenu', () => {
     const addListenerSpy = vi.spyOn(document, 'addEventListener');
     const removeListenerSpy = vi.spyOn(document, 'removeEventListener');
     const { wrapper, assertionError } = await mountContextMenu();
+    const wrapperVm = wrapper.vm as unknown as {
+      hide: () => void;
+      show: () => void;
+    };
     if (assertionError) assert.fail();
 
-    expect(addListenerSpy).toHaveBeenCalledWith('click', wrapper.vm.hide);
+    expect(addListenerSpy).toHaveBeenCalledWith('click', wrapperVm.hide);
 
     // Manually trigger hide function as there doesn't seem
     // to be a way to trigger it through a click event
-    wrapper.vm.hide();
-    assert.isFalse(wrapper.vm.show);
-    expect(removeListenerSpy).toHaveBeenCalledWith('click', wrapper.vm.hide);
+    wrapperVm.hide();
+    assert.isFalse(wrapperVm.show);
+    expect(removeListenerSpy).toHaveBeenCalledWith('click', wrapperVm.hide);
   });
 
   it('Creates a new note', async () => {
@@ -84,11 +88,14 @@ describe('ContextMenu', () => {
     div.dataset.noteId = n.state.notes[0].id;
 
     const { wrapper, assertionError } = await mountContextMenu(div);
+    const wrapperVm = wrapper.vm as unknown as {
+      comp: { hasOneEmptyNote: boolean };
+    };
     if (assertionError) assert.fail();
 
     const deleteButton = getByTestId<HTMLButtonElement>(wrapper, 'delete');
 
-    assert.isTrue(wrapper.vm.comp?.hasOneEmptyNote);
+    assert.isTrue(wrapperVm.comp?.hasOneEmptyNote);
     assert.isTrue(deleteButton.element.className.includes('--disabled'));
   });
 
@@ -119,6 +126,9 @@ describe('ContextMenu', () => {
 
   it('Sets theme preference', async () => {
     const { wrapper, assertionError } = await mountContextMenu();
+    const wrapperVm = wrapper.vm as unknown as {
+      selectedTheme: string;
+    };
     if (assertionError) assert.fail();
 
     const themeMenu = getByTestId(wrapper, 'theme');
@@ -127,14 +137,14 @@ describe('ContextMenu', () => {
     const firstTheme = firstThemeEl.element.innerHTML;
     await firstThemeEl.trigger('click');
 
-    assert.strictEqual(wrapper.vm.selectedTheme, firstTheme);
+    assert.strictEqual(wrapperVm.selectedTheme, firstTheme);
     assert.strictEqual(localStorage.getItem('theme'), firstTheme);
 
     const secondThemeEl = themeMenu.get(':nth-child(2)');
     const secondTheme = secondThemeEl.element.innerHTML;
     await secondThemeEl.trigger('click');
 
-    assert.strictEqual(wrapper.vm.selectedTheme, secondTheme);
+    assert.strictEqual(wrapperVm.selectedTheme, secondTheme);
     assert.strictEqual(localStorage.getItem('theme'), secondTheme);
   });
 

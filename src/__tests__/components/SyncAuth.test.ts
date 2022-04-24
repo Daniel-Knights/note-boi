@@ -44,6 +44,14 @@ describe('SyncAuth', () => {
   describe('Validates fields', () => {
     it('On login', async () => {
       const wrapper = mountSyncAuth();
+      const wrapperVm = wrapper.vm as unknown as {
+        confirmPassword: string;
+        validation: {
+          username: boolean;
+          password: boolean;
+          confirmPassword: boolean;
+        };
+      };
       assert.isTrue(wrapper.isVisible());
       assert.isFalse(findByTestId(wrapper, 'confirm-password').exists());
 
@@ -54,10 +62,10 @@ describe('SyncAuth', () => {
       assert.isEmpty(passwordInput.element.value);
       assert.isEmpty(s.state.username);
       assert.isEmpty(s.state.password);
-      assert.isEmpty(wrapper.vm.confirmPassword);
-      assert.isTrue(wrapper.vm.validation.username);
-      assert.isTrue(wrapper.vm.validation.password);
-      assert.isTrue(wrapper.vm.validation.confirmPassword);
+      assert.isEmpty(wrapperVm.confirmPassword);
+      assert.isTrue(wrapperVm.validation.username);
+      assert.isTrue(wrapperVm.validation.password);
+      assert.isTrue(wrapperVm.validation.confirmPassword);
 
       const spyLogin = vi.spyOn(s, 'login');
       const spySignup = vi.spyOn(s, 'signup');
@@ -68,21 +76,21 @@ describe('SyncAuth', () => {
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
 
-      assert.isFalse(wrapper.vm.validation.username);
-      assert.isFalse(wrapper.vm.validation.password);
-      assert.isTrue(wrapper.vm.validation.confirmPassword);
+      assert.isFalse(wrapperVm.validation.username);
+      assert.isFalse(wrapperVm.validation.password);
+      assert.isTrue(wrapperVm.validation.confirmPassword);
 
       usernameInput.setValue('Hello');
 
-      assert.isTrue(wrapper.vm.validation.username);
-      assert.isFalse(wrapper.vm.validation.password);
-      assert.isTrue(wrapper.vm.validation.confirmPassword);
+      assert.isTrue(wrapperVm.validation.username);
+      assert.isFalse(wrapperVm.validation.password);
+      assert.isTrue(wrapperVm.validation.confirmPassword);
 
       passwordInput.setValue('World');
 
-      assert.isTrue(wrapper.vm.validation.username);
-      assert.isTrue(wrapper.vm.validation.password);
-      assert.isTrue(wrapper.vm.validation.confirmPassword);
+      assert.isTrue(wrapperVm.validation.username);
+      assert.isTrue(wrapperVm.validation.password);
+      assert.isTrue(wrapperVm.validation.confirmPassword);
 
       await mockTauriApi([]);
       await formEl.trigger('submit');
@@ -93,6 +101,14 @@ describe('SyncAuth', () => {
 
     it('On signup', async () => {
       const wrapper = mountSyncAuth();
+      const wrapperVm = wrapper.vm as unknown as {
+        confirmPassword: string;
+        validation: {
+          username: boolean;
+          password: boolean;
+          confirmPassword: boolean;
+        };
+      };
       assert.isTrue(wrapper.isVisible());
 
       const switchAuthButton = getByTestId(wrapper, 'switch');
@@ -110,10 +126,10 @@ describe('SyncAuth', () => {
       assert.isEmpty(confirmPasswordInput.element.value);
       assert.isEmpty(s.state.username);
       assert.isEmpty(s.state.password);
-      assert.isEmpty(wrapper.vm.confirmPassword);
-      assert.isTrue(wrapper.vm.validation.username);
-      assert.isTrue(wrapper.vm.validation.password);
-      assert.isTrue(wrapper.vm.validation.confirmPassword);
+      assert.isEmpty(wrapperVm.confirmPassword);
+      assert.isTrue(wrapperVm.validation.username);
+      assert.isTrue(wrapperVm.validation.password);
+      assert.isTrue(wrapperVm.validation.confirmPassword);
 
       const spyLogin = vi.spyOn(s, 'login');
       const spySignup = vi.spyOn(s, 'signup');
@@ -124,27 +140,27 @@ describe('SyncAuth', () => {
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
 
-      assert.isFalse(wrapper.vm.validation.username);
-      assert.isFalse(wrapper.vm.validation.password);
-      assert.isFalse(wrapper.vm.validation.confirmPassword);
+      assert.isFalse(wrapperVm.validation.username);
+      assert.isFalse(wrapperVm.validation.password);
+      assert.isFalse(wrapperVm.validation.confirmPassword);
 
       usernameInput.setValue('Hello');
 
-      assert.isTrue(wrapper.vm.validation.username);
-      assert.isFalse(wrapper.vm.validation.password);
-      assert.isFalse(wrapper.vm.validation.confirmPassword);
+      assert.isTrue(wrapperVm.validation.username);
+      assert.isFalse(wrapperVm.validation.password);
+      assert.isFalse(wrapperVm.validation.confirmPassword);
 
       passwordInput.setValue('World');
 
-      assert.isTrue(wrapper.vm.validation.username);
-      assert.isTrue(wrapper.vm.validation.password);
-      assert.isFalse(wrapper.vm.validation.confirmPassword);
+      assert.isTrue(wrapperVm.validation.username);
+      assert.isTrue(wrapperVm.validation.password);
+      assert.isFalse(wrapperVm.validation.confirmPassword);
 
       confirmPasswordInput.setValue('Hello');
 
-      assert.isTrue(wrapper.vm.validation.username);
-      assert.isTrue(wrapper.vm.validation.password);
-      assert.isTrue(wrapper.vm.validation.confirmPassword);
+      assert.isTrue(wrapperVm.validation.username);
+      assert.isTrue(wrapperVm.validation.password);
+      assert.isTrue(wrapperVm.validation.confirmPassword);
 
       await mockTauriApi([]);
       await formEl.trigger('submit');
@@ -154,9 +170,9 @@ describe('SyncAuth', () => {
 
       confirmPasswordInput.setValue('World');
 
-      assert.isTrue(wrapper.vm.validation.username);
-      assert.isTrue(wrapper.vm.validation.password);
-      assert.isTrue(wrapper.vm.validation.confirmPassword);
+      assert.isTrue(wrapperVm.validation.username);
+      assert.isTrue(wrapperVm.validation.password);
+      assert.isTrue(wrapperVm.validation.confirmPassword);
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
 

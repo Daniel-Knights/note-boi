@@ -322,60 +322,67 @@ describe('NoteMenu', () => {
 
   it('Sets contextmenu ev', async () => {
     const wrapper = shallowMount(NoteMenu);
+    const wrapperVm = wrapper.vm as unknown as {
+      contextMenuEv: MouseEvent;
+    };
     assert.isTrue(wrapper.isVisible());
 
-    assert.isUndefined(wrapper.vm.contextMenuEv);
+    assert.isUndefined(wrapperVm.contextMenuEv);
 
     const listEl = wrapper.get({ ref: 'noteList' });
     await listEl.trigger('contextmenu');
 
-    assert.isTrue(wrapper.vm.contextMenuEv instanceof MouseEvent);
+    assert.isTrue(wrapperVm.contextMenuEv instanceof MouseEvent);
   });
 
   it('Sets menu width with drag-bar', async () => {
     const wrapper = shallowMount(NoteMenu);
+    const wrapperVm = wrapper.vm as unknown as {
+      menuWidth: string;
+      isDragging: boolean;
+    };
     assert.isTrue(wrapper.isVisible());
 
-    const initialWidth = wrapper.vm.menuWidth;
+    const initialWidth = wrapperVm.menuWidth;
     assert.match(initialWidth, /^\d+px$/);
 
-    assert.isFalse(wrapper.vm.isDragging);
+    assert.isFalse(wrapperVm.isDragging);
 
     document.dispatchEvent(new MouseEvent('mouseup'));
 
-    assert.isFalse(wrapper.vm.isDragging);
-    assert.strictEqual(initialWidth, wrapper.vm.menuWidth);
+    assert.isFalse(wrapperVm.isDragging);
+    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
 
     document.dispatchEvent(new MouseEvent('mousemove'));
 
-    assert.isFalse(wrapper.vm.isDragging);
-    assert.strictEqual(initialWidth, wrapper.vm.menuWidth);
+    assert.isFalse(wrapperVm.isDragging);
+    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
 
     const dragBar = getByTestId(wrapper, 'drag-bar');
     await dragBar.trigger('mousedown');
 
-    assert.isTrue(wrapper.vm.isDragging);
+    assert.isTrue(wrapperVm.isDragging);
 
     document.dispatchEvent(new MouseEvent('mouseup'));
 
-    assert.isFalse(wrapper.vm.isDragging);
+    assert.isFalse(wrapperVm.isDragging);
     assert.isNotNull(localStorage.getItem('note-menu-width'));
 
     await dragBar.trigger('mousedown');
 
-    assert.isTrue(wrapper.vm.isDragging);
+    assert.isTrue(wrapperVm.isDragging);
 
     document.dispatchEvent(new MouseEvent('mousemove', { clientX: 100 }));
 
-    assert.strictEqual(initialWidth, wrapper.vm.menuWidth);
+    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
 
     document.dispatchEvent(new MouseEvent('mousemove', { clientX: 400 }));
 
-    assert.strictEqual(wrapper.vm.menuWidth, '400px');
+    assert.strictEqual(wrapperVm.menuWidth, '400px');
 
     document.dispatchEvent(new MouseEvent('mouseup'));
 
-    assert.isFalse(wrapper.vm.isDragging);
+    assert.isFalse(wrapperVm.isDragging);
     assert.strictEqual(localStorage.getItem('note-menu-width'), '400px');
   });
 });

@@ -36,22 +36,26 @@ describe('App', () => {
     await mockTauriApi();
 
     const wrapper = mount(App);
+    const wrapperVm = wrapper.vm as unknown as {
+      popup: { auth: boolean; error: boolean };
+      closeSyncPopup: (popupType: string) => void;
+    };
     assert.isTrue(wrapper.isVisible());
 
     const syncStatusWrapper = wrapper.getComponent({ name: 'SyncStatus' });
 
     s.state.error.type = s.ErrorType.Auth;
     syncStatusWrapper.vm.emit('popup-auth');
-    assert.isTrue(wrapper.vm.popup.auth);
-    wrapper.vm.closeSyncPopup('auth');
-    assert.isFalse(wrapper.vm.popup.auth);
+    assert.isTrue(wrapperVm.popup.auth);
+    wrapperVm.closeSyncPopup('auth');
+    assert.isFalse(wrapperVm.popup.auth);
     assert.strictEqual(s.state.error.type, s.ErrorType.None);
 
     s.state.error.type = s.ErrorType.Auth;
     syncStatusWrapper.vm.emit('popup-error');
-    assert.isTrue(wrapper.vm.popup.error);
-    wrapper.vm.closeSyncPopup('error');
-    assert.isFalse(wrapper.vm.popup.error);
+    assert.isTrue(wrapperVm.popup.error);
+    wrapperVm.closeSyncPopup('error');
+    assert.isFalse(wrapperVm.popup.error);
     assert.strictEqual(s.state.error.type, s.ErrorType.None);
   });
 
@@ -87,6 +91,9 @@ describe('App', () => {
     });
 
     const wrapper = shallowMount(App);
+    const wrapperVm = wrapper.vm as unknown as {
+      confirmDialog: (cb: () => void) => void;
+    };
     assert.isTrue(wrapper.isVisible());
 
     assert.isEmpty(s.state.token);
@@ -94,7 +101,7 @@ describe('App', () => {
 
     const mockConfirm = vi.fn(() => null);
 
-    wrapper.vm.confirmDialog(mockConfirm);
+    wrapperVm.confirmDialog(mockConfirm);
     expect(mockConfirm).toHaveBeenCalled();
 
     s.state.token = 'token';
@@ -104,12 +111,12 @@ describe('App', () => {
 
     vi.resetAllMocks();
 
-    wrapper.vm.confirmDialog(mockConfirm);
+    wrapperVm.confirmDialog(mockConfirm);
     expect(mockConfirm).toHaveBeenCalled();
 
     s.state.hasUnsyncedNotes = true;
 
-    wrapper.vm.confirmDialog(mockConfirm);
+    wrapperVm.confirmDialog(mockConfirm);
 
     assert.isTrue(confirmDialogCalled);
   });
