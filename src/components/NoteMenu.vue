@@ -181,6 +181,8 @@ function handleDragBar() {
 function navigateWithArrowKeys(ev: KeyboardEvent) {
   if (!listIsFocused.value) return;
 
+  ev.preventDefault();
+
   const keyDirection = {
     ArrowUp: 1,
     ArrowDown: -1,
