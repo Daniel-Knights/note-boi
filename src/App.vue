@@ -101,6 +101,7 @@ input[type='submit'] {
     line-height: 1;
     color: #fff;
     background-color: var(--colour__interactive);
+    text-shadow: v.$text-shadow;
   }
 
   &:hover {

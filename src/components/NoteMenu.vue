@@ -31,7 +31,7 @@
       class="note-menu__new-note button--default"
       data-test-id="new"
     >
-      <PlusIcon />
+      +
     </button>
     <div
       @mousedown="handleDragBar"
@@ -55,7 +55,6 @@ import {
 } from '../store/note';
 import { isEmptyNote } from '../utils';
 
-import PlusIcon from './svg/PlusIcon.vue';
 import ContextMenu from './ContextMenu.vue';
 
 const noteList = ref<HTMLElement | undefined>(undefined);
@@ -247,6 +246,11 @@ $new-note-height: 50px;
   }
 }
 
+.note-menu__note:hover,
+.note-menu__note--selected {
+  text-shadow: v.$text-shadow;
+}
+
 .note-menu__note {
   cursor: pointer;
   position: relative;
@@ -286,12 +290,13 @@ $new-note-height: 50px;
 }
 
 .note-menu__new-note {
-  @include v.flex-x(center, center);
   position: absolute;
   top: calc(100% - $new-note-height);
+  padding-bottom: 8px;
   height: $new-note-height;
   width: 100%;
-  font-size: 30px;
+  font-size: 32px;
+  font-family: serif;
 }
 
 .note-menu__drag-bar {
