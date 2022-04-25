@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 /* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -28,5 +30,9 @@ export default defineConfig({
   esbuild: {
     // don't minify for debug builds
     minify: !process.env.TAURI_DEBUG,
+  },
+  test: {
+    environment: 'jsdom',
+    globals: true,
   },
 });

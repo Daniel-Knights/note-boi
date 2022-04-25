@@ -1,18 +1,27 @@
 <template>
   <div id="sync-status">
     <!-- Loading -->
-    <div v-if="state.isLoading" class="sync-status__loading-spinner"></div>
+    <div
+      v-if="state.isLoading"
+      class="sync-status__loading-spinner"
+      data-test-id="loading"
+    ></div>
     <!-- Error -->
     <button
       v-else-if="isSyncError"
       @click="emit('popup-error')"
       class="sync-status__error"
       title="Sync error"
+      data-test-id="error"
     >
       <CloudErrorIcon />
     </button>
     <!-- Sync successful -->
-    <div v-else-if="state.token !== '' && !state.hasUnsyncedNotes" title="Changes synced">
+    <div
+      v-else-if="state.token !== '' && !state.hasUnsyncedNotes"
+      title="Changes synced"
+      data-test-id="success"
+    >
       <CloudTickIcon />
     </div>
     <!-- Sync ready -->
@@ -21,6 +30,7 @@
       @click="pushNotes"
       class="sync-status__sync-button"
       title="Sync changes"
+      data-test-id="sync-button"
     >
       <CloudSyncIcon />
     </button>

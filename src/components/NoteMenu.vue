@@ -1,5 +1,5 @@
 <template>
-  <section @click="listIsFocused = true" id="note-menu" :style="{ width: noteListWidth }">
+  <section @click="listIsFocused = true" id="note-menu" :style="{ width: menuWidth }">
     <ul
       @click="handleNoteSelect"
       @contextmenu.prevent="contextMenuEv = $event"
@@ -26,15 +26,23 @@
       </li>
     </ul>
     <ContextMenu :ev="contextMenuEv" />
-    <button class="note-menu__new-note button--default" @click="newNote">
+    <button
+      @click="newNote"
+      class="note-menu__new-note button--default"
+      data-test-id="new"
+    >
       <PlusIcon />
     </button>
-    <div @mousedown="handleDragBar" class="note-menu__drag-bar"></div>
+    <div
+      @mousedown="handleDragBar"
+      class="note-menu__drag-bar"
+      data-test-id="drag-bar"
+    ></div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { ref, watchEffect } from 'vue';
+import { onUnmounted, ref, watchEffect } from 'vue';
 
 import {
   state,
@@ -54,7 +62,7 @@ const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
 const isDragging = ref(false);
 const listIsFocused = ref(true);
-const noteListWidth = ref(localStorage.getItem('note-list-width') || '260px');
+const menuWidth = ref(localStorage.getItem('note-menu-width') || '260px');
 
 // Clear all extra notes and remove event listener
 function clearExtraNotes(ev?: MouseEvent) {
@@ -83,7 +91,7 @@ function handleNoteSelect(ev: MouseEvent) {
 
     if (targetNoteIndex >= 0) {
       const lastSelectedNote = hasExtraNotes
-        ? state.extraSelectedNotes[0]?.id
+        ? state.extraSelectedNotes[state.extraSelectedNotes.length - 1]?.id
         : state.selectedNote.id;
       const selectedNoteIndex = findNoteIndex(lastSelectedNote);
 
@@ -94,10 +102,10 @@ function handleNoteSelect(ev: MouseEvent) {
         let noteSlice: Note[] = [];
 
         if (lowestIndex === selectedNoteIndex) {
-          // Reverse to ensure correct selection order, `0` = next in queue
-          noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1).reverse();
+          noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1);
         } else if (highestIndex === selectedNoteIndex) {
-          noteSlice = state.notes.slice(lowestIndex, highestIndex);
+          // Reverse to ensure correct selection order, `0` = next in queue
+          noteSlice = state.notes.slice(lowestIndex, highestIndex).reverse();
         }
 
         const withoutDuplicates = noteSlice.filter((nt) => !isSelectedNote(nt));
@@ -133,11 +141,11 @@ function handleNoteSelect(ev: MouseEvent) {
       state.extraSelectedNotes.splice(0, 1);
 
       // Add to selection
-    } else {
+    } else if (state.selectedNote.id !== targetNoteId) {
       const foundNote = findNote(targetNoteId);
 
       if (foundNote) {
-        state.extraSelectedNotes.unshift(foundNote);
+        state.extraSelectedNotes.push(foundNote);
 
         document.addEventListener('click', clearExtraNotes);
       }
@@ -154,31 +162,26 @@ function handleNoteSelect(ev: MouseEvent) {
 function handleDragBar() {
   isDragging.value = true;
 
+  document.addEventListener('mousemove', (ev) => {
+    if (!isDragging.value || ev.clientX < 150) return;
+
+    menuWidth.value = `${ev.clientX}px`;
+  });
   document.addEventListener(
     'mouseup',
     () => {
       isDragging.value = false;
-      localStorage.setItem('note-list-width', noteListWidth.value);
+      localStorage.setItem('note-menu-width', menuWidth.value);
     },
     { once: true }
   );
-  document.addEventListener('mousemove', (ev) => {
-    if (!isDragging.value || ev.clientX < 150) return;
-
-    noteListWidth.value = `${ev.clientX}px`;
-  });
 }
 
-// Scroll to top when selected note moves to top
-watchEffect(() => {
-  if (state.selectedNote.id !== state.notes[0]?.id) return;
-
-  noteList.value?.scrollTo({ top: 0 });
-});
-
 // Navigate notes with up/down arrow keys
-window.addEventListener('keydown', (ev) => {
+function navigateWithArrowKeys(ev: KeyboardEvent) {
   if (!listIsFocused.value) return;
+
+  ev.preventDefault(); // Prevents noise on Mac
 
   const keyDirection = {
     ArrowUp: 1,
@@ -196,6 +199,16 @@ window.addEventListener('keydown', (ev) => {
     selectNote(state.notes[toIndex]?.id);
     clearExtraNotes();
   }
+}
+
+// Scroll to top when selected note moves to top
+watchEffect(() => {
+  if (state.selectedNote.id !== state.notes[0]?.id) return;
+
+  // scrollTo is undefined in tests
+  if (noteList.value?.scrollTo) {
+    noteList.value.scrollTo({ top: 0 });
+  }
 });
 
 // Register list blur
@@ -203,6 +216,12 @@ window.addEventListener('click', (ev) => {
   if (!(ev.target as HTMLElement)?.closest('#note-menu')) {
     listIsFocused.value = false;
   }
+});
+
+window.addEventListener('keydown', navigateWithArrowKeys);
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', navigateWithArrowKeys);
 });
 </script>
 

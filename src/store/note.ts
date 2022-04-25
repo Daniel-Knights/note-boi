@@ -15,22 +15,23 @@ export class Note {
   };
 }
 
-interface State {
-  notes: Note[];
-  selectedNote: Note;
-  /** `0` = next in queue */
-  extraSelectedNotes: (Note | undefined)[];
-}
+export const noteEvents = {
+  new: 'note-new',
+  select: 'note-select',
+  change: 'note-change',
+  unsynced: 'note-unsynced',
+};
 
-const newNoteEvent = new CustomEvent('note-new');
-const selectNoteEvent = new CustomEvent('note-select');
-const changeNoteEvent = new CustomEvent('note-change');
-const unsyncedEvent = new CustomEvent('note-unsynced');
+const newNoteEvent = new CustomEvent(noteEvents.new);
+const selectNoteEvent = new CustomEvent(noteEvents.select);
+const changeNoteEvent = new CustomEvent(noteEvents.change);
+const unsyncedEvent = new CustomEvent(noteEvents.unsynced);
 
-export const state = reactive<State>({
-  notes: [],
+export const state = reactive({
+  notes: <Note[]>[],
   selectedNote: new Note(),
-  extraSelectedNotes: [],
+  /** `0` = next in queue */
+  extraSelectedNotes: <Note[]>[],
 });
 
 /** Sorts notes in descending order by timestamp. */
@@ -51,11 +52,12 @@ export function findNote(id?: string): Note | undefined {
 /** Deletes {@link state.selectedNote} when note is empty. */
 function clearEmptyNote(): void {
   const isValidClear = state.notes.length > 1;
+  if (!isValidClear) return;
 
   const foundNote = findNote(state.selectedNote.id);
   if (!foundNote) return;
 
-  if (isValidClear && isEmptyNote(foundNote)) {
+  if (isEmptyNote(foundNote)) {
     deleteNote(state.selectedNote.id, true);
   }
 }
@@ -70,7 +72,9 @@ export function selectNote(id?: string): void {
   clearEmptyNote();
 
   const foundNote = findNote(id);
-  if (foundNote) state.selectedNote = { ...foundNote };
+  if (!foundNote) return;
+
+  state.selectedNote = { ...foundNote };
 
   document.dispatchEvent(selectNoteEvent);
   document.dispatchEvent(changeNoteEvent);
@@ -129,13 +133,15 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
   invoke('delete_note', { id }).then(autoPush).catch(console.error);
 }
 
-/** Deletes {@link state.selectedNote} and all notes in {@link state.extraSelectedNotes} */
+/** Deletes {@link state.selectedNote} and all notes in {@link state.extraSelectedNotes}. */
 export function deleteAllNotes(): void {
   deleteNote(state.selectedNote.id, true);
 
   state.extraSelectedNotes.forEach((nt) => {
     if (nt) deleteNote(nt.id, false);
   });
+
+  state.extraSelectedNotes = [];
 }
 
 /** Creates an empty note. */
@@ -153,15 +159,15 @@ export function newNote(): void {
   state.notes.unshift(freshNote);
   state.selectedNote = { ...freshNote };
 
+  document.dispatchEvent(selectNoteEvent);
   document.dispatchEvent(changeNoteEvent);
   document.dispatchEvent(newNoteEvent);
-  document.dispatchEvent(unsyncedEvent);
 
   invoke('new_note', { note: { ...freshNote } }).catch(console.error);
 }
 
 /** Edits note body on Quill `text-change`. */
-export function editBody(delta: string, title: string, body: string): void {
+export function editNote(delta: string, title: string, body: string): void {
   const foundNote = findNote(state.selectedNote.id);
   if (!foundNote || delta === foundNote.content.delta) return;
 

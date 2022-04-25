@@ -1,44 +1,46 @@
 <template>
   <section id="editor">
-    <small class="editor__date">{{
+    <small class="editor__date" data-test-id="timestamp">{{
       unixToDateTime(state.selectedNote.timestamp || 0)
     }}</small>
-    <div class="editor__body"></div>
+    <div class="editor__body" ref="editorBody"></div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import Quill from 'quill';
 import punycode from 'punycode/';
 
-import { state, editBody } from '../store/note';
+import { noteEvents, state, editNote } from '../store/note';
 import { unixToDateTime } from '../utils';
+
+const editorBody = ref<HTMLDivElement | null>(null);
 
 let quillEditor: Quill | undefined;
 let isNoteSelect = false;
 
-document.addEventListener('note-new', () => {
+document.addEventListener(noteEvents.new, () => {
   // Timeout prevents weird bug where cursor line ignores padding
   setTimeout(() => {
     quillEditor?.setSelection(0, 0);
   });
 });
-document.addEventListener('note-change', () => {
+document.addEventListener(noteEvents.change, () => {
   const parsedNoteContent = JSON.parse(
     punycode.decode(state.selectedNote.content.delta) || '[]'
   );
 
   quillEditor?.setContents(parsedNoteContent);
 });
-document.addEventListener('note-select', () => {
+document.addEventListener(noteEvents.select, () => {
   isNoteSelect = true;
 
   quillEditor?.blur(); // Prevent focus bug after new note
 });
 
 onMounted(() => {
-  quillEditor = new Quill('.editor__body', {
+  quillEditor = new Quill(editorBody.value!, {
     modules: {
       toolbar: [
         [{ header: [1, 2, 3, false] }],
@@ -59,9 +61,9 @@ onMounted(() => {
 
     if (!quillEditor) return;
     const delta = quillEditor.getContents();
-    const [title, body] = quillEditor.root.innerText.split(/\n+/);
+    const [title, body] = quillEditor.getText().split(/\n+/);
 
-    editBody(punycode.encode(JSON.stringify(delta)), title, body);
+    editNote(punycode.encode(JSON.stringify(delta)), title, body);
   });
 });
 </script>

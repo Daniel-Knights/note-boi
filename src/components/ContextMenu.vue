@@ -1,15 +1,16 @@
 <template>
   <ul v-if="show" class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
-    <li @click="newNote">New Note</li>
+    <li @click="newNote" data-test-id="new">New Note</li>
     <li
       :class="{ 'context-menu__item--disabled': comp?.hasOneEmptyNote }"
       @click="handleDeleteNote"
+      data-test-id="delete"
     >
       Delete Note
     </li>
     <li class="context-menu__has-sub-menu">
       Theme
-      <ul>
+      <ul data-test-id="theme">
         <li
           v-for="theme in colourThemes"
           :key="theme"
@@ -22,7 +23,7 @@
     </li>
     <li class="context-menu__has-sub-menu">
       Auto-sync
-      <ul>
+      <ul data-test-id="auto-sync">
         <li
           :class="{ 'context-menu__item--selected': syncState.autoSyncEnabled }"
           @click="setAutoSync(true)"
@@ -66,10 +67,7 @@ const props = defineProps({
 });
 
 const comp = computed(() => {
-  if (!clickedNoteId.value) return;
-
   const foundNote = findNote(clickedNoteId.value);
-  if (!foundNote) return;
 
   return {
     hasOneEmptyNote: isEmptyNote(foundNote),

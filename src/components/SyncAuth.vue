@@ -1,8 +1,8 @@
 <template>
   <Popup @close="emit('close')">
     <div id="sync-auth">
-      <h2>{{ state.isLogin ? 'Login' : 'Signup' }}</h2>
-      <form @submit.prevent="handleSubmit" class="sync-auth__form">
+      <h2 data-test-id="heading">{{ state.isLogin ? 'Login' : 'Signup' }}</h2>
+      <form @submit.prevent="handleSubmit" class="sync-auth__form" data-test-id="form">
         <input
           v-model="state.username"
           @input="validateFields.username"
@@ -17,6 +17,7 @@
           :class="{ 'sync-auth__input--error': !validation.password }"
           type="password"
           placeholder="Password"
+          data-test-id="password"
         />
         <input
           v-if="!state.isLogin"
@@ -25,6 +26,7 @@
           :class="{ 'sync-auth__input--error': !validation.confirmPassword }"
           type="password"
           placeholder="Confirm Password"
+          data-test-id="confirm-password"
         />
         <p v-if="state.error.type === ErrorType.Auth" class="sync-auth__error">
           {{ state.error.message }}
@@ -37,6 +39,7 @@
           resetError();
         "
         class="sync-auth__switch"
+        data-test-id="switch"
       >
         Switch to {{ state.isLogin ? 'signup' : 'login' }}
       </button>
@@ -105,9 +108,7 @@ async function handleSubmit() {
 }
 
 onMounted(() => {
-  if (usernameInput.value) {
-    usernameInput.value.focus();
-  }
+  usernameInput.value?.focus();
 });
 </script>
 

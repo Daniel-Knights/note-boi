@@ -3,20 +3,8 @@
   <Editor />
   <Logout />
   <SyncStatus @popup-auth="handlePopupAuthEvent" @popup-error="popup.error = true" />
-  <SyncAuth
-    v-if="popup.auth"
-    @close="
-      popup.auth = false;
-      resetError();
-    "
-  />
-  <SyncError
-    v-if="popup.error"
-    @close="
-      popup.error = false;
-      resetError();
-    "
-  />
+  <SyncAuth v-if="popup.auth" @close="closeSyncPopup('auth')" />
+  <SyncError v-if="popup.error" @close="closeSyncPopup('error')" />
 </template>
 
 <script lang="ts" setup>
@@ -48,6 +36,11 @@ function handlePopupAuthEvent() {
   }
 }
 
+function closeSyncPopup(field: keyof typeof popup) {
+  popup[field] = false;
+  resetError();
+}
+
 function confirmDialog(cb: () => void) {
   if (!state.token || !state.hasUnsyncedNotes) {
     cb();
@@ -55,8 +48,17 @@ function confirmDialog(cb: () => void) {
   }
 
   dialog.ask('Sync changes before leaving?').then(async (shouldSync) => {
-    if (shouldSync) await push();
-    if (state.error.type === ErrorType.None) cb();
+    if (shouldSync) {
+      await push();
+
+      if (state.error.type === ErrorType.Push) {
+        popup.error = true;
+      } else {
+        cb();
+      }
+    } else {
+      cb();
+    }
   });
 }
 
@@ -66,9 +68,7 @@ tauriWindow.appWindow.listen('tauri://close-requested', () => {
 tauriListen('reload', () => {
   confirmDialog(() => window.location.reload());
 });
-tauriListen('new-note', () => {
-  newNote();
-});
+tauriListen('new-note', newNote);
 tauriListen('delete-note', deleteAllNotes);
 </script>
 

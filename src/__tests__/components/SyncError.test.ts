@@ -1,0 +1,80 @@
+import { mount } from '@vue/test-utils';
+
+import { getByTestId, setCrypto } from '../utils';
+import { mockTauriApi } from '../tauri';
+import * as s from '../../store/sync';
+
+import SyncError from '../../components/SyncError.vue';
+
+function mountSyncError() {
+  return mount(SyncError, {
+    global: {
+      stubs: { teleport: true },
+    },
+  });
+}
+
+beforeAll(setCrypto);
+
+describe('SyncError', async () => {
+  const errorMessage = 'I am a sync error';
+  s.state.error.message = errorMessage;
+
+  await mockTauriApi([]);
+
+  it('Mounts', () => {
+    const wrapper = mountSyncError();
+    assert.isTrue(wrapper.isVisible());
+
+    const errorMessageEl = getByTestId(wrapper, 'error-message');
+    assert.strictEqual(errorMessageEl.text(), `Error: ${errorMessage}`);
+  });
+
+  it('Retries push', async () => {
+    const pushSpy = vi.spyOn(s, 'push');
+    const resetErrorSpy = vi.spyOn(s, 'resetError');
+    const wrapper = mountSyncError();
+    assert.isTrue(wrapper.isVisible());
+
+    s.state.error.type = s.ErrorType.Push;
+
+    const tryAgainButton = getByTestId(wrapper, 'try-again');
+    await tryAgainButton.trigger('click');
+
+    expect(pushSpy).toHaveBeenCalled();
+    expect(resetErrorSpy).toHaveBeenCalled();
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+  });
+
+  it('Retries pull', async () => {
+    const pullSpy = vi.spyOn(s, 'pull');
+    const resetErrorSpy = vi.spyOn(s, 'resetError');
+    const wrapper = mountSyncError();
+    assert.isTrue(wrapper.isVisible());
+
+    s.state.error.type = s.ErrorType.Pull;
+
+    const tryAgainButton = getByTestId(wrapper, 'try-again');
+    await tryAgainButton.trigger('click');
+
+    expect(pullSpy).toHaveBeenCalled();
+    expect(resetErrorSpy).toHaveBeenCalled();
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+  });
+
+  it('Retries logout', async () => {
+    const logoutSpy = vi.spyOn(s, 'logout');
+    const resetErrorSpy = vi.spyOn(s, 'resetError');
+    const wrapper = mountSyncError();
+    assert.isTrue(wrapper.isVisible());
+
+    s.state.error.type = s.ErrorType.Logout;
+
+    const tryAgainButton = getByTestId(wrapper, 'try-again');
+    await tryAgainButton.trigger('click');
+
+    expect(logoutSpy).toHaveBeenCalled();
+    expect(resetErrorSpy).toHaveBeenCalled();
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+  });
+});

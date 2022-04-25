@@ -18,7 +18,6 @@ module.exports = {
     'airbnb-base',
   ],
   globals: {
-    mapboxgl: 'readonly',
     defineProps: 'readonly',
     defineEmits: 'readonly',
   },
