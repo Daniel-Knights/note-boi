@@ -10,8 +10,7 @@
     "icon": "tauri icon ./artwork/icon.png",
     "info": "tauri info",
     "test": "vitest",
-    "test:build": "vitest run",
-    "coverage": "vitest run --coverage"
+    "test:build": "vitest run"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.0.0-rc.5",
