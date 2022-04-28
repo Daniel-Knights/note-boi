@@ -10,7 +10,8 @@
     "icon": "tauri icon ./artwork/icon.png",
     "info": "tauri info",
     "test": "vitest",
-    "test:build": "vitest run"
+    "test:build": "vitest run",
+    "update": "node ./scrips/updater.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.0.0-rc.5",
