@@ -3,9 +3,12 @@ import { Note } from '../store/note';
 
 describe('Utils', () => {
   it('Formats Unix time to date-time', () => {
+    const formattedDateTime = unixToDateTime(1650003060221);
+
     assert.isTrue(
       // First is for GitHub workflow, second is for local testing
-      unixToDateTime(1650003060221) === 'Apr 15, 2022, 6:11 AM' || '15 Apr 2022, 07:11'
+      formattedDateTime === 'Apr 15, 2022, 6:11 AM' ||
+        formattedDateTime === '15 Apr 2022, 07:11'
     );
   });
 
