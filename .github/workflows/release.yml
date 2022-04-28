@@ -14,21 +14,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Install Node
         uses: actions/setup-node@v1
         with:
           node-version: 16
+
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+
       - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
+
       - name: Install dependencies and run tests
-      run: npm i && npm run test:build
+        run: npm i && npm run test:build
+
       - name: Build Tauri
         uses: tauri-apps/tauri-action@v0
         env:
@@ -44,11 +49,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Install Node
         uses: actions/setup-node@v1
         with:
           node-version: 16
+
       - run: npm run
+
       - name: Create Update
         run: npm run update
         env:
