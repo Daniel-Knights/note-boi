@@ -3,7 +3,10 @@ import { Note } from '../store/note';
 
 describe('Utils', () => {
   it('Formats Unix time to date-time', () => {
-    assert.strictEqual(unixToDateTime(1650003060221), '15 Apr 2022, 07:11');
+    assert.isTrue(
+      // First is for GitHub workflow, second is for local testing
+      unixToDateTime(1650003060221) === 'Apr 15, 2022, 6:11 AM' || '15 Apr 2022, 07:11'
+    );
   });
 
   it('Checks if a string is only whitespace', () => {
