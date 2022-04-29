@@ -55,7 +55,8 @@ jobs:
         with:
           node-version: 16
 
-      - run: npm run
+      - name: Install dependencies
+        run: npm i
 
       - name: Create Update
         run: npm run update
