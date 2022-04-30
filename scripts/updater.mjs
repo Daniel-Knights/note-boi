@@ -3,7 +3,6 @@
 import fetch from 'node-fetch';
 import { getOctokit, context } from '@actions/github';
 
-const UPDATE_TAG_NAME = 'updater';
 const UPDATE_FILE_NAME = 'update.json';
 
 const updateData = {
@@ -59,17 +58,12 @@ for (const { name, browser_download_url } of release.assets) {
   }
 }
 
-const { data: updater } = await octokit.rest.repos.getReleaseByTag({
-  ...options,
-  tag: UPDATE_TAG_NAME,
-});
-
-const updateFile = updater.assets.find((asset) => asset.name === UPDATE_FILE_NAME);
+const updateFile = release.assets.find((asset) => asset.name === UPDATE_FILE_NAME);
 await octokit.rest.repos.deleteReleaseAsset({ ...options, asset_id: updateFile.id });
 
 await octokit.rest.repos.uploadReleaseAsset({
   ...options,
-  release_id: updater.id,
+  release_id: release.id,
   name: UPDATE_FILE_NAME,
   data: JSON.stringify(updateData),
 });
