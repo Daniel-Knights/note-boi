@@ -11,7 +11,10 @@
     "info": "tauri info",
     "test": "vitest",
     "test:build": "vitest run",
-    "update": "node ./scripts/updater.mjs"
+    "update": "node ./scripts/updater.mjs",
+    "version:patch": "npm run test:build && npm version patch",
+    "version:minor": "npm run test:build && npm version minor",
+    "version:major": "npm run test:build && npm version major"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.0.0-rc.5",
