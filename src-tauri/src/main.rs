@@ -9,7 +9,7 @@ mod note;
 
 use crate::command::{delete_note, edit_note, get_all_notes, new_note, sync_all_local_notes};
 use std::path::PathBuf;
-use tauri::{Manager, WindowBuilder, WindowUrl};
+use tauri::Manager;
 
 #[derive(Debug)]
 pub struct AppState {
@@ -17,26 +17,13 @@ pub struct AppState {
 }
 
 fn main() {
-  let mut builder = tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![
-      delete_note,
-      edit_note,
-      get_all_notes,
-      new_note,
-      sync_all_local_notes
-    ])
-    .create_window("main", WindowUrl::App("".into()), |win, attr| {
-      (
-        win
-          .title("NoteBoi")
-          .min_inner_size(600.0, 400.0)
-          .resizable(true)
-          .fullscreen(false)
-          .visible(false),
-        attr,
-      )
-    })
-    .unwrap();
+  let mut builder = tauri::Builder::default().invoke_handler(tauri::generate_handler![
+    delete_note,
+    edit_note,
+    get_all_notes,
+    new_note,
+    sync_all_local_notes
+  ]);
 
   if cfg!(target_os = "macos") {
     // Only set menu for MacOS
@@ -57,7 +44,6 @@ fn main() {
 
       Ok(())
     })
-    .plugin(tauri_plugin_window_state::Builder::default().build())
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
