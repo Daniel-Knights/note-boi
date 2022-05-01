@@ -12,28 +12,29 @@ import { onMounted, ref } from 'vue';
 import Quill from 'quill';
 import punycode from 'punycode/';
 
-import { noteEvents, state, editNote } from '../store/note';
 import { unixToDateTime } from '../utils';
+import { NOTE_EVENTS } from '../constant';
+import { state, editNote } from '../store/note';
 
 const editorBody = ref<HTMLDivElement | null>(null);
 
 let quillEditor: Quill | undefined;
 let isNoteSelect = false;
 
-document.addEventListener(noteEvents.new, () => {
+document.addEventListener(NOTE_EVENTS.new, () => {
   // Timeout prevents weird bug where cursor line ignores padding
   setTimeout(() => {
     quillEditor?.setSelection(0, 0);
   });
 });
-document.addEventListener(noteEvents.change, () => {
+document.addEventListener(NOTE_EVENTS.change, () => {
   const parsedNoteContent = JSON.parse(
     punycode.decode(state.selectedNote.content.delta) || '[]'
   );
 
   quillEditor?.setContents(parsedNoteContent);
 });
-document.addEventListener(noteEvents.select, () => {
+document.addEventListener(NOTE_EVENTS.select, () => {
   isNoteSelect = true;
 
   quillEditor?.blur(); // Prevent focus bug after new note

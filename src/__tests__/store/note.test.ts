@@ -1,6 +1,7 @@
 import { resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
+import { NOTE_EVENTS } from '../../constant';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
 
@@ -14,10 +15,10 @@ const mockUnsynced = vi.fn(() => undefined);
 
 beforeAll(() => {
   setCrypto();
-  document.addEventListener(n.noteEvents.change, mockChange);
-  document.addEventListener(n.noteEvents.new, mockNew);
-  document.addEventListener(n.noteEvents.select, mockSelect);
-  document.addEventListener(n.noteEvents.unsynced, mockUnsynced);
+  document.addEventListener(NOTE_EVENTS.change, mockChange);
+  document.addEventListener(NOTE_EVENTS.new, mockNew);
+  document.addEventListener(NOTE_EVENTS.select, mockSelect);
+  document.addEventListener(NOTE_EVENTS.unsynced, mockUnsynced);
 });
 
 afterEach(() => {

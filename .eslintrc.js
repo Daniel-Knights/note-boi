@@ -20,6 +20,7 @@ module.exports = {
   globals: {
     defineProps: 'readonly',
     defineEmits: 'readonly',
+    CustomEventInit: 'readonly',
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {

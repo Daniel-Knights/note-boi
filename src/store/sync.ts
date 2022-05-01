@@ -2,8 +2,9 @@ import { reactive } from 'vue';
 import { http, invoke } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 
-import { getAllNotes, Note, state as noteState } from './note';
 import { isDev, tauriEmit } from '../utils';
+import { NOTE_EVENTS } from '../constant';
+import { getAllNotes, Note, state as noteState } from './note';
 
 export enum ErrorType {
   None,
@@ -19,7 +20,7 @@ export const state = reactive({
   username: localStorage.getItem('username') || '',
   password: '',
   token: localStorage.getItem('token') || '',
-  hasUnsyncedNotes: false,
+  unsyncedNotes: new Set<string>([]),
   isLoading: false,
   isLogin: true, // For switching login/signup form
   autoSyncEnabled: autoSync !== null ? autoSync === 'true' : true,
@@ -238,7 +239,7 @@ export async function push(): Promise<void> {
 
   if (res.ok) {
     resetError();
-    state.hasUnsyncedNotes = false;
+    state.unsyncedNotes.clear();
   } else {
     state.error = {
       type: ErrorType.Push,
@@ -260,8 +261,8 @@ export function autoPush(): void {
 }
 
 // Keep track of notes with unsynced changes
-document.addEventListener('note-unsynced', () => {
+document.addEventListener(NOTE_EVENTS.unsynced, () => {
   if (state.token) {
-    state.hasUnsyncedNotes = true;
+    state.unsyncedNotes.add(noteState.selectedNote.id);
   }
 });

@@ -3,6 +3,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
 
 import { isEmptyNote } from '../utils';
+import { NOTE_EVENTS } from '../constant';
 import { autoPush } from './sync';
 
 export class Note {
@@ -15,24 +16,17 @@ export class Note {
   };
 }
 
-export const noteEvents = {
-  new: 'note-new',
-  select: 'note-select',
-  change: 'note-change',
-  unsynced: 'note-unsynced',
-};
-
-const newNoteEvent = new CustomEvent(noteEvents.new);
-const selectNoteEvent = new CustomEvent(noteEvents.select);
-const changeNoteEvent = new CustomEvent(noteEvents.change);
-const unsyncedEvent = new CustomEvent(noteEvents.unsynced);
-
 export const state = reactive({
   notes: <Note[]>[],
   selectedNote: new Note(),
   /** `0` = next in queue */
   extraSelectedNotes: <Note[]>[],
 });
+
+const newNoteEvent = new CustomEvent(NOTE_EVENTS.new);
+const selectNoteEvent = new CustomEvent(NOTE_EVENTS.select);
+const changeNoteEvent = new CustomEvent(NOTE_EVENTS.change);
+const unsyncedEvent = new CustomEvent(NOTE_EVENTS.unsynced);
 
 /** Sorts notes in descending order by timestamp. */
 function sortNotes() {

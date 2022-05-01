@@ -18,7 +18,7 @@
     </button>
     <!-- Sync successful -->
     <div
-      v-else-if="state.token !== '' && !state.hasUnsyncedNotes"
+      v-else-if="state.token !== '' && state.unsyncedNotes.size === 0"
       title="Changes synced"
       data-test-id="success"
     >
