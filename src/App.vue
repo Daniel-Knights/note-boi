@@ -42,7 +42,7 @@ function closeSyncPopup(field: keyof typeof popup) {
 }
 
 function confirmDialog(cb: () => void) {
-  if (!state.token || state.unsyncedNotes.size === 0) {
+  if (!state.token || state.unsyncedNoteIds.size === 0) {
     cb();
     return;
   }

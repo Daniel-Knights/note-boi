@@ -97,7 +97,7 @@ describe('App', () => {
     assert.isTrue(wrapper.isVisible());
 
     assert.isEmpty(s.state.token);
-    assert.isEmpty(s.state.unsyncedNotes);
+    assert.isEmpty(s.state.unsyncedNoteIds);
 
     const mockConfirm = vi.fn(() => null);
 
@@ -107,14 +107,14 @@ describe('App', () => {
     s.state.token = 'token';
 
     assert.isNotEmpty(s.state.token);
-    assert.isEmpty(s.state.unsyncedNotes);
+    assert.isEmpty(s.state.unsyncedNoteIds);
 
     vi.resetAllMocks();
 
     wrapperVm.confirmDialog(mockConfirm);
     expect(mockConfirm).toHaveBeenCalled();
 
-    s.state.unsyncedNotes.add('note-id');
+    s.state.unsyncedNoteIds.add('note-id');
 
     wrapperVm.confirmDialog(mockConfirm);
 

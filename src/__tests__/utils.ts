@@ -32,7 +32,7 @@ export function resetSyncStore(): void {
   s.state.username = '';
   s.state.password = '';
   s.state.token = '';
-  s.state.unsyncedNotes.clear();
+  s.state.unsyncedNoteIds.clear();
   s.state.isLoading = false;
   s.state.isLogin = true;
   s.state.autoSyncEnabled = true;

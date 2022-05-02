@@ -261,7 +261,7 @@ describe('Sync', () => {
     it('Pushes notes to the server', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
-      s.state.unsyncedNotes.add('note-id');
+      s.state.unsyncedNoteIds.add('note-id');
       mockTauriApi(localNotes);
       await s.login();
 
@@ -269,7 +269,7 @@ describe('Sync', () => {
 
       assert.isFalse(s.state.isLoading);
       assert.deepEqual(n.state.notes, localNotes);
-      assert.isEmpty(s.state.unsyncedNotes);
+      assert.isEmpty(s.state.unsyncedNoteIds);
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(localStorage.getItem('username'), 'd');

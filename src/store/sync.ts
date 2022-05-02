@@ -20,7 +20,7 @@ export const state = reactive({
   username: localStorage.getItem('username') || '',
   password: '',
   token: localStorage.getItem('token') || '',
-  unsyncedNotes: new Set<string>([]),
+  unsyncedNoteIds: new Set<string>([]),
   isLoading: false,
   isLogin: true, // For switching login/signup form
   autoSyncEnabled: autoSync !== null ? autoSync === 'true' : true,
@@ -239,7 +239,7 @@ export async function push(): Promise<void> {
 
   if (res.ok) {
     resetError();
-    state.unsyncedNotes.clear();
+    state.unsyncedNoteIds.clear();
   } else {
     state.error = {
       type: ErrorType.Push,
@@ -263,6 +263,6 @@ export function autoPush(): void {
 // Keep track of notes with unsynced changes
 document.addEventListener(NOTE_EVENTS.unsynced, () => {
   if (state.token) {
-    state.unsyncedNotes.add(noteState.selectedNote.id);
+    state.unsyncedNoteIds.add(noteState.selectedNote.id);
   }
 });
