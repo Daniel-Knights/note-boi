@@ -22,9 +22,10 @@ let quillEditor: Quill | undefined;
 let isNoteSelect = false;
 
 document.addEventListener(NOTE_EVENTS.new, () => {
-  // Timeout prevents weird bug where cursor line ignores padding
+  // Timeout to wait for note to be created/selected
   setTimeout(() => {
     quillEditor?.setSelection(0, 0);
+    quillEditor?.root.click(); // Needed for MacOS
   });
 });
 document.addEventListener(NOTE_EVENTS.change, () => {
@@ -83,13 +84,14 @@ onMounted(() => {
     }
   }
 
-  $text-padding: 8px;
+  $text-padding-x: 8px;
+  $text-padding-y: 12px;
 
   .editor__date {
     user-select: none;
     -webkit-user-select: none;
     display: block;
-    padding: 10px $text-padding;
+    padding: 10px $text-padding-x;
     text-align: center;
     font-size: 11px;
     letter-spacing: 0.5px;
@@ -98,13 +100,13 @@ onMounted(() => {
   }
 
   .ql-editor {
-    padding-left: $text-padding;
-    padding-right: 60px;
+    margin: $text-padding-y $text-padding-x 0;
+    padding: 0 52px $text-padding-y 0;
   }
 
   .ql-editor.ql-blank::before {
     color: var(--colour__tertiary);
-    left: $text-padding;
+    left: $text-padding-x;
   }
 
   .ql-toolbar,
