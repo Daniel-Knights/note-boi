@@ -290,6 +290,8 @@ $new-note-height: 50px;
 }
 
 .note-menu__new-note {
+  user-select: none;
+  -webkit-user-select: none;
   position: absolute;
   top: calc(100% - $new-note-height);
   padding-bottom: 8px;
