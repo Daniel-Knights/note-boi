@@ -65,7 +65,7 @@ describe('Sync', () => {
       await s.login();
 
       assert.isFalse(s.state.isLoading);
-      assert.deepEqual(n.state.notes, localNotes);
+      assert.deepEqual(n.state.notes, localNotes.sort(n.sortNotesFn));
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(s.state.username, 'd');
       assert.isEmpty(s.state.password);
