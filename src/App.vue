@@ -68,7 +68,7 @@ tauriWindow.appWindow.listen('tauri://close-requested', () => {
 tauriListen('reload', () => {
   confirmDialog(() => window.location.reload());
 });
-tauriListen('new-note', newNote);
+tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteAllNotes);
 </script>
 

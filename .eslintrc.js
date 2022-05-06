@@ -55,5 +55,6 @@ module.exports = {
     'operator-linebreak': 'off',
     'lines-between-class-members': 'off',
     'no-use-before-define': ['error', { functions: false }],
+    'arrow-body-style': 'off',
   },
 };

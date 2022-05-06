@@ -1,7 +1,13 @@
 *Before release*
+Add tests for different sync scenarios
+  No local notes, but some remote and vice versa
+  Edit/new/delete mid sync?
+Prevent tests in release action
+Top menu
 README
 
 *Whenever*
+Note menu undo/redo and copy/paste
 Recycle bin
 Updater
 Prevent opening context menu off bottom of screen

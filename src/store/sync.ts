@@ -2,9 +2,16 @@ import { reactive } from 'vue';
 import { http, invoke } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 
-import { isDev, tauriEmit } from '../utils';
+import { isDev, isEmptyNote, tauriEmit } from '../utils';
 import { NOTE_EVENTS } from '../constant';
-import { getAllNotes, Note, state as noteState } from './note';
+import {
+  findNote,
+  Note,
+  selectNote,
+  sortStateNotes,
+  state as noteState,
+  UnsyncedEventDetail,
+} from './note';
 
 export enum ErrorType {
   None,
@@ -14,19 +21,62 @@ export enum ErrorType {
   Logout,
 }
 
+export type UnsyncedNoteIds = {
+  new: string;
+  edited: Set<string>;
+  deleted: Set<string>;
+  size: number;
+  clear: () => void;
+  add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
+};
+
 const autoSync = localStorage.getItem('auto-sync') as 'true' | 'false' | null;
+const unsyncedNoteIds: Partial<UnsyncedNoteIds> = JSON.parse(
+  localStorage.getItem('unsynced-note-ids') || '{}'
+);
 
 export const state = reactive({
   username: localStorage.getItem('username') || '',
   password: '',
   token: localStorage.getItem('token') || '',
-  unsyncedNoteIds: new Set<string>([]),
   isLoading: false,
   isLogin: true, // For switching login/signup form
   autoSyncEnabled: autoSync !== null ? autoSync === 'true' : true,
   error: {
     type: ErrorType.None,
     message: '',
+  },
+  unsyncedNoteIds: <UnsyncedNoteIds>{
+    new: unsyncedNoteIds.new,
+    edited: new Set<string>(unsyncedNoteIds.edited),
+    deleted: new Set<string>(unsyncedNoteIds.deleted),
+    get size() {
+      return this.edited.size + this.deleted.size;
+    },
+    clear() {
+      this.new = '';
+      this.edited.clear();
+      this.deleted.clear();
+      localStorage.removeItem('unsynced-note-ids');
+    },
+    add(ids): void {
+      if (ids.new !== undefined) this.new = ids.new;
+      ids.edited?.forEach((id) => this.edited.add(id));
+      ids.deleted?.forEach((id) => this.deleted.add(id));
+
+      if (this.edited.has(this.new) || this.deleted.has(this.new)) {
+        this.new = '';
+      }
+
+      localStorage.setItem(
+        'unsynced-note-ids',
+        JSON.stringify({
+          new: this.new,
+          edited: [...this.edited],
+          deleted: [...this.deleted],
+        })
+      );
+    },
   },
 });
 
@@ -90,6 +140,32 @@ export function setAutoSync(enabled: boolean): void {
   localStorage.setItem('auto-sync', enabled ? 'true' : 'false');
 }
 
+/** Syncs local and remote notes. */
+function syncNotes(remoteNotes: Note[]) {
+  const hasNoLocalNotes = noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]);
+
+  if (hasNoLocalNotes) {
+    state.unsyncedNoteIds.clear();
+  }
+
+  const unsyncedIds = [state.unsyncedNoteIds.new, ...state.unsyncedNoteIds.edited];
+  const unsyncedDeletedIds = [...state.unsyncedNoteIds.deleted];
+  const unsyncedNotes = unsyncedIds.map(findNote).filter(Boolean) as Note[];
+  const syncedNotes = remoteNotes.filter((nt) => {
+    return !unsyncedIds.includes(nt.id) && !unsyncedDeletedIds.includes(nt.id);
+  });
+
+  noteState.notes = [...syncedNotes, ...unsyncedNotes];
+
+  sortStateNotes();
+
+  if (hasNoLocalNotes) {
+    selectNote(noteState.notes[0].id);
+  }
+
+  return invoke('sync_all_local_notes', { notes: noteState.notes }).catch(console.error);
+}
+
 // Routes //
 
 // Login
@@ -106,9 +182,7 @@ export async function login(): Promise<void> {
   if (res.ok) {
     resetError();
     tauriEmit('login');
-
-    await invoke('sync_all_local_notes', { notes: res.data.notes }).catch(console.error);
-    await getAllNotes().catch(console.error);
+    await syncNotes(res.data.notes as Note[]);
 
     state.token = res.data.token as string;
     state.password = '';
@@ -204,8 +278,7 @@ export async function pull(): Promise<void> {
 
   if (res.ok) {
     resetError();
-    await invoke('sync_all_local_notes', { notes: res.data.notes }).catch(console.error);
-    await getAllNotes().catch(console.error);
+    await syncNotes(res.data.notes as Note[]);
   }
 
   state.isLoading = false;
@@ -227,10 +300,19 @@ export async function pull(): Promise<void> {
 export async function push(): Promise<void> {
   state.isLoading = true;
 
+  // Cache ids and clear before request to prevent
+  // race condition if a note is edited mid-push
+  const cachedUnsyncedNoteIds = {
+    new: state.unsyncedNoteIds.new,
+    edited: [...state.unsyncedNoteIds.edited],
+    deleted: [...state.unsyncedNoteIds.deleted],
+  };
+  state.unsyncedNoteIds.clear();
+
   const res = await tauriFetch<Record<string, never | string>>('/notes', 'PUT', {
     username: state.username,
     token: state.token,
-    notes: noteState.notes,
+    notes: noteState.notes.filter((nt) => !isEmptyNote(nt)),
   }).catch((err) => catchHang(err, ErrorType.Push));
 
   if (!res) return;
@@ -239,8 +321,9 @@ export async function push(): Promise<void> {
 
   if (res.ok) {
     resetError();
-    state.unsyncedNoteIds.clear();
   } else {
+    // Add back unsynced note ids
+    state.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
     state.error = {
       type: ErrorType.Push,
       message: parseErrorRes(res),
@@ -261,8 +344,11 @@ export function autoPush(): void {
 }
 
 // Keep track of notes with unsynced changes
-document.addEventListener(NOTE_EVENTS.unsynced, () => {
-  if (state.token) {
-    state.unsyncedNoteIds.add(noteState.selectedNote.id);
+document.addEventListener(
+  NOTE_EVENTS.unsynced,
+  (ev: CustomEventInit<UnsyncedEventDetail>) => {
+    if (!state.token || !ev.detail) return;
+
+    state.unsyncedNoteIds.add({ [ev.detail.type]: [ev.detail.noteId] });
   }
-});
+);

@@ -29,7 +29,7 @@
       v-else
       @click="pushNotes"
       class="sync-status__sync-button"
-      title="Sync changes"
+      title="Sync changes (push)"
       data-test-id="sync-button"
     >
       <CloudSyncIcon />
@@ -49,8 +49,7 @@ import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 
 if (state.token) {
   tauriEmit('login');
-
-  if (state.autoSyncEnabled) pull();
+  pull();
 } else {
   tauriEmit('logout');
 }

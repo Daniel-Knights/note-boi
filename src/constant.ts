@@ -1,10 +1,8 @@
 export const NOTE_EVENTS = {
-  /** Dispatched on new */
   new: 'note-new',
-  /** Dispatched on select/new */
+  /** For preventing note edit on text change */
   select: 'note-select',
-  /** Dispatched on select/get-all/delete/new */
+  /** For whenever the content of a note is changed */
   change: 'note-change',
-  /** Dispatched on delete/edit */
   unsynced: 'note-unsynced',
 };
