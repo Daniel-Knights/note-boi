@@ -16,7 +16,12 @@
         }"
         :data-note-id="note.id"
       >
-        <h2 class="note-menu__title">{{ note.content.title }}</h2>
+        <h2
+          class="note-menu__title"
+          :class="{ 'note-menu__title--empty': !note.content.title }"
+        >
+          {{ note.content.title }}
+        </h2>
         <p
           class="note-menu__body"
           :class="{ 'note-menu__body--empty': !note.content.body }"
@@ -277,7 +282,12 @@ $new-note-height: 50px;
 }
 
 .note-menu__title {
-  font-size: 18px;
+  &,
+  &--empty + .note-menu__body {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
 .note-menu__body {

@@ -25,7 +25,7 @@ export function isWhitespaceOnly(text?: string): boolean {
 export function isEmptyNote(note?: Note): boolean {
   if (!note) return true;
 
-  return isWhitespaceOnly(note.content.title);
+  return isWhitespaceOnly(note.content.title) && isWhitespaceOnly(note.content.body);
 }
 
 /** Calls {@link event.emit}, with stronger typing for `id` */
