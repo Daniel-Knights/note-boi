@@ -75,7 +75,6 @@ async function pushNotes() {
 }
 
 tauriListen('push-notes', pushNotes);
-tauriListen('pull-notes', pull);
 tauriListen('login', () => {
   state.isLogin = true;
   emit('popup-auth');

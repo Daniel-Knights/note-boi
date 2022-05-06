@@ -40,7 +40,6 @@ export function tauriListen(
     | 'new-note'
     | 'delete-note'
     | 'push-notes'
-    | 'pull-notes'
     | 'login'
     | 'logout'
     | 'signup',

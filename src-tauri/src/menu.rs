@@ -27,7 +27,6 @@ pub fn get_menu() -> Menu {
 
   let sync_menu = Menu::new()
     .add_item(CustomMenuItem::new("push-notes", "Push Notes"))
-    .add_item(CustomMenuItem::new("pull-notes", "Pull Notes"))
     .add_item(CustomMenuItem::new("login", "Login"))
     .add_item(CustomMenuItem::new("logout", "Logout"))
     .add_item(CustomMenuItem::new("signup", "Signup"));
@@ -49,7 +48,6 @@ pub fn set_menu(builder: Builder<Wry>) -> Builder<Wry> {
       "new-note" => ev.window().emit("new-note", {}).unwrap(),
       "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
       "push-notes" => ev.window().emit("push-notes", {}).unwrap(),
-      "pull-notes" => ev.window().emit("pull-notes", {}).unwrap(),
       "login" => ev.window().emit("login", {}).unwrap(),
       "logout" => ev.window().emit("logout", {}).unwrap(),
       "signup" => ev.window().emit("signup", {}).unwrap(),
@@ -65,7 +63,6 @@ pub fn toggle_sync_items(app: &mut App<Wry>) {
     menu_handle.get_item("login").set_enabled(b).unwrap();
     menu_handle.get_item("signup").set_enabled(b).unwrap();
     menu_handle.get_item("push-notes").set_enabled(!b).unwrap();
-    menu_handle.get_item("pull-notes").set_enabled(!b).unwrap();
     menu_handle.get_item("logout").set_enabled(!b).unwrap();
   };
   let toggle_fn_clone = toggle_fn.clone();
