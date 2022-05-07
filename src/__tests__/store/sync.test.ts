@@ -263,14 +263,20 @@ describe('Sync', () => {
 
   describe('push', () => {
     it('Pushes notes to the server', async () => {
+      const unsynced = { new: 'new', edited: ['edited'], deleted: ['deleted'] };
       s.state.username = 'd';
       s.state.token = 'token';
-      s.state.unsyncedNoteIds.add({ edited: ['note-id'] });
+      s.state.unsyncedNoteIds.add(unsynced);
       mockTauriApi(localNotes);
       await s.login();
+      assert.deepEqual(
+        JSON.parse(localStorage.getItem('unsynced-note-ids') || '{}'),
+        unsynced
+      );
 
       await s.push();
 
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
       assert.isFalse(s.state.isLoading);
       assert.deepEqual(n.state.notes, localNotes);
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
