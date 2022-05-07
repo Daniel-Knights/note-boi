@@ -34,18 +34,22 @@ describe('Sync', () => {
   });
 
   describe('login', () => {
-    it.todo('Logs in with no notes', async () => {
+    it('Logs in with no notes', async () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
       mockTauriApi([], mockEmits);
 
+      await n.getAllNotes();
+
+      assert.strictEqual(n.state.notes.length, 1);
+
       await s.login();
 
       assert.isFalse(s.state.isLoading);
-      assert.strictEqual(n.state.notes.length, 1);
-      assert.isTrue(isEmptyNote(n.state.notes[0]));
-      assert.isTrue(isEmptyNote(n.state.selectedNote));
+      assert.strictEqual(n.state.notes.length, localNotes.length);
+      assert.isFalse(isEmptyNote(n.state.notes[0]));
+      assert.isFalse(isEmptyNote(n.state.selectedNote));
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(s.state.username, 'd');
       assert.isEmpty(s.state.password);
