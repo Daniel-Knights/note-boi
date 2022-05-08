@@ -23,7 +23,7 @@ beforeAll(() => {
 
 afterEach(() => {
   resetNoteStore();
-  vi.clearAllMocks(); // Ensure mock checks are clear
+  vi.clearAllMocks();
 });
 
 describe('Note store', () => {
@@ -105,14 +105,14 @@ describe('Note store', () => {
     mockTauriApi(localNotes);
     await n.getAllNotes();
     n.state.notes.push(new n.Note());
-    vi.clearAllMocks(); // Ensure mock checks are clear
+    vi.clearAllMocks();
 
     n.selectNote(existingNote.id);
 
     assert.deepEqual(n.state.selectedNote, n.state.notes[existingNoteIndexSorted]);
     expect(mockSelect).toHaveBeenCalled();
     expect(mockChange).toHaveBeenCalled();
-    vi.clearAllMocks(); // Ensure mock checks are clear
+    vi.clearAllMocks();
 
     // Ensure clearNote works
     n.selectNote(n.state.notes[10].id);
@@ -140,14 +140,27 @@ describe('Note store', () => {
   it('deleteNote', async () => {
     mockTauriApi(localNotes);
     await n.getAllNotes();
-    vi.clearAllMocks(); // Ensure mock checks are clear
+    vi.clearAllMocks();
     assert.isDefined(n.findNote(existingNote.id));
 
     n.deleteNote(existingNote.id, true);
 
     assert.notDeepEqual(n.state.selectedNote, existingNote);
     assert.isUndefined(n.findNote(existingNote.id));
+    expect(mockSelect).toHaveBeenCalled();
     expect(mockChange).toHaveBeenCalled();
+    expect(mockUnsynced).toHaveBeenCalled();
+
+    const otherExistingNote = { ...localNotes[1] };
+    assert.notDeepEqual(n.state.selectedNote, otherExistingNote);
+    vi.clearAllMocks();
+
+    n.deleteNote(otherExistingNote.id, false);
+
+    assert.notDeepEqual(n.state.selectedNote, otherExistingNote);
+    assert.isUndefined(n.findNote(otherExistingNote.id));
+    expect(mockSelect).not.toHaveBeenCalled();
+    expect(mockChange).not.toHaveBeenCalled();
     expect(mockUnsynced).toHaveBeenCalled();
   });
 
@@ -159,6 +172,7 @@ describe('Note store', () => {
 
     assert.notDeepEqual(n.state.selectedNote, currentSelectedNote);
     assert.isEmpty(n.state.extraSelectedNotes);
+    expect(mockSelect).toHaveBeenCalled();
     expect(mockChange).toHaveBeenCalled();
     expect(mockUnsynced).toHaveBeenCalled();
   });
@@ -168,7 +182,7 @@ describe('Note store', () => {
       mockTauriApi(localNotes);
       await n.getAllNotes();
       n.selectNote(existingNote.id);
-      vi.clearAllMocks(); // Ensure mock checks are clear
+      vi.clearAllMocks();
 
       n.newNote();
 
@@ -185,7 +199,7 @@ describe('Note store', () => {
       await n.getAllNotes();
       n.state.notes.push(emptyNote);
       n.selectNote(emptyNote.id);
-      vi.clearAllMocks(); // Ensure mock checks are clear
+      vi.clearAllMocks();
 
       n.newNote();
 
