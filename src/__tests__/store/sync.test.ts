@@ -1,9 +1,22 @@
-import { resetNoteStore, resetSyncStore, setCrypto } from '../utils';
+import { mount, shallowMount } from '@vue/test-utils';
+
+import {
+  awaitSyncLoad,
+  findByTestId,
+  getByTestId,
+  resetNoteStore,
+  resetSyncStore,
+  setCrypto,
+  UUID_REGEX,
+} from '../utils';
 import { mockTauriApi } from '../tauri';
-import { isEmptyNote } from '../../utils';
+import { isEmptyNote, localStorageParse } from '../../utils';
 import * as s from '../../store/sync';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
+
+import NoteMenu from '../../components/NoteMenu.vue';
+import SyncStatus from '../../components/SyncStatus.vue';
 
 const mockEmits = {
   login: vi.fn(() => undefined),
@@ -269,10 +282,7 @@ describe('Sync', () => {
       s.state.unsyncedNoteIds.add(unsynced);
       mockTauriApi(localNotes);
       await s.login();
-      assert.deepEqual(
-        JSON.parse(localStorage.getItem('unsynced-note-ids') || '{}'),
-        unsynced
-      );
+      assert.deepEqual(localStorageParse('unsynced-note-ids'), unsynced);
 
       await s.push();
 
@@ -304,5 +314,84 @@ describe('Sync', () => {
       assert.strictEqual(s.state.error.type, s.ErrorType.Push);
       assert.isNotEmpty(s.state.error.message);
     });
+  });
+
+  describe('unsyncedNoteIds', () => {
+    it('new', async () => {
+      function assertNotOverwritten() {
+        const storedId = localStorageParse('unsynced-note-ids').new;
+
+        assert.isNotEmpty(s.state.unsyncedNoteIds.new);
+        assert.match(storedId, UUID_REGEX);
+        assert.strictEqual(storedId, s.state.unsyncedNoteIds.new);
+        assert.strictEqual(storedId, n.state.notes[0].id);
+        assert.strictEqual(storedId, n.state.selectedNote.id);
+        assert.isTrue(isEmptyNote(n.state.notes[0]));
+        assert.isTrue(isEmptyNote(n.state.selectedNote));
+      }
+
+      s.state.username = 'd';
+      s.state.token = 'token';
+      mockTauriApi(localNotes);
+      await n.getAllNotes();
+      const wrapper = shallowMount(NoteMenu);
+      assert.isTrue(wrapper.isVisible());
+      const newButton = getByTestId(wrapper, 'new');
+      await newButton.trigger('click');
+
+      assertNotOverwritten();
+
+      const statusWrapper = mount(SyncStatus);
+      assert.isTrue(statusWrapper.isVisible());
+      assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
+
+      await awaitSyncLoad();
+
+      assert.isTrue(findByTestId(statusWrapper, 'success').exists());
+      assertNotOverwritten();
+
+      await s.logout();
+
+      assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
+      assertNotOverwritten();
+
+      s.state.username = 'd';
+      s.state.token = 'token';
+      await s.login();
+
+      assert.isTrue(findByTestId(statusWrapper, 'success').exists());
+      n.editNote('delta', 'title', 'body');
+
+      await awaitSyncLoad();
+
+      const storedIds = localStorageParse('unsynced-note-ids');
+
+      assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isEmpty(storedIds.new);
+      assert.isFalse(isEmptyNote(n.state.notes[0]));
+      assert.isFalse(isEmptyNote(n.state.selectedNote));
+      assert.strictEqual(storedIds.edited[0], n.state.selectedNote.id);
+      assert.isTrue(s.state.unsyncedNoteIds.edited.has(n.state.selectedNote.id));
+
+      await s.push();
+      await newButton.trigger('click');
+
+      assertNotOverwritten();
+
+      n.selectNote(n.state.notes[1].id);
+
+      assert.isTrue(findByTestId(statusWrapper, 'success').exists());
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isEmpty(storedIds.new);
+      assert.isFalse(isEmptyNote(n.state.notes[0]));
+      assert.isFalse(isEmptyNote(n.state.selectedNote));
+      assert.strictEqual(storedIds.edited[0], n.state.selectedNote.id);
+      assert.isFalse(s.state.unsyncedNoteIds.deleted.has(n.state.selectedNote.id));
+    });
+
+    // it('edit', async () => {});
+
+    // it('deleted', async () => {});
   });
 });

@@ -16,6 +16,11 @@ export function unixToDateTime(unixTime: number): string {
   }).format(unixTime);
 }
 
+/** Gets key value from `localStorage` and parses it as JSON. */
+export function localStorageParse(key: string): ReturnType<typeof JSON.parse> {
+  return JSON.parse(localStorage.getItem(key) || '{}');
+}
+
 /** Returns `true` if string consists of only whitespace characters or is empty. */
 export function isWhitespaceOnly(text?: string): boolean {
   return text?.trim() === '';

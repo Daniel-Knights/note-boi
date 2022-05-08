@@ -22,6 +22,7 @@
       title="Changes synced"
       data-test-id="success"
     >
+      {{ state.token }}{{ state.unsyncedNoteIds.size }}
       <CloudTickIcon />
     </div>
     <!-- Sync ready -->

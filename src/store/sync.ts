@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import { http, invoke } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 
-import { isDev, isEmptyNote, tauriEmit } from '../utils';
+import { isDev, isEmptyNote, localStorageParse, tauriEmit } from '../utils';
 import { NOTE_EVENTS } from '../constant';
 import {
   findNote,
@@ -31,9 +31,7 @@ export type UnsyncedNoteIds = {
 };
 
 const autoSync = localStorage.getItem('auto-sync') as 'true' | 'false' | null;
-const unsyncedNoteIds: Partial<UnsyncedNoteIds> = JSON.parse(
-  localStorage.getItem('unsynced-note-ids') || '{}'
-);
+const unsyncedNoteIds: Partial<UnsyncedNoteIds> = localStorageParse('unsynced-note-ids');
 
 export const state = reactive({
   username: localStorage.getItem('username') || '',
@@ -210,7 +208,7 @@ export async function signup(): Promise<void> {
   const res = await tauriFetch<Record<string, string>>('/signup', 'POST', {
     username: state.username,
     password: state.password,
-    notes: noteState.notes,
+    notes: noteState.notes.filter((nt) => !isEmptyNote(nt)),
   }).catch((err) => catchHang(err, ErrorType.Auth));
 
   if (!res) return;

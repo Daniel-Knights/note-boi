@@ -1,4 +1,4 @@
-import { resetNoteStore, setCrypto } from '../utils';
+import { resetNoteStore, setCrypto, UUID_REGEX } from '../utils';
 import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
 import { NOTE_EVENTS } from '../../constant';
@@ -32,12 +32,7 @@ describe('Note store', () => {
 
     assert.strictEqual(typeof emptyNote.id, 'string');
     assert.strictEqual(emptyNote.id.length, 36);
-    assert.isTrue(
-      // UUID regex
-      /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/.test(
-        emptyNote.id
-      )
-    );
+    assert.isTrue(UUID_REGEX.test(emptyNote.id));
     // Math.floor to account for tiny discrepancies in Date.now
     assert.strictEqual(
       Math.floor(emptyNote.timestamp / 1000),
