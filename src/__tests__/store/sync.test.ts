@@ -406,11 +406,14 @@ describe('Sync', () => {
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
       assert.isNull(localStorage.getItem('unsynced-note-ids'));
 
-      const cachedNote = { ...n.state.selectedNote };
+      const firstCachedNote = { ...n.state.selectedNote };
       n.editNote('delta', 'title', 'body');
 
-      assert.isTrue(s.state.unsyncedNoteIds.edited.has(cachedNote.id));
-      assert.strictEqual(localStorageParse('unsynced-note-ids').edited[0], cachedNote.id);
+      assert.isTrue(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
+      assert.strictEqual(
+        localStorageParse('unsynced-note-ids').edited[0],
+        firstCachedNote.id
+      );
 
       const statusWrapper = mount(SyncStatus);
       assert.isTrue(statusWrapper.isVisible());
@@ -419,25 +422,44 @@ describe('Sync', () => {
       await awaitSyncLoad();
 
       assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
-      assert.isTrue(s.state.unsyncedNoteIds.edited.has(cachedNote.id));
-      assert.strictEqual(localStorageParse('unsynced-note-ids').edited[0], cachedNote.id);
-      assert.strictEqual(n.state.selectedNote.id, cachedNote.id);
+      assert.isTrue(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
+      assert.strictEqual(
+        localStorageParse('unsynced-note-ids').edited[0],
+        firstCachedNote.id
+      );
+      assert.strictEqual(n.state.selectedNote.id, firstCachedNote.id);
       assert.deepEqual(n.state.selectedNote.content, {
         delta: 'delta',
         title: 'title',
         body: 'body',
       });
 
+      n.selectNote(n.state.notes[1].id);
+      const secondCachedNote = { ...n.state.selectedNote };
+      n.editNote('delta2', 'title2', 'body2');
+
+      assert.isTrue(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
+      assert.isTrue(s.state.unsyncedNoteIds.edited.has(secondCachedNote.id));
+      assert.strictEqual(
+        localStorageParse('unsynced-note-ids').edited[0],
+        firstCachedNote.id
+      );
+      assert.strictEqual(
+        localStorageParse('unsynced-note-ids').edited[1],
+        secondCachedNote.id
+      );
+
       await s.push();
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
-      assert.isFalse(s.state.unsyncedNoteIds.edited.has(cachedNote.id));
+      assert.isFalse(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
+      assert.isFalse(s.state.unsyncedNoteIds.edited.has(secondCachedNote.id));
       assert.isNull(localStorage.getItem('unsynced-note-ids'));
-      assert.strictEqual(n.state.selectedNote.id, cachedNote.id);
+      assert.strictEqual(n.state.selectedNote.id, secondCachedNote.id);
       assert.deepEqual(n.state.selectedNote.content, {
-        delta: 'delta',
-        title: 'title',
-        body: 'body',
+        delta: 'delta2',
+        title: 'title2',
+        body: 'body2',
       });
 
       n.deleteNote(n.state.selectedNote.id, true);
@@ -445,12 +467,59 @@ describe('Sync', () => {
 
       const parsedIds = localStorageParse('unsynced-note-ids');
       assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
-      assert.isFalse(s.state.unsyncedNoteIds.edited.has(cachedNote.id));
-      assert.isTrue(s.state.unsyncedNoteIds.deleted.has(cachedNote.id));
+      assert.isTrue(s.state.unsyncedNoteIds.deleted.has(secondCachedNote.id));
       assert.isEmpty(parsedIds.edited);
-      assert.strictEqual(parsedIds.deleted[0], cachedNote.id);
+      assert.strictEqual(parsedIds.deleted[0], secondCachedNote.id);
     });
 
-    // it('deleted', async () => {});
+    it('deleted', async () => {
+      s.state.username = 'd';
+      s.state.token = 'token';
+      s.state.autoSyncEnabled = false;
+      mockTauriApi(copyObjArr(localNotes));
+      await n.getAllNotes();
+      const wrapper = shallowMount(NoteMenu);
+      assert.isTrue(wrapper.isVisible());
+      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+
+      const firstCachedNote = { ...n.state.selectedNote };
+      n.deleteNote(n.state.selectedNote.id, true);
+
+      assert.isTrue(s.state.unsyncedNoteIds.deleted.has(firstCachedNote.id));
+      assert.strictEqual(
+        localStorageParse('unsynced-note-ids').deleted[0],
+        firstCachedNote.id
+      );
+
+      const statusWrapper = mount(SyncStatus);
+      assert.isTrue(statusWrapper.isVisible());
+      assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
+
+      await awaitSyncLoad();
+
+      assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
+
+      const secondCachedNote = { ...n.state.selectedNote };
+      n.deleteNote(n.state.selectedNote.id, true);
+
+      assert.isTrue(s.state.unsyncedNoteIds.deleted.has(firstCachedNote.id));
+      assert.isTrue(s.state.unsyncedNoteIds.deleted.has(secondCachedNote.id));
+      assert.strictEqual(
+        localStorageParse('unsynced-note-ids').deleted[0],
+        firstCachedNote.id
+      );
+      assert.strictEqual(
+        localStorageParse('unsynced-note-ids').deleted[1],
+        secondCachedNote.id
+      );
+
+      await s.push();
+
+      assert.isTrue(findByTestId(statusWrapper, 'success').exists());
+      assert.isFalse(s.state.unsyncedNoteIds.deleted.has(firstCachedNote.id));
+      assert.isFalse(s.state.unsyncedNoteIds.deleted.has(secondCachedNote.id));
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+    });
   });
 });
