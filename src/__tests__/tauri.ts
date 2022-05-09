@@ -1,25 +1,32 @@
 import { mockIPC } from '@tauri-apps/api/mocks';
 
-import * as noteStore from '../store/note';
+import { isEmptyNote } from '../utils';
 import { mockPromise } from './utils';
+import * as n from '../store/note';
 import localNotes from './notes.json';
 
 type Fn = () => void;
 
 /** Mocks calls to the Tauri API */
 export function mockTauriApi(
-  notes?: noteStore.Note[] | undefined,
+  notes?: n.Note[] | undefined,
   mockFns?: { login: Fn; logout: Fn },
   httpStatus = 200
 ): Promise<void> | void {
   mockIPC((cmd, args) => {
-    const reqMessage = args.message as
-      | {
-          cmd?: string;
-          event?: string;
-          options?: { url?: string; method?: string };
-        }
-      | undefined;
+    type ArgsMessage = {
+      cmd?: string;
+      event?: string;
+      options?: {
+        url?: string;
+        method?: string;
+        body?: {
+          payload?: { notes?: n.Note[] };
+        };
+      };
+    };
+
+    const reqMessage = args.message as ArgsMessage | undefined;
 
     switch (cmd) {
       case 'tauri':
@@ -29,7 +36,7 @@ export function mockTauriApi(
               const reqOptions = reqMessage?.options;
               const reqType = reqOptions?.url?.split('/api/')[1];
 
-              const resData: { notes?: noteStore.Note[]; token?: string } = {};
+              const resData: { notes?: n.Note[]; token?: string } = {};
 
               switch (reqType) {
                 case 'login':
@@ -42,6 +49,12 @@ export function mockTauriApi(
                 case 'notes': {
                   if (reqOptions?.method === 'POST') {
                     resData.notes = localNotes;
+                  } else if (reqOptions?.body?.payload?.notes) {
+                    reqOptions.body.payload.notes.forEach((note) => {
+                      if (isEmptyNote(note)) {
+                        assert.fail();
+                      }
+                    });
                   }
                 }
                 // no default
@@ -73,7 +86,7 @@ export function mockTauriApi(
         return mockPromise();
       case 'edit_note':
         return new Promise<void>((res) => {
-          noteStore.state.selectedNote = args.note as noteStore.Note;
+          n.state.selectedNote = args.note as n.Note;
           res();
         });
       case 'sync_all_local_notes':

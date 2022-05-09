@@ -157,6 +157,36 @@ describe('Sync', () => {
       expect(mockEmits.login).toHaveBeenCalled();
     });
 
+    it("Doesn't push empty notes", async () => {
+      const unsynced = { new: 'new', edited: ['edited'], deleted: ['deleted'] };
+      s.state.username = 'd';
+      s.state.password = '1';
+      s.state.unsyncedNoteIds.add(unsynced);
+      mockTauriApi(copyObjArr(localNotes));
+      assert.deepEqual(localStorageParse('unsynced-note-ids'), unsynced);
+
+      n.newNote();
+
+      assert.isTrue(isEmptyNote(n.state.notes[0]));
+      assert.isTrue(isEmptyNote(n.state.selectedNote));
+
+      await s.signup();
+
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isFalse(s.state.isLoading);
+      assert.isTrue(isEmptyNote(n.state.notes[0]));
+      assert.isTrue(isEmptyNote(n.state.selectedNote));
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isEmpty(s.state.unsyncedNoteIds.edited);
+      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
+      assert.strictEqual(s.state.username, 'd');
+      assert.strictEqual(s.state.token, 'token');
+      assert.strictEqual(localStorage.getItem('username'), 'd');
+      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(s.state.error.type, s.ErrorType.None);
+      assert.isEmpty(s.state.error.message);
+    });
+
     it('With server error', async () => {
       s.state.username = 'd';
       s.state.password = '1';
@@ -290,7 +320,40 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem('unsynced-note-ids'));
       assert.isFalse(s.state.isLoading);
       assert.deepEqual(n.state.notes, localNotes);
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
+      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
+      assert.strictEqual(s.state.username, 'd');
+      assert.strictEqual(s.state.token, 'token');
+      assert.strictEqual(localStorage.getItem('username'), 'd');
+      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(s.state.error.type, s.ErrorType.None);
+      assert.isEmpty(s.state.error.message);
+    });
+
+    it("Doesn't push empty notes", async () => {
+      const unsynced = { new: 'new', edited: ['edited'], deleted: ['deleted'] };
+      s.state.username = 'd';
+      s.state.token = 'token';
+      s.state.unsyncedNoteIds.add(unsynced);
+      mockTauriApi(copyObjArr(localNotes));
+      await s.login();
+      assert.deepEqual(localStorageParse('unsynced-note-ids'), unsynced);
+
+      n.newNote();
+
+      assert.isTrue(isEmptyNote(n.state.notes[0]));
+      assert.isTrue(isEmptyNote(n.state.selectedNote));
+
+      await s.push();
+
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isFalse(s.state.isLoading);
+      assert.isTrue(isEmptyNote(n.state.notes[0]));
+      assert.isTrue(isEmptyNote(n.state.selectedNote));
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isEmpty(s.state.unsyncedNoteIds.edited);
+      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(localStorage.getItem('username'), 'd');
