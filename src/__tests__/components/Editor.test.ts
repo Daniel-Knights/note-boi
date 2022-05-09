@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 
-import { getByTestId, setCrypto } from '../utils';
+import { copyObjArr, getByTestId, setCrypto } from '../utils';
 import { unixToDateTime } from '../../utils';
 import { NOTE_EVENTS } from '../../constant';
 import { mockTauriApi } from '../tauri';
@@ -30,7 +30,7 @@ describe('Editor', () => {
 
     assert.isEmpty(editorBody.text());
 
-    await mockTauriApi([...localNotes]);
+    await mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');

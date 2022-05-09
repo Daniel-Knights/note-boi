@@ -8,6 +8,11 @@ import * as s from '../store/sync';
 export const UUID_REGEX =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
 
+/** Returns `arr` with all objects that're one level deep copied */
+export function copyObjArr<T extends Record<string, unknown>>(arr: T[]): T[] {
+  return arr.map((obj) => ({ ...obj }));
+}
+
 // jsdom doesn't come with a WebCrypto implementation
 export function setCrypto(): void {
   window.crypto = {

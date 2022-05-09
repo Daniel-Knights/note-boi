@@ -2,6 +2,7 @@ import { mount, shallowMount } from '@vue/test-utils';
 
 import {
   awaitSyncLoad,
+  copyObjArr,
   findByTestId,
   getByTestId,
   resetNoteStore,
@@ -224,7 +225,7 @@ describe('Sync', () => {
     it('Pulls notes from the server', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi([...localNotes]);
+      mockTauriApi(copyObjArr(localNotes));
       await s.login();
 
       await s.pull();
@@ -257,7 +258,7 @@ describe('Sync', () => {
     it('User not found', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi([...localNotes]);
+      mockTauriApi(copyObjArr(localNotes));
       await s.login();
       mockTauriApi([], undefined, 404);
 
@@ -280,7 +281,7 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.token = 'token';
       s.state.unsyncedNoteIds.add(unsynced);
-      mockTauriApi([...localNotes]);
+      mockTauriApi(copyObjArr(localNotes));
       await s.login();
       assert.deepEqual(localStorageParse('unsynced-note-ids'), unsynced);
 
@@ -301,7 +302,7 @@ describe('Sync', () => {
     it('With server error', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi([...localNotes]);
+      mockTauriApi(copyObjArr(localNotes));
       await s.login();
       mockTauriApi([], undefined, 500);
 
@@ -332,7 +333,7 @@ describe('Sync', () => {
 
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi([...localNotes]);
+      mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
       const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());
@@ -394,11 +395,11 @@ describe('Sync', () => {
       assert.isFalse(s.state.unsyncedNoteIds.deleted.has(cachedNote.id));
     });
 
-    it('edit', async () => {
+    it('edited', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
       s.state.autoSyncEnabled = false;
-      mockTauriApi([...localNotes]);
+      mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
       const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());

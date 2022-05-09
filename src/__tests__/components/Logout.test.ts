@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 
-import { awaitSyncLoad, setCrypto } from '../utils';
+import { awaitSyncLoad, copyObjArr, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
 import * as s from '../../store/sync';
 import localNotes from '../notes.json';
@@ -16,7 +16,7 @@ describe('Logout', () => {
   });
 
   it('Logs out on click', async () => {
-    mockTauriApi([...localNotes]);
+    mockTauriApi(copyObjArr(localNotes));
     const wrapper = mount(Logout);
     assert.isFalse(wrapper.isVisible());
 

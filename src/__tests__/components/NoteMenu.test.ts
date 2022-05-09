@@ -1,6 +1,6 @@
 import { enableAutoUnmount, shallowMount, VueWrapper } from '@vue/test-utils';
 
-import { getByTestId, resetNoteStore, setCrypto } from '../utils';
+import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
 import * as n from '../../store/note';
@@ -14,7 +14,7 @@ const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 beforeAll(setCrypto);
 
 beforeEach(async () => {
-  await mockTauriApi([...localNotes]);
+  await mockTauriApi(copyObjArr(localNotes));
   await n.getAllNotes();
 
   assert.isFalse(isEmptyNote(n.state.notes[0]));
@@ -119,7 +119,7 @@ describe('NoteMenu', () => {
         await noteItem.trigger('click', { metaKey: true });
 
         const isExtraSelectedNote =
-          n.state.extraSelectedNotes.includes(note) &&
+          n.state.extraSelectedNotes.map((nt) => nt.id).includes(note.id) &&
           n.state.selectedNote.id !== note.id &&
           noteItem.classes().join(' ').includes('--selected');
 
@@ -248,7 +248,7 @@ describe('NoteMenu', () => {
 
     it('With alt', async () => {
       const wrapper = shallowMount(NoteMenu);
-      assert.isTrue(wrapper.isVisible());
+      // assert.isTrue(wrapper.isVisible());
 
       const noteItem = wrapper.get(getDataNoteId(n.state.notes[6].id));
       await noteItem.trigger('click', { altKey: true });
