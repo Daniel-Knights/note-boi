@@ -32,6 +32,7 @@ export function resetSyncStore(): void {
   localStorage.removeItem('auto-sync');
   localStorage.removeItem('username');
   localStorage.removeItem('token');
+  localStorage.removeItem('unsynced-note-ids');
   s.state.username = '';
   s.state.password = '';
   s.state.token = '';

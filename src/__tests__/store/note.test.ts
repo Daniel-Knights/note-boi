@@ -68,19 +68,19 @@ describe('Note store', () => {
     });
 
     it('with notes', async () => {
-      mockTauriApi(localNotes);
+      mockTauriApi([...localNotes]);
 
       await n.getAllNotes();
 
       assert.strictEqual(n.state.notes.length, 10);
-      assert.deepEqual(n.state.notes[0], localNotes[0]);
+      assert.deepEqual(n.state.notes[0], localNotes.sort(n.sortNotesFn)[0]);
       assert.deepEqual(n.state.notes[0], n.state.selectedNote);
       expect(mockChange).toHaveBeenCalled();
     });
   });
 
   it('findNoteIndex', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi([...localNotes]);
     await n.getAllNotes();
 
     const index = n.findNoteIndex(existingNote.id);
@@ -91,7 +91,7 @@ describe('Note store', () => {
   });
 
   it('findNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi([...localNotes]);
     await n.getAllNotes();
 
     const foundNote = n.findNote(existingNote.id);
@@ -102,7 +102,7 @@ describe('Note store', () => {
   });
 
   it('selectNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi([...localNotes]);
     await n.getAllNotes();
     n.state.notes.push(new n.Note());
     vi.clearAllMocks();
@@ -124,7 +124,7 @@ describe('Note store', () => {
   });
 
   it('isSelectedNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi([...localNotes]);
     await n.getAllNotes();
     n.selectNote(existingNote.id);
 
@@ -138,7 +138,7 @@ describe('Note store', () => {
   });
 
   it('deleteNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi([...localNotes]);
     await n.getAllNotes();
     vi.clearAllMocks();
     assert.isDefined(n.findNote(existingNote.id));
@@ -179,7 +179,7 @@ describe('Note store', () => {
 
   describe('newNote', () => {
     it("When selected note isn't empty", async () => {
-      mockTauriApi(localNotes);
+      mockTauriApi([...localNotes]);
       await n.getAllNotes();
       n.selectNote(existingNote.id);
       vi.clearAllMocks();
@@ -195,7 +195,7 @@ describe('Note store', () => {
     });
 
     it('Only updates the timestamp if called with an already empty note selected', async () => {
-      mockTauriApi(localNotes);
+      mockTauriApi([...localNotes]);
       await n.getAllNotes();
       n.state.notes.push(emptyNote);
       n.selectNote(emptyNote.id);
@@ -214,7 +214,7 @@ describe('Note store', () => {
   });
 
   it('editNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi([...localNotes]);
     await n.getAllNotes();
     const currentSelectedNote = { ...n.state.selectedNote };
 

@@ -14,7 +14,7 @@ const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 beforeAll(setCrypto);
 
 beforeEach(async () => {
-  await mockTauriApi(localNotes);
+  await mockTauriApi([...localNotes]);
   await n.getAllNotes();
 
   assert.isFalse(isEmptyNote(n.state.notes[0]));

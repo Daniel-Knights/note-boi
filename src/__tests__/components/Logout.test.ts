@@ -16,7 +16,7 @@ describe('Logout', () => {
   });
 
   it('Logs out on click', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi([...localNotes]);
     const wrapper = mount(Logout);
     assert.isFalse(wrapper.isVisible());
 

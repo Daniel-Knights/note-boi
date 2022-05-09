@@ -68,8 +68,9 @@ describe('ContextMenu', () => {
     const { wrapper, assertionError } = await mountContextMenu();
     if (assertionError) assert.fail();
 
-    await mockTauriApi(localNotes);
+    await mockTauriApi([...localNotes]);
     await n.getAllNotes();
+    console.log(n.state.notes);
 
     assert.isFalse(isEmptyNote(n.state.selectedNote));
     assert.isFalse(isEmptyNote(n.state.notes[0]));
@@ -100,7 +101,7 @@ describe('ContextMenu', () => {
   });
 
   it('Deletes a note', async () => {
-    await mockTauriApi(localNotes);
+    await mockTauriApi([...localNotes]);
     await n.getAllNotes();
 
     const noteToDelete = { ...localNotes[0] };

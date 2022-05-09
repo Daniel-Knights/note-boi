@@ -224,7 +224,7 @@ describe('Sync', () => {
     it('Pulls notes from the server', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi(localNotes);
+      mockTauriApi([...localNotes]);
       await s.login();
 
       await s.pull();
@@ -257,7 +257,7 @@ describe('Sync', () => {
     it('User not found', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi(localNotes);
+      mockTauriApi([...localNotes]);
       await s.login();
       mockTauriApi([], undefined, 404);
 
@@ -280,7 +280,7 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.token = 'token';
       s.state.unsyncedNoteIds.add(unsynced);
-      mockTauriApi(localNotes);
+      mockTauriApi([...localNotes]);
       await s.login();
       assert.deepEqual(localStorageParse('unsynced-note-ids'), unsynced);
 
@@ -301,7 +301,7 @@ describe('Sync', () => {
     it('With server error', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi(localNotes);
+      mockTauriApi([...localNotes]);
       await s.login();
       mockTauriApi([], undefined, 500);
 
@@ -332,10 +332,12 @@ describe('Sync', () => {
 
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi(localNotes);
+      mockTauriApi([...localNotes]);
       await n.getAllNotes();
       const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
       const newButton = getByTestId(wrapper, 'new');
       await newButton.trigger('click');
 
@@ -376,6 +378,7 @@ describe('Sync', () => {
 
       await s.push();
       await newButton.trigger('click');
+      const cachedNote = { ...n.state.selectedNote };
 
       assertNotOverwritten();
 
@@ -388,9 +391,64 @@ describe('Sync', () => {
       assert.isFalse(isEmptyNote(n.state.selectedNote));
       assert.strictEqual(storedIds.edited[0], n.state.selectedNote.id);
       assert.isFalse(s.state.unsyncedNoteIds.deleted.has(n.state.selectedNote.id));
+      assert.isFalse(s.state.unsyncedNoteIds.deleted.has(cachedNote.id));
     });
 
-    // it('edit', async () => {});
+    it('edit', async () => {
+      s.state.username = 'd';
+      s.state.token = 'token';
+      s.state.autoSyncEnabled = false;
+      mockTauriApi([...localNotes]);
+      await n.getAllNotes();
+      const wrapper = shallowMount(NoteMenu);
+      assert.isTrue(wrapper.isVisible());
+      assert.isEmpty(s.state.unsyncedNoteIds.edited);
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+
+      const cachedNote = { ...n.state.selectedNote };
+      n.editNote('delta', 'title', 'body');
+
+      assert.isTrue(s.state.unsyncedNoteIds.edited.has(cachedNote.id));
+      assert.strictEqual(localStorageParse('unsynced-note-ids').edited[0], cachedNote.id);
+
+      const statusWrapper = mount(SyncStatus);
+      assert.isTrue(statusWrapper.isVisible());
+      assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
+
+      await awaitSyncLoad();
+
+      assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
+      assert.isTrue(s.state.unsyncedNoteIds.edited.has(cachedNote.id));
+      assert.strictEqual(localStorageParse('unsynced-note-ids').edited[0], cachedNote.id);
+      assert.strictEqual(n.state.selectedNote.id, cachedNote.id);
+      assert.deepEqual(n.state.selectedNote.content, {
+        delta: 'delta',
+        title: 'title',
+        body: 'body',
+      });
+
+      await s.push();
+
+      assert.isTrue(findByTestId(statusWrapper, 'success').exists());
+      assert.isFalse(s.state.unsyncedNoteIds.edited.has(cachedNote.id));
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.strictEqual(n.state.selectedNote.id, cachedNote.id);
+      assert.deepEqual(n.state.selectedNote.content, {
+        delta: 'delta',
+        title: 'title',
+        body: 'body',
+      });
+
+      n.deleteNote(n.state.selectedNote.id, true);
+      await awaitSyncLoad();
+
+      const parsedIds = localStorageParse('unsynced-note-ids');
+      assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
+      assert.isFalse(s.state.unsyncedNoteIds.edited.has(cachedNote.id));
+      assert.isTrue(s.state.unsyncedNoteIds.deleted.has(cachedNote.id));
+      assert.isEmpty(parsedIds.edited);
+      assert.strictEqual(parsedIds.deleted[0], cachedNote.id);
+    });
 
     // it('deleted', async () => {});
   });
