@@ -158,12 +158,9 @@ describe('Sync', () => {
     });
 
     it("Doesn't push empty notes", async () => {
-      const unsynced = { new: 'new', edited: ['edited'], deleted: ['deleted'] };
       s.state.username = 'd';
       s.state.password = '1';
-      s.state.unsyncedNoteIds.add(unsynced);
       mockTauriApi(copyObjArr(localNotes));
-      assert.deepEqual(localStorageParse('unsynced-note-ids'), unsynced);
 
       n.newNote();
 
@@ -172,13 +169,9 @@ describe('Sync', () => {
 
       await s.signup();
 
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
       assert.isFalse(s.state.isLoading);
       assert.isTrue(isEmptyNote(n.state.notes[0]));
       assert.isTrue(isEmptyNote(n.state.selectedNote));
-      assert.isEmpty(s.state.unsyncedNoteIds.new);
-      assert.isEmpty(s.state.unsyncedNoteIds.edited);
-      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(localStorage.getItem('username'), 'd');
@@ -583,6 +576,42 @@ describe('Sync', () => {
       assert.isFalse(s.state.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.isFalse(s.state.unsyncedNoteIds.deleted.has(secondCachedNote.id));
       assert.isNull(localStorage.getItem('unsynced-note-ids'));
+    });
+
+    it("Doesn't register unsynced notes if not logged in", async () => {
+      mockTauriApi(copyObjArr(localNotes));
+      await n.getAllNotes();
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isEmpty(s.state.unsyncedNoteIds.edited);
+      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
+
+      n.newNote();
+
+      assert.isTrue(isEmptyNote(n.state.notes[0]));
+      assert.isTrue(isEmptyNote(n.state.selectedNote));
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isEmpty(s.state.unsyncedNoteIds.edited);
+      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
+
+      n.editNote('delta', 'title', 'body');
+
+      assert.isFalse(isEmptyNote(n.state.notes[0]));
+      assert.isFalse(isEmptyNote(n.state.selectedNote));
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isEmpty(s.state.unsyncedNoteIds.edited);
+      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
+
+      n.deleteNote(n.state.selectedNote.id, true);
+
+      assert.isFalse(isEmptyNote(n.state.notes[0]));
+      assert.isFalse(isEmptyNote(n.state.selectedNote));
+      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
+      assert.isEmpty(s.state.unsyncedNoteIds.edited);
+      assert.isEmpty(s.state.unsyncedNoteIds.deleted);
     });
   });
 });

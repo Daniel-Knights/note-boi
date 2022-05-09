@@ -205,15 +205,6 @@ export async function login(): Promise<void> {
 export async function signup(): Promise<void> {
   state.isLoading = true;
 
-  // Cache ids and clear before request to prevent
-  // race condition if a note is edited mid-push
-  const cachedUnsyncedNoteIds = {
-    new: state.unsyncedNoteIds.new,
-    edited: [...state.unsyncedNoteIds.edited],
-    deleted: [...state.unsyncedNoteIds.deleted],
-  };
-  state.unsyncedNoteIds.clear();
-
   const res = await tauriFetch<Record<string, string>>('/signup', 'POST', {
     username: state.username,
     password: state.password,
@@ -234,8 +225,6 @@ export async function signup(): Promise<void> {
     localStorage.setItem('username', state.username);
     localStorage.setItem('token', state.token);
   } else {
-    // Add back unsynced note ids
-    state.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
     state.error = {
       type: ErrorType.Auth,
       message: parseErrorRes(res),
