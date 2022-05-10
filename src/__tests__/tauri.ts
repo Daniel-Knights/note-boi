@@ -38,6 +38,11 @@ export function mockTauriApi(
 
               const resData: { notes?: n.Note[]; token?: string } = {};
 
+              // Ensure no empty notes are pushed to the server
+              reqOptions?.body?.payload?.notes?.forEach((note) => {
+                if (isEmptyNote(note)) assert.fail();
+              });
+
               switch (reqType) {
                 case 'login':
                   resData.notes = localNotes;
@@ -49,12 +54,6 @@ export function mockTauriApi(
                 case 'notes': {
                   if (reqOptions?.method === 'POST') {
                     resData.notes = localNotes;
-                  } else if (reqOptions?.body?.payload?.notes) {
-                    reqOptions.body.payload.notes.forEach((note) => {
-                      if (isEmptyNote(note)) {
-                        assert.fail();
-                      }
-                    });
                   }
                 }
                 // no default

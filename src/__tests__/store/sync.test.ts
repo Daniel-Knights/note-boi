@@ -249,16 +249,11 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.token = 'token';
       mockTauriApi(copyObjArr(localNotes));
-      await s.login();
 
       await s.pull();
 
       assert.isFalse(s.state.isLoading);
       assert.deepEqual(n.state.notes, localNotes);
-      assert.strictEqual(s.state.username, 'd');
-      assert.strictEqual(s.state.token, 'token');
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
     });
