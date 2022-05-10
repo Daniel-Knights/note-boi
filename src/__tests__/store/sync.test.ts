@@ -248,11 +248,18 @@ describe('Sync', () => {
     it('Pulls notes from the server', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
+      mockTauriApi([]);
+      await n.getAllNotes();
+      assert.isTrue(isEmptyNote(n.state.notes[0]));
+      assert.isTrue(isEmptyNote(n.state.selectedNote));
+      assert.strictEqual(n.state.notes.length, 1);
       mockTauriApi(copyObjArr(localNotes));
 
       await s.pull();
 
       assert.isFalse(s.state.isLoading);
+      assert.isFalse(isEmptyNote(n.state.notes[0]));
+      assert.isFalse(isEmptyNote(n.state.selectedNote));
       assert.deepEqual(n.state.notes, localNotes);
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);

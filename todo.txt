@@ -1,6 +1,4 @@
 *Before release*
-Tests for different sync scenarios
-  No local notes, but some remote and vice versa
 Updater
   Prevent tests in release action
 README
