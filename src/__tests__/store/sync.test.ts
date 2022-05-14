@@ -419,6 +419,7 @@ describe('Sync', () => {
       await awaitSyncLoad();
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
+      assert.isEmpty(s.state.unsyncedNoteIds.new);
       assert.strictEqual(s.state.unsyncedNoteIds.size, 0);
       assert.isNull(localStorage.getItem('unsynced-note-ids'));
       assert.isFalse(isEmptyNote(n.state.notes[0]));
@@ -604,7 +605,59 @@ describe('Sync', () => {
     });
 
     describe('Edge cases', () => {
-      it('');
+      it('No local, some remote', async () => {
+        s.state.username = 'd';
+        s.state.password = '1';
+        mockTauriApi([]);
+        await n.getAllNotes();
+        assert.isTrue(isEmptyNote(n.state.notes[0]));
+        assert.isTrue(isEmptyNote(n.state.selectedNote));
+        assert.strictEqual(n.state.notes.length, 1);
+        const wrapper = mount(SyncStatus);
+        assert.isTrue(wrapper.isVisible());
+        assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
+        mockTauriApi(copyObjArr(localNotes));
+
+        await s.login();
+
+        assert.isFalse(s.state.isLoading);
+        assert.isTrue(findByTestId(wrapper, 'success').exists());
+        assert.isFalse(isEmptyNote(n.state.notes[0]));
+        assert.isFalse(isEmptyNote(n.state.selectedNote));
+        assert.deepEqual(n.state.notes, localNotes);
+        assert.isEmpty(s.state.unsyncedNoteIds.new);
+        assert.strictEqual(s.state.unsyncedNoteIds.size, 0);
+        assert.isNull(localStorage.getItem('unsynced-note-ids'));
+        assert.strictEqual(s.state.error.type, s.ErrorType.None);
+        assert.isEmpty(s.state.error.message);
+      });
+
+      it('No remote, some local', async () => {
+        s.state.username = 'd';
+        s.state.password = '1';
+        mockTauriApi(copyObjArr(localNotes));
+        await n.getAllNotes();
+        assert.isFalse(isEmptyNote(n.state.notes[0]));
+        assert.isFalse(isEmptyNote(n.state.selectedNote));
+        assert.strictEqual(n.state.notes.length, localNotes.length);
+        const wrapper = mount(SyncStatus);
+        assert.isTrue(wrapper.isVisible());
+        assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
+        mockTauriApi([]);
+
+        await s.login();
+
+        assert.isFalse(s.state.isLoading);
+        assert.isTrue(findByTestId(wrapper, 'success').exists());
+        assert.isFalse(isEmptyNote(n.state.notes[0]));
+        assert.isFalse(isEmptyNote(n.state.selectedNote));
+        assert.deepEqual(n.state.notes, localNotes);
+        assert.isEmpty(s.state.unsyncedNoteIds.new);
+        assert.strictEqual(s.state.unsyncedNoteIds.size, 0);
+        assert.isNull(localStorage.getItem('unsynced-note-ids'));
+        assert.strictEqual(s.state.error.type, s.ErrorType.None);
+        assert.isEmpty(s.state.error.message);
+      });
     });
   });
 });
