@@ -12,7 +12,7 @@ import { reactive } from 'vue';
 import { window as tauriWindow } from '@tauri-apps/api';
 
 import { getAllNotes, newNote, deleteAllNotes } from './store/note';
-import { push, resetError, state } from './store/sync';
+import { ErrorType, push, resetError, state } from './store/sync';
 import { tauriListen } from './utils';
 
 import NoteMenu from './components/NoteMenu.vue';
@@ -44,6 +44,11 @@ function closeSyncPopup(field: keyof typeof popup) {
 async function exitApp(cb: () => void) {
   if (state.unsyncedNoteIds.size > 0) {
     await push();
+
+    if (state.error.type === ErrorType.Push) {
+      popup.error = true;
+      return;
+    }
   }
 
   cb();
