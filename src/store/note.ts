@@ -1,6 +1,7 @@
 import { reactive } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
+import type Delta from 'quill-delta';
 
 import { isEmptyNote } from '../utils';
 import { NOTE_EVENTS } from '../constant';
@@ -15,7 +16,7 @@ export class Note {
   readonly id = uuidv4();
   timestamp = Date.now();
   content = {
-    delta: '',
+    delta: <Partial<Delta>>{},
     title: '',
     body: '',
   };
@@ -110,7 +111,7 @@ export async function getAllNotes(): Promise<void> {
   if (fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0])) {
     state.notes[0].timestamp = Date.now();
     // Clear these fields as whitespace-only can affect empty note checks
-    state.notes[0].content.delta = '';
+    state.notes[0].content.delta = {};
     state.notes[0].content.title = '';
     state.notes[0].content.body = '';
   }
@@ -183,7 +184,7 @@ export function newNote(isButtonClick?: boolean): void {
 }
 
 /** Edits note body on Quill `text-change`. */
-export function editNote(delta: string, title: string, body: string): void {
+export function editNote(delta: Delta, title: string, body: string): void {
   const foundNote = findNote(state.selectedNote.id);
   if (!foundNote || delta === foundNote.content.delta) return;
 

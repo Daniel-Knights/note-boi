@@ -4,8 +4,21 @@ use std::{fs, io::Write, path::PathBuf};
 const NOTE_DIR: &str = ".notes";
 
 #[derive(Serialize, Deserialize, Debug)]
+struct DeltaOp {
+  insert: Option<String>,
+  delete: Option<String>,
+  retain: Option<String>,
+  attributes: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Delta {
+  ops: Option<Vec<DeltaOp>>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 struct NoteContent {
-  delta: String,
+  delta: Delta,
   title: String,
   body: String,
 }
