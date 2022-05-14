@@ -7,7 +7,7 @@ import localNotes from './notes.json';
 
 type Fn = () => void;
 
-/** Mocks calls to the Tauri API */
+/** Mocks calls to the Tauri API. */
 export function mockTauriApi(
   notes?: n.Note[] | undefined,
   mockFns?: { login: Fn; logout: Fn },

@@ -29,7 +29,7 @@
       v-else
       @click="pushNotes"
       class="sync-status__sync-button"
-      title="Sync changes (push)"
+      title="Sync changes"
       data-test-id="sync-button"
     >
       <CloudSyncIcon />

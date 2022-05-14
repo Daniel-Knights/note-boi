@@ -249,7 +249,7 @@ describe('NoteMenu', () => {
 
     it('With alt', async () => {
       const wrapper = shallowMount(NoteMenu);
-      // assert.isTrue(wrapper.isVisible());
+      assert.isTrue(wrapper.isVisible());
 
       const noteItem = wrapper.get(getDataNoteId(n.state.notes[6].id));
       await noteItem.trigger('click', { altKey: true });

@@ -123,7 +123,7 @@ function tauriFetch<T>(
   });
 }
 
-/** Catches hanging requests (e.g. due to server error) */
+/** Catches hanging requests (e.g. due to server error). */
 function catchHang(err: unknown, type: ErrorType) {
   console.error(err);
 
@@ -146,6 +146,7 @@ function clientSideLogout() {
 async function syncNotes(remoteNotes: Note[]) {
   const hasNoLocalNotes = noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]);
 
+  // Remove any deleted ids if they don't exist on remote
   state.unsyncedNoteIds.deleted.forEach((id) => {
     if (!remoteNotes.some((nt) => nt.id === id)) {
       state.unsyncedNoteIds.deleted.delete(id);
@@ -159,6 +160,7 @@ async function syncNotes(remoteNotes: Note[]) {
   const syncedNotes = remoteNotes.filter((nt) => {
     return ![...unsyncedIds, ...unsyncedDeletedIds].includes(nt.id);
   });
+
   const mergedNotes = [...unsyncedNotes, ...syncedNotes];
 
   if (mergedNotes.length > 0) {

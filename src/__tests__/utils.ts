@@ -9,7 +9,7 @@ import * as s from '../store/sync';
 export const UUID_REGEX =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
 
-/** Returns `arr` with all objects that're one level deep copied */
+/** Returns `arr` with all objects that're one level deep copied. */
 export function copyObjArr<T extends Record<string, unknown>>(arr: T[]): T[] {
   return arr.map((obj) => ({ ...obj }));
 }
@@ -63,7 +63,7 @@ export function findByTestId<T extends Element>(
   return wrapper.find<T>(formatTestId(id));
 }
 
-/** Simulates awaiting a sync operation */
+/** Simulates awaiting a sync operation. */
 export function awaitSyncLoad(): Promise<void> | void {
   if (s.state.isLoading) {
     return nextTick().then(awaitSyncLoad);

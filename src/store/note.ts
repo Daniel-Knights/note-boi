@@ -24,7 +24,7 @@ export class Note {
 export const state = reactive({
   notes: <Note[]>[],
   selectedNote: new Note(),
-  /** `0` = next in queue */
+  /** `0` = next in queue. */
   extraSelectedNotes: <Note[]>[],
 });
 
@@ -87,7 +87,7 @@ export function selectNote(id?: string): void {
 
 /**
  * Returns true if note is either {@link state.selectedNote}
- * or within {@link state.extraSelectedNotes}
+ * or within {@link state.extraSelectedNotes}.
  */
 export function isSelectedNote(note: Note): boolean {
   return (
