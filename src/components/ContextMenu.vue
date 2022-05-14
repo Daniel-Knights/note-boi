@@ -21,23 +21,6 @@
         </li>
       </ul>
     </li>
-    <li class="context-menu__has-sub-menu">
-      Auto-sync
-      <ul data-test-id="auto-sync">
-        <li
-          :class="{ 'context-menu__item--selected': syncState.autoSyncEnabled }"
-          @click="setAutoSync(true)"
-        >
-          On
-        </li>
-        <li
-          :class="{ 'context-menu__item--selected': !syncState.autoSyncEnabled }"
-          @click="setAutoSync(false)"
-        >
-          Off
-        </li>
-      </ul>
-    </li>
   </ul>
 </template>
 
@@ -51,7 +34,6 @@ import {
   deleteNote,
   deleteAllNotes,
 } from '../store/note';
-import { state as syncState, setAutoSync } from '../store/sync';
 import { isEmptyNote } from '../utils';
 
 const clickedNoteId = ref<string | undefined>(undefined);

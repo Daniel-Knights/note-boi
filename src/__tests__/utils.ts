@@ -34,7 +34,6 @@ export function resetNoteStore(): void {
 }
 
 export function resetSyncStore(): void {
-  localStorage.removeItem('auto-sync');
   localStorage.removeItem('username');
   localStorage.removeItem('token');
   localStorage.removeItem('unsynced-note-ids');
@@ -44,7 +43,6 @@ export function resetSyncStore(): void {
   s.state.unsyncedNoteIds.clear();
   s.state.isLoading = false;
   s.state.isLogin = true;
-  s.state.autoSyncEnabled = true;
   s.state.error = { type: s.ErrorType.None, message: '' };
 }
 
@@ -69,4 +67,28 @@ export function awaitSyncLoad(): Promise<void> | void {
   if (s.state.isLoading) {
     return nextTick().then(awaitSyncLoad);
   }
+}
+
+function hasProp<T>(obj: T, prop: string): boolean {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+export function isNote(note: unknown): note is n.Note {
+  const nt = note as n.Note;
+
+  return (
+    !!nt &&
+    typeof nt === 'object' &&
+    hasProp(nt, 'id') &&
+    typeof nt.id === 'string' &&
+    hasProp(nt, 'timestamp') &&
+    typeof nt.timestamp === 'number' &&
+    hasProp(nt, 'content') &&
+    hasProp(nt.content, 'delta') &&
+    typeof nt.content.delta === 'string' &&
+    hasProp(nt.content, 'title') &&
+    typeof nt.content.title === 'string' &&
+    hasProp(nt.content, 'body') &&
+    typeof nt.content.body === 'string'
+  );
 }

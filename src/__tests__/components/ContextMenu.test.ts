@@ -4,7 +4,6 @@ import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
 import * as n from '../../store/note';
-import * as s from '../../store/sync';
 import localNotes from '../notes.json';
 
 import ContextMenu from '../../components/ContextMenu.vue';
@@ -146,22 +145,5 @@ describe('ContextMenu', () => {
 
     assert.strictEqual(wrapperVm.selectedTheme, secondTheme);
     assert.strictEqual(localStorage.getItem('theme'), secondTheme);
-  });
-
-  it('Sets auto-sync preference', async () => {
-    const { wrapper, assertionError } = await mountContextMenu();
-    if (assertionError) assert.fail();
-
-    const autoSyncMenu = getByTestId(wrapper, 'auto-sync');
-
-    await autoSyncMenu.get(':first-child').trigger('click');
-
-    assert.isTrue(s.state.autoSyncEnabled);
-    assert.strictEqual(localStorage.getItem('auto-sync'), 'true');
-
-    await autoSyncMenu.get(':nth-child(2)').trigger('click');
-
-    assert.isFalse(s.state.autoSyncEnabled);
-    assert.strictEqual(localStorage.getItem('auto-sync'), 'false');
   });
 });

@@ -6,6 +6,7 @@ import { isDev, isEmptyNote, localStorageParse, tauriEmit } from '../utils';
 import { NOTE_EVENTS } from '../constant';
 import {
   findNote,
+  newNote,
   Note,
   selectNote,
   sortStateNotes,
@@ -30,7 +31,6 @@ export type UnsyncedNoteIds = {
   add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
 };
 
-const autoSync = localStorage.getItem('auto-sync') as 'true' | 'false' | null;
 const unsyncedNoteIds: Partial<UnsyncedNoteIds> = localStorageParse('unsynced-note-ids');
 
 export const state = reactive({
@@ -39,13 +39,12 @@ export const state = reactive({
   token: localStorage.getItem('token') || '',
   isLoading: false,
   isLogin: true, // For switching login/signup form
-  autoSyncEnabled: autoSync !== null ? autoSync === 'true' : true,
   error: {
     type: ErrorType.None,
     message: '',
   },
   unsyncedNoteIds: <UnsyncedNoteIds>{
-    new: unsyncedNoteIds.new,
+    new: unsyncedNoteIds.new || '',
     edited: new Set<string>(unsyncedNoteIds.edited),
     deleted: new Set<string>(unsyncedNoteIds.deleted),
     get size() {
@@ -59,8 +58,17 @@ export const state = reactive({
     },
     add(ids): void {
       if (ids.new !== undefined) this.new = ids.new;
+
       ids.edited?.forEach((id) => this.edited.add(id));
-      ids.deleted?.forEach((id) => this.deleted.add(id));
+
+      // Only track deleted notes if logged in
+      ids.deleted?.forEach((id) => {
+        this.deleted.add(id);
+
+        if (this.edited.has(id)) {
+          this.edited.delete(id);
+        }
+      });
 
       if (this.edited.has(this.new) || this.deleted.has(this.new)) {
         this.new = '';
@@ -132,34 +140,46 @@ function clientSideLogout() {
   localStorage.removeItem('username');
 }
 
-/** Sets user preference for auto-syncing to {@link state} and `localStorage` */
-export function setAutoSync(enabled: boolean): void {
-  state.autoSyncEnabled = enabled;
-  localStorage.setItem('auto-sync', enabled ? 'true' : 'false');
-}
-
 /** Syncs local and remote notes. */
-function syncNotes(remoteNotes: Note[]) {
+async function syncNotes(remoteNotes: Note[]) {
   const hasNoLocalNotes = noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]);
 
-  if (hasNoLocalNotes) {
-    state.unsyncedNoteIds.clear();
+  state.unsyncedNoteIds.deleted.forEach((id) => {
+    if (!remoteNotes.some((nt) => nt.id === id)) {
+      state.unsyncedNoteIds.deleted.delete(id);
+      state.unsyncedNoteIds.add({});
+    }
+  });
+
+  if (remoteNotes.length === 0) {
+    if (!hasNoLocalNotes) {
+      // Add all notes to unsynced edited
+      state.unsyncedNoteIds.add({ edited: noteState.notes.map((nt) => nt.id) });
+    }
+
+    return;
   }
 
   const unsyncedIds = [state.unsyncedNoteIds.new, ...state.unsyncedNoteIds.edited];
   const unsyncedDeletedIds = [...state.unsyncedNoteIds.deleted];
   const unsyncedNotes = unsyncedIds.map(findNote).filter(Boolean) as Note[];
   const syncedNotes = remoteNotes.filter((nt) => {
-    return !unsyncedIds.includes(nt.id) && !unsyncedDeletedIds.includes(nt.id);
+    return ![...unsyncedIds, ...unsyncedDeletedIds].includes(nt.id);
   });
+  const mergedNotes = [...unsyncedNotes, ...syncedNotes];
 
-  noteState.notes = [...syncedNotes, ...unsyncedNotes];
-
-  sortStateNotes();
+  if (mergedNotes.length > 0) {
+    noteState.notes = mergedNotes;
+    sortStateNotes();
+  } else {
+    newNote();
+  }
 
   if (hasNoLocalNotes) {
     selectNote(noteState.notes[0].id);
   }
+
+  await push();
 
   return invoke('sync_all_local_notes', { notes: noteState.notes }).catch(console.error);
 }
@@ -178,15 +198,15 @@ export async function login(): Promise<void> {
   if (!res) return;
 
   if (res.ok) {
-    resetError();
-    tauriEmit('login');
-    await syncNotes(res.data.notes as Note[]);
-
     state.token = res.data.token as string;
     state.password = '';
 
     localStorage.setItem('username', state.username);
     localStorage.setItem('token', state.token);
+
+    resetError();
+    tauriEmit('login');
+    await syncNotes(res.data.notes as Note[]);
   }
 
   state.isLoading = false;
@@ -335,7 +355,7 @@ export async function push(): Promise<void> {
 let timeout: number | undefined;
 
 export function autoPush(): void {
-  if (!state.autoSyncEnabled || !state.username) return;
+  if (!state.username) return;
 
   clearTimeout(timeout);
   timeout = window.setTimeout(push, 500);
@@ -345,7 +365,7 @@ export function autoPush(): void {
 document.addEventListener(
   NOTE_EVENTS.unsynced,
   (ev: CustomEventInit<UnsyncedEventDetail>) => {
-    if (!state.token || !ev.detail) return;
+    if (!ev.detail) return;
 
     state.unsyncedNoteIds.add({ [ev.detail.type]: [ev.detail.noteId] });
   }

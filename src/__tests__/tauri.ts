@@ -1,7 +1,7 @@
 import { mockIPC } from '@tauri-apps/api/mocks';
 
 import { isEmptyNote } from '../utils';
-import { mockPromise } from './utils';
+import { isNote, mockPromise } from './utils';
 import * as n from '../store/note';
 import localNotes from './notes.json';
 
@@ -35,12 +35,13 @@ export function mockTauriApi(
             return new Promise<Record<string, unknown>>((res) => {
               const reqOptions = reqMessage?.options;
               const reqType = reqOptions?.url?.split('/api/')[1];
+              const reqNotes = reqOptions?.body?.payload?.notes;
 
               const resData: { notes?: n.Note[]; token?: string } = {};
 
               // Ensure no empty notes are pushed to the server
-              reqOptions?.body?.payload?.notes?.forEach((note) => {
-                if (isEmptyNote(note)) assert.fail();
+              reqNotes?.forEach((note) => {
+                if (isEmptyNote(note)) assert.fail('Empty note');
               });
 
               switch (reqType) {
@@ -52,8 +53,14 @@ export function mockTauriApi(
                   resData.token = 'token';
                   break;
                 case 'notes': {
+                  // Pull
                   if (reqOptions?.method === 'POST') {
-                    resData.notes = localNotes;
+                    resData.notes = notes;
+                    // Push
+                  } else if (reqOptions?.method === 'PUT') {
+                    if (!Array.isArray(reqNotes) || reqNotes.some((nt) => !isNote(nt))) {
+                      assert.fail('Invalid notes');
+                    }
                   }
                 }
                 // no default
