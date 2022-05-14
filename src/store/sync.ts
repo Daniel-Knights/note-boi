@@ -151,15 +151,6 @@ async function syncNotes(remoteNotes: Note[]) {
     }
   });
 
-  if (remoteNotes.length === 0) {
-    if (!hasNoLocalNotes) {
-      // Add all notes to unsynced edited
-      state.unsyncedNoteIds.add({ edited: noteState.notes.map((nt) => nt.id) });
-    }
-
-    return;
-  }
-
   const unsyncedIds = [state.unsyncedNoteIds.new, ...state.unsyncedNoteIds.edited];
   const unsyncedDeletedIds = [...state.unsyncedNoteIds.deleted];
   const unsyncedNotes = unsyncedIds.map(findNote).filter(Boolean) as Note[];
