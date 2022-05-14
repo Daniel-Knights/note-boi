@@ -3,7 +3,7 @@ import { http, invoke } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 
 import { isDev, isEmptyNote, localStorageParse, tauriEmit } from '../utils';
-import { NOTE_EVENTS } from '../constant';
+import { NOTE_EVENTS, STORAGE_KEYS } from '../constant';
 import {
   findNote,
   newNote,
@@ -31,12 +31,14 @@ export type UnsyncedNoteIds = {
   add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
 };
 
-const unsyncedNoteIds: Partial<UnsyncedNoteIds> = localStorageParse('unsynced-note-ids');
+const unsyncedNoteIds: Partial<UnsyncedNoteIds> = localStorageParse(
+  STORAGE_KEYS.UNSYNCED
+);
 
 export const state = reactive({
-  username: localStorage.getItem('username') || '',
+  username: localStorage.getItem(STORAGE_KEYS.USERNAME) || '',
   password: '',
-  token: localStorage.getItem('token') || '',
+  token: localStorage.getItem(STORAGE_KEYS.TOKEN) || '',
   isLoading: false,
   isLogin: true, // For switching login/signup form
   error: {
@@ -54,7 +56,7 @@ export const state = reactive({
       this.new = '';
       this.edited.clear();
       this.deleted.clear();
-      localStorage.removeItem('unsynced-note-ids');
+      localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
     },
     add(ids): void {
       if (ids.new !== undefined) this.new = ids.new;
@@ -75,7 +77,7 @@ export const state = reactive({
       }
 
       localStorage.setItem(
-        'unsynced-note-ids',
+        STORAGE_KEYS.UNSYNCED,
         JSON.stringify({
           new: this.new,
           edited: [...this.edited],
@@ -136,8 +138,8 @@ function clientSideLogout() {
   state.token = '';
   state.username = '';
 
-  localStorage.removeItem('token');
-  localStorage.removeItem('username');
+  localStorage.removeItem(STORAGE_KEYS.TOKEN);
+  localStorage.removeItem(STORAGE_KEYS.USERNAME);
 }
 
 /** Syncs local and remote notes. */
@@ -192,8 +194,8 @@ export async function login(): Promise<void> {
     state.token = res.data.token as string;
     state.password = '';
 
-    localStorage.setItem('username', state.username);
-    localStorage.setItem('token', state.token);
+    localStorage.setItem(STORAGE_KEYS.USERNAME, state.username);
+    localStorage.setItem(STORAGE_KEYS.TOKEN, state.token);
 
     resetError();
     tauriEmit('login');
@@ -233,8 +235,8 @@ export async function signup(): Promise<void> {
     state.token = res.data.token;
     state.password = '';
 
-    localStorage.setItem('username', state.username);
-    localStorage.setItem('token', state.token);
+    localStorage.setItem(STORAGE_KEYS.USERNAME, state.username);
+    localStorage.setItem(STORAGE_KEYS.TOKEN, state.token);
   } else {
     state.error = {
       type: ErrorType.Auth,

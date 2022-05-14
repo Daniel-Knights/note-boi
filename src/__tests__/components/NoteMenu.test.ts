@@ -2,6 +2,7 @@ import { enableAutoUnmount, shallowMount, VueWrapper } from '@vue/test-utils';
 
 import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
+import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote } from '../../utils';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
@@ -366,7 +367,7 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.isNotNull(localStorage.getItem('note-menu-width'));
+    assert.isNotNull(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH));
 
     await dragBar.trigger('mousedown');
 
@@ -383,6 +384,6 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(localStorage.getItem('note-menu-width'), '400px');
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH), '400px');
   });
 });

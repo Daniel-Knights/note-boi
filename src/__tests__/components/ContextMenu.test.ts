@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
+import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote } from '../../utils';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
@@ -137,13 +138,13 @@ describe('ContextMenu', () => {
     await firstThemeEl.trigger('click');
 
     assert.strictEqual(wrapperVm.selectedTheme, firstTheme);
-    assert.strictEqual(localStorage.getItem('theme'), firstTheme);
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.THEME), firstTheme);
 
     const secondThemeEl = themeMenu.get(':nth-child(2)');
     const secondTheme = secondThemeEl.element.innerHTML;
     await secondThemeEl.trigger('click');
 
     assert.strictEqual(wrapperVm.selectedTheme, secondTheme);
-    assert.strictEqual(localStorage.getItem('theme'), secondTheme);
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.THEME), secondTheme);
   });
 });

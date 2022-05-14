@@ -11,6 +11,7 @@ import {
   UUID_REGEX,
 } from '../utils';
 import { mockTauriApi } from '../tauri';
+import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote, localStorageParse } from '../../utils';
 import * as s from '../../store/sync';
 import * as n from '../../store/note';
@@ -52,8 +53,8 @@ describe('Sync', () => {
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(s.state.username, 'd');
       assert.isEmpty(s.state.password);
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
       expect(mockEmits.login).toHaveBeenCalled();
@@ -72,8 +73,8 @@ describe('Sync', () => {
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(s.state.username, 'd');
       assert.isEmpty(s.state.password);
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
       expect(mockEmits.login).toHaveBeenCalled();
@@ -92,8 +93,8 @@ describe('Sync', () => {
       assert.isEmpty(s.state.token);
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.password, '1');
-      assert.isNull(localStorage.getItem('username'));
-      assert.isNull(localStorage.getItem('token'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.state.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.state.error.message);
       expect(mockEmits.login).not.toHaveBeenCalled();
@@ -114,8 +115,8 @@ describe('Sync', () => {
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(s.state.username, 'd');
       assert.isEmpty(s.state.password);
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
       expect(mockEmits.login).toHaveBeenCalled();
@@ -135,8 +136,8 @@ describe('Sync', () => {
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(s.state.username, 'd');
       assert.isEmpty(s.state.password);
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
       expect(mockEmits.login).toHaveBeenCalled();
@@ -159,8 +160,8 @@ describe('Sync', () => {
       assert.isTrue(isEmptyNote(n.state.selectedNote));
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.token, 'token');
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
     });
@@ -178,8 +179,8 @@ describe('Sync', () => {
       assert.isEmpty(s.state.token);
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.password, '1');
-      assert.isNull(localStorage.getItem('username'));
-      assert.isNull(localStorage.getItem('token'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.state.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.state.error.message);
       expect(mockEmits.login).not.toHaveBeenCalled();
@@ -200,8 +201,8 @@ describe('Sync', () => {
       assert.isFalse(s.state.isLoading);
       assert.isEmpty(s.state.token);
       assert.isEmpty(s.state.username);
-      assert.isNull(localStorage.getItem('username'));
-      assert.isNull(localStorage.getItem('token'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
       expect(mockEmits.logout).toHaveBeenCalled();
@@ -221,8 +222,8 @@ describe('Sync', () => {
       assert.isFalse(s.state.isLoading);
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(s.state.username, 'd');
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.Logout);
       assert.isNotEmpty(s.state.error.message);
       expect(mockEmits.logout).not.toHaveBeenCalled();
@@ -278,8 +279,8 @@ describe('Sync', () => {
       assert.deepEqual(n.state.notes, localNotes);
       assert.isEmpty(s.state.username);
       assert.isEmpty(s.state.token);
-      assert.isNull(localStorage.getItem('username'));
-      assert.isNull(localStorage.getItem('token'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.state.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.state.error.message);
     });
@@ -293,11 +294,11 @@ describe('Sync', () => {
       mockTauriApi(copyObjArr(localNotes));
       await s.login();
       s.state.unsyncedNoteIds.add(unsynced);
-      assert.deepEqual(localStorageParse('unsynced-note-ids'), unsynced);
+      assert.deepEqual(localStorageParse(STORAGE_KEYS.UNSYNCED), unsynced);
 
       await s.push();
 
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.isFalse(s.state.isLoading);
       assert.deepEqual(n.state.notes, localNotes.sort(n.sortNotesFn));
       assert.isEmpty(s.state.unsyncedNoteIds.new);
@@ -305,8 +306,8 @@ describe('Sync', () => {
       assert.isEmpty(s.state.unsyncedNoteIds.deleted);
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.token, 'token');
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
     });
@@ -324,7 +325,7 @@ describe('Sync', () => {
 
       await s.push();
 
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.isFalse(s.state.isLoading);
       assert.isTrue(isEmptyNote(n.state.notes[0]));
       assert.isTrue(isEmptyNote(n.state.selectedNote));
@@ -333,8 +334,8 @@ describe('Sync', () => {
       assert.isEmpty(s.state.unsyncedNoteIds.deleted);
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.token, 'token');
-      assert.strictEqual(localStorage.getItem('username'), 'd');
-      assert.strictEqual(localStorage.getItem('token'), 'token');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
     });
@@ -360,7 +361,7 @@ describe('Sync', () => {
   describe('unsyncedNoteIds', () => {
     it('new', async () => {
       function assertNotOverwritten() {
-        const storedId = localStorageParse('unsynced-note-ids').new;
+        const storedId = localStorageParse(STORAGE_KEYS.UNSYNCED).new;
 
         assert.isNotEmpty(s.state.unsyncedNoteIds.new);
         assert.match(storedId, UUID_REGEX);
@@ -382,7 +383,7 @@ describe('Sync', () => {
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
       await awaitSyncLoad();
       assert.isEmpty(s.state.unsyncedNoteIds.new);
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       const newButton = getByTestId(wrapper, 'new');
       await newButton.trigger('click');
 
@@ -391,7 +392,7 @@ describe('Sync', () => {
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.strictEqual(s.state.unsyncedNoteIds.new, n.state.selectedNote.id);
       assert.strictEqual(
-        localStorageParse('unsynced-note-ids').new,
+        localStorageParse(STORAGE_KEYS.UNSYNCED).new,
         n.state.selectedNote.id
       );
       assert.isTrue(isEmptyNote(n.state.notes[0]));
@@ -402,7 +403,7 @@ describe('Sync', () => {
       assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
       assert.strictEqual(s.state.unsyncedNoteIds.new, n.state.selectedNote.id);
       assert.strictEqual(
-        localStorageParse('unsynced-note-ids').new,
+        localStorageParse(STORAGE_KEYS.UNSYNCED).new,
         n.state.selectedNote.id
       );
       assert.isTrue(isEmptyNote(n.state.notes[0]));
@@ -421,7 +422,7 @@ describe('Sync', () => {
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isEmpty(s.state.unsyncedNoteIds.new);
       assert.strictEqual(s.state.unsyncedNoteIds.size, 0);
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.isFalse(isEmptyNote(n.state.notes[0]));
       assert.isFalse(isEmptyNote(n.state.selectedNote));
 
@@ -431,7 +432,7 @@ describe('Sync', () => {
 
       n.selectNote(n.state.notes[1].id);
 
-      const storedIds = localStorageParse('unsynced-note-ids');
+      const storedIds = localStorageParse(STORAGE_KEYS.UNSYNCED);
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isEmpty(s.state.unsyncedNoteIds.new);
       assert.isEmpty(storedIds.new);
@@ -450,14 +451,14 @@ describe('Sync', () => {
       const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
 
       const firstCachedNote = { ...n.state.selectedNote };
       n.editNote('delta', 'title', 'body');
 
       assert.isTrue(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.strictEqual(
-        localStorageParse('unsynced-note-ids').edited[0],
+        localStorageParse(STORAGE_KEYS.UNSYNCED).edited[0],
         firstCachedNote.id
       );
 
@@ -469,7 +470,7 @@ describe('Sync', () => {
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isFalse(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.strictEqual(n.state.selectedNote.id, firstCachedNote.id);
       assert.deepEqual(n.state.selectedNote.content, {
         delta: 'delta',
@@ -485,7 +486,7 @@ describe('Sync', () => {
       assert.isTrue(s.state.unsyncedNoteIds.edited.has(secondCachedNote.id));
       assert.strictEqual(s.state.unsyncedNoteIds.size, 1);
       assert.strictEqual(
-        localStorageParse('unsynced-note-ids').edited[0],
+        localStorageParse(STORAGE_KEYS.UNSYNCED).edited[0],
         secondCachedNote.id
       );
 
@@ -494,7 +495,7 @@ describe('Sync', () => {
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isFalse(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.isFalse(s.state.unsyncedNoteIds.edited.has(secondCachedNote.id));
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.strictEqual(n.state.selectedNote.id, secondCachedNote.id);
       assert.deepEqual(n.state.selectedNote.content, {
         delta: 'delta2',
@@ -505,7 +506,7 @@ describe('Sync', () => {
       n.deleteNote(n.state.selectedNote.id, true);
       await awaitSyncLoad();
 
-      const parsedIds = localStorageParse('unsynced-note-ids');
+      const parsedIds = localStorageParse(STORAGE_KEYS.UNSYNCED);
       assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
       assert.isTrue(s.state.unsyncedNoteIds.deleted.has(secondCachedNote.id));
       assert.isEmpty(parsedIds.edited);
@@ -520,14 +521,14 @@ describe('Sync', () => {
       const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());
       assert.isEmpty(s.state.unsyncedNoteIds.deleted);
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
 
       const firstCachedNote = { ...n.state.selectedNote };
       n.deleteNote(n.state.selectedNote.id, true);
 
       assert.isTrue(s.state.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.strictEqual(
-        localStorageParse('unsynced-note-ids').deleted[0],
+        localStorageParse(STORAGE_KEYS.UNSYNCED).deleted[0],
         firstCachedNote.id
       );
 
@@ -546,7 +547,7 @@ describe('Sync', () => {
       assert.isTrue(s.state.unsyncedNoteIds.deleted.has(secondCachedNote.id));
       assert.strictEqual(s.state.unsyncedNoteIds.deleted.size, 1);
       assert.strictEqual(
-        localStorageParse('unsynced-note-ids').deleted[0],
+        localStorageParse(STORAGE_KEYS.UNSYNCED).deleted[0],
         secondCachedNote.id
       );
 
@@ -555,13 +556,13 @@ describe('Sync', () => {
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isFalse(s.state.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.isFalse(s.state.unsyncedNoteIds.deleted.has(secondCachedNote.id));
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
     });
 
     it('Registers unsynced notes if not logged in', async () => {
       mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
-      assert.isNull(localStorage.getItem('unsynced-note-ids'));
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.isEmpty(s.state.unsyncedNoteIds.new);
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
       assert.isEmpty(s.state.unsyncedNoteIds.deleted);
@@ -571,7 +572,7 @@ describe('Sync', () => {
       assert.isTrue(isEmptyNote(n.state.notes[0]));
       assert.isTrue(isEmptyNote(n.state.selectedNote));
       assert.strictEqual(
-        localStorageParse('unsynced-note-ids').new,
+        localStorageParse(STORAGE_KEYS.UNSYNCED).new,
         n.state.selectedNote.id
       );
       assert.strictEqual(s.state.unsyncedNoteIds.new, n.state.selectedNote.id);
@@ -582,9 +583,9 @@ describe('Sync', () => {
 
       assert.isFalse(isEmptyNote(n.state.notes[0]));
       assert.isFalse(isEmptyNote(n.state.selectedNote));
-      assert.isEmpty(localStorageParse('unsynced-note-ids').new);
+      assert.isEmpty(localStorageParse(STORAGE_KEYS.UNSYNCED).new);
       assert.strictEqual(
-        localStorageParse('unsynced-note-ids').edited[0],
+        localStorageParse(STORAGE_KEYS.UNSYNCED).edited[0],
         n.state.selectedNote.id
       );
       assert.isEmpty(s.state.unsyncedNoteIds.new);
@@ -597,8 +598,8 @@ describe('Sync', () => {
 
       assert.isFalse(isEmptyNote(n.state.notes[0]));
       assert.isFalse(isEmptyNote(n.state.selectedNote));
-      assert.isEmpty(localStorageParse('unsynced-note-ids').edited);
-      assert.strictEqual(localStorageParse('unsynced-note-ids').deleted[0], cachedId);
+      assert.isEmpty(localStorageParse(STORAGE_KEYS.UNSYNCED).edited);
+      assert.strictEqual(localStorageParse(STORAGE_KEYS.UNSYNCED).deleted[0], cachedId);
       assert.isEmpty(s.state.unsyncedNoteIds.new);
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
       assert.isTrue(s.state.unsyncedNoteIds.deleted.has(cachedId));
@@ -627,7 +628,7 @@ describe('Sync', () => {
         assert.deepEqual(n.state.notes, localNotes);
         assert.isEmpty(s.state.unsyncedNoteIds.new);
         assert.strictEqual(s.state.unsyncedNoteIds.size, 0);
-        assert.isNull(localStorage.getItem('unsynced-note-ids'));
+        assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
         assert.strictEqual(s.state.error.type, s.ErrorType.None);
         assert.isEmpty(s.state.error.message);
       });
@@ -654,7 +655,7 @@ describe('Sync', () => {
         assert.deepEqual(n.state.notes, localNotes);
         assert.isEmpty(s.state.unsyncedNoteIds.new);
         assert.strictEqual(s.state.unsyncedNoteIds.size, 0);
-        assert.isNull(localStorage.getItem('unsynced-note-ids'));
+        assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
         assert.strictEqual(s.state.error.type, s.ErrorType.None);
         assert.isEmpty(s.state.error.message);
       });

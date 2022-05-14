@@ -2,6 +2,7 @@ import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 import { randomFillSync } from 'crypto';
 import { nextTick } from 'vue';
 
+import { STORAGE_KEYS } from '../constant';
 import * as n from '../store/note';
 import * as s from '../store/sync';
 
@@ -34,9 +35,9 @@ export function resetNoteStore(): void {
 }
 
 export function resetSyncStore(): void {
-  localStorage.removeItem('username');
-  localStorage.removeItem('token');
-  localStorage.removeItem('unsynced-note-ids');
+  localStorage.removeItem(STORAGE_KEYS.USERNAME);
+  localStorage.removeItem(STORAGE_KEYS.TOKEN);
+  localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
   s.state.username = '';
   s.state.password = '';
   s.state.token = '';

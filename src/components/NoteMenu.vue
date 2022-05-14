@@ -58,6 +58,7 @@ import {
   findNote,
   isSelectedNote,
 } from '../store/note';
+import { STORAGE_KEYS } from '../constant';
 import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
@@ -66,7 +67,7 @@ const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
 const isDragging = ref(false);
 const listIsFocused = ref(true);
-const menuWidth = ref(localStorage.getItem('note-menu-width') || '260px');
+const menuWidth = ref(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH) || '260px');
 
 // Clear all extra notes and remove event listener
 function clearExtraNotes(ev?: MouseEvent) {
@@ -175,7 +176,7 @@ function handleDragBar() {
     'mouseup',
     () => {
       isDragging.value = false;
-      localStorage.setItem('note-menu-width', menuWidth.value);
+      localStorage.setItem(STORAGE_KEYS.MENU_WIDTH, menuWidth.value);
     },
     { once: true }
   );
