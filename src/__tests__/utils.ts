@@ -69,26 +69,22 @@ export function awaitSyncLoad(): Promise<void> | void {
   }
 }
 
-function hasProp<T>(obj: T, prop: string): boolean {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-}
-
 export function isNote(note: unknown): note is n.Note {
   const nt = note as n.Note;
 
   return (
     !!nt &&
     typeof nt === 'object' &&
-    hasProp(nt, 'id') &&
+    'id' in nt &&
     typeof nt.id === 'string' &&
-    hasProp(nt, 'timestamp') &&
+    'timestamp' in nt &&
     typeof nt.timestamp === 'number' &&
-    hasProp(nt, 'content') &&
-    hasProp(nt.content, 'delta') &&
+    'content' in nt &&
+    'delta' in nt.content &&
     typeof nt.content.delta === 'string' &&
-    hasProp(nt.content, 'title') &&
+    'title' in nt.content &&
     typeof nt.content.title === 'string' &&
-    hasProp(nt.content, 'body') &&
+    'body' in nt.content &&
     typeof nt.content.body === 'string'
   );
 }

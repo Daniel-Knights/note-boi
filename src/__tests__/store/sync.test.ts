@@ -33,7 +33,7 @@ afterEach(() => {
 
 describe('Sync', () => {
   describe('login', () => {
-    it('Logs in with no notes', async () => {
+    it('With no notes', async () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
@@ -59,7 +59,7 @@ describe('Sync', () => {
       expect(mockEmits.login).toHaveBeenCalled();
     });
 
-    it('Logs in with notes', async () => {
+    it('With notes', async () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
@@ -101,7 +101,7 @@ describe('Sync', () => {
   });
 
   describe('signup', () => {
-    it('With empty notes', async () => {
+    it('With no notes', async () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
@@ -601,6 +601,10 @@ describe('Sync', () => {
       assert.isEmpty(s.state.unsyncedNoteIds.new);
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
       assert.isTrue(s.state.unsyncedNoteIds.deleted.has(cachedId));
+    });
+
+    describe('Edge cases', () => {
+      it('');
     });
   });
 });
