@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils';
 
-import { getByTestId, resetNoteStore, setCrypto } from '../utils';
+import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
+import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote } from '../../utils';
 import * as n from '../../store/note';
-import * as s from '../../store/sync';
 import localNotes from '../notes.json';
 
 import ContextMenu from '../../components/ContextMenu.vue';
@@ -68,7 +68,7 @@ describe('ContextMenu', () => {
     const { wrapper, assertionError } = await mountContextMenu();
     if (assertionError) assert.fail();
 
-    await mockTauriApi(localNotes);
+    await mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     assert.isFalse(isEmptyNote(n.state.selectedNote));
@@ -100,7 +100,7 @@ describe('ContextMenu', () => {
   });
 
   it('Deletes a note', async () => {
-    await mockTauriApi(localNotes);
+    await mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     const noteToDelete = { ...localNotes[0] };
@@ -138,30 +138,13 @@ describe('ContextMenu', () => {
     await firstThemeEl.trigger('click');
 
     assert.strictEqual(wrapperVm.selectedTheme, firstTheme);
-    assert.strictEqual(localStorage.getItem('theme'), firstTheme);
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.THEME), firstTheme);
 
     const secondThemeEl = themeMenu.get(':nth-child(2)');
     const secondTheme = secondThemeEl.element.innerHTML;
     await secondThemeEl.trigger('click');
 
     assert.strictEqual(wrapperVm.selectedTheme, secondTheme);
-    assert.strictEqual(localStorage.getItem('theme'), secondTheme);
-  });
-
-  it('Sets auto-sync preference', async () => {
-    const { wrapper, assertionError } = await mountContextMenu();
-    if (assertionError) assert.fail();
-
-    const autoSyncMenu = getByTestId(wrapper, 'auto-sync');
-
-    await autoSyncMenu.get(':first-child').trigger('click');
-
-    assert.isTrue(s.state.autoSyncEnabled);
-    assert.strictEqual(localStorage.getItem('auto-sync'), 'true');
-
-    await autoSyncMenu.get(':nth-child(2)').trigger('click');
-
-    assert.isFalse(s.state.autoSyncEnabled);
-    assert.strictEqual(localStorage.getItem('auto-sync'), 'false');
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.THEME), secondTheme);
   });
 });

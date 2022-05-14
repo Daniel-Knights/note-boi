@@ -20,6 +20,7 @@ module.exports = {
   globals: {
     defineProps: 'readonly',
     defineEmits: 'readonly',
+    CustomEventInit: 'readonly',
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
@@ -54,5 +55,6 @@ module.exports = {
     'operator-linebreak': 'off',
     'lines-between-class-members': 'off',
     'no-use-before-define': ['error', { functions: false }],
+    'arrow-body-style': 'off',
   },
 };

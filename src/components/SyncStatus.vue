@@ -18,7 +18,7 @@
     </button>
     <!-- Sync successful -->
     <div
-      v-else-if="state.token !== '' && !state.hasUnsyncedNotes"
+      v-else-if="state.token !== '' && state.unsyncedNoteIds.size === 0"
       title="Changes synced"
       data-test-id="success"
     >
@@ -49,8 +49,7 @@ import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 
 if (state.token) {
   tauriEmit('login');
-
-  if (state.autoSyncEnabled) pull();
+  pull();
 } else {
   tauriEmit('logout');
 }
@@ -76,7 +75,6 @@ async function pushNotes() {
 }
 
 tauriListen('push-notes', pushNotes);
-tauriListen('pull-notes', pull);
 tauriListen('login', () => {
   state.isLogin = true;
   emit('popup-auth');

@@ -1,7 +1,8 @@
 import { enableAutoUnmount, shallowMount, VueWrapper } from '@vue/test-utils';
 
-import { getByTestId, resetNoteStore, setCrypto } from '../utils';
+import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
+import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote } from '../../utils';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
@@ -14,7 +15,7 @@ const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 beforeAll(setCrypto);
 
 beforeEach(async () => {
-  await mockTauriApi(localNotes);
+  await mockTauriApi(copyObjArr(localNotes));
   await n.getAllNotes();
 
   assert.isFalse(isEmptyNote(n.state.notes[0]));
@@ -119,7 +120,7 @@ describe('NoteMenu', () => {
         await noteItem.trigger('click', { metaKey: true });
 
         const isExtraSelectedNote =
-          n.state.extraSelectedNotes.includes(note) &&
+          n.state.extraSelectedNotes.map((nt) => nt.id).includes(note.id) &&
           n.state.selectedNote.id !== note.id &&
           noteItem.classes().join(' ').includes('--selected');
 
@@ -366,7 +367,7 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.isNotNull(localStorage.getItem('note-menu-width'));
+    assert.isNotNull(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH));
 
     await dragBar.trigger('mousedown');
 
@@ -383,6 +384,6 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(localStorage.getItem('note-menu-width'), '400px');
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH), '400px');
   });
 });

@@ -9,10 +9,10 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { window as tauriWindow, dialog } from '@tauri-apps/api';
+import { window as tauriWindow } from '@tauri-apps/api';
 
 import { getAllNotes, newNote, deleteAllNotes } from './store/note';
-import { resetError, state, push, ErrorType } from './store/sync';
+import { ErrorType, push, resetError, state } from './store/sync';
 import { tauriListen } from './utils';
 
 import NoteMenu from './components/NoteMenu.vue';
@@ -41,34 +41,26 @@ function closeSyncPopup(field: keyof typeof popup) {
   resetError();
 }
 
-function confirmDialog(cb: () => void) {
-  if (!state.token || !state.hasUnsyncedNotes) {
-    cb();
-    return;
+async function exitApp(cb: () => void) {
+  if (state.unsyncedNoteIds.size > 0) {
+    await push();
+
+    if (state.error.type === ErrorType.Push) {
+      popup.error = true;
+      return;
+    }
   }
 
-  dialog.ask('Sync changes before leaving?').then(async (shouldSync) => {
-    if (shouldSync) {
-      await push();
-
-      if (state.error.type === ErrorType.Push) {
-        popup.error = true;
-      } else {
-        cb();
-      }
-    } else {
-      cb();
-    }
-  });
+  cb();
 }
 
 tauriWindow.appWindow.listen('tauri://close-requested', () => {
-  confirmDialog(() => tauriWindow.appWindow.close());
+  exitApp(() => tauriWindow.appWindow.close());
 });
 tauriListen('reload', () => {
-  confirmDialog(() => window.location.reload());
+  exitApp(() => window.location.reload());
 });
-tauriListen('new-note', newNote);
+tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteAllNotes);
 </script>
 

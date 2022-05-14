@@ -1,9 +1,11 @@
 *Before release*
+Updater
+  Prevent tests in release action
 README
 
 *Whenever*
-Recycle bin
-Updater
+Top menu
+Note menu undo/redo and copy/paste
 Prevent opening context menu off bottom of screen
 Custom colour themes
 Tab key functionality

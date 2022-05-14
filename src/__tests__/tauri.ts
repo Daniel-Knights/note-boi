@@ -1,25 +1,32 @@
 import { mockIPC } from '@tauri-apps/api/mocks';
 
-import * as noteStore from '../store/note';
-import { mockPromise } from './utils';
+import { isEmptyNote } from '../utils';
+import { isNote, mockPromise } from './utils';
+import * as n from '../store/note';
 import localNotes from './notes.json';
 
 type Fn = () => void;
 
-/** Mocks calls to the Tauri API */
+/** Mocks calls to the Tauri API. */
 export function mockTauriApi(
-  notes?: noteStore.Note[] | undefined,
+  notes?: n.Note[] | undefined,
   mockFns?: { login: Fn; logout: Fn },
   httpStatus = 200
 ): Promise<void> | void {
   mockIPC((cmd, args) => {
-    const reqMessage = args.message as
-      | {
-          cmd?: string;
-          event?: string;
-          options?: { url?: string; method?: string };
-        }
-      | undefined;
+    type ArgsMessage = {
+      cmd?: string;
+      event?: string;
+      options?: {
+        url?: string;
+        method?: string;
+        body?: {
+          payload?: { notes?: n.Note[] };
+        };
+      };
+    };
+
+    const reqMessage = args.message as ArgsMessage | undefined;
 
     switch (cmd) {
       case 'tauri':
@@ -28,8 +35,14 @@ export function mockTauriApi(
             return new Promise<Record<string, unknown>>((res) => {
               const reqOptions = reqMessage?.options;
               const reqType = reqOptions?.url?.split('/api/')[1];
+              const reqNotes = reqOptions?.body?.payload?.notes;
 
-              const resData: { notes?: noteStore.Note[]; token?: string } = {};
+              const resData: { notes?: n.Note[]; token?: string } = {};
+
+              // Ensure no empty notes are pushed to the server
+              reqNotes?.forEach((note) => {
+                if (isEmptyNote(note)) assert.fail('Empty note');
+              });
 
               switch (reqType) {
                 case 'login':
@@ -40,8 +53,14 @@ export function mockTauriApi(
                   resData.token = 'token';
                   break;
                 case 'notes': {
+                  // Pull
                   if (reqOptions?.method === 'POST') {
-                    resData.notes = localNotes;
+                    resData.notes = notes;
+                    // Push
+                  } else if (reqOptions?.method === 'PUT') {
+                    if (!Array.isArray(reqNotes) || reqNotes.some((nt) => !isNote(nt))) {
+                      assert.fail('Invalid notes');
+                    }
                   }
                 }
                 // no default
@@ -73,7 +92,7 @@ export function mockTauriApi(
         return mockPromise();
       case 'edit_note':
         return new Promise<void>((res) => {
-          noteStore.state.selectedNote = args.note as noteStore.Note;
+          n.state.selectedNote = args.note as n.Note;
           res();
         });
       case 'sync_all_local_notes':

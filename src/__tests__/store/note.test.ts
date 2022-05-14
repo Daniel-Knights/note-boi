@@ -1,6 +1,7 @@
-import { resetNoteStore, setCrypto } from '../utils';
+import { copyObjArr, resetNoteStore, setCrypto, UUID_REGEX } from '../utils';
 import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
+import { NOTE_EVENTS } from '../../constant';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
 
@@ -14,15 +15,15 @@ const mockUnsynced = vi.fn(() => undefined);
 
 beforeAll(() => {
   setCrypto();
-  document.addEventListener(n.noteEvents.change, mockChange);
-  document.addEventListener(n.noteEvents.new, mockNew);
-  document.addEventListener(n.noteEvents.select, mockSelect);
-  document.addEventListener(n.noteEvents.unsynced, mockUnsynced);
+  document.addEventListener(NOTE_EVENTS.change, mockChange);
+  document.addEventListener(NOTE_EVENTS.new, mockNew);
+  document.addEventListener(NOTE_EVENTS.select, mockSelect);
+  document.addEventListener(NOTE_EVENTS.unsynced, mockUnsynced);
 });
 
 afterEach(() => {
   resetNoteStore();
-  vi.clearAllMocks(); // Ensure mock checks are clear
+  vi.clearAllMocks();
 });
 
 describe('Note store', () => {
@@ -31,12 +32,7 @@ describe('Note store', () => {
 
     assert.strictEqual(typeof emptyNote.id, 'string');
     assert.strictEqual(emptyNote.id.length, 36);
-    assert.isTrue(
-      // UUID regex
-      /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/.test(
-        emptyNote.id
-      )
-    );
+    assert.isTrue(UUID_REGEX.test(emptyNote.id));
     // Math.floor to account for tiny discrepancies in Date.now
     assert.strictEqual(
       Math.floor(emptyNote.timestamp / 1000),
@@ -72,19 +68,19 @@ describe('Note store', () => {
     });
 
     it('with notes', async () => {
-      mockTauriApi(localNotes);
+      mockTauriApi(copyObjArr(localNotes));
 
       await n.getAllNotes();
 
       assert.strictEqual(n.state.notes.length, 10);
-      assert.deepEqual(n.state.notes[0], localNotes[0]);
+      assert.deepEqual(n.state.notes[0], localNotes.sort(n.sortNotesFn)[0]);
       assert.deepEqual(n.state.notes[0], n.state.selectedNote);
       expect(mockChange).toHaveBeenCalled();
     });
   });
 
   it('findNoteIndex', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     const index = n.findNoteIndex(existingNote.id);
@@ -95,7 +91,7 @@ describe('Note store', () => {
   });
 
   it('findNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     const foundNote = n.findNote(existingNote.id);
@@ -106,17 +102,17 @@ describe('Note store', () => {
   });
 
   it('selectNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
     n.state.notes.push(new n.Note());
-    vi.clearAllMocks(); // Ensure mock checks are clear
+    vi.clearAllMocks();
 
     n.selectNote(existingNote.id);
 
     assert.deepEqual(n.state.selectedNote, n.state.notes[existingNoteIndexSorted]);
     expect(mockSelect).toHaveBeenCalled();
     expect(mockChange).toHaveBeenCalled();
-    vi.clearAllMocks(); // Ensure mock checks are clear
+    vi.clearAllMocks();
 
     // Ensure clearNote works
     n.selectNote(n.state.notes[10].id);
@@ -128,7 +124,7 @@ describe('Note store', () => {
   });
 
   it('isSelectedNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
     n.selectNote(existingNote.id);
 
@@ -142,16 +138,29 @@ describe('Note store', () => {
   });
 
   it('deleteNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
-    vi.clearAllMocks(); // Ensure mock checks are clear
+    vi.clearAllMocks();
     assert.isDefined(n.findNote(existingNote.id));
 
     n.deleteNote(existingNote.id, true);
 
     assert.notDeepEqual(n.state.selectedNote, existingNote);
     assert.isUndefined(n.findNote(existingNote.id));
+    expect(mockSelect).toHaveBeenCalled();
     expect(mockChange).toHaveBeenCalled();
+    expect(mockUnsynced).toHaveBeenCalled();
+
+    const otherExistingNote = { ...localNotes[1] };
+    assert.notDeepEqual(n.state.selectedNote, otherExistingNote);
+    vi.clearAllMocks();
+
+    n.deleteNote(otherExistingNote.id, false);
+
+    assert.notDeepEqual(n.state.selectedNote, otherExistingNote);
+    assert.isUndefined(n.findNote(otherExistingNote.id));
+    expect(mockSelect).not.toHaveBeenCalled();
+    expect(mockChange).not.toHaveBeenCalled();
     expect(mockUnsynced).toHaveBeenCalled();
   });
 
@@ -163,16 +172,17 @@ describe('Note store', () => {
 
     assert.notDeepEqual(n.state.selectedNote, currentSelectedNote);
     assert.isEmpty(n.state.extraSelectedNotes);
+    expect(mockSelect).toHaveBeenCalled();
     expect(mockChange).toHaveBeenCalled();
     expect(mockUnsynced).toHaveBeenCalled();
   });
 
   describe('newNote', () => {
     it("When selected note isn't empty", async () => {
-      mockTauriApi(localNotes);
+      mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
       n.selectNote(existingNote.id);
-      vi.clearAllMocks(); // Ensure mock checks are clear
+      vi.clearAllMocks();
 
       n.newNote();
 
@@ -185,11 +195,11 @@ describe('Note store', () => {
     });
 
     it('Only updates the timestamp if called with an already empty note selected', async () => {
-      mockTauriApi(localNotes);
+      mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
       n.state.notes.push(emptyNote);
       n.selectNote(emptyNote.id);
-      vi.clearAllMocks(); // Ensure mock checks are clear
+      vi.clearAllMocks();
 
       n.newNote();
 
@@ -204,7 +214,7 @@ describe('Note store', () => {
   });
 
   it('editNote', async () => {
-    mockTauriApi(localNotes);
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
     const currentSelectedNote = { ...n.state.selectedNote };
 

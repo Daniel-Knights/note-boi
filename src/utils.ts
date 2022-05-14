@@ -3,7 +3,7 @@ import { EventCallback } from '@tauri-apps/api/event';
 
 import type { Note } from './store/note';
 
-/** `process.env.NODE_ENV === 'development'` */
+/** `process.env.NODE_ENV === 'development'`. */
 export function isDev(): boolean {
   return process.env.NODE_ENV === 'development';
 }
@@ -16,6 +16,11 @@ export function unixToDateTime(unixTime: number): string {
   }).format(unixTime);
 }
 
+/** Gets key value from `localStorage` and parses it as JSON. */
+export function localStorageParse(key: string): ReturnType<typeof JSON.parse> {
+  return JSON.parse(localStorage.getItem(key) || '{}');
+}
+
 /** Returns `true` if string consists of only whitespace characters or is empty. */
 export function isWhitespaceOnly(text?: string): boolean {
   return text?.trim() === '';
@@ -25,22 +30,21 @@ export function isWhitespaceOnly(text?: string): boolean {
 export function isEmptyNote(note?: Note): boolean {
   if (!note) return true;
 
-  return isWhitespaceOnly(note.content.title);
+  return isWhitespaceOnly(note.content.title) && isWhitespaceOnly(note.content.body);
 }
 
-/** Calls {@link event.emit}, with stronger typing for `id` */
+/** Calls {@link event.emit}, with stronger typing for `id`. */
 export function tauriEmit<T>(id: 'login' | 'logout', payload?: T): void {
   event.emit(id, payload);
 }
 
-/** Calls {@link event.listen}, with stronger typing for `id` */
+/** Calls {@link event.listen}, with stronger typing for `id`. */
 export function tauriListen(
   id:
     | 'reload'
     | 'new-note'
     | 'delete-note'
     | 'push-notes'
-    | 'pull-notes'
     | 'login'
     | 'logout'
     | 'signup',

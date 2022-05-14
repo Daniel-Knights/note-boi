@@ -2,8 +2,17 @@ import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 import { randomFillSync } from 'crypto';
 import { nextTick } from 'vue';
 
+import { STORAGE_KEYS } from '../constant';
 import * as n from '../store/note';
 import * as s from '../store/sync';
+
+export const UUID_REGEX =
+  /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
+
+/** Returns `arr` with all objects that're one level deep copied. */
+export function copyObjArr<T extends Record<string, unknown>>(arr: T[]): T[] {
+  return arr.map((obj) => ({ ...obj }));
+}
 
 // jsdom doesn't come with a WebCrypto implementation
 export function setCrypto(): void {
@@ -26,16 +35,15 @@ export function resetNoteStore(): void {
 }
 
 export function resetSyncStore(): void {
-  localStorage.removeItem('auto-sync');
-  localStorage.removeItem('username');
-  localStorage.removeItem('token');
+  localStorage.removeItem(STORAGE_KEYS.USERNAME);
+  localStorage.removeItem(STORAGE_KEYS.TOKEN);
+  localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
   s.state.username = '';
   s.state.password = '';
   s.state.token = '';
-  s.state.hasUnsyncedNotes = false;
+  s.state.unsyncedNoteIds.clear();
   s.state.isLoading = false;
   s.state.isLogin = true;
-  s.state.autoSyncEnabled = true;
   s.state.error = { type: s.ErrorType.None, message: '' };
 }
 
@@ -55,9 +63,29 @@ export function findByTestId<T extends Element>(
   return wrapper.find<T>(formatTestId(id));
 }
 
-/** Simulates awaiting a sync operation */
+/** Simulates awaiting a sync operation. */
 export function awaitSyncLoad(): Promise<void> | void {
   if (s.state.isLoading) {
     return nextTick().then(awaitSyncLoad);
   }
+}
+
+export function isNote(note: unknown): note is n.Note {
+  const nt = note as n.Note;
+
+  return (
+    !!nt &&
+    typeof nt === 'object' &&
+    'id' in nt &&
+    typeof nt.id === 'string' &&
+    'timestamp' in nt &&
+    typeof nt.timestamp === 'number' &&
+    'content' in nt &&
+    'delta' in nt.content &&
+    typeof nt.content.delta === 'string' &&
+    'title' in nt.content &&
+    typeof nt.content.title === 'string' &&
+    'body' in nt.content &&
+    typeof nt.content.body === 'string'
+  );
 }

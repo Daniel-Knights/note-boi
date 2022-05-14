@@ -3,7 +3,13 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { v4 as uuidv4 } from 'uuid';
 
 import { isEmptyNote } from '../utils';
-import { autoPush } from './sync';
+import { NOTE_EVENTS } from '../constant';
+import { state as syncState, autoPush, UnsyncedNoteIds } from './sync';
+
+export type UnsyncedEventDetail = {
+  noteId: string;
+  type: keyof Pick<UnsyncedNoteIds, 'edited' | 'deleted'>;
+};
 
 export class Note {
   readonly id = uuidv4();
@@ -15,29 +21,28 @@ export class Note {
   };
 }
 
-export const noteEvents = {
-  new: 'note-new',
-  select: 'note-select',
-  change: 'note-change',
-  unsynced: 'note-unsynced',
-};
-
-const newNoteEvent = new CustomEvent(noteEvents.new);
-const selectNoteEvent = new CustomEvent(noteEvents.select);
-const changeNoteEvent = new CustomEvent(noteEvents.change);
-const unsyncedEvent = new CustomEvent(noteEvents.unsynced);
-
 export const state = reactive({
   notes: <Note[]>[],
   selectedNote: new Note(),
-  /** `0` = next in queue */
+  /** `0` = next in queue. */
   extraSelectedNotes: <Note[]>[],
 });
 
-/** Sorts notes in descending order by timestamp. */
-function sortNotes() {
-  state.notes.sort((a, b) => b.timestamp - a.timestamp);
+const newNoteEvent = new CustomEvent(NOTE_EVENTS.new);
+export const selectNoteEvent = new CustomEvent(NOTE_EVENTS.select);
+export const changeNoteEvent = new CustomEvent(NOTE_EVENTS.change);
+function getUnsyncedEvent(
+  noteId: UnsyncedEventDetail['noteId'],
+  type: UnsyncedEventDetail['type']
+) {
+  return new CustomEvent(NOTE_EVENTS.unsynced, { detail: { noteId, type } });
 }
+
+/** Sorts notes in descending order by timestamp. */
+export const sortNotesFn = (a: Note, b: Note): number => b.timestamp - a.timestamp;
+
+/** Sorts {@link state.notes} in descending order by timestamp. */
+export const sortStateNotes = (): Note[] => state.notes.sort(sortNotesFn);
 
 /** Finds note index within {@link state.notes}. */
 export function findNoteIndex(id?: string): number {
@@ -82,7 +87,7 @@ export function selectNote(id?: string): void {
 
 /**
  * Returns true if note is either {@link state.selectedNote}
- * or within {@link state.extraSelectedNotes}
+ * or within {@link state.extraSelectedNotes}.
  */
 export function isSelectedNote(note: Note): boolean {
   return (
@@ -100,9 +105,9 @@ export async function getAllNotes(): Promise<void> {
 
   state.notes = fetchedNotes;
 
-  sortNotes();
+  sortStateNotes();
 
-  if (isEmptyNote(fetchedNotes[0]) && fetchedNotes.length === 1) {
+  if (fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0])) {
     state.notes[0].timestamp = Date.now();
     // Clear these fields as whitespace-only can affect empty note checks
     state.notes[0].content.delta = '';
@@ -125,10 +130,16 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
 
   if (selectNextNote) {
     state.selectedNote = { ...state.notes[0] };
+
+    document.dispatchEvent(selectNoteEvent);
+    document.dispatchEvent(changeNoteEvent);
   }
 
-  document.dispatchEvent(changeNoteEvent);
-  document.dispatchEvent(unsyncedEvent);
+  if (syncState.unsyncedNoteIds.new === id) {
+    syncState.unsyncedNoteIds.add({ new: '' });
+  } else {
+    document.dispatchEvent(getUnsyncedEvent(id, 'deleted'));
+  }
 
   invoke('delete_note', { id }).then(autoPush).catch(console.error);
 }
@@ -145,7 +156,7 @@ export function deleteAllNotes(): void {
 }
 
 /** Creates an empty note. */
-export function newNote(): void {
+export function newNote(isButtonClick?: boolean): void {
   const foundNote = findNote(state.selectedNote.id);
 
   // Only update timestamp if selected note is empty
@@ -158,6 +169,11 @@ export function newNote(): void {
 
   state.notes.unshift(freshNote);
   state.selectedNote = { ...freshNote };
+
+  // Ensure fresh note isn't overwritten on pull
+  if (isButtonClick) {
+    syncState.unsyncedNoteIds.add({ new: freshNote.id });
+  }
 
   document.dispatchEvent(selectNoteEvent);
   document.dispatchEvent(changeNoteEvent);
@@ -177,9 +193,9 @@ export function editNote(delta: string, title: string, body: string): void {
 
   foundNote.content = { delta, title, body: body || '' };
 
-  sortNotes();
+  sortStateNotes();
 
-  document.dispatchEvent(unsyncedEvent);
+  document.dispatchEvent(getUnsyncedEvent(foundNote.id, 'edited'));
 
   invoke('edit_note', { note: { ...foundNote } })
     .then(autoPush)

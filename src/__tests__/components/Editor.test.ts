@@ -1,7 +1,8 @@
 import { mount } from '@vue/test-utils';
 
-import { getByTestId, setCrypto } from '../utils';
+import { copyObjArr, getByTestId, setCrypto } from '../utils';
 import { unixToDateTime } from '../../utils';
+import { NOTE_EVENTS } from '../../constant';
 import { mockTauriApi } from '../tauri';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
@@ -29,7 +30,7 @@ describe('Editor', () => {
 
     assert.isEmpty(editorBody.text());
 
-    await mockTauriApi(localNotes);
+    await mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
@@ -45,7 +46,7 @@ describe('Editor', () => {
     mount(Editor);
     expect(editSpy).not.toHaveBeenCalled();
 
-    document.dispatchEvent(new Event(n.noteEvents.change));
+    document.dispatchEvent(new Event(NOTE_EVENTS.change));
 
     expect(editSpy).toHaveBeenCalled();
   });

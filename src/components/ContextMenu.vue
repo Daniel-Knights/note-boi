@@ -1,6 +1,6 @@
 <template>
   <ul v-if="show" class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
-    <li @click="newNote" data-test-id="new">New Note</li>
+    <li @click="newNote(true)" data-test-id="new">New Note</li>
     <li
       :class="{ 'context-menu__item--disabled': comp?.hasOneEmptyNote }"
       @click="handleDeleteNote"
@@ -21,23 +21,6 @@
         </li>
       </ul>
     </li>
-    <li class="context-menu__has-sub-menu">
-      Auto-sync
-      <ul data-test-id="auto-sync">
-        <li
-          :class="{ 'context-menu__item--selected': syncState.autoSyncEnabled }"
-          @click="setAutoSync(true)"
-        >
-          On
-        </li>
-        <li
-          :class="{ 'context-menu__item--selected': !syncState.autoSyncEnabled }"
-          @click="setAutoSync(false)"
-        >
-          Off
-        </li>
-      </ul>
-    </li>
   </ul>
 </template>
 
@@ -51,7 +34,7 @@ import {
   deleteNote,
   deleteAllNotes,
 } from '../store/note';
-import { state as syncState, setAutoSync } from '../store/sync';
+import { STORAGE_KEYS } from '../constant';
 import { isEmptyNote } from '../utils';
 
 const clickedNoteId = ref<string | undefined>(undefined);
@@ -77,7 +60,7 @@ const comp = computed(() => {
 type Theme = 'Light' | 'Dark' | 'System';
 
 const colourThemes: Theme[] = ['Light', 'Dark', 'System'];
-const selectedTheme = ref(localStorage.getItem('theme') || 'System');
+const selectedTheme = ref(localStorage.getItem(STORAGE_KEYS.THEME) || 'System');
 
 document.body.classList.add(`theme--${selectedTheme.value.toLowerCase()}`);
 
@@ -85,7 +68,7 @@ function setTheme(theme: Theme) {
   document.body.classList.remove(`theme--${selectedTheme.value.toLowerCase()}`);
   document.body.classList.add(`theme--${theme.toLowerCase()}`);
 
-  localStorage.setItem('theme', theme);
+  localStorage.setItem(STORAGE_KEYS.THEME, theme);
 
   selectedTheme.value = theme;
 }

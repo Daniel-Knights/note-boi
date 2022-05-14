@@ -1,5 +1,4 @@
-import { mockIPC } from '@tauri-apps/api/mocks';
-import { mount, shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import { mockTauriApi, testTauriListen } from '../tauri';
 import { resetSyncStore, setCrypto } from '../utils';
@@ -75,49 +74,5 @@ describe('App', () => {
         assert.fail(`Listener for '${event}' not called`);
       }
     });
-  });
-
-  it('Triggers a confirm dialog if user has unsynced notes', () => {
-    let confirmDialogCalled = false;
-
-    mockIPC((cmd, args) => {
-      if (cmd !== 'tauri') return;
-
-      const message = args.message as Record<string, string>;
-
-      if (message.cmd === 'askDialog') {
-        confirmDialogCalled = true;
-      }
-    });
-
-    const wrapper = shallowMount(App);
-    const wrapperVm = wrapper.vm as unknown as {
-      confirmDialog: (cb: () => void) => void;
-    };
-    assert.isTrue(wrapper.isVisible());
-
-    assert.isEmpty(s.state.token);
-    assert.isFalse(s.state.hasUnsyncedNotes);
-
-    const mockConfirm = vi.fn(() => null);
-
-    wrapperVm.confirmDialog(mockConfirm);
-    expect(mockConfirm).toHaveBeenCalled();
-
-    s.state.token = 'token';
-
-    assert.isNotEmpty(s.state.token);
-    assert.isFalse(s.state.hasUnsyncedNotes);
-
-    vi.resetAllMocks();
-
-    wrapperVm.confirmDialog(mockConfirm);
-    expect(mockConfirm).toHaveBeenCalled();
-
-    s.state.hasUnsyncedNotes = true;
-
-    wrapperVm.confirmDialog(mockConfirm);
-
-    assert.isTrue(confirmDialogCalled);
   });
 });

@@ -16,7 +16,12 @@
         }"
         :data-note-id="note.id"
       >
-        <h2 class="note-menu__title">{{ note.content.title }}</h2>
+        <h2
+          class="note-menu__title"
+          :class="{ 'note-menu__title--empty': !note.content.title }"
+        >
+          {{ note.content.title }}
+        </h2>
         <p
           class="note-menu__body"
           :class="{ 'note-menu__body--empty': !note.content.body }"
@@ -27,7 +32,7 @@
     </ul>
     <ContextMenu :ev="contextMenuEv" />
     <button
-      @click="newNote"
+      @click="newNote(true)"
       class="note-menu__new-note button--default"
       data-test-id="new"
     >
@@ -53,6 +58,7 @@ import {
   findNote,
   isSelectedNote,
 } from '../store/note';
+import { STORAGE_KEYS } from '../constant';
 import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
@@ -61,7 +67,7 @@ const noteList = ref<HTMLElement | undefined>(undefined);
 const contextMenuEv = ref<MouseEvent | undefined>(undefined);
 const isDragging = ref(false);
 const listIsFocused = ref(true);
-const menuWidth = ref(localStorage.getItem('note-menu-width') || '260px');
+const menuWidth = ref(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH) || '260px');
 
 // Clear all extra notes and remove event listener
 function clearExtraNotes(ev?: MouseEvent) {
@@ -170,7 +176,7 @@ function handleDragBar() {
     'mouseup',
     () => {
       isDragging.value = false;
-      localStorage.setItem('note-menu-width', menuWidth.value);
+      localStorage.setItem(STORAGE_KEYS.MENU_WIDTH, menuWidth.value);
     },
     { once: true }
   );
@@ -277,7 +283,12 @@ $new-note-height: 50px;
 }
 
 .note-menu__title {
-  font-size: 18px;
+  &,
+  &--empty + .note-menu__body {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
 .note-menu__body {
@@ -290,6 +301,8 @@ $new-note-height: 50px;
 }
 
 .note-menu__new-note {
+  user-select: none;
+  -webkit-user-select: none;
   position: absolute;
   top: calc(100% - $new-note-height);
   padding-bottom: 8px;

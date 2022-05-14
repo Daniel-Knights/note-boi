@@ -67,6 +67,15 @@
     },
     "security": {
       "csp": "default-src 'self'"
-    }
+    },
+    "windows": [
+      {
+        "title": "NoteBoi",
+        "minHeight": 400,
+        "minWidth": 600,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ]
   }
 }

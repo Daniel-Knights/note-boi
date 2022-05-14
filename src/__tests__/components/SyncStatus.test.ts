@@ -109,13 +109,7 @@ describe('SyncStatus', async () => {
   );
 
   it('Listens to Tauri events', () => {
-    const listenResults = testTauriListen([
-      'push-notes',
-      'pull-notes',
-      'login',
-      'logout',
-      'signup',
-    ]);
+    const listenResults = testTauriListen(['push-notes', 'login', 'logout', 'signup']);
 
     const wrapper = mount(SyncStatus);
     assert.isTrue(wrapper.isVisible());
