@@ -19,7 +19,7 @@ import { state, editNote } from '../store/note';
 const editorBody = ref<HTMLDivElement | null>(null);
 
 let quillEditor: Quill | undefined;
-let isNoteSelect = false;
+let ignoreTextChange = false;
 
 document.addEventListener(NOTE_EVENTS.new, () => {
   // Timeout to wait for note to be created/selected
@@ -29,11 +29,13 @@ document.addEventListener(NOTE_EVENTS.new, () => {
   });
 });
 document.addEventListener(NOTE_EVENTS.change, () => {
+  ignoreTextChange = true;
+
   // @ts-expect-error TS won't accept the Delta type here
   quillEditor?.setContents(state.selectedNote.content.delta);
 });
 document.addEventListener(NOTE_EVENTS.select, () => {
-  isNoteSelect = true;
+  ignoreTextChange = true;
 
   quillEditor?.blur(); // Prevent focus bug after new note
 });
@@ -53,8 +55,8 @@ onMounted(() => {
   });
 
   quillEditor.on('text-change', () => {
-    if (isNoteSelect) {
-      isNoteSelect = false;
+    if (ignoreTextChange) {
+      ignoreTextChange = false;
       return;
     }
 

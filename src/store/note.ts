@@ -140,9 +140,9 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
     syncState.unsyncedNoteIds.add({ new: '' });
   } else {
     document.dispatchEvent(getUnsyncedEvent(id, 'deleted'));
-  }
 
-  invoke('delete_note', { id }).then(autoPush).catch(console.error);
+    invoke('delete_note', { id }).then(autoPush).catch(console.error);
+  }
 }
 
 /** Deletes {@link state.selectedNote} and all notes in {@link state.extraSelectedNotes}. */

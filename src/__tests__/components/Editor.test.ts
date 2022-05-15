@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils';
 
 import { copyObjArr, getByTestId, setCrypto } from '../utils';
 import { unixToDateTime } from '../../utils';
-import { NOTE_EVENTS } from '../../constant';
 import { mockTauriApi } from '../tauri';
 import * as n from '../../store/note';
 import localNotes from '../notes.json';
@@ -38,16 +37,5 @@ describe('Editor', () => {
     n.selectNote(localNotes[1].id);
 
     assert.include(editorBody.text(), localNotes[1].content.body);
-  });
-
-  it('Edits a note on text-change', () => {
-    const editSpy = vi.spyOn(n, 'editNote');
-
-    mount(Editor);
-    expect(editSpy).not.toHaveBeenCalled();
-
-    document.dispatchEvent(new Event(NOTE_EVENTS.change));
-
-    expect(editSpy).toHaveBeenCalled();
   });
 });
