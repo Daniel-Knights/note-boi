@@ -38,12 +38,11 @@ describe('Note store', () => {
       Math.floor(emptyNote.timestamp / 1000),
       Math.floor(timestamp / 1000)
     );
-    assert.strictEqual(JSON.stringify(emptyNote.content.delta), '{}');
+    assert.deepEqual(emptyNote.content.delta, {});
     assert.strictEqual(emptyNote.content.title, '');
     assert.strictEqual(emptyNote.content.body, '');
   });
 
-  // Runs here to ensure subsequent tests have a populated store
   describe('getAllNotes', () => {
     it('with undefined notes', async () => {
       mockTauriApi(undefined);
