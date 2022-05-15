@@ -184,7 +184,7 @@ export function newNote(isButtonClick?: boolean): void {
 }
 
 /** Edits note body on Quill `text-change`. */
-export function editNote(delta: Delta, title: string, body: string): void {
+export function editNote(delta: Partial<Delta>, title: string, body: string): void {
   const foundNote = findNote(state.selectedNote.id);
   if (!foundNote || delta === foundNote.content.delta) return;
 

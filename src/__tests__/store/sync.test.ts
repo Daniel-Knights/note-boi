@@ -1,5 +1,4 @@
 import { mount, shallowMount } from '@vue/test-utils';
-import type Delta from 'quill-delta';
 
 import {
   awaitSyncLoad,
@@ -415,7 +414,7 @@ describe('Sync', () => {
       await s.login();
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
-      n.editNote({} as Delta, 'title', 'body');
+      n.editNote({}, 'title', 'body');
       await s.push(); // Manually push, as auto push timeout doesn't run
 
       await awaitSyncLoad();
@@ -455,7 +454,7 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
 
       const firstCachedNote = { ...n.state.selectedNote };
-      n.editNote({} as Delta, 'title', 'body');
+      n.editNote({}, 'title', 'body');
 
       assert.isTrue(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.strictEqual(
@@ -481,7 +480,7 @@ describe('Sync', () => {
 
       n.selectNote(n.state.notes[1].id);
       const secondCachedNote = { ...n.state.selectedNote };
-      n.editNote({} as Delta, 'title2', 'body2');
+      n.editNote({}, 'title2', 'body2');
 
       assert.isFalse(s.state.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.isTrue(s.state.unsyncedNoteIds.edited.has(secondCachedNote.id));
@@ -499,7 +498,7 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.strictEqual(n.state.selectedNote.id, secondCachedNote.id);
       assert.deepEqual(n.state.selectedNote.content, {
-        delta: {} as Delta,
+        delta: {},
         title: 'title2',
         body: 'body2',
       });
@@ -580,7 +579,7 @@ describe('Sync', () => {
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
       assert.isEmpty(s.state.unsyncedNoteIds.deleted);
 
-      n.editNote({} as Delta, 'title', 'body');
+      n.editNote({}, 'title', 'body');
 
       assert.isFalse(isEmptyNote(n.state.notes[0]));
       assert.isFalse(isEmptyNote(n.state.selectedNote));

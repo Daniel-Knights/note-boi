@@ -1,5 +1,3 @@
-import type Delta from 'quill-delta';
-
 import { copyObjArr, resetNoteStore, setCrypto, UUID_REGEX } from '../utils';
 import { mockTauriApi } from '../tauri';
 import { isEmptyNote } from '../../utils';
@@ -220,7 +218,7 @@ describe('Note store', () => {
     await n.getAllNotes();
     const currentSelectedNote = { ...n.state.selectedNote };
 
-    n.editNote({ ops: [{ insert: 'Title\nBody' }] } as Delta, 'Title', 'Body');
+    n.editNote({ ops: [{ insert: 'Title\nBody' }] }, 'Title', 'Body');
 
     assert.notDeepEqual(n.state.selectedNote, currentSelectedNote);
     assert.notDeepEqual(n.state.selectedNote.content, currentSelectedNote.content);
