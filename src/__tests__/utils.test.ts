@@ -20,7 +20,7 @@ describe('Utils', () => {
     assert.isTrue(isEmptyNote(note));
     note.timestamp = 1650003060221;
     assert.isTrue(isEmptyNote(note));
-    note.content.delta = 'Delta';
+    note.content.delta = {};
     assert.isTrue(isEmptyNote(note));
     note.content.body = 'Body';
     assert.isFalse(isEmptyNote(note));

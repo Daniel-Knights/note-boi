@@ -82,7 +82,7 @@ export function isNote(note: unknown): note is n.Note {
     typeof nt.timestamp === 'number' &&
     'content' in nt &&
     'delta' in nt.content &&
-    typeof nt.content.delta === 'string' &&
+    typeof nt.content.delta === 'object' &&
     'title' in nt.content &&
     typeof nt.content.title === 'string' &&
     'body' in nt.content &&

@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import Quill from 'quill';
-import punycode from 'punycode/';
+import type Delta from 'quill-delta';
 
 import { unixToDateTime } from '../utils';
 import { NOTE_EVENTS } from '../constant';
@@ -29,11 +29,8 @@ document.addEventListener(NOTE_EVENTS.new, () => {
   });
 });
 document.addEventListener(NOTE_EVENTS.change, () => {
-  const parsedNoteContent = JSON.parse(
-    punycode.decode(state.selectedNote.content.delta) || '[]'
-  );
-
-  quillEditor?.setContents(parsedNoteContent);
+  // @ts-expect-error TS won't accept the Delta type here
+  quillEditor?.setContents(state.selectedNote.content.delta);
 });
 document.addEventListener(NOTE_EVENTS.select, () => {
   isNoteSelect = true;
@@ -65,7 +62,7 @@ onMounted(() => {
     const delta = quillEditor.getContents();
     const [title, body] = quillEditor.getText().split(/\n+/);
 
-    editNote(punycode.encode(JSON.stringify(delta)), title, body);
+    editNote(delta as Delta, title, body);
   });
 });
 </script>

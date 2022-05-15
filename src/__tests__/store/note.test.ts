@@ -38,12 +38,11 @@ describe('Note store', () => {
       Math.floor(emptyNote.timestamp / 1000),
       Math.floor(timestamp / 1000)
     );
-    assert.strictEqual(emptyNote.content.delta, '');
+    assert.deepEqual(emptyNote.content.delta, {});
     assert.strictEqual(emptyNote.content.title, '');
     assert.strictEqual(emptyNote.content.body, '');
   });
 
-  // Runs here to ensure subsequent tests have a populated store
   describe('getAllNotes', () => {
     it('with undefined notes', async () => {
       mockTauriApi(undefined);
@@ -218,7 +217,7 @@ describe('Note store', () => {
     await n.getAllNotes();
     const currentSelectedNote = { ...n.state.selectedNote };
 
-    n.editNote('{"ops":[{"insert":"Title\nBody"}]}-', 'Title', 'Body');
+    n.editNote({ ops: [{ insert: 'Title\nBody' }] }, 'Title', 'Body');
 
     assert.notDeepEqual(n.state.selectedNote, currentSelectedNote);
     assert.notDeepEqual(n.state.selectedNote.content, currentSelectedNote.content);
