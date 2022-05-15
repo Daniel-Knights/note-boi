@@ -1,24 +1,12 @@
 use serde::{Deserialize, Serialize};
-use std::{fs, io::Write, path::PathBuf};
+use serde_json::Value;
+use std::{collections::HashMap, fs, io::Write, path::PathBuf};
 
 const NOTE_DIR: &str = ".notes";
 
 #[derive(Serialize, Deserialize, Debug)]
-struct DeltaOp {
-  insert: Option<String>,
-  delete: Option<String>,
-  retain: Option<String>,
-  attributes: Option<String>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-struct Delta {
-  ops: Option<Vec<DeltaOp>>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 struct NoteContent {
-  delta: Delta,
+  delta: HashMap<String, Value>,
   title: String,
   body: String,
 }

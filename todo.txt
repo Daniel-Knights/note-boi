@@ -1,6 +1,7 @@
 *Before release*
 Updater
   Prevent tests in release action
+Delete account
 README
 
 *Whenever*
