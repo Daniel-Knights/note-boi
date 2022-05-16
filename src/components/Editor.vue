@@ -46,7 +46,7 @@ onMounted(() => {
       toolbar: [
         [{ header: [1, 2, 3, false] }],
         ['bold', 'italic', 'underline', 'strike'],
-        [{ list: 'ordered' }, { list: 'bullet' }, 'code-block'],
+        [{ list: 'ordered' }, { list: 'bullet' }, 'link', 'code-block'],
         ['clean'],
       ],
     },

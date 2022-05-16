@@ -58,9 +58,6 @@
           "https://note-boi-server.herokuapp.com/api/*"
         ]
       },
-      "dialog": {
-        "ask": true
-      },
       "window": {
         "close": true
       }
