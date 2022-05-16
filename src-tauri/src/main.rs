@@ -42,18 +42,18 @@ fn main() {
         menu::toggle_sync_items(app);
       }
 
-      let handle = app.handle();
+      // let handle = app.handle();
 
-      tauri::async_runtime::spawn(async move {
-        match tauri::updater::builder(handle).check().await {
-          Ok(update) => {
-            update.download_and_install().await.unwrap();
-          }
-          Err(error) => {
-            println!("Error: {}", error);
-          }
-        }
-      });
+      // tauri::async_runtime::spawn(async move {
+      //   match app.updater().check().await {
+      //     Ok(update) => {
+      //       update.download_and_install().await.unwrap();
+      //     }
+      //     Err(error) => {
+      //       println!("Error: {}", error);
+      //     }
+      //   }
+      // });
 
       Ok(())
     })
