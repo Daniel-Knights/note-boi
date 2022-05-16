@@ -59,7 +59,9 @@ for (const { name, browser_download_url } of release.assets) {
 }
 
 const updateFile = release.assets.find((asset) => asset.name === UPDATE_FILE_NAME);
-await octokit.rest.repos.deleteReleaseAsset({ ...options, asset_id: updateFile.id });
+if (updateFile) {
+  await octokit.rest.repos.deleteReleaseAsset({ ...options, asset_id: updateFile.id });
+}
 
 await octokit.rest.repos.uploadReleaseAsset({
   ...options,
