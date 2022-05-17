@@ -13,6 +13,7 @@ const updateData = {
     darwin: { signature: '', url: '' },
     'linux-x86_64': { signature: '', url: '' },
     'windows-x86_64': { signature: '', url: '' },
+    'darwin-x86_64': { signature: '', url: '' },
   },
 };
 
@@ -42,10 +43,12 @@ for (const { name, browser_download_url } of release.assets) {
     updateData.platforms['windows-x86_64'].signature = signature;
   } else if (name.endsWith('.app.tar.gz')) {
     updateData.platforms.darwin.url = browser_download_url;
+    updateData.platforms['darwin-x86_64'].url = browser_download_url;
   } else if (name.endsWith('.app.tar.gz.sig')) {
     const signature = await getSignature(browser_download_url);
 
     updateData.platforms.darwin.signature = signature;
+    updateData.platforms['darwin-x86_64'].signature = signature;
   } else if (name.endsWith('.AppImage.tar.gz')) {
     updateData.platforms.linux.url = browser_download_url;
     updateData.platforms['linux-x86_64'].url = browser_download_url;
