@@ -1,5 +1,4 @@
 /* eslint-disable no-restricted-syntax, no-await-in-loop, import/no-extraneous-dependencies */
-
 import fetch from 'node-fetch';
 import { getOctokit, context } from '@actions/github';
 
