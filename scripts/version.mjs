@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
@@ -9,3 +10,7 @@ const tauriConf = JSON.parse(fs.readFileSync(tauriConfPath, 'utf8'));
 tauriConf.package.version = packageData.version;
 
 fs.writeFileSync(tauriConfPath, `${JSON.stringify(tauriConf, null, 2)}\n`);
+
+execSync(
+  `git add . && git commit -m "ci: bump tauri version to v${packageData.version}"`
+);
