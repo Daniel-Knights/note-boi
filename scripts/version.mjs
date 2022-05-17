@@ -32,5 +32,5 @@ tauriConf.package.version = `${versionSections[0]}.${versionSections[1]}.${versi
 fs.writeFileSync(tauriConfPath, `${JSON.stringify(tauriConf, null, 2)}\n`);
 
 execSync(
-  `git add . && git commit -m "ci: bump tauri version to v${packageData.version}"`
+  `git add . && git commit -m "ci: bump tauri version to v${tauriConf.package.version}"`
 );
