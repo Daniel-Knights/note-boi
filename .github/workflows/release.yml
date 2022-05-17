@@ -43,6 +43,7 @@ jobs:
         with:
           tagName: v__VERSION__
           releaseName: v__VERSION__
+          includeDebug: true
   update:
     needs: release
     runs-on: macos-latest
