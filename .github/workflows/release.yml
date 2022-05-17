@@ -35,7 +35,7 @@ jobs:
         run: npm i
 
       - name: Build Tauri
-        uses: tauri-apps/tauri-action@v0.2
+        uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
@@ -43,7 +43,6 @@ jobs:
         with:
           tagName: v__VERSION__
           releaseName: v__VERSION__
-          includeDebug: true
   update:
     needs: release
     runs-on: macos-latest
