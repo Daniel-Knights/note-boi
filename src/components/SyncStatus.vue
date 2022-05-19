@@ -89,13 +89,11 @@ tauriListen('signup', () => {
 <style lang="scss" scoped>
 #sync-status {
   position: absolute;
+  right: v.$utility-menu-right;
   bottom: 12px;
-  right: v.$sync-icon-right;
 
-  &,
-  svg,
-  .sync-status__loading-spinner {
-    @include v.equal-dimensions(v.$sync-icon-dimensions);
+  > * {
+    @include v.equal-dimensions(v.$utility-menu-width);
   }
 }
 

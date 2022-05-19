@@ -10,11 +10,4 @@ import { state, logout } from '../store/sync';
 import LogoutIcon from './svg/LogoutIcon.vue';
 </script>
 
-<style lang="scss" scoped>
-#logout {
-  position: absolute;
-  right: v.$sync-icon-right;
-  top: 48px;
-  @include v.equal-dimensions(v.$sync-icon-dimensions);
-}
-</style>
+<style lang="scss" scoped></style>

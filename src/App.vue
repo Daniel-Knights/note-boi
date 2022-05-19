@@ -1,7 +1,7 @@
 <template>
   <NoteMenu />
   <Editor />
-  <Logout />
+  <UtilityMenu />
   <SyncStatus @popup-auth="handlePopupAuthEvent" @popup-error="popup.error = true" />
   <PopupSyncAuth v-if="popup.auth" @close="closeSyncPopup('auth')" />
   <PopupSyncError v-else-if="popup.error" @close="closeSyncPopup('error')" />
@@ -21,13 +21,14 @@ import Editor from './components/Editor.vue';
 import SyncStatus from './components/SyncStatus.vue';
 import PopupSyncAuth from './components/PopupSyncAuth.vue';
 import PopupSyncError from './components/PopupSyncError.vue';
-import Logout from './components/Logout.vue';
+import UtilityMenu from './components/UtilityMenu.vue';
 
 getAllNotes();
 
 const popup = reactive({
   auth: false,
   error: false,
+  settings: false,
 });
 
 function handlePopupAuthEvent() {
@@ -55,11 +56,6 @@ async function exitApp(cb: () => void) {
   cb();
 }
 
-tauriWindow.appWindow.listen('tauri://close-requested', () => exitApp(exit));
-tauriListen('reload', () => exitApp(relaunch));
-tauriListen('new-note', () => newNote(false));
-tauriListen('delete-note', deleteAllNotes);
-
 async function handleUpdate() {
   const updateAvailable = await updater.checkUpdate();
   if (!updateAvailable.shouldUpdate) return;
@@ -75,6 +71,11 @@ async function handleUpdate() {
 }
 
 handleUpdate();
+
+tauriWindow.appWindow.listen('tauri://close-requested', () => exitApp(exit));
+tauriListen('reload', () => exitApp(relaunch));
+tauriListen('new-note', () => newNote(false));
+tauriListen('delete-note', deleteAllNotes);
 </script>
 
 <style lang="scss">

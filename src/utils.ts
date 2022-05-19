@@ -47,7 +47,8 @@ export function tauriListen(
     | 'push-notes'
     | 'login'
     | 'logout'
-    | 'signup',
+    | 'signup'
+    | `tauri://${string}`,
   cb: EventCallback<unknown>
 ): void {
   event.listen(id, cb);
