@@ -4,10 +4,10 @@ import { getByTestId, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
 import * as s from '../../store/sync';
 
-import SyncError from '../../components/SyncError.vue';
+import PopupSyncError from '../../components/PopupSyncError.vue';
 
-function mountSyncError() {
-  return mount(SyncError, {
+function mountPopupSyncError() {
+  return mount(PopupSyncError, {
     global: {
       stubs: { teleport: true },
     },
@@ -16,14 +16,14 @@ function mountSyncError() {
 
 beforeAll(setCrypto);
 
-describe('SyncError', async () => {
+describe('PopupSyncError', async () => {
   const errorMessage = 'I am a sync error';
   s.state.error.message = errorMessage;
 
   await mockTauriApi([]);
 
   it('Mounts', () => {
-    const wrapper = mountSyncError();
+    const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
     const errorMessageEl = getByTestId(wrapper, 'error-message');
@@ -33,7 +33,7 @@ describe('SyncError', async () => {
   it('Retries push', async () => {
     const pushSpy = vi.spyOn(s, 'push');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
-    const wrapper = mountSyncError();
+    const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
     s.state.error.type = s.ErrorType.Push;
@@ -49,7 +49,7 @@ describe('SyncError', async () => {
   it('Retries pull', async () => {
     const pullSpy = vi.spyOn(s, 'pull');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
-    const wrapper = mountSyncError();
+    const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
     s.state.error.type = s.ErrorType.Pull;
@@ -65,7 +65,7 @@ describe('SyncError', async () => {
   it('Retries logout', async () => {
     const logoutSpy = vi.spyOn(s, 'logout');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
-    const wrapper = mountSyncError();
+    const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
     s.state.error.type = s.ErrorType.Logout;

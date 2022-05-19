@@ -3,8 +3,8 @@
   <Editor />
   <Logout />
   <SyncStatus @popup-auth="handlePopupAuthEvent" @popup-error="popup.error = true" />
-  <SyncAuth v-if="popup.auth" @close="closeSyncPopup('auth')" />
-  <SyncError v-if="popup.error" @close="closeSyncPopup('error')" />
+  <PopupSyncAuth v-if="popup.auth" @close="closeSyncPopup('auth')" />
+  <PopupSyncError v-else-if="popup.error" @close="closeSyncPopup('error')" />
 </template>
 
 <script lang="ts" setup>
@@ -19,8 +19,8 @@ import { tauriListen } from './utils';
 import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
 import SyncStatus from './components/SyncStatus.vue';
-import SyncAuth from './components/SyncAuth.vue';
-import SyncError from './components/SyncError.vue';
+import PopupSyncAuth from './components/PopupSyncAuth.vue';
+import PopupSyncError from './components/PopupSyncError.vue';
 import Logout from './components/Logout.vue';
 
 getAllNotes();

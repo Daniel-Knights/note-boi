@@ -3,11 +3,11 @@ import { mount } from '@vue/test-utils';
 import { findByTestId, getByTestId, resetSyncStore, setCrypto } from '../utils';
 import * as s from '../../store/sync';
 
-import SyncAuth from '../../components/SyncAuth.vue';
+import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
 import { mockTauriApi } from '../tauri';
 
-function mountSyncAuth() {
-  return mount(SyncAuth, {
+function mountPopupSyncAuth() {
+  return mount(PopupSyncAuth, {
     global: {
       stubs: { teleport: true },
     },
@@ -17,15 +17,15 @@ function mountSyncAuth() {
 beforeAll(setCrypto);
 afterEach(resetSyncStore);
 
-describe('SyncAuth', () => {
+describe('PopupSyncAuth', () => {
   it('Mounts', () => {
-    const wrapper = mountSyncAuth();
+    const wrapper = mountPopupSyncAuth();
     assert.isTrue(wrapper.isVisible());
   });
 
   it('Switches between login/signup', async () => {
     const resetErrorSpy = vi.spyOn(s, 'resetError');
-    const wrapper = mountSyncAuth();
+    const wrapper = mountPopupSyncAuth();
     assert.isTrue(wrapper.isVisible());
 
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Login');
@@ -43,7 +43,7 @@ describe('SyncAuth', () => {
 
   describe('Validates fields', () => {
     it('On login', async () => {
-      const wrapper = mountSyncAuth();
+      const wrapper = mountPopupSyncAuth();
       const wrapperVm = wrapper.vm as unknown as {
         confirmPassword: string;
         validation: {
@@ -100,7 +100,7 @@ describe('SyncAuth', () => {
     });
 
     it('On signup', async () => {
-      const wrapper = mountSyncAuth();
+      const wrapper = mountPopupSyncAuth();
       const wrapperVm = wrapper.vm as unknown as {
         confirmPassword: string;
         validation: {
