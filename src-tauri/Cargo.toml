@@ -18,7 +18,7 @@ tauri-build = { version = "1.0.0-rc", features = [] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.0.0-rc", features = ["http-request", "shell-open", "updater", "window-close"] }
+tauri = { version = "1.0.0-rc", features = ["dialog-ask", "http-request", "process-exit", "process-relaunch", "shell-open", "updater", "window-close"] }
 
 [features]
 default = [ "custom-protocol" ]

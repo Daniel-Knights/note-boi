@@ -42,21 +42,6 @@ fn main() {
         menu::toggle_sync_items(app);
       }
 
-      let app_updater = app.updater();
-
-      tauri::async_runtime::spawn(async move {
-        match app_updater.check().await {
-          Ok(update) => {
-            if update.is_update_available() {
-              update.download_and_install().await.unwrap();
-            }
-          }
-          Err(error) => {
-            println!("Error: {}", error);
-          }
-        }
-      });
-
       Ok(())
     })
     .run(tauri::generate_context!())
