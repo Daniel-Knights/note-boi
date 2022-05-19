@@ -95,6 +95,14 @@ body {
   background-color: var(--colour__primary);
 }
 
+#app {
+  display: flex;
+  margin: 0;
+  @include v.equal-dimensions(100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, 'Helvetica Neue', sans-serif;
+}
+
 button,
 input[type='submit'] {
   -webkit-appearance: none;
@@ -121,13 +129,5 @@ textarea {
   padding: 5px;
   border: 1px solid var(--colour__primary);
   border-radius: 0;
-}
-
-#app {
-  display: flex;
-  margin: 0;
-  @include v.equal-dimensions(100%);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
-    Cantarell, 'Helvetica Neue', sans-serif;
 }
 </style>

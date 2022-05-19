@@ -83,8 +83,6 @@ onMounted(() => {
     }
   }
 
-  $spacing-x: 8px;
-
   .editor__date {
     user-select: none;
     -webkit-user-select: none;
@@ -96,10 +94,13 @@ onMounted(() => {
     border-bottom: 1px solid var(--colour__interactive);
   }
 
+  $spacing-x: 8px;
+
   .ql-editor {
-    margin: 12px $spacing-x 0;
     $utility-menu-padding: (v.$utility-menu-right - $spacing-x) * 2;
     $padding-right: v.$utility-menu-width + $utility-menu-padding;
+
+    margin: 12px $spacing-x 0;
     padding: 0 $padding-right 12px 0;
   }
 
