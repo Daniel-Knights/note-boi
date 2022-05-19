@@ -57,14 +57,12 @@ const comp = computed(() => {
   };
 });
 
-type Theme = 'Light' | 'Dark' | 'System';
-
-const colourThemes: Theme[] = ['Light', 'Dark', 'System'];
+const colourThemes = ['Light', 'Dark', 'System'] as const;
 const selectedTheme = ref(localStorage.getItem(STORAGE_KEYS.THEME) || 'System');
 
 document.body.classList.add(`theme--${selectedTheme.value.toLowerCase()}`);
 
-function setTheme(theme: Theme) {
+function setTheme(theme: typeof colourThemes[number]) {
   document.body.classList.remove(`theme--${selectedTheme.value.toLowerCase()}`);
   document.body.classList.add(`theme--${theme.toLowerCase()}`);
 
