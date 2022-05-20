@@ -1,11 +1,11 @@
 <template>
-  <ul v-if="show" class="drop-menu">
+  <ul class="drop-menu">
     <DropMenuItem :items="items" />
   </ul>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 
 import { DropMenuItemData } from './types';
 
@@ -13,10 +13,10 @@ import DropMenuItem from './DropMenuItem.vue';
 
 defineProps<{ items: DropMenuItemData[] }>();
 
-const show = ref(true);
+const emit = defineEmits(['close']);
 
 function hide() {
-  show.value = false;
+  emit('close');
 }
 
 onMounted(() => {
