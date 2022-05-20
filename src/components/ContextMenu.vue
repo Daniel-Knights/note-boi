@@ -1,27 +1,10 @@
 <template>
-  <ul v-if="show" class="context-menu" :style="{ top: top + 'px', left: left + 'px' }">
-    <li @click="newNote(true)" data-test-id="new">New Note</li>
-    <li
-      :class="{ 'context-menu__item--disabled': comp?.hasOneEmptyNote }"
-      @click="handleDeleteNote"
-      data-test-id="delete"
-    >
-      Delete Note
-    </li>
-    <li class="context-menu__has-sub-menu">
-      Theme
-      <ul data-test-id="theme">
-        <li
-          v-for="theme in colourThemes"
-          :key="theme"
-          :class="{ 'context-menu__item--selected': theme === selectedTheme }"
-          @click="setTheme(theme)"
-        >
-          {{ theme }}
-        </li>
-      </ul>
-    </li>
-  </ul>
+  <DropMenu
+    v-if="show"
+    :style="{ top: top + 'px', left: left + 'px' }"
+    :items="menuItems"
+  >
+  </DropMenu>
 </template>
 
 <script lang="ts" setup>
@@ -33,14 +16,13 @@ import {
   newNote,
   deleteNote,
   deleteAllNotes,
+  state,
 } from '../store/note';
 import { STORAGE_KEYS } from '../constant';
 import { isEmptyNote } from '../utils';
+import { DropMenuItemData } from './types';
 
-const clickedNoteId = ref<string | undefined>(undefined);
-const show = ref(false);
-const top = ref(0);
-const left = ref(0);
+import DropMenu from './DropMenu.vue';
 
 const props = defineProps({
   ev: {
@@ -49,16 +31,44 @@ const props = defineProps({
   },
 });
 
+const clickedNoteId = ref<string | undefined>(undefined);
+const show = ref(false);
+const top = ref(0);
+const left = ref(0);
+
 const comp = computed(() => {
   const foundNote = findNote(clickedNoteId.value);
 
   return {
-    hasOneEmptyNote: isEmptyNote(foundNote),
+    hasOneEmptyNote: state.notes.length === 1 && isEmptyNote(foundNote),
   };
 });
 
 const colourThemes = ['Light', 'Dark', 'System'] as const;
 const selectedTheme = ref(localStorage.getItem(STORAGE_KEYS.THEME) || 'System');
+const menuItems = ref<DropMenuItemData[]>([
+  {
+    label: 'New Note',
+    clickHandler: () => newNote(true),
+    testId: 'new',
+  },
+  {
+    label: 'Delete Note',
+    clickHandler: handleDeleteNote,
+    disabled: comp.value.hasOneEmptyNote,
+    testId: 'delete',
+  },
+  {
+    label: 'Theme',
+    subMenu: colourThemes.map((theme) => {
+      return {
+        label: theme,
+        clickHandler: () => setTheme(theme),
+        selected: theme === selectedTheme.value,
+      };
+    }),
+  },
+]);
 
 document.body.classList.add(`theme--${selectedTheme.value.toLowerCase()}`);
 
@@ -81,11 +91,6 @@ function handleDeleteNote() {
   }
 }
 
-function hide() {
-  show.value = false;
-  document.removeEventListener('click', hide);
-}
-
 watch(props, () => {
   if (!props.ev) return;
 
@@ -96,55 +101,7 @@ watch(props, () => {
   top.value = props.ev.clientY;
   left.value = props.ev.clientX;
   clickedNoteId.value = closestNote?.dataset.noteId;
-
-  document.addEventListener('click', hide);
 });
 </script>
 
-<style lang="scss" scoped>
-$list-padding: 3px;
-$list-bg-colour: var(--colour__interactive);
-
-ul {
-  position: absolute;
-  width: 133px;
-  color: var(--colour__white);
-  background-color: $list-bg-colour;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  z-index: 10;
-}
-
-li {
-  cursor: pointer;
-  padding: 0.5em 1em;
-  white-space: nowrap;
-  border: $list-padding solid $list-bg-colour;
-
-  &:hover {
-    background-color: var(--colour__tertiary);
-  }
-}
-
-.context-menu__item--disabled {
-  pointer-events: none;
-  color: var(--colour__tertiary);
-}
-
-.context-menu__has-sub-menu {
-  position: relative;
-
-  > ul {
-    display: none;
-    top: -$list-padding;
-    left: calc(100% + $list-padding);
-  }
-
-  &:hover > ul {
-    display: block;
-  }
-}
-
-.context-menu__item--selected {
-  background-color: var(--colour__tertiary);
-}
-</style>
+<style lang="scss" scoped></style>
