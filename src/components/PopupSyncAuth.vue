@@ -56,7 +56,7 @@ import Popup from './Popup.vue';
 
 const emit = defineEmits(['close']);
 
-const usernameInput = ref<HTMLInputElement | null>(null);
+const usernameInput = ref<HTMLInputElement>();
 const confirmPassword = ref('');
 
 const validation = reactive({

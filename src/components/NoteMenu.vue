@@ -63,8 +63,8 @@ import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
 
-const noteList = ref<HTMLElement | undefined>(undefined);
-const contextMenuEv = ref<MouseEvent | undefined>(undefined);
+const noteList = ref<HTMLElement>();
+const contextMenuEv = ref<MouseEvent>();
 const isDragging = ref(false);
 const listIsFocused = ref(true);
 const menuWidth = ref(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH) || '260px');

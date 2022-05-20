@@ -41,7 +41,7 @@ const props = defineProps({
   },
 });
 
-const clickedNoteId = ref<string | undefined>(undefined);
+const clickedNoteId = ref<string>();
 const show = ref(false);
 const top = ref(0);
 const left = ref(0);

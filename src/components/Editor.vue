@@ -16,7 +16,7 @@ import { unixToDateTime } from '../utils';
 import { NOTE_EVENTS } from '../constant';
 import { state, editNote } from '../store/note';
 
-const editorBody = ref<HTMLDivElement | null>(null);
+const editorBody = ref<HTMLDivElement>();
 
 let quillEditor: Quill | undefined;
 let ignoreTextChange = false;
