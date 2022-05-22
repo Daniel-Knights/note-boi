@@ -6,11 +6,12 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { dialog, updater, window as tauriWindow } from '@tauri-apps/api';
+import { window as tauriWindow } from '@tauri-apps/api';
 import { exit, relaunch } from '@tauri-apps/api/process';
 
 import { getAllNotes, newNote, deleteAllNotes } from './store/note';
+import { ErrorType, push, state } from './store/sync';
+import { handleUpdate } from './store/update';
 import { openedPopup, PopupType } from './store/popup';
 import { tauriListen } from './utils';
 
@@ -34,26 +35,12 @@ async function exitApp(cb: () => void) {
   cb();
 }
 
-async function handleUpdate() {
-  const updateAvailable = await updater.checkUpdate();
-  if (!updateAvailable.shouldUpdate) return;
-
-  const shouldInstall = await dialog.ask(
-    'A new version of NoteBoi is available.\nDo you want to update now?',
-    'Update available'
-  );
-  if (!shouldInstall) return;
-
-  await updater.installUpdate();
-  await relaunch();
-}
-
-handleUpdate();
-
 tauriWindow.appWindow.listen('tauri://close-requested', () => exitApp(exit));
 tauriListen('reload', () => exitApp(relaunch));
 tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteAllNotes);
+
+handleUpdate();
 </script>
 
 <style lang="scss">

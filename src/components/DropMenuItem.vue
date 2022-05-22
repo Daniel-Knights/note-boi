@@ -37,7 +37,7 @@ defineProps<{ items: DropMenuItemData[] }>();
   > ul {
     display: none;
     top: -(v.$drop-menu-padding);
-    left: calc(100% + v.$drop-menu-padding);
+    right: calc(100% + v.$drop-menu-padding);
   }
 
   &:hover > ul {

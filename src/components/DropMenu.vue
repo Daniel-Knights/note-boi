@@ -31,7 +31,7 @@ $list-bg-colour: var(--colour__interactive);
   &,
   ul {
     position: absolute;
-    width: 133px;
+    min-width: 133px;
     color: var(--colour__white);
     background-color: $list-bg-colour;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);

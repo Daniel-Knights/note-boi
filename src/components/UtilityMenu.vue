@@ -19,7 +19,7 @@ import Settings from './Settings.vue';
   padding-top: 14px;
   height: calc(100% - v.$editor-date-height);
 
-  > * {
+  button {
     @include v.equal-dimensions(v.$utility-menu-width);
 
     + * {
