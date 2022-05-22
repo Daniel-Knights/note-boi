@@ -2,9 +2,7 @@
   <NoteMenu />
   <Editor />
   <UtilityMenu />
-  <SyncStatus @popup-auth="handlePopupAuthEvent" @popup-error="popup.error = true" />
-  <PopupSyncAuth v-if="popup.auth" @close="closeSyncPopup('auth')" />
-  <PopupSyncError v-else-if="popup.error" @close="closeSyncPopup('error')" />
+  <SyncStatus />
 </template>
 
 <script lang="ts" setup>
@@ -13,42 +11,22 @@ import { dialog, updater, window as tauriWindow } from '@tauri-apps/api';
 import { exit, relaunch } from '@tauri-apps/api/process';
 
 import { getAllNotes, newNote, deleteAllNotes } from './store/note';
-import { ErrorType, push, resetError, state } from './store/sync';
+import { openedPopup, PopupType } from './store/popup';
 import { tauriListen } from './utils';
 
 import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
 import SyncStatus from './components/SyncStatus.vue';
-import PopupSyncAuth from './components/PopupSyncAuth.vue';
-import PopupSyncError from './components/PopupSyncError.vue';
 import UtilityMenu from './components/UtilityMenu.vue';
 
 getAllNotes();
-
-const popup = reactive({
-  auth: false,
-  error: false,
-  settings: false,
-});
-
-function handlePopupAuthEvent() {
-  // Prevent bug where event.emit triggers event.listen
-  if (!state.token) {
-    popup.auth = true;
-  }
-}
-
-function closeSyncPopup(field: keyof typeof popup) {
-  popup[field] = false;
-  resetError();
-}
 
 async function exitApp(cb: () => void) {
   if (state.unsyncedNoteIds.size > 0) {
     await push();
 
     if (state.error.type === ErrorType.Push) {
-      popup.error = true;
+      openedPopup.value = PopupType.Error;
       return;
     }
   }
