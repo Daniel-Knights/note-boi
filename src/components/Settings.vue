@@ -5,6 +5,7 @@
     </button>
     <DropMenu v-if="show" @close="show = false" :items="menuItems" />
   </div>
+  <PopupInfo v-if="openedPopup === PopupType.Info" @close="openedPopup = undefined" />
 </template>
 
 <script lang="ts" setup>
@@ -12,10 +13,12 @@ import { reactive, ref, computed, watch } from 'vue';
 
 import { colourThemes, setTheme, selectedTheme } from '../store/theme';
 import { updateAvailable, updateAndRelaunch } from '../store/update';
+import { openedPopup, PopupType } from '../store/popup';
 import { DropMenuItemData } from './types';
 
 import CogIcon from './svg/CogIcon.vue';
 import DropMenu from './DropMenu.vue';
+import PopupInfo from './PopupInfo.vue';
 
 const show = ref(false);
 
@@ -30,7 +33,9 @@ const menuItems = reactive<DropMenuItemData[]>([
   },
   {
     label: 'Info',
-    clickHandler: () => null, // TODO
+    clickHandler: () => {
+      openedPopup.value = PopupType.Info;
+    },
   },
   {
     label: 'Delete account',

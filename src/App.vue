@@ -95,4 +95,13 @@ textarea {
   border: 1px solid var(--colour__primary);
   border-radius: 0;
 }
+
+a {
+  color: rgb(47, 175, 122);
+
+  &:hover {
+    text-decoration: none;
+    color: rgb(74, 196, 145);
+  }
+}
 </style>
