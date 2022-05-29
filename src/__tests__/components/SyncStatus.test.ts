@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import {
   awaitSyncLoad,
@@ -8,6 +8,7 @@ import {
   setCrypto,
 } from '../utils';
 import { mockTauriApi, testTauriListen } from '../tauri';
+import { openedPopup, PopupType } from '../../store/popup';
 import * as s from '../../store/sync';
 
 import SyncStatus from '../../components/SyncStatus.vue';
@@ -25,6 +26,19 @@ describe('SyncStatus', async () => {
   };
 
   await mockTauriApi([], mockEmits);
+
+  function mountWithPopup() {
+    const appDiv = document.createElement('div');
+    appDiv.id = 'app';
+    document.body.appendChild(appDiv);
+
+    return mount(SyncStatus, {
+      attachTo: appDiv,
+      global: {
+        stubs: { teleport: true },
+      },
+    });
+  }
 
   it('Mounts', () => {
     const wrapper = mount(SyncStatus);
@@ -67,13 +81,13 @@ describe('SyncStatus', async () => {
   it('Pushes on click', async () => {
     const pushSpy = vi.spyOn(s, 'push');
 
-    const wrapper = mount(SyncStatus);
+    const wrapper = mountWithPopup();
     assert.isTrue(wrapper.isVisible());
 
     const syncButton = getByTestId(wrapper, 'sync-button');
     await syncButton.trigger('click');
 
-    assert.strictEqual(wrapper.emitted('popup-auth')?.length, 1);
+    assert.strictEqual(openedPopup.value, PopupType.Auth);
 
     s.state.token = 'token';
     await syncButton.trigger('click');
@@ -93,18 +107,21 @@ describe('SyncStatus', async () => {
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
   });
 
+  enableAutoUnmount(beforeEach);
+
   it.each(['Logout', 'Pull', 'Push'] as const)(
-    'Displays error icon and emits popup-error on click',
+    '%s - Displays error icon and opens popup on click',
     async (errorType) => {
       s.state.error.type = s.ErrorType[errorType];
 
-      const wrapper = mount(SyncStatus);
+      const wrapper = mountWithPopup();
       assert.isTrue(wrapper.isVisible());
 
       const errorButton = getByTestId(wrapper, 'error');
       await errorButton.trigger('click');
 
-      assert.strictEqual(wrapper.emitted('popup-error')?.length, 1);
+      assert.isTrue(findByTestId(wrapper, 'error-message').exists());
+      assert.isTrue(findByTestId(wrapper, 'try-again').exists());
     }
   );
 
