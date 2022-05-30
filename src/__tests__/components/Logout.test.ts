@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import { awaitSyncLoad, copyObjArr, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
@@ -8,6 +8,7 @@ import localNotes from '../notes.json';
 import Logout from '../../components/Logout.vue';
 
 beforeAll(setCrypto);
+enableAutoUnmount(afterEach);
 
 describe('Logout', () => {
   it('Mounts', () => {

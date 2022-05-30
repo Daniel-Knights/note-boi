@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 import { mockTauriApi } from '../tauri';
@@ -31,6 +31,7 @@ async function mountContextMenu(attachTo?: HTMLElement) {
 
 beforeAll(setCrypto);
 afterEach(resetNoteStore);
+enableAutoUnmount(afterEach);
 
 describe('ContextMenu', () => {
   it('Mounts without passed ev', () => {

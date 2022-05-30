@@ -14,6 +14,7 @@ import * as s from '../../store/sync';
 import SyncStatus from '../../components/SyncStatus.vue';
 
 beforeAll(setCrypto);
+enableAutoUnmount(afterEach);
 afterEach(() => {
   resetSyncStore();
   vi.resetAllMocks();
@@ -106,8 +107,6 @@ describe('SyncStatus', async () => {
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
   });
-
-  enableAutoUnmount(beforeEach);
 
   it.each(['Logout', 'Pull', 'Push'] as const)(
     '%s - Displays error icon and opens popup on click',

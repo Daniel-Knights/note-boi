@@ -1,6 +1,8 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import Popup from '../../components/Popup.vue';
+
+enableAutoUnmount(afterEach);
 
 describe('Popup', () => {
   const appDiv = document.createElement('div');
@@ -39,7 +41,7 @@ describe('Popup', () => {
   it('Closes on click outside', () => {
     document.body.dispatchEvent(new MouseEvent('mousedown'));
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 2);
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
     expect(document.removeEventListener).toHaveBeenCalled();
   });
 

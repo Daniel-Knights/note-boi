@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import { findByTestId, getByTestId, resetSyncStore, setCrypto } from '../utils';
 import * as s from '../../store/sync';
@@ -16,6 +16,7 @@ function mountPopupSyncAuth() {
 
 beforeAll(setCrypto);
 afterEach(resetSyncStore);
+enableAutoUnmount(afterEach);
 
 describe('PopupSyncAuth', () => {
   it('Mounts', () => {

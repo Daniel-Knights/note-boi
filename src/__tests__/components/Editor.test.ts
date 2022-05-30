@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import { copyObjArr, getByTestId, setCrypto } from '../utils';
 import { unixToDateTime } from '../../utils';
@@ -9,6 +9,7 @@ import localNotes from '../notes.json';
 import Editor from '../../components/Editor.vue';
 
 beforeAll(setCrypto);
+enableAutoUnmount(afterEach);
 
 describe('Editor', () => {
   it('Mounts', () => {

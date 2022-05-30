@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import { mockTauriApi, testTauriListen } from '../tauri';
 import { resetSyncStore, setCrypto } from '../utils';
@@ -9,6 +9,7 @@ import App from '../../App.vue';
 
 beforeAll(setCrypto);
 beforeEach(resetSyncStore);
+enableAutoUnmount(afterEach);
 
 describe('App', () => {
   it('Mounts', async () => {
