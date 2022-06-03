@@ -1,24 +1,43 @@
-/* eslint-disable no-restricted-syntax, no-await-in-loop, import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies */
 import fetch from 'node-fetch';
 import { getOctokit, context } from '@actions/github';
 
 const UPDATE_FILE_NAME = 'update.json';
+const IS_DEV = !process.env.GITHUB_TOKEN;
+const DUMMY_OCTOKIT = {
+  rest: {
+    repos: {
+      async getLatestRelease() {
+        const release = await fetch(
+          'https://api.github.com/repos/Daniel-Knights/note-boi/releases/67116532'
+        ).then((res) => res.json());
+
+        return { data: release };
+      },
+      deleteReleaseAsset: console.log,
+      uploadReleaseAsset: console.log,
+    },
+  },
+};
 
 const updateData = {
   name: '',
   pub_date: new Date().toISOString(),
   platforms: {
-    win64: { signature: '', url: '' },
-    linux: { signature: '', url: '' },
-    darwin: { signature: '', url: '' },
-    'linux-x86_64': { signature: '', url: '' },
-    'windows-x86_64': { signature: '', url: '' },
-    'darwin-x86_64': { signature: '', url: '' },
+    windows: {},
+    darwin: {},
+    linux: {},
+    'windows-x86_64': {},
+    'darwin-x86_64': {},
+    'linux-x86_64': {},
   },
 };
 
-const octokit = getOctokit(process.env.GITHUB_TOKEN);
-const options = { owner: context.repo.owner, repo: context.repo.repo };
+const octokit = IS_DEV ? DUMMY_OCTOKIT : getOctokit(process.env.GITHUB_TOKEN);
+const options = IS_DEV || {
+  owner: context.repo.owner,
+  repo: context.repo.repo,
+};
 
 const { data: release } = await octokit.rest.repos.getLatestRelease(options);
 updateData.name = release.tag_name;
@@ -32,33 +51,36 @@ async function getSignature(url) {
   return response.text();
 }
 
-for (const { name, browser_download_url } of release.assets) {
-  if (name.endsWith('.msi.zip')) {
-    updateData.platforms.win64.url = browser_download_url;
-    updateData.platforms['windows-x86_64'].url = browser_download_url;
-  } else if (name.endsWith('.msi.zip.sig')) {
-    const signature = await getSignature(browser_download_url);
+async function setPlatformData(platform, name, url) {
+  if (name.endsWith('.sig')) {
+    const signature = await getSignature(url);
 
-    updateData.platforms.win64.signature = signature;
-    updateData.platforms['windows-x86_64'].signature = signature;
-  } else if (name.endsWith('.app.tar.gz')) {
-    updateData.platforms.darwin.url = browser_download_url;
-    updateData.platforms['darwin-x86_64'].url = browser_download_url;
-  } else if (name.endsWith('.app.tar.gz.sig')) {
-    const signature = await getSignature(browser_download_url);
-
-    updateData.platforms.darwin.signature = signature;
-    updateData.platforms['darwin-x86_64'].signature = signature;
-  } else if (name.endsWith('.AppImage.tar.gz')) {
-    updateData.platforms.linux.url = browser_download_url;
-    updateData.platforms['linux-x86_64'].url = browser_download_url;
-  } else if (name.endsWith('.AppImage.tar.gz.sig')) {
-    const signature = await getSignature(browser_download_url);
-
-    updateData.platforms.linux.signature = signature;
-    updateData.platforms['linux-x86_64'].signature = signature;
+    updateData.platforms[platform].signature = signature;
+    updateData.platforms[`${platform}-x86_64`].signature = signature;
+  } else {
+    updateData.platforms[platform].url = url;
+    updateData.platforms[`${platform}-x86_64`].url = url;
   }
 }
+
+const platformPromises = [];
+const platformRegex = [
+  ['windows', /\.msi\.zip(?:\.sig)?/],
+  ['darwin', /\.app\.tar\.gz(?:\.sig)?/],
+  ['linux', /\.AppImage\.tar\.gz(?:\.sig)?/],
+];
+
+release.assets.forEach((asset) => {
+  platformRegex.forEach(([platform, regex]) => {
+    if (!regex.test(asset.name)) return;
+
+    platformPromises.push(
+      setPlatformData(platform, asset.name, asset.browser_download_url)
+    );
+  });
+});
+
+await Promise.all(platformPromises);
 
 const updateFile = release.assets.find((asset) => asset.name === UPDATE_FILE_NAME);
 if (updateFile) {
