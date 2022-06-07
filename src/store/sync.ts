@@ -236,6 +236,7 @@ export async function signup(): Promise<void> {
 
     state.token = res.data.token;
     state.password = '';
+    state.unsyncedNoteIds.clear();
 
     localStorage.setItem(STORAGE_KEYS.USERNAME, state.username);
     localStorage.setItem(STORAGE_KEYS.TOKEN, state.token);
