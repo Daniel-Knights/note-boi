@@ -147,12 +147,16 @@ describe('NoteMenu', () => {
         n.state.selectedNote.id === nextSelectedNote.id &&
         !n.state.extraSelectedNotes.includes(nextSelectedNote);
 
-      return (
-        isNotExtraSelectedNote &&
+      if (!isNotExtraSelectedNote) return false;
+
+      const assertResultSelect = await testMetaKeySelects(
+        wrapper,
         // Spread to prevent mutating array mid-loop
-        testMetaKeySelects(wrapper, [...n.state.extraSelectedNotes], true) &&
-        n.state.extraSelectedNotes.length === 0
+        [...n.state.extraSelectedNotes],
+        true
       );
+
+      return assertResultSelect && n.state.extraSelectedNotes.length === 0;
     }
 
     /**
