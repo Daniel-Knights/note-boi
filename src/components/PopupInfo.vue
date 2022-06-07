@@ -4,8 +4,12 @@
       <h2>Info</h2>
       <dl class="popup-info__description-list">
         <div class="popup-info__description-pair">
+          <dt>User:</dt>
+          <dd class="popup-info__text-bold">{{ state.username }}</dd>
+        </div>
+        <div class="popup-info__description-pair">
           <dt>Version:</dt>
-          <dd>{{ version }}</dd>
+          <dd class="popup-info__text-bold">{{ version }}</dd>
         </div>
         <div class="popup-info__description-pair">
           <dt>Repo:</dt>
@@ -31,6 +35,7 @@ import { app } from '@tauri-apps/api';
 import { ref } from 'vue';
 
 import pkg from '../../package.json';
+import { state } from '../store/sync';
 
 import Popup from './Popup.vue';
 
@@ -48,7 +53,7 @@ app.getVersion().then((v) => {
   margin-top: 12px;
   width: 270px;
 
-  &:first-of-type > dd {
+  > .popup-info__text-bold {
     font-weight: 600;
   }
 }

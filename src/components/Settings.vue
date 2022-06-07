@@ -13,6 +13,7 @@ import { computed, reactive, ref, watch } from 'vue';
 
 import { openedPopup, PopupType } from '../store/popup';
 import { state } from '../store/sync';
+import { deleteAccount } from '../store/sync/account';
 import { colourThemes, selectedTheme, setTheme } from '../store/theme';
 import { updateAndRelaunch, updateAvailable } from '../store/update';
 
@@ -39,10 +40,6 @@ const menuItems = reactive<DropMenuItemData[]>([
       openedPopup.value = PopupType.Info;
     },
   },
-  {
-    label: 'Delete account',
-    clickHandler: () => null, // TODO
-  },
 ]);
 
 watch(updateAvailable, () => {
@@ -52,6 +49,22 @@ watch(updateAvailable, () => {
     label: 'Update and restart',
     clickHandler: () => updateAndRelaunch(),
   });
+});
+
+watch(state, () => {
+  const deleteAccountLabel = 'Delete account';
+  const hasDeleteAccountItem = menuItems.some(
+    (item) => item.label === deleteAccountLabel
+  );
+
+  if (state.token && !hasDeleteAccountItem) {
+    menuItems.push({
+      label: deleteAccountLabel,
+      clickHandler: deleteAccount,
+    });
+  } else if (!state.token && hasDeleteAccountItem) {
+    menuItems.pop();
+  }
 });
 </script>
 

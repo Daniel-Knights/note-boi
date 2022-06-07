@@ -8,7 +8,7 @@
   "semi": true,
   "arrowParens": "always",
   "endOfLine": "auto",
-  "importOrder": ["^\\.\\./(?!.+\\.vue)", "^\\./(?!.+\\.vue)", "^.+/.+\\.vue"],
+  "importOrder": ["^\\.\\./(?!.+\\.vue)", "^\\.$", "^\\./(?!.+\\.vue)", "^.+/.+\\.vue"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderParserPlugins": ["typescript"],
