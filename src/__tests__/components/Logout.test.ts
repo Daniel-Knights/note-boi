@@ -1,9 +1,9 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { awaitSyncLoad, copyObjArr, setCrypto } from '../utils';
-import { mockTauriApi } from '../tauri';
 import * as s from '../../store/sync';
 import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
+import { awaitSyncLoad, copyObjArr, setCrypto } from '../utils';
 
 import Logout from '../../components/Logout.vue';
 

@@ -2,9 +2,9 @@ import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 import { randomFillSync } from 'crypto';
 import { nextTick } from 'vue';
 
-import { STORAGE_KEYS } from '../constant';
 import * as n from '../store/note';
 import * as s from '../store/sync';
+import { STORAGE_KEYS } from '../constant';
 
 export const UUID_REGEX =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;

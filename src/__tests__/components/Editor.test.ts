@@ -1,10 +1,10 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { copyObjArr, getByTestId, setCrypto } from '../utils';
-import { unixToDateTime } from '../../utils';
-import { mockTauriApi } from '../tauri';
 import * as n from '../../store/note';
+import { unixToDateTime } from '../../utils';
 import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
+import { copyObjArr, getByTestId, setCrypto } from '../utils';
 
 import Editor from '../../components/Editor.vue';
 

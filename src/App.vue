@@ -9,14 +9,14 @@
 import { window as tauriWindow } from '@tauri-apps/api';
 import { exit, relaunch } from '@tauri-apps/api/process';
 
-import { getAllNotes, newNote, deleteAllNotes } from './store/note';
+import { deleteAllNotes, getAllNotes, newNote } from './store/note';
+import { openedPopup, PopupType } from './store/popup';
 import { ErrorType, push, state } from './store/sync';
 import { handleUpdate } from './store/update';
-import { openedPopup, PopupType } from './store/popup';
 import { tauriListen } from './utils';
 
-import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
+import NoteMenu from './components/NoteMenu.vue';
 import SyncStatus from './components/SyncStatus.vue';
 import UtilityMenu from './components/UtilityMenu.vue';
 

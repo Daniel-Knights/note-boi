@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import { context, getOctokit } from '@actions/github';
 import fetch from 'node-fetch';
-import { getOctokit, context } from '@actions/github';
 
 const UPDATE_FILE_NAME = 'update.json';
 const IS_DEV = !process.env.GITHUB_TOKEN;

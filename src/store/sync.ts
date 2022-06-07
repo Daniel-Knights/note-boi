@@ -1,16 +1,17 @@
-import { reactive } from 'vue';
 import { http, invoke } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
+import { reactive } from 'vue';
 
-import { isDev, isEmptyNote, localStorageParse, tauriEmit } from '../utils';
 import { NOTE_EVENTS, STORAGE_KEYS } from '../constant';
+import { isDev, isEmptyNote, localStorageParse, tauriEmit } from '../utils';
+
 import {
   findNote,
   newNote,
   Note,
+  state as noteState,
   selectNote,
   sortStateNotes,
-  state as noteState,
   UnsyncedEventDetail,
 } from './note';
 

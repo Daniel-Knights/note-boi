@@ -1,9 +1,9 @@
-import { copyObjArr, resetNoteStore, setCrypto, UUID_REGEX } from '../utils';
-import { mockTauriApi } from '../tauri';
-import { isEmptyNote } from '../../utils';
-import { NOTE_EVENTS } from '../../constant';
 import * as n from '../../store/note';
+import { NOTE_EVENTS } from '../../constant';
+import { isEmptyNote } from '../../utils';
 import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
+import { copyObjArr, resetNoteStore, setCrypto, UUID_REGEX } from '../utils';
 
 const emptyNote = new n.Note();
 const existingNoteIndexSorted = 2;

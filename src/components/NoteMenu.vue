@@ -49,16 +49,16 @@
 <script lang="ts" setup>
 import { onUnmounted, ref, watchEffect } from 'vue';
 
+import { STORAGE_KEYS } from '../constant';
 import {
-  state,
-  selectNote,
+  findNote,
+  findNoteIndex,
+  isSelectedNote,
   newNote,
   Note,
-  findNoteIndex,
-  findNote,
-  isSelectedNote,
+  selectNote,
+  state,
 } from '../store/note';
-import { STORAGE_KEYS } from '../constant';
 import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';

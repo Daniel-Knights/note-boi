@@ -1,5 +1,11 @@
 import { mount, shallowMount } from '@vue/test-utils';
 
+import * as n from '../../store/note';
+import * as s from '../../store/sync';
+import { STORAGE_KEYS } from '../../constant';
+import { isEmptyNote, localStorageParse } from '../../utils';
+import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
 import {
   awaitSyncLoad,
   copyObjArr,
@@ -10,12 +16,6 @@ import {
   setCrypto,
   UUID_REGEX,
 } from '../utils';
-import { mockTauriApi } from '../tauri';
-import { STORAGE_KEYS } from '../../constant';
-import { isEmptyNote, localStorageParse } from '../../utils';
-import * as s from '../../store/sync';
-import * as n from '../../store/note';
-import localNotes from '../notes.json';
 
 import NoteMenu from '../../components/NoteMenu.vue';
 import SyncStatus from '../../components/SyncStatus.vue';

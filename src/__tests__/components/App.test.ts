@@ -1,9 +1,9 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { mockTauriApi, testTauriListen } from '../tauri';
-import { resetSyncStore, setCrypto } from '../utils';
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
+import { mockTauriApi, testTauriListen } from '../tauri';
+import { resetSyncStore, setCrypto } from '../utils';
 
 import App from '../../App.vue';
 

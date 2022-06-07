@@ -1,8 +1,8 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { getByTestId, setCrypto } from '../utils';
-import { mockTauriApi } from '../tauri';
 import * as s from '../../store/sync';
+import { mockTauriApi } from '../tauri';
+import { getByTestId, setCrypto } from '../utils';
 
 import PopupSyncError from '../../components/PopupSyncError.vue';
 

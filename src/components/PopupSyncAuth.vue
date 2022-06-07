@@ -50,7 +50,7 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 
-import { ErrorType, resetError, state, login, signup } from '../store/sync';
+import { ErrorType, login, resetError, signup, state } from '../store/sync';
 
 import Popup from './Popup.vue';
 

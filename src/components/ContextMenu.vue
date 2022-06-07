@@ -24,10 +24,10 @@
 import { ref, watch } from 'vue';
 
 import {
-  state as noteState,
-  newNote,
-  deleteNote,
   deleteAllNotes,
+  deleteNote,
+  newNote,
+  state as noteState,
   state,
 } from '../store/note';
 import { isEmptyNote } from '../utils';

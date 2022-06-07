@@ -1,5 +1,8 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
 
+import * as s from '../../store/sync';
+import { openedPopup, PopupType } from '../../store/popup';
+import { mockTauriApi, testTauriListen } from '../tauri';
 import {
   awaitSyncLoad,
   findByTestId,
@@ -7,9 +10,6 @@ import {
   resetSyncStore,
   setCrypto,
 } from '../utils';
-import { mockTauriApi, testTauriListen } from '../tauri';
-import { openedPopup, PopupType } from '../../store/popup';
-import * as s from '../../store/sync';
 
 import SyncStatus from '../../components/SyncStatus.vue';
 

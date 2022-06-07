@@ -9,16 +9,18 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref, computed, watch } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 
-import { colourThemes, setTheme, selectedTheme } from '../store/theme';
-import { updateAvailable, updateAndRelaunch } from '../store/update';
 import { openedPopup, PopupType } from '../store/popup';
+import { state } from '../store/sync';
+import { colourThemes, selectedTheme, setTheme } from '../store/theme';
+import { updateAndRelaunch, updateAvailable } from '../store/update';
+
 import { DropMenuItemData } from './types';
 
-import CogIcon from './svg/CogIcon.vue';
 import DropMenu from './DropMenu.vue';
 import PopupInfo from './PopupInfo.vue';
+import CogIcon from './svg/CogIcon.vue';
 
 const show = ref(false);
 

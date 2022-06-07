@@ -27,8 +27,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
 import { app } from '@tauri-apps/api';
+import { ref } from 'vue';
 
 import pkg from '../../package.json';
 

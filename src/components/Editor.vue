@@ -8,13 +8,13 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
 import Quill from 'quill';
 import type Delta from 'quill-delta';
+import { onMounted, ref } from 'vue';
 
-import { unixToDateTime } from '../utils';
 import { NOTE_EVENTS } from '../constant';
-import { state, editNote } from '../store/note';
+import { editNote, state } from '../store/note';
+import { unixToDateTime } from '../utils';
 
 const editorBody = ref<HTMLDivElement>();
 

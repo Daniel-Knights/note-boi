@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { state, logout } from '../store/sync';
+import { logout, state } from '../store/sync';
 
 import LogoutIcon from './svg/LogoutIcon.vue';
 </script>

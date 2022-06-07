@@ -1,11 +1,11 @@
 import { enableAutoUnmount, shallowMount, VueWrapper } from '@vue/test-utils';
 
-import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
-import { mockTauriApi } from '../tauri';
+import * as n from '../../store/note';
 import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote } from '../../utils';
-import * as n from '../../store/note';
 import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
+import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 
 import NoteMenu from '../../components/NoteMenu.vue';
 

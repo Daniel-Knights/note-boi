@@ -1,9 +1,10 @@
 import { mockIPC } from '@tauri-apps/api/mocks';
 
-import { isEmptyNote } from '../utils';
-import { isNote, mockPromise } from './utils';
 import * as n from '../store/note';
+import { isEmptyNote } from '../utils';
+
 import localNotes from './notes.json';
+import { isNote, mockPromise } from './utils';
 
 type Fn = () => void;
 

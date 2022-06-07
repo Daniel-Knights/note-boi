@@ -1,10 +1,10 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { findByTestId, getByTestId, resetSyncStore, setCrypto } from '../utils';
 import * as s from '../../store/sync';
+import { mockTauriApi } from '../tauri';
+import { findByTestId, getByTestId, resetSyncStore, setCrypto } from '../utils';
 
 import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
-import { mockTauriApi } from '../tauri';
 
 function mountPopupSyncAuth() {
   return mount(PopupSyncAuth, {

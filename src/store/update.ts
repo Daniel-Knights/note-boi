@@ -1,6 +1,6 @@
-import { UpdateResult, checkUpdate, installUpdate } from '@tauri-apps/api/updater';
-import { relaunch } from '@tauri-apps/api/process';
 import { dialog } from '@tauri-apps/api';
+import { relaunch } from '@tauri-apps/api/process';
+import { checkUpdate, installUpdate, UpdateResult } from '@tauri-apps/api/updater';
 import { ref } from 'vue';
 
 export const updateAvailable = ref<UpdateResult>();

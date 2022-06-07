@@ -42,15 +42,15 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
+import { openedPopup, PopupType } from '../store/popup';
 import { ErrorType, logout, pull, push, resetError, state } from '../store/sync';
-import { PopupType, openedPopup } from '../store/popup';
 import { tauriEmit, tauriListen } from '../utils';
 
-import CloudSyncIcon from './svg/CloudSyncIcon.vue';
-import CloudTickIcon from './svg/CloudTickIcon.vue';
-import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 import PopupSyncAuth from './PopupSyncAuth.vue';
 import PopupSyncError from './PopupSyncError.vue';
+import CloudErrorIcon from './svg/CloudErrorIcon.vue';
+import CloudSyncIcon from './svg/CloudSyncIcon.vue';
+import CloudTickIcon from './svg/CloudTickIcon.vue';
 
 if (state.token) {
   tauriEmit('login');

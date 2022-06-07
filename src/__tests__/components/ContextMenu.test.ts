@@ -1,10 +1,10 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
-import { mockTauriApi } from '../tauri';
-import { isEmptyNote } from '../../utils';
 import * as n from '../../store/note';
+import { isEmptyNote } from '../../utils';
 import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
+import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 
 import ContextMenu from '../../components/ContextMenu.vue';
 
