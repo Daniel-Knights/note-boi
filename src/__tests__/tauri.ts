@@ -10,10 +10,14 @@ type Fn = () => void;
 
 /** Mocks calls to the Tauri API. */
 export function mockTauriApi(
-  notes?: n.Note[] | undefined,
-  mockFns?: { login: Fn; logout: Fn },
-  httpStatus = 200
+  notes?: n.Note[],
+  options?: {
+    mockFns?: { login: Fn; logout: Fn };
+    httpStatus?: number;
+  }
 ): void {
+  const httpStatus = options?.httpStatus || 200;
+
   mockIPC((cmd, args) => {
     type ArgsMessage = {
       cmd?: string;
@@ -75,10 +79,10 @@ export function mockTauriApi(
           case 'emit':
             switch (reqMessage?.event) {
               case 'login':
-                mockFns?.login();
+                options?.mockFns?.login();
                 break;
               case 'logout':
-                mockFns?.logout();
+                options?.mockFns?.logout();
                 break;
               // no default
             }

@@ -38,7 +38,7 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
-      mockTauriApi([], mockEmits);
+      mockTauriApi([], { mockFns: mockEmits });
 
       await n.getAllNotes();
 
@@ -64,7 +64,7 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
-      mockTauriApi(localNotes, mockEmits);
+      mockTauriApi(localNotes, { mockFns: mockEmits });
 
       await s.login();
 
@@ -84,7 +84,7 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
-      mockTauriApi(localNotes, mockEmits, 500);
+      mockTauriApi(localNotes, { mockFns: mockEmits, httpStatus: 500 });
 
       await s.login();
 
@@ -106,7 +106,7 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
-      mockTauriApi([], mockEmits);
+      mockTauriApi([], { mockFns: mockEmits });
 
       await s.signup();
 
@@ -126,7 +126,7 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
-      mockTauriApi(localNotes, mockEmits);
+      mockTauriApi(localNotes, { mockFns: mockEmits });
       await n.getAllNotes();
 
       await s.signup();
@@ -170,7 +170,7 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.password = '1';
       vi.clearAllMocks();
-      mockTauriApi(undefined, mockEmits, 500);
+      mockTauriApi(undefined, { mockFns: mockEmits, httpStatus: 500 });
 
       await s.signup();
 
@@ -193,7 +193,7 @@ describe('Sync', () => {
       s.state.password = '1';
       s.state.token = 'token';
       vi.clearAllMocks();
-      mockTauriApi(undefined, mockEmits);
+      mockTauriApi(undefined, { mockFns: mockEmits });
       await s.login();
 
       await s.logout();
@@ -215,7 +215,7 @@ describe('Sync', () => {
       vi.clearAllMocks();
       mockTauriApi();
       await s.login();
-      mockTauriApi(undefined, mockEmits, 500);
+      mockTauriApi(undefined, { mockFns: mockEmits, httpStatus: 500 });
 
       await s.logout();
 
@@ -254,7 +254,7 @@ describe('Sync', () => {
     it('With server error', async () => {
       s.state.username = 'd';
       s.state.token = 'token';
-      mockTauriApi(localNotes, undefined, 500);
+      mockTauriApi(localNotes, { httpStatus: 500 });
 
       await s.pull();
 
@@ -271,7 +271,7 @@ describe('Sync', () => {
       s.state.token = 'token';
       mockTauriApi(copyObjArr(localNotes));
       await s.login();
-      mockTauriApi([], undefined, 404);
+      mockTauriApi([], { httpStatus: 404 });
 
       await s.pull();
 
@@ -345,7 +345,7 @@ describe('Sync', () => {
       s.state.token = 'token';
       mockTauriApi(copyObjArr(localNotes));
       await s.login();
-      mockTauriApi([], undefined, 500);
+      mockTauriApi([], { httpStatus: 500 });
 
       await s.push();
 

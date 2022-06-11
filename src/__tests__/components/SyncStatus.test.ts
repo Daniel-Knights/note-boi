@@ -26,7 +26,7 @@ describe('SyncStatus', () => {
     logout: vi.fn(),
   };
 
-  mockTauriApi([], mockEmits);
+  mockTauriApi([], { mockFns: mockEmits });
 
   function mountWithPopup() {
     const appDiv = document.createElement('div');
