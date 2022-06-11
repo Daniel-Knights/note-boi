@@ -7,7 +7,7 @@
   },
   "scripts": {
     "vite:dev": "vite",
-    "vite:build": "vue-tsc --noEmit && vite build",
+    "vite:build": "npm run lint && vue-tsc --noEmit && vite build",
     "vite:preview": "vite preview",
     "dev": "tauri dev",
     "build": "npm run test:build && tauri build",
@@ -15,6 +15,7 @@
     "info": "tauri info",
     "test": "vitest",
     "test:build": "vitest run",
+    "lint": "eslint src/**/*.{ts,js,vue}",
     "update": "node ./scripts/updater.mjs",
     "version:patch": "npm run test:build && node ./scripts/version.mjs patch && npm version patch",
     "version:minor": "npm run test:build && node ./scripts/version.mjs minor && npm version minor",
