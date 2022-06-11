@@ -1,9 +1,14 @@
 <template>
   <div id="settings">
-    <button @click.stop="show = !show">
+    <button @click.stop="show = !show" data-test-id="settings-button">
       <CogIcon />
     </button>
-    <DropMenu v-if="show" @close="show = false" :items="menuItems" />
+    <DropMenu
+      v-if="show"
+      @close="show = false"
+      :items="menuItems"
+      data-test-id="drop-menu"
+    />
   </div>
   <PopupInfo v-if="openedPopup === PopupType.Info" @close="openedPopup = undefined" />
 </template>
@@ -14,7 +19,7 @@ import { computed, reactive, ref, watch } from 'vue';
 import { openedPopup, PopupType } from '../store/popup';
 import { state } from '../store/sync';
 import { deleteAccount } from '../store/sync/account';
-import { colourThemes, selectedTheme, setTheme } from '../store/theme';
+import { COLOUR_THEMES, selectedTheme, setTheme } from '../store/theme';
 import { updateAndRelaunch, updateAvailable } from '../store/update';
 
 import { DropMenuItemData } from './types';
@@ -28,14 +33,16 @@ const show = ref(false);
 const menuItems = reactive<DropMenuItemData[]>([
   {
     label: 'Theme',
-    subMenu: colourThemes.map((theme) => ({
+    subMenu: COLOUR_THEMES.map((theme) => ({
       label: theme,
+      testId: theme,
       clickHandler: () => setTheme(theme),
       selected: computed(() => selectedTheme.value === theme),
     })),
   },
   {
     label: 'Info',
+    testId: 'info',
     clickHandler: () => {
       openedPopup.value = PopupType.Info;
     },
