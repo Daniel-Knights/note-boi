@@ -71,8 +71,8 @@ describe('PopupSyncAuth', () => {
       const spyLogin = vi.spyOn(s, 'login');
       const spySignup = vi.spyOn(s, 'signup');
 
-      const formEl = getByTestId(wrapper, 'form');
-      await formEl.trigger('submit');
+      const formWrapper = getByTestId(wrapper, 'form');
+      await formWrapper.trigger('submit');
 
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
@@ -94,7 +94,7 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
       mockTauriApi([]);
-      await formEl.trigger('submit');
+      await formWrapper.trigger('submit');
 
       expect(spyLogin).toHaveBeenCalledOnce();
       expect(spySignup).not.toHaveBeenCalled();
@@ -135,8 +135,8 @@ describe('PopupSyncAuth', () => {
       const spyLogin = vi.spyOn(s, 'login');
       const spySignup = vi.spyOn(s, 'signup');
 
-      const formEl = getByTestId(wrapper, 'form');
-      await formEl.trigger('submit');
+      const formWrapper = getByTestId(wrapper, 'form');
+      await formWrapper.trigger('submit');
 
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
@@ -164,7 +164,7 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
       mockTauriApi([]);
-      await formEl.trigger('submit');
+      await formWrapper.trigger('submit');
 
       assert.strictEqual(s.state.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.state.error.message);
@@ -177,7 +177,7 @@ describe('PopupSyncAuth', () => {
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
 
-      await formEl.trigger('submit');
+      await formWrapper.trigger('submit');
 
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).toHaveBeenCalledOnce();

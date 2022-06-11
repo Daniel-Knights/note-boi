@@ -14,6 +14,7 @@ export function mockTauriApi(
   options?: {
     mockFns?: { login: Fn; logout: Fn };
     httpStatus?: number;
+    appVersion?: string;
   }
 ): void {
   const httpStatus = options?.httpStatus || 200;
@@ -87,6 +88,8 @@ export function mockTauriApi(
               // no default
             }
             break;
+          case 'getAppVersion':
+            return mockPromise(options?.appVersion);
           // no default
         }
         break;

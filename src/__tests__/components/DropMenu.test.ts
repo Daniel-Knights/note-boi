@@ -43,10 +43,10 @@ describe('DropMenu', () => {
       assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ label, testId }) => {
-        const itemEl = getByTestId(wrapper, testId);
+        const itemWrapper = getByTestId(wrapper, testId);
 
-        assert.isTrue(itemEl.isVisible());
-        assert.strictEqual(itemEl.text(), label);
+        assert.isTrue(itemWrapper.isVisible());
+        assert.strictEqual(itemWrapper.text(), label);
       });
     });
 
@@ -60,10 +60,10 @@ describe('DropMenu', () => {
       assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ testId, clickHandler }) => {
-        const itemEl = getByTestId(wrapper, testId);
-        assert.isTrue(itemEl.isVisible());
+        const itemWrapper = getByTestId(wrapper, testId);
+        assert.isTrue(itemWrapper.isVisible());
 
-        itemEl.trigger('click');
+        itemWrapper.trigger('click');
 
         expect(clickHandler).toHaveBeenCalledOnce();
       });

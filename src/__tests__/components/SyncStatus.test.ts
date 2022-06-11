@@ -46,14 +46,14 @@ describe('SyncStatus', () => {
     assert.isTrue(wrapper.isVisible());
     expect(mockEmits.logout).toHaveBeenCalledOnce();
 
-    const loadingEl = findByTestId(wrapper, 'loading');
+    const loadingWrapper = findByTestId(wrapper, 'loading');
     const errorButton = findByTestId(wrapper, 'error');
-    const successEl = findByTestId(wrapper, 'success');
+    const successWrapper = findByTestId(wrapper, 'success');
     const syncButton = getByTestId(wrapper, 'sync-button');
 
-    assert.isFalse(loadingEl.exists());
+    assert.isFalse(loadingWrapper.exists());
     assert.isFalse(errorButton.exists());
-    assert.isFalse(successEl.exists());
+    assert.isFalse(successWrapper.exists());
     assert.isTrue(syncButton.isVisible());
   });
 

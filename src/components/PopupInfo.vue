@@ -3,21 +3,21 @@
     <div id="popup-info">
       <h2>Info</h2>
       <dl class="popup-info__description-list">
-        <div class="popup-info__description-pair">
+        <div class="popup-info__description-pair" data-test-id="user">
           <dt>User:</dt>
           <dd class="popup-info__text-bold">{{ state.username }}</dd>
         </div>
-        <div class="popup-info__description-pair">
+        <div class="popup-info__description-pair" data-test-id="version">
           <dt>Version:</dt>
           <dd class="popup-info__text-bold">{{ version }}</dd>
         </div>
-        <div class="popup-info__description-pair">
+        <div class="popup-info__description-pair" data-test-id="repo">
           <dt>Repo:</dt>
           <dd>
             <a :href="pkg.repository.url" target="_blank">{{ pkg.repository.url }}</a>
           </dd>
         </div>
-        <div class="popup-info__description-pair">
+        <div class="popup-info__description-pair" data-test-id="issues">
           <dt>Issues:</dt>
           <dd>
             <a :href="`${pkg.repository.url}/issues`" target="_blank"

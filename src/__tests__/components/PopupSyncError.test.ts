@@ -27,8 +27,8 @@ describe('PopupSyncError', () => {
     const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
-    const errorMessageEl = getByTestId(wrapper, 'error-message');
-    assert.strictEqual(errorMessageEl.text(), `Error: ${errorMessage}`);
+    const errorMessageWrapper = getByTestId(wrapper, 'error-message');
+    assert.strictEqual(errorMessageWrapper.text(), `Error: ${errorMessage}`);
   });
 
   it('Retries push', async () => {
