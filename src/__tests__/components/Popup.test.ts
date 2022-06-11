@@ -2,46 +2,45 @@ import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import Popup from '../../components/Popup.vue';
 
+const slot = '<div>Hello World</div>';
+const eventSpies = {
+  document: {
+    add: vi.spyOn(document, 'addEventListener'),
+    remove: vi.spyOn(document, 'removeEventListener'),
+  },
+  body: {
+    add: vi.spyOn(document.body, 'addEventListener'),
+    remove: vi.spyOn(document.body, 'removeEventListener'),
+  },
+};
+
+function mountPopup() {
+  const appDiv = document.createElement('div');
+  appDiv.id = 'app';
+  document.body.appendChild(appDiv);
+
+  vi.useFakeTimers();
+
+  const wrapper = mount(Popup, {
+    attachTo: appDiv,
+    slots: { default: slot },
+    global: {
+      stubs: { teleport: true },
+    },
+  });
+
+  vi.runAllTimers();
+
+  return wrapper;
+}
+
+afterEach(() => {
+  vi.clearAllMocks();
+  document.body.innerHTML = '';
+});
 enableAutoUnmount(afterEach);
 
 describe('Popup', () => {
-  const slot = '<div>Hello World</div>';
-  const eventSpies = {
-    document: {
-      add: vi.spyOn(document, 'addEventListener'),
-      remove: vi.spyOn(document, 'removeEventListener'),
-    },
-    body: {
-      add: vi.spyOn(document.body, 'addEventListener'),
-      remove: vi.spyOn(document.body, 'removeEventListener'),
-    },
-  };
-
-  function mountPopup() {
-    const appDiv = document.createElement('div');
-    appDiv.id = 'app';
-    document.body.appendChild(appDiv);
-
-    vi.useFakeTimers();
-
-    const wrapper = mount(Popup, {
-      attachTo: appDiv,
-      slots: { default: slot },
-      global: {
-        stubs: { teleport: true },
-      },
-    });
-
-    vi.runAllTimers();
-
-    return wrapper;
-  }
-
-  afterEach(() => {
-    vi.clearAllMocks();
-    document.body.innerHTML = '';
-  });
-
   it('Mounts', () => {
     const wrapper = mountPopup();
 
@@ -49,9 +48,11 @@ describe('Popup', () => {
     assert.isTrue(wrapper.html().includes(slot));
     expect(eventSpies.document.add).toHaveBeenCalledOnce();
     expect(eventSpies.body.add).toHaveBeenCalledOnce();
+
+    wrapper.unmount(); // enableAutoUnmount doesn't work here for some reason
   });
 
-  it.only('Closes on escape key', () => {
+  it('Closes on escape key', () => {
     const wrapper = mountPopup();
 
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
