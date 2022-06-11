@@ -9,13 +9,19 @@
 </template>
 
 <script lang="ts" setup>
-import { onBeforeUnmount } from 'vue';
+import { onBeforeUnmount, ref } from 'vue';
 
 const emit = defineEmits(['close']);
 
+const hasClosed = ref(false);
+
 function closePopup() {
+  // Prevent unmount calling this a 2nd time
+  if (hasClosed.value) return;
+  hasClosed.value = true;
+
   document.removeEventListener('keydown', keyboardCloseHandler);
-  document.removeEventListener('mousedown', clickCloseHandler);
+  document.body.removeEventListener('mousedown', clickCloseHandler);
 
   emit('close');
 }
