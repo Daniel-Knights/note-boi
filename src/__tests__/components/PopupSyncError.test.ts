@@ -42,8 +42,8 @@ describe('PopupSyncError', async () => {
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
 
-    expect(pushSpy).toHaveBeenCalled();
-    expect(resetErrorSpy).toHaveBeenCalled();
+    expect(pushSpy).toHaveBeenCalledOnce();
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
     assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
@@ -58,8 +58,8 @@ describe('PopupSyncError', async () => {
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
 
-    expect(pullSpy).toHaveBeenCalled();
-    expect(resetErrorSpy).toHaveBeenCalled();
+    expect(pullSpy).toHaveBeenCalledOnce();
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
     assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
@@ -74,8 +74,8 @@ describe('PopupSyncError', async () => {
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
 
-    expect(logoutSpy).toHaveBeenCalled();
-    expect(resetErrorSpy).toHaveBeenCalled();
+    expect(logoutSpy).toHaveBeenCalledOnce();
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
     assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 });

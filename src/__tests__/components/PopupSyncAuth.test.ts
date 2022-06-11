@@ -39,7 +39,7 @@ describe('PopupSyncAuth', () => {
 
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Signup');
     assert.isTrue(findByTestId(wrapper, 'confirm-password').exists());
-    expect(resetErrorSpy).toHaveBeenCalled();
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
   });
 
   describe('Validates fields', () => {
@@ -96,7 +96,7 @@ describe('PopupSyncAuth', () => {
       await mockTauriApi([]);
       await formEl.trigger('submit');
 
-      expect(spyLogin).toHaveBeenCalled();
+      expect(spyLogin).toHaveBeenCalledOnce();
       expect(spySignup).not.toHaveBeenCalled();
     });
 
@@ -180,7 +180,7 @@ describe('PopupSyncAuth', () => {
       await formEl.trigger('submit');
 
       expect(spyLogin).not.toHaveBeenCalled();
-      expect(spySignup).toHaveBeenCalled();
+      expect(spySignup).toHaveBeenCalledOnce();
     });
   });
 });

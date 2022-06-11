@@ -8,10 +8,10 @@ import { copyObjArr, resetNoteStore, setCrypto, UUID_REGEX } from '../utils';
 const emptyNote = new n.Note();
 const existingNoteIndexSorted = 2;
 const existingNote = localNotes[8];
-const mockChange = vi.fn(() => undefined);
-const mockNew = vi.fn(() => undefined);
-const mockSelect = vi.fn(() => undefined);
-const mockUnsynced = vi.fn(() => undefined);
+const mockChange = vi.fn();
+const mockNew = vi.fn();
+const mockSelect = vi.fn();
+const mockUnsynced = vi.fn();
 
 beforeAll(() => {
   setCrypto();
@@ -52,7 +52,7 @@ describe('Note store', () => {
       assert.strictEqual(n.state.notes.length, 1);
       assert.isTrue(isEmptyNote(n.state.notes[0]));
       assert.isTrue(isEmptyNote(n.state.selectedNote));
-      expect(mockNew).toHaveBeenCalled();
+      expect(mockNew).toHaveBeenCalledOnce();
     });
 
     it('with empty note array', async () => {
@@ -63,7 +63,7 @@ describe('Note store', () => {
       assert.strictEqual(n.state.notes.length, 1);
       assert.isTrue(isEmptyNote(n.state.notes[0]));
       assert.isTrue(isEmptyNote(n.state.selectedNote));
-      expect(mockNew).toHaveBeenCalled();
+      expect(mockNew).toHaveBeenCalledOnce();
     });
 
     it('with notes', async () => {
@@ -74,7 +74,7 @@ describe('Note store', () => {
       assert.strictEqual(n.state.notes.length, 10);
       assert.deepEqual(n.state.notes[0], localNotes.sort(n.sortNotesFn)[0]);
       assert.deepEqual(n.state.notes[0], n.state.selectedNote);
-      expect(mockChange).toHaveBeenCalled();
+      expect(mockChange).toHaveBeenCalledOnce();
     });
   });
 
@@ -103,23 +103,24 @@ describe('Note store', () => {
   it('selectNote', async () => {
     mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
-    n.state.notes.push(new n.Note());
     vi.clearAllMocks();
 
     n.selectNote(existingNote.id);
 
     assert.deepEqual(n.state.selectedNote, n.state.notes[existingNoteIndexSorted]);
-    expect(mockSelect).toHaveBeenCalled();
-    expect(mockChange).toHaveBeenCalled();
+    expect(mockSelect).toHaveBeenCalledOnce();
+    expect(mockChange).toHaveBeenCalledOnce();
     vi.clearAllMocks();
 
     // Ensure clearNote works
+    n.state.notes.push(new n.Note());
     n.selectNote(n.state.notes[10].id);
     n.selectNote(n.state.notes[9].id);
 
     assert.isUndefined(n.state.notes[10]);
-    expect(mockSelect).toHaveBeenCalled();
-    expect(mockChange).toHaveBeenCalled();
+    // 3 = 2 (selectNote) + 1 (clearNote)
+    expect(mockSelect).toHaveBeenCalledTimes(3);
+    expect(mockChange).toHaveBeenCalledTimes(3);
   });
 
   it('isSelectedNote', async () => {
@@ -146,9 +147,9 @@ describe('Note store', () => {
 
     assert.notDeepEqual(n.state.selectedNote, existingNote);
     assert.isUndefined(n.findNote(existingNote.id));
-    expect(mockSelect).toHaveBeenCalled();
-    expect(mockChange).toHaveBeenCalled();
-    expect(mockUnsynced).toHaveBeenCalled();
+    expect(mockSelect).toHaveBeenCalledOnce();
+    expect(mockChange).toHaveBeenCalledOnce();
+    expect(mockUnsynced).toHaveBeenCalledOnce();
 
     const otherExistingNote = { ...localNotes[1] };
     assert.notDeepEqual(n.state.selectedNote, otherExistingNote);
@@ -160,20 +161,24 @@ describe('Note store', () => {
     assert.isUndefined(n.findNote(otherExistingNote.id));
     expect(mockSelect).not.toHaveBeenCalled();
     expect(mockChange).not.toHaveBeenCalled();
-    expect(mockUnsynced).toHaveBeenCalled();
+    expect(mockUnsynced).toHaveBeenCalledOnce();
   });
 
-  it('deleteAllNotes', () => {
+  it('deleteAllNotes', async () => {
+    mockTauriApi(copyObjArr(localNotes));
+    await n.getAllNotes();
+    vi.clearAllMocks();
     const currentSelectedNote = n.state.selectedNote;
-    n.state.extraSelectedNotes = n.state.notes.slice(2, 5);
+    const notesSlice = n.state.notes.slice(2, 5);
+    n.state.extraSelectedNotes = notesSlice;
 
     n.deleteAllNotes();
 
     assert.notDeepEqual(n.state.selectedNote, currentSelectedNote);
     assert.isEmpty(n.state.extraSelectedNotes);
-    expect(mockSelect).toHaveBeenCalled();
-    expect(mockChange).toHaveBeenCalled();
-    expect(mockUnsynced).toHaveBeenCalled();
+    expect(mockSelect).toHaveBeenCalledOnce();
+    expect(mockChange).toHaveBeenCalledOnce();
+    expect(mockUnsynced).toHaveBeenCalledTimes(notesSlice.length + 1);
   });
 
   describe('newNote', () => {
@@ -188,9 +193,9 @@ describe('Note store', () => {
       assert.notStrictEqual(n.state.selectedNote.id, emptyNote.id);
       assert.isTrue(isEmptyNote(n.state.selectedNote));
       assert.deepEqual(n.state.selectedNote, n.state.notes[0]);
-      expect(mockSelect).toHaveBeenCalled();
-      expect(mockChange).toHaveBeenCalled();
-      expect(mockNew).toHaveBeenCalled();
+      expect(mockSelect).toHaveBeenCalledOnce();
+      expect(mockChange).toHaveBeenCalledOnce();
+      expect(mockNew).toHaveBeenCalledOnce();
     });
 
     it('Only updates the timestamp if called with an already empty note selected', async () => {
@@ -222,6 +227,6 @@ describe('Note store', () => {
     assert.notDeepEqual(n.state.selectedNote, currentSelectedNote);
     assert.notDeepEqual(n.state.selectedNote.content, currentSelectedNote.content);
     assert.notStrictEqual(n.state.selectedNote.timestamp, currentSelectedNote.timestamp);
-    expect(mockUnsynced).toHaveBeenCalled();
+    expect(mockUnsynced).toHaveBeenCalledOnce();
   });
 });

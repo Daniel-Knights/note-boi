@@ -21,8 +21,8 @@ import NoteMenu from '../../components/NoteMenu.vue';
 import SyncStatus from '../../components/SyncStatus.vue';
 
 const mockEmits = {
-  login: vi.fn(() => undefined),
-  logout: vi.fn(() => undefined),
+  login: vi.fn(),
+  logout: vi.fn(),
 };
 
 beforeAll(setCrypto);
@@ -57,7 +57,7 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
-      expect(mockEmits.login).toHaveBeenCalled();
+      expect(mockEmits.login).toHaveBeenCalledOnce();
     });
 
     it('With notes', async () => {
@@ -77,7 +77,7 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
-      expect(mockEmits.login).toHaveBeenCalled();
+      expect(mockEmits.login).toHaveBeenCalledOnce();
     });
 
     it('Fails to log in, with a server error', async () => {
@@ -119,7 +119,7 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
-      expect(mockEmits.login).toHaveBeenCalled();
+      expect(mockEmits.login).toHaveBeenCalledOnce();
     });
 
     it('With notes', async () => {
@@ -140,7 +140,7 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
-      expect(mockEmits.login).toHaveBeenCalled();
+      expect(mockEmits.login).toHaveBeenCalledOnce();
     });
 
     it("Doesn't push empty notes", async () => {
@@ -205,7 +205,7 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
       assert.isEmpty(s.state.error.message);
-      expect(mockEmits.logout).toHaveBeenCalled();
+      expect(mockEmits.logout).toHaveBeenCalledOnce();
     });
 
     it('With server error', async () => {

@@ -19,7 +19,7 @@ describe('App', () => {
     const wrapper = mount(App);
     assert.isTrue(wrapper.isVisible());
 
-    expect(getAllNotesSpy).toHaveBeenCalled();
+    expect(getAllNotesSpy).toHaveBeenCalledOnce();
 
     const syncStatusWrapper = wrapper.getComponent({ name: 'SyncStatus' });
 

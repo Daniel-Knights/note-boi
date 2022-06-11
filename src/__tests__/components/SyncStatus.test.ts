@@ -22,8 +22,8 @@ afterEach(() => {
 
 describe('SyncStatus', async () => {
   const mockEmits = {
-    login: vi.fn(() => undefined),
-    logout: vi.fn(() => undefined),
+    login: vi.fn(),
+    logout: vi.fn(),
   };
 
   await mockTauriApi([], mockEmits);
@@ -44,7 +44,7 @@ describe('SyncStatus', async () => {
   it('Mounts', () => {
     const wrapper = mount(SyncStatus);
     assert.isTrue(wrapper.isVisible());
-    expect(mockEmits.logout).toHaveBeenCalled();
+    expect(mockEmits.logout).toHaveBeenCalledOnce();
 
     const loadingEl = findByTestId(wrapper, 'loading');
     const errorButton = findByTestId(wrapper, 'error');
@@ -63,8 +63,8 @@ describe('SyncStatus', async () => {
 
     const wrapper = mount(SyncStatus);
     assert.isTrue(wrapper.isVisible());
-    expect(mockEmits.login).toHaveBeenCalled();
-    expect(pullSpy).toHaveBeenCalled();
+    expect(mockEmits.login).toHaveBeenCalledOnce();
+    expect(pullSpy).toHaveBeenCalledOnce();
 
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
@@ -93,7 +93,7 @@ describe('SyncStatus', async () => {
     s.state.token = 'token';
     await syncButton.trigger('click');
 
-    expect(pushSpy).toHaveBeenCalled();
+    expect(pushSpy).toHaveBeenCalledOnce();
 
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
