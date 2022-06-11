@@ -50,14 +50,14 @@ export function resetSyncStore(): void {
 const formatTestId = (id: string) => `[data-test-id="${id}"]`;
 
 export function getByTestId<T extends Node>(
-  wrapper: VueWrapper<any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  wrapper: VueWrapper<any> | Omit<DOMWrapper<Node>, 'exists'>, // eslint-disable-line @typescript-eslint/no-explicit-any
   id: string
 ): Omit<DOMWrapper<T>, 'exists'> {
   return wrapper.get<T>(formatTestId(id));
 }
 
 export function findByTestId<T extends Element>(
-  wrapper: VueWrapper<any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  wrapper: VueWrapper<any> | Omit<DOMWrapper<Node>, 'exists'>, // eslint-disable-line @typescript-eslint/no-explicit-any
   id: string
 ): DOMWrapper<T> {
   return wrapper.find<T>(formatTestId(id));
