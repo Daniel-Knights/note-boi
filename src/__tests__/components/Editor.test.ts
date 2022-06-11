@@ -30,7 +30,7 @@ describe('Editor', () => {
 
     assert.isEmpty(editorBody.text());
 
-    await mockTauriApi(copyObjArr(localNotes));
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');

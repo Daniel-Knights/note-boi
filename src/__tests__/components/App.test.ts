@@ -13,7 +13,7 @@ enableAutoUnmount(afterEach);
 
 describe('App', () => {
   it('Mounts', async () => {
-    await mockTauriApi();
+    mockTauriApi();
 
     const getAllNotesSpy = vi.spyOn(n, 'getAllNotes');
     const wrapper = mount(App);

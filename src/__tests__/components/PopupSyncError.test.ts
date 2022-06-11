@@ -17,11 +17,11 @@ function mountPopupSyncError() {
 beforeAll(setCrypto);
 enableAutoUnmount(afterEach);
 
-describe('PopupSyncError', async () => {
+describe('PopupSyncError', () => {
   const errorMessage = 'I am a sync error';
   s.state.error.message = errorMessage;
 
-  await mockTauriApi([]);
+  mockTauriApi([]);
 
   it('Mounts', () => {
     const wrapper = mountPopupSyncError();

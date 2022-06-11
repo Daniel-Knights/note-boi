@@ -15,7 +15,7 @@ const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 beforeAll(setCrypto);
 
 beforeEach(async () => {
-  await mockTauriApi(copyObjArr(localNotes));
+  mockTauriApi(copyObjArr(localNotes));
   await n.getAllNotes();
 
   assert.isFalse(isEmptyNote(n.state.notes[0]));
@@ -55,7 +55,7 @@ describe('NoteMenu', () => {
     assert.isTrue(wrapper.isVisible());
 
     resetNoteStore();
-    await mockTauriApi([]);
+    mockTauriApi([]);
     await n.getAllNotes();
 
     const noteItems = wrapper.findAll('li');

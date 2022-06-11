@@ -20,13 +20,13 @@ afterEach(() => {
   vi.resetAllMocks();
 });
 
-describe('SyncStatus', async () => {
+describe('SyncStatus', () => {
   const mockEmits = {
     login: vi.fn(),
     logout: vi.fn(),
   };
 
-  await mockTauriApi([], mockEmits);
+  mockTauriApi([], mockEmits);
 
   function mountWithPopup() {
     const appDiv = document.createElement('div');

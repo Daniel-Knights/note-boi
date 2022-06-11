@@ -13,7 +13,7 @@ export function mockTauriApi(
   notes?: n.Note[] | undefined,
   mockFns?: { login: Fn; logout: Fn },
   httpStatus = 200
-): Promise<void> | void {
+): void {
   mockIPC((cmd, args) => {
     type ArgsMessage = {
       cmd?: string;

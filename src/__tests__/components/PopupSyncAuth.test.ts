@@ -93,7 +93,7 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      await mockTauriApi([]);
+      mockTauriApi([]);
       await formEl.trigger('submit');
 
       expect(spyLogin).toHaveBeenCalledOnce();
@@ -163,7 +163,7 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      await mockTauriApi([]);
+      mockTauriApi([]);
       await formEl.trigger('submit');
 
       assert.strictEqual(s.state.error.type, s.ErrorType.Auth);
