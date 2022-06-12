@@ -1,4 +1,5 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import * as s from '../../store/sync';
 import { openedPopup, PopupType } from '../../store/popup';
@@ -11,6 +12,8 @@ import {
   setCrypto,
 } from '../utils';
 
+import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
+import PopupSyncError from '../../components/PopupSyncError.vue';
 import SyncStatus from '../../components/SyncStatus.vue';
 
 beforeAll(setCrypto);
@@ -134,6 +137,51 @@ describe('SyncStatus', () => {
       if (!result) {
         assert.fail(`Listener for '${event}' not called`);
       }
+    });
+  });
+
+  describe('Handles popups', () => {
+    it('PopupSyncError', async () => {
+      const wrapper = mountWithPopup();
+      assert.isTrue(wrapper.isVisible());
+      assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
+
+      s.state.error.type = s.ErrorType.Logout;
+      await nextTick();
+
+      await findByTestId(wrapper, 'error').trigger('click');
+
+      assert.isTrue(findByTestId(wrapper, 'popup-error').isVisible());
+      assert.strictEqual(openedPopup.value, PopupType.Error);
+
+      await wrapper.getComponent(PopupSyncError).vm.$emit('close');
+
+      assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
+      assert.isUndefined(openedPopup.value);
+      assert.deepEqual(s.state.error, { type: s.ErrorType.None, message: '' });
+    });
+
+    it('PopupSyncAuth', async () => {
+      const wrapper = mountWithPopup();
+      assert.isTrue(wrapper.isVisible());
+      assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
+
+      wrapper.vm.handlePopupAuthEvent();
+      await nextTick();
+
+      assert.isTrue(findByTestId(wrapper, 'popup-auth').isVisible());
+
+      await wrapper.getComponent(PopupSyncAuth).vm.$emit('close');
+
+      assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
+      assert.isUndefined(openedPopup.value);
+
+      s.state.token = 'token';
+      wrapper.vm.handlePopupAuthEvent();
+      await nextTick();
+
+      assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
+      assert.isUndefined(openedPopup.value);
     });
   });
 });
