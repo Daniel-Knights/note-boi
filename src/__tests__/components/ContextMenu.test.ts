@@ -7,9 +7,10 @@ import { mockTauriApi } from '../tauri';
 import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 
 import ContextMenu from '../../components/ContextMenu.vue';
+import DropMenu from '../../components/DropMenu.vue';
 
 async function mountContextMenu(attachTo?: HTMLElement) {
-  const ev: MouseEvent = new MouseEvent('contextmenu', {
+  const ev = new MouseEvent('contextmenu', {
     clientX: 100,
     clientY: 200,
   });
@@ -19,10 +20,11 @@ async function mountContextMenu(attachTo?: HTMLElement) {
   const wrapper = mount(ContextMenu, { attachTo });
   await wrapper.setProps({ ev });
 
-  const element = wrapper.element as HTMLUListElement;
+  const element = wrapper.element as HTMLElement;
 
   const assertionError =
     !wrapper.isVisible() ||
+    !wrapper.vm.show ||
     element.style.top !== `${ev.clientY}px` ||
     element.style.left !== `${ev.clientX}px`;
 
@@ -43,6 +45,16 @@ describe('ContextMenu', () => {
     const { assertionError } = await mountContextMenu();
 
     if (assertionError) assert.fail();
+  });
+
+  it('Closes', async () => {
+    const { wrapper, assertionError } = await mountContextMenu();
+    if (assertionError) assert.fail();
+
+    await wrapper.getComponent(DropMenu).vm.$emit('close');
+
+    assert.isFalse(wrapper.isVisible());
+    assert.isFalse(wrapper.vm.show);
   });
 
   it('Creates a new note', async () => {
