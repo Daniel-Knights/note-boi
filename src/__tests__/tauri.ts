@@ -37,46 +37,45 @@ export function mockTauriApi(
     switch (cmd) {
       case 'tauri':
         switch (reqMessage?.cmd) {
-          case 'httpRequest':
-            return new Promise<Record<string, unknown>>((res) => {
-              const reqOptions = reqMessage?.options;
-              const reqType = reqOptions?.url?.split('/api/')[1];
-              const reqNotes = reqOptions?.body?.payload?.notes;
+          case 'httpRequest': {
+            const reqOptions = reqMessage?.options;
+            const reqType = reqOptions?.url?.split('/api/')[1];
+            const reqNotes = reqOptions?.body?.payload?.notes;
 
-              const resData: { notes?: n.Note[]; token?: string } = {};
+            const resData: { notes?: n.Note[]; token?: string } = {};
 
-              // Ensure no empty notes are pushed to the server
-              reqNotes?.forEach((note) => {
-                if (isEmptyNote(note)) assert.fail('Empty note');
-              });
+            // Ensure no empty notes are pushed to the server
+            reqNotes?.forEach((note) => {
+              if (isEmptyNote(note)) assert.fail('Empty note');
+            });
 
-              switch (reqType) {
-                case 'login':
-                  resData.notes = localNotes;
-                  resData.token = 'token';
-                  break;
-                case 'signup':
-                  resData.token = 'token';
-                  break;
-                case 'notes': {
-                  // Pull
-                  if (reqOptions?.method === 'POST') {
-                    resData.notes = notes;
-                    // Push
-                  } else if (reqOptions?.method === 'PUT') {
-                    if (!Array.isArray(reqNotes) || reqNotes.some((nt) => !isNote(nt))) {
-                      assert.fail('Invalid notes');
-                    }
+            switch (reqType) {
+              case 'login':
+                resData.notes = localNotes;
+                resData.token = 'token';
+                break;
+              case 'signup':
+                resData.token = 'token';
+                break;
+              case 'notes': {
+                // Pull
+                if (reqOptions?.method === 'POST') {
+                  resData.notes = notes;
+                  // Push
+                } else if (reqOptions?.method === 'PUT') {
+                  if (!Array.isArray(reqNotes) || reqNotes.some((nt) => !isNote(nt))) {
+                    assert.fail('Invalid notes');
                   }
                 }
-                // no default
               }
+              // no default
+            }
 
-              res({
-                status: httpStatus,
-                data: httpStatus > 299 ? 'Error' : JSON.stringify(resData),
-              });
+            return mockPromise({
+              status: httpStatus,
+              data: httpStatus > 299 ? 'Error' : JSON.stringify(resData),
             });
+          }
           case 'emit':
             switch (reqMessage?.event) {
               case 'login':
