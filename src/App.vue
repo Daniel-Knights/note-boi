@@ -1,4 +1,5 @@
 <template>
+  <Loading v-if="updateDownloading" />
   <NoteMenu />
   <Editor />
   <UtilityMenu />
@@ -12,10 +13,11 @@ import { exit, relaunch } from '@tauri-apps/api/process';
 import { deleteAllNotes, getAllNotes, newNote } from './store/note';
 import { openedPopup, PopupType } from './store/popup';
 import { ErrorType, push, state } from './store/sync';
-import { handleUpdate } from './store/update';
+import { handleUpdate, updateDownloading } from './store/update';
 import { tauriListen } from './utils';
 
 import Editor from './components/Editor.vue';
+import Loading from './components/Loading.vue';
 import NoteMenu from './components/NoteMenu.vue';
 import SyncStatus from './components/SyncStatus.vue';
 import UtilityMenu from './components/UtilityMenu.vue';

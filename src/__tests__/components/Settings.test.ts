@@ -128,6 +128,7 @@ describe('Settings', () => {
     assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
     assert.strictEqual(wrapper.vm.menuItems.length, 2);
 
+    s.state.username = 'd';
     s.state.token = 'token';
     await nextTick();
 
