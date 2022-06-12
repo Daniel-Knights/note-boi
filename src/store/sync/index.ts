@@ -182,3 +182,4 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
 
 export { autoPush, push, pull } from './note';
 export { login, signup, logout } from './auth';
+export { deleteAccount } from './account';

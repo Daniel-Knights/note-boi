@@ -1,9 +1,12 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
+import * as s from '../../store/sync';
+import * as updateStore from '../../store/update';
 import { STORAGE_KEYS } from '../../constant';
 import { openedPopup, PopupType } from '../../store/popup';
 import { COLOUR_THEMES, selectedTheme } from '../../store/theme';
+import { updateAvailable } from '../../store/update';
 import { mockTauriApi } from '../tauri';
 import { findByTestId, getByTestId, setCrypto } from '../utils';
 
@@ -91,5 +94,48 @@ describe('Settings', () => {
     await infoWrapper.trigger('click');
 
     assert.strictEqual(openedPopup.value, PopupType.Info);
+    assert.isTrue(findByTestId(wrapper, 'info-popup').isVisible());
+  });
+
+  it('Update menu item', async () => {
+    const wrapper = await mountSettingsAndOpen();
+    assert.isFalse(findByTestId(wrapper, 'update').exists());
+    assert.strictEqual(wrapper.vm.menuItems.length, 2);
+
+    updateAvailable.value = { shouldUpdate: true };
+    await nextTick();
+
+    const updateWrapper = findByTestId(wrapper, 'update');
+    assert.isTrue(updateWrapper.isVisible());
+    assert.strictEqual(wrapper.vm.menuItems.length, 3);
+
+    const updateSpy = vi.spyOn(updateStore, 'updateAndRelaunch');
+    await updateWrapper.trigger('click');
+
+    expect(updateSpy).toHaveBeenCalledOnce();
+  });
+
+  it('Delete account menu item', async () => {
+    const wrapper = await mountSettingsAndOpen();
+    assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
+    assert.strictEqual(wrapper.vm.menuItems.length, 2);
+
+    s.state.token = 'token';
+    await nextTick();
+
+    const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
+    assert.isTrue(deleteAccountWrapper.isVisible());
+    assert.strictEqual(wrapper.vm.menuItems.length, 3);
+
+    const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
+    await deleteAccountWrapper.trigger('click');
+
+    expect(deleteAccountSpy).toHaveBeenCalledOnce();
+
+    s.state.token = '';
+    await nextTick();
+
+    assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
+    assert.strictEqual(wrapper.vm.menuItems.length, 2);
   });
 });

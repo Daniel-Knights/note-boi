@@ -10,15 +10,18 @@
       data-test-id="drop-menu"
     />
   </div>
-  <PopupInfo v-if="openedPopup === PopupType.Info" @close="openedPopup = undefined" />
+  <PopupInfo
+    v-if="openedPopup === PopupType.Info"
+    @close="openedPopup = undefined"
+    data-test-id="info-popup"
+  />
 </template>
 
 <script lang="ts" setup>
 import { computed, reactive, ref, watch } from 'vue';
 
 import { openedPopup, PopupType } from '../store/popup';
-import { state } from '../store/sync';
-import { deleteAccount } from '../store/sync/account';
+import { deleteAccount, state } from '../store/sync';
 import { COLOUR_THEMES, selectedTheme, setTheme } from '../store/theme';
 import { updateAndRelaunch, updateAvailable } from '../store/update';
 
@@ -54,6 +57,7 @@ watch(updateAvailable, () => {
 
   menuItems.unshift({
     label: 'Update and restart',
+    testId: 'update',
     clickHandler: () => updateAndRelaunch(),
   });
 });
@@ -67,7 +71,8 @@ watch(state, () => {
   if (state.token && !hasDeleteAccountItem) {
     menuItems.push({
       label: deleteAccountLabel,
-      clickHandler: deleteAccount,
+      testId: 'delete-account',
+      clickHandler: () => deleteAccount(),
     });
   } else if (!state.token && hasDeleteAccountItem) {
     menuItems.pop();
