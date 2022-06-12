@@ -25,10 +25,7 @@ describe('DropMenu', () => {
 
     document.body.click();
 
-    const emittedClose = wrapper.emitted('close');
-
-    assert.isDefined(emittedClose);
-    assert.isAbove(emittedClose?.length || 0, 0);
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
   describe('DropMenuItem', () => {

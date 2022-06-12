@@ -4,6 +4,7 @@ import * as s from '../../store/sync';
 import { mockTauriApi } from '../tauri';
 import { getByTestId, setCrypto } from '../utils';
 
+import Popup from '../../components/Popup.vue';
 import PopupSyncError from '../../components/PopupSyncError.vue';
 
 function mountPopupSyncError() {
@@ -29,6 +30,13 @@ describe('PopupSyncError', () => {
 
     const errorMessageWrapper = getByTestId(wrapper, 'error-message');
     assert.strictEqual(errorMessageWrapper.text(), `Error: ${errorMessage}`);
+  });
+
+  it('Emits close', async () => {
+    const wrapper = mountPopupSyncError();
+    await wrapper.getComponent(Popup).vm.$emit('close');
+
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
   it('Retries push', async () => {

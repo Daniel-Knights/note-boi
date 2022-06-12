@@ -4,6 +4,7 @@ import * as s from '../../store/sync';
 import { mockTauriApi } from '../tauri';
 import { findByTestId, getByTestId, resetSyncStore, setCrypto } from '../utils';
 
+import Popup from '../../components/Popup.vue';
 import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
 
 function mountPopupSyncAuth() {
@@ -22,6 +23,13 @@ describe('PopupSyncAuth', () => {
   it('Mounts', () => {
     const wrapper = mountPopupSyncAuth();
     assert.isTrue(wrapper.isVisible());
+  });
+
+  it('Emits close', async () => {
+    const wrapper = mountPopupSyncAuth();
+    await wrapper.getComponent(Popup).vm.$emit('close');
+
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
   it('Switches between login/signup', async () => {

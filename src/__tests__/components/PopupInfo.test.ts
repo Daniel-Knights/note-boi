@@ -5,6 +5,7 @@ import pkg from '../../../package.json';
 import { mockTauriApi } from '../tauri';
 import { getByTestId, setCrypto } from '../utils';
 
+import Popup from '../../components/Popup.vue';
 import PopupInfo from '../../components/PopupInfo.vue';
 
 const appVersion = '1.0.0';
@@ -27,6 +28,13 @@ describe('PopupInfo', () => {
   it('Mounts', () => {
     const wrapper = mountPopupInfo();
     assert.isTrue(wrapper.isVisible());
+  });
+
+  it('Emits close', async () => {
+    const wrapper = mountPopupInfo();
+    await wrapper.getComponent(Popup).vm.$emit('close');
+
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
   it('Renders correct description list items', async () => {

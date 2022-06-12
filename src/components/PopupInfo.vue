@@ -1,5 +1,5 @@
 <template>
-  <Popup>
+  <Popup @close="emit('close')">
     <div id="popup-info">
       <h2>Info</h2>
       <dl class="popup-info__description-list">
@@ -38,6 +38,8 @@ import pkg from '../../package.json';
 import { state } from '../store/sync';
 
 import Popup from './Popup.vue';
+
+const emit = defineEmits(['close']);
 
 const version = ref(pkg.version);
 

@@ -10,6 +10,8 @@ import { updateAvailable } from '../../store/update';
 import { mockTauriApi } from '../tauri';
 import { findByTestId, getByTestId, setCrypto } from '../utils';
 
+import DropMenu from '../../components/DropMenu.vue';
+import PopupInfo from '../../components/PopupInfo.vue';
 import Settings from '../../components/Settings.vue';
 
 async function mountSettingsAndOpen(options?: Record<string, unknown>) {
@@ -29,7 +31,7 @@ describe('Settings', () => {
     assert.isTrue(wrapper.isVisible());
   });
 
-  it('Opens and closes on click', async () => {
+  it('Opens and closes drop menu', async () => {
     const wrapper = mount(Settings);
     assert.isTrue(wrapper.isVisible());
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
@@ -48,7 +50,8 @@ describe('Settings', () => {
     await settingsButtonWrapper.trigger('click');
     assert.isTrue(wrapper.vm.show);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
-    document.body.click();
+
+    await wrapper.getComponent(DropMenu).vm.$emit('close');
 
     assert.isFalse(wrapper.vm.show);
     await nextTick();
@@ -77,7 +80,7 @@ describe('Settings', () => {
     await testThemeSelect(0);
   });
 
-  it('Opens info popup', async () => {
+  it('Opens and closes info popup', async () => {
     const appDiv = document.createElement('div');
     appDiv.id = 'app';
     document.body.appendChild(appDiv);
@@ -95,6 +98,11 @@ describe('Settings', () => {
 
     assert.strictEqual(openedPopup.value, PopupType.Info);
     assert.isTrue(findByTestId(wrapper, 'info-popup').isVisible());
+
+    await wrapper.getComponent(PopupInfo).vm.$emit('close');
+
+    assert.isUndefined(openedPopup.value);
+    assert.isFalse(findByTestId(wrapper, 'info-popup').exists());
   });
 
   it('Update menu item', async () => {
