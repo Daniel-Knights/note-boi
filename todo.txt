@@ -9,7 +9,3 @@ Note menu undo/redo and copy/paste
 Prevent opening context menu off bottom of screen
 Custom colour themes
 Tab key functionality
-
----
-Check unsynced notes on signup
-Sign in - log out - signup with different account

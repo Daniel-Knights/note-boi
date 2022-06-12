@@ -114,6 +114,7 @@ describe('Sync', () => {
       vi.clearAllMocks();
       mockTauriApi(localNotes, { mockFns: mockEmits });
       await n.getAllNotes();
+      const unsyncedClearSpy = vi.spyOn(s.state.unsyncedNoteIds, 'clear');
 
       await s.signup();
 
@@ -122,6 +123,7 @@ describe('Sync', () => {
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(s.state.username, 'd');
       assert.isEmpty(s.state.password);
+      expect(unsyncedClearSpy).toHaveBeenCalledOnce();
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.state.error.type, s.ErrorType.None);
