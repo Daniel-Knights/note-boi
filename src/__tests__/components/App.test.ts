@@ -6,6 +6,10 @@ import { mockTauriApi, testTauriListen } from '../tauri';
 import { resetSyncStore, setCrypto } from '../utils';
 
 import App from '../../App.vue';
+import Editor from '../../components/Editor.vue';
+import Logout from '../../components/Logout.vue';
+import NoteMenu from '../../components/NoteMenu.vue';
+import SyncStatus from '../../components/SyncStatus.vue';
 
 beforeAll(setCrypto);
 beforeEach(resetSyncStore);
@@ -21,15 +25,15 @@ describe('App', () => {
 
     expect(getAllNotesSpy).toHaveBeenCalledOnce();
 
-    const syncStatusWrapper = wrapper.getComponent({ name: 'SyncStatus' });
+    const syncStatusWrapper = wrapper.getComponent(SyncStatus);
 
-    assert.isTrue(wrapper.getComponent({ name: 'NoteMenu' }).isVisible());
-    assert.isTrue(wrapper.getComponent({ name: 'Editor' }).isVisible());
+    assert.isTrue(wrapper.getComponent(NoteMenu).isVisible());
+    assert.isTrue(wrapper.getComponent(Editor).isVisible());
     assert.isTrue(syncStatusWrapper.isVisible());
 
     await s.login();
 
-    assert.isTrue(wrapper.getComponent({ name: 'Logout' }).isVisible());
+    assert.isTrue(wrapper.getComponent(Logout).isVisible());
   });
 
   it('Listens to Tauri events', () => {
