@@ -1,6 +1,7 @@
 import { mockIPC } from '@tauri-apps/api/mocks';
 
 import * as n from '../store/note';
+import * as s from '../store/sync';
 import { isEmptyNote } from '../utils';
 
 import localNotes from './notes.json';
@@ -12,7 +13,7 @@ type Fn = () => void;
 export function mockTauriApi(
   notes?: n.Note[],
   options?: {
-    mockFns?: { login: Fn; logout: Fn };
+    mockFns?: { login?: Fn; logout?: Fn };
     httpStatus?: number;
     appVersion?: string;
   }
@@ -27,7 +28,7 @@ export function mockTauriApi(
         url?: string;
         method?: string;
         body?: {
-          payload?: { notes?: n.Note[] };
+          payload?: { notes?: n.Note[]; username?: string; token?: string };
         };
       };
     };
@@ -38,14 +39,18 @@ export function mockTauriApi(
       case 'tauri':
         switch (reqMessage?.cmd) {
           case 'httpRequest': {
+            if (!s.state.isLoading) {
+              assert.fail('Loading state not set');
+            }
+
             const reqOptions = reqMessage?.options;
             const reqType = reqOptions?.url?.split('/api/')[1];
-            const reqNotes = reqOptions?.body?.payload?.notes;
+            const reqPayload = reqOptions?.body?.payload;
 
             const resData: { notes?: n.Note[]; token?: string } = {};
 
             // Ensure no empty notes are pushed to the server
-            reqNotes?.forEach((note) => {
+            reqPayload?.notes?.forEach((note) => {
               if (isEmptyNote(note)) assert.fail('Empty note');
             });
 
@@ -63,11 +68,19 @@ export function mockTauriApi(
                   resData.notes = notes;
                   // Push
                 } else if (reqOptions?.method === 'PUT') {
+                  const reqNotes = reqPayload?.notes;
+
                   if (!Array.isArray(reqNotes) || reqNotes.some((nt) => !isNote(nt))) {
                     assert.fail('Invalid notes');
                   }
                 }
+
+                break;
               }
+              case 'account/delete':
+                if (reqPayload?.username !== 'd' || reqPayload.token !== 'token') {
+                  assert.fail('Invalid username or token');
+                }
               // no default
             }
 
@@ -79,10 +92,14 @@ export function mockTauriApi(
           case 'emit':
             switch (reqMessage?.event) {
               case 'login':
-                options?.mockFns?.login();
+                if (options?.mockFns?.login) {
+                  options.mockFns.login();
+                }
                 break;
               case 'logout':
-                options?.mockFns?.logout();
+                if (options?.mockFns?.logout) {
+                  options.mockFns.logout();
+                }
                 break;
               // no default
             }

@@ -158,7 +158,8 @@ describe('SyncStatus', () => {
 
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
       assert.isUndefined(openedPopup.value);
-      assert.deepEqual(s.state.error, { type: s.ErrorType.None, message: '' });
+      assert.strictEqual(s.state.error.type, s.ErrorType.None);
+      assert.isEmpty(s.state.error.message);
     });
 
     it('PopupSyncAuth', async () => {
