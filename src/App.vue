@@ -22,8 +22,6 @@ import NoteMenu from './components/NoteMenu.vue';
 import SyncStatus from './components/SyncStatus.vue';
 import UtilityMenu from './components/UtilityMenu.vue';
 
-getAllNotes();
-
 async function exitApp(cb: () => void) {
   if (state.unsyncedNoteIds.size > 0) {
     await push();
@@ -37,12 +35,13 @@ async function exitApp(cb: () => void) {
   cb();
 }
 
+getAllNotes();
+handleUpdate();
+
 tauriWindow.appWindow.listen('tauri://close-requested', () => exitApp(exit));
 tauriListen('reload', () => exitApp(relaunch));
 tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteAllNotes);
-
-handleUpdate();
 </script>
 
 <style lang="scss">
