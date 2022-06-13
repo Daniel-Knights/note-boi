@@ -35,11 +35,21 @@ export async function handleUpdate(): Promise<void> {
   updateAvailable.value = await checkUpdate();
   if (!updateAvailable.value.shouldUpdate) return;
 
+  const newVersion = updateAvailable.value.manifest?.version;
+  if (!newVersion) return;
+
+  // Check if the user has already been notified
+  const seenVersion = localStorage.getItem('update-seen');
+  if (seenVersion === newVersion) return;
+
   const shouldInstall = await dialog.ask(
     'A new version of NoteBoi is available.\nDo you want to update now?',
-    'Update available'
+    `Update available: v${newVersion}`
   );
-  if (!shouldInstall) return;
+  if (!shouldInstall) {
+    localStorage.setItem('update-seen', newVersion);
+    return;
+  }
 
   updateAndRelaunch();
 }
