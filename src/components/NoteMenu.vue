@@ -49,22 +49,22 @@
 <script lang="ts" setup>
 import { onUnmounted, ref, watchEffect } from 'vue';
 
+import { STORAGE_KEYS } from '../constant';
 import {
-  state,
-  selectNote,
+  findNote,
+  findNoteIndex,
+  isSelectedNote,
   newNote,
   Note,
-  findNoteIndex,
-  findNote,
-  isSelectedNote,
+  selectNote,
+  state,
 } from '../store/note';
-import { STORAGE_KEYS } from '../constant';
 import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
 
-const noteList = ref<HTMLElement | undefined>(undefined);
-const contextMenuEv = ref<MouseEvent | undefined>(undefined);
+const noteList = ref<HTMLElement>();
+const contextMenuEv = ref<MouseEvent>();
 const isDragging = ref(false);
 const listIsFocused = ref(true);
 const menuWidth = ref(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH) || '260px');

@@ -1,5 +1,9 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
+import * as s from '../../store/sync';
+import { openedPopup, PopupType } from '../../store/popup';
+import { mockTauriApi, testTauriListen } from '../tauri';
 import {
   awaitSyncLoad,
   findByTestId,
@@ -7,38 +11,52 @@ import {
   resetSyncStore,
   setCrypto,
 } from '../utils';
-import { mockTauriApi, testTauriListen } from '../tauri';
-import * as s from '../../store/sync';
 
+import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
+import PopupSyncError from '../../components/PopupSyncError.vue';
 import SyncStatus from '../../components/SyncStatus.vue';
 
 beforeAll(setCrypto);
+enableAutoUnmount(afterEach);
 afterEach(() => {
   resetSyncStore();
   vi.resetAllMocks();
 });
 
-describe('SyncStatus', async () => {
+describe('SyncStatus', () => {
   const mockEmits = {
-    login: vi.fn(() => undefined),
-    logout: vi.fn(() => undefined),
+    login: vi.fn(),
+    logout: vi.fn(),
   };
 
-  await mockTauriApi([], mockEmits);
+  mockTauriApi([], { mockFns: mockEmits });
+
+  function mountWithPopup() {
+    const appDiv = document.createElement('div');
+    appDiv.id = 'app';
+    document.body.appendChild(appDiv);
+
+    return mount(SyncStatus, {
+      attachTo: appDiv,
+      global: {
+        stubs: { teleport: true },
+      },
+    });
+  }
 
   it('Mounts', () => {
     const wrapper = mount(SyncStatus);
     assert.isTrue(wrapper.isVisible());
-    expect(mockEmits.logout).toHaveBeenCalled();
+    expect(mockEmits.logout).toHaveBeenCalledOnce();
 
-    const loadingEl = findByTestId(wrapper, 'loading');
+    const loadingWrapper = findByTestId(wrapper, 'loading');
     const errorButton = findByTestId(wrapper, 'error');
-    const successEl = findByTestId(wrapper, 'success');
+    const successWrapper = findByTestId(wrapper, 'success');
     const syncButton = getByTestId(wrapper, 'sync-button');
 
-    assert.isFalse(loadingEl.exists());
+    assert.isFalse(loadingWrapper.exists());
     assert.isFalse(errorButton.exists());
-    assert.isFalse(successEl.exists());
+    assert.isFalse(successWrapper.exists());
     assert.isTrue(syncButton.isVisible());
   });
 
@@ -48,8 +66,8 @@ describe('SyncStatus', async () => {
 
     const wrapper = mount(SyncStatus);
     assert.isTrue(wrapper.isVisible());
-    expect(mockEmits.login).toHaveBeenCalled();
-    expect(pullSpy).toHaveBeenCalled();
+    expect(mockEmits.login).toHaveBeenCalledOnce();
+    expect(pullSpy).toHaveBeenCalledOnce();
 
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
@@ -67,18 +85,18 @@ describe('SyncStatus', async () => {
   it('Pushes on click', async () => {
     const pushSpy = vi.spyOn(s, 'push');
 
-    const wrapper = mount(SyncStatus);
+    const wrapper = mountWithPopup();
     assert.isTrue(wrapper.isVisible());
 
     const syncButton = getByTestId(wrapper, 'sync-button');
     await syncButton.trigger('click');
 
-    assert.strictEqual(wrapper.emitted('popup-auth')?.length, 1);
+    assert.strictEqual(openedPopup.value, PopupType.Auth);
 
     s.state.token = 'token';
     await syncButton.trigger('click');
 
-    expect(pushSpy).toHaveBeenCalled();
+    expect(pushSpy).toHaveBeenCalledOnce();
 
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
@@ -94,17 +112,18 @@ describe('SyncStatus', async () => {
   });
 
   it.each(['Logout', 'Pull', 'Push'] as const)(
-    'Displays error icon and emits popup-error on click',
+    '%s - Displays error icon and opens popup on click',
     async (errorType) => {
       s.state.error.type = s.ErrorType[errorType];
 
-      const wrapper = mount(SyncStatus);
+      const wrapper = mountWithPopup();
       assert.isTrue(wrapper.isVisible());
 
       const errorButton = getByTestId(wrapper, 'error');
       await errorButton.trigger('click');
 
-      assert.strictEqual(wrapper.emitted('popup-error')?.length, 1);
+      assert.isTrue(findByTestId(wrapper, 'error-message').exists());
+      assert.isTrue(findByTestId(wrapper, 'try-again').exists());
     }
   );
 
@@ -118,6 +137,52 @@ describe('SyncStatus', async () => {
       if (!result) {
         assert.fail(`Listener for '${event}' not called`);
       }
+    });
+  });
+
+  describe('Handles popups', () => {
+    it('PopupSyncError', async () => {
+      const wrapper = mountWithPopup();
+      assert.isTrue(wrapper.isVisible());
+      assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
+
+      s.state.error.type = s.ErrorType.Logout;
+      await nextTick();
+
+      await findByTestId(wrapper, 'error').trigger('click');
+
+      assert.isTrue(findByTestId(wrapper, 'popup-error').isVisible());
+      assert.strictEqual(openedPopup.value, PopupType.Error);
+
+      await wrapper.getComponent(PopupSyncError).vm.$emit('close');
+
+      assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
+      assert.isUndefined(openedPopup.value);
+      assert.strictEqual(s.state.error.type, s.ErrorType.None);
+      assert.isEmpty(s.state.error.message);
+    });
+
+    it('PopupSyncAuth', async () => {
+      const wrapper = mountWithPopup();
+      assert.isTrue(wrapper.isVisible());
+      assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
+
+      wrapper.vm.handlePopupAuthEvent();
+      await nextTick();
+
+      assert.isTrue(findByTestId(wrapper, 'popup-auth').isVisible());
+
+      await wrapper.getComponent(PopupSyncAuth).vm.$emit('close');
+
+      assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
+      assert.isUndefined(openedPopup.value);
+
+      s.state.token = 'token';
+      wrapper.vm.handlePopupAuthEvent();
+      await nextTick();
+
+      assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
+      assert.isUndefined(openedPopup.value);
     });
   });
 });

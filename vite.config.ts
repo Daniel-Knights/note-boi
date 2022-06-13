@@ -1,8 +1,8 @@
 /// <reference types="vitest" />
 
 /* eslint-disable import/no-extraneous-dependencies */
-import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 // Some settings taken as recommended from here: https://github.com/tauri-apps/tauri/issues/2794#issuecomment-1055285894

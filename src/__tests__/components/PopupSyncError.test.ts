@@ -1,13 +1,14 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { getByTestId, setCrypto } from '../utils';
-import { mockTauriApi } from '../tauri';
 import * as s from '../../store/sync';
+import { mockTauriApi } from '../tauri';
+import { getByTestId, setCrypto } from '../utils';
 
-import SyncError from '../../components/SyncError.vue';
+import Popup from '../../components/Popup.vue';
+import PopupSyncError from '../../components/PopupSyncError.vue';
 
-function mountSyncError() {
-  return mount(SyncError, {
+function mountPopupSyncError() {
+  return mount(PopupSyncError, {
     global: {
       stubs: { teleport: true },
     },
@@ -15,25 +16,33 @@ function mountSyncError() {
 }
 
 beforeAll(setCrypto);
+enableAutoUnmount(afterEach);
 
-describe('SyncError', async () => {
+describe('PopupSyncError', () => {
   const errorMessage = 'I am a sync error';
   s.state.error.message = errorMessage;
 
-  await mockTauriApi([]);
+  mockTauriApi([]);
 
   it('Mounts', () => {
-    const wrapper = mountSyncError();
+    const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
-    const errorMessageEl = getByTestId(wrapper, 'error-message');
-    assert.strictEqual(errorMessageEl.text(), `Error: ${errorMessage}`);
+    const errorMessageWrapper = getByTestId(wrapper, 'error-message');
+    assert.strictEqual(errorMessageWrapper.text(), `Error: ${errorMessage}`);
+  });
+
+  it('Emits close', async () => {
+    const wrapper = mountPopupSyncError();
+    await wrapper.getComponent(Popup).vm.$emit('close');
+
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
   it('Retries push', async () => {
     const pushSpy = vi.spyOn(s, 'push');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
-    const wrapper = mountSyncError();
+    const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
     s.state.error.type = s.ErrorType.Push;
@@ -41,15 +50,15 @@ describe('SyncError', async () => {
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
 
-    expect(pushSpy).toHaveBeenCalled();
-    expect(resetErrorSpy).toHaveBeenCalled();
+    expect(pushSpy).toHaveBeenCalledOnce();
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
     assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
   it('Retries pull', async () => {
     const pullSpy = vi.spyOn(s, 'pull');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
-    const wrapper = mountSyncError();
+    const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
     s.state.error.type = s.ErrorType.Pull;
@@ -57,15 +66,15 @@ describe('SyncError', async () => {
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
 
-    expect(pullSpy).toHaveBeenCalled();
-    expect(resetErrorSpy).toHaveBeenCalled();
+    expect(pullSpy).toHaveBeenCalledOnce();
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
     assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
   it('Retries logout', async () => {
     const logoutSpy = vi.spyOn(s, 'logout');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
-    const wrapper = mountSyncError();
+    const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
     s.state.error.type = s.ErrorType.Logout;
@@ -73,8 +82,8 @@ describe('SyncError', async () => {
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
 
-    expect(logoutSpy).toHaveBeenCalled();
-    expect(resetErrorSpy).toHaveBeenCalled();
+    expect(logoutSpy).toHaveBeenCalledOnce();
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
     assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 });

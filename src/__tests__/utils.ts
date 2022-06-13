@@ -2,9 +2,9 @@ import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 import { randomFillSync } from 'crypto';
 import { nextTick } from 'vue';
 
-import { STORAGE_KEYS } from '../constant';
 import * as n from '../store/note';
 import * as s from '../store/sync';
+import { STORAGE_KEYS } from '../constant';
 
 export const UUID_REGEX =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
@@ -50,14 +50,14 @@ export function resetSyncStore(): void {
 const formatTestId = (id: string) => `[data-test-id="${id}"]`;
 
 export function getByTestId<T extends Node>(
-  wrapper: VueWrapper<any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  wrapper: VueWrapper<any> | Omit<DOMWrapper<Node>, 'exists'>, // eslint-disable-line @typescript-eslint/no-explicit-any
   id: string
 ): Omit<DOMWrapper<T>, 'exists'> {
   return wrapper.get<T>(formatTestId(id));
 }
 
 export function findByTestId<T extends Element>(
-  wrapper: VueWrapper<any>, // eslint-disable-line @typescript-eslint/no-explicit-any
+  wrapper: VueWrapper<any> | Omit<DOMWrapper<Node>, 'exists'>, // eslint-disable-line @typescript-eslint/no-explicit-any
   id: string
 ): DOMWrapper<T> {
   return wrapper.find<T>(formatTestId(id));

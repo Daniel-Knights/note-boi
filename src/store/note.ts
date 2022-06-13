@@ -1,11 +1,12 @@
-import { reactive } from 'vue';
 import { invoke } from '@tauri-apps/api/tauri';
-import { v4 as uuidv4 } from 'uuid';
 import type Delta from 'quill-delta';
+import { v4 as uuidv4 } from 'uuid';
+import { reactive } from 'vue';
 
-import { isEmptyNote } from '../utils';
 import { NOTE_EVENTS } from '../constant';
-import { state as syncState, autoPush, UnsyncedNoteIds } from './sync';
+import { isEmptyNote } from '../utils';
+
+import { autoPush, state as syncState, UnsyncedNoteIds } from './sync';
 
 export type UnsyncedEventDetail = {
   noteId: string;

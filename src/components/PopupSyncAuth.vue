@@ -50,13 +50,13 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 
-import { ErrorType, resetError, state, login, signup } from '../store/sync';
+import { ErrorType, login, resetError, signup, state } from '../store/sync';
 
 import Popup from './Popup.vue';
 
 const emit = defineEmits(['close']);
 
-const usernameInput = ref<HTMLInputElement | null>(null);
+const usernameInput = ref<HTMLInputElement>();
 const confirmPassword = ref('');
 
 const validation = reactive({

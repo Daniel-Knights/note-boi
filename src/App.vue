@@ -1,52 +1,35 @@
 <template>
+  <Loading v-if="updateDownloading" />
   <NoteMenu />
   <Editor />
-  <Logout />
-  <SyncStatus @popup-auth="handlePopupAuthEvent" @popup-error="popup.error = true" />
-  <SyncAuth v-if="popup.auth" @close="closeSyncPopup('auth')" />
-  <SyncError v-if="popup.error" @close="closeSyncPopup('error')" />
+  <UtilityMenu />
+  <SyncStatus />
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
 import { window as tauriWindow } from '@tauri-apps/api';
+import { exit, relaunch } from '@tauri-apps/api/process';
 
-import { getAllNotes, newNote, deleteAllNotes } from './store/note';
-import { ErrorType, push, resetError, state } from './store/sync';
+import { deleteAllNotes, getAllNotes, newNote } from './store/note';
+import { openedPopup, PopupType } from './store/popup';
+import { ErrorType, push, state } from './store/sync';
+import { handleUpdate, updateDownloading } from './store/update';
 import { tauriListen } from './utils';
 
-import NoteMenu from './components/NoteMenu.vue';
 import Editor from './components/Editor.vue';
+import Loading from './components/Loading.vue';
+import NoteMenu from './components/NoteMenu.vue';
 import SyncStatus from './components/SyncStatus.vue';
-import SyncAuth from './components/SyncAuth.vue';
-import SyncError from './components/SyncError.vue';
-import Logout from './components/Logout.vue';
+import UtilityMenu from './components/UtilityMenu.vue';
 
 getAllNotes();
-
-const popup = reactive({
-  auth: false,
-  error: false,
-});
-
-function handlePopupAuthEvent() {
-  // Prevent bug where event.emit triggers event.listen
-  if (!state.token) {
-    popup.auth = true;
-  }
-}
-
-function closeSyncPopup(field: keyof typeof popup) {
-  popup[field] = false;
-  resetError();
-}
 
 async function exitApp(cb: () => void) {
   if (state.unsyncedNoteIds.size > 0) {
     await push();
 
     if (state.error.type === ErrorType.Push) {
-      popup.error = true;
+      openedPopup.value = PopupType.Error;
       return;
     }
   }
@@ -54,14 +37,12 @@ async function exitApp(cb: () => void) {
   cb();
 }
 
-tauriWindow.appWindow.listen('tauri://close-requested', () => {
-  exitApp(() => tauriWindow.appWindow.close());
-});
-tauriListen('reload', () => {
-  exitApp(() => window.location.reload());
-});
+tauriWindow.appWindow.listen('tauri://close-requested', () => exitApp(exit));
+tauriListen('reload', () => exitApp(relaunch));
 tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteAllNotes);
+
+handleUpdate();
 </script>
 
 <style lang="scss">
@@ -79,6 +60,14 @@ body {
   margin: 0;
   color: var(--colour__secondary);
   background-color: var(--colour__primary);
+}
+
+#app {
+  display: flex;
+  margin: 0;
+  @include v.equal-dimensions(100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
+    Cantarell, 'Helvetica Neue', sans-serif;
 }
 
 button,
@@ -109,11 +98,12 @@ textarea {
   border-radius: 0;
 }
 
-#app {
-  display: flex;
-  margin: 0;
-  @include v.equal-dimensions(100%);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
-    Cantarell, 'Helvetica Neue', sans-serif;
+a {
+  color: rgb(47, 175, 122);
+
+  &:hover {
+    text-decoration: none;
+    color: rgb(74, 196, 145);
+  }
 }
 </style>

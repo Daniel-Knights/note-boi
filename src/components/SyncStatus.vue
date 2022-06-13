@@ -9,7 +9,7 @@
     <!-- Error -->
     <button
       v-else-if="isSyncError"
-      @click="emit('popup-error')"
+      @click="openedPopup = PopupType.Error"
       class="sync-status__error"
       title="Sync error"
       data-test-id="error"
@@ -35,17 +35,30 @@
       <CloudSyncIcon />
     </button>
   </div>
+  <PopupSyncAuth
+    v-if="openedPopup === PopupType.Auth"
+    @close="closeSyncPopup"
+    data-test-id="popup-auth"
+  />
+  <PopupSyncError
+    v-if="openedPopup === PopupType.Error"
+    @close="closeSyncPopup"
+    data-test-id="popup-error"
+  />
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue';
 
-import { ErrorType, logout, pull, push, state } from '../store/sync';
+import { openedPopup, PopupType } from '../store/popup';
+import { ErrorType, logout, pull, push, resetError, state } from '../store/sync';
 import { tauriEmit, tauriListen } from '../utils';
 
+import PopupSyncAuth from './PopupSyncAuth.vue';
+import PopupSyncError from './PopupSyncError.vue';
+import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 import CloudSyncIcon from './svg/CloudSyncIcon.vue';
 import CloudTickIcon from './svg/CloudTickIcon.vue';
-import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 
 if (state.token) {
   tauriEmit('login');
@@ -54,7 +67,6 @@ if (state.token) {
   tauriEmit('logout');
 }
 
-const emit = defineEmits(['popup-auth', 'popup-error']);
 const isSyncError = computed(() => {
   switch (state.error.type) {
     case ErrorType.Logout:
@@ -66,9 +78,21 @@ const isSyncError = computed(() => {
   }
 });
 
+function handlePopupAuthEvent() {
+  // Prevent bug where event.emit triggers event.listen
+  if (!state.token) {
+    openedPopup.value = PopupType.Auth;
+  }
+}
+
+function closeSyncPopup() {
+  openedPopup.value = undefined;
+  resetError();
+}
+
 async function pushNotes() {
   if (!state.token) {
-    emit('popup-auth');
+    handlePopupAuthEvent();
   } else {
     await push();
   }
@@ -77,25 +101,23 @@ async function pushNotes() {
 tauriListen('push-notes', pushNotes);
 tauriListen('login', () => {
   state.isLogin = true;
-  emit('popup-auth');
+  handlePopupAuthEvent();
 });
 tauriListen('logout', logout);
 tauriListen('signup', () => {
   state.isLogin = false;
-  emit('popup-auth');
+  handlePopupAuthEvent();
 });
 </script>
 
 <style lang="scss" scoped>
 #sync-status {
   position: absolute;
+  right: v.$utility-menu-right;
   bottom: 12px;
-  right: v.$sync-icon-right;
 
-  &,
-  svg,
-  .sync-status__loading-spinner {
-    @include v.equal-dimensions(v.$sync-icon-dimensions);
+  > * {
+    @include v.equal-dimensions(v.$utility-menu-width);
   }
 }
 

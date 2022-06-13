@@ -7,5 +7,11 @@
   "bracketSpacing": true,
   "semi": true,
   "arrowParens": "always",
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "importOrder": ["^\\.\\./(?!.+\\.vue)", "^\\.$", "^\\./(?!.+\\.vue)", "^.+/.+\\.vue"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderParserPlugins": ["typescript"],
+  "importOrderGroupNamespaceSpecifiers": true,
+  "importOrderCaseInsensitive": true
 }

@@ -1,15 +1,26 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
 import Popup from '../../components/Popup.vue';
 
-describe('Popup', () => {
+const slot = '<div>Hello World</div>';
+const eventSpies = {
+  document: {
+    add: vi.spyOn(document, 'addEventListener'),
+    remove: vi.spyOn(document, 'removeEventListener'),
+  },
+  body: {
+    add: vi.spyOn(document.body, 'addEventListener'),
+    remove: vi.spyOn(document.body, 'removeEventListener'),
+  },
+};
+
+function mountPopup() {
   const appDiv = document.createElement('div');
   appDiv.id = 'app';
   document.body.appendChild(appDiv);
 
   vi.useFakeTimers();
 
-  const slot = '<div>Hello World</div>';
   const wrapper = mount(Popup, {
     attachTo: appDiv,
     slots: { default: slot },
@@ -20,34 +31,54 @@ describe('Popup', () => {
 
   vi.runAllTimers();
 
+  return wrapper;
+}
+
+afterEach(() => {
+  vi.clearAllMocks();
+  document.body.innerHTML = '';
+});
+enableAutoUnmount(afterEach);
+
+describe('Popup', () => {
   it('Mounts', () => {
+    const wrapper = mountPopup();
+
     assert.isTrue(wrapper.isVisible());
     assert.isTrue(wrapper.html().includes(slot));
+    expect(eventSpies.document.add).toHaveBeenCalledOnce();
+    expect(eventSpies.body.add).toHaveBeenCalledOnce();
+
+    wrapper.unmount(); // enableAutoUnmount doesn't work here for some reason
   });
 
-  document.removeEventListener = vi.fn(() => null);
-
   it('Closes on escape key', () => {
+    const wrapper = mountPopup();
+
     document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
 
     assert.strictEqual(wrapper.emitted('close')?.length, 1);
-    expect(document.removeEventListener).toHaveBeenCalled();
+    expect(eventSpies.document.remove).toHaveBeenCalledOnce();
+    expect(eventSpies.body.remove).toHaveBeenCalledOnce();
   });
-
-  vi.resetAllMocks();
 
   it('Closes on click outside', () => {
+    const wrapper = mountPopup();
+
     document.body.dispatchEvent(new MouseEvent('mousedown'));
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 2);
-    expect(document.removeEventListener).toHaveBeenCalled();
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    expect(eventSpies.document.remove).toHaveBeenCalledOnce();
+    expect(eventSpies.body.remove).toHaveBeenCalledOnce();
   });
 
-  vi.resetAllMocks();
-
   it('Unmounts', () => {
+    const wrapper = mountPopup();
+
     wrapper.unmount();
 
-    expect(document.removeEventListener).toHaveBeenCalled();
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    expect(eventSpies.document.remove).toHaveBeenCalledOnce();
+    expect(eventSpies.body.remove).toHaveBeenCalledOnce();
   });
 });

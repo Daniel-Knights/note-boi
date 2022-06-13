@@ -8,15 +8,15 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
 import Quill from 'quill';
 import type Delta from 'quill-delta';
+import { onMounted, ref } from 'vue';
 
-import { unixToDateTime } from '../utils';
 import { NOTE_EVENTS } from '../constant';
-import { state, editNote } from '../store/note';
+import { editNote, state } from '../store/note';
+import { unixToDateTime } from '../utils';
 
-const editorBody = ref<HTMLDivElement | null>(null);
+const editorBody = ref<HTMLDivElement>();
 
 let quillEditor: Quill | undefined;
 let ignoreTextChange = false;
@@ -83,29 +83,30 @@ onMounted(() => {
     }
   }
 
-  $text-padding-x: 8px;
-  $text-padding-y: 12px;
-
   .editor__date {
     user-select: none;
     -webkit-user-select: none;
-    display: block;
-    padding: 10px $text-padding-x;
-    text-align: center;
+    @include v.flex-x(center, center);
+    height: v.$editor-date-height;
     font-size: 11px;
     letter-spacing: 0.5px;
     color: var(--colour__tertiary);
     border-bottom: 1px solid var(--colour__interactive);
   }
 
+  $spacing-x: 8px;
+
   .ql-editor {
-    margin: $text-padding-y $text-padding-x 0;
-    padding: 0 52px $text-padding-y 0;
+    $utility-menu-padding: (v.$utility-menu-right - $spacing-x) * 2;
+    $padding-right: v.$utility-menu-width + $utility-menu-padding;
+
+    margin: 12px $spacing-x 0;
+    padding: 0 $padding-right 12px 0;
   }
 
   .ql-editor.ql-blank::before {
     color: var(--colour__tertiary);
-    left: $text-padding-x;
+    left: $spacing-x;
   }
 
   .ql-toolbar,

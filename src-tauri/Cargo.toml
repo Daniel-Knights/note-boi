@@ -8,7 +8,7 @@ repository = "https://github.com/Daniel-Knights/note-boi"
 default-run = "note-boi"
 edition = "2021"
 build = "build.rs"
-rust-version = "1.60"
+rust-version = "1.61"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -18,7 +18,7 @@ tauri-build = { version = "1.0.0-rc", features = [] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.0.0-rc", features = ["http-request", "shell-open", "window-close"] }
+tauri = { version = "1.0.0-rc", features = ["dialog-ask", "http-request", "process-exit", "process-relaunch", "shell-open", "updater", "window-close"] }
 
 [features]
 default = [ "custom-protocol" ]

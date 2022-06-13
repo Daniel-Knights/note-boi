@@ -1,11 +1,11 @@
 import { enableAutoUnmount, shallowMount, VueWrapper } from '@vue/test-utils';
 
-import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
-import { mockTauriApi } from '../tauri';
+import * as n from '../../store/note';
 import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote } from '../../utils';
-import * as n from '../../store/note';
 import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
+import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 
 import NoteMenu from '../../components/NoteMenu.vue';
 
@@ -15,7 +15,7 @@ const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 beforeAll(setCrypto);
 
 beforeEach(async () => {
-  await mockTauriApi(copyObjArr(localNotes));
+  mockTauriApi(copyObjArr(localNotes));
   await n.getAllNotes();
 
   assert.isFalse(isEmptyNote(n.state.notes[0]));
@@ -55,7 +55,7 @@ describe('NoteMenu', () => {
     assert.isTrue(wrapper.isVisible());
 
     resetNoteStore();
-    await mockTauriApi([]);
+    mockTauriApi([]);
     await n.getAllNotes();
 
     const noteItems = wrapper.findAll('li');
@@ -147,12 +147,16 @@ describe('NoteMenu', () => {
         n.state.selectedNote.id === nextSelectedNote.id &&
         !n.state.extraSelectedNotes.includes(nextSelectedNote);
 
-      return (
-        isNotExtraSelectedNote &&
+      if (!isNotExtraSelectedNote) return false;
+
+      const assertResultSelect = await testMetaKeySelects(
+        wrapper,
         // Spread to prevent mutating array mid-loop
-        testMetaKeySelects(wrapper, [...n.state.extraSelectedNotes], true) &&
-        n.state.extraSelectedNotes.length === 0
+        [...n.state.extraSelectedNotes],
+        true
       );
+
+      return assertResultSelect && n.state.extraSelectedNotes.length === 0;
     }
 
     /**
@@ -330,8 +334,8 @@ describe('NoteMenu', () => {
 
     assert.isUndefined(wrapperVm.contextMenuEv);
 
-    const listEl = wrapper.get({ ref: 'noteList' });
-    await listEl.trigger('contextmenu');
+    const listWrapper = wrapper.get({ ref: 'noteList' });
+    await listWrapper.trigger('contextmenu');
 
     assert.isTrue(wrapperVm.contextMenuEv instanceof MouseEvent);
   });

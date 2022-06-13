@@ -1,7 +1,6 @@
 *Before release*
-Updater
-  Prevent tests in release action
-Delete account
+Fix selected note content not updating after pull
+Auto CHANGELOG
 README
 
 *Whenever*

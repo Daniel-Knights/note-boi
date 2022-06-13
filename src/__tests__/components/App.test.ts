@@ -1,61 +1,39 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { mockTauriApi, testTauriListen } from '../tauri';
-import { resetSyncStore, setCrypto } from '../utils';
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
+import { mockTauriApi, testTauriListen } from '../tauri';
+import { resetSyncStore, setCrypto } from '../utils';
 
 import App from '../../App.vue';
+import Editor from '../../components/Editor.vue';
+import Logout from '../../components/Logout.vue';
+import NoteMenu from '../../components/NoteMenu.vue';
+import SyncStatus from '../../components/SyncStatus.vue';
 
 beforeAll(setCrypto);
 beforeEach(resetSyncStore);
+enableAutoUnmount(afterEach);
 
 describe('App', () => {
   it('Mounts', async () => {
-    await mockTauriApi();
+    mockTauriApi();
 
     const getAllNotesSpy = vi.spyOn(n, 'getAllNotes');
     const wrapper = mount(App);
     assert.isTrue(wrapper.isVisible());
 
-    expect(getAllNotesSpy).toHaveBeenCalled();
+    expect(getAllNotesSpy).toHaveBeenCalledOnce();
 
-    const syncStatusWrapper = wrapper.getComponent({ name: 'SyncStatus' });
+    const syncStatusWrapper = wrapper.getComponent(SyncStatus);
 
-    assert.isTrue(wrapper.getComponent({ name: 'NoteMenu' }).isVisible());
-    assert.isTrue(wrapper.getComponent({ name: 'Editor' }).isVisible());
+    assert.isTrue(wrapper.getComponent(NoteMenu).isVisible());
+    assert.isTrue(wrapper.getComponent(Editor).isVisible());
     assert.isTrue(syncStatusWrapper.isVisible());
 
     await s.login();
 
-    assert.isTrue(wrapper.getComponent({ name: 'Logout' }).isVisible());
-  });
-
-  it('Handles popup toggling', async () => {
-    await mockTauriApi();
-
-    const wrapper = mount(App);
-    const wrapperVm = wrapper.vm as unknown as {
-      popup: { auth: boolean; error: boolean };
-      closeSyncPopup: (popupType: string) => void;
-    };
-    assert.isTrue(wrapper.isVisible());
-
-    const syncStatusWrapper = wrapper.getComponent({ name: 'SyncStatus' });
-
-    s.state.error.type = s.ErrorType.Auth;
-    syncStatusWrapper.vm.emit('popup-auth');
-    assert.isTrue(wrapperVm.popup.auth);
-    wrapperVm.closeSyncPopup('auth');
-    assert.isFalse(wrapperVm.popup.auth);
-    assert.strictEqual(s.state.error.type, s.ErrorType.None);
-
-    s.state.error.type = s.ErrorType.Auth;
-    syncStatusWrapper.vm.emit('popup-error');
-    assert.isTrue(wrapperVm.popup.error);
-    wrapperVm.closeSyncPopup('error');
-    assert.isFalse(wrapperVm.popup.error);
-    assert.strictEqual(s.state.error.type, s.ErrorType.None);
+    assert.isTrue(wrapper.getComponent(Logout).isVisible());
   });
 
   it('Listens to Tauri events', () => {

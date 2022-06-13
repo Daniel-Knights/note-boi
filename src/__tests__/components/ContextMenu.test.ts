@@ -1,16 +1,16 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
-import { mockTauriApi } from '../tauri';
-import { STORAGE_KEYS } from '../../constant';
-import { isEmptyNote } from '../../utils';
 import * as n from '../../store/note';
+import { isEmptyNote } from '../../utils';
 import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
+import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
 
 import ContextMenu from '../../components/ContextMenu.vue';
+import DropMenu from '../../components/DropMenu.vue';
 
 async function mountContextMenu(attachTo?: HTMLElement) {
-  const ev: MouseEvent = new MouseEvent('contextmenu', {
+  const ev = new MouseEvent('contextmenu', {
     clientX: 100,
     clientY: 200,
   });
@@ -20,10 +20,11 @@ async function mountContextMenu(attachTo?: HTMLElement) {
   const wrapper = mount(ContextMenu, { attachTo });
   await wrapper.setProps({ ev });
 
-  const element = wrapper.element as HTMLUListElement;
+  const element = wrapper.element as HTMLElement;
 
   const assertionError =
     !wrapper.isVisible() ||
+    !wrapper.vm.show ||
     element.style.top !== `${ev.clientY}px` ||
     element.style.left !== `${ev.clientX}px`;
 
@@ -32,6 +33,7 @@ async function mountContextMenu(attachTo?: HTMLElement) {
 
 beforeAll(setCrypto);
 afterEach(resetNoteStore);
+enableAutoUnmount(afterEach);
 
 describe('ContextMenu', () => {
   it('Mounts without passed ev', () => {
@@ -45,30 +47,21 @@ describe('ContextMenu', () => {
     if (assertionError) assert.fail();
   });
 
-  it('Hides on click', async () => {
-    const addListenerSpy = vi.spyOn(document, 'addEventListener');
-    const removeListenerSpy = vi.spyOn(document, 'removeEventListener');
+  it('Closes', async () => {
     const { wrapper, assertionError } = await mountContextMenu();
-    const wrapperVm = wrapper.vm as unknown as {
-      hide: () => void;
-      show: () => void;
-    };
     if (assertionError) assert.fail();
 
-    expect(addListenerSpy).toHaveBeenCalledWith('click', wrapperVm.hide);
+    await wrapper.getComponent(DropMenu).vm.$emit('close');
 
-    // Manually trigger hide function as there doesn't seem
-    // to be a way to trigger it through a click event
-    wrapperVm.hide();
-    assert.isFalse(wrapperVm.show);
-    expect(removeListenerSpy).toHaveBeenCalledWith('click', wrapperVm.hide);
+    assert.isFalse(wrapper.isVisible());
+    assert.isFalse(wrapper.vm.show);
   });
 
   it('Creates a new note', async () => {
     const { wrapper, assertionError } = await mountContextMenu();
     if (assertionError) assert.fail();
 
-    await mockTauriApi(copyObjArr(localNotes));
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     assert.isFalse(isEmptyNote(n.state.selectedNote));
@@ -81,26 +74,22 @@ describe('ContextMenu', () => {
   });
 
   it('Delete button disabled with no notes', async () => {
-    await mockTauriApi();
+    mockTauriApi();
     await n.getAllNotes();
 
     const div = document.createElement('div');
     div.dataset.noteId = n.state.notes[0].id;
 
     const { wrapper, assertionError } = await mountContextMenu(div);
-    const wrapperVm = wrapper.vm as unknown as {
-      comp: { hasOneEmptyNote: boolean };
-    };
     if (assertionError) assert.fail();
 
     const deleteButton = getByTestId<HTMLButtonElement>(wrapper, 'delete');
 
-    assert.isTrue(wrapperVm.comp?.hasOneEmptyNote);
     assert.isTrue(deleteButton.element.className.includes('--disabled'));
   });
 
   it('Deletes a note', async () => {
-    await mockTauriApi(copyObjArr(localNotes));
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     const noteToDelete = { ...localNotes[0] };
@@ -122,29 +111,5 @@ describe('ContextMenu', () => {
     assert.notDeepEqual(n.state.selectedNote, noteToDelete);
     assert.notDeepEqual(n.state.notes[0], noteToDelete);
     assert.notDeepNestedInclude(n.state.notes, noteToDelete);
-  });
-
-  it('Sets theme preference', async () => {
-    const { wrapper, assertionError } = await mountContextMenu();
-    const wrapperVm = wrapper.vm as unknown as {
-      selectedTheme: string;
-    };
-    if (assertionError) assert.fail();
-
-    const themeMenu = getByTestId(wrapper, 'theme');
-
-    const firstThemeEl = themeMenu.get(':first-child');
-    const firstTheme = firstThemeEl.element.innerHTML;
-    await firstThemeEl.trigger('click');
-
-    assert.strictEqual(wrapperVm.selectedTheme, firstTheme);
-    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.THEME), firstTheme);
-
-    const secondThemeEl = themeMenu.get(':nth-child(2)');
-    const secondTheme = secondThemeEl.element.innerHTML;
-    await secondThemeEl.trigger('click');
-
-    assert.strictEqual(wrapperVm.selectedTheme, secondTheme);
-    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.THEME), secondTheme);
   });
 });

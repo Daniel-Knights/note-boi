@@ -1,13 +1,14 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { findByTestId, getByTestId, resetSyncStore, setCrypto } from '../utils';
 import * as s from '../../store/sync';
-
-import SyncAuth from '../../components/SyncAuth.vue';
 import { mockTauriApi } from '../tauri';
+import { findByTestId, getByTestId, resetSyncStore, setCrypto } from '../utils';
 
-function mountSyncAuth() {
-  return mount(SyncAuth, {
+import Popup from '../../components/Popup.vue';
+import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
+
+function mountPopupSyncAuth() {
+  return mount(PopupSyncAuth, {
     global: {
       stubs: { teleport: true },
     },
@@ -16,16 +17,24 @@ function mountSyncAuth() {
 
 beforeAll(setCrypto);
 afterEach(resetSyncStore);
+enableAutoUnmount(afterEach);
 
-describe('SyncAuth', () => {
+describe('PopupSyncAuth', () => {
   it('Mounts', () => {
-    const wrapper = mountSyncAuth();
+    const wrapper = mountPopupSyncAuth();
     assert.isTrue(wrapper.isVisible());
+  });
+
+  it('Emits close', async () => {
+    const wrapper = mountPopupSyncAuth();
+    await wrapper.getComponent(Popup).vm.$emit('close');
+
+    assert.strictEqual(wrapper.emitted('close')?.length, 1);
   });
 
   it('Switches between login/signup', async () => {
     const resetErrorSpy = vi.spyOn(s, 'resetError');
-    const wrapper = mountSyncAuth();
+    const wrapper = mountPopupSyncAuth();
     assert.isTrue(wrapper.isVisible());
 
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Login');
@@ -38,12 +47,12 @@ describe('SyncAuth', () => {
 
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Signup');
     assert.isTrue(findByTestId(wrapper, 'confirm-password').exists());
-    expect(resetErrorSpy).toHaveBeenCalled();
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
   });
 
   describe('Validates fields', () => {
     it('On login', async () => {
-      const wrapper = mountSyncAuth();
+      const wrapper = mountPopupSyncAuth();
       const wrapperVm = wrapper.vm as unknown as {
         confirmPassword: string;
         validation: {
@@ -70,8 +79,8 @@ describe('SyncAuth', () => {
       const spyLogin = vi.spyOn(s, 'login');
       const spySignup = vi.spyOn(s, 'signup');
 
-      const formEl = getByTestId(wrapper, 'form');
-      await formEl.trigger('submit');
+      const formWrapper = getByTestId(wrapper, 'form');
+      await formWrapper.trigger('submit');
 
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
@@ -92,15 +101,15 @@ describe('SyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      await mockTauriApi([]);
-      await formEl.trigger('submit');
+      mockTauriApi([]);
+      await formWrapper.trigger('submit');
 
-      expect(spyLogin).toHaveBeenCalled();
+      expect(spyLogin).toHaveBeenCalledOnce();
       expect(spySignup).not.toHaveBeenCalled();
     });
 
     it('On signup', async () => {
-      const wrapper = mountSyncAuth();
+      const wrapper = mountPopupSyncAuth();
       const wrapperVm = wrapper.vm as unknown as {
         confirmPassword: string;
         validation: {
@@ -134,8 +143,8 @@ describe('SyncAuth', () => {
       const spyLogin = vi.spyOn(s, 'login');
       const spySignup = vi.spyOn(s, 'signup');
 
-      const formEl = getByTestId(wrapper, 'form');
-      await formEl.trigger('submit');
+      const formWrapper = getByTestId(wrapper, 'form');
+      await formWrapper.trigger('submit');
 
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
@@ -162,8 +171,8 @@ describe('SyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      await mockTauriApi([]);
-      await formEl.trigger('submit');
+      mockTauriApi([]);
+      await formWrapper.trigger('submit');
 
       assert.strictEqual(s.state.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.state.error.message);
@@ -176,10 +185,10 @@ describe('SyncAuth', () => {
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
 
-      await formEl.trigger('submit');
+      await formWrapper.trigger('submit');
 
       expect(spyLogin).not.toHaveBeenCalled();
-      expect(spySignup).toHaveBeenCalled();
+      expect(spySignup).toHaveBeenCalledOnce();
     });
   });
 });

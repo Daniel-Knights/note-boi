@@ -1,18 +1,25 @@
 import { mockIPC } from '@tauri-apps/api/mocks';
 
-import { isEmptyNote } from '../utils';
-import { isNote, mockPromise } from './utils';
 import * as n from '../store/note';
+import * as s from '../store/sync';
+import { isEmptyNote } from '../utils';
+
 import localNotes from './notes.json';
+import { isNote, mockPromise } from './utils';
 
 type Fn = () => void;
 
 /** Mocks calls to the Tauri API. */
 export function mockTauriApi(
-  notes?: n.Note[] | undefined,
-  mockFns?: { login: Fn; logout: Fn },
-  httpStatus = 200
-): Promise<void> | void {
+  notes?: n.Note[],
+  options?: {
+    mockFns?: { login?: Fn; logout?: Fn };
+    httpStatus?: number;
+    appVersion?: string;
+  }
+): void {
+  const httpStatus = options?.httpStatus || 200;
+
   mockIPC((cmd, args) => {
     type ArgsMessage = {
       cmd?: string;
@@ -21,7 +28,7 @@ export function mockTauriApi(
         url?: string;
         method?: string;
         body?: {
-          payload?: { notes?: n.Note[] };
+          payload?: { notes?: n.Note[]; username?: string; token?: string };
         };
       };
     };
@@ -31,57 +38,74 @@ export function mockTauriApi(
     switch (cmd) {
       case 'tauri':
         switch (reqMessage?.cmd) {
-          case 'httpRequest':
-            return new Promise<Record<string, unknown>>((res) => {
-              const reqOptions = reqMessage?.options;
-              const reqType = reqOptions?.url?.split('/api/')[1];
-              const reqNotes = reqOptions?.body?.payload?.notes;
+          case 'httpRequest': {
+            if (!s.state.isLoading) {
+              assert.fail('Loading state not set');
+            }
 
-              const resData: { notes?: n.Note[]; token?: string } = {};
+            const reqOptions = reqMessage?.options;
+            const reqType = reqOptions?.url?.split('/api/')[1];
+            const reqPayload = reqOptions?.body?.payload;
 
-              // Ensure no empty notes are pushed to the server
-              reqNotes?.forEach((note) => {
-                if (isEmptyNote(note)) assert.fail('Empty note');
-              });
+            const resData: { notes?: n.Note[]; token?: string } = {};
 
-              switch (reqType) {
-                case 'login':
-                  resData.notes = localNotes;
-                  resData.token = 'token';
-                  break;
-                case 'signup':
-                  resData.token = 'token';
-                  break;
-                case 'notes': {
-                  // Pull
-                  if (reqOptions?.method === 'POST') {
-                    resData.notes = notes;
-                    // Push
-                  } else if (reqOptions?.method === 'PUT') {
-                    if (!Array.isArray(reqNotes) || reqNotes.some((nt) => !isNote(nt))) {
-                      assert.fail('Invalid notes');
-                    }
+            // Ensure no empty notes are pushed to the server
+            reqPayload?.notes?.forEach((note) => {
+              if (isEmptyNote(note)) assert.fail('Empty note');
+            });
+
+            switch (reqType) {
+              case 'login':
+                resData.notes = localNotes;
+                resData.token = 'token';
+                break;
+              case 'signup':
+                resData.token = 'token';
+                break;
+              case 'notes': {
+                // Pull
+                if (reqOptions?.method === 'POST') {
+                  resData.notes = notes;
+                  // Push
+                } else if (reqOptions?.method === 'PUT') {
+                  const reqNotes = reqPayload?.notes;
+
+                  if (!Array.isArray(reqNotes) || reqNotes.some((nt) => !isNote(nt))) {
+                    assert.fail('Invalid notes');
                   }
                 }
-                // no default
-              }
 
-              res({
-                status: httpStatus,
-                data: httpStatus > 299 ? 'Error' : JSON.stringify(resData),
-              });
+                break;
+              }
+              case 'account/delete':
+                if (reqPayload?.username !== 'd' || reqPayload.token !== 'token') {
+                  assert.fail('Invalid username or token');
+                }
+              // no default
+            }
+
+            return mockPromise({
+              status: httpStatus,
+              data: httpStatus > 299 ? 'Error' : JSON.stringify(resData),
             });
+          }
           case 'emit':
             switch (reqMessage?.event) {
               case 'login':
-                mockFns?.login();
+                if (options?.mockFns?.login) {
+                  options.mockFns.login();
+                }
                 break;
               case 'logout':
-                mockFns?.logout();
+                if (options?.mockFns?.logout) {
+                  options.mockFns.logout();
+                }
                 break;
               // no default
             }
             break;
+          case 'getAppVersion':
+            return mockPromise(options?.appVersion);
           // no default
         }
         break;

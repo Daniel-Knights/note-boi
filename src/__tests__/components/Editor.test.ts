@@ -1,14 +1,15 @@
-import { mount } from '@vue/test-utils';
+import { enableAutoUnmount, mount } from '@vue/test-utils';
 
-import { copyObjArr, getByTestId, setCrypto } from '../utils';
-import { unixToDateTime } from '../../utils';
-import { mockTauriApi } from '../tauri';
 import * as n from '../../store/note';
+import { unixToDateTime } from '../../utils';
 import localNotes from '../notes.json';
+import { mockTauriApi } from '../tauri';
+import { copyObjArr, getByTestId, setCrypto } from '../utils';
 
 import Editor from '../../components/Editor.vue';
 
 beforeAll(setCrypto);
+enableAutoUnmount(afterEach);
 
 describe('Editor', () => {
   it('Mounts', () => {
@@ -29,7 +30,7 @@ describe('Editor', () => {
 
     assert.isEmpty(editorBody.text());
 
-    await mockTauriApi(copyObjArr(localNotes));
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');

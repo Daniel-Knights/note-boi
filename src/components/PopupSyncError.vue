@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { state, resetError, push, ErrorType, logout, pull } from '../store/sync';
+import { ErrorType, logout, pull, push, resetError, state } from '../store/sync';
 
 import Popup from './Popup.vue';
 

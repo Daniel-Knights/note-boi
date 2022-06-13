@@ -1,9 +1,15 @@
-import { isEmptyNote, isWhitespaceOnly, unixToDateTime } from '../utils';
 import { Note } from '../store/note';
+import { isEmptyNote, isWhitespaceOnly, unixToDateTime } from '../utils';
 
 describe('Utils', () => {
   it('Formats Unix time to date-time', () => {
-    assert.strictEqual(unixToDateTime(1650003060221), '15 Apr 2022, 07:11');
+    const formattedDateTime = unixToDateTime(1650003060221);
+
+    assert.isTrue(
+      // First is for GitHub workflow, second is for local testing
+      formattedDateTime === 'Apr 15, 2022, 6:11 AM' ||
+        formattedDateTime === '15 Apr 2022, 07:11'
+    );
   });
 
   it('Checks if a string is only whitespace', () => {
