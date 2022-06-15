@@ -26,7 +26,7 @@ describe('Editor', () => {
 
   it('Sets the correct note text', async () => {
     const wrapper = mount(Editor);
-    const editorBody = wrapper.get({ ref: 'editorBody' });
+    const editorBody = getByTestId(wrapper, 'body');
 
     assert.isEmpty(editorBody.text());
 

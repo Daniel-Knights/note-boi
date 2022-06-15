@@ -5,6 +5,7 @@
       @contextmenu.prevent="contextMenuEv = $event"
       class="note-menu__note-list"
       ref="noteList"
+      data-test-id="note-list"
     >
       <li
         v-for="note in state.notes"

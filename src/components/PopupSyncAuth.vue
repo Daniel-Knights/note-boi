@@ -10,6 +10,7 @@
           type="text"
           placeholder="Username"
           ref="usernameInput"
+          data-test-id="username"
         />
         <input
           v-model="state.password"

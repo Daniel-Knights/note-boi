@@ -334,7 +334,7 @@ describe('NoteMenu', () => {
 
     assert.isUndefined(wrapperVm.contextMenuEv);
 
-    const listWrapper = wrapper.get({ ref: 'noteList' });
+    const listWrapper = getByTestId(wrapper, 'note-list');
     await listWrapper.trigger('contextmenu');
 
     assert.isTrue(wrapperVm.contextMenuEv instanceof MouseEvent);

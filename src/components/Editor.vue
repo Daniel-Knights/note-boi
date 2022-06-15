@@ -3,7 +3,7 @@
     <small class="editor__date" data-test-id="timestamp">{{
       unixToDateTime(state.selectedNote.timestamp || 0)
     }}</small>
-    <div class="editor__body" ref="editorBody"></div>
+    <div class="editor__body" ref="editorBody" data-test-id="body"></div>
   </section>
 </template>
 

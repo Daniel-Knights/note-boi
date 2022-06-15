@@ -64,7 +64,7 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapper.isVisible());
       assert.isFalse(findByTestId(wrapper, 'confirm-password').exists());
 
-      const usernameInput = wrapper.get<HTMLInputElement>({ ref: 'usernameInput' });
+      const usernameInput = getByTestId<HTMLInputElement>(wrapper, 'username');
       const passwordInput = getByTestId<HTMLInputElement>(wrapper, 'password');
 
       assert.isEmpty(usernameInput.element.value);
@@ -123,7 +123,7 @@ describe('PopupSyncAuth', () => {
       const switchAuthButton = getByTestId(wrapper, 'switch');
       await switchAuthButton.trigger('click');
 
-      const usernameInput = wrapper.get<HTMLInputElement>({ ref: 'usernameInput' });
+      const usernameInput = getByTestId<HTMLInputElement>(wrapper, 'username');
       const passwordInput = getByTestId<HTMLInputElement>(wrapper, 'password');
       const confirmPasswordInput = getByTestId<HTMLInputElement>(
         wrapper,
