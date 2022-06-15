@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import Quill from 'quill';
 import type Delta from 'quill-delta';
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 import { NOTE_EVENTS } from '../constant';
 import { editNote, state } from '../store/note';
@@ -21,24 +21,28 @@ const editorBody = ref<HTMLDivElement>();
 let quillEditor: Quill | undefined;
 let ignoreTextChange = false;
 
-document.addEventListener(NOTE_EVENTS.new, () => {
+function newNoteEventHandler() {
   // Timeout to wait for note to be created/selected
   setTimeout(() => {
     quillEditor?.setSelection(0, 0);
     quillEditor?.root.click(); // Needed for MacOS
   });
-});
-document.addEventListener(NOTE_EVENTS.change, () => {
+}
+function changeNoteEventHandler() {
   ignoreTextChange = true;
 
   // @ts-expect-error TS won't accept the Delta type here
   quillEditor?.setContents(state.selectedNote.content.delta);
-});
-document.addEventListener(NOTE_EVENTS.select, () => {
+}
+function selectNoteEventHandler() {
   ignoreTextChange = true;
 
   quillEditor?.blur(); // Prevent focus bug after new note
-});
+}
+
+document.addEventListener(NOTE_EVENTS.new, newNoteEventHandler);
+document.addEventListener(NOTE_EVENTS.change, changeNoteEventHandler);
+document.addEventListener(NOTE_EVENTS.select, selectNoteEventHandler);
 
 onMounted(() => {
   quillEditor = new Quill(editorBody.value!, {
@@ -66,6 +70,12 @@ onMounted(() => {
 
     editNote(delta as Delta, title, body);
   });
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener(NOTE_EVENTS.new, newNoteEventHandler);
+  document.removeEventListener(NOTE_EVENTS.change, changeNoteEventHandler);
+  document.removeEventListener(NOTE_EVENTS.select, selectNoteEventHandler);
 });
 </script>
 
