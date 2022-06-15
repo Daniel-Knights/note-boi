@@ -100,6 +100,109 @@ describe('NoteMenu', () => {
     assert.isTrue(noteItem.classes().join(' ').includes('--selected'));
   });
 
+  it('Navigates notes with up/down arrow keys', async () => {
+    const wrapper = shallowMount(NoteMenu);
+    assert.isTrue(wrapper.isVisible());
+
+    function keyNav(direction: 'Up' | 'Down') {
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: `Arrow${direction}` }));
+    }
+
+    assert.deepEqual(n.state.selectedNote, n.state.notes[0]);
+    keyNav('Down');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[1]);
+    n.selectNote(n.state.notes[6].id);
+    keyNav('Down');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[7]);
+    keyNav('Up');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[6]);
+    n.selectNote(n.state.notes[6].id);
+    keyNav('Up');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+
+    document.body.click();
+
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+    keyNav('Up');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+    keyNav('Down');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+
+    await wrapper.trigger('click');
+
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+    keyNav('Up');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[4]);
+    keyNav('Down');
+    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
+  });
+
+  it('Sets contextmenu ev', async () => {
+    const wrapper = shallowMount(NoteMenu);
+    const wrapperVm = wrapper.vm as unknown as {
+      contextMenuEv: MouseEvent;
+    };
+    assert.isTrue(wrapper.isVisible());
+
+    assert.isUndefined(wrapperVm.contextMenuEv);
+
+    const listWrapper = getByTestId(wrapper, 'note-list');
+    await listWrapper.trigger('contextmenu');
+
+    assert.isTrue(wrapperVm.contextMenuEv instanceof MouseEvent);
+  });
+
+  it('Sets menu width with drag-bar', async () => {
+    const wrapper = shallowMount(NoteMenu);
+    const wrapperVm = wrapper.vm as unknown as {
+      menuWidth: string;
+      isDragging: boolean;
+    };
+    assert.isTrue(wrapper.isVisible());
+
+    const initialWidth = wrapperVm.menuWidth;
+    assert.match(initialWidth, /^\d+px$/);
+
+    assert.isFalse(wrapperVm.isDragging);
+
+    document.dispatchEvent(new MouseEvent('mouseup'));
+
+    assert.isFalse(wrapperVm.isDragging);
+    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
+
+    document.dispatchEvent(new MouseEvent('mousemove'));
+
+    assert.isFalse(wrapperVm.isDragging);
+    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
+
+    const dragBar = getByTestId(wrapper, 'drag-bar');
+    await dragBar.trigger('mousedown');
+
+    assert.isTrue(wrapperVm.isDragging);
+
+    document.dispatchEvent(new MouseEvent('mouseup'));
+
+    assert.isFalse(wrapperVm.isDragging);
+    assert.isNotNull(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH));
+
+    await dragBar.trigger('mousedown');
+
+    assert.isTrue(wrapperVm.isDragging);
+
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 100 }));
+
+    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
+
+    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 400 }));
+
+    assert.strictEqual(wrapperVm.menuWidth, '400px');
+
+    document.dispatchEvent(new MouseEvent('mouseup'));
+
+    assert.isFalse(wrapperVm.isDragging);
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH), '400px');
+  });
+
   describe('Selects/deselects extra notes', () => {
     /**
      * Triggers clicks with cmd/ctrl key and
@@ -286,108 +389,5 @@ describe('NoteMenu', () => {
         });
       }
     );
-  });
-
-  it('Navigates notes with up/down arrow keys', async () => {
-    const wrapper = shallowMount(NoteMenu);
-    assert.isTrue(wrapper.isVisible());
-
-    function keyNav(direction: 'Up' | 'Down') {
-      window.dispatchEvent(new KeyboardEvent('keydown', { key: `Arrow${direction}` }));
-    }
-
-    assert.deepEqual(n.state.selectedNote, n.state.notes[0]);
-    keyNav('Down');
-    assert.deepEqual(n.state.selectedNote, n.state.notes[1]);
-    n.selectNote(n.state.notes[6].id);
-    keyNav('Down');
-    assert.deepEqual(n.state.selectedNote, n.state.notes[7]);
-    keyNav('Up');
-    assert.deepEqual(n.state.selectedNote, n.state.notes[6]);
-    n.selectNote(n.state.notes[6].id);
-    keyNav('Up');
-    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
-
-    document.body.click();
-
-    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
-    keyNav('Up');
-    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
-    keyNav('Down');
-    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
-
-    await wrapper.trigger('click');
-
-    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
-    keyNav('Up');
-    assert.deepEqual(n.state.selectedNote, n.state.notes[4]);
-    keyNav('Down');
-    assert.deepEqual(n.state.selectedNote, n.state.notes[5]);
-  });
-
-  it('Sets contextmenu ev', async () => {
-    const wrapper = shallowMount(NoteMenu);
-    const wrapperVm = wrapper.vm as unknown as {
-      contextMenuEv: MouseEvent;
-    };
-    assert.isTrue(wrapper.isVisible());
-
-    assert.isUndefined(wrapperVm.contextMenuEv);
-
-    const listWrapper = getByTestId(wrapper, 'note-list');
-    await listWrapper.trigger('contextmenu');
-
-    assert.isTrue(wrapperVm.contextMenuEv instanceof MouseEvent);
-  });
-
-  it('Sets menu width with drag-bar', async () => {
-    const wrapper = shallowMount(NoteMenu);
-    const wrapperVm = wrapper.vm as unknown as {
-      menuWidth: string;
-      isDragging: boolean;
-    };
-    assert.isTrue(wrapper.isVisible());
-
-    const initialWidth = wrapperVm.menuWidth;
-    assert.match(initialWidth, /^\d+px$/);
-
-    assert.isFalse(wrapperVm.isDragging);
-
-    document.dispatchEvent(new MouseEvent('mouseup'));
-
-    assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
-
-    document.dispatchEvent(new MouseEvent('mousemove'));
-
-    assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
-
-    const dragBar = getByTestId(wrapper, 'drag-bar');
-    await dragBar.trigger('mousedown');
-
-    assert.isTrue(wrapperVm.isDragging);
-
-    document.dispatchEvent(new MouseEvent('mouseup'));
-
-    assert.isFalse(wrapperVm.isDragging);
-    assert.isNotNull(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH));
-
-    await dragBar.trigger('mousedown');
-
-    assert.isTrue(wrapperVm.isDragging);
-
-    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 100 }));
-
-    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
-
-    document.dispatchEvent(new MouseEvent('mousemove', { clientX: 400 }));
-
-    assert.strictEqual(wrapperVm.menuWidth, '400px');
-
-    document.dispatchEvent(new MouseEvent('mouseup'));
-
-    assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH), '400px');
   });
 });
