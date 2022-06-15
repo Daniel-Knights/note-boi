@@ -2,7 +2,7 @@ import { http, invoke } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 import { reactive } from 'vue';
 
-import { STORAGE_KEYS } from '../../constant';
+import { NOTE_EVENTS, STORAGE_KEYS } from '../../constant';
 import { isDev, isEmptyNote, localStorageParse } from '../../utils';
 import {
   findNote,
@@ -154,6 +154,20 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
       state.unsyncedNoteIds.add({});
     }
   });
+
+  // Ensure editor updates with latest selected note content if unedited
+  const remoteSelectedNote = remoteNotes.find(
+    (nt) => nt.id === noteState.selectedNote.id
+  );
+  const selectedNoteIsUnsynced = !state.unsyncedNoteIds.edited.has(
+    noteState.selectedNote.id
+  );
+
+  if (remoteSelectedNote && selectedNoteIsUnsynced) {
+    noteState.selectedNote.content = remoteSelectedNote.content;
+    noteState.selectedNote.timestamp = remoteSelectedNote.timestamp;
+    document.dispatchEvent(new Event(NOTE_EVENTS.change));
+  }
 
   const unsyncedIds = [state.unsyncedNoteIds.new, ...state.unsyncedNoteIds.edited];
   const unsyncedDeletedIds = [...state.unsyncedNoteIds.deleted];

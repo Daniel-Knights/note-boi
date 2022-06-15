@@ -1,5 +1,5 @@
 *Before release*
-Fix selected note content not updating after pull
+Confirm delete account
 Auto CHANGELOG
 README
 
