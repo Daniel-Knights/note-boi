@@ -1,5 +1,5 @@
 <template>
-  <ul class="drop-menu">
+  <ul class="drop-menu" data-test-id="drop-menu">
     <DropMenuItem :items="items" />
   </ul>
 </template>

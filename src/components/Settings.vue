@@ -3,18 +3,9 @@
     <button @click.stop="show = !show" data-test-id="settings-button">
       <CogIcon />
     </button>
-    <DropMenu
-      v-if="show"
-      @close="show = false"
-      :items="menuItems"
-      data-test-id="drop-menu"
-    />
+    <DropMenu v-if="show" @close="show = false" :items="menuItems" />
   </div>
-  <PopupInfo
-    v-if="openedPopup === PopupType.Info"
-    @close="openedPopup = undefined"
-    data-test-id="info-popup"
-  />
+  <PopupInfo v-if="openedPopup === PopupType.Info" @close="openedPopup = undefined" />
 </template>
 
 <script lang="ts" setup>

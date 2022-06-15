@@ -1,5 +1,5 @@
 <template>
-  <Popup @close="emit('close')">
+  <Popup @close="emit('close')" data-test-id="popup-error">
     <div class="sync-error__message" data-test-id="error-message">
       Error: {{ state.error.message }}
     </div>

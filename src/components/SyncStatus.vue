@@ -35,16 +35,8 @@
       <CloudSyncIcon />
     </button>
   </div>
-  <PopupSyncAuth
-    v-if="openedPopup === PopupType.Auth"
-    @close="closeSyncPopup"
-    data-test-id="popup-auth"
-  />
-  <PopupSyncError
-    v-if="openedPopup === PopupType.Error"
-    @close="closeSyncPopup"
-    data-test-id="popup-error"
-  />
+  <PopupSyncAuth v-if="openedPopup === PopupType.Auth" @close="closeSyncPopup" />
+  <PopupSyncError v-if="openedPopup === PopupType.Error" @close="closeSyncPopup" />
 </template>
 
 <script lang="ts" setup>

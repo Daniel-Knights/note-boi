@@ -1,6 +1,6 @@
 <template>
   <Popup @close="emit('close')">
-    <div id="sync-auth">
+    <div id="sync-auth" data-test-id="popup-auth">
       <h2 data-test-id="heading">{{ state.isLogin ? 'Login' : 'Signup' }}</h2>
       <form @submit.prevent="handleSubmit" class="sync-auth__form" data-test-id="form">
         <input
