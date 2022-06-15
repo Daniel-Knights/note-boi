@@ -189,7 +189,8 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
     selectNote(noteState.notes[0].id);
   }
 
-  await push();
+  // Sync any notes that were edited during pull
+  await push(true);
 
   return invoke('sync_all_local_notes', { notes: noteState.notes }).catch(console.error);
 }

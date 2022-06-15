@@ -45,7 +45,9 @@ export async function pull(): Promise<void> {
 }
 
 // Push
-export async function push(): Promise<void> {
+export async function push(isSyncCleanup?: boolean): Promise<void> {
+  if (state.isLoading && !isSyncCleanup) return;
+
   state.isLoading = true;
 
   // Cache ids and clear before request to prevent
