@@ -1,27 +1,14 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as s from '../../store/sync';
 import { openedPopup, PopupType } from '../../store/popup';
 import { mockTauriApi, testTauriListen } from '../tauri';
-import {
-  awaitSyncLoad,
-  findByTestId,
-  getByTestId,
-  resetSyncStore,
-  setCrypto,
-} from '../utils';
+import { awaitSyncLoad, findByTestId, getByTestId } from '../utils';
 
 import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
 import PopupSyncError from '../../components/PopupSyncError.vue';
 import SyncStatus from '../../components/SyncStatus.vue';
-
-beforeAll(setCrypto);
-enableAutoUnmount(afterEach);
-afterEach(() => {
-  resetSyncStore();
-  vi.resetAllMocks();
-});
 
 describe('SyncStatus', () => {
   const mockEmits = {

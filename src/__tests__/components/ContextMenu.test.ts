@@ -1,10 +1,10 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import * as n from '../../store/note';
 import { isEmptyNote } from '../../utils';
 import localNotes from '../notes.json';
 import { mockTauriApi } from '../tauri';
-import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
+import { copyObjArr, getByTestId } from '../utils';
 
 import ContextMenu from '../../components/ContextMenu.vue';
 import DropMenu from '../../components/DropMenu.vue';
@@ -30,10 +30,6 @@ async function mountContextMenu(attachTo?: HTMLElement) {
 
   return { wrapper, assertionError };
 }
-
-beforeAll(setCrypto);
-afterEach(resetNoteStore);
-enableAutoUnmount(afterEach);
 
 describe('ContextMenu', () => {
   it('Mounts without passed ev', () => {

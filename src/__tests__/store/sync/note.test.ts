@@ -11,21 +11,11 @@ import {
   copyObjArr,
   findByTestId,
   getByTestId,
-  resetNoteStore,
-  resetSyncStore,
-  setCrypto,
   UUID_REGEX,
 } from '../../utils';
 
 import NoteMenu from '../../../components/NoteMenu.vue';
 import SyncStatus from '../../../components/SyncStatus.vue';
-
-beforeAll(setCrypto);
-
-afterEach(() => {
-  resetSyncStore();
-  resetNoteStore();
-});
 
 describe('Sync', () => {
   describe('pull', () => {

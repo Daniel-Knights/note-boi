@@ -4,26 +4,18 @@ import { STORAGE_KEYS } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
 import localNotes from '../../notes.json';
 import { mockTauriApi } from '../../tauri';
-import { copyObjArr, resetNoteStore, resetSyncStore, setCrypto } from '../../utils';
+import { copyObjArr } from '../../utils';
 
 const mockEmits = {
   login: vi.fn(),
   logout: vi.fn(),
 };
 
-beforeAll(setCrypto);
-
-afterEach(() => {
-  resetSyncStore();
-  resetNoteStore();
-});
-
 describe('Sync', () => {
   describe('login', () => {
     it('With no notes', async () => {
       s.state.username = 'd';
       s.state.password = '1';
-      vi.clearAllMocks();
       mockTauriApi([], { mockFns: mockEmits });
 
       await n.getAllNotes();
@@ -49,7 +41,6 @@ describe('Sync', () => {
     it('With notes', async () => {
       s.state.username = 'd';
       s.state.password = '1';
-      vi.clearAllMocks();
       mockTauriApi(localNotes, { mockFns: mockEmits });
 
       await s.login();
@@ -69,7 +60,6 @@ describe('Sync', () => {
     it('Fails to log in, with a server error', async () => {
       s.state.username = 'd';
       s.state.password = '1';
-      vi.clearAllMocks();
       mockTauriApi(localNotes, { mockFns: mockEmits, httpStatus: 500 });
 
       await s.login();
@@ -91,7 +81,6 @@ describe('Sync', () => {
     it('With no notes', async () => {
       s.state.username = 'd';
       s.state.password = '1';
-      vi.clearAllMocks();
       mockTauriApi([], { mockFns: mockEmits });
 
       await s.signup();
@@ -111,7 +100,6 @@ describe('Sync', () => {
     it('With notes', async () => {
       s.state.username = 'd';
       s.state.password = '1';
-      vi.clearAllMocks();
       mockTauriApi(localNotes, { mockFns: mockEmits });
       await n.getAllNotes();
       const unsyncedClearSpy = vi.spyOn(s.state.unsyncedNoteIds, 'clear');
@@ -157,7 +145,6 @@ describe('Sync', () => {
     it('With server error', async () => {
       s.state.username = 'd';
       s.state.password = '1';
-      vi.clearAllMocks();
       mockTauriApi(undefined, { mockFns: mockEmits, httpStatus: 500 });
 
       await s.signup();
@@ -180,7 +167,6 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.password = '1';
       s.state.token = 'token';
-      vi.clearAllMocks();
       mockTauriApi(undefined, { mockFns: mockEmits });
       await s.login();
 
@@ -200,7 +186,6 @@ describe('Sync', () => {
       s.state.username = 'd';
       s.state.password = '1';
       s.state.token = 'token';
-      vi.clearAllMocks();
       mockTauriApi();
       await s.login();
       mockTauriApi(undefined, { mockFns: mockEmits, httpStatus: 500 });

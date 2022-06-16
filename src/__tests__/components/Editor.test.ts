@@ -1,16 +1,13 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import { unixToDateTime } from '../../utils';
 import localNotes from '../notes.json';
 import { mockTauriApi } from '../tauri';
-import { copyObjArr, getByTestId, setCrypto } from '../utils';
+import { copyObjArr, getByTestId } from '../utils';
 
 import Editor from '../../components/Editor.vue';
-
-beforeAll(setCrypto);
-enableAutoUnmount(afterEach);
 
 describe('Editor', () => {
   it('Mounts', () => {

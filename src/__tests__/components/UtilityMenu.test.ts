@@ -1,12 +1,10 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import * as s from '../../store/sync';
 
 import Logout from '../../components/Logout.vue';
 import Settings from '../../components/Settings.vue';
 import UtilityMenu from '../../components/UtilityMenu.vue';
-
-enableAutoUnmount(afterEach);
 
 describe('UtilityMenu', () => {
   it('Mounts with correct components', () => {

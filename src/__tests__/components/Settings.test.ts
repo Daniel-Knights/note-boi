@@ -1,4 +1,4 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as s from '../../store/sync';
@@ -8,7 +8,7 @@ import { openedPopup, PopupType } from '../../store/popup';
 import { COLOUR_THEMES, selectedTheme } from '../../store/theme';
 import { updateAvailable } from '../../store/update';
 import { mockTauriApi } from '../tauri';
-import { findByTestId, getByTestId, setCrypto } from '../utils';
+import { findByTestId, getByTestId } from '../utils';
 
 import DropMenu from '../../components/DropMenu.vue';
 import PopupInfo from '../../components/PopupInfo.vue';
@@ -21,9 +21,6 @@ async function mountSettingsAndOpen(options?: Record<string, unknown>) {
 
   return wrapper;
 }
-
-beforeAll(setCrypto);
-enableAutoUnmount(afterEach);
 
 describe('Settings', () => {
   it('Mounts', () => {

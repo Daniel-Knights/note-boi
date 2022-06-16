@@ -1,19 +1,14 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import { mockTauriApi, testTauriListen } from '../tauri';
-import { resetSyncStore, setCrypto } from '../utils';
 
 import App from '../../App.vue';
 import Editor from '../../components/Editor.vue';
 import Logout from '../../components/Logout.vue';
 import NoteMenu from '../../components/NoteMenu.vue';
 import SyncStatus from '../../components/SyncStatus.vue';
-
-beforeAll(setCrypto);
-beforeEach(resetSyncStore);
-enableAutoUnmount(afterEach);
 
 describe('App', () => {
   it('Mounts', async () => {

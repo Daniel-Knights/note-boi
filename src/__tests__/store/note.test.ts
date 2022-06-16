@@ -3,7 +3,7 @@ import { NOTE_EVENTS } from '../../constant';
 import { isEmptyNote } from '../../utils';
 import localNotes from '../notes.json';
 import { mockTauriApi } from '../tauri';
-import { copyObjArr, resetNoteStore, setCrypto, UUID_REGEX } from '../utils';
+import { copyObjArr, UUID_REGEX } from '../utils';
 
 const emptyNote = new n.Note();
 const existingNoteIndexSorted = 2;
@@ -14,16 +14,10 @@ const mockSelect = vi.fn();
 const mockUnsynced = vi.fn();
 
 beforeAll(() => {
-  setCrypto();
   document.addEventListener(NOTE_EVENTS.change, mockChange);
   document.addEventListener(NOTE_EVENTS.new, mockNew);
   document.addEventListener(NOTE_EVENTS.select, mockSelect);
   document.addEventListener(NOTE_EVENTS.unsynced, mockUnsynced);
-});
-
-afterEach(() => {
-  resetNoteStore();
-  vi.clearAllMocks();
 });
 
 describe('Note store', () => {

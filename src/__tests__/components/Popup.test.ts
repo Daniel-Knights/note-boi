@@ -1,4 +1,4 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import Popup from '../../components/Popup.vue';
 
@@ -35,10 +35,8 @@ function mountPopup() {
 }
 
 afterEach(() => {
-  vi.clearAllMocks();
   document.body.innerHTML = '';
 });
-enableAutoUnmount(afterEach);
 
 describe('Popup', () => {
   it('Mounts', () => {
@@ -48,8 +46,6 @@ describe('Popup', () => {
     assert.isTrue(wrapper.html().includes(slot));
     expect(eventSpies.document.add).toHaveBeenCalledOnce();
     expect(eventSpies.body.add).toHaveBeenCalledOnce();
-
-    wrapper.unmount(); // enableAutoUnmount doesn't work here for some reason
   });
 
   it('Closes on escape key', () => {

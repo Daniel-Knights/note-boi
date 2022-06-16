@@ -1,19 +1,17 @@
-import { enableAutoUnmount, shallowMount, VueWrapper } from '@vue/test-utils';
+import { shallowMount, VueWrapper } from '@vue/test-utils';
 
 import * as n from '../../store/note';
 import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote } from '../../utils';
 import localNotes from '../notes.json';
 import { mockTauriApi } from '../tauri';
-import { copyObjArr, getByTestId, resetNoteStore, setCrypto } from '../utils';
+import { copyObjArr, getByTestId, resetNoteStore } from '../utils';
 
 import NoteMenu from '../../components/NoteMenu.vue';
 
 const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 
 // Hooks
-beforeAll(setCrypto);
-
 beforeEach(async () => {
   mockTauriApi(copyObjArr(localNotes));
   await n.getAllNotes();
@@ -23,9 +21,6 @@ beforeEach(async () => {
   assert.deepEqual(n.state.notes[0], n.state.selectedNote);
   assert.isEmpty(n.state.extraSelectedNotes);
 });
-
-enableAutoUnmount(afterEach);
-afterEach(resetNoteStore);
 
 // Tests
 describe('NoteMenu', () => {

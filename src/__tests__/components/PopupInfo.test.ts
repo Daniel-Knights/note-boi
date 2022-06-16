@@ -1,9 +1,9 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import * as s from '../../store/sync';
 import pkg from '../../../package.json';
 import { mockTauriApi } from '../tauri';
-import { getByTestId, setCrypto } from '../utils';
+import { getByTestId } from '../utils';
 
 import Popup from '../../components/Popup.vue';
 import PopupInfo from '../../components/PopupInfo.vue';
@@ -19,10 +19,8 @@ function mountPopupInfo() {
 }
 
 beforeAll(() => {
-  setCrypto();
   mockTauriApi(undefined, { appVersion });
 });
-enableAutoUnmount(afterEach);
 
 describe('PopupInfo', () => {
   it('Mounts', () => {

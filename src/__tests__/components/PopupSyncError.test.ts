@@ -1,8 +1,8 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import * as s from '../../store/sync';
 import { mockTauriApi } from '../tauri';
-import { getByTestId, setCrypto } from '../utils';
+import { getByTestId } from '../utils';
 
 import Popup from '../../components/Popup.vue';
 import PopupSyncError from '../../components/PopupSyncError.vue';
@@ -14,9 +14,6 @@ function mountPopupSyncError() {
     },
   });
 }
-
-beforeAll(setCrypto);
-enableAutoUnmount(afterEach);
 
 describe('PopupSyncError', () => {
   const errorMessage = 'I am a sync error';

@@ -1,14 +1,6 @@
 import * as s from '../../../store/sync';
 import { STORAGE_KEYS } from '../../../constant';
 import { mockTauriApi } from '../../tauri';
-import { resetNoteStore, resetSyncStore, setCrypto } from '../../utils';
-
-beforeAll(setCrypto);
-
-afterEach(() => {
-  resetSyncStore();
-  resetNoteStore();
-});
 
 describe('Account', () => {
   describe('deleteAccount', () => {
@@ -19,7 +11,7 @@ describe('Account', () => {
       s.state.username = 'd';
       s.state.password = '1';
       await s.login();
-      vi.resetAllMocks();
+      vi.clearAllMocks();
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
@@ -44,7 +36,7 @@ describe('Account', () => {
       s.state.username = 'd';
       s.state.password = '1';
       await s.login();
-      vi.resetAllMocks();
+      vi.clearAllMocks();
       assert.strictEqual(s.state.username, 'd');
       assert.strictEqual(s.state.token, 'token');
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');

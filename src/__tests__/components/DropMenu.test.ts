@@ -1,11 +1,9 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 
 import { DropMenuItemData } from '../../components/types';
 import { findByTestId, getByTestId } from '../utils';
 
 import DropMenu from '../../components/DropMenu.vue';
-
-enableAutoUnmount(afterEach);
 
 function mountDropMenu(items: DropMenuItemData[] = []) {
   return mount(DropMenu, {
