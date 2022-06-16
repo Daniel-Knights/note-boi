@@ -9,7 +9,7 @@ enableAutoUnmount(afterEach);
 
 function mountDropMenu(items: DropMenuItemData[] = []) {
   return mount(DropMenu, {
-    propsData: { items },
+    props: { items },
   });
 }
 
