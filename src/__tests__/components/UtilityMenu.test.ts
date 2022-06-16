@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { DefineComponent } from 'vue';
 
 import * as s from '../../store/sync';
 
@@ -9,7 +10,7 @@ import UtilityMenu from '../../components/UtilityMenu.vue';
 describe('UtilityMenu', () => {
   it('Mounts with correct components', () => {
     s.state.token = 'token';
-    const wrapper = mount(UtilityMenu);
+    const wrapper = mount(UtilityMenu as DefineComponent);
 
     assert.isTrue(wrapper.isVisible());
     assert.isTrue(wrapper.findComponent(Logout).exists());

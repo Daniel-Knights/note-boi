@@ -1,4 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils';
+import { DefineComponent } from 'vue';
 
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
@@ -164,9 +165,9 @@ describe('Sync', () => {
       s.state.token = 'token';
       mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
-      const wrapper = shallowMount(NoteMenu);
+      const wrapper = shallowMount(NoteMenu as DefineComponent);
       assert.isTrue(wrapper.isVisible());
-      const statusWrapper = mount(SyncStatus);
+      const statusWrapper = mount(SyncStatus as DefineComponent);
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
       await awaitSyncLoad();
@@ -236,7 +237,7 @@ describe('Sync', () => {
       s.state.token = 'token';
       mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
-      const wrapper = shallowMount(NoteMenu);
+      const wrapper = shallowMount(NoteMenu as DefineComponent);
       assert.isTrue(wrapper.isVisible());
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
@@ -250,7 +251,7 @@ describe('Sync', () => {
         firstCachedNote.id
       );
 
-      const statusWrapper = mount(SyncStatus);
+      const statusWrapper = mount(SyncStatus as DefineComponent);
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
 
@@ -306,7 +307,7 @@ describe('Sync', () => {
       s.state.token = 'token';
       mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
-      const wrapper = shallowMount(NoteMenu);
+      const wrapper = shallowMount(NoteMenu as DefineComponent);
       assert.isTrue(wrapper.isVisible());
       assert.isEmpty(s.state.unsyncedNoteIds.deleted);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
@@ -320,7 +321,7 @@ describe('Sync', () => {
         firstCachedNote.id
       );
 
-      const statusWrapper = mount(SyncStatus);
+      const statusWrapper = mount(SyncStatus as DefineComponent);
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
 
@@ -402,7 +403,7 @@ describe('Sync', () => {
         assert.isTrue(isEmptyNote(n.state.notes[0]));
         assert.isTrue(isEmptyNote(n.state.selectedNote));
         assert.strictEqual(n.state.notes.length, 1);
-        const wrapper = mount(SyncStatus);
+        const wrapper = mount(SyncStatus as DefineComponent);
         assert.isTrue(wrapper.isVisible());
         assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
         mockTauriApi(copyObjArr(localNotes));
@@ -429,7 +430,7 @@ describe('Sync', () => {
         assert.isFalse(isEmptyNote(n.state.notes[0]));
         assert.isFalse(isEmptyNote(n.state.selectedNote));
         assert.strictEqual(n.state.notes.length, localNotes.length);
-        const wrapper = mount(SyncStatus);
+        const wrapper = mount(SyncStatus as DefineComponent);
         assert.isTrue(wrapper.isVisible());
         assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
         mockTauriApi([]);

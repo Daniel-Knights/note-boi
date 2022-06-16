@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
+import { DefineComponent, nextTick } from 'vue';
 
 import * as s from '../../store/sync';
 import * as updateStore from '../../store/update';
@@ -15,7 +15,7 @@ import PopupInfo from '../../components/PopupInfo.vue';
 import Settings from '../../components/Settings.vue';
 
 async function mountSettingsAndOpen(options?: Record<string, unknown>) {
-  const wrapper = mount(Settings, options);
+  const wrapper = mount(Settings as DefineComponent, options);
 
   await findByTestId(wrapper, 'settings-button').trigger('click');
 
@@ -24,12 +24,12 @@ async function mountSettingsAndOpen(options?: Record<string, unknown>) {
 
 describe('Settings', () => {
   it('Mounts', () => {
-    const wrapper = mount(Settings);
+    const wrapper = mount(Settings as DefineComponent);
     assert.isTrue(wrapper.isVisible());
   });
 
   it('Opens and closes drop menu', async () => {
-    const wrapper = mount(Settings);
+    const wrapper = mount(Settings as DefineComponent);
     assert.isTrue(wrapper.isVisible());
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
     const settingsButtonWrapper = findByTestId(wrapper, 'settings-button');
@@ -104,15 +104,16 @@ describe('Settings', () => {
 
   it('Update menu item', async () => {
     const wrapper = await mountSettingsAndOpen();
+    const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'update').exists());
-    assert.strictEqual(wrapper.vm.menuItems.length, 2);
+    assert.strictEqual(wrapperVm.menuItems.length, 2);
 
     updateAvailable.value = { shouldUpdate: true };
     await nextTick();
 
     const updateWrapper = findByTestId(wrapper, 'update');
     assert.isTrue(updateWrapper.isVisible());
-    assert.strictEqual(wrapper.vm.menuItems.length, 3);
+    assert.strictEqual(wrapperVm.menuItems.length, 3);
 
     const updateSpy = vi.spyOn(updateStore, 'updateAndRelaunch');
     await updateWrapper.trigger('click');
@@ -122,8 +123,9 @@ describe('Settings', () => {
 
   it('Delete account menu item', async () => {
     const wrapper = await mountSettingsAndOpen();
+    const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-    assert.strictEqual(wrapper.vm.menuItems.length, 2);
+    assert.strictEqual(wrapperVm.menuItems.length, 2);
 
     s.state.username = 'd';
     s.state.token = 'token';
@@ -131,7 +133,7 @@ describe('Settings', () => {
 
     const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
     assert.isTrue(deleteAccountWrapper.isVisible());
-    assert.strictEqual(wrapper.vm.menuItems.length, 3);
+    assert.strictEqual(wrapperVm.menuItems.length, 3);
 
     const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
     await deleteAccountWrapper.trigger('click');
@@ -142,6 +144,6 @@ describe('Settings', () => {
     await nextTick();
 
     assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-    assert.strictEqual(wrapper.vm.menuItems.length, 2);
+    assert.strictEqual(wrapperVm.menuItems.length, 2);
   });
 });

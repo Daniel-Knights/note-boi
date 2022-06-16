@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { DefineComponent } from 'vue';
 
 import * as s from '../../store/sync';
 import localNotes from '../notes.json';
@@ -9,13 +10,13 @@ import Logout from '../../components/Logout.vue';
 
 describe('Logout', () => {
   it('Mounts', () => {
-    const wrapper = mount(Logout);
+    const wrapper = mount(Logout as DefineComponent);
     assert.isFalse(wrapper.isVisible());
   });
 
   it('Logs out on click', async () => {
     mockTauriApi(copyObjArr(localNotes));
-    const wrapper = mount(Logout);
+    const wrapper = mount(Logout as DefineComponent);
     assert.isFalse(wrapper.isVisible());
 
     s.state.username = 'd';

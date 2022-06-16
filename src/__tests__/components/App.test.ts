@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { DefineComponent } from 'vue';
 
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
@@ -15,7 +16,7 @@ describe('App', () => {
     mockTauriApi();
 
     const getAllNotesSpy = vi.spyOn(n, 'getAllNotes');
-    const wrapper = mount(App);
+    const wrapper = mount(App as DefineComponent);
     assert.isTrue(wrapper.isVisible());
 
     expect(getAllNotesSpy).toHaveBeenCalledOnce();
@@ -39,7 +40,7 @@ describe('App', () => {
       'delete-note',
     ]);
 
-    const wrapper = mount(App);
+    const wrapper = mount(App as DefineComponent);
     assert.isTrue(wrapper.isVisible());
 
     Object.entries(listenResults).forEach(([event, result]) => {

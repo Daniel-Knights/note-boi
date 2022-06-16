@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { DefineComponent } from 'vue';
 
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
@@ -11,19 +12,19 @@ import Editor from '../../components/Editor.vue';
 
 describe('Editor', () => {
   it('Mounts', () => {
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor as DefineComponent);
     assert.isTrue(wrapper.isVisible());
   });
 
   it('Has the correct timestamp', () => {
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor as DefineComponent);
     const timestamp = getByTestId(wrapper, 'timestamp');
 
     assert.strictEqual(timestamp.text(), unixToDateTime(new Date().getTime()));
   });
 
   it('Sets the correct note text', async () => {
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor as DefineComponent);
     const editorBody = getByTestId(wrapper, 'body');
 
     assert.isEmpty(editorBody.text());
@@ -39,7 +40,7 @@ describe('Editor', () => {
   });
 
   it('Updates on sync if selected note is unedited', async () => {
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor as DefineComponent);
     const editorBody = getByTestId(wrapper, 'body');
 
     assert.isEmpty(editorBody.text());

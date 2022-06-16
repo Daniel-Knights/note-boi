@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { DefineComponent } from 'vue';
 
 import * as n from '../../store/note';
 import { isEmptyNote } from '../../utils';
@@ -17,7 +18,7 @@ async function mountContextMenu(attachTo?: HTMLElement) {
 
   if (attachTo) attachTo.dispatchEvent(ev);
 
-  const wrapper = mount(ContextMenu, { attachTo });
+  const wrapper = mount(ContextMenu as DefineComponent, { attachTo });
   await wrapper.setProps({ ev });
 
   const element = wrapper.element as HTMLElement;
@@ -33,7 +34,7 @@ async function mountContextMenu(attachTo?: HTMLElement) {
 
 describe('ContextMenu', () => {
   it('Mounts without passed ev', () => {
-    const wrapper = mount(ContextMenu);
+    const wrapper = mount(ContextMenu as DefineComponent);
     assert.isFalse(wrapper.isVisible());
   });
 

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
+import { DefineComponent, nextTick } from 'vue';
 
 import * as s from '../../store/sync';
 import { openedPopup, PopupType } from '../../store/popup';
@@ -23,7 +23,7 @@ describe('SyncStatus', () => {
     appDiv.id = 'app';
     document.body.appendChild(appDiv);
 
-    return mount(SyncStatus, {
+    return mount(SyncStatus as DefineComponent, {
       attachTo: appDiv,
       global: {
         stubs: { teleport: true },
@@ -32,7 +32,7 @@ describe('SyncStatus', () => {
   }
 
   it('Mounts', () => {
-    const wrapper = mount(SyncStatus);
+    const wrapper = mount(SyncStatus as DefineComponent);
     assert.isTrue(wrapper.isVisible());
     expect(mockEmits.logout).toHaveBeenCalledOnce();
 
@@ -51,7 +51,7 @@ describe('SyncStatus', () => {
     const pullSpy = vi.spyOn(s, 'pull');
     s.state.token = 'token';
 
-    const wrapper = mount(SyncStatus);
+    const wrapper = mount(SyncStatus as DefineComponent);
     assert.isTrue(wrapper.isVisible());
     expect(mockEmits.login).toHaveBeenCalledOnce();
     expect(pullSpy).toHaveBeenCalledOnce();
@@ -117,7 +117,7 @@ describe('SyncStatus', () => {
   it('Listens to Tauri events', () => {
     const listenResults = testTauriListen(['push-notes', 'login', 'logout', 'signup']);
 
-    const wrapper = mount(SyncStatus);
+    const wrapper = mount(SyncStatus as DefineComponent);
     assert.isTrue(wrapper.isVisible());
 
     Object.entries(listenResults).forEach(([event, result]) => {
@@ -151,10 +151,11 @@ describe('SyncStatus', () => {
 
     it('PopupSyncAuth', async () => {
       const wrapper = mountWithPopup();
+      const wrapperVm = wrapper.vm as unknown as { handlePopupAuthEvent: () => void };
       assert.isTrue(wrapper.isVisible());
       assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
 
-      wrapper.vm.handlePopupAuthEvent();
+      wrapperVm.handlePopupAuthEvent();
       await nextTick();
 
       assert.isTrue(findByTestId(wrapper, 'popup-auth').isVisible());
@@ -165,7 +166,7 @@ describe('SyncStatus', () => {
       assert.isUndefined(openedPopup.value);
 
       s.state.token = 'token';
-      wrapper.vm.handlePopupAuthEvent();
+      wrapperVm.handlePopupAuthEvent();
       await nextTick();
 
       assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
