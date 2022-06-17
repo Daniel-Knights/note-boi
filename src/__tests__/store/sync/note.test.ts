@@ -75,7 +75,7 @@ describe('Sync', () => {
       assert.isNotEmpty(s.state.error.message);
     });
 
-    it('Updates editor on sync if selected note is unedited', async () => {
+    it('Updates editor if selected note is unedited', async () => {
       const wrapper = mount(Editor as DefineComponent);
       const editorBody = getByTestId(wrapper, 'body');
 
@@ -89,15 +89,62 @@ describe('Sync', () => {
       const remoteNotes = copyObjArr(localNotes);
       remoteNotes.forEach((nt) => {
         if (nt.id === n.state.selectedNote.id) {
-          nt.content.delta = { ops: [{ insert: 'Remote update' }] };
+          nt.content = {
+            delta: { ops: [{ insert: 'Remote update' }] },
+            title: 'Remote update',
+            body: '',
+          };
         }
       });
 
       mockTauriApi(remoteNotes);
-      await n.getAllNotes();
       await s.pull();
 
       assert.include(editorBody.text(), 'Remote update');
+    });
+
+    it('Updates note menu', async () => {
+      const wrapper = shallowMount(NoteMenu);
+
+      function assertNoteItemText(id: string, text: string) {
+        assert.strictEqual(wrapper.get(`[data-note-id="${id}"]`).text(), text);
+      }
+
+      assert.isEmpty(wrapper.findAll('li'));
+
+      mockTauriApi(copyObjArr(localNotes));
+      await n.getAllNotes();
+
+      assert.strictEqual(wrapper.findAll('li').length, 10);
+      assertNoteItemText(n.state.selectedNote.id, 'Note with special characters😬ö');
+
+      const remoteNotes = copyObjArr<n.Note>(localNotes);
+      remoteNotes.forEach((nt) => {
+        if (nt.id === n.state.selectedNote.id) {
+          nt.content = {
+            delta: { ops: [{ insert: 'Remote update' }, { insert: '-body' }] },
+            title: 'Remote update',
+            body: '-body',
+          };
+        }
+      });
+
+      const newRemoteNote = new n.Note();
+      newRemoteNote.content = {
+        delta: { ops: [{ insert: 'New note' }, { insert: '-body' }] },
+        title: 'New note',
+        body: '-body',
+      };
+
+      remoteNotes.push(newRemoteNote);
+      remoteNotes.splice(5, 2); // Deleted remote notes
+
+      mockTauriApi(remoteNotes);
+      await s.pull();
+
+      assert.strictEqual(wrapper.findAll('li').length, 9);
+      assertNoteItemText(n.state.selectedNote.id, 'Remote update-body');
+      assertNoteItemText(newRemoteNote.id, 'New note-body');
     });
   });
 
@@ -263,8 +310,6 @@ describe('Sync', () => {
       s.state.token = 'token';
       mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
-      const wrapper = shallowMount(NoteMenu as DefineComponent);
-      assert.isTrue(wrapper.isVisible());
       assert.isEmpty(s.state.unsyncedNoteIds.edited);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
 
@@ -333,8 +378,6 @@ describe('Sync', () => {
       s.state.token = 'token';
       mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
-      const wrapper = shallowMount(NoteMenu as DefineComponent);
-      assert.isTrue(wrapper.isVisible());
       assert.isEmpty(s.state.unsyncedNoteIds.deleted);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
 
