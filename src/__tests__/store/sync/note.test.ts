@@ -15,6 +15,7 @@ import {
   UUID_REGEX,
 } from '../../utils';
 
+import Editor from '../../../components/Editor.vue';
 import NoteMenu from '../../../components/NoteMenu.vue';
 import SyncStatus from '../../../components/SyncStatus.vue';
 
@@ -72,6 +73,31 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.state.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.state.error.message);
+    });
+
+    it('Updates editor on sync if selected note is unedited', async () => {
+      const wrapper = mount(Editor as DefineComponent);
+      const editorBody = getByTestId(wrapper, 'body');
+
+      assert.isEmpty(editorBody.text());
+
+      mockTauriApi(copyObjArr(localNotes));
+      await n.getAllNotes();
+
+      assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
+
+      const remoteNotes = copyObjArr(localNotes);
+      remoteNotes.forEach((nt) => {
+        if (nt.id === n.state.selectedNote.id) {
+          nt.content.delta = { ops: [{ insert: 'Remote update' }] };
+        }
+      });
+
+      mockTauriApi(remoteNotes);
+      await n.getAllNotes();
+      await s.pull();
+
+      assert.include(editorBody.text(), 'Remote update');
     });
   });
 
