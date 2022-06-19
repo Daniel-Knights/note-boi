@@ -106,6 +106,8 @@ export function mockTauriApi(
             break;
           case 'getAppVersion':
             return mockPromise(options?.appVersion);
+          case 'askDialog':
+            return mockPromise(true);
           // no default
         }
         break;

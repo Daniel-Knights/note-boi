@@ -15,12 +15,12 @@ defineProps<{ items: DropMenuItemData[] }>();
 
 const emit = defineEmits(['close']);
 
-function hide() {
+function close() {
   emit('close');
 }
 
 onMounted(() => {
-  document.addEventListener('click', hide, { once: true });
+  document.addEventListener('click', close, { once: true });
 });
 </script>
 

@@ -137,6 +137,10 @@ describe('Settings', () => {
 
     const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
     await deleteAccountWrapper.trigger('click');
+    // Await confirm dialog
+    await new Promise((res) => {
+      setTimeout(res);
+    });
 
     expect(deleteAccountSpy).toHaveBeenCalledOnce();
 

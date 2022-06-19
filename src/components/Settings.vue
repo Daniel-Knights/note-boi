@@ -63,6 +63,7 @@ watch(state, () => {
     menuItems.push({
       label: deleteAccountLabel,
       testId: 'delete-account',
+      confirm: true,
       clickHandler: () => deleteAccount(),
     });
   } else if (!state.token && hasDeleteAccountItem) {

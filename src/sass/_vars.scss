@@ -61,6 +61,7 @@ $drop-menu-padding: 3px;
   --colour__white: #{$white};
   --colour__black: #{$black};
   --colour__error: #e71414;
+  --colour__danger: rgba(231, 20, 20, 0.4);
 }
 @media (prefers-color-scheme: dark) {
   :root {

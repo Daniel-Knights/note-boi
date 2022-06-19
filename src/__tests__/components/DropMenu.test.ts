@@ -1,7 +1,8 @@
+import { clearMocks as clearTauriMocks, mockIPC } from '@tauri-apps/api/mocks';
 import { mount } from '@vue/test-utils';
 
 import { DropMenuItemData } from '../../components/types';
-import { findByTestId, getByTestId } from '../utils';
+import { findByTestId, getByTestId, mockPromise } from '../utils';
 
 import DropMenu from '../../components/DropMenu.vue';
 
@@ -70,6 +71,7 @@ describe('DropMenu', () => {
         testId: `item-${i}`,
         disabled: true,
         selected: true,
+        confirm: true,
         subMenu: [],
       }));
       const wrapper = mountDropMenu(items);
@@ -81,8 +83,59 @@ describe('DropMenu', () => {
         assert.isTrue(itemWrapper.isVisible());
         assert.isTrue(itemWrapper.classes(`${itemClass}--disabled`));
         assert.isTrue(itemWrapper.classes(`${itemClass}--selected`));
+        assert.isTrue(itemWrapper.classes(`${itemClass}--confirm`));
         assert.isTrue(itemWrapper.classes(`${itemClass}--has-sub-menu`));
       });
+    });
+
+    it.each([true, false])('Confirms click - %s', async (confirmRes) => {
+      const askMock = vi.fn();
+
+      mockIPC((cmd, args) => {
+        if ((args.message as { cmd: string }).cmd === 'askDialog') {
+          askMock();
+          return mockPromise(confirmRes);
+        }
+      });
+
+      const items = Array.from({ length: 5 }, (_, i) => ({
+        label: '',
+        testId: `item-${i}`,
+        confirm: true,
+        clickHandler: vi.fn(),
+      }));
+      const wrapper = mountDropMenu(items);
+      assert.isTrue(wrapper.isVisible());
+
+      async function testClickHandlers(i: number): Promise<void> {
+        const { testId, clickHandler } = items[i];
+        const itemWrapper = getByTestId(wrapper, testId);
+        assert.isTrue(itemWrapper.isVisible());
+
+        await itemWrapper.trigger('click');
+        // Await confirm dialog
+        await new Promise((res) => {
+          setTimeout(res);
+        });
+
+        expect(askMock).toHaveBeenCalledOnce();
+
+        if (confirmRes) {
+          expect(clickHandler).toHaveBeenCalledOnce();
+        } else {
+          expect(clickHandler).not.toHaveBeenCalled();
+        }
+
+        vi.clearAllMocks();
+
+        if (i < items.length - 1) {
+          return testClickHandlers(i + 1);
+        }
+      }
+
+      await testClickHandlers(0);
+
+      clearTauriMocks();
     });
 
     it('Handles sub-menus', () => {
