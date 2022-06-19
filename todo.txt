@@ -1,5 +1,4 @@
 *Before release*
-Confirm delete account
 Auto CHANGELOG
 README
 
