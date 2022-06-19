@@ -104,7 +104,7 @@ describe('Sync', () => {
     });
 
     it('Updates note menu', async () => {
-      const wrapper = shallowMount(NoteMenu);
+      const wrapper = shallowMount(NoteMenu as DefineComponent);
 
       function assertNoteItemText(id: string, text: string) {
         assert.strictEqual(wrapper.get(`[data-note-id="${id}"]`).text(), text);
