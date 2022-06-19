@@ -23,6 +23,7 @@ module.exports = {
     CustomEventInit: 'readonly',
   },
   plugins: ['@typescript-eslint', 'prettier'],
+  ignorePatterns: ['**/node_modules/**', '**/dist/**', 'src-tauri'],
   rules: {
     'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
 
