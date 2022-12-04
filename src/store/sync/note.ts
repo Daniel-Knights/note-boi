@@ -46,7 +46,7 @@ export async function pull(): Promise<void> {
 
 // Push
 export async function push(isSyncCleanup?: boolean): Promise<void> {
-  if (state.isLoading && !isSyncCleanup) return;
+  if (!state.token || (state.isLoading && !isSyncCleanup)) return;
 
   state.isLoading = true;
 
@@ -87,7 +87,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 let timeout: number | undefined;
 
 export function autoPush(): void {
-  if (!state.username) return;
+  if (!state.token) return;
 
   clearTimeout(timeout);
   timeout = window.setTimeout(push, 500);
