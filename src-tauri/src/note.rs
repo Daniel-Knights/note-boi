@@ -54,7 +54,7 @@ impl Note {
   pub fn write(app_dir: &PathBuf, note: &Note) -> Result<(), NoteError> {
     let notes_path = app_dir.join(NOTE_DIR);
     if !notes_path.is_dir() {
-      fs::create_dir(&notes_path).expect("unable to create dir");
+      fs::create_dir_all(&notes_path).expect("unable to create dir");
     }
 
     let path = Note::get_path(app_dir, &note.id);
