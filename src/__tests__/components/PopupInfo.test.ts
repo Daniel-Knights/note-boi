@@ -8,8 +8,6 @@ import { getByTestId } from '../utils';
 import Popup from '../../components/Popup.vue';
 import PopupInfo from '../../components/PopupInfo.vue';
 
-const appVersion = '1.0.0';
-
 function mountPopupInfo() {
   return mount(PopupInfo, {
     global: {
@@ -19,7 +17,7 @@ function mountPopupInfo() {
 }
 
 beforeAll(() => {
-  mockTauriApi(undefined, { appVersion });
+  mockTauriApi(undefined, { appVersion: pkg.version });
 });
 
 describe('PopupInfo', () => {
@@ -54,7 +52,7 @@ describe('PopupInfo', () => {
 
     assert.strictEqual(descriptionListItems.length, 4);
     assert.strictEqual(getByTestId(wrapper, 'user').text(), 'User:d');
-    assert.strictEqual(getByTestId(wrapper, 'version').text(), `Version:${appVersion}`);
+    assert.strictEqual(getByTestId(wrapper, 'version').text(), `Version:${pkg.version}`);
 
     const repoWrapper = getByTestId(wrapper, 'repo');
     assert.strictEqual(repoWrapper.text(), `Repo:${pkg.repository.url}`);

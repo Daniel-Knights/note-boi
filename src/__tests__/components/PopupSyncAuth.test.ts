@@ -41,6 +41,7 @@ describe('PopupSyncAuth', () => {
 
     await switchAuthButton.trigger('click');
 
+    assert.isFalse(s.state.isLogin);
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Signup');
     assert.isTrue(findByTestId(wrapper, 'confirm-password').exists());
     expect(resetErrorSpy).toHaveBeenCalledOnce();
