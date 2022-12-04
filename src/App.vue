@@ -72,6 +72,7 @@ body {
 button,
 input[type='submit'] {
   -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
   border: 0;
   border-radius: 0;
@@ -92,6 +93,7 @@ input[type='submit'] {
 input:not([type='submit']),
 textarea {
   -webkit-appearance: none;
+  appearance: none;
   padding: 5px;
   border: 1px solid var(--colour__primary);
   border-radius: 0;
