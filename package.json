@@ -34,8 +34,8 @@
   "devDependencies": {
     "@actions/github": "^5.1.1",
     "@babel/types": "^7.20.5",
-    "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
     "@tauri-apps/cli": "^1.2.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/node": "^18.11.10",
     "@types/quill": "^2.0.9",
     "@types/uuid": "^9.0.0",
