@@ -33,7 +33,7 @@ fn main() {
   builder
     .setup(|app| {
       let state = AppState {
-        app_dir: app.path_resolver().app_dir().unwrap(),
+        app_dir: app.path_resolver().app_data_dir().unwrap(),
       };
 
       app.manage(state);
