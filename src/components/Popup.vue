@@ -1,6 +1,6 @@
 <template>
   <Teleport to="#app">
-    <div id="popup">
+    <div id="popup" v-bind="$attrs">
       <div class="popup__content">
         <slot />
       </div>
