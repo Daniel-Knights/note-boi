@@ -3,6 +3,7 @@ Auto CHANGELOG
 README
 
 *Whenever*
+Crash reports
 Top menu
 Mock window tests
 Note menu undo/redo and copy/paste
