@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { window as tauriWindow } from '@tauri-apps/api';
+import { dialog, window as tauriWindow } from '@tauri-apps/api';
 import { exit, relaunch } from '@tauri-apps/api/process';
 
 import { deleteAllNotes, getAllNotes, newNote } from './store/note';
@@ -27,7 +27,17 @@ async function exitApp(cb: () => void) {
     await push();
 
     if (state.error.type === ErrorType.Push) {
-      openedPopup.value = PopupType.Error;
+      const closeAnyway = await dialog.ask(
+        'ERROR: Failed to push unsynced notes.\nClose anyway?',
+        {
+          title: 'NoteBoi',
+          type: 'error',
+        }
+      );
+
+      if (closeAnyway) cb();
+      else openedPopup.value = PopupType.Error;
+
       return;
     }
   }
