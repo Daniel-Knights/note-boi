@@ -5,7 +5,7 @@ export const NOTE_EVENTS = {
   /** For whenever the content of a note is changed. */
   change: 'note-change',
   unsynced: 'note-unsynced',
-};
+} as const;
 
 export const STORAGE_KEYS = {
   USERNAME: 'username',
@@ -13,4 +13,4 @@ export const STORAGE_KEYS = {
   UNSYNCED: 'unsynced-note-ids',
   THEME: 'theme',
   MENU_WIDTH: 'note-menu-width',
-};
+} as const;
