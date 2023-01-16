@@ -10,3 +10,4 @@ Note menu undo/redo and copy/paste
 Prevent opening context menu off bottom of screen
 Custom colour themes
 Tab key functionality
+Auto detect links (enable/disable?)
