@@ -26,9 +26,6 @@ export default defineConfig({
     target: ['es2021', 'chrome97', 'safari13'],
     // produce sourcemaps for debug builds
     sourcemap: !!process.env.TAURI_DEBUG,
-  },
-  esbuild: {
-    // don't minify for debug builds
     minify: !process.env.TAURI_DEBUG,
   },
   test: {
