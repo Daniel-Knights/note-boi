@@ -1,5 +1,4 @@
 *Before release*
-Auto CHANGELOG
 README
 
 *Whenever*
