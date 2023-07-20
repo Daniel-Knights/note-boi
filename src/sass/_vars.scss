@@ -1,5 +1,3 @@
-@use 'sass:color' as color;
-
 // Sass Vars
 $black: #141313;
 $white: #eeeeee;
@@ -39,39 +37,4 @@ $drop-menu-padding: 3px;
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-@mixin light-theme {
-  --colour__primary: #{color.invert($primary)};
-  --colour__secondary: #{color.invert($secondary)};
-  --colour__tertiary: #{color.scale($tertiary, $lightness: -5%)};
-  --colour__interactive: #{color.scale($interactive, $lightness: 30%)};
-}
-@mixin dark-theme {
-  --colour__primary: #{$primary};
-  --colour__secondary: #{$secondary};
-  --colour__tertiary: #{$tertiary};
-  --colour__interactive: #{$interactive};
-}
-
-// CSS Vars
-:root {
-  @include light-theme;
-
-  --colour__white: #{$white};
-  --colour__black: #{$black};
-  --colour__error: #e71414;
-  --colour__danger: rgba(231, 20, 20, 0.4);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    @include dark-theme;
-  }
-}
-
-.theme--light {
-  @include light-theme;
-}
-.theme--dark {
-  @include dark-theme;
 }

@@ -1,6 +1,6 @@
 <template>
   <div id="settings">
-    <button @click.stop="show = !show" data-test-id="settings-button">
+    <button @click.stop="show = !show" class="button" data-test-id="settings-button">
       <CogIcon />
     </button>
     <DropMenu v-if="show" @close="show = false" :items="menuItems" />

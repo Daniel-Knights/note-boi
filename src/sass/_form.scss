@@ -1,0 +1,26 @@
+@use './vars' as v;
+
+.form {
+  @include v.flex-y(false, center);
+
+  &,
+  > * + * {
+    margin-top: 12px;
+  }
+
+  &__input {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 5px;
+    border: 1px solid var(--colour__primary);
+    border-radius: 0;
+
+    &--invalid {
+      border-color: var(--colour__error);
+    }
+  }
+
+  &__error {
+    color: var(--colour__error);
+  }
+}

@@ -1,5 +1,11 @@
 <template>
-  <button v-if="syncState.token" @click="logout" id="logout" title="Logout">
+  <button
+    v-if="syncState.token"
+    @click="logout"
+    id="logout"
+    class="button"
+    title="Logout"
+  >
     <LogoutIcon />
   </button>
 </template>

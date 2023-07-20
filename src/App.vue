@@ -58,6 +58,9 @@ tauriListen('delete-note', deleteAllNotes);
 @use 'quill/dist/quill.snow.css';
 
 @use './sass/reset';
+@use './sass/form';
+@use './sass/theme';
+@use './sass/button';
 
 html,
 body {
@@ -77,36 +80,6 @@ body {
   @include v.equal-dimensions(100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu,
     Cantarell, 'Helvetica Neue', sans-serif;
-}
-
-button,
-input[type='submit'] {
-  -webkit-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  border: 0;
-  border-radius: 0;
-
-  &.button--default {
-    padding: 5px 20px;
-    line-height: 1;
-    color: #fff;
-    background-color: var(--colour__interactive);
-    text-shadow: v.$text-shadow;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-}
-
-input:not([type='submit']),
-textarea {
-  -webkit-appearance: none;
-  appearance: none;
-  padding: 5px;
-  border: 1px solid var(--colour__primary);
-  border-radius: 0;
 }
 
 a {

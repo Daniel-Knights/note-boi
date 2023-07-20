@@ -1,0 +1,38 @@
+@use 'sass:color';
+
+@use './vars' as v;
+
+@mixin light-theme {
+  --colour__primary: #{color.invert(v.$primary)};
+  --colour__secondary: #{color.invert(v.$secondary)};
+  --colour__tertiary: #{color.scale(v.$tertiary, $lightness: -5%)};
+  --colour__interactive: #{color.scale(v.$interactive, $lightness: 30%)};
+}
+@mixin dark-theme {
+  --colour__primary: #{v.$primary};
+  --colour__secondary: #{v.$secondary};
+  --colour__tertiary: #{v.$tertiary};
+  --colour__interactive: #{v.$interactive};
+}
+
+// CSS Vars
+:root {
+  @include light-theme;
+
+  --colour__white: #{v.$white};
+  --colour__black: #{v.$black};
+  --colour__error: #e71414;
+  --colour__danger: rgba(231, 20, 20, 0.4);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-theme;
+  }
+}
+
+.theme--light {
+  @include light-theme;
+}
+.theme--dark {
+  @include dark-theme;
+}

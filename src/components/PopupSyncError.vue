@@ -3,7 +3,7 @@
     <div class="sync-error__message" data-test-id="error-message">
       Error: {{ syncState.error.message }}
     </div>
-    <button @click="tryAgain" class="sync-error__button" data-test-id="try-again">
+    <button @click="tryAgain" class="sync-error__button button" data-test-id="try-again">
       Try again?
     </button>
   </Popup>

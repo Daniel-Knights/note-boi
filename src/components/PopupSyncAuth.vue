@@ -2,11 +2,12 @@
   <Popup @close="emit('close')">
     <div id="sync-auth" data-test-id="popup-auth">
       <h2 data-test-id="heading">{{ syncState.isLogin ? 'Login' : 'Signup' }}</h2>
-      <form @submit.prevent="handleSubmit" class="sync-auth__form" data-test-id="form">
+      <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
         <input
           v-model="syncState.username"
           @input="validateFields.username"
-          :class="{ 'sync-auth__input--error': !validation.username }"
+          class="form__input"
+          :class="{ 'form__input--invalid': !validation.username }"
           type="text"
           placeholder="Username"
           ref="usernameInput"
@@ -15,7 +16,8 @@
         <input
           v-model="syncState.password"
           @input="validateFields.password"
-          :class="{ 'sync-auth__input--error': !validation.password }"
+          class="form__input"
+          :class="{ 'form__input--invalid': !validation.password }"
           type="password"
           placeholder="Password"
           data-test-id="password"
@@ -24,22 +26,23 @@
           v-if="!syncState.isLogin"
           v-model="confirmPassword"
           @input="validateFields.confirmPassword"
-          :class="{ 'sync-auth__input--error': !validation.confirmPassword }"
+          class="form__input"
+          :class="{ 'form__input--invalid': !validation.confirmPassword }"
           type="password"
           placeholder="Confirm Password"
           data-test-id="confirm-password"
         />
-        <p v-if="syncState.error.type === ErrorType.Auth" class="sync-auth__error">
+        <p v-if="syncState.error.type === ErrorType.Auth" class="form__error">
           {{ syncState.error.message }}
         </p>
-        <input type="submit" value="Submit" class="button--default" />
+        <input type="submit" value="Submit" class="button button--default" />
       </form>
       <button
         @click="
           syncState.isLogin = !syncState.isLogin;
           resetError();
         "
-        class="sync-auth__switch"
+        class="sync-auth__switch button"
         data-test-id="switch"
       >
         Switch to {{ syncState.isLogin ? 'signup' : 'login' }}
@@ -114,27 +117,9 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-#sync-auth,
-.sync-auth__form {
-  > * + * {
-    margin-top: 12px;
-  }
-}
-
-.sync-auth__form {
-  @include v.flex-y(false, center);
-}
-
-.sync-auth__input--error {
-  border-color: var(--colour__error);
-}
-
-.sync-auth__error {
-  color: var(--colour__error);
-}
-
 .sync-auth__switch {
   cursor: pointer;
+  margin-top: 12px;
   font-size: 14px;
   text-decoration: underline;
 

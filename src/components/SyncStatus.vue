@@ -10,7 +10,7 @@
     <button
       v-else-if="isSyncError"
       @click="openedPopup = PopupType.Error"
-      class="sync-status__error"
+      class="sync-status__error button"
       title="Sync error"
       data-test-id="error"
     >
@@ -28,7 +28,7 @@
     <button
       v-else
       @click="pushNotes"
-      class="sync-status__sync-button"
+      class="sync-status__sync-button button"
       title="Sync changes"
       data-test-id="sync-button"
     >

@@ -1,0 +1,21 @@
+@use './vars' as v;
+
+.button {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &--default {
+    padding: 5px 20px;
+    line-height: 1;
+    color: #fff;
+    background-color: var(--colour__interactive);
+    text-shadow: v.$text-shadow;
+  }
+}

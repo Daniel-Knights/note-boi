@@ -34,7 +34,7 @@
     <ContextMenu :ev="contextMenuEv" />
     <button
       @click="newNote(true)"
-      class="note-menu__new-note button--default"
+      class="note-menu__new-note button button--default"
       data-test-id="new"
     >
       +
