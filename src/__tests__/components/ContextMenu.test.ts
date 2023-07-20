@@ -61,13 +61,13 @@ describe('ContextMenu', () => {
     mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
-    assert.isFalse(isEmptyNote(n.state.selectedNote));
-    assert.isFalse(isEmptyNote(n.state.notes[0]));
+    assert.isFalse(isEmptyNote(n.noteState.selectedNote));
+    assert.isFalse(isEmptyNote(n.noteState.notes[0]));
 
     await getByTestId(wrapper, 'new').trigger('click');
 
-    assert.isTrue(isEmptyNote(n.state.selectedNote));
-    assert.isTrue(isEmptyNote(n.state.notes[0]));
+    assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+    assert.isTrue(isEmptyNote(n.noteState.notes[0]));
   });
 
   it('Delete button disabled with no notes', async () => {
@@ -75,7 +75,7 @@ describe('ContextMenu', () => {
     await n.getAllNotes();
 
     const div = document.createElement('div');
-    div.dataset.noteId = n.state.notes[0].id;
+    div.dataset.noteId = n.noteState.notes[0].id;
 
     const { wrapper, assertionError } = await mountContextMenu(div);
     if (assertionError) assert.fail();
@@ -100,13 +100,13 @@ describe('ContextMenu', () => {
 
     const noteToDeleteIndex = n.findNoteIndex(noteToDelete.id);
 
-    assert.deepEqual(n.state.selectedNote, noteToDelete);
-    assert.deepEqual(n.state.notes[noteToDeleteIndex], noteToDelete);
+    assert.deepEqual(n.noteState.selectedNote, noteToDelete);
+    assert.deepEqual(n.noteState.notes[noteToDeleteIndex], noteToDelete);
 
     await getByTestId(wrapper, 'delete').trigger('click');
 
-    assert.notDeepEqual(n.state.selectedNote, noteToDelete);
-    assert.notDeepEqual(n.state.notes[0], noteToDelete);
-    assert.notDeepNestedInclude(n.state.notes, noteToDelete);
+    assert.notDeepEqual(n.noteState.selectedNote, noteToDelete);
+    assert.notDeepEqual(n.noteState.notes[0], noteToDelete);
+    assert.notDeepNestedInclude(n.noteState.notes, noteToDelete);
   });
 });

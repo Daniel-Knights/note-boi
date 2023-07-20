@@ -8,7 +8,7 @@
       data-test-id="note-list"
     >
       <li
-        v-for="note in state.notes"
+        v-for="note in noteState.notes"
         :key="note.id"
         class="note-menu__note"
         :class="{
@@ -58,7 +58,7 @@ import {
   newNote,
   Note,
   selectNote,
-  state,
+  noteState,
 } from '../store/note';
 import { isEmptyNote } from '../utils';
 
@@ -77,7 +77,7 @@ function clearExtraNotes(ev?: MouseEvent) {
     if (ev.metaKey || ev.ctrlKey) return;
   }
 
-  state.extraSelectedNotes = [];
+  noteState.extraSelectedNotes = [];
 
   document.removeEventListener('click', clearExtraNotes);
 }
@@ -89,7 +89,7 @@ function handleNoteSelect(ev: MouseEvent) {
   const targetNoteId = closestNote?.dataset.noteId;
   if (!targetNoteId) return;
 
-  const hasExtraNotes = state.extraSelectedNotes.length > 0;
+  const hasExtraNotes = noteState.extraSelectedNotes.length > 0;
 
   // Alt key + click
   if (ev.altKey) {
@@ -97,8 +97,8 @@ function handleNoteSelect(ev: MouseEvent) {
 
     if (targetNoteIndex >= 0) {
       const lastSelectedNote = hasExtraNotes
-        ? state.extraSelectedNotes[state.extraSelectedNotes.length - 1]?.id
-        : state.selectedNote.id;
+        ? noteState.extraSelectedNotes[noteState.extraSelectedNotes.length - 1]?.id
+        : noteState.selectedNote.id;
       const selectedNoteIndex = findNoteIndex(lastSelectedNote);
 
       if (selectedNoteIndex >= 0) {
@@ -108,15 +108,15 @@ function handleNoteSelect(ev: MouseEvent) {
         let noteSlice: Note[] = [];
 
         if (lowestIndex === selectedNoteIndex) {
-          noteSlice = state.notes.slice(lowestIndex + 1, highestIndex + 1);
+          noteSlice = noteState.notes.slice(lowestIndex + 1, highestIndex + 1);
         } else if (highestIndex === selectedNoteIndex) {
           // Reverse to ensure correct selection order, `0` = next in queue
-          noteSlice = state.notes.slice(lowestIndex, highestIndex).reverse();
+          noteSlice = noteState.notes.slice(lowestIndex, highestIndex).reverse();
         }
 
         const withoutDuplicates = noteSlice.filter((nt) => !isSelectedNote(nt));
 
-        state.extraSelectedNotes.push(...withoutDuplicates);
+        noteState.extraSelectedNotes.push(...withoutDuplicates);
 
         ev.stopImmediatePropagation(); // Prevent `clearExtraNotes` firing immediately
         document.addEventListener('click', clearExtraNotes);
@@ -128,30 +128,30 @@ function handleNoteSelect(ev: MouseEvent) {
 
   // Ctrl key + click
   if (ev.metaKey || ev.ctrlKey) {
-    const alreadySelectedIndex = state.extraSelectedNotes.findIndex(
+    const alreadySelectedIndex = noteState.extraSelectedNotes.findIndex(
       (nt) => nt?.id === targetNoteId
     );
 
     // Deselect
     if (alreadySelectedIndex >= 0) {
-      state.extraSelectedNotes.splice(alreadySelectedIndex, 1);
+      noteState.extraSelectedNotes.splice(alreadySelectedIndex, 1);
 
-      if (state.selectedNote.id === targetNoteId) {
-        selectNote(state.extraSelectedNotes[0]?.id);
+      if (noteState.selectedNote.id === targetNoteId) {
+        selectNote(noteState.extraSelectedNotes[0]?.id);
       }
 
       // Select next extra note when current selected note is deselected
-    } else if (state.selectedNote.id === targetNoteId && hasExtraNotes) {
-      selectNote(state.extraSelectedNotes[0]?.id);
+    } else if (noteState.selectedNote.id === targetNoteId && hasExtraNotes) {
+      selectNote(noteState.extraSelectedNotes[0]?.id);
 
-      state.extraSelectedNotes.splice(0, 1);
+      noteState.extraSelectedNotes.splice(0, 1);
 
       // Add to selection
-    } else if (state.selectedNote.id !== targetNoteId) {
+    } else if (noteState.selectedNote.id !== targetNoteId) {
       const foundNote = findNote(targetNoteId);
 
       if (foundNote) {
-        state.extraSelectedNotes.push(foundNote);
+        noteState.extraSelectedNotes.push(foundNote);
 
         document.addEventListener('click', clearExtraNotes);
       }
@@ -198,18 +198,19 @@ function navigateWithArrowKeys(ev: KeyboardEvent) {
     keyDirection[ev.key as keyof typeof keyDirection];
 
   if (directionIndex) {
-    const lastSelectedNoteId = state.extraSelectedNotes[0]?.id || state.selectedNote.id;
+    const lastSelectedNoteId =
+      noteState.extraSelectedNotes[0]?.id || noteState.selectedNote.id;
     // Index of the note we're selecting
     const toIndex = findNoteIndex(lastSelectedNoteId) - directionIndex;
 
-    selectNote(state.notes[toIndex]?.id);
+    selectNote(noteState.notes[toIndex]?.id);
     clearExtraNotes();
   }
 }
 
 // Scroll to top when selected note moves to top
 watchEffect(() => {
-  if (state.selectedNote.id !== state.notes[0]?.id) return;
+  if (noteState.selectedNote.id !== noteState.notes[0]?.id) return;
 
   // scrollTo is undefined in tests
   if (noteList.value?.scrollTo) {

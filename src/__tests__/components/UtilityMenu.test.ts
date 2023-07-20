@@ -9,7 +9,7 @@ import UtilityMenu from '../../components/UtilityMenu.vue';
 
 describe('UtilityMenu', () => {
   it('Mounts with correct components', () => {
-    s.state.token = 'token';
+    s.syncState.token = 'token';
     const wrapper = mount(UtilityMenu as DefineComponent);
 
     assert.isTrue(wrapper.isVisible());

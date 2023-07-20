@@ -1,6 +1,16 @@
-import { NOTE_EVENTS } from '../../constant';
-import { isEmptyNote } from '../../utils';
-import { Note, state as noteState, UnsyncedEventDetail } from '../note';
+import { invoke } from '@tauri-apps/api';
+
+import { NOTE_EVENTS, STORAGE_KEYS } from '../../constant';
+import { isEmptyNote, localStorageParse } from '../../utils';
+import {
+  findNote,
+  newNote,
+  Note,
+  noteState,
+  selectNote,
+  sortStateNotes,
+  UnsyncedEventDetail,
+} from '../note';
 
 import {
   catchHang,
@@ -8,18 +18,85 @@ import {
   ErrorType,
   parseErrorRes,
   resetError,
-  state,
-  syncNotes,
+  syncState,
   tauriFetch,
 } from '.';
 
+export type UnsyncedNoteIds = {
+  new: string;
+  edited: Set<string>;
+  deleted: Set<string>;
+  size: number;
+  clear: () => void;
+  add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
+};
+
+export const unsyncedNoteIds: Partial<UnsyncedNoteIds> = localStorageParse(
+  STORAGE_KEYS.UNSYNCED
+);
+
+/** Syncs local and remote notes. */
+export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
+  const hasNoLocalNotes = noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]);
+
+  // Remove any deleted ids if they don't exist on remote
+  syncState.unsyncedNoteIds.deleted.forEach((id) => {
+    if (!remoteNotes.some((nt) => nt.id === id)) {
+      syncState.unsyncedNoteIds.deleted.delete(id);
+      syncState.unsyncedNoteIds.add({});
+    }
+  });
+
+  // Ensure editor updates with latest selected note content if unedited
+  const remoteSelectedNote = remoteNotes.find(
+    (nt) => nt.id === noteState.selectedNote.id
+  );
+  const selectedNoteIsUnsynced = !syncState.unsyncedNoteIds.edited.has(
+    noteState.selectedNote.id
+  );
+
+  if (remoteSelectedNote && selectedNoteIsUnsynced) {
+    noteState.selectedNote.content = remoteSelectedNote.content;
+    noteState.selectedNote.timestamp = remoteSelectedNote.timestamp;
+    document.dispatchEvent(new Event(NOTE_EVENTS.change));
+  }
+
+  const unsyncedIds = [
+    syncState.unsyncedNoteIds.new,
+    ...syncState.unsyncedNoteIds.edited,
+  ];
+  const unsyncedDeletedIds = [...syncState.unsyncedNoteIds.deleted];
+  const unsyncedNotes = unsyncedIds.map(findNote).filter(Boolean) as Note[];
+  const syncedNotes = remoteNotes.filter((nt) => {
+    return ![...unsyncedIds, ...unsyncedDeletedIds].includes(nt.id);
+  });
+
+  const mergedNotes = [...unsyncedNotes, ...syncedNotes];
+
+  if (mergedNotes.length > 0) {
+    noteState.notes = mergedNotes;
+    sortStateNotes();
+  } else {
+    newNote();
+  }
+
+  if (hasNoLocalNotes) {
+    selectNote(noteState.notes[0].id);
+  }
+
+  // Sync any notes that were edited during pull
+  await push(true);
+
+  return invoke('sync_all_local_notes', { notes: noteState.notes }).catch(console.error);
+}
+
 // Pull
 export async function pull(): Promise<void> {
-  state.isLoading = true;
+  syncState.isLoading = true;
 
   const res = await tauriFetch<Record<string, string | Note[]>>('/notes', 'POST', {
-    username: state.username,
-    token: state.token,
+    username: syncState.username,
+    token: syncState.token,
   }).catch((err) => catchHang(err, ErrorType.Pull));
 
   if (!res) return;
@@ -29,10 +106,10 @@ export async function pull(): Promise<void> {
     await syncNotes(res.data.notes as Note[]);
   }
 
-  state.isLoading = false;
+  syncState.isLoading = false;
 
   if (!res.ok) {
-    state.error = {
+    syncState.error = {
       type: ErrorType.Pull,
       message: parseErrorRes(res),
     };
@@ -46,35 +123,35 @@ export async function pull(): Promise<void> {
 
 // Push
 export async function push(isSyncCleanup?: boolean): Promise<void> {
-  if (!state.token || (state.isLoading && !isSyncCleanup)) return;
+  if (!syncState.token || (syncState.isLoading && !isSyncCleanup)) return;
 
-  state.isLoading = true;
+  syncState.isLoading = true;
 
   // Cache ids and clear before request to prevent
   // race condition if a note is edited mid-push
   const cachedUnsyncedNoteIds = {
-    new: state.unsyncedNoteIds.new,
-    edited: [...state.unsyncedNoteIds.edited],
-    deleted: [...state.unsyncedNoteIds.deleted],
+    new: syncState.unsyncedNoteIds.new,
+    edited: [...syncState.unsyncedNoteIds.edited],
+    deleted: [...syncState.unsyncedNoteIds.deleted],
   };
-  state.unsyncedNoteIds.clear();
+  syncState.unsyncedNoteIds.clear();
 
   const res = await tauriFetch<Record<string, never | string>>('/notes', 'PUT', {
-    username: state.username,
-    token: state.token,
+    username: syncState.username,
+    token: syncState.token,
     notes: noteState.notes.filter((nt) => !isEmptyNote(nt)),
   }).catch((err) => catchHang(err, ErrorType.Push));
 
   if (!res) return;
 
-  state.isLoading = false;
+  syncState.isLoading = false;
 
   if (res.ok) {
     resetError();
   } else {
     // Add back unsynced note ids
-    state.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
-    state.error = {
+    syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
+    syncState.error = {
       type: ErrorType.Push,
       message: parseErrorRes(res),
     };
@@ -87,7 +164,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 let timeout: number | undefined;
 
 export function autoPush(): void {
-  if (!state.token) return;
+  if (!syncState.token) return;
 
   clearTimeout(timeout);
   timeout = window.setTimeout(push, 500);
@@ -99,6 +176,6 @@ document.addEventListener(
   (ev: CustomEventInit<UnsyncedEventDetail>) => {
     if (!ev.detail) return;
 
-    state.unsyncedNoteIds.add({ [ev.detail.type]: [ev.detail.noteId] });
+    syncState.unsyncedNoteIds.add({ [ev.detail.type]: [ev.detail.noteId] });
   }
 );

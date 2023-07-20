@@ -127,8 +127,8 @@ describe('Settings', () => {
     assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
     assert.strictEqual(wrapperVm.menuItems.length, 2);
 
-    s.state.username = 'd';
-    s.state.token = 'token';
+    s.syncState.username = 'd';
+    s.syncState.token = 'token';
     await nextTick();
 
     const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
@@ -144,7 +144,7 @@ describe('Settings', () => {
 
     expect(deleteAccountSpy).toHaveBeenCalledOnce();
 
-    s.state.token = '';
+    s.syncState.token = '';
     await nextTick();
 
     assert.isFalse(findByTestId(wrapper, 'delete-account').exists());

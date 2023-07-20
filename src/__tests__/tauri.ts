@@ -39,7 +39,7 @@ export function mockTauriApi(
       case 'tauri':
         switch (reqMessage?.cmd) {
           case 'httpRequest': {
-            if (!s.state.isLoading) {
+            if (!s.syncState.isLoading) {
               assert.fail('Loading state not set');
             }
 
@@ -118,7 +118,7 @@ export function mockTauriApi(
         return mockPromise();
       case 'edit_note':
         return new Promise<void>((res) => {
-          n.state.selectedNote = args.note as n.Note;
+          n.noteState.selectedNote = args.note as n.Note;
           res();
         });
       case 'sync_all_local_notes':

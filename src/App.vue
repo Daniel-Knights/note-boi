@@ -12,7 +12,7 @@ import { exit, relaunch } from '@tauri-apps/api/process';
 
 import { deleteAllNotes, getAllNotes, newNote } from './store/note';
 import { openedPopup, PopupType } from './store/popup';
-import { ErrorType, push, state } from './store/sync';
+import { ErrorType, push, syncState } from './store/sync';
 import { handleUpdate, updateDownloading } from './store/update';
 import { tauriListen } from './utils';
 
@@ -23,10 +23,10 @@ import SyncStatus from './components/SyncStatus.vue';
 import UtilityMenu from './components/UtilityMenu.vue';
 
 async function exitApp(cb: () => void) {
-  if (state.unsyncedNoteIds.size > 0) {
+  if (syncState.unsyncedNoteIds.size > 0) {
     await push();
 
-    if (state.error.type === ErrorType.Push) {
+    if (syncState.error.type === ErrorType.Push) {
       const closeAnyway = await dialog.ask(
         'ERROR: Failed to push unsynced notes.\nClose anyway?',
         {

@@ -17,7 +17,7 @@ function mountPopupSyncError() {
 
 describe('PopupSyncError', () => {
   const errorMessage = 'I am a sync error';
-  s.state.error.message = errorMessage;
+  s.syncState.error.message = errorMessage;
 
   mockTauriApi([]);
 
@@ -42,7 +42,7 @@ describe('PopupSyncError', () => {
     const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
-    s.state.error.type = s.ErrorType.Push;
+    s.syncState.error.type = s.ErrorType.Push;
 
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
@@ -58,7 +58,7 @@ describe('PopupSyncError', () => {
     const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
-    s.state.error.type = s.ErrorType.Pull;
+    s.syncState.error.type = s.ErrorType.Pull;
 
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
@@ -74,7 +74,7 @@ describe('PopupSyncError', () => {
     const wrapper = mountPopupSyncError();
     assert.isTrue(wrapper.isVisible());
 
-    s.state.error.type = s.ErrorType.Logout;
+    s.syncState.error.type = s.ErrorType.Logout;
 
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');

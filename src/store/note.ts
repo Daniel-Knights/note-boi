@@ -6,7 +6,7 @@ import { reactive } from 'vue';
 import { NOTE_EVENTS } from '../constant';
 import { isEmptyNote } from '../utils';
 
-import { autoPush, state as syncState, UnsyncedNoteIds } from './sync';
+import { autoPush, syncState, UnsyncedNoteIds } from './sync';
 
 export type UnsyncedEventDetail = {
   noteId: string;
@@ -23,7 +23,7 @@ export class Note {
   };
 }
 
-export const state = reactive({
+export const noteState = reactive({
   notes: <Note[]>[],
   selectedNote: new Note(),
   /** `0` = next in queue. */
@@ -43,81 +43,81 @@ function getUnsyncedEvent(
 /** Sorts notes in descending order by timestamp. */
 export const sortNotesFn = (a: Note, b: Note): number => b.timestamp - a.timestamp;
 
-/** Sorts {@link state.notes} in descending order by timestamp. */
-export const sortStateNotes = (): Note[] => state.notes.sort(sortNotesFn);
+/** Sorts {@link noteState.notes} in descending order by timestamp. */
+export const sortStateNotes = (): Note[] => noteState.notes.sort(sortNotesFn);
 
-/** Finds note index within {@link state.notes}. */
+/** Finds note index within {@link noteState.notes}. */
 export function findNoteIndex(id?: string): number {
-  return state.notes.findIndex((nt) => nt.id === id);
+  return noteState.notes.findIndex((nt) => nt.id === id);
 }
 
-/** Finds note within {@link state.notes}. */
+/** Finds note within {@link noteState.notes}. */
 export function findNote(id?: string): Note | undefined {
-  return state.notes.find((nt) => nt.id === id);
+  return noteState.notes.find((nt) => nt.id === id);
 }
 
-/** Deletes {@link state.selectedNote} when note is empty. */
+/** Deletes {@link noteState.selectedNote} when note is empty. */
 function clearEmptyNote(): void {
-  const isValidClear = state.notes.length > 1;
+  const isValidClear = noteState.notes.length > 1;
   if (!isValidClear) return;
 
-  const foundNote = findNote(state.selectedNote.id);
+  const foundNote = findNote(noteState.selectedNote.id);
   if (!foundNote) return;
 
   if (isEmptyNote(foundNote)) {
-    deleteNote(state.selectedNote.id, true);
+    deleteNote(noteState.selectedNote.id, true);
   }
 }
 
 /**
- * Looks for note with given `id` in {@link state.notes},
- * and sets it to {@link state.selectedNote}.
+ * Looks for note with given `id` in {@link noteState.notes},
+ * and sets it to {@link noteState.selectedNote}.
  */
 export function selectNote(id?: string): void {
-  if (state.selectedNote.id === id) return;
+  if (noteState.selectedNote.id === id) return;
 
   clearEmptyNote();
 
   const foundNote = findNote(id);
   if (!foundNote) return;
 
-  state.selectedNote = { ...foundNote };
+  noteState.selectedNote = { ...foundNote };
 
   document.dispatchEvent(selectNoteEvent);
   document.dispatchEvent(changeNoteEvent);
 }
 
 /**
- * Returns true if note is either {@link state.selectedNote}
- * or within {@link state.extraSelectedNotes}.
+ * Returns true if note is either {@link noteState.selectedNote}
+ * or within {@link noteState.extraSelectedNotes}.
  */
 export function isSelectedNote(note: Note): boolean {
   return (
-    note.id === state.selectedNote.id ||
-    state.extraSelectedNotes.some((nt) => nt?.id === note.id)
+    note.id === noteState.selectedNote.id ||
+    noteState.extraSelectedNotes.some((nt) => nt?.id === note.id)
   );
 }
 
-/** Fetches all notes and updates {@link state}. */
+/** Fetches all notes and updates {@link noteState}. */
 export async function getAllNotes(): Promise<void> {
   const fetchedNotes = await invoke<Note[]>('get_all_notes').catch(console.error);
 
   const hasNotes = fetchedNotes && fetchedNotes.length > 0;
   if (!hasNotes) return newNote();
 
-  state.notes = fetchedNotes;
+  noteState.notes = fetchedNotes;
 
   sortStateNotes();
 
   if (fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0])) {
-    state.notes[0].timestamp = Date.now();
+    noteState.notes[0].timestamp = Date.now();
     // Clear these fields as whitespace-only can affect empty note checks
-    state.notes[0].content.delta = {};
-    state.notes[0].content.title = '';
-    state.notes[0].content.body = '';
+    noteState.notes[0].content.delta = {};
+    noteState.notes[0].content.title = '';
+    noteState.notes[0].content.body = '';
   }
 
-  state.selectedNote = { ...state.notes[0] };
+  noteState.selectedNote = { ...noteState.notes[0] };
 
   clearEmptyNote();
 
@@ -126,12 +126,12 @@ export async function getAllNotes(): Promise<void> {
 
 /** Deletes note with the given `id`. */
 export function deleteNote(id: string, selectNextNote: boolean): void {
-  state.notes.splice(findNoteIndex(id), 1);
+  noteState.notes.splice(findNoteIndex(id), 1);
 
-  if (state.notes.length === 0) newNote();
+  if (noteState.notes.length === 0) newNote();
 
   if (selectNextNote) {
-    state.selectedNote = { ...state.notes[0] };
+    noteState.selectedNote = { ...noteState.notes[0] };
 
     document.dispatchEvent(selectNoteEvent);
     document.dispatchEvent(changeNoteEvent);
@@ -146,31 +146,31 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
   }
 }
 
-/** Deletes {@link state.selectedNote} and all notes in {@link state.extraSelectedNotes}. */
+/** Deletes {@link noteState.selectedNote} and all notes in {@link noteState.extraSelectedNotes}. */
 export function deleteAllNotes(): void {
-  deleteNote(state.selectedNote.id, true);
+  deleteNote(noteState.selectedNote.id, true);
 
-  state.extraSelectedNotes.forEach((nt) => {
+  noteState.extraSelectedNotes.forEach((nt) => {
     if (nt) deleteNote(nt.id, false);
   });
 
-  state.extraSelectedNotes = [];
+  noteState.extraSelectedNotes = [];
 }
 
 /** Creates an empty note. */
 export function newNote(isButtonClick?: boolean): void {
-  const foundNote = findNote(state.selectedNote.id);
+  const foundNote = findNote(noteState.selectedNote.id);
 
   // Only update timestamp if selected note is empty
   if (foundNote && isEmptyNote(foundNote)) {
-    state.selectedNote.timestamp = Date.now();
+    noteState.selectedNote.timestamp = Date.now();
     return;
   }
 
   const freshNote = new Note();
 
-  state.notes.unshift(freshNote);
-  state.selectedNote = { ...freshNote };
+  noteState.notes.unshift(freshNote);
+  noteState.selectedNote = { ...freshNote };
 
   // Ensure fresh note isn't overwritten on pull
   if (isButtonClick) {
@@ -186,12 +186,12 @@ export function newNote(isButtonClick?: boolean): void {
 
 /** Edits note body on Quill `text-change`. */
 export function editNote(delta: Partial<Delta>, title: string, body: string): void {
-  const foundNote = findNote(state.selectedNote.id);
+  const foundNote = findNote(noteState.selectedNote.id);
   if (!foundNote || delta === foundNote.content.delta) return;
 
   const timestamp = Date.now();
   foundNote.timestamp = timestamp;
-  state.selectedNote.timestamp = timestamp;
+  noteState.selectedNote.timestamp = timestamp;
 
   foundNote.content = { delta, title, body: body || '' };
 

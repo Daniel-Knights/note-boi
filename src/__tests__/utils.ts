@@ -29,22 +29,22 @@ export function mockPromise<T>(resValue?: T): Promise<T | void> {
 }
 
 export function resetNoteStore(): void {
-  n.state.notes = [];
-  n.state.selectedNote = new n.Note();
-  n.state.extraSelectedNotes = [];
+  n.noteState.notes = [];
+  n.noteState.selectedNote = new n.Note();
+  n.noteState.extraSelectedNotes = [];
 }
 
 export function resetSyncStore(): void {
   localStorage.removeItem(STORAGE_KEYS.USERNAME);
   localStorage.removeItem(STORAGE_KEYS.TOKEN);
   localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
-  s.state.username = '';
-  s.state.password = '';
-  s.state.token = '';
-  s.state.unsyncedNoteIds.clear();
-  s.state.isLoading = false;
-  s.state.isLogin = true;
-  s.state.error = { type: s.ErrorType.None, message: '' };
+  s.syncState.username = '';
+  s.syncState.password = '';
+  s.syncState.token = '';
+  s.syncState.unsyncedNoteIds.clear();
+  s.syncState.isLoading = false;
+  s.syncState.isLogin = true;
+  s.syncState.error = { type: s.ErrorType.None, message: '' };
 }
 
 const formatTestId = (id: string) => `[data-test-id="${id}"]`;
@@ -65,7 +65,7 @@ export function findByTestId<T extends Element>(
 
 /** Simulates awaiting a sync operation. */
 export function awaitSyncLoad(): Promise<void> | void {
-  if (s.state.isLoading) {
+  if (s.syncState.isLoading) {
     return nextTick().then(awaitSyncLoad);
   }
 }

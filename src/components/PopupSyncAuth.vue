@@ -1,10 +1,10 @@
 <template>
   <Popup @close="emit('close')">
     <div id="sync-auth" data-test-id="popup-auth">
-      <h2 data-test-id="heading">{{ state.isLogin ? 'Login' : 'Signup' }}</h2>
+      <h2 data-test-id="heading">{{ syncState.isLogin ? 'Login' : 'Signup' }}</h2>
       <form @submit.prevent="handleSubmit" class="sync-auth__form" data-test-id="form">
         <input
-          v-model="state.username"
+          v-model="syncState.username"
           @input="validateFields.username"
           :class="{ 'sync-auth__input--error': !validation.username }"
           type="text"
@@ -13,7 +13,7 @@
           data-test-id="username"
         />
         <input
-          v-model="state.password"
+          v-model="syncState.password"
           @input="validateFields.password"
           :class="{ 'sync-auth__input--error': !validation.password }"
           type="password"
@@ -21,7 +21,7 @@
           data-test-id="password"
         />
         <input
-          v-if="!state.isLogin"
+          v-if="!syncState.isLogin"
           v-model="confirmPassword"
           @input="validateFields.confirmPassword"
           :class="{ 'sync-auth__input--error': !validation.confirmPassword }"
@@ -29,20 +29,20 @@
           placeholder="Confirm Password"
           data-test-id="confirm-password"
         />
-        <p v-if="state.error.type === ErrorType.Auth" class="sync-auth__error">
-          {{ state.error.message }}
+        <p v-if="syncState.error.type === ErrorType.Auth" class="sync-auth__error">
+          {{ syncState.error.message }}
         </p>
         <input type="submit" value="Submit" class="button--default" />
       </form>
       <button
         @click="
-          state.isLogin = !state.isLogin;
+          syncState.isLogin = !syncState.isLogin;
           resetError();
         "
         class="sync-auth__switch"
         data-test-id="switch"
       >
-        Switch to {{ state.isLogin ? 'signup' : 'login' }}
+        Switch to {{ syncState.isLogin ? 'signup' : 'login' }}
       </button>
     </div>
   </Popup>
@@ -51,7 +51,7 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 
-import { ErrorType, login, resetError, signup, state } from '../store/sync';
+import { ErrorType, login, resetError, signup, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 
@@ -68,13 +68,13 @@ const validation = reactive({
 
 const validateFields = {
   username() {
-    validation.username = !!state.username;
+    validation.username = !!syncState.username;
   },
   password() {
-    validation.password = !!state.password;
+    validation.password = !!syncState.password;
   },
   confirmPassword() {
-    if (!state.isLogin) validation.confirmPassword = !!confirmPassword.value;
+    if (!syncState.isLogin) validation.confirmPassword = !!confirmPassword.value;
   },
 };
 
@@ -87,22 +87,22 @@ async function handleSubmit() {
     return;
   }
 
-  if (state.isLogin) {
+  if (syncState.isLogin) {
     await login();
   } else {
     if (!confirmPassword.value) {
       validation.confirmPassword = false;
       return;
     }
-    if (confirmPassword.value !== state.password) {
-      state.error = { type: ErrorType.Auth, message: "Passwords don't match" };
+    if (confirmPassword.value !== syncState.password) {
+      syncState.error = { type: ErrorType.Auth, message: "Passwords don't match" };
       return;
     }
 
     await signup();
   }
 
-  if (state.error.type === ErrorType.None) {
+  if (syncState.error.type === ErrorType.None) {
     confirmPassword.value = '';
     emit('close');
   }

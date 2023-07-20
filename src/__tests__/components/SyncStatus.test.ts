@@ -49,7 +49,7 @@ describe('SyncStatus', () => {
 
   it('Pulls on load', async () => {
     const pullSpy = vi.spyOn(s, 'pull');
-    s.state.token = 'token';
+    s.syncState.token = 'token';
 
     const wrapper = mount(SyncStatus as DefineComponent);
     assert.isTrue(wrapper.isVisible());
@@ -80,7 +80,7 @@ describe('SyncStatus', () => {
 
     assert.strictEqual(openedPopup.value, PopupType.Auth);
 
-    s.state.token = 'token';
+    s.syncState.token = 'token';
     await syncButton.trigger('click');
 
     expect(pushSpy).toHaveBeenCalledOnce();
@@ -101,7 +101,7 @@ describe('SyncStatus', () => {
   it.each(['Logout', 'Pull', 'Push'] as const)(
     '%s - Displays error icon and opens popup on click',
     async (errorType) => {
-      s.state.error.type = s.ErrorType[errorType];
+      s.syncState.error.type = s.ErrorType[errorType];
 
       const wrapper = mountWithPopup();
       assert.isTrue(wrapper.isVisible());
@@ -133,7 +133,7 @@ describe('SyncStatus', () => {
       assert.isTrue(wrapper.isVisible());
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
 
-      s.state.error.type = s.ErrorType.Logout;
+      s.syncState.error.type = s.ErrorType.Logout;
       await nextTick();
 
       await findByTestId(wrapper, 'error').trigger('click');
@@ -145,8 +145,8 @@ describe('SyncStatus', () => {
 
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
       assert.isUndefined(openedPopup.value);
-      assert.strictEqual(s.state.error.type, s.ErrorType.None);
-      assert.isEmpty(s.state.error.message);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.isEmpty(s.syncState.error.message);
     });
 
     it('PopupSyncAuth', async () => {
@@ -165,7 +165,7 @@ describe('SyncStatus', () => {
       assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
       assert.isUndefined(openedPopup.value);
 
-      s.state.token = 'token';
+      s.syncState.token = 'token';
       wrapperVm.handlePopupAuthEvent();
       await nextTick();
 

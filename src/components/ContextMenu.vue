@@ -12,7 +12,7 @@
       {
         label: 'Delete Note',
         clickHandler: handleDeleteNote,
-        disabled: state.notes.length === 1 && isEmptyNote(state.notes[0]),
+        disabled: noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]),
         testId: 'delete',
       },
     ]"
@@ -23,13 +23,7 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 
-import {
-  deleteAllNotes,
-  deleteNote,
-  newNote,
-  state as noteState,
-  state,
-} from '../store/note';
+import { deleteAllNotes, deleteNote, newNote, noteState } from '../store/note';
 import { isEmptyNote } from '../utils';
 
 import DropMenu from './DropMenu.vue';

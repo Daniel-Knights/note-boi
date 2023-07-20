@@ -1,7 +1,7 @@
 <template>
   <Popup @close="emit('close')" data-test-id="popup-error">
     <div class="sync-error__message" data-test-id="error-message">
-      Error: {{ state.error.message }}
+      Error: {{ syncState.error.message }}
     </div>
     <button @click="tryAgain" class="sync-error__button" data-test-id="try-again">
       Try again?
@@ -10,14 +10,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ErrorType, logout, pull, push, resetError, state } from '../store/sync';
+import { ErrorType, logout, pull, push, resetError, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 
 const emit = defineEmits(['close']);
 
 function tryAgain() {
-  switch (state.error.type) {
+  switch (syncState.error.type) {
     case ErrorType.Push:
       push();
       break;

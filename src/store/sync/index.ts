@@ -1,19 +1,10 @@
-import { http, invoke } from '@tauri-apps/api';
+import { http } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 import { reactive } from 'vue';
 
-import { NOTE_EVENTS, STORAGE_KEYS } from '../../constant';
-import { isDev, isEmptyNote, localStorageParse } from '../../utils';
-import {
-  findNote,
-  newNote,
-  Note,
-  state as noteState,
-  selectNote,
-  sortStateNotes,
-} from '../note';
-
-import { push } from './note';
+import { STORAGE_KEYS } from '../../constant';
+import { isDev } from '../../utils';
+import { UnsyncedNoteIds, unsyncedNoteIds } from './note';
 
 export enum ErrorType {
   None,
@@ -23,20 +14,7 @@ export enum ErrorType {
   Logout,
 }
 
-export type UnsyncedNoteIds = {
-  new: string;
-  edited: Set<string>;
-  deleted: Set<string>;
-  size: number;
-  clear: () => void;
-  add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
-};
-
-const unsyncedNoteIds: Partial<UnsyncedNoteIds> = localStorageParse(
-  STORAGE_KEYS.UNSYNCED
-);
-
-export const state = reactive({
+export const syncState = reactive({
   username: localStorage.getItem(STORAGE_KEYS.USERNAME) || '',
   password: '',
   token: localStorage.getItem(STORAGE_KEYS.TOKEN) || '',
@@ -102,7 +80,7 @@ export function parseErrorRes(res: Response<Record<string, unknown>>): string {
 
 /** Resets {@link state.error}. */
 export function resetError(): void {
-  state.error = { type: ErrorType.None, message: '' };
+  syncState.error = { type: ErrorType.None, message: '' };
 }
 
 /** Wrapper for {@link http.fetch}. */
@@ -128,73 +106,13 @@ export function tauriFetch<T>(
 export function catchHang(err: unknown, type: ErrorType): void {
   console.error(err);
 
-  state.isLoading = false;
-  state.error = {
+  syncState.isLoading = false;
+  syncState.error = {
     type,
     message: 'Request failed',
   };
 }
 
-export function clientSideLogout(): void {
-  state.token = '';
-  state.username = '';
-
-  localStorage.removeItem(STORAGE_KEYS.TOKEN);
-  localStorage.removeItem(STORAGE_KEYS.USERNAME);
-}
-
-/** Syncs local and remote notes. */
-export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
-  const hasNoLocalNotes = noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]);
-
-  // Remove any deleted ids if they don't exist on remote
-  state.unsyncedNoteIds.deleted.forEach((id) => {
-    if (!remoteNotes.some((nt) => nt.id === id)) {
-      state.unsyncedNoteIds.deleted.delete(id);
-      state.unsyncedNoteIds.add({});
-    }
-  });
-
-  // Ensure editor updates with latest selected note content if unedited
-  const remoteSelectedNote = remoteNotes.find(
-    (nt) => nt.id === noteState.selectedNote.id
-  );
-  const selectedNoteIsUnsynced = !state.unsyncedNoteIds.edited.has(
-    noteState.selectedNote.id
-  );
-
-  if (remoteSelectedNote && selectedNoteIsUnsynced) {
-    noteState.selectedNote.content = remoteSelectedNote.content;
-    noteState.selectedNote.timestamp = remoteSelectedNote.timestamp;
-    document.dispatchEvent(new Event(NOTE_EVENTS.change));
-  }
-
-  const unsyncedIds = [state.unsyncedNoteIds.new, ...state.unsyncedNoteIds.edited];
-  const unsyncedDeletedIds = [...state.unsyncedNoteIds.deleted];
-  const unsyncedNotes = unsyncedIds.map(findNote).filter(Boolean) as Note[];
-  const syncedNotes = remoteNotes.filter((nt) => {
-    return ![...unsyncedIds, ...unsyncedDeletedIds].includes(nt.id);
-  });
-
-  const mergedNotes = [...unsyncedNotes, ...syncedNotes];
-
-  if (mergedNotes.length > 0) {
-    noteState.notes = mergedNotes;
-    sortStateNotes();
-  } else {
-    newNote();
-  }
-
-  if (hasNoLocalNotes) {
-    selectNote(noteState.notes[0].id);
-  }
-
-  // Sync any notes that were edited during pull
-  await push(true);
-
-  return invoke('sync_all_local_notes', { notes: noteState.notes }).catch(console.error);
-}
-
-export { autoPush, push, pull } from './note';
-export { login, signup, logout } from './auth';
+export { autoPush, push, pull, syncNotes, UnsyncedNoteIds } from './note';
+export { clientSideLogout, login, signup, logout } from './auth';
 export { deleteAccount } from './account';

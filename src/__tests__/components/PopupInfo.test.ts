@@ -34,8 +34,8 @@ describe('PopupInfo', () => {
   });
 
   it('Renders correct description list items', async () => {
-    s.state.username = 'd';
-    s.state.password = '1';
+    s.syncState.username = 'd';
+    s.syncState.password = '1';
     await s.login();
 
     const wrapper = mountPopupInfo();

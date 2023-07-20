@@ -12,7 +12,7 @@
 import { computed, reactive, ref, watch } from 'vue';
 
 import { openedPopup, PopupType } from '../store/popup';
-import { deleteAccount, state } from '../store/sync';
+import { deleteAccount, syncState } from '../store/sync';
 import { COLOUR_THEMES, selectedTheme, setTheme } from '../store/theme';
 import { updateAndRelaunch, updateAvailable } from '../store/update';
 
@@ -53,20 +53,20 @@ watch(updateAvailable, () => {
   });
 });
 
-watch(state, () => {
+watch(syncState, () => {
   const deleteAccountLabel = 'Delete account';
   const hasDeleteAccountItem = menuItems.some(
     (item) => item.label === deleteAccountLabel
   );
 
-  if (state.token && !hasDeleteAccountItem) {
+  if (syncState.token && !hasDeleteAccountItem) {
     menuItems.push({
       label: deleteAccountLabel,
       testId: 'delete-account',
       confirm: true,
       clickHandler: () => deleteAccount(),
     });
-  } else if (!state.token && hasDeleteAccountItem) {
+  } else if (!syncState.token && hasDeleteAccountItem) {
     menuItems.pop();
   }
 });

@@ -5,7 +5,7 @@
       <dl class="popup-info__description-list">
         <div class="popup-info__description-pair" data-test-id="user">
           <dt>User:</dt>
-          <dd class="popup-info__text-bold">{{ state.username }}</dd>
+          <dd class="popup-info__text-bold">{{ syncState.username }}</dd>
         </div>
         <div class="popup-info__description-pair" data-test-id="version">
           <dt>Version:</dt>
@@ -35,7 +35,7 @@ import { app } from '@tauri-apps/api';
 import { ref } from 'vue';
 
 import pkg from '../../package.json';
-import { state } from '../store/sync';
+import { syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 

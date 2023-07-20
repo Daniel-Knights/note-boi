@@ -2,7 +2,7 @@
   <div id="sync-status">
     <!-- Loading -->
     <div
-      v-if="state.isLoading"
+      v-if="syncState.isLoading"
       class="sync-status__loading-spinner"
       data-test-id="loading"
     ></div>
@@ -18,7 +18,7 @@
     </button>
     <!-- Sync successful -->
     <div
-      v-else-if="state.token !== '' && state.unsyncedNoteIds.size === 0"
+      v-else-if="syncState.token !== '' && syncState.unsyncedNoteIds.size === 0"
       title="Changes synced"
       data-test-id="success"
     >
@@ -43,7 +43,7 @@
 import { computed } from 'vue';
 
 import { openedPopup, PopupType } from '../store/popup';
-import { ErrorType, logout, pull, push, resetError, state } from '../store/sync';
+import { ErrorType, logout, pull, push, resetError, syncState } from '../store/sync';
 import { tauriEmit, tauriListen } from '../utils';
 
 import PopupSyncAuth from './PopupSyncAuth.vue';
@@ -52,7 +52,7 @@ import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 import CloudSyncIcon from './svg/CloudSyncIcon.vue';
 import CloudTickIcon from './svg/CloudTickIcon.vue';
 
-if (state.token) {
+if (syncState.token) {
   tauriEmit('login');
   pull();
 } else {
@@ -60,7 +60,7 @@ if (state.token) {
 }
 
 const isSyncError = computed(() => {
-  switch (state.error.type) {
+  switch (syncState.error.type) {
     case ErrorType.Logout:
     case ErrorType.Pull:
     case ErrorType.Push:
@@ -72,7 +72,7 @@ const isSyncError = computed(() => {
 
 function handlePopupAuthEvent() {
   // Prevent bug where event.emit triggers event.listen
-  if (!state.token) {
+  if (!syncState.token) {
     openedPopup.value = PopupType.Auth;
   }
 }
@@ -83,7 +83,7 @@ function closeSyncPopup() {
 }
 
 async function pushNotes() {
-  if (!state.token) {
+  if (!syncState.token) {
     handlePopupAuthEvent();
   } else {
     await push();
@@ -92,12 +92,12 @@ async function pushNotes() {
 
 tauriListen('push-notes', pushNotes);
 tauriListen('login', () => {
-  state.isLogin = true;
+  syncState.isLogin = true;
   handlePopupAuthEvent();
 });
 tauriListen('logout', logout);
 tauriListen('signup', () => {
-  state.isLogin = false;
+  syncState.isLogin = false;
   handlePopupAuthEvent();
 });
 </script>

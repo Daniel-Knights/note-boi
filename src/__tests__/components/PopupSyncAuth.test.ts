@@ -41,7 +41,7 @@ describe('PopupSyncAuth', () => {
 
     await switchAuthButton.trigger('click');
 
-    assert.isFalse(s.state.isLogin);
+    assert.isFalse(s.syncState.isLogin);
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Signup');
     assert.isTrue(findByTestId(wrapper, 'confirm-password').exists());
     expect(resetErrorSpy).toHaveBeenCalledOnce();
@@ -66,8 +66,8 @@ describe('PopupSyncAuth', () => {
 
       assert.isEmpty(usernameInput.element.value);
       assert.isEmpty(passwordInput.element.value);
-      assert.isEmpty(s.state.username);
-      assert.isEmpty(s.state.password);
+      assert.isEmpty(s.syncState.username);
+      assert.isEmpty(s.syncState.password);
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
@@ -130,8 +130,8 @@ describe('PopupSyncAuth', () => {
       assert.isEmpty(usernameInput.element.value);
       assert.isEmpty(passwordInput.element.value);
       assert.isEmpty(confirmPasswordInput.element.value);
-      assert.isEmpty(s.state.username);
-      assert.isEmpty(s.state.password);
+      assert.isEmpty(s.syncState.username);
+      assert.isEmpty(s.syncState.password);
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
@@ -171,8 +171,8 @@ describe('PopupSyncAuth', () => {
       mockTauriApi([]);
       await formWrapper.trigger('submit');
 
-      assert.strictEqual(s.state.error.type, s.ErrorType.Auth);
-      assert.isNotEmpty(s.state.error.message);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.isNotEmpty(s.syncState.error.message);
 
       confirmPasswordInput.setValue('World');
 

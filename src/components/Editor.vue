@@ -1,7 +1,7 @@
 <template>
   <section id="editor">
     <small class="editor__date" data-test-id="timestamp">{{
-      unixToDateTime(state.selectedNote.timestamp || 0)
+      unixToDateTime(noteState.selectedNote.timestamp || 0)
     }}</small>
     <div class="editor__body" ref="editorBody" data-test-id="body"></div>
   </section>
@@ -13,7 +13,7 @@ import type Delta from 'quill-delta';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 import { NOTE_EVENTS } from '../constant';
-import { editNote, state } from '../store/note';
+import { editNote, noteState } from '../store/note';
 import { unixToDateTime } from '../utils';
 
 const editorBody = ref<HTMLDivElement>();
@@ -32,7 +32,7 @@ function changeNoteEventHandler() {
   ignoreTextChange = true;
 
   // @ts-expect-error TS won't accept the Delta type here
-  quillEditor?.setContents(state.selectedNote.content.delta);
+  quillEditor?.setContents(noteState.selectedNote.content.delta);
 }
 function selectNoteEventHandler() {
   ignoreTextChange = true;

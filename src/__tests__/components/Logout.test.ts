@@ -19,8 +19,8 @@ describe('Logout', () => {
     const wrapper = mount(Logout as DefineComponent);
     assert.isFalse(wrapper.isVisible());
 
-    s.state.username = 'd';
-    s.state.password = '1';
+    s.syncState.username = 'd';
+    s.syncState.password = '1';
     await s.login();
 
     assert.isTrue(wrapper.isVisible());
@@ -28,6 +28,6 @@ describe('Logout', () => {
     await wrapper.trigger('click');
     await awaitSyncLoad();
 
-    assert.isEmpty(s.state.token);
+    assert.isEmpty(s.syncState.token);
   });
 });

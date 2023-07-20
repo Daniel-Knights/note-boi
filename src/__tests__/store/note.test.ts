@@ -43,9 +43,9 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      assert.strictEqual(n.state.notes.length, 1);
-      assert.isTrue(isEmptyNote(n.state.notes[0]));
-      assert.isTrue(isEmptyNote(n.state.selectedNote));
+      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       expect(mockNew).toHaveBeenCalledOnce();
     });
 
@@ -54,9 +54,9 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      assert.strictEqual(n.state.notes.length, 1);
-      assert.isTrue(isEmptyNote(n.state.notes[0]));
-      assert.isTrue(isEmptyNote(n.state.selectedNote));
+      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       expect(mockNew).toHaveBeenCalledOnce();
     });
 
@@ -65,9 +65,9 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      assert.strictEqual(n.state.notes.length, 10);
-      assert.deepEqual(n.state.notes[0], localNotes.sort(n.sortNotesFn)[0]);
-      assert.deepEqual(n.state.notes[0], n.state.selectedNote);
+      assert.strictEqual(n.noteState.notes.length, 10);
+      assert.deepEqual(n.noteState.notes[0], localNotes.sort(n.sortNotesFn)[0]);
+      assert.deepEqual(n.noteState.notes[0], n.noteState.selectedNote);
       expect(mockChange).toHaveBeenCalledOnce();
     });
   });
@@ -101,17 +101,20 @@ describe('Note store', () => {
 
     n.selectNote(existingNote.id);
 
-    assert.deepEqual(n.state.selectedNote, n.state.notes[existingNoteIndexSorted]);
+    assert.deepEqual(
+      n.noteState.selectedNote,
+      n.noteState.notes[existingNoteIndexSorted]
+    );
     expect(mockSelect).toHaveBeenCalledOnce();
     expect(mockChange).toHaveBeenCalledOnce();
     vi.clearAllMocks();
 
     // Ensure clearNote works
-    n.state.notes.push(new n.Note());
-    n.selectNote(n.state.notes[10].id);
-    n.selectNote(n.state.notes[9].id);
+    n.noteState.notes.push(new n.Note());
+    n.selectNote(n.noteState.notes[10].id);
+    n.selectNote(n.noteState.notes[9].id);
 
-    assert.isUndefined(n.state.notes[10]);
+    assert.isUndefined(n.noteState.notes[10]);
     // 3 = 2 (selectNote) + 1 (clearNote)
     expect(mockSelect).toHaveBeenCalledTimes(3);
     expect(mockChange).toHaveBeenCalledTimes(3);
@@ -124,7 +127,7 @@ describe('Note store', () => {
 
     assert.isTrue(n.isSelectedNote(existingNote));
 
-    n.state.notes.push(emptyNote);
+    n.noteState.notes.push(emptyNote);
     n.selectNote(emptyNote.id);
 
     assert.isTrue(n.isSelectedNote(emptyNote));
@@ -139,19 +142,19 @@ describe('Note store', () => {
 
     n.deleteNote(existingNote.id, true);
 
-    assert.notDeepEqual(n.state.selectedNote, existingNote);
+    assert.notDeepEqual(n.noteState.selectedNote, existingNote);
     assert.isUndefined(n.findNote(existingNote.id));
     expect(mockSelect).toHaveBeenCalledOnce();
     expect(mockChange).toHaveBeenCalledOnce();
     expect(mockUnsynced).toHaveBeenCalledOnce();
 
     const otherExistingNote = { ...localNotes[1] };
-    assert.notDeepEqual(n.state.selectedNote, otherExistingNote);
+    assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
     vi.clearAllMocks();
 
     n.deleteNote(otherExistingNote.id, false);
 
-    assert.notDeepEqual(n.state.selectedNote, otherExistingNote);
+    assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
     assert.isUndefined(n.findNote(otherExistingNote.id));
     expect(mockSelect).not.toHaveBeenCalled();
     expect(mockChange).not.toHaveBeenCalled();
@@ -162,14 +165,14 @@ describe('Note store', () => {
     mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
     vi.clearAllMocks();
-    const currentSelectedNote = n.state.selectedNote;
-    const notesSlice = n.state.notes.slice(2, 5);
-    n.state.extraSelectedNotes = notesSlice;
+    const currentSelectedNote = n.noteState.selectedNote;
+    const notesSlice = n.noteState.notes.slice(2, 5);
+    n.noteState.extraSelectedNotes = notesSlice;
 
     n.deleteAllNotes();
 
-    assert.notDeepEqual(n.state.selectedNote, currentSelectedNote);
-    assert.isEmpty(n.state.extraSelectedNotes);
+    assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
+    assert.isEmpty(n.noteState.extraSelectedNotes);
     expect(mockSelect).toHaveBeenCalledOnce();
     expect(mockChange).toHaveBeenCalledOnce();
     expect(mockUnsynced).toHaveBeenCalledTimes(notesSlice.length + 1);
@@ -184,9 +187,9 @@ describe('Note store', () => {
 
       n.newNote();
 
-      assert.notStrictEqual(n.state.selectedNote.id, emptyNote.id);
-      assert.isTrue(isEmptyNote(n.state.selectedNote));
-      assert.deepEqual(n.state.selectedNote, n.state.notes[0]);
+      assert.notStrictEqual(n.noteState.selectedNote.id, emptyNote.id);
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+      assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
       expect(mockSelect).toHaveBeenCalledOnce();
       expect(mockChange).toHaveBeenCalledOnce();
       expect(mockNew).toHaveBeenCalledOnce();
@@ -195,16 +198,16 @@ describe('Note store', () => {
     it('Only updates the timestamp if called with an already empty note selected', async () => {
       mockTauriApi(copyObjArr(localNotes));
       await n.getAllNotes();
-      n.state.notes.push(emptyNote);
+      n.noteState.notes.push(emptyNote);
       n.selectNote(emptyNote.id);
       vi.clearAllMocks();
 
       n.newNote();
 
-      assert.strictEqual(n.state.selectedNote.id, emptyNote.id);
-      assert.deepEqual(n.state.selectedNote.content, emptyNote.content);
-      assert.notStrictEqual(n.state.selectedNote.timestamp, emptyNote.timestamp);
-      assert.isTrue(isEmptyNote(n.state.selectedNote));
+      assert.strictEqual(n.noteState.selectedNote.id, emptyNote.id);
+      assert.deepEqual(n.noteState.selectedNote.content, emptyNote.content);
+      assert.notStrictEqual(n.noteState.selectedNote.timestamp, emptyNote.timestamp);
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       expect(mockSelect).not.toHaveBeenCalled();
       expect(mockChange).not.toHaveBeenCalled();
       expect(mockNew).not.toHaveBeenCalled();
@@ -214,13 +217,16 @@ describe('Note store', () => {
   it('editNote', async () => {
     mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
-    const currentSelectedNote = { ...n.state.selectedNote };
+    const currentSelectedNote = { ...n.noteState.selectedNote };
 
     n.editNote({ ops: [{ insert: 'Title\nBody' }] }, 'Title', 'Body');
 
-    assert.notDeepEqual(n.state.selectedNote, currentSelectedNote);
-    assert.notDeepEqual(n.state.selectedNote.content, currentSelectedNote.content);
-    assert.notStrictEqual(n.state.selectedNote.timestamp, currentSelectedNote.timestamp);
+    assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
+    assert.notDeepEqual(n.noteState.selectedNote.content, currentSelectedNote.content);
+    assert.notStrictEqual(
+      n.noteState.selectedNote.timestamp,
+      currentSelectedNote.timestamp
+    );
     expect(mockUnsynced).toHaveBeenCalledOnce();
   });
 });
