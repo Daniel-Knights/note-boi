@@ -83,7 +83,7 @@ async function handleSubmit() {
     return;
   }
 
-  if (confirmNewPassword.value !== syncState.password) {
+  if (confirmNewPassword.value !== syncState.newPassword) {
     syncState.error = {
       type: ErrorType.Auth,
       message: "Passwords don't match",
