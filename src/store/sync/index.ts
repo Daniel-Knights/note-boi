@@ -113,6 +113,7 @@ export function catchHang(err: unknown, type: ErrorType): void {
   };
 }
 
-export { autoPush, push, pull, syncNotes, UnsyncedNoteIds } from './note';
+export type { UnsyncedNoteIds } from './note';
+export { autoPush, push, pull, syncNotes } from './note';
 export { clientSideLogout, login, signup, logout } from './auth';
 export { deleteAccount } from './account';
