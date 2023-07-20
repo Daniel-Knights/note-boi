@@ -6,6 +6,10 @@
     <DropMenu v-if="show" @close="show = false" :items="menuItems" />
   </div>
   <PopupInfo v-if="openedPopup === PopupType.Info" @close="openedPopup = undefined" />
+  <PopupChangePassword
+    v-if="openedPopup === PopupType.ChangePassword"
+    @close="openedPopup = undefined"
+  />
 </template>
 
 <script lang="ts" setup>
@@ -20,6 +24,7 @@ import { DropMenuItemData } from './types';
 
 import DropMenu from './DropMenu.vue';
 import PopupInfo from './PopupInfo.vue';
+import PopupChangePassword from './PopupChangePassword.vue';
 import CogIcon from './svg/CogIcon.vue';
 
 const show = ref(false);
@@ -54,19 +59,28 @@ watch(updateAvailable, () => {
 });
 
 watch(syncState, () => {
-  const deleteAccountLabel = 'Delete account';
-  const hasDeleteAccountItem = menuItems.some(
-    (item) => item.label === deleteAccountLabel
-  );
+  const hasAccountItem = menuItems.some((item) => item.label === 'Account');
 
-  if (syncState.token && !hasDeleteAccountItem) {
+  if (syncState.token && !hasAccountItem) {
     menuItems.push({
-      label: deleteAccountLabel,
-      testId: 'delete-account',
-      confirm: true,
-      clickHandler: () => deleteAccount(),
+      label: 'Account',
+      subMenu: [
+        {
+          label: 'Change password',
+          testId: 'change-password',
+          clickHandler: () => {
+            openedPopup.value = PopupType.ChangePassword;
+          },
+        },
+        {
+          label: 'Delete account',
+          testId: 'delete-account',
+          confirm: true,
+          clickHandler: () => deleteAccount(),
+        },
+      ],
     });
-  } else if (!syncState.token && hasDeleteAccountItem) {
+  } else if (!syncState.token && hasAccountItem) {
     menuItems.pop();
   }
 });

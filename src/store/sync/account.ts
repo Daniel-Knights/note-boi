@@ -11,6 +11,8 @@ import {
   tauriFetch,
 } from '.';
 
+export async function changePassword(): Promise<void> {}
+
 export async function deleteAccount(): Promise<void> {
   syncState.isLoading = true;
 
