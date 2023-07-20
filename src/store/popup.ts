@@ -4,7 +4,6 @@ export enum PopupType {
   Auth,
   Error,
   Info,
-  DeleteAccount,
 }
 
 export const openedPopup = ref<PopupType>();
