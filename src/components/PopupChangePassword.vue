@@ -5,7 +5,7 @@
       <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
         <input
           v-model="syncState.password"
-          @input="validateFields.currentPassword"
+          @input="validation.currentPassword = true"
           class="form__input"
           :class="{ 'form__input--invalid': !validation.currentPassword }"
           type="password"
@@ -15,7 +15,7 @@
         />
         <input
           v-model="syncState.newPassword"
-          @input="validateFields.newPassword"
+          @input="validation.confirmNewPassword = true"
           class="form__input"
           :class="{ 'form__input--invalid': !validation.newPassword }"
           type="password"
@@ -24,7 +24,7 @@
         />
         <input
           v-model="confirmNewPassword"
-          @input="validateFields.confirmNewPassword"
+          @input="validation.confirmNewPassword = true"
           class="form__input"
           :class="{ 'form__input--invalid': !validation.confirmNewPassword }"
           type="password"
@@ -58,28 +58,12 @@ const validation = reactive({
   confirmNewPassword: true,
 });
 
-const validateFields = {
-  currentPassword() {
-    validation.currentPassword = !!syncState.password;
-  },
-  newPassword() {
-    validation.newPassword = !!syncState.newPassword;
-  },
-  confirmNewPassword() {
-    validation.confirmNewPassword = !!confirmNewPassword.value;
-  },
-};
-
 async function handleSubmit() {
-  validateFields.currentPassword();
-  validateFields.newPassword();
-  validateFields.confirmNewPassword();
+  validation.currentPassword = !!syncState.password;
+  validation.newPassword = !!syncState.newPassword;
+  validation.confirmNewPassword = !!confirmNewPassword.value;
 
-  if (
-    !validation.currentPassword ||
-    !validation.newPassword ||
-    !validation.confirmNewPassword
-  ) {
+  if (Object.values(validation).some((v) => v === false)) {
     return;
   }
 
@@ -104,8 +88,6 @@ async function handleSubmit() {
   await changePassword();
 
   if (syncState.error.type === ErrorType.None) {
-    syncState.password = '';
-    syncState.newPassword = '';
     confirmNewPassword.value = '';
 
     emit('close');
