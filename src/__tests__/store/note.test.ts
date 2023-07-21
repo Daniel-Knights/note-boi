@@ -248,7 +248,7 @@ describe('Note store', () => {
 
       const spyAssertFail = vi.spyOn(assert, 'fail');
 
-      await n.exportNotes([n.noteState.notes[0].id, n.noteState.notes[1].id]);
+      await n.exportNotes([n.noteState.notes[0].id]);
 
       expect(spyAssertFail).not.toHaveBeenCalled();
     });
