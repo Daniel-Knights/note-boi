@@ -28,7 +28,13 @@ export function mockTauriApi(
         url?: string;
         method?: string;
         body?: {
-          payload?: { notes?: n.Note[]; username?: string; token?: string };
+          payload?: {
+            notes?: n.Note[];
+            username?: string;
+            token?: string;
+            current_password?: string;
+            new_password?: string;
+          };
         };
       };
     };
@@ -77,6 +83,21 @@ export function mockTauriApi(
 
                 break;
               }
+              case 'account/password/change':
+                if (
+                  reqPayload?.username !== 'd' ||
+                  reqPayload.token !== 'token' ||
+                  reqPayload.current_password !== '1' ||
+                  reqPayload.new_password !== '2'
+                ) {
+                  assert.fail(
+                    'Invalid username, token, current_password, or new_password'
+                  );
+                }
+
+                resData.token = 'token';
+
+                break;
               case 'account/delete':
                 if (reqPayload?.username !== 'd' || reqPayload.token !== 'token') {
                   assert.fail('Invalid username or token');

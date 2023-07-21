@@ -29,6 +29,9 @@ describe('PopupChangePassword', () => {
   });
 
   it('Validates fields and submits', async () => {
+    s.syncState.username = 'd';
+    s.syncState.token = 'token';
+
     const wrapper = mountPopupChangePassword();
     const wrapperVm = wrapper.vm as unknown as {
       confirmNewPassword: string;
@@ -72,21 +75,21 @@ describe('PopupChangePassword', () => {
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-    await currentPasswordInput.setValue('Hello');
+    await currentPasswordInput.setValue('1');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isFalse(wrapperVm.validation.newPassword);
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-    newPasswordInput.setValue('World');
+    newPasswordInput.setValue('2');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-    confirmNewPasswordInput.setValue('Hello');
+    confirmNewPasswordInput.setValue('1');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
@@ -99,11 +102,15 @@ describe('PopupChangePassword', () => {
     assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
     assert.isNotEmpty(s.syncState.error.message);
 
-    confirmNewPasswordInput.setValue('World');
+    confirmNewPasswordInput.setValue('2');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isTrue(wrapperVm.validation.confirmNewPassword);
+    assert.isNotEmpty(s.syncState.username);
+    assert.isNotEmpty(s.syncState.token);
+    assert.isNotEmpty(s.syncState.password);
+    assert.isNotEmpty(s.syncState.newPassword);
     expect(spyChangePassword).not.toHaveBeenCalled();
 
     await formWrapper.trigger('submit');
