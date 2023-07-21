@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import * as s from '../../store/sync';
 import { mockTauriApi } from '../tauri';
-import { findByTestId, getByTestId } from '../utils';
+import { awaitSyncLoad, findByTestId, getByTestId } from '../utils';
 
 import Popup from '../../components/Popup.vue';
 import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
@@ -85,24 +85,32 @@ describe('PopupSyncAuth', () => {
       assert.isFalse(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
       usernameInput.setValue('Hello');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
       passwordInput.setValue('World');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
       mockTauriApi([]);
       await formWrapper.trigger('submit');
+      await awaitSyncLoad();
 
       expect(spyLogin).toHaveBeenCalledOnce();
       expect(spySignup).not.toHaveBeenCalled();
+      assert.isEmpty(wrapperVm.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.isEmpty(s.syncState.error.message);
+      assert.strictEqual(wrapper.emitted('close')?.length, 1);
     });
 
     it('On signup', async () => {
@@ -149,43 +157,52 @@ describe('PopupSyncAuth', () => {
       assert.isFalse(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
       usernameInput.setValue('Hello');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
       passwordInput.setValue('World');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
       confirmPasswordInput.setValue('Hello');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
       mockTauriApi([]);
       await formWrapper.trigger('submit');
 
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
+      expect(spyLogin).not.toHaveBeenCalled();
+      expect(spySignup).not.toHaveBeenCalled();
 
       confirmPasswordInput.setValue('World');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      expect(spyLogin).not.toHaveBeenCalled();
-      expect(spySignup).not.toHaveBeenCalled();
 
       await formWrapper.trigger('submit');
+      await awaitSyncLoad();
 
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).toHaveBeenCalledOnce();
+      assert.isEmpty(wrapperVm.confirmPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.isEmpty(s.syncState.error.message);
+      assert.strictEqual(wrapper.emitted('close')?.length, 1);
     });
   });
 });
