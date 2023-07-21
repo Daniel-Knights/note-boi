@@ -15,7 +15,7 @@
         />
         <input
           v-model="syncState.newPassword"
-          @input="validation.confirmNewPassword = true"
+          @input="validation.newPassword = true"
           class="form__input"
           :class="{ 'form__input--invalid': !validation.newPassword }"
           type="password"
