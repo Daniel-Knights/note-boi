@@ -57,8 +57,8 @@ import {
   isSelectedNote,
   newNote,
   Note,
-  selectNote,
   noteState,
+  selectNote,
 } from '../store/note';
 import { isEmptyNote } from '../utils';
 

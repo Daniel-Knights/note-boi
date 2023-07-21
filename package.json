@@ -17,6 +17,7 @@
     "test:build": "vitest run",
     "lint": "eslint ./**/*.{ts,js,mjs,vue} --no-error-on-unmatched-pattern && vue-tsc --noEmit",
     "checks": "pnpm run lint && pnpm run test:build",
+    "format": "prettier --write ./src",
     "update": "node ./scripts/updater.mjs",
     "release:patch": "pnpm run lint && pnpm run test:build && pnpm version patch && git push && git push --tags",
     "release:minor": "pnpm run lint && pnpm run test:build && pnpm version minor && git push && git push --tags",

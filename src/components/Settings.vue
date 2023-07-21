@@ -23,8 +23,8 @@ import { updateAndRelaunch, updateAvailable } from '../store/update';
 import { DropMenuItemData } from './types';
 
 import DropMenu from './DropMenu.vue';
-import PopupInfo from './PopupInfo.vue';
 import PopupChangePassword from './PopupChangePassword.vue';
+import PopupInfo from './PopupInfo.vue';
 import CogIcon from './svg/CogIcon.vue';
 
 const show = ref(false);
