@@ -106,14 +106,14 @@ describe('Settings', () => {
     const wrapper = await mountSettingsAndOpen();
     const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'update').exists());
-    assert.strictEqual(wrapperVm.menuItems.length, 2);
+    assert.strictEqual(wrapperVm.menuItems.length, 3);
 
     updateAvailable.value = { shouldUpdate: true };
     await nextTick();
 
     const updateWrapper = findByTestId(wrapper, 'update');
     assert.isTrue(updateWrapper.isVisible());
-    assert.strictEqual(wrapperVm.menuItems.length, 3);
+    assert.strictEqual(wrapperVm.menuItems.length, 4);
 
     const updateSpy = vi.spyOn(updateStore, 'updateAndRelaunch');
     await updateWrapper.trigger('click');
@@ -125,7 +125,7 @@ describe('Settings', () => {
     const wrapper = await mountSettingsAndOpen();
     const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-    assert.strictEqual(wrapperVm.menuItems.length, 2);
+    assert.strictEqual(wrapperVm.menuItems.length, 3);
 
     s.syncState.username = 'd';
     s.syncState.token = 'token';
@@ -133,7 +133,7 @@ describe('Settings', () => {
 
     const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
     assert.isTrue(deleteAccountWrapper.isVisible());
-    assert.strictEqual(wrapperVm.menuItems.length, 3);
+    assert.strictEqual(wrapperVm.menuItems.length, 4);
 
     const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
     await deleteAccountWrapper.trigger('click');
@@ -148,6 +148,6 @@ describe('Settings', () => {
     await nextTick();
 
     assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-    assert.strictEqual(wrapperVm.menuItems.length, 2);
+    assert.strictEqual(wrapperVm.menuItems.length, 3);
   });
 });

@@ -15,6 +15,7 @@
 <script lang="ts" setup>
 import { computed, reactive, ref, watch } from 'vue';
 
+import { exportNotes } from '../store/note';
 import { openedPopup, PopupType } from '../store/popup';
 import { deleteAccount, syncState } from '../store/sync';
 import { COLOUR_THEMES, selectedTheme, setTheme } from '../store/theme';
@@ -38,6 +39,11 @@ const menuItems = reactive<DropMenuItemData[]>([
       clickHandler: () => setTheme(theme),
       selected: computed(() => selectedTheme.value === theme),
     })),
+  },
+  {
+    label: 'Export',
+    testId: 'export',
+    clickHandler: () => exportNotes(),
   },
   {
     label: 'Info',

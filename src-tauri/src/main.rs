@@ -7,7 +7,9 @@ mod command;
 mod menu;
 mod note;
 
-use crate::command::{delete_note, edit_note, get_all_notes, new_note, sync_all_local_notes};
+use crate::command::{
+  delete_note, edit_note, export_notes, get_all_notes, new_note, sync_all_local_notes,
+};
 use std::path::PathBuf;
 use tauri::Manager;
 
@@ -20,6 +22,7 @@ fn main() {
   let mut builder = tauri::Builder::default().invoke_handler(tauri::generate_handler![
     delete_note,
     edit_note,
+    export_notes,
     get_all_notes,
     new_note,
     sync_all_local_notes

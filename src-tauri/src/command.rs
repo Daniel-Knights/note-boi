@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use crate::{
   note::{Note, NoteError},
   AppState,
@@ -29,4 +31,9 @@ pub fn sync_all_local_notes(
   notes: Vec<Note>,
 ) -> Result<(), NoteError> {
   Note::sync_all_local(&state.app_dir, notes)
+}
+
+#[tauri::command]
+pub fn export_notes(save_dir: PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
+  Note::export(&save_dir, notes)
 }

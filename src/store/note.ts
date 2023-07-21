@@ -1,3 +1,4 @@
+import { dialog } from '@tauri-apps/api';
 import { invoke } from '@tauri-apps/api/tauri';
 import type Delta from 'quill-delta';
 import { v4 as uuidv4 } from 'uuid';
@@ -202,4 +203,22 @@ export function editNote(delta: Partial<Delta>, title: string, body: string): vo
   invoke('edit_note', { note: { ...foundNote } })
     .then(autoPush)
     .catch(console.error);
+}
+
+/** Exports all notes, or a given selection. */
+export async function exportNotes(noteIds?: string[]): Promise<void> {
+  const chosenPath = await dialog.open({
+    title: 'Choose a location',
+    directory: true,
+    multiple: false,
+    recursive: false,
+  });
+  if (!chosenPath) return;
+
+  const notes =
+    noteIds && noteIds.length > 0
+      ? noteState.notes.filter((nt) => noteIds?.includes(nt.id))
+      : noteState.notes;
+
+  invoke('export_notes', { saveDir: chosenPath, notes }).catch(console.error);
 }

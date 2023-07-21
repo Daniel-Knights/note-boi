@@ -10,6 +10,14 @@
         testId: 'new',
       },
       {
+        label: 'Export Note',
+        clickHandler: () => {
+          clickedNoteId && exportNotes([clickedNoteId]);
+        },
+        disabled: noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]),
+        testId: 'export',
+      },
+      {
         label: 'Delete Note',
         clickHandler: handleDeleteNote,
         disabled: noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]),
@@ -23,7 +31,13 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 
-import { deleteAllNotes, deleteNote, newNote, noteState } from '../store/note';
+import {
+  deleteAllNotes,
+  deleteNote,
+  exportNotes,
+  newNote,
+  noteState,
+} from '../store/note';
 import { isEmptyNote } from '../utils';
 
 import DropMenu from './DropMenu.vue';
