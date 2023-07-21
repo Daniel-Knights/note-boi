@@ -4,6 +4,7 @@ import { reactive } from 'vue';
 
 import { STORAGE_KEYS } from '../../constant';
 import { isDev } from '../../utils';
+
 import { UnsyncedNoteIds, unsyncedNoteIds } from './note';
 
 export enum ErrorType {
@@ -17,6 +18,7 @@ export enum ErrorType {
 export const syncState = reactive({
   username: localStorage.getItem(STORAGE_KEYS.USERNAME) || '',
   password: '',
+  newPassword: '',
   token: localStorage.getItem(STORAGE_KEYS.TOKEN) || '',
   isLoading: false,
   isLogin: true, // For switching login/signup form
@@ -116,4 +118,4 @@ export function catchHang(err: unknown, type: ErrorType): void {
 export type { UnsyncedNoteIds } from './note';
 export { autoPush, push, pull, syncNotes } from './note';
 export { clientSideLogout, login, signup, logout } from './auth';
-export { deleteAccount } from './account';
+export { changePassword, deleteAccount } from './account';

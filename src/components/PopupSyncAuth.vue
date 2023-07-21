@@ -5,7 +5,7 @@
       <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
         <input
           v-model="syncState.username"
-          @input="validateFields.username"
+          @input="validation.username = true"
           class="form__input"
           :class="{ 'form__input--invalid': !validation.username }"
           type="text"
@@ -15,7 +15,7 @@
         />
         <input
           v-model="syncState.password"
-          @input="validateFields.password"
+          @input="validation.password = true"
           class="form__input"
           :class="{ 'form__input--invalid': !validation.password }"
           type="password"
@@ -25,7 +25,7 @@
         <input
           v-if="!syncState.isLogin"
           v-model="confirmPassword"
-          @input="validateFields.confirmPassword"
+          @input="validation.confirmPassword = true"
           class="form__input"
           :class="{ 'form__input--invalid': !validation.confirmPassword }"
           type="password"
@@ -69,22 +69,13 @@ const validation = reactive({
   confirmPassword: true,
 });
 
-const validateFields = {
-  username() {
-    validation.username = !!syncState.username;
-  },
-  password() {
-    validation.password = !!syncState.password;
-  },
-  confirmPassword() {
-    if (!syncState.isLogin) validation.confirmPassword = !!confirmPassword.value;
-  },
-};
-
 async function handleSubmit() {
-  validateFields.username();
-  validateFields.password();
-  validateFields.confirmPassword();
+  validation.username = !!syncState.username;
+  validation.password = !!syncState.password;
+
+  if (!syncState.isLogin) {
+    validation.confirmPassword = !!confirmPassword.value;
+  }
 
   if (!validation.username || !validation.password) {
     return;
@@ -93,10 +84,10 @@ async function handleSubmit() {
   if (syncState.isLogin) {
     await login();
   } else {
-    if (!confirmPassword.value) {
-      validation.confirmPassword = false;
+    if (!validation.confirmPassword) {
       return;
     }
+
     if (confirmPassword.value !== syncState.password) {
       syncState.error = { type: ErrorType.Auth, message: "Passwords don't match" };
       return;
@@ -107,6 +98,7 @@ async function handleSubmit() {
 
   if (syncState.error.type === ErrorType.None) {
     confirmPassword.value = '';
+
     emit('close');
   }
 }

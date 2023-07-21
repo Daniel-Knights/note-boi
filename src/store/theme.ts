@@ -4,7 +4,7 @@ import { STORAGE_KEYS } from '../constant';
 
 export const COLOUR_THEMES = ['Light', 'Dark', 'System'] as const;
 
-type ColourTheme = typeof COLOUR_THEMES[number];
+type ColourTheme = (typeof COLOUR_THEMES)[number];
 
 export const selectedTheme = ref<ColourTheme>(
   (localStorage.getItem(STORAGE_KEYS.THEME) as ColourTheme | null) || 'System'

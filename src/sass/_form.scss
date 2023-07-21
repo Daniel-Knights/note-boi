@@ -2,6 +2,7 @@
 
 .form {
   @include v.flex-y(false, center);
+  max-width: 220px;
 
   &,
   > * + * {
@@ -21,6 +22,7 @@
   }
 
   &__error {
+    text-align: center;
     color: var(--colour__error);
   }
 }

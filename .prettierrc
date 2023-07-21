@@ -8,6 +8,8 @@
   "semi": true,
   "arrowParens": "always",
   "endOfLine": "auto",
+
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": ["^\\.\\./(?!.+\\.vue)", "^\\.$", "^\\./(?!.+\\.vue)", "^.+/.+\\.vue"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,

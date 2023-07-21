@@ -7,8 +7,8 @@ import {
   ErrorType,
   parseErrorRes,
   resetError,
-  syncState,
   syncNotes,
+  syncState,
   tauriFetch,
 } from '.';
 
