@@ -1,6 +1,6 @@
 <template>
   <Popup @close="emit('close')">
-    <div id="change-password" data-test-id="popup-auth">
+    <div id="change-password" data-test-id="popup-change-password">
       <h2 data-test-id="heading">Change Password</h2>
       <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
         <input

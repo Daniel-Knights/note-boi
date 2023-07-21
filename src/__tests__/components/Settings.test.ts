@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { DefineComponent, nextTick } from 'vue';
 
+import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import * as updateStore from '../../store/update';
 import { STORAGE_KEYS } from '../../constant';
@@ -11,6 +12,7 @@ import { mockTauriApi } from '../tauri';
 import { findByTestId, getByTestId } from '../utils';
 
 import DropMenu from '../../components/DropMenu.vue';
+import PopupChangePassword from '../../components/PopupChangePassword.vue';
 import PopupInfo from '../../components/PopupInfo.vue';
 import Settings from '../../components/Settings.vue';
 
@@ -58,23 +60,40 @@ describe('Settings', () => {
   it('Sets theme preference', async () => {
     const wrapper = await mountSettingsAndOpen();
 
-    async function testThemeSelect(i: number) {
-      const theme = COLOUR_THEMES[i];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const theme of COLOUR_THEMES) {
       const currentThemeWrapper = getByTestId(wrapper, theme);
       assert.isFalse(currentThemeWrapper.classes('drop-menu__item--selected'));
 
+      // eslint-disable-next-line no-await-in-loop
       await currentThemeWrapper.trigger('click');
 
       assert.strictEqual(selectedTheme.value, theme);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.THEME), theme);
       assert.isTrue(currentThemeWrapper.classes('drop-menu__item--selected'));
-
-      if (i < COLOUR_THEMES.length - 1) {
-        testThemeSelect(i + 1);
-      }
     }
+  });
 
-    await testThemeSelect(0);
+  it('Exports all notes', async () => {
+    const appDiv = document.createElement('div');
+    appDiv.id = 'app';
+    document.body.appendChild(appDiv);
+    mockTauriApi();
+
+    const wrapper = await mountSettingsAndOpen({
+      attachTo: appDiv,
+      global: {
+        stubs: { teleport: true },
+      },
+    });
+
+    const exportNotesSpy = vi.spyOn(n, 'exportNotes');
+
+    const exportWrapper = findByTestId(wrapper, 'export');
+    await exportWrapper.trigger('click');
+
+    expect(exportNotesSpy).toHaveBeenCalledOnce();
+    expect(exportNotesSpy).toHaveBeenCalledWith();
   });
 
   it('Opens and closes info popup', async () => {
@@ -94,12 +113,12 @@ describe('Settings', () => {
     await infoWrapper.trigger('click');
 
     assert.strictEqual(openedPopup.value, PopupType.Info);
-    assert.isTrue(findByTestId(wrapper, 'info-popup').isVisible());
+    assert.isTrue(findByTestId(wrapper, 'popup-info').isVisible());
 
     await wrapper.getComponent(PopupInfo).vm.$emit('close');
 
     assert.isUndefined(openedPopup.value);
-    assert.isFalse(findByTestId(wrapper, 'info-popup').exists());
+    assert.isFalse(findByTestId(wrapper, 'popup-info').exists());
   });
 
   it('Update menu item', async () => {
@@ -121,33 +140,63 @@ describe('Settings', () => {
     expect(updateSpy).toHaveBeenCalledOnce();
   });
 
-  it('Delete account menu item', async () => {
-    const wrapper = await mountSettingsAndOpen();
-    const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
-    assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-    assert.strictEqual(wrapperVm.menuItems.length, 3);
+  describe('Account menu item', () => {
+    it('Opens and closes change password popup', async () => {
+      const appDiv = document.createElement('div');
+      appDiv.id = 'app';
+      document.body.appendChild(appDiv);
+      mockTauriApi();
 
-    s.syncState.username = 'd';
-    s.syncState.token = 'token';
-    await nextTick();
+      const wrapper = await mountSettingsAndOpen({
+        attachTo: appDiv,
+        global: {
+          stubs: { teleport: true },
+        },
+      });
 
-    const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
-    assert.isTrue(deleteAccountWrapper.isVisible());
-    assert.strictEqual(wrapperVm.menuItems.length, 4);
+      s.syncState.token = 'token';
+      await nextTick();
 
-    const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
-    await deleteAccountWrapper.trigger('click');
-    // Await confirm dialog
-    await new Promise((res) => {
-      setTimeout(res);
+      const changePasswordWrapper = findByTestId(wrapper, 'change-password');
+      await changePasswordWrapper.trigger('click');
+
+      assert.strictEqual(openedPopup.value, PopupType.ChangePassword);
+      assert.isTrue(findByTestId(wrapper, 'popup-change-password').isVisible());
+
+      await wrapper.getComponent(PopupChangePassword).vm.$emit('close');
+
+      assert.isUndefined(openedPopup.value);
+      assert.isFalse(findByTestId(wrapper, 'popup-change-password').exists());
     });
 
-    expect(deleteAccountSpy).toHaveBeenCalledOnce();
+    it('Delete account menu item', async () => {
+      const wrapper = await mountSettingsAndOpen();
+      const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
+      assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
+      assert.strictEqual(wrapperVm.menuItems.length, 3);
 
-    s.syncState.token = '';
-    await nextTick();
+      s.syncState.username = 'd';
+      s.syncState.token = 'token';
+      await nextTick();
 
-    assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-    assert.strictEqual(wrapperVm.menuItems.length, 3);
+      const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
+      assert.isTrue(deleteAccountWrapper.isVisible());
+      assert.strictEqual(wrapperVm.menuItems.length, 4);
+
+      const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
+      await deleteAccountWrapper.trigger('click');
+      // Await ask dialog
+      await new Promise((res) => {
+        setTimeout(res);
+      });
+
+      expect(deleteAccountSpy).toHaveBeenCalledOnce();
+
+      s.syncState.token = '';
+      await nextTick();
+
+      assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
+      assert.strictEqual(wrapperVm.menuItems.length, 3);
+    });
   });
 });

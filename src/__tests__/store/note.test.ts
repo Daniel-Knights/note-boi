@@ -229,4 +229,28 @@ describe('Note store', () => {
     );
     expect(mockUnsynced).toHaveBeenCalledOnce();
   });
+
+  describe('exportNotes', () => {
+    it('All notes', async () => {
+      mockTauriApi(copyObjArr(localNotes));
+      await n.getAllNotes();
+
+      const spyAssertFail = vi.spyOn(assert, 'fail');
+
+      await n.exportNotes();
+
+      expect(spyAssertFail).not.toHaveBeenCalled();
+    });
+
+    it('Passed selection of notes', async () => {
+      mockTauriApi(copyObjArr(localNotes));
+      await n.getAllNotes();
+
+      const spyAssertFail = vi.spyOn(assert, 'fail');
+
+      await n.exportNotes([n.noteState.notes[0].id, n.noteState.notes[1].id]);
+
+      expect(spyAssertFail).not.toHaveBeenCalled();
+    });
+  });
 });

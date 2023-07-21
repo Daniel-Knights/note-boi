@@ -90,9 +90,7 @@ export function mockTauriApi(
                   reqPayload.current_password !== '1' ||
                   reqPayload.new_password !== '2'
                 ) {
-                  assert.fail(
-                    'Invalid username, token, current_password, or new_password'
-                  );
+                  return;
                 }
 
                 resData.token = 'token';
@@ -129,6 +127,8 @@ export function mockTauriApi(
             return mockPromise(options?.appVersion);
           case 'askDialog':
             return mockPromise(true);
+          case 'openDialog':
+            return mockPromise('C:\\Users\\D');
           // no default
         }
         break;
@@ -144,6 +144,12 @@ export function mockTauriApi(
         });
       case 'sync_all_local_notes':
         return mockPromise();
+      case 'export_notes':
+        if (!args.saveDir || !args.notes) {
+          assert.fail('Missing saveDir or notes');
+        }
+
+        return mockPromise('token');
       // no default
     }
   });

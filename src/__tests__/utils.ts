@@ -40,6 +40,7 @@ export function resetSyncStore(): void {
   localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
   s.syncState.username = '';
   s.syncState.password = '';
+  s.syncState.newPassword = '';
   s.syncState.token = '';
   s.syncState.unsyncedNoteIds.clear();
   s.syncState.isLoading = false;

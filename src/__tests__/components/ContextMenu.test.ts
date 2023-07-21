@@ -70,20 +70,52 @@ describe('ContextMenu', () => {
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
   });
 
-  it('Delete button disabled with no notes', async () => {
-    mockTauriApi();
+  it('Exports a note', async () => {
+    mockTauriApi(copyObjArr(localNotes));
     await n.getAllNotes();
 
+    const noteToExport = { ...localNotes[0] };
     const div = document.createElement('div');
-    div.dataset.noteId = n.noteState.notes[0].id;
+    div.dataset.noteId = noteToExport.id;
 
     const { wrapper, assertionError } = await mountContextMenu(div);
     if (assertionError) assert.fail();
 
-    const deleteButton = getByTestId<HTMLButtonElement>(wrapper, 'delete');
+    n.selectNote(noteToExport.id);
 
-    assert.isTrue(deleteButton.element.className.includes('--disabled'));
+    const noteToExportIndex = n.findNoteIndex(noteToExport.id);
+
+    assert.deepEqual(n.noteState.selectedNote, noteToExport);
+    assert.deepEqual(n.noteState.notes[noteToExportIndex], noteToExport);
+
+    const exportNotesSpy = vi.spyOn(n, 'exportNotes');
+
+    await getByTestId(wrapper, 'export').trigger('click');
+
+    expect(exportNotesSpy).toHaveBeenCalledOnce();
+    expect(exportNotesSpy).toHaveBeenCalledWith([noteToExport.id]);
+    assert.deepEqual(n.noteState.selectedNote, noteToExport);
+    assert.deepEqual(n.noteState.notes[noteToExportIndex], noteToExport);
+    assert.deepNestedInclude(n.noteState.notes, noteToExport);
   });
+
+  it.each(['Export', 'Delete'])(
+    '%s button disabled with no notes',
+    async (buttonType) => {
+      mockTauriApi();
+      await n.getAllNotes();
+
+      const div = document.createElement('div');
+      div.dataset.noteId = n.noteState.notes[0].id;
+
+      const { wrapper, assertionError } = await mountContextMenu(div);
+      if (assertionError) assert.fail();
+
+      const button = getByTestId<HTMLButtonElement>(wrapper, buttonType.toLowerCase());
+
+      assert.isTrue(button.element.classList.contains('drop-menu__item--disabled'));
+    }
+  );
 
   it('Deletes a note', async () => {
     mockTauriApi(copyObjArr(localNotes));
@@ -106,7 +138,7 @@ describe('ContextMenu', () => {
     await getByTestId(wrapper, 'delete').trigger('click');
 
     assert.notDeepEqual(n.noteState.selectedNote, noteToDelete);
-    assert.notDeepEqual(n.noteState.notes[0], noteToDelete);
+    assert.notDeepEqual(n.noteState.notes[noteToDeleteIndex], noteToDelete);
     assert.notDeepNestedInclude(n.noteState.notes, noteToDelete);
   });
 });

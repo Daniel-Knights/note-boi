@@ -1,6 +1,6 @@
 <template>
   <Popup @close="emit('close')">
-    <div id="popup-info" data-test-id="info-popup">
+    <div id="popup-info" data-test-id="popup-info">
       <h2>Info</h2>
       <dl class="popup-info__description-list">
         <div class="popup-info__description-pair" data-test-id="user">
