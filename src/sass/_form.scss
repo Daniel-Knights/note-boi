@@ -1,5 +1,3 @@
-@use './vars' as v;
-
 .form {
   @include v.flex-y(false, center);
   max-width: 220px;

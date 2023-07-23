@@ -1,7 +1,5 @@
 @use 'sass:color';
 
-@use './vars' as v;
-
 @mixin light-theme {
   --colour__primary: #{color.invert(v.$primary)};
   --colour__secondary: #{color.invert(v.$secondary)};
