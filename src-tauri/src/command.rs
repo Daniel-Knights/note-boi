@@ -26,11 +26,8 @@ pub fn edit_note(state: tauri::State<AppState>, note: Note) -> Result<(), NoteEr
 }
 
 #[tauri::command]
-pub fn sync_all_local_notes(
-  state: tauri::State<AppState>,
-  notes: Vec<Note>,
-) -> Result<(), NoteError> {
-  Note::sync_all_local(&state.app_dir, notes)
+pub fn sync_local_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(), NoteError> {
+  Note::sync_local(&state.app_dir, notes)
 }
 
 #[tauri::command]

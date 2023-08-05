@@ -1,11 +1,10 @@
 import { dialog } from '@tauri-apps/api';
-import { invoke } from '@tauri-apps/api/tauri';
 import type Delta from 'quill-delta';
 import { v4 as uuidv4 } from 'uuid';
 import { reactive } from 'vue';
 
 import { NOTE_EVENTS } from '../constant';
-import { isEmptyNote } from '../utils';
+import { isEmptyNote, tauriInvoke } from '../utils';
 
 import { autoPush, syncState, UnsyncedNoteIds } from './sync';
 
@@ -101,7 +100,7 @@ export function isSelectedNote(note: Note): boolean {
 
 /** Fetches all notes and updates {@link noteState}. */
 export async function getAllNotes(): Promise<void> {
-  const fetchedNotes = await invoke<Note[]>('get_all_notes').catch(console.error);
+  const fetchedNotes = await tauriInvoke<Note[]>('get_all_notes').catch(console.error);
 
   const hasNotes = fetchedNotes && fetchedNotes.length > 0;
   if (!hasNotes) return newNote();
@@ -143,7 +142,9 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
   } else {
     document.dispatchEvent(getUnsyncedEvent(id, 'deleted'));
 
-    invoke('delete_note', { id }).then(autoPush).catch(console.error);
+    tauriInvoke('delete_note', { id })
+      .then(() => autoPush())
+      .catch(console.error);
   }
 }
 
@@ -182,7 +183,7 @@ export function newNote(isButtonClick?: boolean): void {
   document.dispatchEvent(changeNoteEvent);
   document.dispatchEvent(newNoteEvent);
 
-  invoke('new_note', { note: { ...freshNote } }).catch(console.error);
+  tauriInvoke('new_note', { note: { ...freshNote } }).catch(console.error);
 }
 
 /** Edits note body on Quill `text-change`. */
@@ -200,7 +201,7 @@ export function editNote(delta: Partial<Delta>, title: string, body: string): vo
 
   document.dispatchEvent(getUnsyncedEvent(foundNote.id, 'edited'));
 
-  invoke('edit_note', { note: { ...foundNote } })
+  tauriInvoke('edit_note', { note: { ...foundNote } })
     .then(autoPush)
     .catch(console.error);
 }
@@ -220,5 +221,5 @@ export async function exportNotes(noteIds?: string[]): Promise<void> {
       ? noteState.notes.filter((nt) => noteIds?.includes(nt.id))
       : noteState.notes;
 
-  invoke('export_notes', { saveDir, notes }).catch(console.error);
+  tauriInvoke('export_notes', { saveDir, notes }).catch(console.error);
 }

@@ -96,7 +96,7 @@ impl Note {
     }
   }
 
-  pub fn sync_all_local(app_dir: &PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
+  pub fn sync_local(app_dir: &PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
     let notes_dir = app_dir.join(NOTE_DIR);
 
     let rm_res = fs::remove_dir_all(&notes_dir);

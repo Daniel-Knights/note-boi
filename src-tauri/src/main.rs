@@ -8,7 +8,7 @@ mod menu;
 mod note;
 
 use crate::command::{
-  delete_note, edit_note, export_notes, get_all_notes, new_note, sync_all_local_notes,
+  delete_note, edit_note, export_notes, get_all_notes, new_note, sync_local_notes,
 };
 use std::path::PathBuf;
 use tauri::Manager;
@@ -25,7 +25,7 @@ fn main() {
     export_notes,
     get_all_notes,
     new_note,
-    sync_all_local_notes
+    sync_local_notes
   ]);
 
   if cfg!(target_os = "macos") {

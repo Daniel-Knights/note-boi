@@ -1,7 +1,5 @@
-import { invoke } from '@tauri-apps/api';
-
 import { NOTE_EVENTS, STORAGE_KEYS } from '../../constant';
-import { isEmptyNote, localStorageParse } from '../../utils';
+import { isEmptyNote, localStorageParse, tauriInvoke } from '../../utils';
 import {
   findNote,
   newNote,
@@ -87,7 +85,7 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
   // Sync any notes that were edited during pull
   await push(true);
 
-  return invoke('sync_all_local_notes', { notes: noteState.notes }).catch(console.error);
+  return tauriInvoke('sync_local_notes', { notes: noteState.notes }).catch(console.error);
 }
 
 // Pull
