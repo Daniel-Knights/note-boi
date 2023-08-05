@@ -412,7 +412,7 @@ describe('Note store', () => {
 
       clearMockApiResults({ calls, events });
 
-      await n.exportNotes();
+      await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
       assert.strictEqual(calls.length, 2);
       assert.isTrue(calls.has('openDialog'));
@@ -438,7 +438,7 @@ describe('Note store', () => {
 
       clearMockApiResults({ calls, events });
 
-      await n.exportNotes();
+      await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
       assert.strictEqual(calls.length, 1);
       assert.isTrue(calls.has('openDialog'));

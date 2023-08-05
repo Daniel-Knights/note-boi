@@ -11,9 +11,7 @@
       },
       {
         label: 'Export Note',
-        clickHandler: () => {
-          clickedNoteId && exportNotes([clickedNoteId]);
-        },
+        clickHandler: handleExportNotes,
         disabled: noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]),
         testId: 'export',
       },
@@ -54,12 +52,21 @@ const show = ref(false);
 const top = ref(0);
 const left = ref(0);
 
+function handleExportNotes() {
+  if (noteState.extraSelectedNotes.length > 0) {
+    exportNotes([
+      noteState.selectedNote.id,
+      ...noteState.extraSelectedNotes.map((nt) => nt.id),
+    ]);
+  } else if (clickedNoteId.value) {
+    exportNotes([clickedNoteId.value]);
+  }
+}
+
 function handleDeleteNote() {
-  // If multiple notes are selected, delete all of them
   if (noteState.extraSelectedNotes.length > 0) {
     deleteSelectedNotes();
   } else if (clickedNoteId.value) {
-    // Delete clicked note
     deleteNote(clickedNoteId.value);
   }
 }

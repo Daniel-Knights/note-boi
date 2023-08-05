@@ -26,7 +26,6 @@ export class Note {
 export const noteState = reactive({
   notes: <Note[]>[],
   selectedNote: new Note(),
-  /** `0` = next in queue. */
   extraSelectedNotes: <Note[]>[],
 });
 
@@ -207,7 +206,7 @@ export function editNote(delta: Partial<Delta>, title: string, body: string): vo
 }
 
 /** Exports all notes, or a given selection. */
-export async function exportNotes(noteIds?: string[]): Promise<void> {
+export async function exportNotes(noteIds: string[]): Promise<void> {
   const saveDir = await dialog.open({
     title: 'Choose a location',
     directory: true,
@@ -216,10 +215,7 @@ export async function exportNotes(noteIds?: string[]): Promise<void> {
   });
   if (!saveDir) return;
 
-  const notes =
-    noteIds && noteIds.length > 0
-      ? noteState.notes.filter((nt) => noteIds?.includes(nt.id))
-      : noteState.notes;
+  const notes = noteState.notes.filter((nt) => noteIds?.includes(nt.id));
 
   tauriInvoke('export_notes', { saveDir, notes }).catch(console.error);
 }

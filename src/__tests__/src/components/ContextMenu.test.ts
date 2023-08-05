@@ -82,44 +82,6 @@ describe('ContextMenu', () => {
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
   });
 
-  it('Exports a note', async () => {
-    const { calls, promises } = mockApi();
-
-    await n.getAllNotes();
-    await Promise.all(promises);
-
-    const noteToExport = { ...localNotes[0] };
-    const div = document.createElement('div');
-    div.dataset.noteId = noteToExport.id;
-
-    const wrapper = await mountContextMenu(div);
-
-    n.selectNote(noteToExport.id);
-
-    const noteToExportIndex = n.findNoteIndex(noteToExport.id);
-
-    await Promise.all(promises);
-
-    assert.deepEqual(n.noteState.selectedNote, noteToExport);
-    assert.deepEqual(n.noteState.notes[noteToExportIndex], noteToExport);
-
-    clearMockApiResults({ calls, promises });
-
-    const exportNotesSpy = vi.spyOn(n, 'exportNotes');
-
-    await getByTestId(wrapper, 'export').trigger('click');
-    await Promise.all(promises);
-
-    expect(exportNotesSpy).toHaveBeenCalledOnce();
-    expect(exportNotesSpy).toHaveBeenCalledWith([noteToExport.id]);
-    assert.strictEqual(calls.length, 2);
-    assert.isTrue(calls.has('openDialog'));
-    assert.isTrue(calls.has('export_notes'));
-    assert.deepEqual(n.noteState.selectedNote, noteToExport);
-    assert.deepEqual(n.noteState.notes[noteToExportIndex], noteToExport);
-    assert.deepNestedInclude(n.noteState.notes, noteToExport);
-  });
-
   it.each(['Export', 'Delete'])(
     '%s button disabled with no notes',
     async (buttonType) => {
@@ -145,11 +107,62 @@ describe('ContextMenu', () => {
     }
   );
 
-  it('Deletes a note', async () => {
-    const { calls, promises } = mockApi();
+  it('Exports a note', async () => {
+    mockApi();
 
     await n.getAllNotes();
-    await Promise.all(promises);
+
+    const noteToExport = { ...localNotes[0] };
+    const div = document.createElement('div');
+    div.dataset.noteId = noteToExport.id;
+
+    const wrapper = await mountContextMenu(div);
+
+    n.selectNote(noteToExport.id);
+
+    const noteToExportIndex = n.findNoteIndex(noteToExport.id);
+
+    assert.deepEqual(n.noteState.selectedNote, noteToExport);
+    assert.deepEqual(n.noteState.notes[noteToExportIndex], noteToExport);
+
+    const exportNotesSpy = vi.spyOn(n, 'exportNotes');
+
+    await getByTestId(wrapper, 'export').trigger('click');
+
+    expect(exportNotesSpy).toHaveBeenCalledOnce();
+    expect(exportNotesSpy).toHaveBeenCalledWith([noteToExport.id]);
+  });
+
+  it('Exports all selected notes', async () => {
+    mockApi();
+
+    await n.getAllNotes();
+
+    const noteToExport = { ...localNotes[0] };
+    const noteSlice = localNotes.slice(2, 6);
+    const div = document.createElement('div');
+    div.dataset.noteId = noteToExport.id;
+
+    const wrapper = await mountContextMenu(div);
+
+    n.selectNote(noteToExport.id);
+    n.noteState.extraSelectedNotes.push(...noteSlice);
+
+    const exportNotesSpy = vi.spyOn(n, 'exportNotes');
+
+    await getByTestId(wrapper, 'export').trigger('click');
+
+    expect(exportNotesSpy).toHaveBeenCalledOnce();
+    expect(exportNotesSpy).toHaveBeenCalledWith([
+      noteToExport.id,
+      ...noteSlice.map((nt) => nt.id),
+    ]);
+  });
+
+  it('Deletes a note', async () => {
+    mockApi();
+
+    await n.getAllNotes();
 
     const noteToDelete = { ...localNotes[0] };
     const div = document.createElement('div');
@@ -159,20 +172,34 @@ describe('ContextMenu', () => {
 
     n.selectNote(noteToDelete.id);
 
-    const noteToDeleteIndex = n.findNoteIndex(noteToDelete.id);
-
-    assert.deepEqual(n.noteState.selectedNote, noteToDelete);
-    assert.deepEqual(n.noteState.notes[noteToDeleteIndex], noteToDelete);
-
-    clearMockApiResults({ calls, promises });
+    const deleteSpy = vi.spyOn(n, 'deleteNote');
 
     await getByTestId(wrapper, 'delete').trigger('click');
-    await Promise.all(promises);
 
-    assert.strictEqual(calls.length, 1);
-    assert.isTrue(calls.has('delete_note'));
-    assert.notDeepEqual(n.noteState.selectedNote, noteToDelete);
-    assert.notDeepEqual(n.noteState.notes[noteToDeleteIndex], noteToDelete);
-    assert.notDeepNestedInclude(n.noteState.notes, noteToDelete);
+    expect(deleteSpy).toHaveBeenCalledOnce();
+    expect(deleteSpy).toHaveBeenCalledWith(noteToDelete.id);
+  });
+
+  it('Deletes all selected notes', async () => {
+    mockApi();
+
+    await n.getAllNotes();
+
+    const noteToDelete = { ...localNotes[0] };
+    const noteSlice = localNotes.slice(2, 6);
+    const div = document.createElement('div');
+    div.dataset.noteId = noteToDelete.id;
+
+    const wrapper = await mountContextMenu(div);
+
+    n.selectNote(noteToDelete.id);
+    n.noteState.extraSelectedNotes.push(...noteSlice);
+
+    const deleteSelectedSpy = vi.spyOn(n, 'deleteSelectedNotes');
+
+    await getByTestId(wrapper, 'delete').trigger('click');
+
+    expect(deleteSelectedSpy).toHaveBeenCalledOnce();
+    expect(deleteSelectedSpy).toHaveBeenCalledWith();
   });
 });

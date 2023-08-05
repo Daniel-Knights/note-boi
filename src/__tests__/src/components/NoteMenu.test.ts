@@ -286,7 +286,7 @@ describe('NoteMenu', () => {
      * Triggers clicks with cmd/ctrl and alt keys,
      * then returns a boolean indicating the result.
      */
-    function testMetaAltKeySelects(wrapper: VueWrapper) {
+    function testAltKeySelects(wrapper: VueWrapper) {
       const indexesToSelect = [2, 4, 7];
       const lowestIndex = indexesToSelect[0];
       const highestIndex = indexesToSelect[indexesToSelect.length - 1];
@@ -401,7 +401,7 @@ describe('NoteMenu', () => {
         it(testSelectsMethodName, async () => {
           const wrapper = shallowMount(NoteMenu);
 
-          const testSelects = testMetaAltKeySelects(wrapper);
+          const testSelects = testAltKeySelects(wrapper);
           testSelects[testSelectsMethodName]();
 
           const assertResultSelect = await testSelects.run();

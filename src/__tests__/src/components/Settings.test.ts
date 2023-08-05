@@ -95,13 +95,13 @@ describe('Settings', () => {
     });
 
     const exportNotesSpy = vi.spyOn(n, 'exportNotes');
-
     const exportWrapper = findByTestId(wrapper, 'export');
+
     await exportWrapper.trigger('click');
     await Promise.all(promises);
 
     expect(exportNotesSpy).toHaveBeenCalledOnce();
-    expect(exportNotesSpy).toHaveBeenCalledWith();
+    expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes);
     assert.strictEqual(calls.length, 2);
     assert.isTrue(calls.has('openDialog'));
     assert.isTrue(calls.has('export_notes'));
