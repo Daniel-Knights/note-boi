@@ -128,9 +128,9 @@ export async function getAllNotes(): Promise<void> {
 export function deleteNote(id: string, selectNextNote: boolean): void {
   noteState.notes.splice(findNoteIndex(id), 1);
 
-  if (noteState.notes.length === 0) newNote();
-
-  if (selectNextNote) {
+  if (noteState.notes.length === 0) {
+    newNote();
+  } else if (selectNextNote) {
     noteState.selectedNote = { ...noteState.notes[0] };
 
     document.dispatchEvent(selectNoteEvent);
