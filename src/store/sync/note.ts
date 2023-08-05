@@ -35,7 +35,7 @@ export const unsyncedNoteIds: Partial<UnsyncedNoteIds> = localStorageParse(
 
 /** Syncs local and remote notes. */
 export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
-  const hasNoLocalNotes = noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]);
+  const hasNoLocalNotes = noteState.notes.length <= 1 && isEmptyNote(noteState.notes[0]);
 
   // Remove any deleted ids if they don't exist on remote
   syncState.unsyncedNoteIds.deleted.forEach((id) => {
