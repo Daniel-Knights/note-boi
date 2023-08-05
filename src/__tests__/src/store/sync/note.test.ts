@@ -447,7 +447,7 @@ describe('Sync', () => {
         body: 'body2',
       });
 
-      n.deleteNote(n.noteState.selectedNote.id, true);
+      n.deleteNote(n.noteState.selectedNote.id);
 
       await awaitSyncLoad();
 
@@ -472,7 +472,7 @@ describe('Sync', () => {
 
       const firstCachedNote = { ...n.noteState.selectedNote };
 
-      n.deleteNote(n.noteState.selectedNote.id, true);
+      n.deleteNote(n.noteState.selectedNote.id);
 
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.strictEqual(
@@ -491,7 +491,7 @@ describe('Sync', () => {
 
       const secondCachedNote = { ...n.noteState.selectedNote };
 
-      n.deleteNote(n.noteState.selectedNote.id, true);
+      n.deleteNote(n.noteState.selectedNote.id);
 
       assert.isFalse(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(secondCachedNote.id));
@@ -546,7 +546,7 @@ describe('Sync', () => {
 
       const cachedId = n.noteState.selectedNote.id;
 
-      n.deleteNote(n.noteState.selectedNote.id, true);
+      n.deleteNote(n.noteState.selectedNote.id);
 
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));

@@ -59,8 +59,8 @@ function handleDeleteNote() {
   if (noteState.extraSelectedNotes.length > 0) {
     deleteAllNotes();
   } else if (clickedNoteId.value) {
-    // Delete clicked note and select next note if currently selected
-    deleteNote(clickedNoteId.value, clickedNoteId.value === noteState.selectedNote.id);
+    // Delete clicked note
+    deleteNote(clickedNoteId.value);
   }
 }
 

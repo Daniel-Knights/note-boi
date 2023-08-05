@@ -65,7 +65,7 @@ function clearEmptyNote(): void {
   if (!foundNote) return;
 
   if (isEmptyNote(foundNote)) {
-    deleteNote(noteState.selectedNote.id, true);
+    deleteNote(noteState.selectedNote.id);
   }
 }
 
@@ -125,12 +125,12 @@ export async function getAllNotes(): Promise<void> {
 }
 
 /** Deletes note with the given `id`. */
-export function deleteNote(id: string, selectNextNote: boolean): void {
+export function deleteNote(id: string): void {
   noteState.notes.splice(findNoteIndex(id), 1);
 
   if (noteState.notes.length === 0) {
     newNote();
-  } else if (selectNextNote) {
+  } else if (noteState.selectedNote.id === id) {
     noteState.selectedNote = { ...noteState.notes[0] };
 
     document.dispatchEvent(selectNoteEvent);
@@ -150,10 +150,10 @@ export function deleteNote(id: string, selectNextNote: boolean): void {
 
 /** Deletes {@link noteState.selectedNote} and all notes in {@link noteState.extraSelectedNotes}. */
 export function deleteAllNotes(): void {
-  deleteNote(noteState.selectedNote.id, true);
+  deleteNote(noteState.selectedNote.id);
 
   noteState.extraSelectedNotes.forEach((nt) => {
-    if (nt) deleteNote(nt.id, false);
+    deleteNote(nt.id);
   });
 
   noteState.extraSelectedNotes = [];

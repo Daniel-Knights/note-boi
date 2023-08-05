@@ -183,7 +183,7 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls, events });
 
-      n.deleteNote(existingNote.id, true);
+      n.deleteNote(existingNote.id);
 
       expect(mockSelectEventCb).toHaveBeenCalledOnce();
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
@@ -213,7 +213,7 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls, events, promises });
 
-      n.deleteNote(otherExistingNote.id, false);
+      n.deleteNote(otherExistingNote.id);
 
       await Promise.all(promises);
 
@@ -245,7 +245,7 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls, events });
 
-      n.deleteNote(existingNote.id, true);
+      n.deleteNote(existingNote.id);
 
       expect(mockSelectEventCb).toHaveBeenCalledOnce();
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
@@ -268,7 +268,7 @@ describe('Note store', () => {
 
       s.syncState.unsyncedNoteIds.add({ new: existingNote.id });
 
-      n.deleteNote(existingNote.id, true);
+      n.deleteNote(existingNote.id);
 
       assert.strictEqual(s.syncState.unsyncedNoteIds.new, '');
     });
@@ -283,7 +283,7 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls, events, promises });
 
-      n.deleteNote(otherExistingNote.id, false);
+      n.deleteNote(otherExistingNote.id);
 
       await Promise.all(promises);
       await Promise.resolve();
