@@ -89,7 +89,9 @@ describe('SyncStatus', () => {
     const pushSpy = vi.spyOn(s, 'push');
 
     const wrapper = mountWithPopup();
+
     assert.isTrue(wrapper.isVisible());
+
     await awaitSyncLoad();
 
     const syncButton = getByTestId(wrapper, 'sync-button');
@@ -127,6 +129,7 @@ describe('SyncStatus', () => {
       s.syncState.error.type = s.ErrorType[errorType];
 
       const wrapper = mountWithPopup();
+
       assert.isTrue(wrapper.isVisible());
 
       const errorButton = getByTestId(wrapper, 'error');
@@ -141,12 +144,14 @@ describe('SyncStatus', () => {
   describe('Handles popups', () => {
     it('PopupSyncError', async () => {
       mockApi();
+
       const wrapper = mountWithPopup();
-      assert.isTrue(wrapper.isVisible());
+
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
 
       s.syncState.error.type = s.ErrorType.Logout;
       s.syncState.error.message = 'Error';
+
       await nextTick();
 
       await findByTestId(wrapper, 'error').trigger('click');

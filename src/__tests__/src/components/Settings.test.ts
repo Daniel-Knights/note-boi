@@ -39,8 +39,9 @@ describe('Settings', () => {
 
   it('Opens and closes drop menu', async () => {
     const wrapper = mount(Settings);
-    assert.isTrue(wrapper.isVisible());
+
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
+
     const settingsButtonWrapper = findByTestId(wrapper, 'settings-button');
 
     await settingsButtonWrapper.trigger('click');

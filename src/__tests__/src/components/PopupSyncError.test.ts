@@ -45,7 +45,6 @@ describe('PopupSyncError', () => {
     const pushSpy = vi.spyOn(s, 'push');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();
-    assert.isTrue(wrapper.isVisible());
 
     s.syncState.error.type = s.ErrorType.Push;
 
@@ -61,7 +60,6 @@ describe('PopupSyncError', () => {
     const pullSpy = vi.spyOn(s, 'pull');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();
-    assert.isTrue(wrapper.isVisible());
 
     s.syncState.error.type = s.ErrorType.Pull;
 
@@ -77,7 +75,6 @@ describe('PopupSyncError', () => {
     const logoutSpy = vi.spyOn(s, 'logout');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();
-    assert.isTrue(wrapper.isVisible());
 
     s.syncState.error.type = s.ErrorType.Logout;
 

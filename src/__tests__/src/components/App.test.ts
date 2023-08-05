@@ -14,7 +14,6 @@ import UtilityMenu from '../../../components/UtilityMenu.vue';
 describe('App', () => {
   it('Mounts', async () => {
     const { calls, events, promises } = mockApi();
-
     const wrapper = mount(App);
 
     await Promise.all(promises);

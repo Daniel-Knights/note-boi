@@ -130,7 +130,6 @@ describe('PopupChangePassword', () => {
     await awaitSyncLoad();
 
     expect(spyChangePassword).toHaveBeenCalledOnce();
-    expect(spyChangePassword).toHaveBeenCalledWith();
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
     assert.isEmpty(s.syncState.error.message);
     assert.isEmpty(wrapperVm.confirmNewPassword);

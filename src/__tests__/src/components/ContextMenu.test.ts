@@ -37,7 +37,6 @@ async function mountContextMenu(attachTo?: HTMLElement) {
 describe('ContextMenu', () => {
   it('Mounts without passed ev', async () => {
     const { calls, events, promises } = mockApi();
-
     const wrapper = mount(ContextMenu);
 
     await Promise.all(promises);
@@ -54,6 +53,7 @@ describe('ContextMenu', () => {
 
   it('Closes', async () => {
     const wrapper = await mountContextMenu();
+
     await wrapper.getComponent(DropMenu).vm.$emit('close');
 
     assert.isFalse(wrapper.isVisible());
@@ -66,7 +66,6 @@ describe('ContextMenu', () => {
     const wrapper = await mountContextMenu();
 
     await n.getAllNotes();
-    await Promise.all(promises);
 
     assert.isFalse(isEmptyNote(n.noteState.selectedNote));
     assert.isFalse(isEmptyNote(n.noteState.notes[0]));
@@ -85,14 +84,13 @@ describe('ContextMenu', () => {
   it.each(['Export', 'Delete'])(
     '%s button disabled with no notes',
     async (buttonType) => {
-      const { calls, promises } = mockApi({
+      const { calls } = mockApi({
         invoke: {
           resValue: [],
         },
       });
 
       await n.getAllNotes();
-      await Promise.all(promises);
 
       const div = document.createElement('div');
       div.dataset.noteId = n.noteState.notes[0].id;
@@ -200,6 +198,5 @@ describe('ContextMenu', () => {
     await getByTestId(wrapper, 'delete').trigger('click');
 
     expect(deleteSelectedSpy).toHaveBeenCalledOnce();
-    expect(deleteSelectedSpy).toHaveBeenCalledWith();
   });
 });

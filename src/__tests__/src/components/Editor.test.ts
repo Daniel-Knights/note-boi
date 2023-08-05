@@ -30,14 +30,13 @@ describe('Editor', () => {
   });
 
   it('Sets the correct note text', async () => {
-    const { calls, promises } = mockApi();
+    const { calls } = mockApi();
     const wrapper = mount(Editor);
     const editorBody = getByTestId(wrapper, 'body');
 
     assert.isEmpty(editorBody.text());
 
     await n.getAllNotes();
-    await Promise.all(promises);
 
     assert.strictEqual(calls.length, 1);
     assert.isTrue(calls.has('get_all_notes'));

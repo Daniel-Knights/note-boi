@@ -289,7 +289,6 @@ describe('Note store', () => {
       await Promise.resolve();
 
       expect(autoPushSpy).toHaveBeenCalledOnce();
-      expect(autoPushSpy).toHaveBeenCalledWith();
 
       assert.isUndefined(n.findNote(otherExistingNote.id));
       assert.strictEqual(calls.length, 1);

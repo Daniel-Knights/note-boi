@@ -38,7 +38,6 @@ describe('PopupSyncAuth', () => {
   it('Switches between login/signup', async () => {
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncAuth();
-    assert.isTrue(wrapper.isVisible());
 
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Login');
     assert.isFalse(findByTestId(wrapper, 'confirm-password').exists());
@@ -67,7 +66,7 @@ describe('PopupSyncAuth', () => {
           confirmPassword: boolean;
         };
       };
-      assert.isTrue(wrapper.isVisible());
+
       assert.isFalse(findByTestId(wrapper, 'confirm-password').exists());
 
       const usernameInput = getByTestId<HTMLInputElement>(wrapper, 'username');
@@ -138,7 +137,6 @@ describe('PopupSyncAuth', () => {
           confirmPassword: boolean;
         };
       };
-      assert.isTrue(wrapper.isVisible());
 
       const switchAuthButton = getByTestId(wrapper, 'switch');
       await switchAuthButton.trigger('click');

@@ -28,7 +28,6 @@ describe('DropMenu', () => {
 
   it('Emits close on click', () => {
     const wrapper = mountDropMenu();
-    assert.isTrue(wrapper.isVisible());
 
     document.body.click();
 
@@ -45,8 +44,6 @@ describe('DropMenu', () => {
       }));
       const wrapper = mountDropMenu(items);
 
-      assert.isTrue(wrapper.isVisible());
-
       items.forEach(({ label, testId }) => {
         const itemWrapper = getByTestId(wrapper, testId);
 
@@ -62,8 +59,6 @@ describe('DropMenu', () => {
         clickHandler: vi.fn(),
       }));
       const wrapper = mountDropMenu(items);
-
-      assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ testId, clickHandler }) => {
         const itemWrapper = getByTestId(wrapper, testId);
@@ -85,8 +80,6 @@ describe('DropMenu', () => {
         subMenu: [],
       }));
       const wrapper = mountDropMenu(items);
-
-      assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ testId }) => {
         const itemWrapper = getByTestId(wrapper, testId);
@@ -110,8 +103,6 @@ describe('DropMenu', () => {
         ],
       }));
       const wrapper = mountDropMenu(items);
-
-      assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ testId }) => {
         const itemWrapper = getByTestId(wrapper, testId);

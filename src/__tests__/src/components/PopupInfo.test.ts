@@ -54,7 +54,6 @@ describe('PopupInfo', () => {
     s.syncState.password = '1';
 
     await s.login();
-    await Promise.all(promises);
 
     clearMockApiResults({ calls, promises });
 
