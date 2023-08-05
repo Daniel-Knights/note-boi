@@ -7,7 +7,7 @@ import './sass/_button.scss';
 import './sass/_form.scss';
 import './sass/_reset.scss';
 import './sass/_theme.scss';
-import { deleteAllNotes, getAllNotes, newNote } from './store/note';
+import { deleteSelectedNotes, getAllNotes, newNote } from './store/note';
 import { openedPopup, PopupType } from './store/popup';
 import { ErrorType, push, syncState } from './store/sync';
 import { handleUpdate } from './store/update';
@@ -48,4 +48,4 @@ tauriWindow.appWindow.listen('tauri://close-requested', () => {
 });
 tauriListen('reload', () => exitApp(relaunch));
 tauriListen('new-note', () => newNote(false));
-tauriListen('delete-note', deleteAllNotes);
+tauriListen('delete-note', deleteSelectedNotes);

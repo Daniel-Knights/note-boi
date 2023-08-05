@@ -149,7 +149,7 @@ export function deleteNote(id: string): void {
 }
 
 /** Deletes {@link noteState.selectedNote} and all notes in {@link noteState.extraSelectedNotes}. */
-export function deleteAllNotes(): void {
+export function deleteSelectedNotes(): void {
   deleteNote(noteState.selectedNote.id);
 
   noteState.extraSelectedNotes.forEach((nt) => {

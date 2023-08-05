@@ -299,7 +299,7 @@ describe('Note store', () => {
     });
   });
 
-  it('deleteAllNotes', async () => {
+  it('deleteSelectedNotes', async () => {
     const { calls, events } = mockApi();
 
     await n.getAllNotes();
@@ -312,7 +312,7 @@ describe('Note store', () => {
     vi.clearAllMocks();
     clearMockApiResults({ calls, events });
 
-    n.deleteAllNotes();
+    n.deleteSelectedNotes();
 
     expect(mockSelectEventCb).toHaveBeenCalledOnce();
     expect(mockChangeEventCb).toHaveBeenCalledOnce();

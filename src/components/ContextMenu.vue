@@ -32,8 +32,8 @@
 import { ref, watch } from 'vue';
 
 import {
-  deleteAllNotes,
   deleteNote,
+  deleteSelectedNotes,
   exportNotes,
   newNote,
   noteState,
@@ -57,7 +57,7 @@ const left = ref(0);
 function handleDeleteNote() {
   // If multiple notes are selected, delete all of them
   if (noteState.extraSelectedNotes.length > 0) {
-    deleteAllNotes();
+    deleteSelectedNotes();
   } else if (clickedNoteId.value) {
     // Delete clicked note
     deleteNote(clickedNoteId.value);
