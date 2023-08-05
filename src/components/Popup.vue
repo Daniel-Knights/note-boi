@@ -20,8 +20,8 @@ function closePopup() {
   if (hasClosed.value) return;
   hasClosed.value = true;
 
-  document.removeEventListener('keydown', keyboardCloseHandler);
-  document.body.removeEventListener('mousedown', clickCloseHandler);
+  window.removeEventListener('keydown', keyboardCloseHandler);
+  document.body.removeEventListener('mouseup', clickCloseHandler);
 
   emit('close');
 }
@@ -35,11 +35,8 @@ function clickCloseHandler(event: MouseEvent) {
   }
 }
 
-// setTimeout prevents immediate close
-setTimeout(() => {
-  document.addEventListener('keydown', keyboardCloseHandler);
-  document.body.addEventListener('mousedown', clickCloseHandler);
-});
+window.addEventListener('keydown', keyboardCloseHandler);
+document.body.addEventListener('mouseup', clickCloseHandler);
 
 onBeforeUnmount(closePopup);
 </script>
