@@ -1,7 +1,7 @@
 import { event, invoke } from '@tauri-apps/api';
 import { EventCallback, UnlistenFn } from '@tauri-apps/api/event';
 
-import { TauriCommand } from './constant';
+import { TauriCommand, TauriEmit, TauriListener } from './constant';
 import type { Note } from './store/note';
 
 /** `process.env.NODE_ENV === 'development'`. */
@@ -35,21 +35,13 @@ export function isEmptyNote(note?: Note): boolean {
 }
 
 /** Calls {@link event.emit}, with stronger typing for `id`. */
-export function tauriEmit<T>(id: 'login' | 'logout', payload?: T): void {
+export function tauriEmit<T>(id: TauriEmit, payload?: T): void {
   event.emit(id, payload);
 }
 
 /** Calls {@link event.listen}, with stronger typing for `id`. */
 export function tauriListen(
-  id:
-    | 'reload'
-    | 'new-note'
-    | 'delete-note'
-    | 'push-notes'
-    | 'login'
-    | 'logout'
-    | 'signup'
-    | `tauri://${string}`,
+  id: TauriListener,
   cb: EventCallback<unknown>
 ): Promise<UnlistenFn> {
   return event.listen(id, cb);

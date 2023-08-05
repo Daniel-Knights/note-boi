@@ -2,7 +2,7 @@ import { http } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 import { reactive } from 'vue';
 
-import { STORAGE_KEYS } from '../../constant';
+import { Endpoint, STORAGE_KEYS } from '../../constant';
 import { isDev } from '../../utils';
 
 import { UnsyncedNoteIds, unsyncedNoteIds } from './note';
@@ -87,7 +87,7 @@ export function resetError(): void {
 
 /** Wrapper for {@link http.fetch}. */
 export function tauriFetch<T>(
-  endpoint: string,
+  endpoint: Endpoint,
   method: 'POST' | 'PUT',
   payload?: Record<string, unknown>
 ): Promise<Response<T>> {
