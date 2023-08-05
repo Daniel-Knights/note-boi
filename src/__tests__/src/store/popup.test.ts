@@ -1,4 +1,4 @@
-import { openedPopup, PopupType } from '../../store/popup';
+import { openedPopup, PopupType } from '../../../store/popup';
 
 describe('Popup', () => {
   it('Sets opened popup', () => {

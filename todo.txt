@@ -1,9 +1,8 @@
 *Before release*
-Change password
-Forgot password
 README
 
 *Whenever*
+Forgot password
 Crash reports
 Top menu
 Mock window tests
@@ -12,4 +11,4 @@ Prevent opening context menu off bottom of screen
 Custom colour themes
 Tab key functionality
 Auto detect links (enable/disable?)
-Export/backup
+

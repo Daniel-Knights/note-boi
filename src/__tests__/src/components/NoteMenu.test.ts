@@ -1,21 +1,22 @@
 import { shallowMount, VueWrapper } from '@vue/test-utils';
-import { DefineComponent } from 'vue';
 
-import * as n from '../../store/note';
-import { STORAGE_KEYS } from '../../constant';
-import { isEmptyNote } from '../../utils';
-import localNotes from '../notes.json';
-import { mockTauriApi } from '../tauri';
-import { copyObjArr, getByTestId, resetNoteStore } from '../utils';
+import * as n from '../../../store/note';
+import { STORAGE_KEYS } from '../../../constant';
+import { isEmptyNote } from '../../../utils';
+import { mockApi } from '../../api';
+import localNotes from '../../notes.json';
+import { getByTestId, resetNoteStore } from '../../utils';
 
-import NoteMenu from '../../components/NoteMenu.vue';
+import NoteMenu from '../../../components/NoteMenu.vue';
 
 const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
 
 // Hooks
 beforeEach(async () => {
-  mockTauriApi(copyObjArr(localNotes));
+  const { promises } = mockApi();
+
   await n.getAllNotes();
+  await Promise.all(promises);
 
   assert.isFalse(isEmptyNote(n.noteState.notes[0]));
   assert.isFalse(isEmptyNote(n.noteState.selectedNote));
@@ -25,15 +26,22 @@ beforeEach(async () => {
 
 // Tests
 describe('NoteMenu', () => {
-  it('Mounts', () => {
-    const wrapper = shallowMount(NoteMenu as DefineComponent);
+  it('Mounts', async () => {
+    const { calls, events, promises } = mockApi();
+    const wrapper = shallowMount(NoteMenu);
+
+    await Promise.all(promises);
+
     assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.length, 0);
+    assert.strictEqual(events.emits.length, 0);
+    assert.strictEqual(events.listeners.length, 0);
   });
 
   it('Renders a list item for every note', () => {
-    const wrapper = shallowMount(NoteMenu as DefineComponent);
-    assert.isTrue(wrapper.isVisible());
+    const wrapper = shallowMount(NoteMenu);
 
+    assert.isTrue(wrapper.isVisible());
     assert.strictEqual(wrapper.findAll('li').length, localNotes.length);
 
     n.noteState.notes.forEach((note) => {
@@ -47,12 +55,19 @@ describe('NoteMenu', () => {
   });
 
   it('Renders a single empty note', async () => {
-    const wrapper = shallowMount(NoteMenu as DefineComponent);
+    const { promises } = mockApi({
+      invoke: {
+        resValue: [],
+      },
+    });
+    const wrapper = shallowMount(NoteMenu);
+
     assert.isTrue(wrapper.isVisible());
 
     resetNoteStore();
-    mockTauriApi([]);
+
     await n.getAllNotes();
+    await Promise.all(promises);
 
     const noteItems = wrapper.findAll('li');
     assert.strictEqual(noteItems.length, 1);
@@ -69,19 +84,26 @@ describe('NoteMenu', () => {
     assert.isTrue(lastChild.classes().join(' ').includes('--empty'));
   });
 
-  it('Creates a new note', () => {
-    const wrapper = shallowMount(NoteMenu as DefineComponent);
+  it('Creates a new note', async () => {
+    const { calls, promises } = mockApi();
+    const wrapper = shallowMount(NoteMenu);
+
     assert.isTrue(wrapper.isVisible());
 
     const newNoteButton = getByTestId(wrapper, 'new');
     newNoteButton.trigger('click');
 
+    await Promise.all(promises);
+
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+    assert.strictEqual(calls.length, 1);
+    assert.isTrue(calls.has('new_note'));
   });
 
   it('Selects a clicked note', async () => {
-    const wrapper = shallowMount(NoteMenu as DefineComponent);
+    const wrapper = shallowMount(NoteMenu);
+
     assert.isTrue(wrapper.isVisible());
 
     const noteToSelect = localNotes[2];
@@ -97,7 +119,8 @@ describe('NoteMenu', () => {
   });
 
   it('Navigates notes with up/down arrow keys', async () => {
-    const wrapper = shallowMount(NoteMenu as DefineComponent);
+    const wrapper = shallowMount(NoteMenu);
+
     assert.isTrue(wrapper.isVisible());
 
     function keyNav(direction: 'Up' | 'Down') {
@@ -134,12 +157,12 @@ describe('NoteMenu', () => {
   });
 
   it('Sets contextmenu ev', async () => {
-    const wrapper = shallowMount(NoteMenu as DefineComponent);
+    const wrapper = shallowMount(NoteMenu);
     const wrapperVm = wrapper.vm as unknown as {
       contextMenuEv: MouseEvent;
     };
-    assert.isTrue(wrapper.isVisible());
 
+    assert.isTrue(wrapper.isVisible());
     assert.isUndefined(wrapperVm.contextMenuEv);
 
     const listWrapper = getByTestId(wrapper, 'note-list');
@@ -149,16 +172,17 @@ describe('NoteMenu', () => {
   });
 
   it('Sets menu width with drag-bar', async () => {
-    const wrapper = shallowMount(NoteMenu as DefineComponent);
+    const wrapper = shallowMount(NoteMenu);
     const wrapperVm = wrapper.vm as unknown as {
       menuWidth: string;
       isDragging: boolean;
     };
+
     assert.isTrue(wrapper.isVisible());
 
     const initialWidth = wrapperVm.menuWidth;
-    assert.match(initialWidth, /^\d+px$/);
 
+    assert.match(initialWidth, /^\d+px$/);
     assert.isFalse(wrapperVm.isDragging);
 
     document.dispatchEvent(new MouseEvent('mouseup'));
@@ -329,7 +353,8 @@ describe('NoteMenu', () => {
     // Tests //
 
     it('Not single selected note', async () => {
-      const wrapper = shallowMount(NoteMenu as DefineComponent);
+      const wrapper = shallowMount(NoteMenu);
+
       assert.isTrue(wrapper.isVisible());
 
       const selectedNoteItem = wrapper.get(getDataNoteId(n.noteState.selectedNote.id));
@@ -339,7 +364,7 @@ describe('NoteMenu', () => {
     });
 
     it('With cmd/ctrl', async () => {
-      const wrapper = shallowMount(NoteMenu as DefineComponent);
+      const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());
 
       const notesToSelect = [localNotes[2], localNotes[4], localNotes[7]];
@@ -353,7 +378,7 @@ describe('NoteMenu', () => {
     });
 
     it('With alt', async () => {
-      const wrapper = shallowMount(NoteMenu as DefineComponent);
+      const wrapper = shallowMount(NoteMenu);
       assert.isTrue(wrapper.isVisible());
 
       const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[6].id));
@@ -374,7 +399,7 @@ describe('NoteMenu', () => {
       'With cmd/ctrl and alt',
       (testSelectsMethodName) => {
         it(testSelectsMethodName, async () => {
-          const wrapper = shallowMount(NoteMenu as DefineComponent);
+          const wrapper = shallowMount(NoteMenu);
 
           const testSelects = testMetaAltKeySelects(wrapper);
           testSelects[testSelectsMethodName]();

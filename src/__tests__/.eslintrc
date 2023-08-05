@@ -7,6 +7,7 @@
     "beforeEach": "readonly",
     "afterEach": "readonly",
     "beforeAll": "readonly",
+    "afterAll": "readonly",
     "vi": "readonly",
     "assert": "readonly"
   }

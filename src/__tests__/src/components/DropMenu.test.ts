@@ -1,10 +1,10 @@
-import { clearMocks as clearTauriMocks, mockIPC } from '@tauri-apps/api/mocks';
 import { mount } from '@vue/test-utils';
 
-import { DropMenuItemData } from '../../components/types';
-import { findByTestId, getByTestId, mockPromise } from '../utils';
+import { DropMenuItemData } from '../../../components/types';
+import { mockApi } from '../../api';
+import { findByTestId, getByTestId } from '../../utils';
 
-import DropMenu from '../../components/DropMenu.vue';
+import DropMenu from '../../../components/DropMenu.vue';
 
 function mountDropMenu(items: DropMenuItemData[] = []) {
   return mount(DropMenu, {
@@ -13,9 +13,17 @@ function mountDropMenu(items: DropMenuItemData[] = []) {
 }
 
 describe('DropMenu', () => {
-  it('Mounts', () => {
+  it('Mounts', async () => {
+    const { calls, events, promises } = mockApi();
+
     const wrapper = mountDropMenu();
+
+    await Promise.all(promises);
+
     assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.length, 0);
+    assert.strictEqual(events.emits.length, 0);
+    assert.strictEqual(events.listeners.length, 0);
   });
 
   it('Emits close on click', () => {
@@ -36,6 +44,7 @@ describe('DropMenu', () => {
         testId: `item-${i}`,
       }));
       const wrapper = mountDropMenu(items);
+
       assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ label, testId }) => {
@@ -53,6 +62,7 @@ describe('DropMenu', () => {
         clickHandler: vi.fn(),
       }));
       const wrapper = mountDropMenu(items);
+
       assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ testId, clickHandler }) => {
@@ -75,6 +85,7 @@ describe('DropMenu', () => {
         subMenu: [],
       }));
       const wrapper = mountDropMenu(items);
+
       assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ testId }) => {
@@ -89,13 +100,10 @@ describe('DropMenu', () => {
     });
 
     it.each([true, false])('Confirms click - %s', async (confirmRes) => {
-      const askMock = vi.fn();
-
-      mockIPC((cmd, args) => {
-        if ((args.message as { cmd: string }).cmd === 'askDialog') {
-          askMock();
-          return mockPromise(confirmRes);
-        }
+      const { calls, promises } = mockApi({
+        api: {
+          resValue: confirmRes,
+        },
       });
 
       const items = Array.from({ length: 5 }, (_, i) => ({
@@ -105,6 +113,9 @@ describe('DropMenu', () => {
         clickHandler: vi.fn(),
       }));
       const wrapper = mountDropMenu(items);
+
+      await Promise.all(promises);
+
       assert.isTrue(wrapper.isVisible());
 
       async function testClickHandlers(i: number): Promise<void> {
@@ -113,12 +124,7 @@ describe('DropMenu', () => {
         assert.isTrue(itemWrapper.isVisible());
 
         await itemWrapper.trigger('click');
-        // Await confirm dialog
-        await new Promise((res) => {
-          setTimeout(res);
-        });
-
-        expect(askMock).toHaveBeenCalledOnce();
+        await Promise.all(promises);
 
         if (confirmRes) {
           expect(clickHandler).toHaveBeenCalledOnce();
@@ -126,7 +132,8 @@ describe('DropMenu', () => {
           expect(clickHandler).not.toHaveBeenCalled();
         }
 
-        vi.clearAllMocks();
+        assert.strictEqual(calls.length, i + 1);
+        assert.isTrue(calls.has('askDialog'));
 
         if (i < items.length - 1) {
           return testClickHandlers(i + 1);
@@ -134,8 +141,6 @@ describe('DropMenu', () => {
       }
 
       await testClickHandlers(0);
-
-      clearTauriMocks();
     });
 
     it('Handles sub-menus', () => {
@@ -149,6 +154,7 @@ describe('DropMenu', () => {
         ],
       }));
       const wrapper = mountDropMenu(items);
+
       assert.isTrue(wrapper.isVisible());
 
       items.forEach(({ testId }) => {

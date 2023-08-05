@@ -1,23 +1,23 @@
 import { mount } from '@vue/test-utils';
-import { DefineComponent, nextTick } from 'vue';
+import { nextTick } from 'vue';
 
-import * as n from '../../store/note';
-import * as s from '../../store/sync';
-import * as updateStore from '../../store/update';
-import { STORAGE_KEYS } from '../../constant';
-import { openedPopup, PopupType } from '../../store/popup';
-import { COLOUR_THEMES, selectedTheme } from '../../store/theme';
-import { updateAvailable } from '../../store/update';
-import { mockTauriApi } from '../tauri';
-import { findByTestId, getByTestId } from '../utils';
+import * as n from '../../../store/note';
+import * as s from '../../../store/sync';
+import * as updateStore from '../../../store/update';
+import { STORAGE_KEYS } from '../../../constant';
+import { openedPopup, PopupType } from '../../../store/popup';
+import { COLOUR_THEMES, selectedTheme } from '../../../store/theme';
+import { updateAvailable } from '../../../store/update';
+import { mockApi } from '../../api';
+import { findByTestId, getByTestId } from '../../utils';
 
-import DropMenu from '../../components/DropMenu.vue';
-import PopupChangePassword from '../../components/PopupChangePassword.vue';
-import PopupInfo from '../../components/PopupInfo.vue';
-import Settings from '../../components/Settings.vue';
+import DropMenu from '../../../components/DropMenu.vue';
+import PopupChangePassword from '../../../components/PopupChangePassword.vue';
+import PopupInfo from '../../../components/PopupInfo.vue';
+import Settings from '../../../components/Settings.vue';
 
 async function mountSettingsAndOpen(options?: Record<string, unknown>) {
-  const wrapper = mount(Settings as DefineComponent, options);
+  const wrapper = mount(Settings, options);
 
   await findByTestId(wrapper, 'settings-button').trigger('click');
 
@@ -25,13 +25,20 @@ async function mountSettingsAndOpen(options?: Record<string, unknown>) {
 }
 
 describe('Settings', () => {
-  it('Mounts', () => {
-    const wrapper = mount(Settings as DefineComponent);
+  it('Mounts', async () => {
+    const { calls, events, promises } = mockApi();
+    const wrapper = mount(Settings);
+
+    await Promise.all(promises);
+
     assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.length, 0);
+    assert.strictEqual(events.emits.length, 0);
+    assert.strictEqual(events.listeners.length, 0);
   });
 
   it('Opens and closes drop menu', async () => {
-    const wrapper = mount(Settings as DefineComponent);
+    const wrapper = mount(Settings);
     assert.isTrue(wrapper.isVisible());
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
     const settingsButtonWrapper = findByTestId(wrapper, 'settings-button');
@@ -75,10 +82,10 @@ describe('Settings', () => {
   });
 
   it('Exports all notes', async () => {
+    const { calls, promises } = mockApi();
     const appDiv = document.createElement('div');
     appDiv.id = 'app';
     document.body.appendChild(appDiv);
-    mockTauriApi();
 
     const wrapper = await mountSettingsAndOpen({
       attachTo: appDiv,
@@ -91,16 +98,20 @@ describe('Settings', () => {
 
     const exportWrapper = findByTestId(wrapper, 'export');
     await exportWrapper.trigger('click');
+    await Promise.all(promises);
 
     expect(exportNotesSpy).toHaveBeenCalledOnce();
     expect(exportNotesSpy).toHaveBeenCalledWith();
+    assert.strictEqual(calls.length, 2);
+    assert.isTrue(calls.has('openDialog'));
+    assert.isTrue(calls.has('export_notes'));
   });
 
   it('Opens and closes info popup', async () => {
+    const { promises } = mockApi();
     const appDiv = document.createElement('div');
     appDiv.id = 'app';
     document.body.appendChild(appDiv);
-    mockTauriApi();
 
     const wrapper = await mountSettingsAndOpen({
       attachTo: appDiv,
@@ -111,6 +122,7 @@ describe('Settings', () => {
 
     const infoWrapper = findByTestId(wrapper, 'info');
     await infoWrapper.trigger('click');
+    await Promise.all(promises);
 
     assert.strictEqual(openedPopup.value, PopupType.Info);
     assert.isTrue(findByTestId(wrapper, 'popup-info').isVisible());
@@ -122,6 +134,7 @@ describe('Settings', () => {
   });
 
   it('Update menu item', async () => {
+    const { calls, events, promises } = mockApi();
     const wrapper = await mountSettingsAndOpen();
     const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'update').exists());
@@ -136,8 +149,14 @@ describe('Settings', () => {
 
     const updateSpy = vi.spyOn(updateStore, 'updateAndRelaunch');
     await updateWrapper.trigger('click');
+    await Promise.all(promises);
 
     expect(updateSpy).toHaveBeenCalledOnce();
+    assert.strictEqual(calls.length, 0);
+    assert.strictEqual(events.emits.length, 1);
+    assert.isTrue(events.emits.includes('tauri://update-install'));
+    assert.strictEqual(events.listeners.length, 1);
+    assert.isTrue(events.listeners.includes('tauri://update-status'));
   });
 
   describe('Account menu item', () => {
@@ -145,7 +164,6 @@ describe('Settings', () => {
       const appDiv = document.createElement('div');
       appDiv.id = 'app';
       document.body.appendChild(appDiv);
-      mockTauriApi();
 
       const wrapper = await mountSettingsAndOpen({
         attachTo: appDiv,
@@ -170,6 +188,7 @@ describe('Settings', () => {
     });
 
     it('Delete account menu item', async () => {
+      const { calls } = mockApi();
       const wrapper = await mountSettingsAndOpen();
       const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
@@ -185,16 +204,15 @@ describe('Settings', () => {
 
       const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
-      // Await ask dialog
+      // We can't await the click handler via the promises from mockApi
       await new Promise((res) => {
-        setTimeout(res);
+        setTimeout(res, 0);
       });
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-
-      s.syncState.token = '';
-      await nextTick();
-
+      assert.strictEqual(calls.length, 2);
+      assert.isTrue(calls.has('askDialog'));
+      assert.isTrue(calls.has('/account/delete'));
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
       assert.strictEqual(wrapperVm.menuItems.length, 3);
     });

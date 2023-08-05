@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils';
 
-import * as s from '../../store/sync';
-import { mockTauriApi } from '../tauri';
-import { getByTestId } from '../utils';
+import * as s from '../../../store/sync';
+import { mockApi } from '../../api';
+import { getByTestId } from '../../utils';
 
-import Popup from '../../components/Popup.vue';
-import PopupSyncError from '../../components/PopupSyncError.vue';
+import Popup from '../../../components/Popup.vue';
+import PopupSyncError from '../../../components/PopupSyncError.vue';
 
 function mountPopupSyncError() {
   return mount(PopupSyncError, {
@@ -19,11 +19,16 @@ describe('PopupSyncError', () => {
   const errorMessage = 'I am a sync error';
   s.syncState.error.message = errorMessage;
 
-  mockTauriApi([]);
-
-  it('Mounts', () => {
+  it('Mounts', async () => {
+    const { calls, events, promises } = mockApi();
     const wrapper = mountPopupSyncError();
+
+    await Promise.all(promises);
+
     assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.length, 0);
+    assert.strictEqual(events.emits.length, 0);
+    assert.strictEqual(events.listeners.length, 0);
 
     const errorMessageWrapper = getByTestId(wrapper, 'error-message');
     assert.strictEqual(errorMessageWrapper.text(), `Error: ${errorMessage}`);

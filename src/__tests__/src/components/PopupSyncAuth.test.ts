@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils';
 
-import * as s from '../../store/sync';
-import { mockTauriApi } from '../tauri';
-import { awaitSyncLoad, findByTestId, getByTestId } from '../utils';
+import * as s from '../../../store/sync';
+import { clearMockApiResults, mockApi } from '../../api';
+import { awaitSyncLoad, findByTestId, getByTestId } from '../../utils';
 
-import Popup from '../../components/Popup.vue';
-import PopupSyncAuth from '../../components/PopupSyncAuth.vue';
+import Popup from '../../../components/Popup.vue';
+import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
 
 function mountPopupSyncAuth() {
   return mount(PopupSyncAuth, {
@@ -16,9 +16,16 @@ function mountPopupSyncAuth() {
 }
 
 describe('PopupSyncAuth', () => {
-  it('Mounts', () => {
+  it('Mounts', async () => {
+    const { calls, events, promises } = mockApi();
     const wrapper = mountPopupSyncAuth();
+
+    await Promise.all(promises);
+
     assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.length, 0);
+    assert.strictEqual(events.emits.length, 0);
+    assert.strictEqual(events.listeners.length, 0);
   });
 
   it('Emits close', async () => {
@@ -49,6 +56,8 @@ describe('PopupSyncAuth', () => {
 
   describe('Validates fields', () => {
     it('On login', async () => {
+      const { calls } = mockApi();
+
       const wrapper = mountPopupSyncAuth();
       const wrapperVm = wrapper.vm as unknown as {
         confirmPassword: string;
@@ -87,21 +96,22 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-      usernameInput.setValue('Hello');
+      usernameInput.setValue('d');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-      passwordInput.setValue('World');
+      passwordInput.setValue('1');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-      mockTauriApi([]);
+      clearMockApiResults({ calls });
+
       await formWrapper.trigger('submit');
       await awaitSyncLoad();
 
@@ -111,9 +121,14 @@ describe('PopupSyncAuth', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(wrapper.emitted('close')?.length, 1);
+      assert.strictEqual(calls.length, 3);
+      assert.isTrue(calls.has('/login'));
+      assert.isTrue(calls.has('/notes'));
+      assert.isTrue(calls.has('sync_local_notes'));
     });
 
     it('On signup', async () => {
+      const { calls, events } = mockApi();
       const wrapper = mountPopupSyncAuth();
       const wrapperVm = wrapper.vm as unknown as {
         confirmPassword: string;
@@ -159,28 +174,27 @@ describe('PopupSyncAuth', () => {
       assert.isFalse(wrapperVm.validation.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-      usernameInput.setValue('Hello');
+      usernameInput.setValue('k');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-      passwordInput.setValue('World');
+      passwordInput.setValue('2');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-      confirmPasswordInput.setValue('Hello');
+      confirmPasswordInput.setValue('3');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-      mockTauriApi([]);
       await formWrapper.trigger('submit');
 
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
@@ -188,11 +202,13 @@ describe('PopupSyncAuth', () => {
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
 
-      confirmPasswordInput.setValue('World');
+      confirmPasswordInput.setValue('2');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
+
+      clearMockApiResults({ calls, events });
 
       await formWrapper.trigger('submit');
       await awaitSyncLoad();
@@ -203,6 +219,10 @@ describe('PopupSyncAuth', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(wrapper.emitted('close')?.length, 1);
+      assert.strictEqual(calls.length, 1);
+      assert.isTrue(calls.has('/signup'));
+      assert.strictEqual(events.emits.length, 1);
+      assert.isTrue(events.emits.includes('login'));
     });
   });
 });

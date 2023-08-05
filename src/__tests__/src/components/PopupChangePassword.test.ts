@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils';
 
-import * as s from '../../store/sync';
-import { mockTauriApi } from '../tauri';
-import { awaitSyncLoad, getByTestId } from '../utils';
+import * as s from '../../../store/sync';
+import { clearMockApiResults, mockApi } from '../../api';
+import { awaitSyncLoad, getByTestId } from '../../utils';
 
-import Popup from '../../components/Popup.vue';
-import PopupChangePassword from '../../components/PopupChangePassword.vue';
+import Popup from '../../../components/Popup.vue';
+import PopupChangePassword from '../../../components/PopupChangePassword.vue';
 
 function mountPopupChangePassword() {
   return mount(PopupChangePassword, {
@@ -16,9 +16,16 @@ function mountPopupChangePassword() {
 }
 
 describe('PopupChangePassword', () => {
-  it('Mounts', () => {
+  it('Mounts', async () => {
+    const { calls, events, promises } = mockApi();
     const wrapper = mountPopupChangePassword();
+
+    await Promise.all(promises);
+
     assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.length, 0);
+    assert.strictEqual(events.emits.length, 0);
+    assert.strictEqual(events.listeners.length, 0);
   });
 
   it('Emits close', async () => {
@@ -29,8 +36,12 @@ describe('PopupChangePassword', () => {
   });
 
   it('Validates fields and submits', async () => {
+    const { calls } = mockApi();
+
     s.syncState.username = 'd';
-    s.syncState.token = 'token';
+    s.syncState.password = '1';
+
+    await s.login();
 
     const wrapper = mountPopupChangePassword();
     const wrapperVm = wrapper.vm as unknown as {
@@ -41,6 +52,7 @@ describe('PopupChangePassword', () => {
         confirmNewPassword: boolean;
       };
     };
+
     assert.isTrue(wrapper.isVisible());
 
     const currentPasswordInput = getByTestId<HTMLInputElement>(
@@ -96,7 +108,6 @@ describe('PopupChangePassword', () => {
     assert.isTrue(wrapperVm.validation.confirmNewPassword);
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-    mockTauriApi([]);
     await formWrapper.trigger('submit');
 
     assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
@@ -113,14 +124,18 @@ describe('PopupChangePassword', () => {
     assert.isNotEmpty(s.syncState.newPassword);
     expect(spyChangePassword).not.toHaveBeenCalled();
 
+    clearMockApiResults({ calls });
+
     await formWrapper.trigger('submit');
     await awaitSyncLoad();
 
     expect(spyChangePassword).toHaveBeenCalledOnce();
     expect(spyChangePassword).toHaveBeenCalledWith();
-    assert.isEmpty(wrapperVm.confirmNewPassword);
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
     assert.isEmpty(s.syncState.error.message);
+    assert.isEmpty(wrapperVm.confirmNewPassword);
     assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.strictEqual(calls.length, 1);
+    assert.isTrue(calls.has('/account/password/change'));
   });
 });

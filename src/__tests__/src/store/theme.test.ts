@@ -1,4 +1,4 @@
-import { selectedTheme, setTheme } from '../../store/theme';
+import { selectedTheme, setTheme } from '../../../store/theme';
 
 describe('Theme', () => {
   it('Uses system as default', () => {

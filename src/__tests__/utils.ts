@@ -22,12 +22,6 @@ export function setCrypto(): void {
   };
 }
 
-export function mockPromise<T>(resValue?: T): Promise<T | void> {
-  return new Promise((res) => {
-    res(resValue);
-  });
-}
-
 export function resetNoteStore(): void {
   n.noteState.notes = [];
   n.noteState.selectedNote = new n.Note();
