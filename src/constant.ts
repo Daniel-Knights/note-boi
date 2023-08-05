@@ -53,7 +53,6 @@ export const TAURI_LISTENERS = [
   'signup',
   'change-password',
   'delete-account',
-  'tauri://close-requested',
 ] as const;
 
 export type TauriListener = (typeof TAURI_LISTENERS)[number];
