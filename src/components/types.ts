@@ -6,6 +6,6 @@ export type DropMenuItemData = {
   testId?: string;
   disabled?: boolean;
   selected?: boolean | Ref<boolean>;
-  confirm?: boolean;
+  danger?: boolean;
   subMenu?: DropMenuItemData[];
 };

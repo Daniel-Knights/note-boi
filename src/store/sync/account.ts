@@ -1,3 +1,5 @@
+import { dialog } from '@tauri-apps/api';
+
 import { STORAGE_KEYS } from '../../constant';
 import { tauriEmit } from '../../utils';
 import { Note } from '../note';
@@ -48,6 +50,12 @@ export async function changePassword(): Promise<void> {
 }
 
 export async function deleteAccount(): Promise<void> {
+  const askRes = await dialog.ask('Are you sure?', {
+    title: 'Delete account',
+    type: 'warning',
+  });
+  if (!askRes) return;
+
   syncState.isLoading = true;
 
   const res = await tauriFetch<Record<string, string | Note[]>>(

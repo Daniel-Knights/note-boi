@@ -110,17 +110,33 @@ describe('Account', () => {
 
       await s.deleteAccount();
 
+      expect(unsyncedClearSpy).toHaveBeenCalledOnce();
+
       assert.isEmpty(s.syncState.username);
       assert.isEmpty(s.syncState.token);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.strictEqual(calls.length, 2);
+      assert.isTrue(calls.has('askDialog'));
       assert.isTrue(calls.has('/account/delete'));
       assert.strictEqual(events.emits.length, 1);
       assert.isTrue(events.emits.includes('logout'));
-      expect(unsyncedClearSpy).toHaveBeenCalledOnce();
+      assert.isFalse(s.syncState.isLoading);
+    });
+
+    it('Returns if ask dialog returns false', async () => {
+      const { calls } = mockApi({
+        api: {
+          resValue: false,
+        },
+      });
+
+      await s.deleteAccount();
+
+      assert.strictEqual(calls.length, 1);
+      assert.isTrue(calls.has('askDialog'));
       assert.isFalse(s.syncState.isLoading);
     });
 
@@ -147,16 +163,18 @@ describe('Account', () => {
 
       await s.deleteAccount();
 
+      expect(unsyncedClearSpy).not.toHaveBeenCalled();
+
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.strictEqual(calls.length, 2);
+      assert.isTrue(calls.has('askDialog'));
       assert.isTrue(calls.has('/account/delete'));
       assert.strictEqual(events.emits.length, 0);
-      expect(unsyncedClearSpy).not.toHaveBeenCalled();
       assert.isFalse(s.syncState.isLoading);
     });
   });

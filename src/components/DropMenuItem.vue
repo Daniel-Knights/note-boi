@@ -2,12 +2,12 @@
   <li
     v-for="item in items"
     :key="item.label"
-    v-on="getClickHandler(item)"
+    v-on="item.clickHandler ? { click: item.clickHandler } : {}"
     :class="[
       {
         'drop-menu__item--disabled': item.disabled,
         'drop-menu__item--selected': item.selected,
-        'drop-menu__item--confirm': item.confirm,
+        'drop-menu__item--danger': item.danger,
         'drop-menu__item--has-sub-menu': item.subMenu,
       },
     ]"
@@ -21,26 +21,9 @@
 </template>
 
 <script lang="ts" setup>
-import { dialog } from '@tauri-apps/api';
-
 import { DropMenuItemData } from './types';
 
 defineProps<{ items: DropMenuItemData[] }>();
-
-function getClickHandler(item: DropMenuItemData) {
-  if (item.confirm) {
-    return {
-      click: async () => {
-        const askRes = await dialog.ask('Are you sure?', { type: 'warning' });
-        if (!askRes) return;
-
-        item.clickHandler!();
-      },
-    };
-  }
-
-  return item.clickHandler ? { click: item.clickHandler } : {};
-}
 </script>
 
 <style lang="scss" scoped>
@@ -53,7 +36,7 @@ function getClickHandler(item: DropMenuItemData) {
   background-color: var(--colour__tertiary);
 }
 
-.drop-menu__item--confirm {
+.drop-menu__item--danger {
   background-color: var(--colour__danger);
 }
 

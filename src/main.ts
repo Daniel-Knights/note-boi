@@ -7,9 +7,15 @@ import './sass/_button.scss';
 import './sass/_form.scss';
 import './sass/_reset.scss';
 import './sass/_theme.scss';
-import { deleteSelectedNotes, getAllNotes, newNote } from './store/note';
+import {
+  deleteSelectedNotes,
+  exportNotes,
+  getAllNotes,
+  newNote,
+  noteState,
+} from './store/note';
 import { openedPopup, PopupType } from './store/popup';
-import { ErrorType, push, syncState } from './store/sync';
+import { deleteAccount, ErrorType, push, syncState } from './store/sync';
 import { handleUpdate } from './store/update';
 import { tauriListen } from './utils';
 
@@ -49,3 +55,14 @@ tauriWindow.appWindow.listen('tauri://close-requested', () => {
 tauriListen('reload', () => exitApp(relaunch));
 tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteSelectedNotes);
+tauriListen('export-note', () => {
+  exportNotes([
+    noteState.selectedNote.id,
+    ...noteState.extraSelectedNotes.map((nt) => nt.id),
+  ]);
+});
+tauriListen('export-all-notes', () => exportNotes(noteState.notes.map((nt) => nt.id)));
+tauriListen('delete-account', deleteAccount);
+tauriListen('change-password', () => {
+  openedPopup.value = PopupType.ChangePassword;
+});

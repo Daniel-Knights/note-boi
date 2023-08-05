@@ -9,6 +9,8 @@ pub fn get_menu() -> Menu {
 
   let file_menu = Menu::new()
     .add_item(CustomMenuItem::new("new-note", "New Note"))
+    .add_item(CustomMenuItem::new("export-note", "Export Note"))
+    .add_item(CustomMenuItem::new("export-all-notes", "Export All Notes"))
     .add_item(CustomMenuItem::new("delete-note", "Delete Note"));
 
   let edit_menu = Menu::new()
@@ -26,10 +28,12 @@ pub fn get_menu() -> Menu {
     .add_native_item(MenuItem::EnterFullScreen);
 
   let sync_menu = Menu::new()
-    .add_item(CustomMenuItem::new("push-notes", "Push Notes"))
     .add_item(CustomMenuItem::new("login", "Login"))
-    .add_item(CustomMenuItem::new("logout", "Logout"))
-    .add_item(CustomMenuItem::new("signup", "Signup"));
+    .add_item(CustomMenuItem::new("signup", "Signup"))
+    .add_item(CustomMenuItem::new("push-notes", "Push Notes"))
+    .add_item(CustomMenuItem::new("change-password", "Change Password"))
+    .add_item(CustomMenuItem::new("delete-account", "Delete Account"))
+    .add_item(CustomMenuItem::new("logout", "Logout"));
 
   Menu::new()
     .add_submenu(Submenu::new("", app_menu))
@@ -46,11 +50,15 @@ pub fn set_menu(builder: Builder<Wry>) -> Builder<Wry> {
     .on_menu_event(|ev| match ev.menu_item_id() {
       "reload" => ev.window().emit("reload", {}).unwrap(),
       "new-note" => ev.window().emit("new-note", {}).unwrap(),
+      "export-note" => ev.window().emit("export-note", {}).unwrap(),
+      "export-all-notes" => ev.window().emit("export-all-notes", {}).unwrap(),
       "delete-note" => ev.window().emit("delete-note", {}).unwrap(),
-      "push-notes" => ev.window().emit("push-notes", {}).unwrap(),
       "login" => ev.window().emit("login", {}).unwrap(),
-      "logout" => ev.window().emit("logout", {}).unwrap(),
       "signup" => ev.window().emit("signup", {}).unwrap(),
+      "push-notes" => ev.window().emit("push-notes", {}).unwrap(),
+      "change-password" => ev.window().emit("change-password", {}).unwrap(),
+      "delete-account" => ev.window().emit("delete-account", {}).unwrap(),
+      "logout" => ev.window().emit("logout", {}).unwrap(),
       _ => {}
     })
 }
@@ -63,6 +71,14 @@ pub fn toggle_sync_items(app: &mut App<Wry>) {
     menu_handle.get_item("login").set_enabled(b).unwrap();
     menu_handle.get_item("signup").set_enabled(b).unwrap();
     menu_handle.get_item("push-notes").set_enabled(!b).unwrap();
+    menu_handle
+      .get_item("change-password")
+      .set_enabled(!b)
+      .unwrap();
+    menu_handle
+      .get_item("delete-account")
+      .set_enabled(!b)
+      .unwrap();
     menu_handle.get_item("logout").set_enabled(!b).unwrap();
   };
   let toggle_fn_clone = toggle_fn.clone();

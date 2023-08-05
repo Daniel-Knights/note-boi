@@ -31,13 +31,17 @@ describe('main', () => {
     assert.isTrue(calls.has('get_all_notes'));
     assert.strictEqual(events.emits.length, 1);
     assert.isTrue(events.emits.includes('tauri://update'));
-    assert.strictEqual(events.listeners.length, 6);
+    assert.strictEqual(events.listeners.length, 10);
     assert.isTrue(events.listeners.includes('tauri://update-available'));
     assert.isTrue(events.listeners.includes('tauri://update-status'));
     assert.isTrue(events.listeners.includes('tauri://close-requested'));
     assert.isTrue(events.listeners.includes('reload'));
     assert.isTrue(events.listeners.includes('new-note'));
     assert.isTrue(events.listeners.includes('delete-note'));
+    assert.isTrue(events.listeners.includes('export-note'));
+    assert.isTrue(events.listeners.includes('export-all-notes'));
+    assert.isTrue(events.listeners.includes('delete-account'));
+    assert.isTrue(events.listeners.includes('change-password'));
   });
 
   describe('exitApp', () => {

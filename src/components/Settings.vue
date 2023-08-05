@@ -81,7 +81,7 @@ watch(syncState, () => {
         {
           label: 'Delete account',
           testId: 'delete-account',
-          confirm: true,
+          danger: true,
           clickHandler: () => deleteAccount(),
         },
       ],

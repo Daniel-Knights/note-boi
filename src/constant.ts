@@ -45,10 +45,14 @@ export const TAURI_LISTENERS = [
   'reload',
   'new-note',
   'delete-note',
+  'export-note',
+  'export-all-notes',
   'push-notes',
   'login',
   'logout',
   'signup',
+  'change-password',
+  'delete-account',
   'tauri://close-requested',
 ] as const;
 

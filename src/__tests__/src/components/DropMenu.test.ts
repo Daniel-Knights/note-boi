@@ -81,7 +81,7 @@ describe('DropMenu', () => {
         testId: `item-${i}`,
         disabled: true,
         selected: true,
-        confirm: true,
+        danger: true,
         subMenu: [],
       }));
       const wrapper = mountDropMenu(items);
@@ -94,53 +94,9 @@ describe('DropMenu', () => {
         assert.isTrue(itemWrapper.isVisible());
         assert.isTrue(itemWrapper.classes(`${itemClass}--disabled`));
         assert.isTrue(itemWrapper.classes(`${itemClass}--selected`));
-        assert.isTrue(itemWrapper.classes(`${itemClass}--confirm`));
+        assert.isTrue(itemWrapper.classes(`${itemClass}--danger`));
         assert.isTrue(itemWrapper.classes(`${itemClass}--has-sub-menu`));
       });
-    });
-
-    it.each([true, false])('Confirms click - %s', async (confirmRes) => {
-      const { calls, promises } = mockApi({
-        api: {
-          resValue: confirmRes,
-        },
-      });
-
-      const items = Array.from({ length: 5 }, (_, i) => ({
-        label: '',
-        testId: `item-${i}`,
-        confirm: true,
-        clickHandler: vi.fn(),
-      }));
-      const wrapper = mountDropMenu(items);
-
-      await Promise.all(promises);
-
-      assert.isTrue(wrapper.isVisible());
-
-      async function testClickHandlers(i: number): Promise<void> {
-        const { testId, clickHandler } = items[i];
-        const itemWrapper = getByTestId(wrapper, testId);
-        assert.isTrue(itemWrapper.isVisible());
-
-        await itemWrapper.trigger('click');
-        await Promise.all(promises);
-
-        if (confirmRes) {
-          expect(clickHandler).toHaveBeenCalledOnce();
-        } else {
-          expect(clickHandler).not.toHaveBeenCalled();
-        }
-
-        assert.strictEqual(calls.length, i + 1);
-        assert.isTrue(calls.has('askDialog'));
-
-        if (i < items.length - 1) {
-          return testClickHandlers(i + 1);
-        }
-      }
-
-      await testClickHandlers(0);
     });
 
     it('Handles sub-menus', () => {
