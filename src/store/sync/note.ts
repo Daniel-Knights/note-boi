@@ -90,6 +90,8 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
 
 // Pull
 export async function pull(): Promise<void> {
+  if (!syncState.token) return;
+
   syncState.isLoading = true;
 
   const res = await tauriFetch<Record<string, string | Note[]>>('/notes', 'POST', {
