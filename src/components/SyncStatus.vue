@@ -35,7 +35,7 @@
       <CloudSyncIcon />
     </button>
   </div>
-  <PopupSyncAuth v-if="openedPopup === PopupType.Auth" @close="closeSyncPopup" />
+  <PopupSyncAuth v-if="openedPopup === PopupType.Auth" @close="closeSyncPopup(true)" />
   <PopupSyncError v-if="openedPopup === PopupType.Error" @close="closeSyncPopup" />
 </template>
 
@@ -77,9 +77,12 @@ function handlePopupAuthEvent() {
   }
 }
 
-function closeSyncPopup() {
+function closeSyncPopup(reset?: boolean) {
   openedPopup.value = undefined;
-  resetError();
+
+  if (reset) {
+    resetError();
+  }
 }
 
 async function pushNotes() {
