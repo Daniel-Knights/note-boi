@@ -7,7 +7,7 @@ use crate::{
 
 #[tauri::command]
 pub fn new_note(state: tauri::State<AppState>, note: Note) -> Result<(), NoteError> {
-  Note::write(&state.app_dir, &note)
+  Note::new(&state.app_dir, &note)
 }
 
 #[tauri::command]

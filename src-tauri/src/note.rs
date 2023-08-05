@@ -60,7 +60,7 @@ impl Note {
     }
   }
 
-  pub fn write(app_dir: &PathBuf, note: &Note) -> Result<(), NoteError> {
+  pub fn new(app_dir: &PathBuf, note: &Note) -> Result<(), NoteError> {
     let notes_path = app_dir.join(NOTE_DIR);
     if !notes_path.is_dir() {
       fs::create_dir_all(&notes_path).expect("unable to create dir");
@@ -107,7 +107,7 @@ impl Note {
     }
 
     for nt in notes.iter() {
-      let write_res = Note::write(app_dir, nt);
+      let write_res = Note::new(app_dir, nt);
       if write_res.is_err() {
         return Err(write_res.unwrap_err());
       }
