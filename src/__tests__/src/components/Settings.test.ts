@@ -47,21 +47,21 @@ describe('Settings', () => {
 
     await settingsButtonWrapper.trigger('click');
 
-    assert.isTrue(wrapperVm);
+    assert.isTrue(wrapperVm.show);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
 
     await settingsButtonWrapper.trigger('click');
 
-    assert.isFalse(wrapperVm);
+    assert.isFalse(wrapperVm.show);
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
 
     await settingsButtonWrapper.trigger('click');
-    assert.isTrue(wrapperVm);
+    assert.isTrue(wrapperVm.show);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
 
     await wrapper.getComponent(DropMenu).vm.$emit('close');
 
-    assert.isFalse(wrapperVm);
+    assert.isFalse(wrapperVm.show);
     await nextTick();
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
   });
