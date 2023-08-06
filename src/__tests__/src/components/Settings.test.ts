@@ -39,6 +39,7 @@ describe('Settings', () => {
 
   it('Opens and closes drop menu', async () => {
     const wrapper = mount(Settings);
+    const wrapperVm = wrapper.vm as unknown as { show: boolean };
 
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
 
@@ -46,21 +47,21 @@ describe('Settings', () => {
 
     await settingsButtonWrapper.trigger('click');
 
-    assert.isTrue(wrapper.vm.show);
+    assert.isTrue(wrapperVm);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
 
     await settingsButtonWrapper.trigger('click');
 
-    assert.isFalse(wrapper.vm.show);
+    assert.isFalse(wrapperVm);
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
 
     await settingsButtonWrapper.trigger('click');
-    assert.isTrue(wrapper.vm.show);
+    assert.isTrue(wrapperVm);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
 
     await wrapper.getComponent(DropMenu).vm.$emit('close');
 
-    assert.isFalse(wrapper.vm.show);
+    assert.isFalse(wrapperVm);
     await nextTick();
     assert.isFalse(findByTestId(wrapper, 'drop-menu').exists());
   });

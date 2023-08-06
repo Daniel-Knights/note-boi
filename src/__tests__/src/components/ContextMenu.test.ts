@@ -18,13 +18,14 @@ async function mountContextMenu(attachTo?: HTMLElement) {
   if (attachTo) attachTo.dispatchEvent(ev);
 
   const wrapper = mount(ContextMenu, { attachTo });
+  const wrapperVm = wrapper.vm as unknown as { show: boolean };
   await wrapper.setProps({ ev });
 
   const element = wrapper.element as HTMLElement;
 
   if (
     !wrapper.isVisible() ||
-    !wrapper.vm.show ||
+    !wrapperVm.show ||
     element.style.top !== `${ev.clientY}px` ||
     element.style.left !== `${ev.clientX}px`
   ) {
@@ -53,11 +54,12 @@ describe('ContextMenu', () => {
 
   it('Closes', async () => {
     const wrapper = await mountContextMenu();
+    const wrapperVm = wrapper.vm as unknown as { show: boolean };
 
     await wrapper.getComponent(DropMenu).vm.$emit('close');
 
     assert.isFalse(wrapper.isVisible());
-    assert.isFalse(wrapper.vm.show);
+    assert.isFalse(wrapperVm.show);
   });
 
   it('Creates a new note', async () => {
