@@ -24,7 +24,7 @@ export async function updateAndRelaunch(): Promise<void> {
     });
 
     if (shouldRetry) {
-      updateAndRelaunch();
+      await updateAndRelaunch();
     } else {
       updateDownloading.value = false;
     }
