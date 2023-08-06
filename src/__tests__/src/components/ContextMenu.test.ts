@@ -86,7 +86,9 @@ describe('ContextMenu', () => {
     async (buttonType) => {
       const { calls } = mockApi({
         invoke: {
-          resValue: [],
+          resValue: {
+            get_all_notes: [[]],
+          },
         },
       });
 

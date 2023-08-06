@@ -88,6 +88,15 @@ type RegisteredEvents = {
   listeners: string[];
 };
 
+type RequestResValue = Partial<Record<Endpoint, unknown[]>> & { '/notes'?: n.Note[][] };
+type InvokeResValue = Partial<Record<TauriCommand, unknown[]>> & {
+  get_all_notes?: n.Note[][];
+};
+type TauriApiResValue = Record<string, unknown[]> & {
+  askDialog?: boolean[];
+  openDialog?: string[];
+};
+
 type CalledWith =
   | {
       message: string;
@@ -125,7 +134,7 @@ function mockRequest(
   callId: string,
   args?: Args,
   options?: {
-    resValue?: unknown;
+    resValue?: RequestResValue;
     error?: Endpoint;
   }
 ): {
@@ -248,7 +257,13 @@ function mockRequest(
           resData.error = 'Unauthorized';
           httpStatus = 401;
         } else {
-          resData.notes = (options?.resValue as n.Note[]) || localNotes;
+          const resValue = options?.resValue?.['/notes']?.[0];
+
+          if (resValue) {
+            options.resValue?.['/notes']?.shift();
+          }
+
+          resData.notes = resValue || localNotes;
         }
 
         // Push
@@ -352,7 +367,7 @@ function mockTauriInvoke(
     | { id: string }
     | { saveDir: string; notes: n.Note[] }
     | Record<string, unknown>,
-  options?: { resValue?: unknown; error?: string }
+  options?: { resValue?: InvokeResValue; error?: string }
 ): {
   cmd: TauriCommand;
   response: Promise<n.Note[] | void>;
@@ -375,10 +390,17 @@ function mockTauriInvoke(
   let resData: n.Note[] = [];
 
   switch (cmd) {
-    case 'get_all_notes':
-      resData = (options?.resValue as n.Note[]) || copyObjArr(localNotes);
+    case 'get_all_notes': {
+      const resValue = options?.resValue?.get_all_notes?.[0];
+
+      if (resValue) {
+        options.resValue?.get_all_notes?.shift();
+      }
+
+      resData = resValue || copyObjArr(localNotes);
 
       break;
+    }
     case 'new_note':
       if (!('note' in args)) {
         throw new Error('Missing note');
@@ -438,7 +460,7 @@ function mockTauriInvoke(
 function mockTauriApi(
   callId: string,
   args?: Args,
-  options?: { resValue?: unknown }
+  options?: { resValue?: TauriApiResValue }
 ): {
   fn: string;
   response: Promise<string | boolean | void>;
@@ -450,8 +472,6 @@ function mockTauriApi(
 
   if (!msg?.cmd || /emit|listen|createClient/.test(msg.cmd)) return;
 
-  const resValue = options?.resValue;
-
   let resData: string | boolean | undefined;
   let calledWith;
 
@@ -460,9 +480,11 @@ function mockTauriApi(
       resData = pkg.version;
 
       break;
-    case 'askDialog':
-      if (resValue !== undefined && resValue !== true && resValue !== false) {
-        assert.fail('resValue must be boolean');
+    case 'askDialog': {
+      const resValue = options?.resValue?.askDialog?.[0];
+
+      if (resValue) {
+        options.resValue?.askDialog?.shift();
       }
 
       resData = resValue === undefined ? true : resValue;
@@ -473,9 +495,12 @@ function mockTauriApi(
       };
 
       break;
-    case 'openDialog':
-      if (resValue !== undefined && typeof resValue !== 'string') {
-        assert.fail('resValue must be string');
+    }
+    case 'openDialog': {
+      const resValue = options?.resValue?.openDialog?.[0];
+
+      if (resValue) {
+        options.resValue?.openDialog?.shift();
       }
 
       resData = resValue === undefined ? 'C:\\path' : resValue;
@@ -485,6 +510,7 @@ function mockTauriApi(
         recursive: msg.options.recursive,
         title: msg.options.title,
       };
+    }
     // no default
   }
 
@@ -516,9 +542,17 @@ function mockTauriListener(callId: string, args?: Args): string | void {
 }
 
 export function mockApi(options?: {
-  request?: { resValue?: unknown; error?: Endpoint };
-  invoke?: { resValue?: unknown; error?: TauriCommand };
-  api?: { resValue?: unknown };
+  request?: {
+    resValue?: RequestResValue;
+    error?: Endpoint;
+  };
+  invoke?: {
+    resValue?: InvokeResValue;
+    error?: TauriCommand;
+  };
+  api?: {
+    resValue?: TauriApiResValue;
+  };
 }): {
   calls: Calls;
   events: RegisteredEvents;

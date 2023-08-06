@@ -56,7 +56,9 @@ describe('NoteMenu', () => {
     resetNoteStore();
     mockApi({
       invoke: {
-        resValue: [],
+        resValue: {
+          get_all_notes: [[]],
+        },
       },
     });
 

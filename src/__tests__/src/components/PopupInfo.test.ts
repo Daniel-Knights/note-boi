@@ -18,11 +18,7 @@ function mountPopupInfo() {
 
 describe('PopupInfo', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi({
-      api: {
-        resValue: pkg.version,
-      },
-    });
+    const { calls, events, promises } = mockApi();
     const wrapper = mountPopupInfo();
 
     await Promise.all(promises);
@@ -44,11 +40,7 @@ describe('PopupInfo', () => {
   });
 
   it('Renders correct description list items', async () => {
-    const { calls, promises } = mockApi({
-      api: {
-        resValue: pkg.version,
-      },
-    });
+    const { calls, promises } = mockApi();
 
     s.syncState.username = 'd';
     s.syncState.password = '1';

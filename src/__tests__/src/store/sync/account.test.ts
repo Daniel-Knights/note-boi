@@ -129,7 +129,9 @@ describe('Account', () => {
     it('Returns if ask dialog returns false', async () => {
       const { calls } = mockApi({
         api: {
-          resValue: false,
+          resValue: {
+            askDialog: [false],
+          },
         },
       });
 

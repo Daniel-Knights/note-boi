@@ -76,7 +76,13 @@ describe('main', () => {
     });
 
     it('Triggers ask dialog on push error, and answers "No"', async () => {
-      const { calls, events } = mockApi({ api: { resValue: false } });
+      const { calls, events } = mockApi({
+        api: {
+          resValue: {
+            askDialog: [false],
+          },
+        },
+      });
       const mockCb = vi.fn();
       const spyPush = vi.spyOn(s, 'push');
 

@@ -24,7 +24,9 @@ describe('Sync', () => {
     it('Pulls notes from the server', async () => {
       const { calls, events } = mockApi({
         invoke: {
-          resValue: [],
+          resValue: {
+            get_all_notes: [[]],
+          },
         },
       });
 
@@ -132,7 +134,9 @@ describe('Sync', () => {
 
       mockApi({
         request: {
-          resValue: remoteNotes,
+          resValue: {
+            '/notes': [remoteNotes],
+          },
         },
       });
 
@@ -185,7 +189,9 @@ describe('Sync', () => {
 
       mockApi({
         request: {
-          resValue: remoteNotes,
+          resValue: {
+            '/notes': [remoteNotes],
+          },
         },
       });
 
@@ -233,7 +239,9 @@ describe('Sync', () => {
     it("Doesn't push empty notes", async () => {
       const { calls, events } = mockApi({
         request: {
-          resValue: [],
+          resValue: {
+            '/notes': [[]],
+          },
         },
       });
 
@@ -561,7 +569,9 @@ describe('Sync', () => {
       it('No local, some remote', async () => {
         mockApi({
           invoke: {
-            resValue: [],
+            resValue: {
+              get_all_notes: [[]],
+            },
           },
         });
 
@@ -596,7 +606,9 @@ describe('Sync', () => {
       it('No remote, some local', async () => {
         mockApi({
           request: {
-            resValue: [],
+            resValue: {
+              '/notes': [[]],
+            },
           },
         });
 

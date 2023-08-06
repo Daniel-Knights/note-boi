@@ -63,7 +63,9 @@ describe('Note store', () => {
     it('with empty note array', async () => {
       const { calls, events } = mockApi({
         invoke: {
-          resValue: [],
+          resValue: {
+            get_all_notes: [[]],
+          },
         },
       });
 
@@ -233,7 +235,9 @@ describe('Note store', () => {
     it('With no notes', async () => {
       const { calls, events } = mockApi({
         invoke: {
-          resValue: [existingNote],
+          resValue: {
+            get_all_notes: [[existingNote]],
+          },
         },
       });
 
@@ -429,7 +433,9 @@ describe('Note store', () => {
     it('Returns when no location chosen', async () => {
       const { calls, events } = mockApi({
         api: {
-          resValue: '',
+          resValue: {
+            openDialog: [''],
+          },
         },
       });
 
