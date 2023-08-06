@@ -14,6 +14,7 @@ afterEach(() => {
   resetNoteStore();
   resetRegisteredUsers();
   clearMocks();
+  localStorage.clear();
 
   expect(spyAssertFail).not.toHaveBeenCalled();
 });
