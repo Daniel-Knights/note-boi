@@ -2,7 +2,6 @@
 README
 
 *Whenever*
-Forgot password
 Crash reports
 Top menu
 Mock window tests
