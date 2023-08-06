@@ -94,7 +94,7 @@ export async function pull(): Promise<void> {
 
   syncState.isLoading = true;
 
-  const res = await tauriFetch<Record<string, string | Note[]>>('/notes', 'POST', {
+  const res = await tauriFetch<Record<string, string | Note[]>>('/notes/pull', 'POST', {
     username: syncState.username,
     token: syncState.token,
   }).catch((err) => catchHang(err, ErrorType.Pull));
@@ -138,7 +138,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
   };
   syncState.unsyncedNoteIds.clear();
 
-  const res = await tauriFetch<Record<string, never | string>>('/notes', 'PUT', {
+  const res = await tauriFetch<Record<string, never | string>>('/notes/push', 'PUT', {
     username: syncState.username,
     token: syncState.token,
     notes: noteState.notes.filter((nt) => !isEmptyNote(nt)),

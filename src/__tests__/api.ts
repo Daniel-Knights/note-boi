@@ -88,7 +88,9 @@ type RegisteredEvents = {
   listeners: string[];
 };
 
-type RequestResValue = Partial<Record<Endpoint, unknown[]>> & { '/notes'?: n.Note[][] };
+type RequestResValue = Partial<Record<Endpoint, unknown[]>> & {
+  '/notes/pull'?: n.Note[][];
+};
 type InvokeResValue = Partial<Record<TauriCommand, unknown[]>> & {
   get_all_notes?: n.Note[][];
 };
@@ -238,64 +240,60 @@ function mockRequest(
       }
 
       break;
-    case '/notes': {
+    case '/notes/pull':
       // Pull
-      if (reqOptions.method === 'POST') {
-        if (!reqPayload || !('username' in reqPayload) || !('token' in reqPayload)) {
-          resData.error = 'Missing required fields';
-          httpStatus = 400;
-        } else if (
-          typeof reqPayload.username !== 'string' ||
-          typeof reqPayload.token !== 'string'
-        ) {
-          resData.error = 'Invalid fields';
-          httpStatus = 400;
-        } else if (!registeredUsers[reqPayload.username]) {
-          resData.error = 'User not found';
-          httpStatus = 404;
-        } else if (reqPayload.token !== 'token') {
-          resData.error = 'Unauthorized';
-          httpStatus = 401;
-        } else {
-          const resValue = options?.resValue?.['/notes']?.[0];
+      if (!reqPayload || !('username' in reqPayload) || !('token' in reqPayload)) {
+        resData.error = 'Missing required fields';
+        httpStatus = 400;
+      } else if (
+        typeof reqPayload.username !== 'string' ||
+        typeof reqPayload.token !== 'string'
+      ) {
+        resData.error = 'Invalid fields';
+        httpStatus = 400;
+      } else if (!registeredUsers[reqPayload.username]) {
+        resData.error = 'User not found';
+        httpStatus = 404;
+      } else if (reqPayload.token !== 'token') {
+        resData.error = 'Unauthorized';
+        httpStatus = 401;
+      } else {
+        const resValue = options?.resValue?.['/notes/pull']?.[0];
 
-          if (resValue) {
-            options.resValue?.['/notes']?.shift();
-          }
-
-          resData.notes = resValue || localNotes;
+        if (resValue) {
+          options.resValue?.['/notes/pull']?.shift();
         }
 
-        // Push
-      } else if (reqOptions.method === 'PUT') {
-        if (
-          !reqPayload ||
-          !('notes' in reqPayload) ||
-          !('username' in reqPayload) ||
-          !('token' in reqPayload)
-        ) {
-          resData.error = 'Missing required fields';
-          httpStatus = 400;
-        } else if (
-          reqPayload.notes?.some((nt) => !isNote(nt)) ||
-          typeof reqPayload.username !== 'string' ||
-          typeof reqPayload.token !== 'string'
-        ) {
-          resData.error = 'Invalid fields';
-          httpStatus = 400;
-        } else if (!registeredUsers[reqPayload.username]) {
-          resData.error = 'User not found';
-          httpStatus = 404;
-        } else if (reqPayload.token !== 'token') {
-          resData.error = 'Unauthorized';
-          httpStatus = 401;
-        } else {
-          httpStatus = 204;
-        }
+        resData.notes = resValue || localNotes;
+      }
+      break;
+    case '/notes/push':
+      if (
+        !reqPayload ||
+        !('notes' in reqPayload) ||
+        !('username' in reqPayload) ||
+        !('token' in reqPayload)
+      ) {
+        resData.error = 'Missing required fields';
+        httpStatus = 400;
+      } else if (
+        reqPayload.notes?.some((nt) => !isNote(nt)) ||
+        typeof reqPayload.username !== 'string' ||
+        typeof reqPayload.token !== 'string'
+      ) {
+        resData.error = 'Invalid fields';
+        httpStatus = 400;
+      } else if (!registeredUsers[reqPayload.username]) {
+        resData.error = 'User not found';
+        httpStatus = 404;
+      } else if (reqPayload.token !== 'token') {
+        resData.error = 'Unauthorized';
+        httpStatus = 401;
+      } else {
+        httpStatus = 204;
       }
 
       break;
-    }
     case '/account/password/change':
       if (
         !reqPayload ||

@@ -80,7 +80,8 @@ describe('SyncStatus', () => {
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
     assert.strictEqual(calls.length, 3);
-    assert.isTrue(calls.has('/notes', 2));
+    assert.isTrue(calls.has('/notes/push'));
+    assert.isTrue(calls.has('/notes/pull'));
     assert.isTrue(calls.has('sync_local_notes'));
   });
 
@@ -103,12 +104,14 @@ describe('SyncStatus', () => {
 
     s.syncState.username = 'd';
     s.syncState.token = 'token';
+
     await syncButton.trigger('click');
     await Promise.all(promises);
 
     expect(pushSpy).toHaveBeenCalledOnce();
+
     assert.strictEqual(calls.length, 1);
-    assert.isTrue(calls.has('/notes'));
+    assert.isTrue(calls.has('/notes/push'));
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isFalse(findByTestId(wrapper, 'success').exists());

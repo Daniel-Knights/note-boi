@@ -116,13 +116,14 @@ describe('PopupSyncAuth', () => {
 
       expect(spyLogin).toHaveBeenCalledOnce();
       expect(spySignup).not.toHaveBeenCalled();
+
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(wrapper.emitted('close')?.length, 1);
       assert.strictEqual(calls.length, 3);
       assert.isTrue(calls.has('/login'));
-      assert.isTrue(calls.has('/notes'));
+      assert.isTrue(calls.has('/notes/push'));
       assert.isTrue(calls.has('sync_local_notes'));
     });
 

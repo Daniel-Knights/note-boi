@@ -19,7 +19,8 @@ export const ENDPOINTS = [
   '/signup',
   '/login',
   '/logout',
-  '/notes',
+  '/notes/push',
+  '/notes/pull',
   '/account/delete',
   '/account/password/change',
 ] as const;
