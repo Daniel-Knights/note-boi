@@ -49,6 +49,10 @@ app.getVersion().then((v) => {
 </script>
 
 <style lang="scss" scoped>
+#popup-info {
+  text-align: left;
+}
+
 .popup-info__description-pair {
   display: grid;
   grid-template-columns: 75px auto;

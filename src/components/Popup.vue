@@ -1,6 +1,6 @@
 <template>
   <Teleport to="#app">
-    <div id="popup" v-bind="$attrs">
+    <div class="popup" v-bind="$attrs">
       <div class="popup__content">
         <slot />
       </div>
@@ -42,20 +42,21 @@ onBeforeUnmount(closePopup);
 </script>
 
 <style lang="scss" scoped>
-#popup {
+.popup {
   @include v.flex-x(center, center);
   position: fixed;
   @include v.cover;
   @include v.equal-dimensions(100%);
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 100;
-}
 
-.popup__content {
-  padding: 1em;
-  max-width: 400px;
-  color: var(--colour__primary);
-  background-color: var(--colour__secondary);
+  &__content {
+    padding: 1em;
+    max-width: 400px;
+    color: var(--colour__primary);
+    background-color: var(--colour__secondary);
+  }
 }
 </style>
