@@ -19,10 +19,9 @@
     "checks": "pnpm run lint && pnpm run test:build",
     "format": "prettier --write ./src",
     "update": "node ./scripts/updater.mjs",
-    "release:patch": "pnpm run lint && pnpm run test:build && pnpm version patch && git push && git push --tags",
-    "release:minor": "pnpm run lint && pnpm run test:build && pnpm version minor && git push && git push --tags",
-    "release:major": "pnpm run lint && pnpm run test:build && pnpm version major && git push && git push --tags",
-    "version": "auto-changelog -p && git add CHANGELOG.md"
+    "release:patch": "tsx ./scripts/release.mts patch",
+    "release:minor": "tsx ./scripts/release.mts minor",
+    "release:major": "tsx ./scripts/release.mts major"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.5.0",
@@ -43,7 +42,7 @@
     "@vitejs/plugin-vue": "^4.3.4",
     "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/test-utils": "2.4.1",
-    "auto-changelog": "^2.4.0",
+    "changenog": "^0.5.2",
     "eslint": "^8.50.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.0.0",
@@ -55,6 +54,7 @@
     "prettier": "^3.0.3",
     "quill-delta": "^5.1.0",
     "sass": "^1.68.0",
+    "tsx": "^3.13.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vitest": "^0.34.6",
