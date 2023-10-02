@@ -1,6 +1,5 @@
 import { dialog } from '@tauri-apps/api';
 import type Delta from 'quill-delta';
-import { v4 as uuidv4 } from 'uuid';
 import { reactive } from 'vue';
 
 import { NOTE_EVENTS } from '../constant';
@@ -14,7 +13,7 @@ export type UnsyncedEventDetail = {
 };
 
 export class Note {
-  readonly id = uuidv4();
+  readonly id = crypto.randomUUID();
   timestamp = Date.now();
   content = {
     delta: <Partial<Delta>>{},

@@ -1,11 +1,3 @@
 {
-  "cSpell.words": [
-    "chrono",
-    "esbuild",
-    "punycode",
-    "tauri",
-    "unsynced",
-    "uuidv",
-    "vitest"
-  ]
+  "cSpell.words": ["chrono", "esbuild", "punycode", "tauri", "unsynced", "vitest"]
 }
