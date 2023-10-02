@@ -1,5 +1,5 @@
 import { DOMWrapper, VueWrapper } from '@vue/test-utils';
-import { randomFillSync } from 'crypto';
+import { randomFillSync, randomUUID } from 'crypto';
 import { nextTick } from 'vue';
 
 import * as n from '../store/note';
@@ -19,6 +19,7 @@ export function setCrypto(): void {
   window.crypto = {
     // @ts-expect-error strict typing unnecessary here
     getRandomValues: (array) => randomFillSync(array),
+    randomUUID,
   };
 }
 

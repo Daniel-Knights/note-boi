@@ -13,7 +13,7 @@ export type UnsyncedEventDetail = {
 };
 
 export class Note {
-  readonly id = crypto.randomUUID();
+  readonly id: string = crypto.randomUUID();
   timestamp = Date.now();
   content = {
     delta: <Partial<Delta>>{
