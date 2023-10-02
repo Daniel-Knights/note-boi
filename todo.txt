@@ -1,5 +1,8 @@
 *Before release*
 README
+WebSockets
+Encryption
+Tests: Tauri invoke objects have all fields (delta)
 
 *Whenever*
 Crash reports
