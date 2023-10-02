@@ -33,7 +33,9 @@ describe('Note store', () => {
       Math.floor(emptyNote.timestamp / 1000),
       Math.floor(timestamp / 1000)
     );
-    assert.deepEqual(emptyNote.content.delta, {});
+    assert.deepEqual(emptyNote.content.delta, {
+      ops: [],
+    });
     assert.strictEqual(emptyNote.content.title, '');
     assert.strictEqual(emptyNote.content.body, '');
   });

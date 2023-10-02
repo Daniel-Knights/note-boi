@@ -16,7 +16,9 @@ export class Note {
   readonly id = crypto.randomUUID();
   timestamp = Date.now();
   content = {
-    delta: <Partial<Delta>>{},
+    delta: <Partial<Delta>>{
+      ops: [],
+    },
     title: '',
     body: '',
   };
@@ -31,6 +33,7 @@ export const noteState = reactive({
 const newNoteEvent = new CustomEvent(NOTE_EVENTS.new);
 export const selectNoteEvent = new CustomEvent(NOTE_EVENTS.select);
 export const changeNoteEvent = new CustomEvent(NOTE_EVENTS.change);
+
 function getUnsyncedEvent(
   noteId: UnsyncedEventDetail['noteId'],
   type: UnsyncedEventDetail['type']

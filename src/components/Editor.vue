@@ -58,7 +58,7 @@ onMounted(() => {
     theme: 'snow',
   });
 
-  quillEditor.on('text-change', (delta) => {
+  quillEditor.on('text-change', (delta, oldDelta) => {
     if (ignoreTextChange) {
       ignoreTextChange = false;
       return;
@@ -68,7 +68,7 @@ onMounted(() => {
 
     const [title, body] = quillEditor.getText().split(/\n+/);
 
-    editNote(delta as Delta, title, body);
+    editNote(oldDelta.compose(delta) as Delta, title, body);
   });
 });
 
