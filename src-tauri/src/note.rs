@@ -1,16 +1,12 @@
 use serde::{Deserialize, Serialize};
-use std::{fs, io::Write, path::PathBuf};
+use serde_json::Value;
+use std::{collections::HashMap, fs, io::Write, path::PathBuf};
 
 const NOTE_DIR: &str = ".notes";
 
 #[derive(Serialize, Deserialize, Debug)]
-struct Op {
-  insert: String,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
 struct Delta {
-  ops: Vec<Op>,
+  ops: Vec<HashMap<String, Value>>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -100,6 +96,7 @@ impl Note {
     let notes_dir = app_dir.join(NOTE_DIR);
 
     let rm_res = fs::remove_dir_all(&notes_dir);
+
     if rm_res.is_err() {
       return Err(NoteError::UnableToSyncLocalFiles(
         rm_res.unwrap_err().to_string(),
@@ -108,6 +105,7 @@ impl Note {
 
     for nt in notes.iter() {
       let write_res = Note::new(app_dir, nt);
+
       if write_res.is_err() {
         return Err(write_res.unwrap_err());
       }
@@ -119,7 +117,16 @@ impl Note {
   pub fn export(save_dir: &PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
     notes.iter().for_each(|note| {
       let ops_iter = note.content.delta.ops.iter();
-      let file_contents = ops_iter.fold(String::new(), |acc, op| acc + &op.insert);
+      let file_contents = ops_iter.fold(String::new(), |acc, op| {
+        let default_insert = Value::String(String::new());
+        let insert = op
+          .get("insert")
+          .unwrap_or(&default_insert)
+          .as_str()
+          .unwrap();
+
+        acc + insert
+      });
       let filename = format!("{}.txt", note.id);
       let mut file = fs::File::create(save_dir.join(filename)).expect("unable to create file");
 
