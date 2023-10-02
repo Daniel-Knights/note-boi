@@ -3,9 +3,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "vite:dev",
+      "type": "msedge",
+      "request": "launch",
+      "port": 9222,
+      "runtimeExecutable": "${workspaceFolder}/src-tauri/target/debug/NoteBoi.exe",
+      "useWebView": true,
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "dev",
+      "postDebugTask": "kill tasks"
+    },
+    {
+      "name": "debug current test file",
       "type": "node",
       "request": "launch",
-      "name": "Debug Current Test File",
       "autoAttachChildProcesses": true,
       "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
       "program": "${workspaceRoot}/node_modules/vitest/vitest.mjs",
