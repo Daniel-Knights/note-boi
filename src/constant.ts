@@ -1,3 +1,5 @@
+import { EncryptedNote } from './store/sync/encryptor';
+
 export const NOTE_EVENTS = {
   new: 'note-new',
   /** For preventing note edit on text change. */
@@ -15,7 +17,74 @@ export const STORAGE_KEYS = {
   MENU_WIDTH: 'note-menu-width',
 } as const;
 
-export const ENDPOINTS = [
+export type EndpointPayloads = {
+  '/signup': {
+    payload: {
+      username: string;
+      password: string;
+      notes: EncryptedNote[];
+    };
+    response: {
+      token: string;
+    };
+  };
+  '/login': {
+    payload: {
+      username: string;
+      password: string;
+    };
+    response: {
+      token: string;
+      notes: EncryptedNote[];
+    };
+  };
+  '/logout': {
+    payload: {
+      username: string;
+      token: string;
+    };
+    response: never;
+  };
+  '/notes/push': {
+    payload: {
+      username: string;
+      token: string;
+      notes: EncryptedNote[];
+    };
+    response: never;
+  };
+  '/notes/pull': {
+    payload: {
+      username: string;
+      token: string;
+    };
+    response: {
+      notes: EncryptedNote[];
+    };
+  };
+  '/account/delete': {
+    payload: {
+      username: string;
+      token: string;
+    };
+    response: never;
+  };
+  '/account/password/change': {
+    payload: {
+      username: string;
+      token: string;
+      current_password: string;
+      new_password: string;
+    };
+    response: {
+      token: string;
+    };
+  };
+};
+
+export type Endpoint = keyof EndpointPayloads;
+
+export const ENDPOINTS: Endpoint[] = [
   '/signup',
   '/login',
   '/logout',
@@ -23,9 +92,7 @@ export const ENDPOINTS = [
   '/notes/pull',
   '/account/delete',
   '/account/password/change',
-] as const;
-
-export type Endpoint = (typeof ENDPOINTS)[number];
+];
 
 export const TAURI_COMMANDS = [
   'get_all_notes',

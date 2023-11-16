@@ -2,7 +2,7 @@ import { http } from '@tauri-apps/api';
 import type { Response } from '@tauri-apps/api/http';
 import { reactive } from 'vue';
 
-import { Endpoint, STORAGE_KEYS } from '../../constant';
+import { Endpoint, EndpointPayloads, STORAGE_KEYS } from '../../constant';
 import { isDev } from '../../utils';
 
 import { UnsyncedNoteIds, unsyncedNoteIds } from './note';
@@ -72,7 +72,7 @@ export const syncState = reactive({
 // Utils //
 
 /** Parses an error response and returns a formatted message. */
-export function parseErrorRes(res: Response<Record<string, unknown>>): string {
+export function parseErrorRes(res: Response<{ error: string }>): string {
   const unknownErrorMessage = 'Unknown error, please try again';
 
   if (!res.data) return unknownErrorMessage;
@@ -80,28 +80,37 @@ export function parseErrorRes(res: Response<Record<string, unknown>>): string {
   return typeof res.data.error === 'string' ? res.data.error : unknownErrorMessage;
 }
 
-/** Resets {@link state.error}. */
+/** Resets {@link syncState.error}. */
 export function resetError(): void {
   syncState.error = { type: ErrorType.None, message: '' };
 }
 
 /** Wrapper for {@link http.fetch}. */
-export function tauriFetch<T>(
-  endpoint: Endpoint,
+export function tauriFetch<
+  E extends Endpoint = Endpoint,
+  R = EndpointPayloads[E]['response'],
+>(
+  endpoint: E,
   method: 'POST' | 'PUT',
-  payload?: Record<string, unknown>
-): Promise<Response<T>> {
+  payload: EndpointPayloads[E]['payload']
+): Promise<Response<R> | Response<{ error: string }>> {
   const baseUrl = isDev()
     ? 'http://localhost:8000'
     : 'https://note-boi-server.herokuapp.com';
 
-  return http.fetch<T>(`${baseUrl}/api${endpoint}`, {
+  return http.fetch<R>(`${baseUrl}/api${endpoint}`, {
     method,
     body: {
       type: 'Json',
       payload,
     },
   });
+}
+
+export function resIsOk<T extends EndpointPayloads[Endpoint]['response']>(
+  resp: Response<T> | Response<{ error: string }> | void
+): resp is Response<T> {
+  return resp?.ok === true;
 }
 
 /** Catches hanging requests (e.g. due to server error). */
@@ -119,3 +128,5 @@ export type { UnsyncedNoteIds } from './note';
 export { autoPush, push, pull, syncNotes } from './note';
 export { clientSideLogout, login, signup, logout } from './auth';
 export { changePassword, deleteAccount } from './account';
+export { Encryptor } from './encryptor';
+export { KeyStore } from './keyStore';

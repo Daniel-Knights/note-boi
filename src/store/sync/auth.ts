@@ -1,12 +1,15 @@
 import { STORAGE_KEYS } from '../../constant';
 import { isEmptyNote, tauriEmit } from '../../utils';
-import { Note, noteState } from '../note';
+import { noteState } from '../note';
 
 import {
   catchHang,
+  Encryptor,
   ErrorType,
+  KeyStore,
   parseErrorRes,
   resetError,
+  resIsOk,
   syncNotes,
   syncState,
   tauriFetch,
@@ -24,15 +27,20 @@ export function clientSideLogout(): void {
 export async function login(): Promise<void> {
   syncState.isLoading = true;
 
-  const res = await tauriFetch<Record<string, string | Note[]>>('/login', 'POST', {
+  const res = await tauriFetch('/login', 'POST', {
     username: syncState.username,
     password: syncState.password,
   }).catch((err) => catchHang(err, ErrorType.Auth));
 
   if (!res) return;
 
-  if (res.ok) {
-    syncState.token = res.data.token as string;
+  if (resIsOk(res)) {
+    const decryptedNotes = await Encryptor.decryptNotes(
+      res.data.notes,
+      syncState.password
+    );
+
+    syncState.token = res.data.token;
     syncState.password = '';
 
     localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
@@ -40,12 +48,9 @@ export async function login(): Promise<void> {
 
     resetError();
     tauriEmit('login');
-    await syncNotes(res.data.notes as Note[]);
-  }
 
-  syncState.isLoading = false;
-
-  if (!res.ok) {
+    await syncNotes(decryptedNotes);
+  } else {
     syncState.error = {
       type: ErrorType.Auth,
       message: parseErrorRes(res),
@@ -53,23 +58,28 @@ export async function login(): Promise<void> {
 
     console.error(res.data);
   }
+
+  syncState.isLoading = false;
 }
 
 // Signup
 export async function signup(): Promise<void> {
   syncState.isLoading = true;
 
-  const res = await tauriFetch<Record<string, string>>('/signup', 'POST', {
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes.filter((nt) => !isEmptyNote(nt)),
+    syncState.password
+  );
+
+  const res = await tauriFetch('/signup', 'POST', {
     username: syncState.username,
     password: syncState.password,
-    notes: noteState.notes.filter((nt) => !isEmptyNote(nt)),
+    notes: encryptedNotes,
   }).catch((err) => catchHang(err, ErrorType.Auth));
 
   if (!res) return;
 
-  syncState.isLoading = false;
-
-  if (res.ok) {
+  if (resIsOk(res)) {
     resetError();
     tauriEmit('login');
 
@@ -79,6 +89,13 @@ export async function signup(): Promise<void> {
 
     localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
     localStorage.setItem(STORAGE_KEYS.TOKEN, syncState.token);
+  } else if (!encryptedNotes) {
+    syncState.error = {
+      type: ErrorType.Auth,
+      message: 'Error signing up',
+    };
+
+    console.error('Unable to encrypt notes');
   } else {
     syncState.error = {
       type: ErrorType.Auth,
@@ -87,27 +104,27 @@ export async function signup(): Promise<void> {
 
     console.error(res.data);
   }
+
+  syncState.isLoading = false;
 }
 
 // Logout
 export async function logout(): Promise<void> {
-  if (!syncState.token) return; // Prevent bug where event.emit triggers event.listen
-
   syncState.isLoading = true;
 
-  const res = await tauriFetch<Record<string, never | string>>('/logout', 'POST', {
+  const res = await tauriFetch('/logout', 'POST', {
     username: syncState.username,
     token: syncState.token,
   }).catch((err) => catchHang(err, ErrorType.Logout));
 
   if (!res) return;
 
-  syncState.isLoading = false;
-
-  if (res.ok) {
+  if (resIsOk(res)) {
     resetError();
     tauriEmit('logout');
     clientSideLogout();
+
+    KeyStore.reset();
   } else {
     syncState.error = {
       type: ErrorType.Logout,
@@ -116,4 +133,6 @@ export async function logout(): Promise<void> {
 
     console.error(res.data);
   }
+
+  syncState.isLoading = false;
 }
