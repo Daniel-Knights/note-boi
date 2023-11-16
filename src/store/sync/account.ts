@@ -2,9 +2,11 @@ import { dialog } from '@tauri-apps/api';
 
 import { STORAGE_KEYS } from '../../constant';
 import { tauriEmit } from '../../utils';
+import { noteState } from '../note';
 
 import {
   catchHang,
+  Encryptor,
   ErrorType,
   KeyStore,
   parseErrorRes,
@@ -17,11 +19,17 @@ import {
 export async function changePassword(): Promise<void> {
   syncState.isLoading = true;
 
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes,
+    syncState.newPassword
+  );
+
   const res = await tauriFetch('/account/password/change', 'PUT', {
     username: syncState.username,
     token: syncState.token,
     current_password: syncState.password,
     new_password: syncState.newPassword,
+    notes: encryptedNotes,
   }).catch((err) => catchHang(err, ErrorType.Auth));
 
   if (!res) return;
@@ -34,6 +42,13 @@ export async function changePassword(): Promise<void> {
     syncState.token = res.data.token;
 
     localStorage.setItem(STORAGE_KEYS.TOKEN, syncState.token);
+  } else if (!encryptedNotes) {
+    syncState.error = {
+      type: ErrorType.Auth,
+      message: 'Error changing password',
+    };
+
+    console.error('Unable to encrypt notes');
   } else {
     syncState.error = {
       type: ErrorType.Auth,

@@ -75,6 +75,7 @@ export type EndpointPayloads = {
       token: string;
       current_password: string;
       new_password: string;
+      notes: EncryptedNote[];
     };
     response: {
       token: string;
