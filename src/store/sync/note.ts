@@ -74,11 +74,12 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
   if (mergedNotes.length > 0) {
     noteState.notes = mergedNotes;
     sortStateNotes();
-  } else {
+  } else if (hasNoLocalNotes) {
     newNote();
   }
 
-  if (hasNoLocalNotes) {
+  // Select existing note if current selected note doesn't exist
+  if (!noteState.notes.find((nt) => nt.id === noteState.selectedNote.id)) {
     selectNote(noteState.notes[0].id);
   }
 
