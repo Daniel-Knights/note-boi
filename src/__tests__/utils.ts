@@ -1,10 +1,9 @@
 import { DOMWrapper, VueWrapper } from '@vue/test-utils';
-import { randomFillSync, randomUUID } from 'crypto';
-import { nextTick } from 'vue';
 
 import * as n from '../store/note';
 import * as s from '../store/sync';
 import { STORAGE_KEYS } from '../constant';
+import { EncryptedNote } from '../store/sync/encryptor';
 
 export const UUID_REGEX =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
@@ -12,15 +11,6 @@ export const UUID_REGEX =
 /** Returns `arr` with all objects that're one level deep copied. */
 export function copyObjArr<T extends Record<string, unknown> | n.Note>(arr: T[]): T[] {
   return arr.map((obj) => ({ ...obj }));
-}
-
-// jsdom doesn't come with a WebCrypto implementation
-export function setCrypto(): void {
-  window.crypto = {
-    // @ts-expect-error strict typing unnecessary here
-    getRandomValues: (array) => randomFillSync(array),
-    randomUUID,
-  };
 }
 
 export function resetNoteStore(): void {
@@ -33,14 +23,16 @@ export function resetSyncStore(): void {
   localStorage.removeItem(STORAGE_KEYS.USERNAME);
   localStorage.removeItem(STORAGE_KEYS.TOKEN);
   localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
+
   s.syncState.username = '';
   s.syncState.password = '';
   s.syncState.newPassword = '';
   s.syncState.token = '';
-  s.syncState.unsyncedNoteIds.clear();
   s.syncState.isLoading = false;
   s.syncState.isLogin = true;
-  s.syncState.error = { type: s.ErrorType.None, message: '' };
+  s.syncState.unsyncedNoteIds.clear();
+
+  s.resetError();
 }
 
 const formatTestId = (id: string) => `[data-test-id="${id}"]`;
@@ -60,9 +52,24 @@ export function findByTestId<T extends Element>(
 }
 
 /** Simulates awaiting a sync operation. */
-export function awaitSyncLoad(): Promise<void> | void {
+export function awaitSyncLoad(callCount = 0): Promise<void> | void {
+  if (callCount === 1000000) {
+    assert.fail('`awaitSyncLoad` call limit exceeded');
+  }
+
   if (s.syncState.isLoading) {
-    return nextTick().then(awaitSyncLoad);
+    return new Promise((res, rej) => {
+      // We use `setImmediate` as `nextTick` can cause fake-indexeddb requests to hang
+      setImmediate(async () => {
+        try {
+          await awaitSyncLoad(callCount + 1);
+        } catch (err) {
+          rej(err);
+        }
+
+        res();
+      });
+    });
   }
 }
 
@@ -77,6 +84,7 @@ export function isNote(note: unknown): note is n.Note {
     'timestamp' in nt &&
     typeof nt.timestamp === 'number' &&
     'content' in nt &&
+    typeof nt.content === 'object' &&
     'delta' in nt.content &&
     typeof nt.content.delta === 'object' &&
     'title' in nt.content &&
@@ -84,4 +92,14 @@ export function isNote(note: unknown): note is n.Note {
     'body' in nt.content &&
     typeof nt.content.body === 'string'
   );
+}
+
+export function isEncryptedNote(note: unknown): note is EncryptedNote {
+  const nt = note as EncryptedNote;
+
+  if (typeof nt !== 'object' || typeof nt.content !== 'string') {
+    return false;
+  }
+
+  return isNote({ ...nt, content: { delta: {}, title: '', body: '' } });
 }

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
-import { clearMockApiResults, mockApi } from '../../api';
+import { clearMockApiResults, mockApi, mockDb } from '../../api';
 import { awaitSyncLoad } from '../../utils';
 
 import Logout from '../../../components/Logout.vue';
@@ -20,7 +20,13 @@ describe('Logout', () => {
   });
 
   it('Logs out on click', async () => {
-    const { calls, events } = mockApi();
+    const { calls, events } = mockApi({
+      request: {
+        resValue: {
+          '/login': [{ notes: mockDb.encryptedNotes }],
+        },
+      },
+    });
 
     const wrapper = mount(Logout);
     assert.isFalse(wrapper.isVisible());

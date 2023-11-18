@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
 import { openedPopup, PopupType } from '../../../store/popup';
-import { clearMockApiResults, mockApi } from '../../api';
+import { clearMockApiResults, mockApi, mockDb } from '../../api';
 import { awaitSyncLoad, findByTestId, getByTestId } from '../../utils';
 
 import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
@@ -80,13 +80,19 @@ describe('SyncStatus', () => {
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
     assert.strictEqual(calls.length, 3);
-    assert.isTrue(calls.has('/notes/push'));
     assert.isTrue(calls.has('/notes/pull'));
+    assert.isTrue(calls.has('new_note'));
     assert.isTrue(calls.has('sync_local_notes'));
   });
 
   it('Pushes on click', async () => {
-    const { calls, promises } = mockApi();
+    const { calls, promises } = mockApi({
+      request: {
+        resValue: {
+          '/notes/pull': [{ notes: mockDb.encryptedNotes }],
+        },
+      },
+    });
     const pushSpy = vi.spyOn(s, 'push');
 
     const wrapper = mountWithPopup();
@@ -106,19 +112,20 @@ describe('SyncStatus', () => {
     s.syncState.token = 'token';
 
     await syncButton.trigger('click');
-    await Promise.all(promises);
 
     expect(pushSpy).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.length, 1);
-    assert.isTrue(calls.has('/notes/push'));
+    assert.strictEqual(calls.length, 0);
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isFalse(findByTestId(wrapper, 'success').exists());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
 
     await awaitSyncLoad();
+    await Promise.all(promises);
 
+    assert.strictEqual(calls.length, 1);
+    assert.isTrue(calls.has('/notes/push'));
     assert.isFalse(findByTestId(wrapper, 'loading').exists());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());

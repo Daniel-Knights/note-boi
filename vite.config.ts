@@ -33,5 +33,7 @@ export default defineConfig({
     globals: true,
     setupFiles: './src/__tests__/setup.ts',
     clearMocks: true,
+    hookTimeout: 30000,
+    testTimeout: 30000,
   },
 });

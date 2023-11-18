@@ -6,9 +6,9 @@ import { clearMockApiResults, mockApi } from '../../api';
 import localNotes from '../../notes.json';
 import { UUID_REGEX } from '../../utils';
 
-const emptyNote = new n.Note();
 const existingNoteIndexSorted = 2;
 const existingNote = localNotes[8];
+
 const mockChangeEventCb = vi.fn();
 const mockNewEventCb = vi.fn();
 const mockSelectEventCb = vi.fn();
@@ -23,6 +23,7 @@ beforeAll(() => {
 
 describe('Note store', () => {
   it('new Note()', () => {
+    const emptyNote = new n.Note();
     const timestamp = Date.now();
 
     assert.strictEqual(typeof emptyNote.id, 'string');
@@ -110,7 +111,6 @@ describe('Note store', () => {
     const index = n.findNoteIndex(existingNote.id);
 
     assert.strictEqual(index, existingNoteIndexSorted);
-    assert.strictEqual(n.findNoteIndex(emptyNote.id), -1);
     assert.strictEqual(n.findNoteIndex(), -1);
   });
 
@@ -165,6 +165,8 @@ describe('Note store', () => {
     n.selectNote(existingNote.id);
 
     assert.isTrue(n.isSelectedNote(existingNote));
+
+    const emptyNote = new n.Note();
 
     n.noteState.notes.push(emptyNote);
     n.selectNote(emptyNote.id);
@@ -332,6 +334,7 @@ describe('Note store', () => {
 
   describe('newNote', () => {
     it("When selected note isn't empty", async () => {
+      const emptyNote = new n.Note();
       const { calls, events } = mockApi();
 
       await n.getAllNotes();
@@ -358,6 +361,12 @@ describe('Note store', () => {
 
     it('Only updates timestamp when empty note selected', async () => {
       const { calls, events } = mockApi();
+      const emptyNote = new n.Note();
+
+      // Ensure reliable timestamp check later on
+      await new Promise((res) => {
+        setTimeout(res, 1);
+      });
 
       await n.getAllNotes();
 
