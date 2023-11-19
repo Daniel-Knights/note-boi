@@ -19,7 +19,7 @@
       "request": "launch",
       "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "test", "--test-timeout"],
+      "runtimeArgs": ["run-script", "test", "--test-timeout=10000000"],
       "console": "integratedTerminal"
     },
     {
@@ -29,7 +29,7 @@
       "autoAttachChildProcesses": true,
       "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
       "program": "${workspaceRoot}/node_modules/vitest/vitest.mjs",
-      "args": ["run", "${relativeFile}", "--test-timeout"],
+      "args": ["run", "${relativeFile}", "--test-timeout=10000000"],
       "console": "integratedTerminal"
     }
   ]
