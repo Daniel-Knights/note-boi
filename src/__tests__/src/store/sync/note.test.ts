@@ -5,7 +5,7 @@ import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { STORAGE_KEYS } from '../../../../constant';
 import { isEmptyNote, localStorageParse } from '../../../../utils';
-import { clearMockApiResults, mockApi } from '../../../api';
+import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
 import {
   awaitSyncLoad,
@@ -28,12 +28,17 @@ describe('Sync', () => {
             get_all_notes: [[]],
           },
         },
+        request: {
+          resValue: {
+            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
+          },
+        },
       });
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.password = '1';
 
-      await n.getAllNotes();
+      await s.login();
 
       assert.strictEqual(n.noteState.notes.length, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
@@ -66,12 +71,19 @@ describe('Sync', () => {
       });
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      clearMockApiResults({ calls, events });
 
       await s.pull();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.isEmpty(n.noteState.notes);
+      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+      assert.strictEqual(n.noteState.notes[0].id, n.noteState.selectedNote.id);
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
@@ -109,7 +121,9 @@ describe('Sync', () => {
       mockApi();
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.password = '1';
+
+      await s.login();
 
       const wrapper = mount(Editor);
       const editorBody = getByTestId(wrapper, 'body');
@@ -120,23 +134,25 @@ describe('Sync', () => {
 
       assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
 
-      const remoteNotes = copyObjArr(localNotes);
-      remoteNotes.forEach((nt) => {
-        if (nt.id === n.noteState.selectedNote.id) {
-          nt.content = {
-            delta: { ops: [{ insert: 'Remote update' }] },
-            title: 'Remote update',
-            body: '',
-          };
-        }
-      });
+      const unencryptedRemoteNotes = copyObjArr(localNotes);
+      const unencryptedRemoteSelectedNote = unencryptedRemoteNotes.find(
+        (nt) => nt.id === n.noteState.selectedNote.id
+      );
+
+      unencryptedRemoteSelectedNote!.content = {
+        delta: { ops: [{ insert: 'Remote update' }] },
+        title: 'Remote update',
+        body: '',
+      };
+
+      const encryptedRemoteNotes = await s.Encryptor.encryptNotes(unencryptedRemoteNotes);
 
       clearMocks();
 
       mockApi({
         request: {
           resValue: {
-            '/notes/pull': [remoteNotes],
+            '/notes/pull': [{ notes: encryptedRemoteNotes }],
           },
         },
       });
@@ -150,7 +166,9 @@ describe('Sync', () => {
       mockApi();
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.password = '1';
+
+      await s.login();
 
       const wrapper = shallowMount(NoteMenu);
 
@@ -158,23 +176,23 @@ describe('Sync', () => {
         assert.strictEqual(wrapper.get(`[data-note-id="${id}"]`).text(), text);
       }
 
-      assert.isEmpty(wrapper.findAll('li'));
+      assert.strictEqual(wrapper.findAll('li').length, 1);
 
       await n.getAllNotes();
 
       assert.strictEqual(wrapper.findAll('li').length, 10);
       assertNoteItemText(n.noteState.selectedNote.id, 'Note with special characters😬ö');
 
-      const remoteNotes = copyObjArr<n.Note>(localNotes);
-      remoteNotes.forEach((nt) => {
-        if (nt.id === n.noteState.selectedNote.id) {
-          nt.content = {
-            delta: { ops: [{ insert: 'Remote update' }, { insert: '-body' }] },
-            title: 'Remote update',
-            body: '-body',
-          };
-        }
-      });
+      const unencryptedRemoteNotes = copyObjArr<n.Note>(localNotes);
+      const unencryptedRemoteSelectedNote = unencryptedRemoteNotes.find(
+        (nt) => nt.id === n.noteState.selectedNote.id
+      );
+
+      unencryptedRemoteSelectedNote!.content = {
+        delta: { ops: [{ insert: 'Remote update' }, { insert: '-body' }] },
+        title: 'Remote update',
+        body: '-body',
+      };
 
       const newRemoteNote = new n.Note();
       newRemoteNote.content = {
@@ -183,15 +201,17 @@ describe('Sync', () => {
         body: '-body',
       };
 
-      remoteNotes.push(newRemoteNote);
-      remoteNotes.splice(5, 2); // Deleted remote notes
+      unencryptedRemoteNotes.push(newRemoteNote);
+      unencryptedRemoteNotes.splice(5, 2); // Deleted remote notes
+
+      const encryptedRemoteNotes = await s.Encryptor.encryptNotes(unencryptedRemoteNotes);
 
       clearMocks();
 
       mockApi({
         request: {
           resValue: {
-            '/notes/pull': [remoteNotes],
+            '/notes/pull': [{ notes: encryptedRemoteNotes }],
           },
         },
       });
@@ -213,7 +233,10 @@ describe('Sync', () => {
       const unsynced = { new: 'new', edited: ['edited'], deleted: ['deleted'] };
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.password = '1';
+
+      await s.login();
+
       s.syncState.unsyncedNoteIds.add(unsynced);
 
       assert.deepEqual(localStorageParse(STORAGE_KEYS.UNSYNCED), unsynced);
@@ -271,7 +294,9 @@ describe('Sync', () => {
       await n.getAllNotes();
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.password = '1';
+
+      await s.login();
 
       clearMockApiResults({ calls, events });
 
@@ -303,11 +328,18 @@ describe('Sync', () => {
         assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       }
 
-      mockApi();
+      mockApi({
+        request: {
+          resValue: {
+            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
+          },
+        },
+      });
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
-      await n.getAllNotes();
+      s.syncState.password = '1';
+
+      await s.login();
 
       const wrapper = shallowMount(NoteMenu);
 
@@ -386,12 +418,18 @@ describe('Sync', () => {
     });
 
     it('edited', async () => {
-      mockApi();
+      mockApi({
+        request: {
+          resValue: {
+            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
+          },
+        },
+      });
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.password = '1';
 
-      await n.getAllNotes();
+      await s.login();
 
       assert.isEmpty(s.syncState.unsyncedNoteIds.edited);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
@@ -463,12 +501,18 @@ describe('Sync', () => {
     });
 
     it('deleted', async () => {
-      mockApi();
+      mockApi({
+        request: {
+          resValue: {
+            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
+          },
+        },
+      });
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.password = '1';
 
-      await n.getAllNotes();
+      await s.login();
 
       assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
@@ -568,6 +612,11 @@ describe('Sync', () => {
               get_all_notes: [[]],
             },
           },
+          request: {
+            resValue: {
+              '/login': [{ notes: mockDb.encryptedNotes }],
+            },
+          },
         });
 
         s.syncState.username = 'd';
@@ -590,7 +639,7 @@ describe('Sync', () => {
         assert.isTrue(findByTestId(wrapper, 'success').exists());
         assert.isFalse(isEmptyNote(n.noteState.notes[0]));
         assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-        assert.deepEqual(n.noteState.notes, localNotes);
+        assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
         assert.isEmpty(s.syncState.unsyncedNoteIds.new);
         assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
         assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));

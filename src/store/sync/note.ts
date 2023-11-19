@@ -13,9 +13,11 @@ import {
 import {
   catchHang,
   clientSideLogout,
+  Encryptor,
   ErrorType,
   parseErrorRes,
   resetError,
+  resIsOk,
   syncState,
   tauriFetch,
 } from '.';
@@ -74,11 +76,12 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
   if (mergedNotes.length > 0) {
     noteState.notes = mergedNotes;
     sortStateNotes();
-  } else {
+  } else if (hasNoLocalNotes) {
     newNote();
   }
 
-  if (hasNoLocalNotes) {
+  // Select existing note if current selected note doesn't exist
+  if (!noteState.notes.find((nt) => nt.id === noteState.selectedNote.id)) {
     selectNote(noteState.notes[0].id);
   }
 
@@ -94,31 +97,34 @@ export async function pull(): Promise<void> {
 
   syncState.isLoading = true;
 
-  const res = await tauriFetch<Record<string, string | Note[]>>('/notes/pull', 'POST', {
+  const res = await tauriFetch('/notes/pull', 'POST', {
     username: syncState.username,
     token: syncState.token,
   }).catch((err) => catchHang(err, ErrorType.Pull));
 
   if (!res) return;
 
-  if (res.ok) {
+  if (resIsOk(res)) {
     resetError();
-    await syncNotes(res.data.notes as Note[]);
-  }
 
-  syncState.isLoading = false;
+    const decryptedNotes = await Encryptor.decryptNotes(res.data.notes);
 
-  if (!res.ok) {
+    await syncNotes(decryptedNotes);
+  } else {
     syncState.error = {
       type: ErrorType.Pull,
       message: parseErrorRes(res),
     };
 
     // User not found
-    if (res.status === 404) clientSideLogout();
+    if (res.status === 404) {
+      clientSideLogout();
+    }
 
     console.error(res.data);
   }
+
+  syncState.isLoading = false;
 }
 
 // Push
@@ -138,21 +144,24 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
   };
   syncState.unsyncedNoteIds.clear();
 
-  const res = await tauriFetch<Record<string, never | string>>('/notes/push', 'PUT', {
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes.filter((nt) => !isEmptyNote(nt))
+  );
+
+  const res = await tauriFetch('/notes/push', 'PUT', {
     username: syncState.username,
     token: syncState.token,
-    notes: noteState.notes.filter((nt) => !isEmptyNote(nt)),
+    notes: encryptedNotes,
   }).catch((err) => catchHang(err, ErrorType.Push));
 
   if (!res) return;
 
-  syncState.isLoading = false;
-
-  if (res.ok) {
+  if (resIsOk(res)) {
     resetError();
   } else {
     // Add back unsynced note ids
     syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
+
     syncState.error = {
       type: ErrorType.Push,
       message: parseErrorRes(res),
@@ -160,6 +169,8 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 
     console.error(res.data);
   }
+
+  syncState.isLoading = false;
 }
 
 // Auto-syncing

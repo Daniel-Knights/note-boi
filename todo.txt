@@ -1,12 +1,13 @@
 *Before release*
 README
-WebSockets
-Encryption
 Tests: Tauri invoke objects have all fields (delta)
 
 *Whenever*
+Choose sync method 
+  - overwrite local, overwrite remote, or merge
 Crash reports
 Top menu
+Hide side menu
 Mock window tests
 Note menu undo/redo and copy/paste
 Prevent opening context menu off bottom of screen

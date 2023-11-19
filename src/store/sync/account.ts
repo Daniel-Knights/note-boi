@@ -2,13 +2,16 @@ import { dialog } from '@tauri-apps/api';
 
 import { STORAGE_KEYS } from '../../constant';
 import { tauriEmit } from '../../utils';
-import { Note } from '../note';
+import { noteState } from '../note';
 
 import {
   catchHang,
+  Encryptor,
   ErrorType,
+  KeyStore,
   parseErrorRes,
   resetError,
+  resIsOk,
   syncState,
   tauriFetch,
 } from '.';
@@ -16,22 +19,22 @@ import {
 export async function changePassword(): Promise<void> {
   syncState.isLoading = true;
 
-  const res = await tauriFetch<Record<string, string>>(
-    '/account/password/change',
-    'PUT',
-    {
-      username: syncState.username,
-      token: syncState.token,
-      current_password: syncState.password,
-      new_password: syncState.newPassword,
-    }
-  ).catch((err) => catchHang(err, ErrorType.Auth));
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes,
+    syncState.newPassword
+  );
+
+  const res = await tauriFetch('/account/password/change', 'PUT', {
+    username: syncState.username,
+    token: syncState.token,
+    current_password: syncState.password,
+    new_password: syncState.newPassword,
+    notes: encryptedNotes,
+  }).catch((err) => catchHang(err, ErrorType.Auth));
 
   if (!res) return;
 
-  syncState.isLoading = false;
-
-  if (res.ok) {
+  if (resIsOk(res)) {
     resetError();
 
     syncState.password = '';
@@ -39,6 +42,13 @@ export async function changePassword(): Promise<void> {
     syncState.token = res.data.token;
 
     localStorage.setItem(STORAGE_KEYS.TOKEN, syncState.token);
+  } else if (!encryptedNotes) {
+    syncState.error = {
+      type: ErrorType.Auth,
+      message: 'Error changing password',
+    };
+
+    console.error('Unable to encrypt notes');
   } else {
     syncState.error = {
       type: ErrorType.Auth,
@@ -47,6 +57,8 @@ export async function changePassword(): Promise<void> {
 
     console.error(res.data);
   }
+
+  syncState.isLoading = false;
 }
 
 export async function deleteAccount(): Promise<void> {
@@ -58,18 +70,14 @@ export async function deleteAccount(): Promise<void> {
 
   syncState.isLoading = true;
 
-  const res = await tauriFetch<Record<string, string | Note[]>>(
-    '/account/delete',
-    'POST',
-    {
-      username: syncState.username,
-      token: syncState.token,
-    }
-  ).catch((err) => catchHang(err, ErrorType.Auth));
+  const res = await tauriFetch('/account/delete', 'POST', {
+    username: syncState.username,
+    token: syncState.token,
+  }).catch((err) => catchHang(err, ErrorType.Auth));
 
   if (!res) return;
 
-  if (res.ok) {
+  if (resIsOk(res)) {
     syncState.username = '';
     syncState.token = '';
 
@@ -79,11 +87,9 @@ export async function deleteAccount(): Promise<void> {
     resetError();
     tauriEmit('logout');
     syncState.unsyncedNoteIds.clear();
-  }
 
-  syncState.isLoading = false;
-
-  if (!res.ok) {
+    await KeyStore.reset();
+  } else {
     syncState.error = {
       type: ErrorType.Auth,
       message: parseErrorRes(res),
@@ -91,4 +97,6 @@ export async function deleteAccount(): Promise<void> {
 
     console.error(res.data);
   }
+
+  syncState.isLoading = false;
 }

@@ -2,13 +2,19 @@ import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { STORAGE_KEYS } from '../../../../constant';
 import { isEmptyNote } from '../../../../utils';
-import { clearMockApiResults, mockApi } from '../../../api';
+import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
 
 describe('Sync', () => {
   describe('login', () => {
     it('With no notes', async () => {
-      const { calls, events } = mockApi();
+      const { calls, events } = mockApi({
+        request: {
+          resValue: {
+            '/login': [{ notes: mockDb.encryptedNotes }],
+          },
+        },
+      });
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -37,7 +43,13 @@ describe('Sync', () => {
     });
 
     it('With notes', async () => {
-      const { calls, events } = mockApi();
+      const { calls, events } = mockApi({
+        request: {
+          resValue: {
+            '/login': [{ notes: mockDb.encryptedNotes }],
+          },
+        },
+      });
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -135,7 +147,7 @@ describe('Sync', () => {
       await s.signup();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.deepEqual(n.noteState.notes, localNotes);
+      assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);

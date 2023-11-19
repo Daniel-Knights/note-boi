@@ -72,6 +72,8 @@ describe('PopupSyncError', () => {
   });
 
   it('Retries logout', async () => {
+    mockApi();
+
     const logoutSpy = vi.spyOn(s, 'logout');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();

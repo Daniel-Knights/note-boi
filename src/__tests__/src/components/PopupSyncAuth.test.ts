@@ -29,6 +29,8 @@ describe('PopupSyncAuth', () => {
   });
 
   it('Emits close', async () => {
+    mockApi();
+
     const wrapper = mountPopupSyncAuth();
     await wrapper.getComponent(Popup).vm.$emit('close');
 
@@ -36,6 +38,8 @@ describe('PopupSyncAuth', () => {
   });
 
   it('Switches between login/signup', async () => {
+    mockApi();
+
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncAuth();
 
@@ -123,7 +127,7 @@ describe('PopupSyncAuth', () => {
       assert.strictEqual(wrapper.emitted('close')?.length, 1);
       assert.strictEqual(calls.length, 3);
       assert.isTrue(calls.has('/login'));
-      assert.isTrue(calls.has('/notes/push'));
+      assert.isTrue(calls.has('new_note'));
       assert.isTrue(calls.has('sync_local_notes'));
     });
 
