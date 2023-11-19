@@ -42,7 +42,7 @@ export class Encryptor {
       {
         name: 'PBKDF2',
         salt,
-        iterations: 100000, // TODO: Make private somehow (env var, store on server)?
+        iterations: 100000,
         hash: 'SHA-256',
       },
       passwordKey,
