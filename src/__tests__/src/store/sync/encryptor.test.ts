@@ -63,7 +63,7 @@ describe('Encryptor', () => {
     it('Decrypts notes', async () => {
       const decryptedNotes = await Encryptor.decryptNotes(mockDb.encryptedNotes, '1');
 
-      assert.strictEqual(decryptedNotes.length, mockDb.encryptedNotes.length);
+      assert.lengthOf(decryptedNotes, mockDb.encryptedNotes.length);
 
       decryptedNotes.forEach((note) => {
         assert.isObject(note.content);

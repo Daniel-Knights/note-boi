@@ -23,9 +23,9 @@ describe('PopupSyncAuth', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Emits close', async () => {
@@ -34,7 +34,7 @@ describe('PopupSyncAuth', () => {
     const wrapper = mountPopupSyncAuth();
     await wrapper.getComponent(Popup).vm.$emit('close');
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
   it('Switches between login/signup', async () => {
@@ -124,8 +124,8 @@ describe('PopupSyncAuth', () => {
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(wrapper.emitted('close')?.length, 1);
-      assert.strictEqual(calls.length, 3);
+      assert.lengthOf(wrapper.emitted('close')!, 1);
+      assert.lengthOf(calls, 3);
       assert.isTrue(calls.has('/login'));
       assert.isTrue(calls.has('new_note'));
       assert.isTrue(calls.has('sync_local_notes'));
@@ -221,10 +221,10 @@ describe('PopupSyncAuth', () => {
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(wrapper.emitted('close')?.length, 1);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(wrapper.emitted('close')!, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/signup'));
-      assert.strictEqual(events.emits.length, 1);
+      assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('login'));
     });
   });

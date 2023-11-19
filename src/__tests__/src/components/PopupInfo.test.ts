@@ -24,10 +24,10 @@ describe('PopupInfo', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('getAppVersion'));
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Emits close', async () => {
@@ -36,7 +36,7 @@ describe('PopupInfo', () => {
     const wrapper = mountPopupInfo();
     await wrapper.getComponent(Popup).vm.$emit('close');
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
   it('Renders correct description list items', async () => {
@@ -58,7 +58,7 @@ describe('PopupInfo', () => {
 
     const descriptionListItems = wrapper.findAll('.popup-info__description-pair');
 
-    assert.strictEqual(descriptionListItems.length, 4);
+    assert.lengthOf(descriptionListItems, 4);
     assert.strictEqual(getByTestId(wrapper, 'user').text(), 'User:d');
     assert.strictEqual(getByTestId(wrapper, 'version').text(), `Version:${pkg.version}`);
 

@@ -12,8 +12,8 @@ describe('Loading', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 });

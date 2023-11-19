@@ -53,10 +53,10 @@ describe('Update', () => {
 
     assert.isTrue(u.updateDownloading.value);
     assert.isUndefined(u.updateAvailable.value);
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('askDialog'));
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Returns if update unavailable', async () => {
@@ -68,7 +68,7 @@ describe('Update', () => {
 
     expect(installUpdate).not.toHaveBeenCalled();
 
-    assert.strictEqual(calls.length, 0);
+    assert.lengthOf(calls, 0);
   });
 
   it('Returns if version has been seen', async () => {
@@ -80,7 +80,7 @@ describe('Update', () => {
 
     expect(installUpdate).not.toHaveBeenCalled();
 
-    assert.strictEqual(calls.length, 0);
+    assert.lengthOf(calls, 0);
   });
 
   it("Asks if user wants to update and sets seen version if they don't", async () => {
@@ -96,7 +96,7 @@ describe('Update', () => {
 
     expect(installUpdate).not.toHaveBeenCalled();
 
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('askDialog'));
     assert.deepEqual(calls[0].calledWith, {
       message: 'A new version of NoteBoi is available.\nDo you want to update now?',
@@ -119,7 +119,7 @@ describe('Update', () => {
 
     await u.updateAndRelaunch();
 
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('askDialog'));
     assert.deepEqual(calls[0].calledWith, {
       message: 'Try again?',
@@ -143,7 +143,7 @@ describe('Update', () => {
     await u.updateAndRelaunch();
 
     assert.isFalse(u.updateDownloading.value);
-    assert.strictEqual(calls.length, 2);
+    assert.lengthOf(calls, 2);
     assert.isTrue(calls.has('askDialog', 2));
   });
 });

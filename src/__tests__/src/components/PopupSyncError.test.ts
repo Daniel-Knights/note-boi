@@ -26,9 +26,9 @@ describe('PopupSyncError', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
 
     const errorMessageWrapper = getByTestId(wrapper, 'error-message');
     assert.strictEqual(errorMessageWrapper.text(), `Error: ${errorMessage}`);
@@ -38,7 +38,7 @@ describe('PopupSyncError', () => {
     const wrapper = mountPopupSyncError();
     await wrapper.getComponent(Popup).vm.$emit('close');
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
   it('Retries push', async () => {
@@ -53,7 +53,7 @@ describe('PopupSyncError', () => {
 
     expect(pushSpy).toHaveBeenCalledOnce();
     expect(resetErrorSpy).toHaveBeenCalledOnce();
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
   it('Retries pull', async () => {
@@ -68,7 +68,7 @@ describe('PopupSyncError', () => {
 
     expect(pullSpy).toHaveBeenCalledOnce();
     expect(resetErrorSpy).toHaveBeenCalledOnce();
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
   it('Retries logout', async () => {
@@ -85,6 +85,6 @@ describe('PopupSyncError', () => {
 
     expect(logoutSpy).toHaveBeenCalledOnce();
     expect(resetErrorSpy).toHaveBeenCalledOnce();
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 });

@@ -14,4 +14,3 @@ Prevent opening context menu off bottom of screen
 Custom colour themes
 Tab key functionality
 Auto detect links (enable/disable?)
-Refactor test length checks to use assert.lengthOf

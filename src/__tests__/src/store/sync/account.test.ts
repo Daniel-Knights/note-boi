@@ -28,7 +28,7 @@ describe('Account', () => {
 
       await s.changePassword();
 
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/account/password/change'));
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
@@ -43,7 +43,7 @@ describe('Account', () => {
 
       await s.changePassword();
 
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/account/password/change'));
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
@@ -84,7 +84,7 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/account/password/change'));
     });
   });
@@ -118,10 +118,10 @@ describe('Account', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('askDialog'));
       assert.isTrue(calls.has('/account/delete'));
-      assert.strictEqual(events.emits.length, 1);
+      assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('logout'));
       assert.isFalse(s.syncState.isLoading);
     });
@@ -137,7 +137,7 @@ describe('Account', () => {
 
       await s.deleteAccount();
 
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('askDialog'));
       assert.isFalse(s.syncState.isLoading);
     });
@@ -173,10 +173,10 @@ describe('Account', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('askDialog'));
       assert.isTrue(calls.has('/account/delete'));
-      assert.strictEqual(events.emits.length, 0);
+      assert.lengthOf(events.emits, 0);
       assert.isFalse(s.syncState.isLoading);
     });
   });

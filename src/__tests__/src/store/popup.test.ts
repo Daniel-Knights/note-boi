@@ -10,6 +10,6 @@ describe('Popup', () => {
     openedPopup.value = PopupType.Info;
     assert.strictEqual(openedPopup.value, PopupType.Info);
 
-    assert.strictEqual(Object.keys(PopupType).length, 4 * 2);
+    assert.lengthOf(Object.keys(PopupType), 4 * 2);
   });
 });

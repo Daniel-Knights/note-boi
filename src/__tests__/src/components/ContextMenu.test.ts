@@ -43,9 +43,9 @@ describe('ContextMenu', () => {
     await Promise.all(promises);
 
     assert.isFalse(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Mounts with ev', async () => {
@@ -77,7 +77,7 @@ describe('ContextMenu', () => {
     await getByTestId(wrapper, 'new').trigger('click');
     await Promise.all(promises);
 
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('new_note'));
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
@@ -102,7 +102,7 @@ describe('ContextMenu', () => {
       const wrapper = await mountContextMenu(div);
       const button = getByTestId<HTMLButtonElement>(wrapper, buttonType.toLowerCase());
 
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('get_all_notes'));
       assert.isTrue(calls.has('new_note'));
       assert.isTrue(button.element.classList.contains('drop-menu__item--disabled'));

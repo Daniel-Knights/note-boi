@@ -19,12 +19,12 @@ describe('Sync', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      assert.strictEqual(n.noteState.notes.length, 0);
+      assert.lengthOf(n.noteState.notes, 0);
 
       await s.login();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(n.noteState.notes.length, localNotes.length);
+      assert.lengthOf(n.noteState.notes, localNotes.length);
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(s.syncState.token, 'token');
@@ -34,11 +34,11 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 3);
+      assert.lengthOf(calls, 3);
       assert.isTrue(calls.has('/login'));
       assert.isTrue(calls.has('/notes/push'));
       assert.isTrue(calls.has('sync_local_notes'));
-      assert.strictEqual(events.emits.length, 1);
+      assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('login'));
     });
 
@@ -57,7 +57,7 @@ describe('Sync', () => {
       await n.getAllNotes();
 
       assert.isAbove(n.noteState.notes.length, 1);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('get_all_notes'));
 
       clearMockApiResults({ calls, events });
@@ -73,11 +73,11 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 3);
+      assert.lengthOf(calls, 3);
       assert.isTrue(calls.has('/login'));
       assert.isTrue(calls.has('/notes/push'));
       assert.isTrue(calls.has('sync_local_notes'));
-      assert.strictEqual(events.emits.length, 1);
+      assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('login'));
     });
 
@@ -102,9 +102,9 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/login'));
-      assert.strictEqual(events.emits.length, 0);
+      assert.lengthOf(events.emits, 0);
     });
   });
 
@@ -126,9 +126,9 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/signup'));
-      assert.strictEqual(events.emits.length, 1);
+      assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('login'));
     });
 
@@ -156,9 +156,9 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/signup'));
-      assert.strictEqual(events.emits.length, 1);
+      assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('login'));
     });
 
@@ -187,9 +187,9 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/signup'));
-      assert.strictEqual(events.emits.length, 1);
+      assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('login'));
     });
 
@@ -214,9 +214,9 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/signup'));
-      assert.strictEqual(events.emits.length, 0);
+      assert.lengthOf(events.emits, 0);
     });
   });
 
@@ -241,9 +241,9 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/logout'));
-      assert.strictEqual(events.emits.length, 1);
+      assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('logout'));
     });
 
@@ -270,9 +270,9 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Logout);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/logout'));
-      assert.strictEqual(events.emits.length, 0);
+      assert.lengthOf(events.emits, 0);
     });
   });
 });

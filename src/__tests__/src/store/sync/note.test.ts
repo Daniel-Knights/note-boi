@@ -40,7 +40,7 @@ describe('Sync', () => {
 
       await s.login();
 
-      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(n.noteState.notes[0].id, n.noteState.selectedNote.id);
@@ -55,12 +55,12 @@ describe('Sync', () => {
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 3);
+      assert.lengthOf(calls, 3);
       assert.isTrue(calls.has('/notes/push'));
       assert.isTrue(calls.has('/notes/pull'));
       assert.isTrue(calls.has('sync_local_notes'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('With server error', async () => {
@@ -80,7 +80,7 @@ describe('Sync', () => {
       await s.pull();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(n.noteState.notes[0].id, n.noteState.selectedNote.id);
@@ -88,10 +88,10 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/notes/pull'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('User not found', async () => {
@@ -111,10 +111,10 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/notes/pull'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('Updates editor if selected note is unedited', async () => {
@@ -176,11 +176,11 @@ describe('Sync', () => {
         assert.strictEqual(wrapper.get(`[data-note-id="${id}"]`).text(), text);
       }
 
-      assert.strictEqual(wrapper.findAll('li').length, 1);
+      assert.lengthOf(wrapper.findAll('li'), 1);
 
       await n.getAllNotes();
 
-      assert.strictEqual(wrapper.findAll('li').length, 10);
+      assert.lengthOf(wrapper.findAll('li'), 10);
       assertNoteItemText(n.noteState.selectedNote.id, 'Note with special characters😬ö');
 
       const unencryptedRemoteNotes = copyObjArr<n.Note>(localNotes);
@@ -218,7 +218,7 @@ describe('Sync', () => {
 
       await s.pull();
 
-      assert.strictEqual(wrapper.findAll('li').length, 9);
+      assert.lengthOf(wrapper.findAll('li'), 9);
       assertNoteItemText(n.noteState.selectedNote.id, 'Remote update-body');
       assertNoteItemText(newRemoteNote.id, 'New note-body');
     });
@@ -254,10 +254,10 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/notes/push'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it("Doesn't push empty notes", async () => {
@@ -279,9 +279,9 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 0);
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(calls, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('With server error', async () => {
@@ -307,10 +307,10 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('/notes/push'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
   });
 
@@ -626,7 +626,7 @@ describe('Sync', () => {
 
         assert.isTrue(isEmptyNote(n.noteState.notes[0]));
         assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-        assert.strictEqual(n.noteState.notes.length, 1);
+        assert.lengthOf(n.noteState.notes, 1);
 
         const wrapper = mount(SyncStatus);
 
@@ -657,7 +657,7 @@ describe('Sync', () => {
 
         assert.isFalse(isEmptyNote(n.noteState.notes[0]));
         assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-        assert.strictEqual(n.noteState.notes.length, localNotes.length);
+        assert.lengthOf(n.noteState.notes, localNotes.length);
 
         const wrapper = mount(SyncStatus);
 

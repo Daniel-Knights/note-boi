@@ -45,9 +45,9 @@ describe('Popup', () => {
     assert.isTrue(wrapper.html().includes(slot));
     expect(eventSpies.window.add).toHaveBeenCalledOnce();
     expect(eventSpies.body.add).toHaveBeenCalledOnce();
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Closes on escape key', () => {
@@ -55,7 +55,7 @@ describe('Popup', () => {
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
     expect(eventSpies.window.remove).toHaveBeenCalledOnce();
     expect(eventSpies.body.remove).toHaveBeenCalledOnce();
   });
@@ -65,7 +65,7 @@ describe('Popup', () => {
 
     document.body.dispatchEvent(new MouseEvent('mouseup'));
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
     expect(eventSpies.window.remove).toHaveBeenCalledOnce();
     expect(eventSpies.body.remove).toHaveBeenCalledOnce();
   });
@@ -75,7 +75,7 @@ describe('Popup', () => {
 
     wrapper.unmount();
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
     expect(eventSpies.window.remove).toHaveBeenCalledOnce();
     expect(eventSpies.body.remove).toHaveBeenCalledOnce();
   });

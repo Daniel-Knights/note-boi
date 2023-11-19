@@ -27,11 +27,11 @@ describe('main', () => {
     expect(spyGetAllNotes).toHaveBeenCalledOnce();
     expect(spyHandleUpdate).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('get_all_notes'));
-    assert.strictEqual(events.emits.length, 1);
+    assert.lengthOf(events.emits, 1);
     assert.isTrue(events.emits.includes('tauri://update'));
-    assert.strictEqual(events.listeners.length, 10);
+    assert.lengthOf(events.listeners, 10);
     assert.isTrue(events.listeners.includes('tauri://update-available'));
     assert.isTrue(events.listeners.includes('tauri://update-status'));
     assert.isTrue(events.listeners.includes('tauri://close-requested'));
@@ -54,9 +54,9 @@ describe('main', () => {
 
       expect(mockCb).toHaveBeenCalledOnce();
       expect(spyPush).not.toHaveBeenCalled();
-      assert.strictEqual(calls.length, 0);
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(calls, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('With unsynced notes', async () => {
@@ -70,9 +70,9 @@ describe('main', () => {
 
       expect(mockCb).toHaveBeenCalledOnce();
       expect(spyPush).toHaveBeenCalledOnce();
-      assert.strictEqual(calls.length, 0);
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(calls, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('Triggers ask dialog on push error, and answers "No"', async () => {
@@ -93,7 +93,7 @@ describe('main', () => {
 
       expect(mockCb).not.toHaveBeenCalledOnce();
       expect(spyPush).toHaveBeenCalledOnce();
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('askDialog'));
 
       if (!calls[0].calledWith || !('message' in calls[0].calledWith)) {
@@ -106,8 +106,8 @@ describe('main', () => {
       );
       assert.strictEqual(calls[0].calledWith!.title, 'NoteBoi');
       assert.strictEqual(calls[0].calledWith!.type, 'error');
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
       assert.strictEqual(openedPopup.value, PopupType.Error);
     });
 
@@ -127,7 +127,7 @@ describe('main', () => {
 
       expect(mockCb).toHaveBeenCalledOnce();
       expect(spyPush).toHaveBeenCalledOnce();
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('askDialog'));
 
       if (!calls[0].calledWith || !('message' in calls[0].calledWith)) {
@@ -140,8 +140,8 @@ describe('main', () => {
       );
       assert.strictEqual(calls[0].calledWith.title, 'NoteBoi');
       assert.strictEqual(calls[0].calledWith.type, 'error');
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
       assert.isUndefined(openedPopup.value);
     });
   });

@@ -31,10 +31,10 @@ describe('SyncStatus', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 1);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 1);
     assert.isTrue(events.emits.includes('logout'));
-    assert.strictEqual(events.listeners.length, 4);
+    assert.lengthOf(events.listeners, 4);
     assert.isTrue(events.listeners.includes('push-notes'));
     assert.isTrue(events.listeners.includes('login'));
     assert.isTrue(events.listeners.includes('logout'));
@@ -64,7 +64,7 @@ describe('SyncStatus', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(events.emits.length, 1);
+    assert.lengthOf(events.emits, 1);
     assert.isTrue(events.emits.includes('login'));
     expect(pullSpy).toHaveBeenCalledOnce();
 
@@ -79,7 +79,7 @@ describe('SyncStatus', () => {
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
-    assert.strictEqual(calls.length, 3);
+    assert.lengthOf(calls, 3);
     assert.isTrue(calls.has('/notes/pull'));
     assert.isTrue(calls.has('new_note'));
     assert.isTrue(calls.has('sync_local_notes'));
@@ -115,7 +115,7 @@ describe('SyncStatus', () => {
 
     expect(pushSpy).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.length, 0);
+    assert.lengthOf(calls, 0);
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isFalse(findByTestId(wrapper, 'success').exists());
@@ -124,7 +124,7 @@ describe('SyncStatus', () => {
     await awaitSyncLoad();
     await Promise.all(promises);
 
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('/notes/push'));
     assert.isFalse(findByTestId(wrapper, 'loading').exists());
     assert.isFalse(findByTestId(wrapper, 'error').exists());

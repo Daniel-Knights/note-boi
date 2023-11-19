@@ -17,9 +17,9 @@ describe('Editor', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Has the correct timestamp', () => {
@@ -38,7 +38,7 @@ describe('Editor', () => {
 
     await n.getAllNotes();
 
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('get_all_notes'));
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
 

@@ -32,15 +32,15 @@ describe('NoteMenu', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Renders a list item for every note', () => {
     const wrapper = shallowMount(NoteMenu);
 
-    assert.strictEqual(wrapper.findAll('li').length, localNotes.length);
+    assert.lengthOf(wrapper.findAll('li'), localNotes.length);
 
     n.noteState.notes.forEach((note) => {
       const noteItem = wrapper.find(getDataNoteId(note.id));
@@ -67,7 +67,7 @@ describe('NoteMenu', () => {
     await n.getAllNotes();
 
     const noteItems = wrapper.findAll('li');
-    assert.strictEqual(noteItems.length, 1);
+    assert.lengthOf(noteItems, 1);
 
     const firstChild = noteItems[0].get(':first-child');
     const lastChild = noteItems[0].get(':last-child');
@@ -92,7 +92,7 @@ describe('NoteMenu', () => {
 
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('new_note'));
   });
 
@@ -353,7 +353,7 @@ describe('NoteMenu', () => {
 
       await noteItem.trigger('click', { altKey: true });
 
-      assert.strictEqual(n.noteState.extraSelectedNotes.length, 6);
+      assert.lengthOf(n.noteState.extraSelectedNotes, 6);
 
       n.noteState.extraSelectedNotes.forEach((note, i) => {
         assert.strictEqual(note.id, n.noteState.notes[i + 1].id);

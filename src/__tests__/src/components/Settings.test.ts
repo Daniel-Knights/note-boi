@@ -32,9 +32,9 @@ describe('Settings', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Opens and closes drop menu', async () => {
@@ -104,7 +104,7 @@ describe('Settings', () => {
 
     expect(exportNotesSpy).toHaveBeenCalledOnce();
     expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes);
-    assert.strictEqual(calls.length, 2);
+    assert.lengthOf(calls, 2);
     assert.isTrue(calls.has('openDialog'));
     assert.isTrue(calls.has('export_notes'));
   });
@@ -140,24 +140,24 @@ describe('Settings', () => {
     const wrapper = await mountSettingsAndOpen();
     const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'update').exists());
-    assert.strictEqual(wrapperVm.menuItems.length, 3);
+    assert.lengthOf(wrapperVm.menuItems, 3);
 
     updateAvailable.value = { shouldUpdate: true };
     await nextTick();
 
     const updateWrapper = findByTestId(wrapper, 'update');
     assert.isTrue(updateWrapper.isVisible());
-    assert.strictEqual(wrapperVm.menuItems.length, 4);
+    assert.lengthOf(wrapperVm.menuItems, 4);
 
     const updateSpy = vi.spyOn(updateStore, 'updateAndRelaunch');
     await updateWrapper.trigger('click');
     await Promise.all(promises);
 
     expect(updateSpy).toHaveBeenCalledOnce();
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 1);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 1);
     assert.isTrue(events.emits.includes('tauri://update-install'));
-    assert.strictEqual(events.listeners.length, 1);
+    assert.lengthOf(events.listeners, 1);
     assert.isTrue(events.listeners.includes('tauri://update-status'));
   });
 
@@ -194,7 +194,7 @@ describe('Settings', () => {
       const wrapper = await mountSettingsAndOpen();
       const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-      assert.strictEqual(wrapperVm.menuItems.length, 3);
+      assert.lengthOf(wrapperVm.menuItems, 3);
 
       s.syncState.username = 'd';
       s.syncState.token = 'token';
@@ -202,7 +202,7 @@ describe('Settings', () => {
 
       const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
       assert.isTrue(deleteAccountWrapper.isVisible());
-      assert.strictEqual(wrapperVm.menuItems.length, 4);
+      assert.lengthOf(wrapperVm.menuItems, 4);
 
       const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
@@ -212,11 +212,11 @@ describe('Settings', () => {
       });
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('askDialog'));
       assert.isTrue(calls.has('/account/delete'));
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-      assert.strictEqual(wrapperVm.menuItems.length, 3);
+      assert.lengthOf(wrapperVm.menuItems, 3);
     });
   });
 });

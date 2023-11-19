@@ -24,10 +24,10 @@ describe('App', () => {
     assert.isTrue(wrapper.getComponent(UtilityMenu).isVisible());
     assert.isTrue(wrapper.getComponent(SyncStatus).isVisible());
     assert.isFalse(wrapper.findComponent(Loading).exists());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 1);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 1);
     assert.isTrue(events.emits.includes('logout'));
-    assert.strictEqual(events.listeners.length, 4);
+    assert.lengthOf(events.listeners, 4);
     assert.isTrue(events.listeners.includes('push-notes'));
     assert.isTrue(events.listeners.includes('login'));
     assert.isTrue(events.listeners.includes('logout'));

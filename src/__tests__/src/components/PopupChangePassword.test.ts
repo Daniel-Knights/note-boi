@@ -23,16 +23,16 @@ describe('PopupChangePassword', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.length, 0);
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(calls, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   it('Emits close', async () => {
     const wrapper = mountPopupChangePassword();
     await wrapper.getComponent(Popup).vm.$emit('close');
 
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
   it('Validates fields and submits', async () => {
@@ -133,8 +133,8 @@ describe('PopupChangePassword', () => {
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
     assert.isEmpty(s.syncState.error.message);
     assert.isEmpty(wrapperVm.confirmNewPassword);
-    assert.strictEqual(wrapper.emitted('close')?.length, 1);
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(wrapper.emitted('close')!, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('/account/password/change'));
   });
 });

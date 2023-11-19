@@ -19,7 +19,7 @@ describe('KeyStore', () => {
 
       const dbs = await window.indexedDB.databases();
 
-      assert.strictEqual(dbs.length, 1); // Should only close the db, not delete it
+      assert.lengthOf(dbs, 1); // Should only close the db, not delete it
 
       storedKey = await KeyStore.getKey();
 

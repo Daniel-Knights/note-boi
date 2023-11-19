@@ -27,7 +27,7 @@ describe('Note store', () => {
     const timestamp = Date.now();
 
     assert.strictEqual(typeof emptyNote.id, 'string');
-    assert.strictEqual(emptyNote.id.length, 36);
+    assert.lengthOf(emptyNote.id, 36);
     assert.isTrue(UUID_REGEX.test(emptyNote.id));
     // Math.floor to account for tiny discrepancies in Date.now
     assert.strictEqual(
@@ -53,14 +53,14 @@ describe('Note store', () => {
 
       expect(mockNewEventCb).toHaveBeenCalledOnce();
 
-      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('get_all_notes'));
       assert.isTrue(calls.has('new_note'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('with empty note array', async () => {
@@ -76,14 +76,14 @@ describe('Note store', () => {
 
       expect(mockNewEventCb).toHaveBeenCalledOnce();
 
-      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('get_all_notes'));
       assert.isTrue(calls.has('new_note'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('with notes', async () => {
@@ -93,13 +93,13 @@ describe('Note store', () => {
 
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
 
-      assert.strictEqual(n.noteState.notes.length, 10);
+      assert.lengthOf(n.noteState.notes, 10);
       assert.deepEqual(n.noteState.notes[0], localNotes.sort(n.sortNotesFn)[0]);
       assert.deepEqual(n.noteState.notes[0], n.noteState.selectedNote);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('get_all_notes'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
   });
 
@@ -198,10 +198,10 @@ describe('Note store', () => {
       assert.notDeepEqual(n.noteState.selectedNote, existingNote);
       assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
       assert.isUndefined(n.findNote(existingNote.id));
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('delete_note'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('Without selecting next note', async () => {
@@ -230,10 +230,10 @@ describe('Note store', () => {
       assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
       assert.notDeepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
       assert.isUndefined(n.findNote(otherExistingNote.id));
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('delete_note'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('With no notes', async () => {
@@ -247,7 +247,7 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.lengthOf(n.noteState.notes, 1);
       assert.deepEqual(n.noteState.selectedNote, existingNote);
 
       vi.clearAllMocks();
@@ -259,14 +259,14 @@ describe('Note store', () => {
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
       expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
 
-      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.isUndefined(n.findNote(existingNote.id));
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('delete_note'));
       assert.isTrue(calls.has('new_note'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('Resets unsynced new note', async () => {
@@ -299,10 +299,10 @@ describe('Note store', () => {
       expect(autoPushSpy).toHaveBeenCalledOnce();
 
       assert.isUndefined(n.findNote(otherExistingNote.id));
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('delete_note'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
   });
 
@@ -328,7 +328,7 @@ describe('Note store', () => {
     assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
     assert.isUndefined(n.findNote(currentSelectedNote.id));
     assert.isEmpty(n.noteState.extraSelectedNotes);
-    assert.strictEqual(calls.length, notesSlice.length + 1);
+    assert.lengthOf(calls, notesSlice.length + 1);
     assert.isTrue(calls.has('delete_note', notesSlice.length + 1));
   });
 
@@ -353,10 +353,10 @@ describe('Note store', () => {
       assert.notStrictEqual(n.noteState.selectedNote.id, emptyNote.id);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('new_note'));
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('Only updates timestamp when empty note selected', async () => {
@@ -386,9 +386,9 @@ describe('Note store', () => {
       assert.deepEqual(n.noteState.selectedNote.content, emptyNote.content);
       assert.notStrictEqual(n.noteState.selectedNote.timestamp, emptyNote.timestamp);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(calls.length, 0);
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(calls, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
   });
 
@@ -412,10 +412,10 @@ describe('Note store', () => {
       n.noteState.selectedNote.timestamp,
       currentSelectedNote.timestamp
     );
-    assert.strictEqual(calls.length, 1);
+    assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('edit_note'));
-    assert.strictEqual(events.emits.length, 0);
-    assert.strictEqual(events.listeners.length, 0);
+    assert.lengthOf(events.emits, 0);
+    assert.lengthOf(events.listeners, 0);
   });
 
   describe('exportNotes', () => {
@@ -428,7 +428,7 @@ describe('Note store', () => {
 
       await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('openDialog'));
       assert.isTrue(calls.has('export_notes'));
       assert.deepEqual(calls[0].calledWith, {
@@ -437,8 +437,8 @@ describe('Note store', () => {
         recursive: false,
         title: 'Choose a location',
       });
-      assert.strictEqual(events.emits.length, 0);
-      assert.strictEqual(events.listeners.length, 0);
+      assert.lengthOf(events.emits, 0);
+      assert.lengthOf(events.listeners, 0);
     });
 
     it('Returns when no location chosen', async () => {
@@ -456,7 +456,7 @@ describe('Note store', () => {
 
       await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
-      assert.strictEqual(calls.length, 1);
+      assert.lengthOf(calls, 1);
       assert.isTrue(calls.has('openDialog'));
     });
 
@@ -469,7 +469,7 @@ describe('Note store', () => {
 
       await n.exportNotes([n.noteState.notes[0].id]);
 
-      assert.strictEqual(calls.length, 2);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('openDialog'));
       assert.isTrue(calls.has('export_notes'));
     });
