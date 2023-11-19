@@ -46,7 +46,9 @@ export class KeyStore {
   static async reset(): Promise<void> {
     if (this.#db) {
       const deleteRequest = this.#db
-        .transaction([this.#storeName], 'readwrite')
+        .transaction([this.#storeName], 'readwrite', {
+          durability: 'strict',
+        })
         .objectStore(this.#storeName)
         .clear();
 
