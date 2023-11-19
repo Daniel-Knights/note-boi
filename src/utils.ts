@@ -35,16 +35,20 @@ export function isEmptyNote(note?: Note): boolean {
 }
 
 /** Calls {@link event.emit}, with stronger typing for `id`. */
-export function tauriEmit<T>(id: TauriEmit, payload?: T): void {
-  event.emit(id, payload);
+export function tauriEmit<T>(id: TauriEmit, payload?: T): Promise<void> {
+  return event.emit(id, { isFrontendEmit: true, data: payload });
 }
 
 /** Calls {@link event.listen}, with stronger typing for `id`. */
-export function tauriListen(
+export function tauriListen<T>(
   id: TauriListener,
-  cb: EventCallback<unknown>
+  cb: EventCallback<T>
 ): Promise<UnlistenFn> {
-  return event.listen(id, cb);
+  return event.listen<{ isFrontendEmit: boolean; data: T }>(id, (ev) => {
+    if (ev.payload.isFrontendEmit) return;
+
+    cb({ ...ev, payload: ev.payload.data });
+  });
 }
 
 /** Calls {@link invoke}, with stronger typing for `cmd`. */
