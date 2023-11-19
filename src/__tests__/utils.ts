@@ -53,6 +53,7 @@ export function findByTestId<T extends Element>(
 
 /** Simulates awaiting a sync operation. */
 export function awaitSyncLoad(callCount = 0): Promise<void> | void {
+  // A lower limit will work with tests in isolation, but not with all tests running concurrently
   if (callCount === 1000000) {
     assert.fail('`awaitSyncLoad` call limit exceeded');
   }
