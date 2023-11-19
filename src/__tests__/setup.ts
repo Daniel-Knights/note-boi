@@ -24,13 +24,14 @@ beforeAll(async () => {
 
   mockDb.encryptedNotes = await s.Encryptor.encryptNotes(localNotes, '1');
 
-  s.KeyStore.reset();
+  await s.KeyStore.reset();
 });
 
-afterEach(() => {
+afterEach(async () => {
   resetSyncStore();
   resetNoteStore();
-  s.KeyStore.reset();
+
+  await s.KeyStore.reset();
 
   mockDb.users = structuredClone(initialMockDb.users);
 

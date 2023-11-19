@@ -43,8 +43,17 @@ export class KeyStore {
     return this.#db;
   }
 
-  static reset(): void {
-    this.#db?.close();
+  static async reset(): Promise<void> {
+    if (this.#db) {
+      const deleteRequest = this.#db
+        .transaction([this.#storeName], 'readwrite')
+        .objectStore(this.#storeName)
+        .clear();
+
+      await promisifyRequest(deleteRequest);
+
+      this.#db.close();
+    }
 
     this.#db = undefined;
     this.#key = undefined;
@@ -81,6 +90,6 @@ export class KeyStore {
     const store = transaction.objectStore(this.#storeName);
     const request = store.get(this.#storeName);
 
-    return promisifyRequest(request);
+    return promisifyRequest<CryptoKey>(request);
   }
 }

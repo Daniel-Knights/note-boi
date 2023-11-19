@@ -124,7 +124,7 @@ export async function logout(): Promise<void> {
     tauriEmit('logout');
     clientSideLogout();
 
-    KeyStore.reset();
+    await KeyStore.reset();
   } else {
     syncState.error = {
       type: ErrorType.Logout,

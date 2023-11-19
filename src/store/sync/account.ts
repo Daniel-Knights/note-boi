@@ -88,7 +88,7 @@ export async function deleteAccount(): Promise<void> {
     tauriEmit('logout');
     syncState.unsyncedNoteIds.clear();
 
-    KeyStore.reset();
+    await KeyStore.reset();
   } else {
     syncState.error = {
       type: ErrorType.Auth,
