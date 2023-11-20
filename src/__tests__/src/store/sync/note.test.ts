@@ -55,8 +55,7 @@ describe('Sync', () => {
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 3);
-      assert.isTrue(calls.has('/notes/push'));
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('/notes/pull'));
       assert.isTrue(calls.has('sync_local_notes'));
       assert.lengthOf(events.emits, 0);
@@ -239,7 +238,10 @@ describe('Sync', () => {
 
       s.syncState.unsyncedNoteIds.add(unsynced);
 
-      assert.deepEqual(localStorageParse(STORAGE_KEYS.UNSYNCED), unsynced);
+      assert.deepEqual(
+        localStorageParse<s.StoredUnsyncedNoteIds>(STORAGE_KEYS.UNSYNCED),
+        unsynced
+      );
 
       clearMockApiResults({ calls, events });
 
@@ -298,11 +300,12 @@ describe('Sync', () => {
 
       await s.login();
 
+      n.editNote({}, 'title', 'body');
+
       clearMockApiResults({ calls, events });
 
       await s.push();
 
-      assert.deepEqual(n.noteState.notes, localNotes);
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
@@ -317,10 +320,11 @@ describe('Sync', () => {
   describe('unsyncedNoteIds', () => {
     it('new', async () => {
       function assertNotOverwritten() {
-        const storedId = localStorageParse(STORAGE_KEYS.UNSYNCED).new;
+        const storedId = localStorageParse<s.StoredUnsyncedNoteIds>(STORAGE_KEYS.UNSYNCED)
+          ?.new;
 
         assert.isNotEmpty(s.syncState.unsyncedNoteIds.new);
-        assert.match(storedId, UUID_REGEX);
+        assert.match(storedId || '', UUID_REGEX);
         assert.strictEqual(storedId, s.syncState.unsyncedNoteIds.new);
         assert.strictEqual(storedId, n.noteState.notes[0].id);
         assert.strictEqual(storedId, n.noteState.selectedNote.id);
@@ -360,23 +364,25 @@ describe('Sync', () => {
 
       assertNotOverwritten();
 
+      let storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
+
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.strictEqual(s.syncState.unsyncedNoteIds.new, n.noteState.selectedNote.id);
-      assert.strictEqual(
-        localStorageParse(STORAGE_KEYS.UNSYNCED).new,
-        n.noteState.selectedNote.id
-      );
+      assert.strictEqual(storedUnsyncedNoteIds?.new, n.noteState.selectedNote.id);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
 
       await s.logout();
 
+      storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
+
       assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
       assert.strictEqual(s.syncState.unsyncedNoteIds.new, n.noteState.selectedNote.id);
-      assert.strictEqual(
-        localStorageParse(STORAGE_KEYS.UNSYNCED).new,
-        n.noteState.selectedNote.id
-      );
+      assert.strictEqual(storedUnsyncedNoteIds?.new, n.noteState.selectedNote.id);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
 
@@ -405,14 +411,16 @@ describe('Sync', () => {
 
       n.selectNote(n.noteState.notes[1].id);
 
-      const storedIds = localStorageParse(STORAGE_KEYS.UNSYNCED);
+      storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
-      assert.isEmpty(storedIds.new);
-      assert.isEmpty(storedIds.edited);
+      assert.isEmpty(storedUnsyncedNoteIds?.new);
+      assert.isEmpty(storedUnsyncedNoteIds?.edited);
       assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
-      assert.isEmpty(storedIds.deleted);
+      assert.isEmpty(storedUnsyncedNoteIds?.deleted);
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
     });
@@ -438,11 +446,12 @@ describe('Sync', () => {
 
       n.editNote({}, 'title', 'body');
 
-      assert.isTrue(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
-      assert.strictEqual(
-        localStorageParse(STORAGE_KEYS.UNSYNCED).edited[0],
-        firstCachedNote.id
+      let storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
       );
+
+      assert.isTrue(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
+      assert.strictEqual(storedUnsyncedNoteIds?.edited[0], firstCachedNote.id);
 
       const statusWrapper = mount(SyncStatus);
 
@@ -467,13 +476,14 @@ describe('Sync', () => {
 
       n.editNote({}, 'title2', 'body2');
 
+      storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
+
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.isTrue(s.syncState.unsyncedNoteIds.edited.has(secondCachedNote.id));
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 1);
-      assert.strictEqual(
-        localStorageParse(STORAGE_KEYS.UNSYNCED).edited[0],
-        secondCachedNote.id
-      );
+      assert.strictEqual(storedUnsyncedNoteIds?.edited[0], secondCachedNote.id);
 
       await s.push();
 
@@ -492,12 +502,14 @@ describe('Sync', () => {
 
       await awaitSyncLoad();
 
-      const parsedIds = localStorageParse(STORAGE_KEYS.UNSYNCED);
+      storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
 
       assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(secondCachedNote.id));
-      assert.isEmpty(parsedIds.edited);
-      assert.strictEqual(parsedIds.deleted[0], secondCachedNote.id);
+      assert.isEmpty(storedUnsyncedNoteIds?.edited);
+      assert.strictEqual(storedUnsyncedNoteIds?.deleted[0], secondCachedNote.id);
     });
 
     it('deleted', async () => {
@@ -521,11 +533,12 @@ describe('Sync', () => {
 
       n.deleteNote(n.noteState.selectedNote.id);
 
-      assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
-      assert.strictEqual(
-        localStorageParse(STORAGE_KEYS.UNSYNCED).deleted[0],
-        firstCachedNote.id
+      let storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
       );
+
+      assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
+      assert.strictEqual(storedUnsyncedNoteIds?.deleted[0], firstCachedNote.id);
 
       const statusWrapper = mount(SyncStatus);
 
@@ -540,13 +553,14 @@ describe('Sync', () => {
 
       n.deleteNote(n.noteState.selectedNote.id);
 
+      storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
+
       assert.isFalse(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(secondCachedNote.id));
       assert.strictEqual(s.syncState.unsyncedNoteIds.deleted.size, 1);
-      assert.strictEqual(
-        localStorageParse(STORAGE_KEYS.UNSYNCED).deleted[0],
-        secondCachedNote.id
-      );
+      assert.strictEqual(storedUnsyncedNoteIds?.deleted[0], secondCachedNote.id);
 
       await s.push();
 
@@ -568,25 +582,27 @@ describe('Sync', () => {
 
       n.newNote(true);
 
+      let storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
+
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(
-        localStorageParse(STORAGE_KEYS.UNSYNCED).new,
-        n.noteState.selectedNote.id
-      );
+      assert.strictEqual(storedUnsyncedNoteIds?.new, n.noteState.selectedNote.id);
       assert.strictEqual(s.syncState.unsyncedNoteIds.new, n.noteState.selectedNote.id);
       assert.isEmpty(s.syncState.unsyncedNoteIds.edited);
       assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
 
       n.editNote({}, 'title', 'body');
 
+      storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
+
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-      assert.isEmpty(localStorageParse(STORAGE_KEYS.UNSYNCED).new);
-      assert.strictEqual(
-        localStorageParse(STORAGE_KEYS.UNSYNCED).edited[0],
-        n.noteState.selectedNote.id
-      );
+      assert.isEmpty(storedUnsyncedNoteIds?.new);
+      assert.strictEqual(storedUnsyncedNoteIds?.edited[0], n.noteState.selectedNote.id);
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.isTrue(s.syncState.unsyncedNoteIds.edited.has(n.noteState.selectedNote.id));
       assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
@@ -595,10 +611,14 @@ describe('Sync', () => {
 
       n.deleteNote(n.noteState.selectedNote.id);
 
+      storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
+        STORAGE_KEYS.UNSYNCED
+      );
+
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-      assert.isEmpty(localStorageParse(STORAGE_KEYS.UNSYNCED).edited);
-      assert.strictEqual(localStorageParse(STORAGE_KEYS.UNSYNCED).deleted[0], cachedId);
+      assert.isEmpty(storedUnsyncedNoteIds?.edited);
+      assert.strictEqual(storedUnsyncedNoteIds?.deleted[0], cachedId);
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.isEmpty(s.syncState.unsyncedNoteIds.edited);
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(cachedId));

@@ -5,7 +5,7 @@ import { reactive } from 'vue';
 import { Endpoint, EndpointPayloads, STORAGE_KEYS } from '../../constant';
 import { isDev } from '../../utils';
 
-import { UnsyncedNoteIds, unsyncedNoteIds } from './note';
+import { storedUnsyncedNoteIds, UnsyncedNoteIds } from './note';
 
 export enum ErrorType {
   None,
@@ -27,9 +27,9 @@ export const syncState = reactive({
     message: '',
   },
   unsyncedNoteIds: <UnsyncedNoteIds>{
-    new: unsyncedNoteIds.new || '',
-    edited: new Set<string>(unsyncedNoteIds.edited),
-    deleted: new Set<string>(unsyncedNoteIds.deleted),
+    new: storedUnsyncedNoteIds?.new || '',
+    edited: new Set<string>(storedUnsyncedNoteIds?.edited),
+    deleted: new Set<string>(storedUnsyncedNoteIds?.deleted),
     get size() {
       return this.edited.size + this.deleted.size;
     },
@@ -124,7 +124,7 @@ export function catchHang(err: unknown, type: ErrorType): void {
   };
 }
 
-export type { UnsyncedNoteIds } from './note';
+export type { UnsyncedNoteIds, StoredUnsyncedNoteIds } from './note';
 export { autoPush, push, pull, syncNotes } from './note';
 export { clientSideLogout, login, signup, logout } from './auth';
 export { changePassword, deleteAccount } from './account';

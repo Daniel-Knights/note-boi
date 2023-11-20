@@ -31,7 +31,14 @@ export type UnsyncedNoteIds = {
   add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
 };
 
-export const unsyncedNoteIds: Partial<UnsyncedNoteIds> = localStorageParse(
+export type StoredUnsyncedNoteIds = {
+  new: string;
+  // The original Set objects are stringified as arrays for storage
+  edited: string[];
+  deleted: string[];
+};
+
+export const storedUnsyncedNoteIds: StoredUnsyncedNoteIds | null = localStorageParse(
   STORAGE_KEYS.UNSYNCED
 );
 
@@ -130,7 +137,7 @@ export async function pull(): Promise<void> {
 // Push
 export async function push(isSyncCleanup?: boolean): Promise<void> {
   if (!syncState.token || (syncState.isLoading && !isSyncCleanup)) return;
-  if (unsyncedNoteIds.size === 0) return;
+  if (syncState.unsyncedNoteIds.size === 0) return;
   if (noteState.notes.length === 1 && isEmptyNote(noteState.notes[0])) return;
 
   syncState.isLoading = true;

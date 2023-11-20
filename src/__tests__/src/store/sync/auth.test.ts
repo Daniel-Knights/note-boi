@@ -34,9 +34,8 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 3);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('/login'));
-      assert.isTrue(calls.has('/notes/push'));
       assert.isTrue(calls.has('sync_local_notes'));
       assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('login'));
@@ -73,9 +72,8 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 3);
+      assert.lengthOf(calls, 2);
       assert.isTrue(calls.has('/login'));
-      assert.isTrue(calls.has('/notes/push'));
       assert.isTrue(calls.has('sync_local_notes'));
       assert.lengthOf(events.emits, 1);
       assert.isTrue(events.emits.includes('login'));
