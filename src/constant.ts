@@ -116,7 +116,6 @@ export const TAURI_LISTENERS = [
   'delete-note',
   'export-note',
   'export-all-notes',
-  'push-notes',
   'login',
   'logout',
   'signup',

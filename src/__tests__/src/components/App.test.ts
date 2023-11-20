@@ -27,8 +27,7 @@ describe('App', () => {
     assert.lengthOf(calls, 0);
     assert.lengthOf(events.emits, 1);
     assert.isTrue(events.emits.includes('logout'));
-    assert.lengthOf(events.listeners, 4);
-    assert.isTrue(events.listeners.includes('push-notes'));
+    assert.lengthOf(events.listeners, 3);
     assert.isTrue(events.listeners.includes('login'));
     assert.isTrue(events.listeners.includes('logout'));
     assert.isTrue(events.listeners.includes('signup'));

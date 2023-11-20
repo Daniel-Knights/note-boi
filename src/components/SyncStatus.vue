@@ -27,7 +27,7 @@
     <!-- Sync ready -->
     <button
       v-else
-      @click="pushNotes"
+      @click="handlePopupAuthEvent"
       class="sync-status__sync-button button"
       title="Sync changes"
       data-test-id="sync-button"
@@ -43,7 +43,7 @@
 import { computed } from 'vue';
 
 import { openedPopup, PopupType } from '../store/popup';
-import { ErrorType, logout, pull, push, resetError, syncState } from '../store/sync';
+import { ErrorType, logout, pull, resetError, syncState } from '../store/sync';
 import { tauriEmit, tauriListen } from '../utils';
 
 import PopupSyncAuth from './PopupSyncAuth.vue';
@@ -85,15 +85,6 @@ function closeSyncPopup(reset?: boolean) {
   }
 }
 
-async function pushNotes() {
-  if (!syncState.token) {
-    handlePopupAuthEvent();
-  } else {
-    await push();
-  }
-}
-
-tauriListen('push-notes', pushNotes);
 tauriListen('login', () => {
   syncState.isLogin = true;
   handlePopupAuthEvent();

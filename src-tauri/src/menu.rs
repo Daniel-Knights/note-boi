@@ -30,7 +30,6 @@ pub fn get_menu() -> Menu {
   let sync_menu = Menu::new()
     .add_item(CustomMenuItem::new("login", "Login"))
     .add_item(CustomMenuItem::new("signup", "Signup"))
-    .add_item(CustomMenuItem::new("push-notes", "Push Notes"))
     .add_item(CustomMenuItem::new("change-password", "Change Password"))
     .add_item(CustomMenuItem::new("delete-account", "Delete Account"))
     .add_item(CustomMenuItem::new("logout", "Logout"));
@@ -58,7 +57,7 @@ pub fn set_menu(builder: Builder<Wry>) -> Builder<Wry> {
 pub fn toggle_sync_items(app: &mut App<Wry>) {
   let menu_handle = app.get_window("main").unwrap().menu_handle();
 
-  let logged_in_items = vec!["push-notes", "change-password", "delete-account", "logout"];
+  let logged_in_items = vec!["change-password", "delete-account", "logout"];
   let logged_out_items = vec!["login", "signup"];
 
   let toggle_fn = move |b: bool| {

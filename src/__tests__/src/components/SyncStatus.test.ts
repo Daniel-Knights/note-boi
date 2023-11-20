@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
 import { openedPopup, PopupType } from '../../../store/popup';
-import { clearMockApiResults, mockApi, mockDb } from '../../api';
+import { mockApi } from '../../api';
 import { awaitSyncLoad, findByTestId, getByTestId } from '../../utils';
 
 import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
@@ -34,8 +34,7 @@ describe('SyncStatus', () => {
     assert.lengthOf(calls, 0);
     assert.lengthOf(events.emits, 1);
     assert.isTrue(events.emits.includes('logout'));
-    assert.lengthOf(events.listeners, 4);
-    assert.isTrue(events.listeners.includes('push-notes'));
+    assert.lengthOf(events.listeners, 3);
     assert.isTrue(events.listeners.includes('login'));
     assert.isTrue(events.listeners.includes('logout'));
     assert.isTrue(events.listeners.includes('signup'));
@@ -83,53 +82,6 @@ describe('SyncStatus', () => {
     assert.isTrue(calls.has('/notes/pull'));
     assert.isTrue(calls.has('new_note'));
     assert.isTrue(calls.has('sync_local_notes'));
-  });
-
-  it('Pushes on click', async () => {
-    const { calls, promises } = mockApi({
-      request: {
-        resValue: {
-          '/notes/pull': [{ notes: mockDb.encryptedNotes }],
-        },
-      },
-    });
-    const pushSpy = vi.spyOn(s, 'push');
-
-    const wrapper = mountWithPopup();
-
-    assert.isTrue(wrapper.isVisible());
-
-    await awaitSyncLoad();
-
-    const syncButton = getByTestId(wrapper, 'sync-button');
-    await syncButton.trigger('click');
-
-    assert.strictEqual(openedPopup.value, PopupType.Auth);
-
-    clearMockApiResults({ calls, promises });
-
-    s.syncState.username = 'd';
-    s.syncState.token = 'token';
-
-    await syncButton.trigger('click');
-
-    expect(pushSpy).toHaveBeenCalledOnce();
-
-    assert.lengthOf(calls, 0);
-    assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
-    assert.isFalse(findByTestId(wrapper, 'error').exists());
-    assert.isFalse(findByTestId(wrapper, 'success').exists());
-    assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
-
-    await awaitSyncLoad();
-    await Promise.all(promises);
-
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('/notes/push'));
-    assert.isFalse(findByTestId(wrapper, 'loading').exists());
-    assert.isFalse(findByTestId(wrapper, 'error').exists());
-    assert.isTrue(getByTestId(wrapper, 'success').isVisible());
-    assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
   });
 
   it.each(['Logout', 'Pull', 'Push'] as const)(
