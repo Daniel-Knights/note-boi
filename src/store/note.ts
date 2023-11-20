@@ -187,12 +187,13 @@ export function newNote(isButtonClick?: boolean): void {
   tauriInvoke('new_note', { note: { ...freshNote } }).catch(console.error);
 }
 
-/** Edits note body on Quill `text-change`. */
+/** Edits currently selected note on Quill `text-change`. */
 export function editNote(delta: Partial<Delta>, title: string, body: string): void {
   const foundNote = findNote(noteState.selectedNote.id);
   if (!foundNote || delta === foundNote.content.delta) return;
 
   const timestamp = Date.now();
+
   foundNote.timestamp = timestamp;
   noteState.selectedNote.timestamp = timestamp;
 
