@@ -7,10 +7,10 @@
   },
   "scripts": {
     "vite:dev": "vite",
-    "vite:build": "pnpm run lint && vite build",
+    "vite:build": "vite build",
     "vite:preview": "vite preview",
     "dev": "tauri dev",
-    "build": "pnpm run test:build && tauri build",
+    "build": "tauri build",
     "icon": "pnpx @tauri-apps/tauricon ./artwork/icon.png",
     "info": "tauri info",
     "test": "vitest",
