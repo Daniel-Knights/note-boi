@@ -97,7 +97,7 @@ class Calls extends Array<Call> {
   }
 
   clear(): void {
-    super.splice(0, super.length);
+    super.splice(0, this.length);
   }
 }
 
@@ -586,6 +586,7 @@ export function mockApi(options?: {
     listeners: new Calls(),
     size: 0,
   } satisfies ApiCalls;
+
   const promises: Promise<unknown>[] = [];
 
   function parseCallResult(callType: Exclude<keyof ApiCalls, 'size'>, call: Call) {
