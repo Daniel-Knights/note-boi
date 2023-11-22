@@ -11,6 +11,7 @@ import {
   TauriCommand,
 } from '../constant';
 import { EncryptedNote } from '../store/sync/encryptor';
+import { hasKeys } from '../utils';
 
 import localNotes from './notes.json';
 import { copyObjArr, isEncryptedNote, isNote } from './utils';
@@ -172,12 +173,7 @@ function mockRequest(
 
   switch (endpoint) {
     case '/signup':
-      if (
-        !reqPayload ||
-        !('notes' in reqPayload) ||
-        !('username' in reqPayload) ||
-        !('password' in reqPayload)
-      ) {
+      if (!hasKeys(reqPayload, ['notes', 'username', 'password'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -198,7 +194,7 @@ function mockRequest(
 
       break;
     case '/login':
-      if (!reqPayload || !('username' in reqPayload) || !('password' in reqPayload)) {
+      if (!hasKeys(reqPayload, ['username', 'password'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -222,7 +218,7 @@ function mockRequest(
 
       break;
     case '/logout':
-      if (!reqPayload || !('username' in reqPayload) || !('token' in reqPayload)) {
+      if (!hasKeys(reqPayload, ['username', 'token'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -241,7 +237,7 @@ function mockRequest(
       break;
     case '/notes/pull':
       // Pull
-      if (!reqPayload || !('username' in reqPayload) || !('token' in reqPayload)) {
+      if (!hasKeys(reqPayload, ['username', 'token'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -263,12 +259,7 @@ function mockRequest(
       }
       break;
     case '/notes/push':
-      if (
-        !reqPayload ||
-        !('notes' in reqPayload) ||
-        !('username' in reqPayload) ||
-        !('token' in reqPayload)
-      ) {
+      if (!hasKeys(reqPayload, ['username', 'token', 'notes'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -291,11 +282,7 @@ function mockRequest(
       break;
     case '/account/password/change':
       if (
-        !reqPayload ||
-        !('username' in reqPayload) ||
-        !('token' in reqPayload) ||
-        !('current_password' in reqPayload) ||
-        !('new_password' in reqPayload)
+        !hasKeys(reqPayload, ['username', 'token', 'current_password', 'new_password'])
       ) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
@@ -322,7 +309,7 @@ function mockRequest(
 
       break;
     case '/account/delete':
-      if (!reqPayload || !('username' in reqPayload) || !('token' in reqPayload)) {
+      if (!hasKeys(reqPayload, ['username', 'token'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -389,7 +376,7 @@ function mockTauriInvoke(
       break;
     }
     case 'new_note':
-      if (!('note' in args)) {
+      if (!hasKeys(args, ['note'])) {
         throw new Error('Missing note');
       } else if (!isNote(args.note)) {
         throw new Error('Invalid note');
@@ -397,7 +384,7 @@ function mockTauriInvoke(
 
       break;
     case 'edit_note':
-      if (!('note' in args)) {
+      if (!hasKeys(args, ['note'])) {
         throw new Error('Missing note');
       } else if (!isNote(args.note)) {
         throw new Error('Invalid note');
@@ -405,7 +392,7 @@ function mockTauriInvoke(
 
       break;
     case 'delete_note':
-      if (!('id' in args)) {
+      if (!hasKeys(args, ['id'])) {
         throw new Error('Missing id');
       } else if (typeof args.id !== 'string') {
         throw new Error('Invalid id');
@@ -413,7 +400,7 @@ function mockTauriInvoke(
 
       break;
     case 'sync_local_notes':
-      if (!('notes' in args)) {
+      if (!hasKeys(args, ['notes'])) {
         throw new Error('Missing notes');
       } else if (!Array.isArray(args.notes) || args.notes.some((nt) => !isNote(nt))) {
         throw new Error('Invalid notes');
@@ -421,7 +408,7 @@ function mockTauriInvoke(
 
       break;
     case 'export_notes':
-      if (!('saveDir' in args) || !('notes' in args)) {
+      if (!hasKeys(args, ['saveDir', 'notes'])) {
         throw new Error('Missing saveDir or notes');
       } else if (
         typeof args.saveDir !== 'string' ||

@@ -36,6 +36,16 @@ export function isEmptyNote(note?: Note): boolean {
   return isWhitespaceOnly(note.content.title) && isWhitespaceOnly(note.content.body);
 }
 
+/** Checks if the given object has all the specified keys. */
+export function hasKeys<T extends string>(
+  obj: object | undefined,
+  keys: T[]
+): obj is { [key in T]: unknown } {
+  if (!obj) return false;
+
+  return keys.every((key) => key in obj);
+}
+
 /** Calls {@link event.emit}, with stronger typing for `id`. */
 export function tauriEmit<T>(id: TauriEmit, payload?: T): Promise<void> {
   return event.emit(id, { isFrontendEmit: true, data: payload });
@@ -53,7 +63,7 @@ export function tauriListen<T>(
   });
 }
 
-/** Calls {@link invoke}, with stronger typing for `cmd`. */
+/** Calls {@link invoke}, but with stronger typing. */
 export function tauriInvoke<T extends TauriCommand>(
   cmd: T,
   args?: TauriCommandPayloads[T]['payload']

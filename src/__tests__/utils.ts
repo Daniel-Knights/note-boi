@@ -4,6 +4,7 @@ import * as n from '../store/note';
 import * as s from '../store/sync';
 import { STORAGE_KEYS } from '../constant';
 import { EncryptedNote } from '../store/sync/encryptor';
+import { hasKeys } from '../utils';
 
 export const UUID_REGEX =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
@@ -78,19 +79,13 @@ export function isNote(note: unknown): note is n.Note {
   const nt = note as n.Note;
 
   return (
-    !!nt &&
-    typeof nt === 'object' &&
-    'id' in nt &&
+    hasKeys(nt, ['id', 'timestamp', 'content']) &&
     typeof nt.id === 'string' &&
-    'timestamp' in nt &&
     typeof nt.timestamp === 'number' &&
-    'content' in nt &&
     typeof nt.content === 'object' &&
-    'delta' in nt.content &&
+    hasKeys(nt.content, ['delta', 'title', 'body']) &&
     typeof nt.content.delta === 'object' &&
-    'title' in nt.content &&
     typeof nt.content.title === 'string' &&
-    'body' in nt.content &&
     typeof nt.content.body === 'string'
   );
 }
