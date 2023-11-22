@@ -27,7 +27,6 @@ function tryAgain() {
     case ErrorType.Logout:
       logout();
       break;
-    // no default
   }
 
   resetError();

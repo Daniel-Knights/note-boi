@@ -341,7 +341,6 @@ function mockRequest(
         delete mockDb.users[reqPayload.username];
         httpStatus = 204;
       }
-    // no default
   }
 
   return {
@@ -433,7 +432,6 @@ function mockTauriInvoke(
       }
 
       break;
-    // no default
   }
 
   return {
@@ -494,7 +492,6 @@ function mockTauriApi(
         title: msg.options.title,
       };
     }
-    // no default
   }
 
   return {

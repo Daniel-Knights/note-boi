@@ -59,5 +59,6 @@ module.exports = {
     'arrow-body-style': 'off',
     'no-param-reassign': ['error', { props: false }],
     'max-classes-per-file': 'off',
+    'default-case': 'off',
   },
 };
