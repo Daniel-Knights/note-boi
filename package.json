@@ -15,7 +15,7 @@
     "info": "tauri info",
     "test": "vitest",
     "test:build": "vitest run",
-    "lint": "eslint ./**/*.{ts,js,mjs,vue} --no-error-on-unmatched-pattern && vue-tsc --noEmit",
+    "lint": "eslint ./**/*.{ts,js,mjs,vue} --no-error-on-unmatched-pattern && vue-tsc --noEmit && tsc --noEmit",
     "checks": "pnpm run lint && pnpm run test:build",
     "format": "prettier --write ./src",
     "update": "node ./scripts/updater.mjs",
