@@ -418,8 +418,6 @@ function mockTauriInvoke(
         throw new Error('Invalid note');
       }
 
-      n.noteState.selectedNote = args.note as n.Note;
-
       break;
     case 'delete_note':
       if (!('id' in args)) {

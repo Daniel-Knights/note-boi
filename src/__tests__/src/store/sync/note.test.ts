@@ -403,7 +403,8 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
-      assert.isFalse(isEmptyNote(n.noteState.selectedNote));
+      // See editNote for why we expect selectedNote to be empty
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
 
       await newButton.trigger('click');
 
@@ -464,7 +465,8 @@ describe('Sync', () => {
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.strictEqual(n.noteState.selectedNote.id, firstCachedNote.id);
-      assert.deepEqual(n.noteState.selectedNote.content, {
+      // See editNote for why we don't use selectedNote here
+      assert.deepEqual(n.findNote(n.noteState.selectedNote.id)!.content, {
         delta: {},
         title: 'title',
         body: 'body',
@@ -492,7 +494,8 @@ describe('Sync', () => {
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(secondCachedNote.id));
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.strictEqual(n.noteState.selectedNote.id, secondCachedNote.id);
-      assert.deepEqual(n.noteState.selectedNote.content, {
+      // See editNote for why we don't use selectedNote here
+      assert.deepEqual(n.findNote(n.noteState.selectedNote.id)!.content, {
         delta: {},
         title: 'title2',
         body: 'body2',
@@ -600,7 +603,8 @@ describe('Sync', () => {
       );
 
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
-      assert.isFalse(isEmptyNote(n.noteState.selectedNote));
+      // See editNote for why selectedNote should be empty
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.isEmpty(storedUnsyncedNoteIds?.new);
       assert.strictEqual(storedUnsyncedNoteIds?.edited[0], n.noteState.selectedNote.id);
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);

@@ -398,6 +398,7 @@ describe('Note store', () => {
     await n.getAllNotes();
 
     const currentSelectedNote = { ...n.noteState.selectedNote };
+    const noteToEdit = { ...n.findNote(n.noteState.selectedNote.id) };
 
     vi.clearAllMocks();
     clearMockApiResults({ calls, events });
@@ -406,12 +407,18 @@ describe('Note store', () => {
 
     expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
 
+    const editedNote = n.findNote(noteToEdit.id)!;
+
     assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
-    assert.notDeepEqual(n.noteState.selectedNote.content, currentSelectedNote.content);
+    assert.notDeepEqual(editedNote, noteToEdit);
+    // See editNote for why selectedNote content should remain the same
+    assert.deepEqual(n.noteState.selectedNote.content, currentSelectedNote.content);
+    assert.notDeepEqual(editedNote.content, noteToEdit.content);
     assert.notStrictEqual(
       n.noteState.selectedNote.timestamp,
       currentSelectedNote.timestamp
     );
+    assert.notStrictEqual(editedNote.timestamp, noteToEdit.timestamp);
     assert.lengthOf(calls, 1);
     assert.isTrue(calls.has('edit_note'));
     assert.lengthOf(events.emits, 0);
