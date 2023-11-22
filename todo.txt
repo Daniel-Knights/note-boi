@@ -1,6 +1,5 @@
 *Before release*
 README
-Tests: Tauri invoke objects have all fields (delta)
 
 *Whenever*
 Choose sync method 
@@ -14,3 +13,5 @@ Prevent opening context menu off bottom of screen
 Custom colour themes
 Tab key functionality
 Auto detect links (enable/disable?)
+WebSockets?
+Tests for Tauri event listener callbacks (if possible)
