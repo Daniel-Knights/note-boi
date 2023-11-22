@@ -93,16 +93,14 @@ describe('main', () => {
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('askDialog'));
 
-      if (!calls[0].calledWith || !('message' in calls[0].calledWith)) {
-        assert.fail();
-      }
+      const askDialogCalledWith = calls.tauriApi[0].calledWith as Record<string, unknown>;
 
       assert.strictEqual(
-        calls.tauriApi[0].calledWith.message,
+        askDialogCalledWith.message,
         'ERROR: Failed to push unsynced notes.\nClose anyway?'
       );
-      assert.strictEqual(calls.tauriApi[0].calledWith.title, 'NoteBoi');
-      assert.strictEqual(calls.tauriApi[0].calledWith.type, 'error');
+      assert.strictEqual(askDialogCalledWith.title, 'NoteBoi');
+      assert.strictEqual(askDialogCalledWith.type, 'error');
       assert.strictEqual(openedPopup.value, PopupType.Error);
     });
 
@@ -127,16 +125,14 @@ describe('main', () => {
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('askDialog'));
 
-      if (!calls[0].calledWith || !('message' in calls[0].calledWith)) {
-        assert.fail();
-      }
+      const askDialogCalledWith = calls.tauriApi[0].calledWith as Record<string, unknown>;
 
       assert.strictEqual(
-        calls.tauriApi[0].calledWith.message,
+        askDialogCalledWith.message,
         'ERROR: Failed to push unsynced notes.\nClose anyway?'
       );
-      assert.strictEqual(calls.tauriApi[0].calledWith.title, 'NoteBoi');
-      assert.strictEqual(calls.tauriApi[0].calledWith.type, 'error');
+      assert.strictEqual(askDialogCalledWith.title, 'NoteBoi');
+      assert.strictEqual(askDialogCalledWith.type, 'error');
       assert.isUndefined(openedPopup.value);
     });
   });
