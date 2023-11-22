@@ -95,7 +95,7 @@ describe('ContextMenu', () => {
       await n.getAllNotes();
 
       const div = document.createElement('div');
-      div.dataset.noteId = n.noteState.notes[0].id;
+      div.dataset.noteId = n.noteState.notes[0]!.id;
 
       const wrapper = await mountContextMenu(div);
       const button = getByTestId<HTMLButtonElement>(wrapper, buttonType.toLowerCase());
@@ -112,7 +112,7 @@ describe('ContextMenu', () => {
 
     await n.getAllNotes();
 
-    const noteToExport = { ...localNotes[0] };
+    const noteToExport = { ...localNotes[0]! };
     const div = document.createElement('div');
     div.dataset.noteId = noteToExport.id;
 

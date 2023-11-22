@@ -67,11 +67,11 @@ describe('NoteMenu', () => {
     const noteItems = wrapper.findAll('li');
     assert.lengthOf(noteItems, 1);
 
-    const firstChild = noteItems[0].get(':first-child');
-    const lastChild = noteItems[0].get(':last-child');
-    const noteItemClassName = noteItems[0].classes().join(' ');
+    const firstChild = noteItems[0]!.get(':first-child');
+    const lastChild = noteItems[0]!.get(':last-child');
+    const noteItemClassName = noteItems[0]!.classes().join(' ');
 
-    assert.isTrue(noteItems[0].isVisible());
+    assert.isTrue(noteItems[0]!.isVisible());
     assert.isEmpty(firstChild.text());
     assert.isEmpty(lastChild.text());
     assert.isTrue(noteItemClassName.includes('--selected'));
@@ -97,7 +97,7 @@ describe('NoteMenu', () => {
   it('Selects a clicked note', async () => {
     const wrapper = shallowMount(NoteMenu);
 
-    const noteToSelect = localNotes[2];
+    const noteToSelect = localNotes[2]!;
     const noteItem = wrapper.get(getDataNoteId(noteToSelect.id));
 
     assert.isTrue(noteItem.isVisible());
@@ -119,12 +119,12 @@ describe('NoteMenu', () => {
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
     keyNav('Down');
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[1]);
-    n.selectNote(n.noteState.notes[6].id);
+    n.selectNote(n.noteState.notes[6]!.id);
     keyNav('Down');
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[7]);
     keyNav('Up');
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[6]);
-    n.selectNote(n.noteState.notes[6].id);
+    n.selectNote(n.noteState.notes[6]!.id);
     keyNav('Up');
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[5]);
 
@@ -242,7 +242,7 @@ describe('NoteMenu', () => {
     /** Triggers clicks of already selected items with cmd/ctrl key. */
     async function testMetaKeyDeselects(wrapper: VueWrapper) {
       const currentSelectedNote = n.noteState.selectedNote;
-      const nextSelectedNote = n.noteState.extraSelectedNotes[0];
+      const nextSelectedNote = n.noteState.extraSelectedNotes[0]!;
       const selectedNoteItem = wrapper.get(getDataNoteId(currentSelectedNote.id));
       await selectedNoteItem.trigger('click', { metaKey: true });
 
@@ -269,11 +269,11 @@ describe('NoteMenu', () => {
     /** Triggers clicks with cmd/ctrl and alt keys. */
     function testMetaAltKeySelects(wrapper: VueWrapper) {
       const indexesToSelect = [2, 4, 7];
-      const lowestIndex = indexesToSelect[0];
-      const highestIndex = indexesToSelect[indexesToSelect.length - 1];
+      const lowestIndex = indexesToSelect[0]!;
+      const highestIndex = indexesToSelect[indexesToSelect.length - 1]!;
       const expectedLength = highestIndex - lowestIndex + 1;
 
-      let notesToSelect = indexesToSelect.map((i) => n.noteState.notes[i]);
+      let notesToSelect = indexesToSelect.map((i) => n.noteState.notes[i]!);
       let noteItemIndex = lowestIndex;
       let expectedNoteOrder = [...notesToSelect];
 
@@ -281,7 +281,7 @@ describe('NoteMenu', () => {
 
       function pushNoteOrder(i: number) {
         if (indexesToSelect.includes(i)) return;
-        expectedNoteOrder.push(n.noteState.notes[i]);
+        expectedNoteOrder.push(n.noteState.notes[i]!);
       }
 
       /** Sets data for checking from lowest index to highest. */
@@ -308,7 +308,7 @@ describe('NoteMenu', () => {
         await testMetaKeySelects(wrapper, notesToSelect);
 
         // Select with alt
-        const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[noteItemIndex].id));
+        const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[noteItemIndex]!.id));
         await noteItem.trigger('click', { altKey: true });
 
         if (n.noteState.extraSelectedNotes.length !== expectedLength) {
@@ -317,7 +317,7 @@ describe('NoteMenu', () => {
 
         // Ensure correct order
         const isCorrectOrder = n.noteState.extraSelectedNotes.every(
-          (note, i) => note.id === expectedNoteOrder[i].id
+          (note, i) => note.id === expectedNoteOrder[i]!.id
         );
 
         if (!isCorrectOrder) assert.fail();
@@ -339,7 +339,7 @@ describe('NoteMenu', () => {
 
     it('With cmd/ctrl', async () => {
       const wrapper = shallowMount(NoteMenu);
-      const notesToSelect = [localNotes[2], localNotes[4], localNotes[7]];
+      const notesToSelect = [localNotes[2]!, localNotes[4]!, localNotes[7]!];
 
       await testMetaKeySelects(wrapper, notesToSelect);
       await testMetaKeyDeselects(wrapper);
@@ -347,14 +347,14 @@ describe('NoteMenu', () => {
 
     it('With alt', async () => {
       const wrapper = shallowMount(NoteMenu);
-      const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[6].id));
+      const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[6]!.id));
 
       await noteItem.trigger('click', { altKey: true });
 
       assert.lengthOf(n.noteState.extraSelectedNotes, 6);
 
       n.noteState.extraSelectedNotes.forEach((note, i) => {
-        assert.strictEqual(note.id, n.noteState.notes[i + 1].id);
+        assert.strictEqual(note.id, n.noteState.notes[i + 1]!.id);
       });
 
       await testMetaKeyDeselects(wrapper);

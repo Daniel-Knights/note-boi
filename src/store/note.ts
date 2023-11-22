@@ -111,14 +111,14 @@ export async function getAllNotes(): Promise<void> {
   sortStateNotes();
 
   if (fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0])) {
-    noteState.notes[0].timestamp = Date.now();
+    noteState.notes[0]!.timestamp = Date.now();
     // Clear these fields as whitespace-only can affect empty note checks
-    noteState.notes[0].content.delta = {};
-    noteState.notes[0].content.title = '';
-    noteState.notes[0].content.body = '';
+    noteState.notes[0]!.content.delta = {};
+    noteState.notes[0]!.content.title = '';
+    noteState.notes[0]!.content.body = '';
   }
 
-  noteState.selectedNote = { ...noteState.notes[0] };
+  noteState.selectedNote = { ...noteState.notes[0]! };
 
   clearEmptyNote();
 
@@ -132,7 +132,7 @@ export function deleteNote(id: string): void {
   if (noteState.notes.length === 0) {
     newNote();
   } else if (noteState.selectedNote.id === id) {
-    noteState.selectedNote = { ...noteState.notes[0] };
+    noteState.selectedNote = { ...noteState.notes[0]! };
 
     document.dispatchEvent(selectNoteEvent);
     document.dispatchEvent(changeNoteEvent);
@@ -194,7 +194,7 @@ export function newNote(isButtonClick?: boolean): void {
  * `noteState.selectedNote`, as `noteState.selectedNote` is what's reflected in the
  * editor. The timestamp, however, should be updated for both.
  */
-export function editNote(delta: Partial<Delta>, title: string, body: string): void {
+export function editNote(delta: Partial<Delta>, title: string, body?: string): void {
   const foundNote = findNote(noteState.selectedNote.id);
   if (!foundNote || delta === foundNote.content.delta) return;
 

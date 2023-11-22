@@ -96,7 +96,7 @@ describe('Update', () => {
 
     assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.tauriApi.has('askDialog'));
-    assert.deepEqual(calls.tauriApi[0].calledWith, {
+    assert.deepEqual(calls.tauriApi[0]!.calledWith, {
       message: 'A new version of NoteBoi is available.\nDo you want to update now?',
       title: 'Update available: v1.0.0',
       type: undefined,
@@ -119,7 +119,7 @@ describe('Update', () => {
 
     assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.tauriApi.has('askDialog'));
-    assert.deepEqual(calls.tauriApi[0].calledWith, {
+    assert.deepEqual(calls.tauriApi[0]!.calledWith, {
       message: 'Try again?',
       title: 'Unable to install update',
       type: 'error',

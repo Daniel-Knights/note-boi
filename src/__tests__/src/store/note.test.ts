@@ -7,7 +7,7 @@ import localNotes from '../../notes.json';
 import { UUID_REGEX } from '../../utils';
 
 const existingNoteIndexSorted = 2;
-const existingNote = localNotes[8];
+const existingNote = localNotes[8]!;
 
 const mockChangeEventCb = vi.fn();
 const mockNewEventCb = vi.fn();
@@ -141,8 +141,8 @@ describe('Note store', () => {
 
     // Ensure clearNote works
     n.noteState.notes.push(new n.Note());
-    n.selectNote(n.noteState.notes[10].id);
-    n.selectNote(n.noteState.notes[9].id);
+    n.selectNote(n.noteState.notes[10]!.id);
+    n.selectNote(n.noteState.notes[9]!.id);
 
     // 3 = 2 (selectNote) + 1 (clearNote)
     expect(mockSelectEventCb).toHaveBeenCalledTimes(3);
@@ -198,13 +198,13 @@ describe('Note store', () => {
 
     it('Without selecting next note', async () => {
       const { calls, promises } = mockApi();
-      const otherExistingNote = { ...localNotes[1] };
+      const otherExistingNote = { ...localNotes[1]! };
 
       s.syncState.token = 'token';
 
       await n.getAllNotes();
 
-      n.selectNote(n.noteState.notes[2].id);
+      n.selectNote(n.noteState.notes[2]!.id);
 
       assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
 
@@ -271,7 +271,7 @@ describe('Note store', () => {
 
     it('Calls autoPush', async () => {
       const { calls, promises } = mockApi();
-      const otherExistingNote = { ...localNotes[1] };
+      const otherExistingNote = { ...localNotes[1]! };
       const autoPushSpy = vi.spyOn(s, 'autoPush');
 
       await n.getAllNotes();
@@ -418,7 +418,7 @@ describe('Note store', () => {
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('openDialog'));
       assert.isTrue(calls.invoke.has('export_notes'));
-      assert.deepEqual(calls.tauriApi[0].calledWith, {
+      assert.deepEqual(calls.tauriApi[0]!.calledWith, {
         directory: true,
         multiple: false,
         recursive: false,
@@ -452,7 +452,7 @@ describe('Note store', () => {
 
       clearMockApiResults({ calls });
 
-      await n.exportNotes([n.noteState.notes[0].id]);
+      await n.exportNotes([n.noteState.notes[0]!.id]);
 
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('openDialog'));

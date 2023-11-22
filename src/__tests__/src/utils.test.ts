@@ -109,7 +109,7 @@ describe('Utils', () => {
 
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.emits.has('login'));
-      assert.deepEqual(calls.emits[0].calledWith, {
+      assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
         data: 'test',
       });
@@ -131,7 +131,7 @@ describe('Utils', () => {
 
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('delete_note'));
-      assert.deepEqual(calls.invoke[0].calledWith, {
+      assert.deepEqual(calls.invoke[0]!.calledWith, {
         id: 'id',
       });
 
@@ -141,7 +141,7 @@ describe('Utils', () => {
 
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('get_all_notes'));
-      assert.deepEqual(calls.invoke[0].calledWith, {});
+      assert.deepEqual(calls.invoke[0]!.calledWith, {});
     });
   });
 });

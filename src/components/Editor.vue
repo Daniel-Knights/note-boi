@@ -68,7 +68,7 @@ onMounted(() => {
 
     const [title, body] = quillEditor.getText().split(/\n+/);
 
-    editNote(oldDelta.compose(delta) as Delta, title, body);
+    editNote(oldDelta.compose(delta) as Delta, title!, body);
   });
 });
 

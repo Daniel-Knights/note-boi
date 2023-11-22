@@ -93,7 +93,10 @@ describe('main', () => {
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('askDialog'));
 
-      const askDialogCalledWith = calls.tauriApi[0].calledWith as Record<string, unknown>;
+      const askDialogCalledWith = calls.tauriApi[0]!.calledWith as Record<
+        string,
+        unknown
+      >;
 
       assert.strictEqual(
         askDialogCalledWith.message,
@@ -125,7 +128,10 @@ describe('main', () => {
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('askDialog'));
 
-      const askDialogCalledWith = calls.tauriApi[0].calledWith as Record<string, unknown>;
+      const askDialogCalledWith = calls.tauriApi[0]!.calledWith as Record<
+        string,
+        unknown
+      >;
 
       assert.strictEqual(
         askDialogCalledWith.message,

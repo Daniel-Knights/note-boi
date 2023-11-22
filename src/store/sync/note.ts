@@ -89,7 +89,7 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
 
   // Select existing note if current selected note doesn't exist
   if (!noteState.notes.find((nt) => nt.id === noteState.selectedNote.id)) {
-    selectNote(noteState.notes[0].id);
+    selectNote(noteState.notes[0]!.id);
   }
 
   // Sync any notes that were edited during pull

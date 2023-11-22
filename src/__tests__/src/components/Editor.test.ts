@@ -40,8 +40,8 @@ describe('Editor', () => {
     assert.isTrue(calls.invoke.has('get_all_notes'));
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
 
-    n.selectNote(localNotes[1].id);
+    n.selectNote(localNotes[1]!.id);
 
-    assert.include(editorBody.text(), localNotes[1].content.body);
+    assert.include(editorBody.text(), localNotes[1]!.content.body);
   });
 });
