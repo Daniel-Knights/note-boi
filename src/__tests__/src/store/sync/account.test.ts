@@ -5,7 +5,7 @@ import { clearMockApiResults, mockApi } from '../../../api';
 describe('Account', () => {
   describe('changePassword', () => {
     it('Changes password for currently logged in account', async () => {
-      const { calls, events, promises } = mockApi();
+      const { calls, promises } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -24,12 +24,12 @@ describe('Account', () => {
       s.syncState.password = '2';
       s.syncState.newPassword = '1';
 
-      clearMockApiResults({ calls, events, promises });
+      clearMockApiResults({ calls, promises });
 
       await s.changePassword();
 
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/account/password/change'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/account/password/change'));
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
@@ -39,12 +39,12 @@ describe('Account', () => {
       s.syncState.password = '1';
       s.syncState.newPassword = '2';
 
-      clearMockApiResults({ calls, events, promises });
+      clearMockApiResults({ calls, promises });
 
       await s.changePassword();
 
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/account/password/change'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/account/password/change'));
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
       assert.strictEqual(s.syncState.token, 'token');
@@ -55,7 +55,7 @@ describe('Account', () => {
     });
 
     it('With server error', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         request: {
           error: '/account/password/change',
         },
@@ -67,7 +67,7 @@ describe('Account', () => {
       await s.login();
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.token, 'token');
@@ -84,14 +84,14 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/account/password/change'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/account/password/change'));
     });
   });
 
   describe('deleteAccount', () => {
     it('Deletes currently logged in account', async () => {
-      const { calls, events, promises } = mockApi();
+      const { calls, promises } = mockApi();
 
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
 
@@ -101,7 +101,7 @@ describe('Account', () => {
       await s.login();
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events, promises });
+      clearMockApiResults({ calls, promises });
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.token, 'token');
@@ -118,17 +118,16 @@ describe('Account', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('askDialog'));
-      assert.isTrue(calls.has('/account/delete'));
-      assert.lengthOf(events.emits, 1);
-      assert.isTrue(events.emits.includes('logout'));
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.request.has('/account/delete'));
+      assert.isTrue(calls.emits.has('logout'));
       assert.isFalse(s.syncState.isLoading);
     });
 
     it('Returns if ask dialog returns false', async () => {
       const { calls } = mockApi({
-        api: {
+        tauriApi: {
           resValue: {
             askDialog: [false],
           },
@@ -137,13 +136,13 @@ describe('Account', () => {
 
       await s.deleteAccount();
 
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('askDialog'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.tauriApi.has('askDialog'));
       assert.isFalse(s.syncState.isLoading);
     });
 
     it('With server error', async () => {
-      const { calls, events, promises } = mockApi({
+      const { calls, promises } = mockApi({
         request: {
           error: '/account/delete',
         },
@@ -156,7 +155,7 @@ describe('Account', () => {
       await s.login();
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events, promises });
+      clearMockApiResults({ calls, promises });
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.token, 'token');
@@ -173,10 +172,9 @@ describe('Account', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('askDialog'));
-      assert.isTrue(calls.has('/account/delete'));
-      assert.lengthOf(events.emits, 0);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.request.has('/account/delete'));
       assert.isFalse(s.syncState.isLoading);
     });
   });

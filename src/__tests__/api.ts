@@ -70,11 +70,6 @@ type ArgsMessage =
 
 type Args = { message?: ArgsMessage };
 
-type RegisteredEvents = {
-  emits: string[];
-  listeners: string[];
-};
-
 type RequestResValue = {
   [E in keyof EndpointPayloads]?: Partial<EndpointPayloads[E]['response']>[];
 };
@@ -86,20 +81,11 @@ type TauriApiResValue = Record<string, unknown[]> & {
   openDialog?: string[];
 };
 
-type CalledWith =
-  | {
-      message: string;
-      title?: string;
-      type?: string;
-    }
-  | {
-      directory?: boolean;
-      multiple?: boolean;
-      recursive?: boolean;
-      title?: string;
-    };
-
-type Call = { name: string; calledWith?: CalledWith };
+type Call<T = unknown> = {
+  name: string;
+  calledWith?: unknown;
+  promise?: Promise<T>;
+};
 
 class Calls extends Array<Call> {
   has(name: string, count?: number): boolean {
@@ -109,7 +95,14 @@ class Calls extends Array<Call> {
 
     return super.some((c) => c.name === name);
   }
+
+  clear(): void {
+    super.splice(0, super.length);
+  }
 }
+
+type ApiCallType = 'request' | 'invoke' | 'tauriApi' | 'emits' | 'listeners';
+type ApiCalls = { [T in ApiCallType]: Calls } & { size: number };
 
 export const mockDb: {
   users: Record<string, string>;
@@ -134,6 +127,7 @@ function getResValue<E extends Endpoint>(
   return resValue;
 }
 
+/** Mocks requests to the server. */
 function mockRequest(
   callId: string,
   args?: Args,
@@ -141,10 +135,7 @@ function mockRequest(
     resValue?: RequestResValue;
     error?: Endpoint;
   }
-): {
-  endpoint: Endpoint;
-  response: Promise<void | { status: number; data: unknown }>;
-} | void {
+): Call<void | { status: number; data: unknown }> | void {
   const msg = args?.message;
 
   if (callId !== 'tauri' || msg?.cmd !== 'httpRequest') return;
@@ -163,8 +154,8 @@ function mockRequest(
 
   if (options?.error === endpoint) {
     return {
-      endpoint,
-      response: Promise.resolve({
+      name: endpoint,
+      promise: Promise.resolve({
         status: 500,
         data: JSON.stringify({ error: 'Server error' }),
       }),
@@ -354,26 +345,20 @@ function mockRequest(
   }
 
   return {
-    endpoint,
-    response: Promise.resolve({
+    name: endpoint,
+    promise: Promise.resolve({
       status: httpStatus,
       data: JSON.stringify(resData),
     }),
   };
 }
 
+/** Mocks Tauri `invoke` calls. */
 function mockTauriInvoke(
   callId: string,
-  args:
-    | { note: n.Note }
-    | { id: string }
-    | { saveDir: string; notes: n.Note[] }
-    | Record<string, unknown>,
+  args: Record<string, unknown>,
   options?: { resValue?: InvokeResValue; error?: string }
-): {
-  cmd: TauriCommand;
-  response: Promise<n.Note[] | void>;
-} | void {
+): Call<n.Note[] | void> | void {
   if (callId === 'tauri') return;
 
   const cmd = callId as TauriCommand;
@@ -384,8 +369,9 @@ function mockTauriInvoke(
 
   if (options?.error === cmd) {
     return {
-      cmd,
-      response: Promise.resolve(undefined),
+      name: cmd,
+      calledWith: args,
+      promise: Promise.resolve(undefined),
     };
   }
 
@@ -451,8 +437,9 @@ function mockTauriInvoke(
   }
 
   return {
-    cmd,
-    response: Promise.resolve(resData),
+    name: cmd,
+    calledWith: args,
+    promise: Promise.resolve(resData),
   };
 }
 
@@ -461,11 +448,7 @@ function mockTauriApi(
   callId: string,
   args?: Args,
   options?: { resValue?: TauriApiResValue }
-): {
-  fn: string;
-  response: Promise<string | boolean | void>;
-  calledWith?: CalledWith;
-} | void {
+): Call<string | boolean | void> | void {
   if (callId !== 'tauri') return;
 
   const msg = args?.message;
@@ -515,22 +498,27 @@ function mockTauriApi(
   }
 
   return {
-    fn: msg.cmd,
-    response: Promise.resolve(resData),
+    name: msg.cmd,
     calledWith,
+    promise: Promise.resolve(resData),
   };
 }
 
-function mockTauriEmit(callId: string, args?: Args): string | void {
+/** Mocks Tauri `event.emit` calls. */
+function mockTauriEmit(callId: string, args?: Args): Call | void {
   if (callId !== 'tauri') return;
 
-  const msg = args?.message;
+  const msg = args?.message as EmitArgsMessage;
 
   if (msg?.cmd !== 'emit') return;
 
-  return msg.event;
+  return {
+    name: msg.event,
+    calledWith: msg.payload,
+  };
 }
 
+/** Mocks Tauri `event.listen` calls. */
 function mockTauriListener(callId: string, args?: Args): string | void {
   if (callId !== 'tauri') return;
 
@@ -541,6 +529,39 @@ function mockTauriListener(callId: string, args?: Args): string | void {
   return msg.event;
 }
 
+/**
+ * Mocks the full API and returns results for each call made, along with
+ * an array of all created promises.
+ *
+ * To clear results, use {@link clearMockApiResults}.
+ *
+ * Values can be passed to mock specific res values for `request`,
+ * `invoke`, and `tauriApi`. Array order corresponds to the res value
+ * for each call from left to right.
+ *
+ * @example
+ * ```ts
+ * const { calls, promises } = mockApi({
+ *   tauriApi: {
+ *     resValue: {
+ *       // First call will answer true, second will answer false
+ *       askDialog: [true, false],
+ *     },
+ *   },
+ * });
+ * ```
+ *
+ * Errors can also be mocked for `request` and `invoke`:
+ *
+ * @example
+ * ```ts
+ * const { calls } = mockApi({
+ *   request: {
+ *     error: '/login',
+ *   },
+ * });
+ * ```
+ */
 export function mockApi(options?: {
   request?: {
     resValue?: RequestResValue;
@@ -550,84 +571,84 @@ export function mockApi(options?: {
     resValue?: InvokeResValue;
     error?: TauriCommand;
   };
-  api?: {
+  tauriApi?: {
     resValue?: TauriApiResValue;
   };
 }): {
-  calls: Calls;
-  events: RegisteredEvents;
+  calls: ApiCalls;
   promises: Promise<unknown>[];
 } {
-  const calls = new Calls();
-  const events: RegisteredEvents = {
-    emits: [],
-    listeners: [],
-  };
+  const calls = {
+    request: new Calls(),
+    invoke: new Calls(),
+    tauriApi: new Calls(),
+    emits: new Calls(),
+    listeners: new Calls(),
+    size: 0,
+  } satisfies ApiCalls;
   const promises: Promise<unknown>[] = [];
+
+  function parseCallResult(callType: Exclude<keyof ApiCalls, 'size'>, call: Call) {
+    calls[callType].push(call);
+    calls.size += 1;
+
+    if (call.promise) {
+      promises.push(call.promise);
+    }
+
+    return call.promise;
+  }
 
   mockIPC((callId, args) => {
     const reqCall = mockRequest(callId, args, options?.request);
 
     if (reqCall) {
-      calls.push({ name: reqCall.endpoint });
-      promises.push(reqCall.response);
-
-      return reqCall.response;
+      return parseCallResult('request', reqCall);
     }
 
     const invokeCall = mockTauriInvoke(callId, args, options?.invoke);
 
     if (invokeCall) {
-      calls.push({ name: invokeCall.cmd });
-      promises.push(invokeCall.response);
-
-      return invokeCall.response;
+      return parseCallResult('invoke', invokeCall);
     }
 
-    const apiCall = mockTauriApi(callId, args, options?.api);
+    const tauriApiCall = mockTauriApi(callId, args, options?.tauriApi);
 
-    if (apiCall) {
-      calls.push({
-        name: apiCall.fn,
-        calledWith: apiCall.calledWith,
-      });
-      promises.push(apiCall.response);
-
-      return apiCall.response;
+    if (tauriApiCall) {
+      return parseCallResult('tauriApi', tauriApiCall);
     }
 
     const emitCall = mockTauriEmit(callId, args);
 
     if (emitCall) {
-      events.emits.push(emitCall);
-
-      return;
+      return parseCallResult('emits', emitCall);
     }
 
     const listenerCall = mockTauriListener(callId, args);
 
     if (listenerCall) {
-      events.listeners.push(listenerCall);
+      return parseCallResult('listeners', { name: listenerCall });
     }
   });
 
   return {
     calls,
-    events,
     promises,
   };
 }
 
 export function clearMockApiResults(results: {
-  calls?: Calls;
-  events?: RegisteredEvents;
+  calls?: ApiCalls;
   promises?: Promise<unknown>[];
 }): void {
-  results.calls?.splice(0, results.calls.length);
+  if (results.calls) {
+    Object.values(results.calls).forEach((val) => {
+      if (val instanceof Calls) {
+        val.clear();
+      }
+    });
 
-  if (results.events) {
-    results.events.emits = [];
-    results.events.listeners = [];
+    results.calls.size = 0;
   }
 
   results.promises?.splice(0, results.promises.length);

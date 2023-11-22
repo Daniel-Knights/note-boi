@@ -22,7 +22,7 @@ import SyncStatus from '../../../../components/SyncStatus.vue';
 describe('Sync', () => {
   describe('pull', () => {
     it('Pulls notes from the server', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         invoke: {
           resValue: {
             get_all_notes: [[]],
@@ -45,7 +45,7 @@ describe('Sync', () => {
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(n.noteState.notes[0].id, n.noteState.selectedNote.id);
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.pull();
 
@@ -55,15 +55,13 @@ describe('Sync', () => {
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('/notes/pull'));
-      assert.isTrue(calls.has('sync_local_notes'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.request.has('/notes/pull'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
     });
 
     it('With server error', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         request: {
           error: '/notes/pull',
         },
@@ -74,7 +72,7 @@ describe('Sync', () => {
 
       await s.login();
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.pull();
 
@@ -87,14 +85,12 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/notes/pull'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/notes/pull'));
     });
 
     it('User not found', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'k';
       s.syncState.token = 'token';
@@ -110,10 +106,8 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/notes/pull'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/notes/pull'));
     });
 
     it('Updates editor if selected note is unedited', async () => {
@@ -225,7 +219,7 @@ describe('Sync', () => {
 
   describe('push', () => {
     it('Pushes notes to the server', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       await n.getAllNotes();
 
@@ -243,7 +237,7 @@ describe('Sync', () => {
         unsynced
       );
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.push();
 
@@ -256,14 +250,12 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/notes/push'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/notes/push'));
     });
 
     it("Doesn't push empty notes", async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.token = 'token';
@@ -273,7 +265,7 @@ describe('Sync', () => {
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.push();
 
@@ -281,13 +273,11 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 0);
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 0);
     });
 
     it('With server error', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         request: {
           error: '/notes/push',
         },
@@ -302,7 +292,7 @@ describe('Sync', () => {
 
       n.editNote({}, 'title', 'body');
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.push();
 
@@ -310,10 +300,8 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.token, 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/notes/push'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/notes/push'));
     });
   });
 

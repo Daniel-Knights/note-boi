@@ -13,7 +13,7 @@ import UtilityMenu from '../../../components/UtilityMenu.vue';
 
 describe('App', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mount(App);
 
     await Promise.all(promises);
@@ -24,13 +24,11 @@ describe('App', () => {
     assert.isTrue(wrapper.getComponent(UtilityMenu).isVisible());
     assert.isTrue(wrapper.getComponent(SyncStatus).isVisible());
     assert.isFalse(wrapper.findComponent(Loading).exists());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 1);
-    assert.isTrue(events.emits.includes('logout'));
-    assert.lengthOf(events.listeners, 3);
-    assert.isTrue(events.listeners.includes('login'));
-    assert.isTrue(events.listeners.includes('logout'));
-    assert.isTrue(events.listeners.includes('signup'));
+    assert.strictEqual(calls.size, 4);
+    assert.isTrue(calls.emits.has('logout'));
+    assert.isTrue(calls.listeners.has('login'));
+    assert.isTrue(calls.listeners.has('logout'));
+    assert.isTrue(calls.listeners.has('signup'));
   });
 
   it('Shows loading spinner when update is downloading', async () => {

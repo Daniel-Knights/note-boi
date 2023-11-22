@@ -25,19 +25,17 @@ function mountWithPopup() {
 
 describe('SyncStatus', () => {
   it('Mounts when logged out', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mount(SyncStatus);
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 1);
-    assert.isTrue(events.emits.includes('logout'));
-    assert.lengthOf(events.listeners, 3);
-    assert.isTrue(events.listeners.includes('login'));
-    assert.isTrue(events.listeners.includes('logout'));
-    assert.isTrue(events.listeners.includes('signup'));
+    assert.strictEqual(calls.size, 4);
+    assert.isTrue(calls.emits.has('logout'));
+    assert.isTrue(calls.listeners.has('login'));
+    assert.isTrue(calls.listeners.has('logout'));
+    assert.isTrue(calls.listeners.has('signup'));
 
     await awaitSyncLoad();
 
@@ -53,7 +51,7 @@ describe('SyncStatus', () => {
   });
 
   it('Mounts when logged in', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const pullSpy = vi.spyOn(s, 'pull');
     s.syncState.username = 'd';
     s.syncState.token = 'token';
@@ -63,8 +61,8 @@ describe('SyncStatus', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(events.emits, 1);
-    assert.isTrue(events.emits.includes('login'));
+    assert.strictEqual(calls.size, 4);
+    assert.isTrue(calls.emits.has('login'));
     expect(pullSpy).toHaveBeenCalledOnce();
 
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
@@ -78,10 +76,10 @@ describe('SyncStatus', () => {
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
-    assert.lengthOf(calls, 3);
-    assert.isTrue(calls.has('/notes/pull'));
-    assert.isTrue(calls.has('new_note'));
-    assert.isTrue(calls.has('sync_local_notes'));
+    assert.strictEqual(calls.size, 7);
+    assert.isTrue(calls.request.has('/notes/pull'));
+    assert.isTrue(calls.invoke.has('new_note'));
+    assert.isTrue(calls.invoke.has('sync_local_notes'));
   });
 
   it.each(['Logout', 'Pull', 'Push'] as const)(

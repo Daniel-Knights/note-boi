@@ -17,15 +17,13 @@ function mountPopupSyncAuth() {
 
 describe('PopupSyncAuth', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mountPopupSyncAuth();
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Emits close', async () => {
@@ -125,14 +123,15 @@ describe('PopupSyncAuth', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.lengthOf(wrapper.emitted('close')!, 1);
-      assert.lengthOf(calls, 3);
-      assert.isTrue(calls.has('/login'));
-      assert.isTrue(calls.has('new_note'));
-      assert.isTrue(calls.has('sync_local_notes'));
+      assert.strictEqual(calls.size, 4);
+      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.emits.has('login'));
+      assert.isTrue(calls.invoke.has('new_note'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
     });
 
     it('On signup', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
       const wrapper = mountPopupSyncAuth();
       const wrapperVm = wrapper.vm as unknown as {
         confirmPassword: string;
@@ -211,7 +210,7 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await formWrapper.trigger('submit');
       await awaitSyncLoad();
@@ -222,10 +221,9 @@ describe('PopupSyncAuth', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.lengthOf(wrapper.emitted('close')!, 1);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/signup'));
-      assert.lengthOf(events.emits, 1);
-      assert.isTrue(events.emits.includes('login'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.emits.has('login'));
     });
   });
 });

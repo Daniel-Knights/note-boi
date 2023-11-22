@@ -26,15 +26,13 @@ beforeEach(async () => {
 // Tests
 describe('NoteMenu', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = shallowMount(NoteMenu);
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Renders a list item for every note', () => {
@@ -92,8 +90,8 @@ describe('NoteMenu', () => {
 
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('new_note'));
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.invoke.has('new_note'));
   });
 
   it('Selects a clicked note', async () => {

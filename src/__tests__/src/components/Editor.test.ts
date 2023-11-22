@@ -10,16 +10,14 @@ import Editor from '../../../components/Editor.vue';
 
 describe('Editor', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
 
     const wrapper = mount(Editor);
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Has the correct timestamp', () => {
@@ -38,8 +36,8 @@ describe('Editor', () => {
 
     await n.getAllNotes();
 
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('get_all_notes'));
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.invoke.has('get_all_notes'));
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
 
     n.selectNote(localNotes[1].id);

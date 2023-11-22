@@ -17,15 +17,13 @@ function mountPopupChangePassword() {
 
 describe('PopupChangePassword', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mountPopupChangePassword();
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Emits close', async () => {
@@ -134,7 +132,7 @@ describe('PopupChangePassword', () => {
     assert.isEmpty(s.syncState.error.message);
     assert.isEmpty(wrapperVm.confirmNewPassword);
     assert.lengthOf(wrapper.emitted('close')!, 1);
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('/account/password/change'));
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.request.has('/account/password/change'));
   });
 });

@@ -37,15 +37,13 @@ async function mountContextMenu(attachTo?: HTMLElement) {
 
 describe('ContextMenu', () => {
   it('Mounts without passed ev', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mount(ContextMenu);
 
     await Promise.all(promises);
 
     assert.isFalse(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Mounts with ev', async () => {
@@ -77,8 +75,8 @@ describe('ContextMenu', () => {
     await getByTestId(wrapper, 'new').trigger('click');
     await Promise.all(promises);
 
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('new_note'));
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.invoke.has('new_note'));
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
   });
@@ -102,9 +100,9 @@ describe('ContextMenu', () => {
       const wrapper = await mountContextMenu(div);
       const button = getByTestId<HTMLButtonElement>(wrapper, buttonType.toLowerCase());
 
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('get_all_notes'));
-      assert.isTrue(calls.has('new_note'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.invoke.has('get_all_notes'));
+      assert.isTrue(calls.invoke.has('new_note'));
       assert.isTrue(button.element.classList.contains('drop-menu__item--disabled'));
     }
   );

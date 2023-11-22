@@ -8,7 +8,7 @@ import localNotes from '../../../notes.json';
 describe('Sync', () => {
   describe('login', () => {
     it('With no notes', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         request: {
           resValue: {
             '/login': [{ notes: mockDb.encryptedNotes }],
@@ -34,15 +34,14 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('/login'));
-      assert.isTrue(calls.has('sync_local_notes'));
-      assert.lengthOf(events.emits, 1);
-      assert.isTrue(events.emits.includes('login'));
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
+      assert.isTrue(calls.emits.has('login'));
     });
 
     it('With notes', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         request: {
           resValue: {
             '/login': [{ notes: mockDb.encryptedNotes }],
@@ -56,10 +55,10 @@ describe('Sync', () => {
       await n.getAllNotes();
 
       assert.isAbove(n.noteState.notes.length, 1);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('get_all_notes'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('get_all_notes'));
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.login();
 
@@ -72,15 +71,14 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('/login'));
-      assert.isTrue(calls.has('sync_local_notes'));
-      assert.lengthOf(events.emits, 1);
-      assert.isTrue(events.emits.includes('login'));
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
+      assert.isTrue(calls.emits.has('login'));
     });
 
     it('Fails to log in, with a server error', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         request: {
           error: '/login',
         },
@@ -100,15 +98,14 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/login'));
-      assert.lengthOf(events.emits, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/login'));
     });
   });
 
   describe('signup', () => {
     it('With no notes', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'k';
       s.syncState.password = '2';
@@ -124,14 +121,13 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/signup'));
-      assert.lengthOf(events.emits, 1);
-      assert.isTrue(events.emits.includes('login'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.emits.has('login'));
     });
 
     it('With notes', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'k';
       s.syncState.password = '2';
@@ -140,7 +136,7 @@ describe('Sync', () => {
 
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.signup();
 
@@ -154,14 +150,13 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/signup'));
-      assert.lengthOf(events.emits, 1);
-      assert.isTrue(events.emits.includes('login'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.emits.has('login'));
     });
 
     it("Doesn't push empty notes", async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'k';
       s.syncState.password = '2';
@@ -172,7 +167,7 @@ describe('Sync', () => {
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.signup();
 
@@ -185,14 +180,13 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/signup'));
-      assert.lengthOf(events.emits, 1);
-      assert.isTrue(events.emits.includes('login'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.emits.has('login'));
     });
 
     it('With server error', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         request: {
           error: '/signup',
         },
@@ -212,15 +206,14 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/signup'));
-      assert.lengthOf(events.emits, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/signup'));
     });
   });
 
   describe('logout', () => {
     it('Logs a user out and clears user-based state', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -228,7 +221,7 @@ describe('Sync', () => {
 
       await s.login();
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.logout();
 
@@ -239,14 +232,13 @@ describe('Sync', () => {
       assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/logout'));
-      assert.lengthOf(events.emits, 1);
-      assert.isTrue(events.emits.includes('logout'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.request.has('/logout'));
+      assert.isTrue(calls.emits.has('logout'));
     });
 
     it('With server error', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         request: {
           error: '/logout',
         },
@@ -257,7 +249,7 @@ describe('Sync', () => {
 
       await s.login();
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await s.logout();
 
@@ -268,9 +260,8 @@ describe('Sync', () => {
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Logout);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('/logout'));
-      assert.lengthOf(events.emits, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/logout'));
     });
   });
 });

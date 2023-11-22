@@ -14,16 +14,14 @@ function mountDropMenu(items: DropMenuItemData[] = []) {
 
 describe('DropMenu', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
 
     const wrapper = mountDropMenu();
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Emits close on click', () => {

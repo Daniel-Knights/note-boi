@@ -43,8 +43,8 @@ beforeEach(() => {
 });
 
 describe('Update', () => {
-  it('', async () => {
-    const { calls, events } = mockApi();
+  it('Installs update and relaunches', async () => {
+    const { calls } = mockApi();
 
     await u.handleUpdate();
 
@@ -53,10 +53,8 @@ describe('Update', () => {
 
     assert.isTrue(u.updateDownloading.value);
     assert.isUndefined(u.updateAvailable.value);
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('askDialog'));
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.tauriApi.has('askDialog'));
   });
 
   it('Returns if update unavailable', async () => {
@@ -68,7 +66,7 @@ describe('Update', () => {
 
     expect(installUpdate).not.toHaveBeenCalled();
 
-    assert.lengthOf(calls, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Returns if version has been seen', async () => {
@@ -80,12 +78,12 @@ describe('Update', () => {
 
     expect(installUpdate).not.toHaveBeenCalled();
 
-    assert.lengthOf(calls, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it("Asks if user wants to update and sets seen version if they don't", async () => {
     const { calls } = mockApi({
-      api: {
+      tauriApi: {
         resValue: {
           askDialog: [false],
         },
@@ -96,9 +94,9 @@ describe('Update', () => {
 
     expect(installUpdate).not.toHaveBeenCalled();
 
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('askDialog'));
-    assert.deepEqual(calls[0].calledWith, {
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.tauriApi.has('askDialog'));
+    assert.deepEqual(calls.tauriApi[0].calledWith, {
       message: 'A new version of NoteBoi is available.\nDo you want to update now?',
       title: 'Update available: v1.0.0',
       type: undefined,
@@ -108,7 +106,7 @@ describe('Update', () => {
 
   it("Catches error and doesn't retry", async () => {
     const { calls } = mockApi({
-      api: {
+      tauriApi: {
         resValue: {
           askDialog: [false],
         },
@@ -119,9 +117,9 @@ describe('Update', () => {
 
     await u.updateAndRelaunch();
 
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('askDialog'));
-    assert.deepEqual(calls[0].calledWith, {
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.tauriApi.has('askDialog'));
+    assert.deepEqual(calls.tauriApi[0].calledWith, {
       message: 'Try again?',
       title: 'Unable to install update',
       type: 'error',
@@ -131,7 +129,7 @@ describe('Update', () => {
 
   it('Catches error and retries', async () => {
     const { calls } = mockApi({
-      api: {
+      tauriApi: {
         resValue: {
           askDialog: [true, false],
         },
@@ -143,7 +141,7 @@ describe('Update', () => {
     await u.updateAndRelaunch();
 
     assert.isFalse(u.updateDownloading.value);
-    assert.lengthOf(calls, 2);
-    assert.isTrue(calls.has('askDialog', 2));
+    assert.strictEqual(calls.size, 2);
+    assert.isTrue(calls.tauriApi.has('askDialog', 2));
   });
 });

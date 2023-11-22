@@ -43,7 +43,7 @@ describe('Note store', () => {
 
   describe('getAllNotes', () => {
     it('with undefined notes', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         invoke: {
           error: 'get_all_notes',
         },
@@ -56,15 +56,13 @@ describe('Note store', () => {
       assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('get_all_notes'));
-      assert.isTrue(calls.has('new_note'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.invoke.has('get_all_notes'));
+      assert.isTrue(calls.invoke.has('new_note'));
     });
 
     it('with empty note array', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         invoke: {
           resValue: {
             get_all_notes: [[]],
@@ -79,15 +77,13 @@ describe('Note store', () => {
       assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('get_all_notes'));
-      assert.isTrue(calls.has('new_note'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.invoke.has('get_all_notes'));
+      assert.isTrue(calls.invoke.has('new_note'));
     });
 
     it('with notes', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       await n.getAllNotes();
 
@@ -96,10 +92,8 @@ describe('Note store', () => {
       assert.lengthOf(n.noteState.notes, 10);
       assert.deepEqual(n.noteState.notes[0], localNotes.sort(n.sortNotesFn)[0]);
       assert.deepEqual(n.noteState.notes[0], n.noteState.selectedNote);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('get_all_notes'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('get_all_notes'));
     });
   });
 
@@ -177,7 +171,7 @@ describe('Note store', () => {
 
   describe('deleteNote', () => {
     it('Deletes selected note and selects next', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       await n.getAllNotes();
 
@@ -187,7 +181,7 @@ describe('Note store', () => {
       assert.deepEqual(n.noteState.selectedNote, existingNote);
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       n.deleteNote(existingNote.id);
 
@@ -198,14 +192,12 @@ describe('Note store', () => {
       assert.notDeepEqual(n.noteState.selectedNote, existingNote);
       assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
       assert.isUndefined(n.findNote(existingNote.id));
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('delete_note'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('delete_note'));
     });
 
     it('Without selecting next note', async () => {
-      const { calls, events, promises } = mockApi();
+      const { calls, promises } = mockApi();
       const otherExistingNote = { ...localNotes[1] };
 
       s.syncState.token = 'token';
@@ -217,7 +209,7 @@ describe('Note store', () => {
       assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events, promises });
+      clearMockApiResults({ calls, promises });
 
       n.deleteNote(otherExistingNote.id);
 
@@ -230,14 +222,12 @@ describe('Note store', () => {
       assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
       assert.notDeepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
       assert.isUndefined(n.findNote(otherExistingNote.id));
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('delete_note'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('delete_note'));
     });
 
     it('With no notes', async () => {
-      const { calls, events } = mockApi({
+      const { calls } = mockApi({
         invoke: {
           resValue: {
             get_all_notes: [[existingNote]],
@@ -251,7 +241,7 @@ describe('Note store', () => {
       assert.deepEqual(n.noteState.selectedNote, existingNote);
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       n.deleteNote(existingNote.id);
 
@@ -262,11 +252,9 @@ describe('Note store', () => {
       assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.isUndefined(n.findNote(existingNote.id));
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('delete_note'));
-      assert.isTrue(calls.has('new_note'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.invoke.has('delete_note'));
+      assert.isTrue(calls.invoke.has('new_note'));
     });
 
     it('Resets unsynced new note', async () => {
@@ -282,14 +270,14 @@ describe('Note store', () => {
     });
 
     it('Calls autoPush', async () => {
-      const { calls, events, promises } = mockApi();
+      const { calls, promises } = mockApi();
       const otherExistingNote = { ...localNotes[1] };
       const autoPushSpy = vi.spyOn(s, 'autoPush');
 
       await n.getAllNotes();
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events, promises });
+      clearMockApiResults({ calls, promises });
 
       n.deleteNote(otherExistingNote.id);
 
@@ -299,15 +287,13 @@ describe('Note store', () => {
       expect(autoPushSpy).toHaveBeenCalledOnce();
 
       assert.isUndefined(n.findNote(otherExistingNote.id));
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('delete_note'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('delete_note'));
     });
   });
 
   it('deleteSelectedNotes', async () => {
-    const { calls, events } = mockApi();
+    const { calls } = mockApi();
 
     await n.getAllNotes();
 
@@ -317,7 +303,7 @@ describe('Note store', () => {
     n.noteState.extraSelectedNotes = notesSlice;
 
     vi.clearAllMocks();
-    clearMockApiResults({ calls, events });
+    clearMockApiResults({ calls });
 
     n.deleteSelectedNotes();
 
@@ -328,21 +314,21 @@ describe('Note store', () => {
     assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
     assert.isUndefined(n.findNote(currentSelectedNote.id));
     assert.isEmpty(n.noteState.extraSelectedNotes);
-    assert.lengthOf(calls, notesSlice.length + 1);
-    assert.isTrue(calls.has('delete_note', notesSlice.length + 1));
+    assert.strictEqual(calls.size, notesSlice.length + 1);
+    assert.isTrue(calls.invoke.has('delete_note', notesSlice.length + 1));
   });
 
   describe('newNote', () => {
     it("When selected note isn't empty", async () => {
       const emptyNote = new n.Note();
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       await n.getAllNotes();
 
       n.selectNote(existingNote.id);
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       n.newNote();
 
@@ -353,14 +339,12 @@ describe('Note store', () => {
       assert.notStrictEqual(n.noteState.selectedNote.id, emptyNote.id);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('new_note'));
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('new_note'));
     });
 
     it('Only updates timestamp when empty note selected', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
       const emptyNote = new n.Note();
 
       // Ensure reliable timestamp check later on
@@ -374,7 +358,7 @@ describe('Note store', () => {
       n.selectNote(emptyNote.id);
 
       vi.clearAllMocks();
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       n.newNote();
 
@@ -386,14 +370,12 @@ describe('Note store', () => {
       assert.deepEqual(n.noteState.selectedNote.content, emptyNote.content);
       assert.notStrictEqual(n.noteState.selectedNote.timestamp, emptyNote.timestamp);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.lengthOf(calls, 0);
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
+      assert.strictEqual(calls.size, 0);
     });
   });
 
   it('editNote', async () => {
-    const { calls, events } = mockApi();
+    const { calls } = mockApi();
 
     await n.getAllNotes();
 
@@ -401,7 +383,7 @@ describe('Note store', () => {
     const noteToEdit = { ...n.findNote(n.noteState.selectedNote.id) };
 
     vi.clearAllMocks();
-    clearMockApiResults({ calls, events });
+    clearMockApiResults({ calls });
 
     n.editNote({ ops: [{ insert: 'Title\nBody' }] }, 'Title', 'Body');
 
@@ -419,38 +401,34 @@ describe('Note store', () => {
       currentSelectedNote.timestamp
     );
     assert.notStrictEqual(editedNote.timestamp, noteToEdit.timestamp);
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('edit_note'));
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.invoke.has('edit_note'));
   });
 
   describe('exportNotes', () => {
     it('All notes', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       await n.getAllNotes();
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('openDialog'));
-      assert.isTrue(calls.has('export_notes'));
-      assert.deepEqual(calls[0].calledWith, {
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.tauriApi.has('openDialog'));
+      assert.isTrue(calls.invoke.has('export_notes'));
+      assert.deepEqual(calls.tauriApi[0].calledWith, {
         directory: true,
         multiple: false,
         recursive: false,
         title: 'Choose a location',
       });
-      assert.lengthOf(events.emits, 0);
-      assert.lengthOf(events.listeners, 0);
     });
 
     it('Returns when no location chosen', async () => {
-      const { calls, events } = mockApi({
-        api: {
+      const { calls } = mockApi({
+        tauriApi: {
           resValue: {
             openDialog: [''],
           },
@@ -459,26 +437,26 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
-      assert.lengthOf(calls, 1);
-      assert.isTrue(calls.has('openDialog'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.tauriApi.has('openDialog'));
     });
 
     it('Passed selection of notes', async () => {
-      const { calls, events } = mockApi();
+      const { calls } = mockApi();
 
       await n.getAllNotes();
 
-      clearMockApiResults({ calls, events });
+      clearMockApiResults({ calls });
 
       await n.exportNotes([n.noteState.notes[0].id]);
 
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('openDialog'));
-      assert.isTrue(calls.has('export_notes'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.tauriApi.has('openDialog'));
+      assert.isTrue(calls.invoke.has('export_notes'));
     });
   });
 });

@@ -9,7 +9,7 @@ import UtilityMenu from '../../../components/UtilityMenu.vue';
 
 describe('UtilityMenu', () => {
   it('Mounts with correct components', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     s.syncState.token = 'token';
     const wrapper = mount(UtilityMenu);
 
@@ -19,8 +19,6 @@ describe('UtilityMenu', () => {
     assert.isTrue(wrapper.findComponent(Logout).exists());
     assert.isTrue(wrapper.findComponent(Settings).exists());
     assert.strictEqual(wrapper.element.childElementCount, 2);
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 });

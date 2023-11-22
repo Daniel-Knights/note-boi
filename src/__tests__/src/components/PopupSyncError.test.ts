@@ -20,15 +20,13 @@ describe('PopupSyncError', () => {
   s.syncState.error.message = errorMessage;
 
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mountPopupSyncError();
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
 
     const errorMessageWrapper = getByTestId(wrapper, 'error-message');
     assert.strictEqual(errorMessageWrapper.text(), `Error: ${errorMessage}`);

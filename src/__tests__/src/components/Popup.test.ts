@@ -36,7 +36,7 @@ afterEach(() => {
 
 describe('Popup', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mountPopup();
 
     await Promise.all(promises);
@@ -45,9 +45,7 @@ describe('Popup', () => {
     assert.isTrue(wrapper.html().includes(slot));
     expect(eventSpies.window.add).toHaveBeenCalledOnce();
     expect(eventSpies.body.add).toHaveBeenCalledOnce();
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Closes on escape key', () => {

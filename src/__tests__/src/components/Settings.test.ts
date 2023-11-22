@@ -26,15 +26,13 @@ async function mountSettingsAndOpen(options?: Record<string, unknown>) {
 
 describe('Settings', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mount(Settings);
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Opens and closes drop menu', async () => {
@@ -104,9 +102,9 @@ describe('Settings', () => {
 
     expect(exportNotesSpy).toHaveBeenCalledOnce();
     expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes);
-    assert.lengthOf(calls, 2);
-    assert.isTrue(calls.has('openDialog'));
-    assert.isTrue(calls.has('export_notes'));
+    assert.strictEqual(calls.size, 2);
+    assert.isTrue(calls.tauriApi.has('openDialog'));
+    assert.isTrue(calls.invoke.has('export_notes'));
   });
 
   it('Opens and closes info popup', async () => {
@@ -136,7 +134,7 @@ describe('Settings', () => {
   });
 
   it('Update menu item', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = await mountSettingsAndOpen();
     const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'update').exists());
@@ -154,11 +152,9 @@ describe('Settings', () => {
     await Promise.all(promises);
 
     expect(updateSpy).toHaveBeenCalledOnce();
-    assert.lengthOf(calls, 0);
-    assert.lengthOf(events.emits, 1);
-    assert.isTrue(events.emits.includes('tauri://update-install'));
-    assert.lengthOf(events.listeners, 1);
-    assert.isTrue(events.listeners.includes('tauri://update-status'));
+    assert.strictEqual(calls.size, 2);
+    assert.isTrue(calls.emits.has('tauri://update-install'));
+    assert.isTrue(calls.listeners.has('tauri://update-status'));
   });
 
   describe('Account menu item', () => {
@@ -212,9 +208,10 @@ describe('Settings', () => {
       });
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-      assert.lengthOf(calls, 2);
-      assert.isTrue(calls.has('askDialog'));
-      assert.isTrue(calls.has('/account/delete'));
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.request.has('/account/delete'));
+      assert.isTrue(calls.emits.has('logout'));
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
       assert.lengthOf(wrapperVm.menuItems, 3);
     });

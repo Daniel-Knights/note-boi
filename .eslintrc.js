@@ -58,5 +58,6 @@ module.exports = {
     'no-use-before-define': ['error', { functions: false }],
     'arrow-body-style': 'off',
     'no-param-reassign': ['error', { props: false }],
+    'max-classes-per-file': 'off',
   },
 };

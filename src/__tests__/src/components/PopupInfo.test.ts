@@ -18,16 +18,14 @@ function mountPopupInfo() {
 
 describe('PopupInfo', () => {
   it('Mounts', async () => {
-    const { calls, events, promises } = mockApi();
+    const { calls, promises } = mockApi();
     const wrapper = mountPopupInfo();
 
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.lengthOf(calls, 1);
-    assert.isTrue(calls.has('getAppVersion'));
-    assert.lengthOf(events.emits, 0);
-    assert.lengthOf(events.listeners, 0);
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.tauriApi.has('getAppVersion'));
   });
 
   it('Emits close', async () => {
