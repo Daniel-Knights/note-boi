@@ -187,7 +187,13 @@ export function newNote(isButtonClick?: boolean): void {
   tauriInvoke('new_note', { note: { ...freshNote } }).catch(console.error);
 }
 
-/** Edits currently selected note on Quill `text-change`. */
+/**
+ * Edits currently selected note on Quill `text-change`.
+ *
+ * Selected note content should only be edited within `noteState.notes`, not
+ * `noteState.selectedNote`, as `noteState.selectedNote` is what's reflected in the
+ * editor. The timestamp, however, should be updated for both.
+ */
 export function editNote(delta: Partial<Delta>, title: string, body: string): void {
   const foundNote = findNote(noteState.selectedNote.id);
   if (!foundNote || delta === foundNote.content.delta) return;
