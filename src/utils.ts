@@ -1,7 +1,7 @@
 import { event, invoke } from '@tauri-apps/api';
 import { EventCallback, UnlistenFn } from '@tauri-apps/api/event';
 
-import { TauriCommand, TauriEmit, TauriListener } from './constant';
+import { TauriCommand, TauriCommandPayloads, TauriEmit, TauriListener } from './constant';
 import type { Note } from './store/note';
 
 /** `process.env.NODE_ENV === 'development'`. */
@@ -54,9 +54,9 @@ export function tauriListen<T>(
 }
 
 /** Calls {@link invoke}, with stronger typing for `cmd`. */
-export function tauriInvoke<T>(
-  cmd: TauriCommand,
-  args?: Parameters<typeof invoke>[1]
-): Promise<T> {
+export function tauriInvoke<T extends TauriCommand>(
+  cmd: T,
+  args?: TauriCommandPayloads[T]['payload']
+): Promise<TauriCommandPayloads[T]['response']> {
   return invoke(cmd, args);
 }

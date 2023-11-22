@@ -1,3 +1,4 @@
+import { Note } from './store/note';
 import { EncryptedNote } from './store/sync/encryptor';
 
 export const NOTE_EVENTS = {
@@ -85,7 +86,7 @@ export type EndpointPayloads = {
 
 export type Endpoint = keyof EndpointPayloads;
 
-export const ENDPOINTS: Endpoint[] = [
+export const ENDPOINTS = [
   '/signup',
   '/login',
   '/logout',
@@ -93,7 +94,47 @@ export const ENDPOINTS: Endpoint[] = [
   '/notes/pull',
   '/account/delete',
   '/account/password/change',
-];
+] satisfies Endpoint[];
+
+export type TauriCommandPayloads = {
+  get_all_notes: {
+    payload: never;
+    response: Note[];
+  };
+  delete_note: {
+    payload: {
+      id: string;
+    };
+    response: never;
+  };
+  new_note: {
+    payload: {
+      note: Note;
+    };
+    response: never;
+  };
+  edit_note: {
+    payload: {
+      note: Note;
+    };
+    response: never;
+  };
+  sync_local_notes: {
+    payload: {
+      notes: Note[];
+    };
+    response: never;
+  };
+  export_notes: {
+    payload: {
+      notes: Note[];
+      saveDir: string | string[];
+    };
+    response: never;
+  };
+};
+
+export type TauriCommand = keyof TauriCommandPayloads;
 
 export const TAURI_COMMANDS = [
   'get_all_notes',
@@ -102,9 +143,7 @@ export const TAURI_COMMANDS = [
   'edit_note',
   'sync_local_notes',
   'export_notes',
-] as const;
-
-export type TauriCommand = (typeof TAURI_COMMANDS)[number];
+] satisfies TauriCommand[];
 
 export const TAURI_EMITS = ['login', 'logout', 'tauri://update-install'] as const;
 

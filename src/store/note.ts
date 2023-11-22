@@ -101,7 +101,7 @@ export function isSelectedNote(note: Note): boolean {
 
 /** Fetches all notes and updates {@link noteState}. */
 export async function getAllNotes(): Promise<void> {
-  const fetchedNotes = await tauriInvoke<Note[]>('get_all_notes').catch(console.error);
+  const fetchedNotes = await tauriInvoke('get_all_notes').catch(console.error);
 
   const hasNotes = fetchedNotes && fetchedNotes.length > 0;
   if (!hasNotes) return newNote();
