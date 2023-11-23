@@ -615,80 +615,117 @@ describe('Sync', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.edited);
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(cachedId));
     });
+  });
 
-    describe('Edge cases', () => {
-      it('No local, some remote', async () => {
-        mockApi({
-          invoke: {
-            resValue: {
-              get_all_notes: [[]],
-            },
+  describe('Edge cases', () => {
+    it('No local, some remote', async () => {
+      mockApi({
+        invoke: {
+          resValue: {
+            get_all_notes: [[]],
           },
-          request: {
-            resValue: {
-              '/login': [{ notes: mockDb.encryptedNotes }],
-            },
+        },
+        request: {
+          resValue: {
+            '/login': [{ notes: mockDb.encryptedNotes }],
           },
-        });
-
-        s.syncState.username = 'd';
-        s.syncState.password = '1';
-
-        await n.getAllNotes();
-
-        assert.isTrue(isEmptyNote(n.noteState.notes[0]));
-        assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-        assert.lengthOf(n.noteState.notes, 1);
-
-        const wrapper = mount(SyncStatus);
-
-        assert.isTrue(wrapper.isVisible());
-        assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
-
-        await s.login();
-
-        assert.isFalse(s.syncState.isLoading);
-        assert.isTrue(findByTestId(wrapper, 'success').exists());
-        assert.isFalse(isEmptyNote(n.noteState.notes[0]));
-        assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-        assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
-        assert.isEmpty(s.syncState.unsyncedNoteIds.new);
-        assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
-        assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
-        assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
-        assert.isEmpty(s.syncState.error.message);
+        },
       });
 
-      it('No remote, some local', async () => {
-        mockApi();
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
 
-        s.syncState.username = 'd';
-        s.syncState.password = '1';
+      await n.getAllNotes();
 
-        await n.getAllNotes();
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+      assert.lengthOf(n.noteState.notes, 1);
 
-        assert.isFalse(isEmptyNote(n.noteState.notes[0]));
-        assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-        assert.lengthOf(n.noteState.notes, localNotes.length);
+      const wrapper = mount(SyncStatus);
 
-        const wrapper = mount(SyncStatus);
+      assert.isTrue(wrapper.isVisible());
+      assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
 
-        assert.isTrue(wrapper.isVisible());
-        assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
+      await s.login();
 
-        await s.login();
+      assert.isFalse(s.syncState.isLoading);
+      assert.isTrue(findByTestId(wrapper, 'success').exists());
+      assert.isFalse(isEmptyNote(n.noteState.notes[0]));
+      assert.isFalse(isEmptyNote(n.noteState.selectedNote));
+      assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
+      assert.isEmpty(s.syncState.unsyncedNoteIds.new);
+      assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.isEmpty(s.syncState.error.message);
+    });
 
-        assert.isFalse(s.syncState.isLoading);
-        assert.isTrue(findByTestId(wrapper, 'success').exists());
-        assert.isFalse(isEmptyNote(n.noteState.notes[0]));
-        assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-        assert.deepEqual(n.noteState.notes, localNotes);
-        assert.isEmpty(s.syncState.unsyncedNoteIds.new);
-        assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
-        assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
-        assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
-        assert.isEmpty(s.syncState.error.message);
+    it('No remote, some local', async () => {
+      mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await n.getAllNotes();
+
+      assert.isFalse(isEmptyNote(n.noteState.notes[0]));
+      assert.isFalse(isEmptyNote(n.noteState.selectedNote));
+      assert.lengthOf(n.noteState.notes, localNotes.length);
+
+      const wrapper = mount(SyncStatus);
+
+      assert.isTrue(wrapper.isVisible());
+      assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
+
+      await s.login();
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.isTrue(findByTestId(wrapper, 'success').exists());
+      assert.isFalse(isEmptyNote(n.noteState.notes[0]));
+      assert.isFalse(isEmptyNote(n.noteState.selectedNote));
+      assert.deepEqual(n.noteState.notes, localNotes);
+      assert.isEmpty(s.syncState.unsyncedNoteIds.new);
+      assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.isEmpty(s.syncState.error.message);
+    });
+
+    it('No local, no remote', async () => {
+      mockApi({
+        invoke: {
+          resValue: {
+            get_all_notes: [[]],
+          },
+        },
       });
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await n.getAllNotes();
+
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+      assert.lengthOf(n.noteState.notes, 1);
+
+      const wrapper = mount(SyncStatus);
+
+      assert.isTrue(wrapper.isVisible());
+      assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
+
+      await s.login();
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.isTrue(findByTestId(wrapper, 'success').exists());
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.isEmpty(s.syncState.unsyncedNoteIds.new);
+      assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.isEmpty(s.syncState.error.message);
     });
   });
 });
