@@ -627,7 +627,7 @@ describe('Sync', () => {
         },
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes }],
+            '/login': [{ notes: mockDb.encryptedNotes, token: 'token' }],
           },
         },
       });

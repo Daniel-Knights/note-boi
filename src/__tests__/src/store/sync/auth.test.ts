@@ -11,7 +11,7 @@ describe('Sync', () => {
       const { calls } = mockApi({
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes }],
+            '/login': [{ notes: mockDb.encryptedNotes, token: 'token' }],
           },
         },
       });
@@ -44,7 +44,7 @@ describe('Sync', () => {
       const { calls } = mockApi({
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes }],
+            '/login': [{ notes: mockDb.encryptedNotes, token: 'token' }],
           },
         },
       });

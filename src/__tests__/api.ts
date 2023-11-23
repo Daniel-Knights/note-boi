@@ -9,6 +9,7 @@ import {
   ENDPOINTS,
   TAURI_COMMANDS,
   TauriCommand,
+  TauriCommandPayloads,
 } from '../constant';
 import { EncryptedNote } from '../store/sync/encryptor';
 import { hasKeys } from '../utils';
@@ -72,10 +73,10 @@ type ArgsMessage =
 type Args = { message?: ArgsMessage };
 
 type RequestResValue = {
-  [E in keyof EndpointPayloads]?: Partial<EndpointPayloads[E]['response']>[];
+  [E in keyof EndpointPayloads]?: EndpointPayloads[E]['response'][];
 };
-type InvokeResValue = Partial<Record<TauriCommand, unknown[]>> & {
-  get_all_notes?: n.Note[][];
+type InvokeResValue = {
+  [C in keyof TauriCommandPayloads]?: TauriCommandPayloads[C]['response'][];
 };
 type TauriApiResValue = Record<string, unknown[]> & {
   askDialog?: boolean[];
@@ -114,19 +115,6 @@ export const mockDb: {
   },
   encryptedNotes: undefined as unknown as EncryptedNote[],
 };
-
-function getResValue<E extends Endpoint>(
-  endpoint: E,
-  options?: { resValue?: RequestResValue }
-): NonNullable<RequestResValue[E]>[number] | undefined {
-  const resValue = options?.resValue?.[endpoint]?.[0];
-
-  if (resValue) {
-    options.resValue?.[endpoint]?.shift();
-  }
-
-  return resValue;
-}
 
 /** Mocks requests to the server. */
 function mockRequest(
@@ -210,7 +198,7 @@ function mockRequest(
         resData.error = 'Unauthorized';
         httpStatus = 401;
       } else {
-        const resValue = getResValue('/login', options);
+        const resValue = options?.resValue?.['/login']?.shift();
 
         resData.notes = resValue?.notes || [];
         resData.token = 'token';
@@ -253,7 +241,7 @@ function mockRequest(
         resData.error = 'Unauthorized';
         httpStatus = 401;
       } else {
-        const resValue = getResValue('/notes/pull', options);
+        const resValue = options?.resValue?.['/notes/pull']?.shift();
 
         resData.notes = resValue?.notes || [];
       }
@@ -365,11 +353,7 @@ function mockTauriInvoke(
 
   switch (cmd) {
     case 'get_all_notes': {
-      const resValue = options?.resValue?.get_all_notes?.[0];
-
-      if (resValue) {
-        options.resValue?.get_all_notes?.shift();
-      }
+      const resValue = options?.resValue?.get_all_notes?.shift();
 
       resData = resValue || copyObjArr(localNotes);
 
