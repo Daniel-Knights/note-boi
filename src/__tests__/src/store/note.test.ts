@@ -42,7 +42,7 @@ describe('Note store', () => {
   });
 
   describe('getAllNotes', () => {
-    it('with undefined notes', async () => {
+    it('With undefined notes', async () => {
       const { calls } = mockApi({
         invoke: {
           error: 'get_all_notes',
@@ -61,7 +61,7 @@ describe('Note store', () => {
       assert.isTrue(calls.invoke.has('new_note'));
     });
 
-    it('with empty note array', async () => {
+    it('With empty note array', async () => {
       const { calls } = mockApi({
         invoke: {
           resValue: {
@@ -82,7 +82,28 @@ describe('Note store', () => {
       assert.isTrue(calls.invoke.has('new_note'));
     });
 
-    it('with notes', async () => {
+    it('With single empty note', async () => {
+      const { calls } = mockApi({
+        invoke: {
+          resValue: {
+            get_all_notes: [[new n.Note()]],
+          },
+        },
+      });
+
+      await n.getAllNotes();
+
+      expect(mockNewEventCb).not.toHaveBeenCalledOnce();
+      expect(mockChangeEventCb).not.toHaveBeenCalledOnce();
+
+      assert.lengthOf(n.noteState.notes, 1);
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('get_all_notes'));
+    });
+
+    it('With notes', async () => {
       const { calls } = mockApi();
 
       await n.getAllNotes();

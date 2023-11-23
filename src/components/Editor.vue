@@ -61,6 +61,7 @@ onMounted(() => {
   quillEditor.on('text-change', (delta, oldDelta) => {
     if (ignoreTextChange) {
       ignoreTextChange = false;
+
       return;
     }
 

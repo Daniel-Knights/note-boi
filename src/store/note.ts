@@ -110,7 +110,9 @@ export async function getAllNotes(): Promise<void> {
 
   sortStateNotes();
 
-  if (fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0])) {
+  const isSingleEmptyNote = fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0]);
+
+  if (isSingleEmptyNote) {
     noteState.notes[0]!.timestamp = Date.now();
     // Clear these fields as whitespace-only can affect empty note checks
     noteState.notes[0]!.content.delta = {};
@@ -120,9 +122,11 @@ export async function getAllNotes(): Promise<void> {
 
   noteState.selectedNote = { ...noteState.notes[0]! };
 
-  clearEmptyNote();
+  if (!isSingleEmptyNote) {
+    clearEmptyNote();
 
-  document.dispatchEvent(changeNoteEvent);
+    document.dispatchEvent(changeNoteEvent);
+  }
 }
 
 /** Deletes note with the given `id`. */
