@@ -6,7 +6,7 @@ const NOTE_DIR: &str = ".notes";
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Delta {
-  ops: Vec<HashMap<String, Value>>,
+  ops: Option<Vec<HashMap<String, Value>>>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -116,19 +116,24 @@ impl Note {
 
   pub fn export(save_dir: &PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
     notes.iter().for_each(|note| {
-      let ops_iter = note.content.delta.ops.iter();
-      let file_contents = ops_iter.fold(String::new(), |acc, op| {
-        let default_insert = Value::String(String::new());
-        let insert = op
-          .get("insert")
-          .unwrap_or(&default_insert)
-          .as_str()
-          .unwrap();
-
-        acc + insert
-      });
       let filename = format!("{}.txt", note.id);
       let mut file = fs::File::create(save_dir.join(filename)).expect("unable to create file");
+      let mut file_contents = String::new();
+
+      if note.content.delta.ops.is_some() {
+        let ops = note.content.delta.ops.as_ref().unwrap();
+
+        file_contents = ops.iter().fold(String::new(), |acc, op| {
+          let default_insert = Value::String(String::new());
+          let insert = op
+            .get("insert")
+            .unwrap_or(&default_insert)
+            .as_str()
+            .unwrap();
+
+          acc + insert
+        });
+      }
 
       file
         .write_all(file_contents.as_bytes())

@@ -138,7 +138,6 @@ export async function pull(): Promise<void> {
 export async function push(isSyncCleanup?: boolean): Promise<void> {
   if (!syncState.token || (syncState.isLoading && !isSyncCleanup)) return;
   if (syncState.unsyncedNoteIds.size === 0) return;
-  if (noteState.notes.length === 1 && isEmptyNote(noteState.notes[0])) return;
 
   syncState.isLoading = true;
 
