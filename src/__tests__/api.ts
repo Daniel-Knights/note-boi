@@ -361,45 +361,45 @@ function mockTauriInvoke(
     }
     case 'new_note':
       if (!hasKeys(args, ['note'])) {
-        throw new Error('Missing note');
+        assert.fail('Missing note');
       } else if (!isNote(args.note)) {
-        throw new Error('Invalid note');
+        assert.fail('Invalid note');
       }
 
       break;
     case 'edit_note':
       if (!hasKeys(args, ['note'])) {
-        throw new Error('Missing note');
+        assert.fail('Missing note');
       } else if (!isNote(args.note)) {
-        throw new Error('Invalid note');
+        assert.fail('Invalid note');
       }
 
       break;
     case 'delete_note':
       if (!hasKeys(args, ['id'])) {
-        throw new Error('Missing id');
+        assert.fail('Missing id');
       } else if (typeof args.id !== 'string') {
-        throw new Error('Invalid id');
+        assert.fail('Invalid id');
       }
 
       break;
     case 'sync_local_notes':
       if (!hasKeys(args, ['notes'])) {
-        throw new Error('Missing notes');
+        assert.fail('Missing notes');
       } else if (!Array.isArray(args.notes) || args.notes.some((nt) => !isNote(nt))) {
-        throw new Error('Invalid notes');
+        assert.fail('Invalid notes');
       }
 
       break;
     case 'export_notes':
       if (!hasKeys(args, ['saveDir', 'notes'])) {
-        throw new Error('Missing saveDir or notes');
+        assert.fail('Missing saveDir or notes');
       } else if (
         typeof args.saveDir !== 'string' ||
         !Array.isArray(args.notes) ||
         args.notes.some((nt) => !isNote(nt))
       ) {
-        throw new Error('Invalid saveDir or notes');
+        assert.fail('Invalid saveDir or notes');
       }
 
       break;
