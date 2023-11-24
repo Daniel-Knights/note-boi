@@ -61,7 +61,7 @@ describe('Popup', () => {
   it('Closes on click outside', () => {
     const wrapper = mountPopup();
 
-    document.body.dispatchEvent(new MouseEvent('mouseup'));
+    document.body.dispatchEvent(new MouseEvent('mousedown'));
 
     assert.lengthOf(wrapper.emitted('close')!, 1);
     expect(eventSpies.window.remove).toHaveBeenCalledOnce();

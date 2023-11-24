@@ -36,7 +36,7 @@ function clickCloseHandler(event: MouseEvent) {
 }
 
 window.addEventListener('keydown', keyboardCloseHandler);
-document.body.addEventListener('mouseup', clickCloseHandler);
+document.body.addEventListener('mousedown', clickCloseHandler);
 
 onBeforeUnmount(closePopup);
 </script>
