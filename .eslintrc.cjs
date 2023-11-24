@@ -44,7 +44,7 @@ module.exports = {
     'require-await': 'warn',
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['scripts/**', 'src/__tests__/**'] },
+      { devDependencies: ['scripts/**', 'src/__tests__/**', 'vite.config.ts'] },
     ],
 
     // Airbnb overrides
