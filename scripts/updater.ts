@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { context, getOctokit } from '@actions/github';
 import fetch from 'node-fetch';
 
@@ -18,7 +17,7 @@ const DUMMY_OCTOKIT = {
       uploadReleaseAsset: console.log,
     },
   },
-};
+} as const;
 
 const updateData = {
   name: '',
@@ -33,16 +32,25 @@ const updateData = {
   },
 };
 
-const octokit = IS_DEV ? DUMMY_OCTOKIT : getOctokit(process.env.GITHUB_TOKEN);
-const options = IS_DEV || {
-  owner: context.repo.owner,
-  repo: context.repo.repo,
+const octokit = IS_DEV ? DUMMY_OCTOKIT : getOctokit(process.env.GITHUB_TOKEN!);
+const options = IS_DEV
+  ? { owner: 'Daniel-Knights', repo: 'note-boi' }
+  : { owner: context.repo.owner, repo: context.repo.repo };
+
+const getLatestReleaseResult = await octokit.rest.repos.getLatestRelease(options);
+const release = getLatestReleaseResult.data as {
+  id: number;
+  tag_name: string;
+  assets: {
+    id: number;
+    name: string;
+    browser_download_url: string;
+  }[];
 };
 
-const { data: release } = await octokit.rest.repos.getLatestRelease(options);
 updateData.name = release.tag_name;
 
-async function getSignature(url) {
+async function getSignature(url: string): Promise<string> {
   const response = await fetch(url, {
     method: 'GET',
     headers: { 'Content-Type': 'application/octet-stream' },
@@ -51,7 +59,11 @@ async function getSignature(url) {
   return response.text();
 }
 
-async function setPlatformData(platform, name, url) {
+async function setPlatformData(
+  platform: string,
+  name: string,
+  url: string
+): Promise<void> {
   if (name.endsWith('.sig')) {
     const signature = await getSignature(url);
 
@@ -63,12 +75,12 @@ async function setPlatformData(platform, name, url) {
   }
 }
 
-const platformPromises = [];
+const platformPromises: Promise<unknown>[] = [];
 const platformRegex = [
   ['windows', /\.msi\.zip(?:\.sig)?/],
   ['darwin', /\.app\.tar\.gz(?:\.sig)?/],
   ['linux', /\.AppImage\.tar\.gz(?:\.sig)?/],
-];
+] as const;
 
 release.assets.forEach((asset) => {
   platformRegex.forEach(([platform, regex]) => {

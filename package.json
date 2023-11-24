@@ -19,7 +19,7 @@
     "lint": "eslint ./**/*.{ts,js,vue} --no-error-on-unmatched-pattern && vue-tsc --noEmit && tsc --noEmit",
     "checks": "pnpm run lint && pnpm run test:build",
     "format": "prettier --write ./src",
-    "update": "node ./scripts/updater.js",
+    "update": "tsx ./scripts/updater.ts",
     "release:patch": "tsx ./scripts/release.ts patch",
     "release:minor": "tsx ./scripts/release.ts minor",
     "release:major": "tsx ./scripts/release.ts major"

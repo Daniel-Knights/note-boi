@@ -42,6 +42,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
 
     'require-await': 'warn',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['scripts/**'] }],
 
     // Airbnb overrides
     'comma-dangle': 'off',
