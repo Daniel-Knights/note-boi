@@ -1,6 +1,7 @@
 import { Encryptor, KeyStore } from '../../../../store/sync';
 import { mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
+import { isNote } from '../../../utils';
 
 describe('Encryptor', () => {
   describe('setPasswordKey', () => {
@@ -65,8 +66,18 @@ describe('Encryptor', () => {
 
       assert.lengthOf(decryptedNotes, mockDb.encryptedNotes.length);
 
-      decryptedNotes.forEach((note) => {
-        assert.isObject(note.content);
+      decryptedNotes.forEach((nt) => {
+        assert.isTrue(isNote(nt));
+      });
+    });
+
+    it('Handles already decrypted notes', async () => {
+      const decryptedNotes = await Encryptor.decryptNotes(localNotes);
+
+      assert.lengthOf(decryptedNotes, localNotes.length);
+
+      decryptedNotes.forEach((nt) => {
+        assert.isTrue(isNote(nt));
       });
     });
   });

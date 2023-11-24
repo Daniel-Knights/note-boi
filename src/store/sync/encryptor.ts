@@ -120,7 +120,10 @@ export class Encryptor {
     return Promise.all(encryptedNotePromises);
   }
 
-  static async decryptNotes(notes: EncryptedNote[], password?: string): Promise<Note[]> {
+  static async decryptNotes(
+    notes: (EncryptedNote | Note)[],
+    password?: string
+  ): Promise<Note[]> {
     if (password) {
       await this.setPasswordKey(password);
     }
@@ -128,6 +131,10 @@ export class Encryptor {
     const passwordKey = await KeyStore.getKey();
 
     const decryptedNotePromises = notes.map(async (nt) => {
+      if (typeof nt.content !== 'string') {
+        return nt as Note;
+      }
+
       const decryptedNoteContent = await this.#decryptData(nt.content, passwordKey);
 
       const decryptedNote: Note = {
