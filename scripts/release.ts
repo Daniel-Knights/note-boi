@@ -10,6 +10,7 @@ function run(cmd: string, passedArgs: string[]): void {
 }
 
 run('pnpm', ['run', 'checks']);
+// This is here purely to check the build works before triggering a release
 run('pnpm', ['build']);
 run('pnpm', ['version', args[0]]);
 run('npx', ['changenog']);
