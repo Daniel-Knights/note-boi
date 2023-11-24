@@ -7,7 +7,7 @@
     "distDir": "../dist",
     "devPath": "http://localhost:3000",
     "beforeDevCommand": "pnpm run vite:dev",
-    "beforeBuildCommand": "pnpm run vite:build"
+    "beforeBuildCommand": "pnpm run checks && pnpm run vite:build"
   },
   "tauri": {
     "bundle": {
