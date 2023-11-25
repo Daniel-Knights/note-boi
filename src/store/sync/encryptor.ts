@@ -13,11 +13,11 @@ const enc = new TextEncoder();
 const dec = new TextDecoder();
 
 function buffToBase64(buff: Uint8Array): string {
-  return btoa(buff.reduce((data, byte) => data + String.fromCharCode(byte), ''));
+  return window.btoa(buff.reduce((data, byte) => data + String.fromCharCode(byte), ''));
 }
 
 function base64ToBuff(b64: string): Uint8Array {
-  return Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+  return Uint8Array.from(window.atob(b64), (c) => c.charCodeAt(0));
 }
 
 export class Encryptor {
