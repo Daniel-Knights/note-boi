@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import * as s from '../../../store/sync';
 import pkg from '../../../../package.json';
 import { clearMockApiResults, mockApi } from '../../api';
-import { getByTestId } from '../../utils';
+import { findByTestId, getByTestId } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupInfo from '../../../components/PopupInfo.vue';
@@ -40,6 +40,25 @@ describe('PopupInfo', () => {
   it('Renders correct description list items', async () => {
     const { calls, promises } = mockApi();
 
+    const wrapper = mountPopupInfo();
+
+    assert.lengthOf(wrapper.findAll('.popup-info__description-pair'), 3);
+    assert.isFalse(findByTestId(wrapper, 'user').exists());
+    assert.strictEqual(getByTestId(wrapper, 'version').text(), `Version:${pkg.version}`);
+
+    let repoWrapper = getByTestId(wrapper, 'repo');
+
+    assert.strictEqual(repoWrapper.text(), `Repo:${pkg.repository.url}`);
+    assert.strictEqual(repoWrapper.get('a').attributes('href'), pkg.repository.url);
+
+    let issuesWrapper = getByTestId(wrapper, 'issues');
+
+    assert.strictEqual(issuesWrapper.text(), `Issues:${pkg.repository.url}/issues`);
+    assert.strictEqual(
+      issuesWrapper.get('a').attributes('href'),
+      `${pkg.repository.url}/issues`
+    );
+
     s.syncState.username = 'd';
     s.syncState.password = '1';
 
@@ -47,24 +66,19 @@ describe('PopupInfo', () => {
 
     clearMockApiResults({ calls, promises });
 
-    const wrapper = mountPopupInfo();
-    const userWrapper = getByTestId(wrapper, 'version');
-
     await Promise.all(promises);
 
-    assert.strictEqual(userWrapper.text(), `Version:${pkg.version}`);
-
-    const descriptionListItems = wrapper.findAll('.popup-info__description-pair');
-
-    assert.lengthOf(descriptionListItems, 4);
+    assert.lengthOf(wrapper.findAll('.popup-info__description-pair'), 4);
     assert.strictEqual(getByTestId(wrapper, 'user').text(), 'User:d');
     assert.strictEqual(getByTestId(wrapper, 'version').text(), `Version:${pkg.version}`);
 
-    const repoWrapper = getByTestId(wrapper, 'repo');
+    repoWrapper = getByTestId(wrapper, 'repo');
+
     assert.strictEqual(repoWrapper.text(), `Repo:${pkg.repository.url}`);
     assert.strictEqual(repoWrapper.get('a').attributes('href'), pkg.repository.url);
 
-    const issuesWrapper = getByTestId(wrapper, 'issues');
+    issuesWrapper = getByTestId(wrapper, 'issues');
+
     assert.strictEqual(issuesWrapper.text(), `Issues:${pkg.repository.url}/issues`);
     assert.strictEqual(
       issuesWrapper.get('a').attributes('href'),

@@ -3,7 +3,11 @@
     <div id="popup-info" data-test-id="popup-info">
       <h2>Info</h2>
       <dl class="popup-info__description-list">
-        <div class="popup-info__description-pair" data-test-id="user">
+        <div
+          v-if="syncState.username"
+          class="popup-info__description-pair"
+          data-test-id="user"
+        >
           <dt>User:</dt>
           <dd class="popup-info__text-bold">{{ syncState.username }}</dd>
         </div>
