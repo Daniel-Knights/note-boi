@@ -215,6 +215,29 @@ describe('Sync', () => {
       assertNoteItemText(n.noteState.selectedNote.id, 'Remote update-body');
       assertNoteItemText(newRemoteNote.id, 'New note-body');
     });
+
+    it('Sets and resets loading state', async () => {
+      mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
+
+      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+
+      try {
+        await s.pull();
+      } catch {
+        expect(isLoadingSpy).toHaveBeenCalledWith(true);
+        assert.isFalse(s.syncState.isLoading);
+      }
+
+      expect(tauriFetchSpy).toHaveBeenCalledOnce();
+    });
   });
 
   describe('push', () => {
@@ -302,6 +325,31 @@ describe('Sync', () => {
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/push'));
+    });
+
+    it('Sets and resets loading state', async () => {
+      mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      n.editNote({}, 'title', 'body');
+
+      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
+
+      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+
+      try {
+        await s.push();
+      } catch {
+        expect(isLoadingSpy).toHaveBeenCalledWith(true);
+        assert.isFalse(s.syncState.isLoading);
+      }
+
+      expect(tauriFetchSpy).toHaveBeenCalledOnce();
     });
   });
 

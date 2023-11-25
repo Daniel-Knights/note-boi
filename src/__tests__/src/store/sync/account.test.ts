@@ -87,6 +87,32 @@ describe('Account', () => {
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/account/password/change'));
     });
+
+    it('Sets and resets loading state', async () => {
+      mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
+
+      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+
+      s.syncState.password = '1';
+      s.syncState.newPassword = '2';
+
+      try {
+        await s.changePassword();
+      } catch {
+        expect(isLoadingSpy).toHaveBeenCalledWith(true);
+        assert.isFalse(s.syncState.isLoading);
+      }
+
+      expect(tauriFetchSpy).toHaveBeenCalledOnce();
+    });
   });
 
   describe('deleteAccount', () => {
@@ -176,6 +202,29 @@ describe('Account', () => {
       assert.isTrue(calls.tauriApi.has('askDialog'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isFalse(s.syncState.isLoading);
+    });
+
+    it('Sets and resets loading state', async () => {
+      mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
+
+      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+
+      try {
+        await s.deleteAccount();
+      } catch {
+        expect(isLoadingSpy).toHaveBeenCalledWith(true);
+        assert.isFalse(s.syncState.isLoading);
+      }
+
+      expect(tauriFetchSpy).toHaveBeenCalledOnce();
     });
   });
 });

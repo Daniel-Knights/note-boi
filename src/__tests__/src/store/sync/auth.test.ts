@@ -77,7 +77,7 @@ describe('Sync', () => {
       assert.isTrue(calls.emits.has('login'));
     });
 
-    it('Fails to log in, with a server error', async () => {
+    it('With server error', async () => {
       const { calls } = mockApi({
         request: {
           error: '/login',
@@ -100,6 +100,29 @@ describe('Sync', () => {
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/login'));
+    });
+
+    it('Sets and resets loading state', async () => {
+      mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
+
+      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+
+      try {
+        await s.logout();
+      } catch {
+        expect(isLoadingSpy).toHaveBeenCalledWith(true);
+        assert.isFalse(s.syncState.isLoading);
+      }
+
+      expect(tauriFetchSpy).toHaveBeenCalledOnce();
     });
   });
 
@@ -209,6 +232,27 @@ describe('Sync', () => {
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/signup'));
     });
+
+    it('Sets and resets loading state', async () => {
+      mockApi();
+
+      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
+
+      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      try {
+        await s.signup();
+      } catch {
+        expect(isLoadingSpy).toHaveBeenCalledWith(true);
+        assert.isFalse(s.syncState.isLoading);
+      }
+
+      expect(tauriFetchSpy).toHaveBeenCalledOnce();
+    });
   });
 
   describe('logout', () => {
@@ -262,6 +306,29 @@ describe('Sync', () => {
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/logout'));
+    });
+
+    it('Sets and resets loading state', async () => {
+      mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
+
+      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+
+      try {
+        await s.logout();
+      } catch {
+        expect(isLoadingSpy).toHaveBeenCalledWith(true);
+        assert.isFalse(s.syncState.isLoading);
+      }
+
+      expect(tauriFetchSpy).toHaveBeenCalledOnce();
     });
   });
 });
