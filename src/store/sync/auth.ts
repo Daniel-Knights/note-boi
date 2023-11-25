@@ -66,73 +66,77 @@ export async function login(): Promise<void> {
 export async function signup(): Promise<void> {
   syncState.isLoading = true;
 
-  const encryptedNotes = await Encryptor.encryptNotes(
-    noteState.notes.filter((nt) => !isEmptyNote(nt)),
-    syncState.password
-  );
+  try {
+    const encryptedNotes = await Encryptor.encryptNotes(
+      noteState.notes.filter((nt) => !isEmptyNote(nt)),
+      syncState.password
+    );
 
-  const res = await tauriFetch('/signup', 'POST', {
-    username: syncState.username,
-    password: syncState.password,
-    notes: encryptedNotes,
-  }).catch((err) => catchHang(err, ErrorType.Auth));
+    const res = await tauriFetch('/signup', 'POST', {
+      username: syncState.username,
+      password: syncState.password,
+      notes: encryptedNotes,
+    }).catch((err) => catchHang(err, ErrorType.Auth));
 
-  if (!res) return;
+    if (!res) return;
 
-  if (resIsOk(res)) {
-    resetError();
-    tauriEmit('login');
+    if (resIsOk(res)) {
+      resetError();
+      tauriEmit('login');
 
-    syncState.token = res.data.token;
-    syncState.password = '';
-    syncState.unsyncedNoteIds.clear();
+      syncState.token = res.data.token;
+      syncState.password = '';
+      syncState.unsyncedNoteIds.clear();
 
-    localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
-    localStorage.setItem(STORAGE_KEYS.TOKEN, syncState.token);
-  } else if (!encryptedNotes) {
-    syncState.error = {
-      type: ErrorType.Auth,
-      message: 'Error signing up',
-    };
+      localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
+      localStorage.setItem(STORAGE_KEYS.TOKEN, syncState.token);
+    } else if (!encryptedNotes) {
+      syncState.error = {
+        type: ErrorType.Auth,
+        message: 'Error signing up',
+      };
 
-    console.error('Unable to encrypt notes');
-  } else {
-    syncState.error = {
-      type: ErrorType.Auth,
-      message: parseErrorRes(res),
-    };
+      console.error('Unable to encrypt notes');
+    } else {
+      syncState.error = {
+        type: ErrorType.Auth,
+        message: parseErrorRes(res),
+      };
 
-    console.error(res.data);
+      console.error(res.data);
+    }
+  } finally {
+    syncState.isLoading = false;
   }
-
-  syncState.isLoading = false;
 }
 
 // Logout
 export async function logout(): Promise<void> {
   syncState.isLoading = true;
 
-  const res = await tauriFetch('/logout', 'POST', {
-    username: syncState.username,
-    token: syncState.token,
-  }).catch((err) => catchHang(err, ErrorType.Logout));
+  try {
+    const res = await tauriFetch('/logout', 'POST', {
+      username: syncState.username,
+      token: syncState.token,
+    }).catch((err) => catchHang(err, ErrorType.Logout));
 
-  if (!res) return;
+    if (!res) return;
 
-  if (resIsOk(res)) {
-    resetError();
-    tauriEmit('logout');
-    clientSideLogout();
+    if (resIsOk(res)) {
+      resetError();
+      tauriEmit('logout');
+      clientSideLogout();
 
-    await KeyStore.reset();
-  } else {
-    syncState.error = {
-      type: ErrorType.Logout,
-      message: parseErrorRes(res),
-    };
+      await KeyStore.reset();
+    } else {
+      syncState.error = {
+        type: ErrorType.Logout,
+        message: parseErrorRes(res),
+      };
 
-    console.error(res.data);
+      console.error(res.data);
+    }
+  } finally {
+    syncState.isLoading = false;
   }
-
-  syncState.isLoading = false;
 }

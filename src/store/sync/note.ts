@@ -104,34 +104,36 @@ export async function pull(): Promise<void> {
 
   syncState.isLoading = true;
 
-  const res = await tauriFetch('/notes/pull', 'POST', {
-    username: syncState.username,
-    token: syncState.token,
-  }).catch((err) => catchHang(err, ErrorType.Pull));
+  try {
+    const res = await tauriFetch('/notes/pull', 'POST', {
+      username: syncState.username,
+      token: syncState.token,
+    }).catch((err) => catchHang(err, ErrorType.Pull));
 
-  if (!res) return;
+    if (!res) return;
 
-  if (resIsOk(res)) {
-    resetError();
+    if (resIsOk(res)) {
+      resetError();
 
-    const decryptedNotes = await Encryptor.decryptNotes(res.data.notes);
+      const decryptedNotes = await Encryptor.decryptNotes(res.data.notes);
 
-    await syncNotes(decryptedNotes);
-  } else {
-    syncState.error = {
-      type: ErrorType.Pull,
-      message: parseErrorRes(res),
-    };
+      await syncNotes(decryptedNotes);
+    } else {
+      syncState.error = {
+        type: ErrorType.Pull,
+        message: parseErrorRes(res),
+      };
 
-    // User not found
-    if (res.status === 404) {
-      clientSideLogout();
+      // User not found
+      if (res.status === 404) {
+        clientSideLogout();
+      }
+
+      console.error(res.data);
     }
-
-    console.error(res.data);
+  } finally {
+    syncState.isLoading = false;
   }
-
-  syncState.isLoading = false;
 }
 
 // Push
@@ -141,42 +143,44 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 
   syncState.isLoading = true;
 
-  // Cache ids and clear before request to prevent
-  // race condition if a note is edited mid-push
-  const cachedUnsyncedNoteIds = {
-    new: syncState.unsyncedNoteIds.new,
-    edited: [...syncState.unsyncedNoteIds.edited],
-    deleted: [...syncState.unsyncedNoteIds.deleted],
-  };
-  syncState.unsyncedNoteIds.clear();
-
-  const encryptedNotes = await Encryptor.encryptNotes(
-    noteState.notes.filter((nt) => !isEmptyNote(nt))
-  );
-
-  const res = await tauriFetch('/notes/push', 'PUT', {
-    username: syncState.username,
-    token: syncState.token,
-    notes: encryptedNotes,
-  }).catch((err) => catchHang(err, ErrorType.Push));
-
-  if (!res) return;
-
-  if (resIsOk(res)) {
-    resetError();
-  } else {
-    // Add back unsynced note ids
-    syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
-
-    syncState.error = {
-      type: ErrorType.Push,
-      message: parseErrorRes(res),
+  try {
+    // Cache ids and clear before request to prevent
+    // race condition if a note is edited mid-push
+    const cachedUnsyncedNoteIds = {
+      new: syncState.unsyncedNoteIds.new,
+      edited: [...syncState.unsyncedNoteIds.edited],
+      deleted: [...syncState.unsyncedNoteIds.deleted],
     };
+    syncState.unsyncedNoteIds.clear();
 
-    console.error(res.data);
+    const encryptedNotes = await Encryptor.encryptNotes(
+      noteState.notes.filter((nt) => !isEmptyNote(nt))
+    );
+
+    const res = await tauriFetch('/notes/push', 'PUT', {
+      username: syncState.username,
+      token: syncState.token,
+      notes: encryptedNotes,
+    }).catch((err) => catchHang(err, ErrorType.Push));
+
+    if (!res) return;
+
+    if (resIsOk(res)) {
+      resetError();
+    } else {
+      // Add back unsynced note ids
+      syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
+
+      syncState.error = {
+        type: ErrorType.Push,
+        message: parseErrorRes(res),
+      };
+
+      console.error(res.data);
+    }
+  } finally {
+    syncState.isLoading = false;
   }
-
-  syncState.isLoading = false;
 }
 
 // Auto-syncing
