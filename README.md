@@ -23,5 +23,5 @@
 Go to the [releases page](https://github.com/Daniel-Knights/note-boi/releases) and download the appropriate installer.
 
 - MacOS: `.dmg`, `.app`
-- Windows: `.msi`
+- Windows: `.msi`, `-setup.exe`
 - Linux: `.deb`, `.AppImage`
