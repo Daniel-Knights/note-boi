@@ -43,6 +43,7 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 
+import { MIN_PASSWORD_LENGTH } from '../constant';
 import { changePassword, ErrorType, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
@@ -64,6 +65,15 @@ async function handleSubmit() {
   validation.confirmNewPassword = !!confirmNewPassword.value;
 
   if (Object.values(validation).some((v) => v === false)) {
+    return;
+  }
+
+  if (syncState.newPassword.length < MIN_PASSWORD_LENGTH) {
+    syncState.error = {
+      type: ErrorType.Auth,
+      message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`,
+    };
+
     return;
   }
 

@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
+import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
 import { awaitSyncLoad, findByTestId, getByTestId } from '../../utils';
 
@@ -190,7 +191,7 @@ describe('PopupSyncAuth', () => {
       assert.isFalse(wrapperVm.validation.confirmPassword);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-      confirmPasswordInput.setValue('3');
+      confirmPasswordInput.setValue('2');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
@@ -199,16 +200,25 @@ describe('PopupSyncAuth', () => {
 
       await formWrapper.trigger('submit');
 
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
-      expect(spyLogin).not.toHaveBeenCalled();
-      expect(spySignup).not.toHaveBeenCalled();
+      assert.strictEqual(
+        s.syncState.error.message,
+        `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`
+      );
 
-      confirmPasswordInput.setValue('2');
+      passwordInput.setValue('123456');
+
+      await formWrapper.trigger('submit');
+
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.message, "Passwords don't match");
+
+      confirmPasswordInput.setValue('123456');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
+      expect(spyLogin).not.toHaveBeenCalled();
+      expect(spySignup).not.toHaveBeenCalled();
 
       clearMockApiResults({ calls });
 

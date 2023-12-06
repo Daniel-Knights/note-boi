@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
+import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
 import { awaitSyncLoad, getByTestId } from '../../utils';
 
@@ -99,7 +100,7 @@ describe('PopupChangePassword', () => {
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
 
-    confirmNewPasswordInput.setValue('1');
+    confirmNewPasswordInput.setValue('2');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
@@ -109,9 +110,19 @@ describe('PopupChangePassword', () => {
     await formWrapper.trigger('submit');
 
     assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
-    assert.isNotEmpty(s.syncState.error.message);
+    assert.strictEqual(
+      s.syncState.error.message,
+      `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`
+    );
 
-    confirmNewPasswordInput.setValue('2');
+    newPasswordInput.setValue('123456');
+
+    await formWrapper.trigger('submit');
+
+    assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+    assert.strictEqual(s.syncState.error.message, "Passwords don't match");
+
+    confirmNewPasswordInput.setValue('123456');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);

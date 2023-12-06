@@ -1,6 +1,8 @@
 import { Note } from './store/note';
 import { EncryptedNote } from './store/sync/encryptor';
 
+export const MIN_PASSWORD_LENGTH = 6;
+
 export const NOTE_EVENTS = {
   new: 'note-new',
   /** For preventing note edit on text change. */
