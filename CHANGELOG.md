@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/Daniel-Knights/note-boi/compare/v1.0.0...v1.1.0) (06/12/2023)
+
+- feat(auth): min password length ([a182202](https://github.com/Daniel-Knights/note-boi/commit/a182202238ed7656aa358dad92805741623578bc))
+- docs(readme): setup exe windows install ([dddb860](https://github.com/Daniel-Knights/note-boi/commit/dddb86020b8121943e0e5b5f715b03c59564d3bd))
+- docs(changelog): v1.0.0 ([9e7aa13](https://github.com/Daniel-Knights/note-boi/commit/9e7aa1333135203d24fdb8d55a2ac68fcaf3b1c8))
+
 ## [1.0.0](https://github.com/Daniel-Knights/note-boi/compare/v0.2.0...v1.0.0) (25/11/2023)
 
 - ci(release): remove checks ([7ac9731](https://github.com/Daniel-Knights/note-boi/commit/7ac97318cd0cbaa5854ab127f1274726f681f19a))
