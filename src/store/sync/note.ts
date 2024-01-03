@@ -68,16 +68,16 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
     document.dispatchEvent(new Event(NOTE_EVENTS.change));
   }
 
-  const unsyncedIds = [
+  const allUnsyncedIds = [
     syncState.unsyncedNoteIds.new,
     ...syncState.unsyncedNoteIds.edited,
+    ...syncState.unsyncedNoteIds.deleted,
   ];
-  const unsyncedDeletedIds = [...syncState.unsyncedNoteIds.deleted];
-  const unsyncedNotes = unsyncedIds.map(findNote).filter(Boolean) as Note[];
-  const syncedNotes = remoteNotes.filter((nt) => {
-    return ![...unsyncedIds, ...unsyncedDeletedIds].includes(nt.id);
-  });
 
+  // Find all unsynced local notes
+  const unsyncedNotes = allUnsyncedIds.map(findNote).filter(Boolean) as Note[];
+  // Discard remote notes that have been changed locally
+  const syncedNotes = remoteNotes.filter((nt) => !allUnsyncedIds.includes(nt.id));
   const mergedNotes = [...unsyncedNotes, ...syncedNotes];
 
   if (mergedNotes.length > 0) {
