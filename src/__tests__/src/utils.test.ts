@@ -21,11 +21,8 @@ describe('Utils', () => {
   it('unixToDateTime', () => {
     const formattedDateTime = unixToDateTime(1650003060221);
 
-    assert.isTrue(
-      // First is for GitHub workflow, second is for local testing
-      formattedDateTime === 'Apr 15, 2022, 6:11 AM' ||
-        formattedDateTime === '15 Apr 2022, 07:11'
-    );
+    // 6 is for GitHub workflow, 7 is for local testing
+    assert.isTrue(/Apr 15, 2022, (6|7):11 AM/.test(formattedDateTime));
   });
 
   it('localStorageParse', () => {
