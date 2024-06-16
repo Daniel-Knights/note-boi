@@ -17,7 +17,7 @@ import {
 import { openedPopup, PopupType } from './store/popup';
 import { deleteAccount, ErrorType, push, syncState } from './store/sync';
 import { handleUpdate } from './store/update';
-import { tauriListen } from './utils';
+import { isDev, tauriListen } from './utils';
 
 import App from './App.vue';
 
@@ -52,7 +52,10 @@ handleUpdate();
 tauriWindow.appWindow.listen('tauri://close-requested', () => {
   exitApp(exit);
 });
-tauriListen('reload', () => exitApp(relaunch));
+tauriListen('reload', () => {
+  // Relaunch acts up in dev, but is fine in production
+  exitApp(isDev() ? window.location.reload.bind(window.location) : relaunch);
+});
 tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteSelectedNotes);
 tauriListen('export-note', () => {

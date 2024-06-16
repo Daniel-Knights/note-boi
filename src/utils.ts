@@ -54,12 +54,12 @@ export function tauriEmit<T>(id: TauriEmit, payload?: T): Promise<void> {
 /** Calls {@link event.listen}, with stronger typing for `id`. */
 export function tauriListen<T>(
   id: TauriListener,
-  cb: EventCallback<T>
+  cb: EventCallback<T | undefined>
 ): Promise<UnlistenFn> {
-  return event.listen<{ isFrontendEmit: boolean; data: T }>(id, (ev) => {
-    if (ev.payload.isFrontendEmit) return;
+  return event.listen<{ isFrontendEmit: boolean; data: T } | undefined>(id, (ev) => {
+    if (ev.payload?.isFrontendEmit) return;
 
-    cb({ ...ev, payload: ev.payload.data });
+    cb({ ...ev, payload: ev.payload?.data });
   });
 }
 
