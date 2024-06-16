@@ -9,7 +9,6 @@
 
 <script lang="ts" setup>
 import Quill from 'quill';
-import type Delta from 'quill-delta';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 import { NOTE_EVENTS } from '../constant';
@@ -69,7 +68,7 @@ onMounted(() => {
 
     const [title, body] = quillEditor.getText().split(/\n+/);
 
-    editNote(oldDelta.compose(delta) as Delta, title!, body);
+    editNote(oldDelta.compose(delta), title!, body);
   });
 });
 
