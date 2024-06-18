@@ -34,17 +34,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 'latest'
+          run_install: false
+
       - name: Install Node
         uses: actions/setup-node@v4
         with:
           node-version: 'latest'
           cache: 'pnpm'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 'latest'
-          run_install: true
+      - name: Install pnpm dependencies
+        run: pnpm i
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
