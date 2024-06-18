@@ -1,3 +1,9 @@
 {
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
   "cSpell.words": ["chrono", "esbuild", "punycode", "tauri", "unsynced", "vitest"]
 }
