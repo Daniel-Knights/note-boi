@@ -19,7 +19,6 @@
     "lint": "eslint ./**/*.{ts,js,vue} --no-error-on-unmatched-pattern && vue-tsc --noEmit && tsc --noEmit",
     "checks": "pnpm run lint && pnpm run test:build",
     "format": "prettier --write ./src",
-    "update": "tsx ./scripts/updater.ts",
     "release:patch": "tsx ./scripts/release.ts patch",
     "release:minor": "tsx ./scripts/release.ts minor",
     "release:major": "tsx ./scripts/release.ts major"
@@ -30,7 +29,6 @@
     "vue": "^3.4.29"
   },
   "devDependencies": {
-    "@actions/github": "^6.0.0",
     "@babel/types": "^7.24.7",
     "@tauri-apps/cli": "^1.5.14",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -50,7 +48,6 @@
     "eslint-plugin-vue": "^9.26.0",
     "fake-indexeddb": "^6.0.0",
     "jsdom": "^24.1.0",
-    "node-fetch": "^3.3.2",
     "prettier": "^3.3.2",
     "quill-delta": "^5.1.0",
     "sass": "^1.77.5",
