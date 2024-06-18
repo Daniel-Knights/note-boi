@@ -1,3 +1,22 @@
+## [1.1.1](https://github.com/Daniel-Knights/note-boi-client/compare/v1.1.0...v1.1.1) (6/18/24)
+
+- build(deps-dev): bump ws in the npm_and_yarn group across 1 directory ([7a15ad8](https://github.com/Daniel-Knights/note-boi-client/commit/7a15ad8cb40fc691c31c0be1b20cd10ad5d2e420))
+- ci(release): update action versions and recommended config, remove update job as tauri does this automatically now ([8bcd29a](https://github.com/Daniel-Knights/note-boi-client/commit/8bcd29abb6103f9cff6b433580de1d9093177e94))
+- ci(release): action versions ([0e23e98](https://github.com/Daniel-Knights/note-boi-client/commit/0e23e98a421df6198da8a114eeae077f9fba3c37))
+- chore(deps): bump ([8c74951](https://github.com/Daniel-Knights/note-boi-client/commit/8c749513460910039fc06d64a9ba52e9edfc7b4a))
+- test(utils): fix unixToDateTime ([cdcef19](https://github.com/Daniel-Knights/note-boi-client/commit/cdcef199ca63060a537fe6c04196cb3d1c7439d8))
+- fix: window reload ([b65195a](https://github.com/Daniel-Knights/note-boi-client/commit/b65195a90240edc5b973c2f9df962142aba4d3ae))
+- ci(release): ensure clean working tree ([4fefe14](https://github.com/Daniel-Knights/note-boi-client/commit/4fefe149be660a8610d4ffc82121df5a6c7f695d))
+- chore(eslint): config typing ([cfd0253](https://github.com/Daniel-Knights/note-boi-client/commit/cfd0253a76e66b8f2cdd22f3af854fca7c70d8aa))
+- build(deps-dev): bump braces from 3.0.2 to 3.0.3 ([7aa0d7d](https://github.com/Daniel-Knights/note-boi-client/commit/7aa0d7d2386b931104debc5aba6a0f0e8cb9ee74))
+- build(deps-dev): bump undici from 5.28.0 to 5.28.4 ([8f2e2fe](https://github.com/Daniel-Knights/note-boi-client/commit/8f2e2fee3ab1157240a671efbe5f83ce63638a15))
+- build(deps-dev): bump vite from 5.0.9 to 5.0.13 ([73b10aa](https://github.com/Daniel-Knights/note-boi-client/commit/73b10aad9cee5180e19633efaef785cad98122c5))
+- build(deps): bump h2 from 0.3.20 to 0.3.26 in /src-tauri ([6dc6e9a](https://github.com/Daniel-Knights/note-boi-client/commit/6dc6e9af6ca2b2f251b82bfb59b75d4446a43bc1))
+- build(deps): bump mio from 0.8.8 to 0.8.11 in /src-tauri ([d54dd9d](https://github.com/Daniel-Knights/note-boi-client/commit/d54dd9d23489a20cea09e0b471a376ac2940a12f))
+- refactor(sync): note merging readability ([0c2045d](https://github.com/Daniel-Knights/note-boi-client/commit/0c2045d1f6c0ab2055ccd22f4655ad32b226dd1a))
+- chore(deps): bump ([57622b2](https://github.com/Daniel-Knights/note-boi-client/commit/57622b2e852cbd4345060b4b8650f9af3017b31d))
+- docs(changelog): v1.1.0 ([fa63dd7](https://github.com/Daniel-Knights/note-boi-client/commit/fa63dd72c202dcb4e20c4bf8746dc1ef7d9ae70b))
+
 ## [1.1.0](https://github.com/Daniel-Knights/note-boi/compare/v1.0.0...v1.1.0) (06/12/2023)
 
 - feat(auth): min password length ([a182202](https://github.com/Daniel-Knights/note-boi/commit/a182202238ed7656aa358dad92805741623578bc))
