@@ -18,7 +18,7 @@
     </button>
     <!-- Sync successful -->
     <div
-      v-else-if="syncState.token !== '' && syncState.unsyncedNoteIds.size === 0"
+      v-else-if="syncState.isLoggedIn && syncState.unsyncedNoteIds.size === 0"
       title="Changes synced"
       data-test-id="success"
     >
@@ -44,7 +44,7 @@ import { computed } from 'vue';
 
 import { openedPopup, PopupType } from '../store/popup';
 import { ErrorType, logout, pull, resetError, syncState } from '../store/sync';
-import { tauriEmit, tauriListen } from '../utils';
+import { tauriListen } from '../utils';
 
 import PopupSyncAuth from './PopupSyncAuth.vue';
 import PopupSyncError from './PopupSyncError.vue';
@@ -52,27 +52,17 @@ import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 import CloudSyncIcon from './svg/CloudSyncIcon.vue';
 import CloudTickIcon from './svg/CloudTickIcon.vue';
 
-if (syncState.token) {
-  tauriEmit('login');
-  pull();
-} else {
-  tauriEmit('logout');
-}
-
 const isSyncError = computed(() => {
-  switch (syncState.error.type) {
-    case ErrorType.Logout:
-    case ErrorType.Pull:
-    case ErrorType.Push:
-      return true;
-    default:
-      return false;
-  }
+  return (
+    syncState.error.type === ErrorType.Logout ||
+    syncState.error.type === ErrorType.Pull ||
+    syncState.error.type === ErrorType.Push
+  );
 });
 
 function handlePopupAuthEvent() {
   // Prevent bug where event.emit triggers event.listen
-  if (!syncState.token) {
+  if (!syncState.isLoggedIn) {
     openedPopup.value = PopupType.Auth;
   }
 }
@@ -94,6 +84,8 @@ tauriListen('signup', () => {
   syncState.isLogin = false;
   handlePopupAuthEvent();
 });
+
+pull();
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
   <button
-    v-if="syncState.token"
+    v-if="syncState.isLoggedIn"
     @click="logout"
     id="logout"
     class="button"

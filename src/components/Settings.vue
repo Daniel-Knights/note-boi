@@ -67,7 +67,7 @@ watch(updateAvailable, () => {
 watch(syncState, () => {
   const hasAccountItem = menuItems.some((item) => item.label === 'Account');
 
-  if (syncState.token && !hasAccountItem) {
+  if (syncState.isLoggedIn && !hasAccountItem) {
     menuItems.push({
       label: 'Account',
       subMenu: [
@@ -86,7 +86,7 @@ watch(syncState, () => {
         },
       ],
     });
-  } else if (!syncState.token && hasAccountItem) {
+  } else if (!syncState.isLoggedIn && hasAccountItem) {
     menuItems.pop();
   }
 });

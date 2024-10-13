@@ -17,7 +17,12 @@ import Popup from './Popup.vue';
 const emit = defineEmits(['close']);
 
 function tryAgain() {
-  switch (syncState.error.type) {
+  const errorType = syncState.error.type;
+
+  resetError();
+  emit('close');
+
+  switch (errorType) {
     case ErrorType.Push:
       push();
       break;
@@ -28,9 +33,6 @@ function tryAgain() {
       logout();
       break;
   }
-
-  resetError();
-  emit('close');
 }
 </script>
 

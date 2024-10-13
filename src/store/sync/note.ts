@@ -1,5 +1,5 @@
 import { NOTE_EVENTS, STORAGE_KEYS } from '../../constant';
-import { isEmptyNote, localStorageParse, tauriInvoke } from '../../utils';
+import { isEmptyNote, localStorageParse, tauriEmit, tauriInvoke } from '../../utils';
 import {
   findNote,
   newNote,
@@ -100,20 +100,21 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
 
 // Pull
 export async function pull(): Promise<void> {
-  if (!syncState.token) return;
-
   syncState.isLoading = true;
 
   try {
-    const res = await tauriFetch('/notes/pull', 'POST', {
-      username: syncState.username,
-      token: syncState.token,
-    }).catch((err) => catchHang(err, ErrorType.Pull));
+    const res = await tauriFetch('/notes/pull', 'POST').catch((err) => {
+      catchHang(err, ErrorType.Pull);
+    });
 
     if (!res) return;
 
     if (resIsOk(res)) {
       resetError();
+      tauriEmit('login');
+
+      // Users' session must still be valid
+      syncState.isLoggedIn = true;
 
       const decryptedNotes = await Encryptor.decryptNotes(res.data.notes);
 
@@ -124,9 +125,8 @@ export async function pull(): Promise<void> {
         message: parseErrorRes(res),
       };
 
-      // User not found
-      if (res.status === 404) {
-        clientSideLogout();
+      if (res.status === 401 || res.status === 404) {
+        await clientSideLogout();
       }
 
       console.error(res.data);
@@ -138,7 +138,8 @@ export async function pull(): Promise<void> {
 
 // Push
 export async function push(isSyncCleanup?: boolean): Promise<void> {
-  if (!syncState.token || (syncState.isLoading && !isSyncCleanup)) return;
+  // TODO: Remove isLoggedIn check?
+  if (!syncState.isLoggedIn || (syncState.isLoading && !isSyncCleanup)) return;
   if (syncState.unsyncedNoteIds.size === 0) return;
 
   syncState.isLoading = true;
@@ -151,6 +152,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
       edited: [...syncState.unsyncedNoteIds.edited],
       deleted: [...syncState.unsyncedNoteIds.deleted],
     };
+
     syncState.unsyncedNoteIds.clear();
 
     const encryptedNotes = await Encryptor.encryptNotes(
@@ -158,8 +160,6 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
     );
 
     const res = await tauriFetch('/notes/push', 'PUT', {
-      username: syncState.username,
-      token: syncState.token,
       notes: encryptedNotes,
     }).catch((err) => catchHang(err, ErrorType.Push));
 
@@ -167,6 +167,8 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 
     if (resIsOk(res)) {
       resetError();
+
+      syncState.isLoggedIn = true;
     } else {
       // Add back unsynced note ids
       syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
@@ -175,6 +177,10 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
         type: ErrorType.Push,
         message: parseErrorRes(res),
       };
+
+      if (res.status === 401 || res.status === 404) {
+        await clientSideLogout();
+      }
 
       console.error(res.data);
     }
@@ -187,7 +193,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 let timeout: number | undefined;
 
 export function autoPush(): void {
-  if (!syncState.token) return;
+  if (!syncState.isLoggedIn) return;
 
   clearTimeout(timeout);
   timeout = window.setTimeout(push, 500);

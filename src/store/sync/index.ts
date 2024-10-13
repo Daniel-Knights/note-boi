@@ -19,9 +19,9 @@ export const syncState = reactive({
   username: localStorage.getItem(STORAGE_KEYS.USERNAME) || '',
   password: '',
   newPassword: '',
-  token: localStorage.getItem(STORAGE_KEYS.TOKEN) || '',
   isLoading: false,
   isLogin: true, // For switching login/signup form
+  isLoggedIn: false,
   error: {
     type: ErrorType.None,
     message: '',
@@ -92,36 +92,53 @@ export function tauriFetch<
 >(
   endpoint: E,
   method: 'POST' | 'PUT',
-  payload: EndpointPayloads[E]['payload']
+  payload?: EndpointPayloads[E]['payload']
 ): Promise<Response<R> | Response<{ error: string }>> {
   const baseUrl = isDev()
     ? 'http://localhost:8000'
     : 'https://note-boi-server.herokuapp.com';
 
-  return http.fetch<R>(`${baseUrl}/api${endpoint}`, {
+  const options: http.FetchOptions = {
     method,
     body: {
       type: 'Json',
       payload,
     },
+  };
+
+  // TBR: https://github.com/tauri-apps/wry/issues/518
+  //      https://github.com/tauri-apps/wry/issues/444
+  const cookie = localStorage.getItem(STORAGE_KEYS.COOKIE);
+  if (cookie) {
+    options.headers = { Cookie: cookie };
+  }
+
+  const resPromise = http.fetch<R>(`${baseUrl}/api${endpoint}`, options);
+
+  resPromise.then((res) => {
+    if (!res.rawHeaders['set-cookie']) return;
+
+    localStorage.setItem(STORAGE_KEYS.COOKIE, res.rawHeaders['set-cookie'].join(';'));
   });
+
+  return resPromise;
 }
 
 export function resIsOk<T extends EndpointPayloads[Endpoint]['response']>(
-  resp: Response<T> | Response<{ error: string }> | void
-): resp is Response<T> {
-  return resp?.ok === true;
+  res: Response<T> | Response<{ error: string }> | void
+): res is Response<T> {
+  return res?.ok === true;
 }
 
 /** Catches hanging requests (e.g. due to server error). */
 export function catchHang(err: unknown, type: ErrorType): void {
-  console.error(err);
-
   syncState.isLoading = false;
   syncState.error = {
     type,
     message: 'Request failed',
   };
+
+  console.error(err);
 }
 
 export type { UnsyncedNoteIds, StoredUnsyncedNoteIds } from './note';
