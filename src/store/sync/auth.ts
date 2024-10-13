@@ -15,12 +15,16 @@ import {
   tauriFetch,
 } from '.';
 
-export function clientSideLogout(): void {
-  syncState.token = '';
+export function clientSideLogout(): Promise<void> {
   syncState.username = '';
+  syncState.isLoggedIn = false;
 
-  localStorage.removeItem(STORAGE_KEYS.TOKEN);
   localStorage.removeItem(STORAGE_KEYS.USERNAME);
+  // TBR: https://github.com/tauri-apps/wry/issues/518
+  //      https://github.com/tauri-apps/wry/issues/444
+  localStorage.removeItem(STORAGE_KEYS.COOKIE);
+
+  return tauriEmit('logout');
 }
 
 // Login
@@ -40,11 +44,10 @@ export async function login(): Promise<void> {
       syncState.password
     );
 
-    syncState.token = res.data.token;
     syncState.password = '';
+    syncState.isLoggedIn = true;
 
     localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
-    localStorage.setItem(STORAGE_KEYS.TOKEN, syncState.token);
 
     resetError();
     tauriEmit('login');
@@ -72,6 +75,15 @@ export async function signup(): Promise<void> {
       syncState.password
     );
 
+    if (!encryptedNotes) {
+      syncState.error = {
+        type: ErrorType.Auth,
+        message: 'Unable to encrypt notes',
+      };
+
+      console.error('Unable to encrypt notes');
+    }
+
     const res = await tauriFetch('/signup', 'POST', {
       username: syncState.username,
       password: syncState.password,
@@ -84,26 +96,16 @@ export async function signup(): Promise<void> {
       resetError();
       tauriEmit('login');
 
-      syncState.token = res.data.token;
       syncState.password = '';
+      syncState.isLoggedIn = true;
       syncState.unsyncedNoteIds.clear();
 
       localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
-      localStorage.setItem(STORAGE_KEYS.TOKEN, syncState.token);
-    } else if (!encryptedNotes) {
-      syncState.error = {
-        type: ErrorType.Auth,
-        message: 'Error signing up',
-      };
-
-      console.error('Unable to encrypt notes');
     } else {
       syncState.error = {
         type: ErrorType.Auth,
         message: parseErrorRes(res),
       };
-
-      console.error(res.data);
     }
   } finally {
     syncState.isLoading = false;
@@ -115,25 +117,17 @@ export async function logout(): Promise<void> {
   syncState.isLoading = true;
 
   try {
-    const res = await tauriFetch('/logout', 'POST', {
-      username: syncState.username,
-      token: syncState.token,
-    }).catch((err) => catchHang(err, ErrorType.Logout));
+    const res = await tauriFetch('/logout', 'POST').catch((err) => {
+      catchHang(err, ErrorType.Logout);
+    });
 
-    if (!res) return;
+    // If server-side logout fails, just log out client-side
+    await clientSideLogout();
+    await KeyStore.reset();
 
     if (resIsOk(res)) {
       resetError();
-      tauriEmit('logout');
-      clientSideLogout();
-
-      await KeyStore.reset();
-    } else {
-      syncState.error = {
-        type: ErrorType.Logout,
-        message: parseErrorRes(res),
-      };
-
+    } else if (res) {
       console.error(res.data);
     }
   } finally {
