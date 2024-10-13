@@ -14,10 +14,10 @@ export const NOTE_EVENTS = {
 
 export const STORAGE_KEYS = {
   USERNAME: 'username',
-  TOKEN: 'token',
   UNSYNCED: 'unsynced-note-ids',
   THEME: 'theme',
   MENU_WIDTH: 'note-menu-width',
+  COOKIE: 'cookie',
 } as const;
 
 export type EndpointPayloads = {
@@ -27,9 +27,7 @@ export type EndpointPayloads = {
       password: string;
       notes: EncryptedNote[];
     };
-    response: {
-      token: string;
-    };
+    response: never;
   };
   '/login': {
     payload: {
@@ -37,52 +35,36 @@ export type EndpointPayloads = {
       password: string;
     };
     response: {
-      token: string;
       notes: EncryptedNote[];
     };
   };
   '/logout': {
-    payload: {
-      username: string;
-      token: string;
-    };
+    payload: never;
     response: never;
   };
   '/notes/push': {
     payload: {
-      username: string;
-      token: string;
       notes: EncryptedNote[];
     };
     response: never;
   };
   '/notes/pull': {
-    payload: {
-      username: string;
-      token: string;
-    };
+    payload: never;
     response: {
       notes: EncryptedNote[];
     };
   };
   '/account/delete': {
-    payload: {
-      username: string;
-      token: string;
-    };
+    payload: never;
     response: never;
   };
   '/account/password/change': {
     payload: {
-      username: string;
-      token: string;
       current_password: string;
       new_password: string;
       notes: EncryptedNote[];
     };
-    response: {
-      token: string;
-    };
+    response: never;
   };
 };
 

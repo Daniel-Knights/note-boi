@@ -1,11 +1,10 @@
 import { dialog } from '@tauri-apps/api';
 
-import { STORAGE_KEYS } from '../../constant';
-import { tauriEmit } from '../../utils';
 import { noteState } from '../note';
 
 import {
   catchHang,
+  clientSideLogout,
   Encryptor,
   ErrorType,
   KeyStore,
@@ -23,11 +22,18 @@ export async function changePassword(): Promise<void> {
     const encryptedNotes = await Encryptor.encryptNotes(
       noteState.notes,
       syncState.newPassword
-    );
+    ).catch((err) => {
+      syncState.error = {
+        type: ErrorType.Auth,
+        message: 'Unable to encrypt notes with new password',
+      };
+
+      console.error(err);
+    });
+
+    if (!encryptedNotes) return;
 
     const res = await tauriFetch('/account/password/change', 'PUT', {
-      username: syncState.username,
-      token: syncState.token,
       current_password: syncState.password,
       new_password: syncState.newPassword,
       notes: encryptedNotes,
@@ -40,21 +46,15 @@ export async function changePassword(): Promise<void> {
 
       syncState.password = '';
       syncState.newPassword = '';
-      syncState.token = res.data.token;
-
-      localStorage.setItem(STORAGE_KEYS.TOKEN, syncState.token);
-    } else if (!encryptedNotes) {
-      syncState.error = {
-        type: ErrorType.Auth,
-        message: 'Error changing password',
-      };
-
-      console.error('Unable to encrypt notes');
     } else {
       syncState.error = {
         type: ErrorType.Auth,
         message: parseErrorRes(res),
       };
+
+      if (res.status === 401 || res.status === 404) {
+        await clientSideLogout();
+      }
 
       console.error(res.data);
     }
@@ -73,22 +73,16 @@ export async function deleteAccount(): Promise<void> {
   try {
     syncState.isLoading = true;
 
-    const res = await tauriFetch('/account/delete', 'POST', {
-      username: syncState.username,
-      token: syncState.token,
-    }).catch((err) => catchHang(err, ErrorType.Auth));
+    const res = await tauriFetch('/account/delete', 'POST').catch((err) => {
+      catchHang(err, ErrorType.Auth);
+    });
 
     if (!res) return;
 
     if (resIsOk(res)) {
-      syncState.username = '';
-      syncState.token = '';
-
-      localStorage.removeItem(STORAGE_KEYS.USERNAME);
-      localStorage.removeItem(STORAGE_KEYS.TOKEN);
-
+      await clientSideLogout();
       resetError();
-      tauriEmit('logout');
+
       syncState.unsyncedNoteIds.clear();
 
       await KeyStore.reset();
@@ -97,6 +91,10 @@ export async function deleteAccount(): Promise<void> {
         type: ErrorType.Auth,
         message: parseErrorRes(res),
       };
+
+      if (res.status === 401 || res.status === 404) {
+        await clientSideLogout();
+      }
 
       console.error(res.data);
     }
