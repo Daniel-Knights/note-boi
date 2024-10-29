@@ -85,7 +85,9 @@ tauriListen('signup', () => {
   handlePopupAuthEvent();
 });
 
-pull();
+if (syncState.username) {
+  pull();
+}
 </script>
 
 <style lang="scss" scoped>
