@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import * as s from '../../../store/sync';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
-import { awaitSyncLoad, getByTestId } from '../../utils';
+import { getByTestId, waitUntil } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupChangePassword from '../../../components/PopupChangePassword.vue';
@@ -27,9 +27,9 @@ describe('PopupChangePassword', () => {
     assert.strictEqual(calls.size, 0);
   });
 
-  it('Emits close', async () => {
+  it('Emits close', () => {
     const wrapper = mountPopupChangePassword();
-    await wrapper.getComponent(Popup).vm.$emit('close');
+    wrapper.getComponent(Popup).vm.$emit('close');
 
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
@@ -128,7 +128,7 @@ describe('PopupChangePassword', () => {
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isTrue(wrapperVm.validation.confirmNewPassword);
     assert.isNotEmpty(s.syncState.username);
-    assert.isNotEmpty(s.syncState.token);
+    assert.isTrue(s.syncState.isLoggedIn);
     assert.isNotEmpty(s.syncState.password);
     assert.isNotEmpty(s.syncState.newPassword);
     expect(spyChangePassword).not.toHaveBeenCalled();
@@ -136,7 +136,7 @@ describe('PopupChangePassword', () => {
     clearMockApiResults({ calls });
 
     await formWrapper.trigger('submit');
-    await awaitSyncLoad();
+    await waitUntil(() => !s.syncState.isLoading);
 
     expect(spyChangePassword).toHaveBeenCalledOnce();
     assert.strictEqual(s.syncState.error.type, s.ErrorType.None);

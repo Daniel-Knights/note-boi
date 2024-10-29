@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import * as s from '../../../store/sync';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
-import { awaitSyncLoad, findByTestId, getByTestId } from '../../utils';
+import { findByTestId, getByTestId, waitUntil } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
@@ -27,11 +27,11 @@ describe('PopupSyncAuth', () => {
     assert.strictEqual(calls.size, 0);
   });
 
-  it('Emits close', async () => {
+  it('Emits close', () => {
     mockApi();
 
     const wrapper = mountPopupSyncAuth();
-    await wrapper.getComponent(Popup).vm.$emit('close');
+    wrapper.getComponent(Popup).vm.$emit('close');
 
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
@@ -115,7 +115,7 @@ describe('PopupSyncAuth', () => {
       clearMockApiResults({ calls });
 
       await formWrapper.trigger('submit');
-      await awaitSyncLoad();
+      await waitUntil(() => !s.syncState.isLoading);
 
       expect(spyLogin).toHaveBeenCalledOnce();
       expect(spySignup).not.toHaveBeenCalled();
@@ -223,7 +223,7 @@ describe('PopupSyncAuth', () => {
       clearMockApiResults({ calls });
 
       await formWrapper.trigger('submit');
-      await awaitSyncLoad();
+      await waitUntil(() => !s.syncState.isLoading);
 
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).toHaveBeenCalledOnce();

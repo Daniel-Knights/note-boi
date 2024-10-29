@@ -11,7 +11,7 @@ describe('Sync', () => {
       const { calls } = mockApi({
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes, token: 'token' }],
+            '/login': [{ notes: mockDb.encryptedNotes }],
           },
         },
       });
@@ -27,11 +27,10 @@ describe('Sync', () => {
       assert.lengthOf(n.noteState.notes, localNotes.length);
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
@@ -44,7 +43,7 @@ describe('Sync', () => {
       const { calls } = mockApi({
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes, token: 'token' }],
+            '/login': [{ notes: mockDb.encryptedNotes }],
           },
         },
       });
@@ -64,11 +63,10 @@ describe('Sync', () => {
 
       assert.isFalse(s.syncState.isLoading);
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
@@ -91,11 +89,10 @@ describe('Sync', () => {
 
       assert.isFalse(s.syncState.isLoading);
       assert.isEmpty(n.noteState.notes);
-      assert.isEmpty(s.syncState.token);
+      assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.password, '1');
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
@@ -137,11 +134,10 @@ describe('Sync', () => {
 
       assert.isFalse(s.syncState.isLoading);
       assert.isEmpty(n.noteState.notes);
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
@@ -165,12 +161,11 @@ describe('Sync', () => {
 
       assert.isFalse(s.syncState.isLoading);
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
@@ -198,9 +193,8 @@ describe('Sync', () => {
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(s.syncState.username, 'k');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
@@ -222,11 +216,10 @@ describe('Sync', () => {
 
       assert.isFalse(s.syncState.isLoading);
       assert.isEmpty(n.noteState.notes);
-      assert.isEmpty(s.syncState.token);
+      assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.strictEqual(s.syncState.password, '2');
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
@@ -261,7 +254,7 @@ describe('Sync', () => {
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
-      s.syncState.token = 'token';
+      s.syncState.isLoggedIn = true;
 
       await s.login();
 
@@ -270,10 +263,9 @@ describe('Sync', () => {
       await s.logout();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.isEmpty(s.syncState.token);
+      assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
@@ -298,13 +290,13 @@ describe('Sync', () => {
       await s.logout();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.token, 'token');
-      assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Logout);
-      assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.size, 1);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.isEmpty(s.syncState.error.message);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/logout'));
     });
 

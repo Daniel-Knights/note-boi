@@ -15,7 +15,7 @@ import { EncryptedNote } from '../store/sync/encryptor';
 import { hasKeys } from '../utils';
 
 import localNotes from './notes.json';
-import { copyObjArr, isEncryptedNote, isNote } from './utils';
+import { copyObjArr, isEncryptedNote, isNote, resolveImmediate } from './utils';
 
 type ReqArgsMessage = {
   cmd: 'httpRequest';
@@ -68,7 +68,7 @@ type ArgsMessage =
   | OpenDialogArgsMessage
   | ListenArgsMessage
   | EmitArgsMessage
-  | { cmd: 'getAppVersion' };
+  | { cmd: 'getAppVersion' | 'createClient' };
 
 type Args = { message?: ArgsMessage };
 
@@ -144,8 +144,11 @@ function mockRequest(
   if (options?.error === endpoint) {
     return {
       name: endpoint,
-      promise: Promise.resolve({
+      promise: resolveImmediate({
         status: 500,
+        // TBR: https://github.com/tauri-apps/wry/issues/518
+        //      https://github.com/tauri-apps/wry/issues/444
+        rawHeaders: { 'set-cookie': ['cookie'] },
         data: JSON.stringify({ error: 'Server error' }),
       }),
     };
@@ -153,7 +156,6 @@ function mockRequest(
 
   const resData: {
     notes?: n.Note[] | EncryptedNote[];
-    token?: string;
     error?: string;
   } = {};
 
@@ -175,7 +177,6 @@ function mockRequest(
         resData.error = 'User already exists';
         httpStatus = 409;
       } else {
-        resData.token = 'token';
         mockDb.users[reqPayload.username] = reqPayload.password;
         httpStatus = 201;
       }
@@ -201,21 +202,11 @@ function mockRequest(
         const resValue = options?.resValue?.['/login']?.shift();
 
         resData.notes = resValue?.notes || [];
-        resData.token = 'token';
       }
 
       break;
     case '/logout':
-      if (!hasKeys(reqPayload, ['username', 'token'])) {
-        resData.error = 'Missing required fields';
-        httpStatus = 400;
-      } else if (
-        typeof reqPayload.username !== 'string' ||
-        typeof reqPayload.token !== 'string'
-      ) {
-        resData.error = 'Invalid fields';
-        httpStatus = 400;
-      } else if (!mockDb.users[reqPayload.username]) {
+      if (!mockDb.users[s.syncState.username]) {
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
@@ -225,103 +216,67 @@ function mockRequest(
       break;
     case '/notes/pull':
       // Pull
-      if (!hasKeys(reqPayload, ['username', 'token'])) {
-        resData.error = 'Missing required fields';
-        httpStatus = 400;
-      } else if (
-        typeof reqPayload.username !== 'string' ||
-        typeof reqPayload.token !== 'string'
-      ) {
-        resData.error = 'Invalid fields';
-        httpStatus = 400;
-      } else if (!mockDb.users[reqPayload.username]) {
+      if (!mockDb.users[s.syncState.username]) {
         resData.error = 'User not found';
         httpStatus = 404;
-      } else if (reqPayload.token !== 'token') {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
       } else {
         const resValue = options?.resValue?.['/notes/pull']?.shift();
 
         resData.notes = resValue?.notes || [];
       }
+
       break;
     case '/notes/push':
-      if (!hasKeys(reqPayload, ['username', 'token', 'notes'])) {
+      if (!hasKeys(reqPayload, ['notes'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
-      } else if (
-        reqPayload.notes?.some((nt) => !isEncryptedNote(nt)) ||
-        typeof reqPayload.username !== 'string' ||
-        typeof reqPayload.token !== 'string'
-      ) {
+      } else if (reqPayload.notes?.some((nt) => !isEncryptedNote(nt))) {
         resData.error = 'Invalid fields';
         httpStatus = 400;
-      } else if (!mockDb.users[reqPayload.username]) {
+      } else if (!mockDb.users[s.syncState.username]) {
         resData.error = 'User not found';
         httpStatus = 404;
-      } else if (reqPayload.token !== 'token') {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
       } else {
         httpStatus = 204;
       }
 
       break;
     case '/account/password/change':
-      if (
-        !hasKeys(reqPayload, ['username', 'token', 'current_password', 'new_password'])
-      ) {
+      if (!hasKeys(reqPayload, ['current_password', 'new_password'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
-        typeof reqPayload.username !== 'string' ||
-        typeof reqPayload.token !== 'string' ||
         typeof reqPayload.current_password !== 'string' ||
         typeof reqPayload.new_password !== 'string'
       ) {
         resData.error = 'Invalid fields';
         httpStatus = 400;
-      } else if (!mockDb.users[reqPayload.username]) {
+      } else if (!mockDb.users[s.syncState.username]) {
         resData.error = 'User not found';
         httpStatus = 404;
-      } else if (
-        reqPayload.token !== 'token' ||
-        reqPayload.current_password !== mockDb.users[reqPayload.username]
-      ) {
+      } else if (reqPayload.current_password !== mockDb.users[s.syncState.username]) {
         resData.error = 'Unauthorized';
         httpStatus = 401;
-      } else {
-        resData.token = 'token';
       }
 
       break;
     case '/account/delete':
-      if (!hasKeys(reqPayload, ['username', 'token'])) {
-        resData.error = 'Missing required fields';
-        httpStatus = 400;
-      } else if (
-        typeof reqPayload.username !== 'string' ||
-        typeof reqPayload.token !== 'string'
-      ) {
-        resData.error = 'Invalid fields';
-        httpStatus = 400;
-      } else if (!mockDb.users[reqPayload.username]) {
+      if (!mockDb.users[s.syncState.username]) {
         resData.error = 'User not found';
         httpStatus = 404;
-      } else if (reqPayload.token !== 'token') {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
       } else {
-        delete mockDb.users[reqPayload.username];
+        delete mockDb.users[s.syncState.username];
         httpStatus = 204;
       }
   }
 
   return {
     name: endpoint,
-    promise: Promise.resolve({
+    promise: resolveImmediate({
       status: httpStatus,
+      // TBR: https://github.com/tauri-apps/wry/issues/518
+      //      https://github.com/tauri-apps/wry/issues/444
+      rawHeaders: { 'set-cookie': ['cookie'] },
       data: JSON.stringify(resData),
     }),
   };
@@ -345,7 +300,7 @@ function mockTauriInvoke(
     return {
       name: cmd,
       calledWith: args,
-      promise: Promise.resolve(undefined),
+      promise: resolveImmediate(undefined),
     };
   }
 
@@ -408,7 +363,7 @@ function mockTauriInvoke(
   return {
     name: cmd,
     calledWith: args,
-    promise: Promise.resolve(resData),
+    promise: resolveImmediate(resData),
   };
 }
 
@@ -468,7 +423,7 @@ function mockTauriApi(
   return {
     name: msg.cmd,
     calledWith,
-    promise: Promise.resolve(resData),
+    promise: resolveImmediate(resData),
   };
 }
 
@@ -568,7 +523,15 @@ export function mockApi(options?: {
     return call.promise;
   }
 
-  mockIPC((callId, args) => {
+  mockIPC((callId, untypedArgs = {} as Args) => {
+    const args = untypedArgs as Args;
+
+    if (args.message?.cmd === 'createClient') {
+      promises.push(resolveImmediate());
+
+      return;
+    }
+
     const reqCall = mockRequest(callId, args, options?.request);
 
     if (reqCall) {

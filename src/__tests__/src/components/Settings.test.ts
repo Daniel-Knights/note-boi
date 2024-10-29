@@ -9,7 +9,7 @@ import { openedPopup, PopupType } from '../../../store/popup';
 import { COLOUR_THEMES, selectedTheme } from '../../../store/theme';
 import { updateAvailable } from '../../../store/update';
 import { mockApi } from '../../api';
-import { findByTestId, getByTestId } from '../../utils';
+import { findByTestId, getByTestId, resolveImmediate } from '../../utils';
 
 import DropMenu from '../../../components/DropMenu.vue';
 import PopupChangePassword from '../../../components/PopupChangePassword.vue';
@@ -57,7 +57,7 @@ describe('Settings', () => {
     assert.isTrue(wrapperVm.show);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
 
-    await wrapper.getComponent(DropMenu).vm.$emit('close');
+    wrapper.getComponent(DropMenu).vm.$emit('close');
 
     assert.isFalse(wrapperVm.show);
     await nextTick();
@@ -99,6 +99,7 @@ describe('Settings', () => {
 
     await exportWrapper.trigger('click');
     await Promise.all(promises);
+    await resolveImmediate(); // Defer execution to exportNotes
 
     expect(exportNotesSpy).toHaveBeenCalledOnce();
     expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes);
@@ -127,7 +128,8 @@ describe('Settings', () => {
     assert.strictEqual(openedPopup.value, PopupType.Info);
     assert.isTrue(findByTestId(wrapper, 'popup-info').isVisible());
 
-    await wrapper.getComponent(PopupInfo).vm.$emit('close');
+    wrapper.getComponent(PopupInfo).vm.$emit('close');
+    await nextTick();
 
     assert.isUndefined(openedPopup.value);
     assert.isFalse(findByTestId(wrapper, 'popup-info').exists());
@@ -170,7 +172,7 @@ describe('Settings', () => {
         },
       });
 
-      s.syncState.token = 'token';
+      s.syncState.isLoggedIn = true;
       await nextTick();
 
       const changePasswordWrapper = findByTestId(wrapper, 'change-password');
@@ -179,21 +181,22 @@ describe('Settings', () => {
       assert.strictEqual(openedPopup.value, PopupType.ChangePassword);
       assert.isTrue(findByTestId(wrapper, 'popup-change-password').isVisible());
 
-      await wrapper.getComponent(PopupChangePassword).vm.$emit('close');
+      wrapper.getComponent(PopupChangePassword).vm.$emit('close');
+      await nextTick();
 
       assert.isUndefined(openedPopup.value);
       assert.isFalse(findByTestId(wrapper, 'popup-change-password').exists());
     });
 
     it('Delete account menu item', async () => {
-      const { calls } = mockApi();
+      const { calls, promises } = mockApi();
       const wrapper = await mountSettingsAndOpen();
       const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
       assert.lengthOf(wrapperVm.menuItems, 3);
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.isLoggedIn = true;
       await nextTick();
 
       const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
@@ -202,10 +205,9 @@ describe('Settings', () => {
 
       const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
-      // We can't await the click handler via the promises from mockApi
-      await new Promise((res) => {
-        setTimeout(res, 0);
-      });
+      await resolveImmediate(); // We can't await the deleteAccount click handler directly
+      await Promise.all(promises);
+      await resolveImmediate(); // Defer execution to /account/delete
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
       assert.strictEqual(calls.size, 3);
