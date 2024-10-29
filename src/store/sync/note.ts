@@ -138,7 +138,6 @@ export async function pull(): Promise<void> {
 
 // Push
 export async function push(isSyncCleanup?: boolean): Promise<void> {
-  // TODO: Remove isLoggedIn check?
   if (!syncState.isLoggedIn || (syncState.isLoading && !isSyncCleanup)) return;
   if (syncState.unsyncedNoteIds.size === 0) return;
 
