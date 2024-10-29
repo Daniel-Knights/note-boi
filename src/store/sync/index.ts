@@ -86,7 +86,7 @@ export function resetError(): void {
 }
 
 /** Wrapper for {@link http.fetch}. */
-export function tauriFetch<
+export async function tauriFetch<
   E extends Endpoint = Endpoint,
   R = EndpointPayloads[E]['response'],
 >(
@@ -113,15 +113,13 @@ export function tauriFetch<
     options.headers = { Cookie: cookie };
   }
 
-  const resPromise = http.fetch<R>(`${baseUrl}/api${endpoint}`, options);
+  const res = await http.fetch<R>(`${baseUrl}/api${endpoint}`, options);
 
-  resPromise.then((res) => {
-    if (!res.rawHeaders['set-cookie']) return;
-
+  if (res.rawHeaders['set-cookie']) {
     localStorage.setItem(STORAGE_KEYS.COOKIE, res.rawHeaders['set-cookie'].join(';'));
-  });
+  }
 
-  return resPromise;
+  return res;
 }
 
 export function resIsOk<T extends EndpointPayloads[Endpoint]['response']>(
