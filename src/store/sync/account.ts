@@ -52,7 +52,7 @@ export async function changePassword(): Promise<void> {
         message: parseErrorRes(res),
       };
 
-      if (res.status === 401 || res.status === 404) {
+      if (res.status === 404) {
         await clientSideLogout();
       }
 
