@@ -15,11 +15,10 @@ describe('Account', () => {
       vi.clearAllMocks();
 
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
 
       s.syncState.password = '2';
       s.syncState.newPassword = '1';
@@ -47,8 +46,7 @@ describe('Account', () => {
       assert.isTrue(calls.request.has('/account/password/change'));
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
-      assert.strictEqual(s.syncState.token, 'token');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
@@ -70,9 +68,8 @@ describe('Account', () => {
       clearMockApiResults({ calls });
 
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
 
       s.syncState.password = '1';
       s.syncState.newPassword = '2';
@@ -130,18 +127,16 @@ describe('Account', () => {
       clearMockApiResults({ calls, promises });
 
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
 
       await s.deleteAccount();
 
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
 
       assert.isEmpty(s.syncState.username);
-      assert.isEmpty(s.syncState.token);
+      assert.isFalse(s.syncState.isLoggedIn);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
@@ -184,18 +179,16 @@ describe('Account', () => {
       clearMockApiResults({ calls, promises });
 
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
 
       await s.deleteAccount();
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
 
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.TOKEN), 'token');
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);

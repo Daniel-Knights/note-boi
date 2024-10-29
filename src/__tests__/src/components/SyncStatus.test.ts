@@ -4,7 +4,7 @@ import { nextTick } from 'vue';
 import * as s from '../../../store/sync';
 import { openedPopup, PopupType } from '../../../store/popup';
 import { mockApi } from '../../api';
-import { awaitSyncLoad, findByTestId, getByTestId } from '../../utils';
+import { findByTestId, getByTestId, resolveImmediate, waitUntil } from '../../utils';
 
 import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
 import PopupSyncError from '../../../components/PopupSyncError.vue';
@@ -25,19 +25,16 @@ function mountWithPopup() {
 
 describe('SyncStatus', () => {
   it('Mounts when logged out', async () => {
-    const { calls, promises } = mockApi();
+    const { calls } = mockApi();
     const wrapper = mount(SyncStatus);
 
-    await Promise.all(promises);
-
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.size, 4);
-    assert.isTrue(calls.emits.has('logout'));
+    assert.strictEqual(calls.size, 3);
     assert.isTrue(calls.listeners.has('login'));
     assert.isTrue(calls.listeners.has('logout'));
     assert.isTrue(calls.listeners.has('signup'));
 
-    await awaitSyncLoad();
+    await waitUntil(() => !s.syncState.isLoading);
 
     const loadingWrapper = findByTestId(wrapper, 'loading');
     const errorButton = findByTestId(wrapper, 'error');
@@ -54,14 +51,15 @@ describe('SyncStatus', () => {
     const { calls, promises } = mockApi();
     const pullSpy = vi.spyOn(s, 'pull');
     s.syncState.username = 'd';
-    s.syncState.token = 'token';
+    s.syncState.isLoggedIn = true;
 
     const wrapper = mount(SyncStatus);
 
     await Promise.all(promises);
+    await resolveImmediate(); // Defer execution to /notes/pull
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.size, 4);
+    assert.strictEqual(calls.size, 5);
     assert.isTrue(calls.emits.has('login'));
     expect(pullSpy).toHaveBeenCalledOnce();
 
@@ -70,7 +68,7 @@ describe('SyncStatus', () => {
     assert.isFalse(findByTestId(wrapper, 'success').exists());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
 
-    await awaitSyncLoad();
+    await waitUntil(() => !s.syncState.isLoading);
 
     assert.isFalse(findByTestId(wrapper, 'loading').exists());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
@@ -113,7 +111,6 @@ describe('SyncStatus', () => {
       s.syncState.error.message = 'Error';
 
       await nextTick();
-
       await findByTestId(wrapper, 'error').trigger('click');
 
       assert.isTrue(findByTestId(wrapper, 'popup-error').isVisible());
@@ -121,7 +118,8 @@ describe('SyncStatus', () => {
 
       const resetErrorSpy = vi.spyOn(s, 'resetError');
 
-      await wrapper.getComponent(PopupSyncError).vm.$emit('close');
+      wrapper.getComponent(PopupSyncError).vm.$emit('close');
+      await nextTick();
 
       expect(resetErrorSpy).not.toHaveBeenCalled();
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
@@ -146,7 +144,8 @@ describe('SyncStatus', () => {
 
       const resetErrorSpy = vi.spyOn(s, 'resetError');
 
-      await wrapper.getComponent(PopupSyncAuth).vm.$emit('close');
+      wrapper.getComponent(PopupSyncAuth).vm.$emit('close');
+      await nextTick();
 
       // Registers emitted close from both Popup and PopupSyncAuth here
       // This isn't the case when using the actual app
@@ -154,7 +153,7 @@ describe('SyncStatus', () => {
       assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
       assert.isUndefined(openedPopup.value);
 
-      s.syncState.token = 'token';
+      s.syncState.isLoggedIn = true;
       wrapperVm.handlePopupAuthEvent();
       await nextTick();
 

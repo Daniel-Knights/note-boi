@@ -22,15 +22,14 @@ export function resetNoteStore(): void {
 
 export function resetSyncStore(): void {
   localStorage.removeItem(STORAGE_KEYS.USERNAME);
-  localStorage.removeItem(STORAGE_KEYS.TOKEN);
   localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
 
   s.syncState.username = '';
   s.syncState.password = '';
   s.syncState.newPassword = '';
-  s.syncState.token = '';
   s.syncState.isLoading = false;
   s.syncState.isLogin = true;
+  s.syncState.isLoggedIn = false;
   s.syncState.unsyncedNoteIds.clear();
 
   s.resetError();
@@ -52,26 +51,27 @@ export function findByTestId<T extends Element>(
   return wrapper.find<T>(formatTestId(id));
 }
 
-/** Simulates awaiting a sync operation. */
-export function awaitSyncLoad(callCount = 0): Promise<void> | void {
-  // A lower limit will work with tests in isolation, but not with all tests running concurrently
-  if (callCount === 1000000) {
-    assert.fail('`awaitSyncLoad` call limit exceeded');
-  }
+/** Returns a promise that resolves after `setImmediate`. */
+export function resolveImmediate<T>(val?: T): Promise<T | void> {
+  return new Promise((res) => {
+    setImmediate(() => res(val));
+  });
+}
 
-  if (s.syncState.isLoading) {
-    return new Promise((res, rej) => {
-      // We use `setImmediate` as `nextTick` can cause fake-indexeddb requests to hang
-      setImmediate(async () => {
-        try {
-          await awaitSyncLoad(callCount + 1);
-        } catch (err) {
-          rej(err);
-        }
+/** Waits until `cond` is `true`. */
+export async function waitUntil(condFn: () => boolean): Promise<void> {
+  let i = 0;
 
-        res();
-      });
-    });
+  while (!condFn()) {
+    // eslint-disable-next-line no-await-in-loop
+    await resolveImmediate();
+
+    // A lower limit will work with tests in isolation, but not with all tests running concurrently
+    if (i >= 1000000) {
+      assert.fail('`waitUntil` call limit exceeded');
+    }
+
+    i += 1;
   }
 }
 

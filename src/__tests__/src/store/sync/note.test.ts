@@ -8,11 +8,12 @@ import { isEmptyNote, localStorageParse } from '../../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
 import {
-  awaitSyncLoad,
   copyObjArr,
   findByTestId,
   getByTestId,
+  resolveImmediate,
   UUID_REGEX,
+  waitUntil,
 } from '../../../utils';
 
 import Editor from '../../../../components/Editor.vue';
@@ -55,7 +56,8 @@ describe('Sync', () => {
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.emits.has('login'));
       assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
     });
@@ -82,7 +84,7 @@ describe('Sync', () => {
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(n.noteState.notes[0]!.id, n.noteState.selectedNote.id);
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
@@ -93,20 +95,19 @@ describe('Sync', () => {
       const { calls } = mockApi();
 
       s.syncState.username = 'k';
-      s.syncState.token = 'token';
+      s.syncState.isLoggedIn = true;
       localStorage.setItem(STORAGE_KEYS.USERNAME, 'k');
-      localStorage.setItem(STORAGE_KEYS.TOKEN, 'token');
 
       await s.pull();
 
       assert.isFalse(s.syncState.isLoading);
       assert.isEmpty(s.syncState.username);
-      assert.isEmpty(s.syncState.token);
+      assert.isFalse(s.syncState.isLoggedIn);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.isNull(localStorage.getItem(STORAGE_KEYS.TOKEN));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/notes/pull'));
     });
 
@@ -270,7 +271,7 @@ describe('Sync', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
@@ -281,7 +282,7 @@ describe('Sync', () => {
       const { calls } = mockApi();
 
       s.syncState.username = 'd';
-      s.syncState.token = 'token';
+      s.syncState.isLoggedIn = true;
 
       n.newNote();
 
@@ -293,7 +294,7 @@ describe('Sync', () => {
       await s.push();
 
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 0);
@@ -320,7 +321,7 @@ describe('Sync', () => {
       await s.push();
 
       assert.strictEqual(s.syncState.username, 'd');
-      assert.strictEqual(s.syncState.token, 'token');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
@@ -356,8 +357,9 @@ describe('Sync', () => {
   describe('unsyncedNoteIds', () => {
     it('new', async () => {
       function assertNotOverwritten() {
-        const storedId = localStorageParse<s.StoredUnsyncedNoteIds>(STORAGE_KEYS.UNSYNCED)
-          ?.new;
+        const storedId = localStorageParse<s.StoredUnsyncedNoteIds>(
+          STORAGE_KEYS.UNSYNCED
+        )?.new;
 
         assert.isNotEmpty(s.syncState.unsyncedNoteIds.new);
         assert.match(storedId || '', UUID_REGEX);
@@ -390,7 +392,7 @@ describe('Sync', () => {
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
 
-      await awaitSyncLoad();
+      await waitUntil(() => !s.syncState.isLoading);
 
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
@@ -432,7 +434,7 @@ describe('Sync', () => {
       n.editNote({}, 'title', 'body');
 
       await s.push(); // Manually push, as auto push timeout doesn't run
-      await awaitSyncLoad();
+      await waitUntil(() => !s.syncState.isLoading);
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
@@ -463,7 +465,7 @@ describe('Sync', () => {
     });
 
     it('edited', async () => {
-      mockApi({
+      const { promises } = mockApi({
         request: {
           resValue: {
             '/notes/pull': [{ notes: mockDb.encryptedNotes }],
@@ -495,7 +497,9 @@ describe('Sync', () => {
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
 
-      await awaitSyncLoad();
+      await waitUntil(() => !s.syncState.isLoading);
+      await Promise.all(promises);
+      await resolveImmediate();
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
@@ -539,7 +543,7 @@ describe('Sync', () => {
 
       n.deleteNote(n.noteState.selectedNote.id);
 
-      await awaitSyncLoad();
+      await waitUntil(() => !s.syncState.isLoading);
 
       storedUnsyncedNoteIds = localStorageParse<s.StoredUnsyncedNoteIds>(
         STORAGE_KEYS.UNSYNCED
@@ -584,7 +588,7 @@ describe('Sync', () => {
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
 
-      await awaitSyncLoad();
+      await waitUntil(() => !s.syncState.isLoading);
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
 
@@ -675,13 +679,10 @@ describe('Sync', () => {
         },
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes, token: 'token' }],
+            '/login': [{ notes: mockDb.encryptedNotes }],
           },
         },
       });
-
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
 
       await n.getAllNotes();
 
@@ -692,7 +693,9 @@ describe('Sync', () => {
       const wrapper = mount(SyncStatus);
 
       assert.isTrue(wrapper.isVisible());
-      assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
 
       await s.login();
 
@@ -711,9 +714,6 @@ describe('Sync', () => {
     it('No remote, some local', async () => {
       mockApi();
 
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
       await n.getAllNotes();
 
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
@@ -724,6 +724,9 @@ describe('Sync', () => {
 
       assert.isTrue(wrapper.isVisible());
       assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
 
       await s.login();
 
@@ -748,9 +751,6 @@ describe('Sync', () => {
         },
       });
 
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
       await n.getAllNotes();
 
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
@@ -761,6 +761,9 @@ describe('Sync', () => {
 
       assert.isTrue(wrapper.isVisible());
       assert.isTrue(findByTestId(wrapper, 'sync-button').exists());
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
 
       await s.login();
 

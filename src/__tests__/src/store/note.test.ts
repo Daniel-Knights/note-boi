@@ -221,7 +221,7 @@ describe('Note store', () => {
       const { calls, promises } = mockApi();
       const otherExistingNote = { ...localNotes[1]! };
 
-      s.syncState.token = 'token';
+      s.syncState.isLoggedIn = true;
 
       await n.getAllNotes();
 

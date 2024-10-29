@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
 import { isEmptyNote } from '../../../utils';
@@ -54,7 +55,8 @@ describe('ContextMenu', () => {
     const wrapper = await mountContextMenu();
     const wrapperVm = wrapper.vm as unknown as { show: boolean };
 
-    await wrapper.getComponent(DropMenu).vm.$emit('close');
+    wrapper.getComponent(DropMenu).vm.$emit('close');
+    await nextTick();
 
     assert.isFalse(wrapper.isVisible());
     assert.isFalse(wrapperVm.show);

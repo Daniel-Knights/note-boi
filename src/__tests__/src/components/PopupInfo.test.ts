@@ -28,11 +28,11 @@ describe('PopupInfo', () => {
     assert.isTrue(calls.tauriApi.has('getAppVersion'));
   });
 
-  it('Emits close', async () => {
+  it('Emits close', () => {
     mockApi();
 
     const wrapper = mountPopupInfo();
-    await wrapper.getComponent(Popup).vm.$emit('close');
+    wrapper.getComponent(Popup).vm.$emit('close');
 
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
