@@ -117,13 +117,13 @@ export async function logout(): Promise<void> {
   syncState.isLoading = true;
 
   try {
-    const res = await tauriFetch('/logout', 'POST').catch((err) => {
-      catchHang(err, ErrorType.Logout);
-    });
-
-    // If server-side logout fails, just log out client-side
-    await clientSideLogout();
-    await KeyStore.reset();
+    const [res] = await Promise.all([
+      tauriFetch('/logout', 'POST').catch((err) => {
+        catchHang(err, ErrorType.Logout);
+      }),
+      clientSideLogout(),
+      KeyStore.reset(),
+    ]);
 
     if (resIsOk(res)) {
       resetError();
