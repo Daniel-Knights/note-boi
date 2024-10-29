@@ -24,8 +24,7 @@ describe('App', () => {
     assert.isTrue(wrapper.getComponent(UtilityMenu).isVisible());
     assert.isTrue(wrapper.getComponent(SyncStatus).isVisible());
     assert.isFalse(wrapper.findComponent(Loading).exists());
-    assert.strictEqual(calls.size, 4);
-    assert.isTrue(calls.emits.has('logout'));
+    assert.strictEqual(calls.size, 3);
     assert.isTrue(calls.listeners.has('login'));
     assert.isTrue(calls.listeners.has('logout'));
     assert.isTrue(calls.listeners.has('signup'));

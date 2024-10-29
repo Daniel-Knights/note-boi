@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
 import { clearMockApiResults, mockApi, mockDb } from '../../api';
-import { awaitSyncLoad } from '../../utils';
+import { waitUntil } from '../../utils';
 
 import Logout from '../../../components/Logout.vue';
 
@@ -21,7 +21,7 @@ describe('Logout', () => {
     const { calls } = mockApi({
       request: {
         resValue: {
-          '/login': [{ notes: mockDb.encryptedNotes, token: 'token' }],
+          '/login': [{ notes: mockDb.encryptedNotes }],
         },
       },
     });
@@ -39,9 +39,9 @@ describe('Logout', () => {
     clearMockApiResults({ calls });
 
     await wrapper.trigger('click');
-    await awaitSyncLoad();
+    await waitUntil(() => !s.syncState.isLoading);
 
-    assert.isEmpty(s.syncState.token);
+    assert.isFalse(s.syncState.isLoggedIn);
     assert.strictEqual(calls.size, 2);
     assert.isTrue(calls.request.has('/logout'));
     assert.isTrue(calls.emits.has('logout'));

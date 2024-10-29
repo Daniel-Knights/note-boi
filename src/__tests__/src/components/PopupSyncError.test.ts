@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
 import { mockApi } from '../../api';
-import { getByTestId } from '../../utils';
+import { getByTestId, waitUntil } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupSyncError from '../../../components/PopupSyncError.vue';
@@ -32,14 +32,16 @@ describe('PopupSyncError', () => {
     assert.strictEqual(errorMessageWrapper.text(), `Error: ${errorMessage}`);
   });
 
-  it('Emits close', async () => {
+  it('Emits close', () => {
     const wrapper = mountPopupSyncError();
-    await wrapper.getComponent(Popup).vm.$emit('close');
+    wrapper.getComponent(Popup).vm.$emit('close');
 
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
   it('Retries push', async () => {
+    mockApi();
+
     const pushSpy = vi.spyOn(s, 'push');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();
@@ -49,12 +51,16 @@ describe('PopupSyncError', () => {
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
 
+    await waitUntil(() => !s.syncState.isLoading);
+
     expect(pushSpy).toHaveBeenCalledOnce();
     expect(resetErrorSpy).toHaveBeenCalledOnce();
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
   it('Retries pull', async () => {
+    mockApi();
+
     const pullSpy = vi.spyOn(s, 'pull');
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();
@@ -63,6 +69,8 @@ describe('PopupSyncError', () => {
 
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
+
+    await waitUntil(() => !s.syncState.isLoading);
 
     expect(pullSpy).toHaveBeenCalledOnce();
     expect(resetErrorSpy).toHaveBeenCalledOnce();
@@ -80,6 +88,8 @@ describe('PopupSyncError', () => {
 
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
+
+    await waitUntil(() => !s.syncState.isLoading);
 
     expect(logoutSpy).toHaveBeenCalledOnce();
     expect(resetErrorSpy).toHaveBeenCalledOnce();

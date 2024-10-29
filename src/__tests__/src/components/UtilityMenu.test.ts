@@ -10,7 +10,7 @@ import UtilityMenu from '../../../components/UtilityMenu.vue';
 describe('UtilityMenu', () => {
   it('Mounts with correct components', async () => {
     const { calls, promises } = mockApi();
-    s.syncState.token = 'token';
+    s.syncState.isLoggedIn = true;
     const wrapper = mount(UtilityMenu);
 
     await Promise.all(promises);
