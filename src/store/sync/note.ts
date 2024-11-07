@@ -11,6 +11,7 @@ import {
 } from '../note';
 
 import {
+  catchEncryptorError,
   catchHang,
   clientSideLogout,
   Encryptor,
@@ -116,7 +117,10 @@ export async function pull(): Promise<void> {
       // Users' session must still be valid
       syncState.isLoggedIn = true;
 
-      const decryptedNotes = await Encryptor.decryptNotes(res.data.notes);
+      const decryptedNotes = await Encryptor.decryptNotes(res.data.notes).catch((err) => {
+        return catchEncryptorError(err);
+      });
+      if (!decryptedNotes) return;
 
       await syncNotes(decryptedNotes);
     } else {
@@ -144,6 +148,11 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
   syncState.isLoading = true;
 
   try {
+    const encryptedNotes = await Encryptor.encryptNotes(
+      noteState.notes.filter((nt) => !isEmptyNote(nt))
+    ).catch((err) => catchEncryptorError(err));
+    if (!encryptedNotes) return;
+
     // Cache ids and clear before request to prevent
     // race condition if a note is edited mid-push
     const cachedUnsyncedNoteIds = {
@@ -153,10 +162,6 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
     };
 
     syncState.unsyncedNoteIds.clear();
-
-    const encryptedNotes = await Encryptor.encryptNotes(
-      noteState.notes.filter((nt) => !isEmptyNote(nt))
-    );
 
     const res = await tauriFetch('/notes/push', 'PUT', {
       notes: encryptedNotes,
