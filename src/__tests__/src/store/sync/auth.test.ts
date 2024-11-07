@@ -6,6 +6,24 @@ import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
 
 describe('Sync', () => {
+  it('clientSideLogout', async () => {
+    const { calls } = mockApi();
+    s.syncState.username = 'd';
+    s.syncState.password = '1';
+
+    await s.login();
+
+    clearMockApiResults({ calls });
+
+    s.clientSideLogout();
+
+    assert.isEmpty(s.syncState.username);
+    assert.isFalse(s.syncState.isLoggedIn);
+    assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.emits.has('logout'));
+  });
+
   describe('login', () => {
     it('With no notes', async () => {
       const { calls } = mockApi({
@@ -78,7 +96,9 @@ describe('Sync', () => {
     it('With server error', async () => {
       const { calls } = mockApi({
         request: {
-          error: '/login',
+          error: {
+            endpoint: '/login',
+          },
         },
       });
 
@@ -205,7 +225,9 @@ describe('Sync', () => {
     it('With server error', async () => {
       const { calls } = mockApi({
         request: {
-          error: '/signup',
+          error: {
+            endpoint: '/signup',
+          },
         },
       });
 
@@ -276,7 +298,9 @@ describe('Sync', () => {
     it('With server error', async () => {
       const { calls } = mockApi({
         request: {
-          error: '/logout',
+          error: {
+            endpoint: '/logout',
+          },
         },
       });
 

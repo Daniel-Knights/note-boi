@@ -1,6 +1,6 @@
 import * as s from '../../../../store/sync';
 import { STORAGE_KEYS } from '../../../../constant';
-import { clearMockApiResults, mockApi } from '../../../api';
+import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 
 describe('Account', () => {
   describe('changePassword', () => {
@@ -55,7 +55,9 @@ describe('Account', () => {
     it('With server error', async () => {
       const { calls } = mockApi({
         request: {
-          error: '/account/password/change',
+          error: {
+            endpoint: '/account/password/change',
+          },
         },
       });
 
@@ -66,10 +68,6 @@ describe('Account', () => {
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
-
-      assert.strictEqual(s.syncState.username, 'd');
-      assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
 
       s.syncState.password = '1';
       s.syncState.newPassword = '2';
@@ -82,6 +80,38 @@ describe('Account', () => {
       assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/account/password/change'));
+    });
+
+    it('User not found', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'k';
+      s.syncState.password = '2';
+
+      await s.signup();
+
+      vi.clearAllMocks();
+      clearMockApiResults({ calls });
+
+      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+
+      delete mockDb.users.k; // Deleted from different device, for example
+
+      s.syncState.password = '2';
+      s.syncState.newPassword = '1';
+
+      await s.changePassword();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+
+      assert.isNotEmpty(s.syncState.password);
+      assert.isNotEmpty(s.syncState.newPassword);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.isNotEmpty(s.syncState.error.message);
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/account/password/change'));
     });
 
@@ -117,6 +147,7 @@ describe('Account', () => {
       const { calls, promises } = mockApi();
 
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
+      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -133,10 +164,8 @@ describe('Account', () => {
       await s.deleteAccount();
 
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
+      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
 
-      assert.isEmpty(s.syncState.username);
-      assert.isFalse(s.syncState.isLoggedIn);
-      assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
@@ -165,7 +194,9 @@ describe('Account', () => {
     it('With server error', async () => {
       const { calls, promises } = mockApi({
         request: {
-          error: '/account/delete',
+          error: {
+            endpoint: '/account/delete',
+          },
         },
       });
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
@@ -192,6 +223,69 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.request.has('/account/delete'));
+      assert.isFalse(s.syncState.isLoading);
+    });
+
+    it('User unauthorised', async () => {
+      const { calls, promises } = mockApi({
+        request: {
+          error: {
+            endpoint: '/account/delete',
+            status: 401,
+          },
+        },
+      });
+      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
+      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      vi.clearAllMocks();
+      clearMockApiResults({ calls, promises });
+
+      await s.deleteAccount();
+
+      expect(unsyncedClearSpy).not.toHaveBeenCalled();
+      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.isNotEmpty(s.syncState.error.message);
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.emits.has('logout'));
+      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.request.has('/account/delete'));
+      assert.isFalse(s.syncState.isLoading);
+    });
+
+    it('User not found', async () => {
+      const { calls, promises } = mockApi();
+      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
+      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+
+      s.syncState.username = 'k';
+      s.syncState.password = '2';
+
+      await s.signup();
+
+      vi.clearAllMocks();
+      clearMockApiResults({ calls, promises });
+
+      delete mockDb.users.k; // Deleted from different device, for example
+
+      await s.deleteAccount();
+
+      expect(unsyncedClearSpy).not.toHaveBeenCalled();
+      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.isNotEmpty(s.syncState.error.message);
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.tauriApi.has('askDialog'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isFalse(s.syncState.isLoading);
