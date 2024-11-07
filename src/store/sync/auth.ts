@@ -3,6 +3,7 @@ import { isEmptyNote, tauriEmit } from '../../utils';
 import { noteState } from '../note';
 
 import {
+  catchEncryptorError,
   catchHang,
   Encryptor,
   ErrorType,
@@ -42,7 +43,8 @@ export async function login(): Promise<void> {
     const decryptedNotes = await Encryptor.decryptNotes(
       res.data.notes,
       syncState.password
-    );
+    ).catch((err) => catchEncryptorError(err));
+    if (!decryptedNotes) return;
 
     syncState.password = '';
     syncState.isLoggedIn = true;
@@ -73,16 +75,8 @@ export async function signup(): Promise<void> {
     const encryptedNotes = await Encryptor.encryptNotes(
       noteState.notes.filter((nt) => !isEmptyNote(nt)),
       syncState.password
-    );
-
-    if (!encryptedNotes) {
-      syncState.error = {
-        type: ErrorType.Auth,
-        message: 'Unable to encrypt notes',
-      };
-
-      console.error('Unable to encrypt notes');
-    }
+    ).catch((err) => catchEncryptorError(err));
+    if (!encryptedNotes) return;
 
     const res = await tauriFetch('/signup', 'POST', {
       username: syncState.username,
