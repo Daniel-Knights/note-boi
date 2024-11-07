@@ -65,7 +65,9 @@ describe('Sync', () => {
     it('With server error', async () => {
       const { calls } = mockApi({
         request: {
-          error: '/notes/pull',
+          error: {
+            endpoint: '/notes/pull',
+          },
         },
       });
 
@@ -91,8 +93,37 @@ describe('Sync', () => {
       assert.isTrue(calls.request.has('/notes/pull'));
     });
 
+    it('User unauthorised', async () => {
+      const { calls } = mockApi({
+        request: {
+          error: {
+            endpoint: '/notes/pull',
+            status: 401,
+          },
+        },
+      });
+
+      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+      localStorage.setItem(STORAGE_KEYS.USERNAME, 'd');
+
+      await s.pull();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
+      assert.isNotEmpty(s.syncState.error.message);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.emits.has('logout'));
+      assert.isTrue(calls.request.has('/notes/pull'));
+    });
+
     it('User not found', async () => {
       const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
 
       s.syncState.username = 'k';
       s.syncState.isLoggedIn = true;
@@ -100,10 +131,9 @@ describe('Sync', () => {
 
       await s.pull();
 
+      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+
       assert.isFalse(s.syncState.isLoading);
-      assert.isEmpty(s.syncState.username);
-      assert.isFalse(s.syncState.isLoggedIn);
-      assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
@@ -282,7 +312,9 @@ describe('Sync', () => {
       const { calls } = mockApi();
 
       s.syncState.username = 'd';
-      s.syncState.isLoggedIn = true;
+      s.syncState.password = '1';
+
+      await s.login();
 
       n.newNote();
 
@@ -303,11 +335,11 @@ describe('Sync', () => {
     it('With server error', async () => {
       const { calls } = mockApi({
         request: {
-          error: '/notes/push',
+          error: {
+            endpoint: '/notes/push',
+          },
         },
       });
-
-      await n.getAllNotes();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -325,6 +357,68 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/notes/push'));
+    });
+
+    it('User unauthorised', async () => {
+      const { calls } = mockApi({
+        request: {
+          error: {
+            endpoint: '/notes/push',
+            status: 401,
+          },
+        },
+      });
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      n.editNote({}, 'title', 'body');
+
+      clearMockApiResults({ calls });
+
+      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+
+      await s.push();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
+      assert.isNotEmpty(s.syncState.error.message);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.emits.has('logout'));
+      assert.isTrue(calls.request.has('/notes/push'));
+    });
+
+    it('User not found', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'k';
+      s.syncState.password = '2';
+
+      await n.getAllNotes();
+      await s.signup();
+
+      n.editNote({}, 'title', 'body');
+
+      clearMockApiResults({ calls });
+
+      delete mockDb.users.k; // Deleted from different device, for example
+
+      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+
+      await s.push();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
+      assert.isNotEmpty(s.syncState.error.message);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/notes/push'));
     });
 
