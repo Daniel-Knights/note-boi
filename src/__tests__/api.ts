@@ -120,10 +120,13 @@ export const mockDb: {
 function mockRequest(
   callId: string,
   args?: Args,
-  options?: {
+  options: {
     resValue?: RequestResValue;
-    error?: Endpoint;
-  }
+    error?: {
+      endpoint: Endpoint;
+      status?: number;
+    };
+  } = {}
 ): Call<void | { status: number; data: unknown }> | void {
   const msg = args?.message;
 
@@ -141,11 +144,11 @@ function mockRequest(
     assert.fail('Invalid endpoint');
   }
 
-  if (options?.error === endpoint) {
+  if (options.error?.endpoint === endpoint) {
     return {
       name: endpoint,
       promise: resolveImmediate({
-        status: 500,
+        status: options.error.status || 500,
         // TBR: https://github.com/tauri-apps/wry/issues/518
         //      https://github.com/tauri-apps/wry/issues/444
         rawHeaders: { 'set-cookie': ['cookie'] },
@@ -199,7 +202,7 @@ function mockRequest(
         resData.error = 'Unauthorized';
         httpStatus = 401;
       } else {
-        const resValue = options?.resValue?.['/login']?.shift();
+        const resValue = options.resValue?.['/login']?.shift();
 
         resData.notes = resValue?.notes || [];
       }
@@ -220,7 +223,7 @@ function mockRequest(
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
-        const resValue = options?.resValue?.['/notes/pull']?.shift();
+        const resValue = options.resValue?.['/notes/pull']?.shift();
 
         resData.notes = resValue?.notes || [];
       }
@@ -286,7 +289,7 @@ function mockRequest(
 function mockTauriInvoke(
   callId: string,
   args: Record<string, unknown>,
-  options?: { resValue?: InvokeResValue; error?: string }
+  options: { resValue?: InvokeResValue; error?: string } = {}
 ): Call<n.Note[] | void> | void {
   if (callId === 'tauri') return;
 
@@ -296,7 +299,7 @@ function mockTauriInvoke(
     assert.fail('Invalid command');
   }
 
-  if (options?.error === cmd) {
+  if (options.error === cmd) {
     return {
       name: cmd,
       calledWith: args,
@@ -308,7 +311,7 @@ function mockTauriInvoke(
 
   switch (cmd) {
     case 'get_all_notes': {
-      const resValue = options?.resValue?.get_all_notes?.shift();
+      const resValue = options.resValue?.get_all_notes?.shift();
 
       resData = resValue || copyObjArr(localNotes);
 
@@ -371,7 +374,7 @@ function mockTauriInvoke(
 function mockTauriApi(
   callId: string,
   args?: Args,
-  options?: { resValue?: TauriApiResValue }
+  options: { resValue?: TauriApiResValue } = {}
 ): Call<string | boolean | void> | void {
   if (callId !== 'tauri') return;
 
@@ -388,7 +391,7 @@ function mockTauriApi(
 
       break;
     case 'askDialog': {
-      const resValue = options?.resValue?.askDialog?.[0];
+      const resValue = options.resValue?.askDialog?.[0];
 
       if (resValue) {
         options.resValue?.askDialog?.shift();
@@ -404,7 +407,7 @@ function mockTauriApi(
       break;
     }
     case 'openDialog': {
-      const resValue = options?.resValue?.openDialog?.[0];
+      const resValue = options.resValue?.openDialog?.[0];
 
       if (resValue) {
         options.resValue?.openDialog?.shift();
@@ -480,24 +483,31 @@ function mockTauriListener(callId: string, args?: Args): string | void {
  * ```ts
  * const { calls } = mockApi({
  *   request: {
- *     error: '/login',
+ *     error: {
+ *       endpoint: '/login'
+ *     },
  *   },
  * });
  * ```
  */
-export function mockApi(options?: {
-  request?: {
-    resValue?: RequestResValue;
-    error?: Endpoint;
-  };
-  invoke?: {
-    resValue?: InvokeResValue;
-    error?: TauriCommand;
-  };
-  tauriApi?: {
-    resValue?: TauriApiResValue;
-  };
-}): {
+export function mockApi(
+  options: {
+    request?: {
+      resValue?: RequestResValue;
+      error?: {
+        endpoint: Endpoint;
+        status?: number;
+      };
+    };
+    invoke?: {
+      resValue?: InvokeResValue;
+      error?: TauriCommand;
+    };
+    tauriApi?: {
+      resValue?: TauriApiResValue;
+    };
+  } = {}
+): {
   calls: ApiCalls;
   promises: Promise<unknown>[];
 } {
@@ -532,19 +542,19 @@ export function mockApi(options?: {
       return;
     }
 
-    const reqCall = mockRequest(callId, args, options?.request);
+    const reqCall = mockRequest(callId, args, options.request);
 
     if (reqCall) {
       return parseCallResult('request', reqCall);
     }
 
-    const invokeCall = mockTauriInvoke(callId, args, options?.invoke);
+    const invokeCall = mockTauriInvoke(callId, args, options.invoke);
 
     if (invokeCall) {
       return parseCallResult('invoke', invokeCall);
     }
 
-    const tauriApiCall = mockTauriApi(callId, args, options?.tauriApi);
+    const tauriApiCall = mockTauriApi(callId, args, options.tauriApi);
 
     if (tauriApiCall) {
       return parseCallResult('tauriApi', tauriApiCall);
