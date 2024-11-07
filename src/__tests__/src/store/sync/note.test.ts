@@ -111,7 +111,7 @@ describe('Sync', () => {
 
       await s.pull();
 
-      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
@@ -131,7 +131,7 @@ describe('Sync', () => {
 
       await s.pull();
 
-      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
@@ -383,7 +383,7 @@ describe('Sync', () => {
 
       await s.push();
 
-      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
@@ -412,7 +412,7 @@ describe('Sync', () => {
 
       await s.push();
 
-      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
