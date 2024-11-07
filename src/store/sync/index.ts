@@ -13,6 +13,7 @@ export enum ErrorType {
   Push,
   Pull,
   Logout,
+  Encryptor,
 }
 
 export const syncState = reactive({
@@ -134,6 +135,17 @@ export function catchHang(err: unknown, type: ErrorType): void {
   syncState.error = {
     type,
     message: 'Request failed',
+  };
+
+  console.error(err);
+}
+
+/** Catches note encryption errors. */
+export function catchEncryptorError(err: unknown): void {
+  syncState.isLoading = false;
+  syncState.error = {
+    type: ErrorType.Encryptor,
+    message: 'Note encryption/decryption failed',
   };
 
   console.error(err);

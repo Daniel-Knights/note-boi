@@ -3,6 +3,7 @@ import { dialog } from '@tauri-apps/api';
 import { noteState } from '../note';
 
 import {
+  catchEncryptorError,
   catchHang,
   clientSideLogout,
   Encryptor,
@@ -22,15 +23,7 @@ export async function changePassword(): Promise<void> {
     const encryptedNotes = await Encryptor.encryptNotes(
       noteState.notes,
       syncState.newPassword
-    ).catch((err) => {
-      syncState.error = {
-        type: ErrorType.Auth,
-        message: 'Unable to encrypt notes with new password',
-      };
-
-      console.error(err);
-    });
-
+    ).catch((err) => catchEncryptorError(err));
     if (!encryptedNotes) return;
 
     const res = await tauriFetch('/account/password/change', 'PUT', {
