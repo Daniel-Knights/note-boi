@@ -103,7 +103,7 @@ describe('Account', () => {
 
       await s.changePassword();
 
-      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
@@ -164,7 +164,7 @@ describe('Account', () => {
       await s.deleteAccount();
 
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
-      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
@@ -251,7 +251,7 @@ describe('Account', () => {
       await s.deleteAccount();
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
-      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
@@ -280,7 +280,7 @@ describe('Account', () => {
       await s.deleteAccount();
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
-      expect(clientSideLogoutSpy).toHaveBeenCalledTimes(1);
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
