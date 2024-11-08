@@ -103,7 +103,7 @@ export async function tauriFetch<
     method,
     body: {
       type: 'Json',
-      payload,
+      payload: payload ?? {},
     },
   };
 
