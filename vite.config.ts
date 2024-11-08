@@ -32,5 +32,7 @@ export default defineConfig({
     clearMocks: true,
     hookTimeout: 30000,
     testTimeout: 30000,
+    // Seems to help reduce test flakiness
+    fileParallelism: false,
   },
 });
