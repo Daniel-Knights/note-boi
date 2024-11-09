@@ -48,6 +48,7 @@ export async function handleUpdate(): Promise<void> {
   );
   if (!shouldInstall) {
     localStorage.setItem('update-seen', newVersion);
+
     return;
   }
 
