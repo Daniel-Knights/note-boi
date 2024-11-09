@@ -171,6 +171,7 @@ export function newNote(isButtonClick?: boolean): void {
   // Only update timestamp if selected note is empty
   if (foundNote && isEmptyNote(foundNote)) {
     noteState.selectedNote.timestamp = Date.now();
+
     return;
   }
 
