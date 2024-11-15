@@ -1,5 +1,6 @@
-import { dialog, window as tauriWindow } from '@tauri-apps/api';
-import { exit, relaunch } from '@tauri-apps/api/process';
+import * as dialog from '@tauri-apps/plugin-dialog';
+import { webviewWindow } from '@tauri-apps/api';
+import { exit, relaunch } from '@tauri-apps/plugin-process';
 import 'quill/dist/quill.snow.css';
 import { createApp } from 'vue';
 
@@ -32,7 +33,7 @@ export async function exitApp(cb: () => void): Promise<void> {
         'ERROR: Failed to push unsynced notes.\nClose anyway?',
         {
           title: 'NoteBoi',
-          type: 'error',
+          kind: 'error',
         }
       );
 
@@ -49,7 +50,7 @@ export async function exitApp(cb: () => void): Promise<void> {
 getAllNotes();
 handleUpdate();
 
-tauriWindow.appWindow.listen('tauri://close-requested', () => {
+webviewWindow.getCurrentWebviewWindow().listen('tauri://close-requested', () => {
   exitApp(exit);
 });
 tauriListen('reload', () => {

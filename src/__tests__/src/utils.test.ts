@@ -115,7 +115,9 @@ describe('Utils', () => {
     it('tauriListen', async () => {
       const { calls } = mockApi();
 
-      await tauriListen('login', () => {});
+      await tauriListen('login', () => {
+        //
+      });
 
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.listeners.has('login'));

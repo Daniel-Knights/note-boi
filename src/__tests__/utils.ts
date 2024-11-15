@@ -67,7 +67,7 @@ export async function waitUntil(condFn: () => boolean): Promise<void> {
     await resolveImmediate();
 
     // A lower limit will work with tests in isolation, but not with all tests running concurrently
-    if (i >= 1000000) {
+    if (i >= 100000) {
       assert.fail('`waitUntil` call limit exceeded');
     }
 

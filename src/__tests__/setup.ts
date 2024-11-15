@@ -1,4 +1,4 @@
-import { clearMocks } from '@tauri-apps/api/mocks';
+import { clearMocks, mockWindows } from '@tauri-apps/api/mocks';
 import { enableAutoUnmount } from '@vue/test-utils';
 import { indexedDB } from 'fake-indexeddb';
 import crypto from 'node:crypto';
@@ -25,6 +25,8 @@ beforeAll(async () => {
   mockDb.encryptedNotes = await s.Encryptor.encryptNotes(localNotes, '1');
 
   await s.KeyStore.reset();
+
+  mockWindows('main');
 });
 
 afterEach(async () => {

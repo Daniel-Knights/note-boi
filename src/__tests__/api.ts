@@ -17,77 +17,202 @@ import { hasKeys } from '../utils';
 import localNotes from './notes.json';
 import { copyObjArr, isEncryptedNote, isNote, resolveImmediate } from './utils';
 
-type ReqArgsMessage = {
-  cmd: 'httpRequest';
+export const mockDb: {
+  users: Record<string, string>;
+  encryptedNotes: EncryptedNote[];
+} = {
+  users: {
+    d: '1',
+  },
+  encryptedNotes: undefined as unknown as EncryptedNote[],
+};
+
+/**
+ * Mocks the full API and returns results for each call made, along with
+ * an array of all created promises.
+ *
+ * To clear results, use {@link clearMockApiResults}.
+ *
+ * Values can be passed to mock specific res values for `request`,
+ * `invoke`, and `tauriApi`. Array order corresponds to the res value
+ * for each call from left to right.
+ *
+ * @example
+ * ```ts
+ * const { calls, promises } = mockApi({
+ *   tauriApi: {
+ *     resValue: {
+ *       // First call will answer true, second will answer false
+ *       askDialog: [true, false],
+ *     },
+ *   },
+ * });
+ * ```
+ *
+ * Errors can also be mocked for `request` and `invoke`:
+ *
+ * @example
+ * ```ts
+ * const { calls } = mockApi({
+ *   request: {
+ *     error: {
+ *       endpoint: '/login'
+ *     },
+ *   },
+ * });
+ * ```
+ */
+export function mockApi(
   options: {
-    url: string;
-    method: string;
-    responseType: number;
-    body: {
-      type: string;
-      payload?: EndpointPayloads[Endpoint]['payload'];
+    request?: {
+      resValue?: RequestResValue;
+      error?: {
+        endpoint: Endpoint;
+        status?: number;
+      };
     };
+    invoke?: {
+      resValue?: InvokeResValue;
+      error?: TauriCommand;
+    };
+    tauriApi?: {
+      resValue?: TauriApiResValue;
+    };
+  } = {}
+): {
+  calls: ApiCalls;
+  promises: Promise<unknown>[];
+} {
+  const calls = {
+    request: new Calls(),
+    invoke: new Calls(),
+    tauriApi: new Calls(),
+    emits: new Calls(),
+    listeners: new Calls(),
+    size: 0,
+  } satisfies ApiCalls;
+
+  const promises: Promise<unknown>[] = [];
+
+  function parseCallResult(callType: Exclude<keyof ApiCalls, 'size'>, call: Call | void) {
+    if (!call) return;
+
+    calls[callType].push(call);
+    calls.size += 1;
+
+    if (call.promise) {
+      promises.push(call.promise);
+    }
+
+    return call.promise;
+  }
+
+  const reqCache: Record<
+    string,
+    {
+      req: ReqArgs;
+      res?: {
+        // TODO: type this better
+        data?: string;
+        [key: string]: unknown;
+      };
+    }
+  > = {};
+
+  // TODO: args isn't typed?
+  mockIPC(async (callId, args) => {
+    // Fetch
+    // TODO: simplify this fetch caching
+    if (callId === 'plugin:http|fetch') {
+      const rid = crypto.randomUUID();
+
+      reqCache[rid] = { req: args.clientConfig };
+
+      return rid;
+    }
+
+    if (callId === 'plugin:http|fetch_send') {
+      const reqCall = mockRequest(reqCache[args.rid]!.req, options.request);
+
+      parseCallResult('request', reqCall);
+
+      const reqRes = await reqCall!.promise;
+
+      reqCache[args.rid]!.res = {
+        rid: args.rid,
+        status: reqRes?.status,
+        url: reqCache[args.rid]!.req.url,
+        headers: {
+          'content-type': 'application/json',
+          // TBR: https://github.com/tauri-apps/wry/issues/518
+          //      https://github.com/tauri-apps/wry/issues/444
+          'set-cookie': 'cookie',
+        },
+        data: reqRes?.data,
+      };
+
+      return reqCache[args.rid]!.res;
+    }
+
+    if (callId === 'plugin:http|fetch_read_body') {
+      return reqCache[args.rid]?.res?.status === 204
+        ? null
+        : [...new TextEncoder().encode(reqCache[args.rid]!.res!.data!)];
+    }
+
+    // Emit
+    if (callId === 'plugin:event|emit') {
+      const emitCall = mockTauriEmit(args);
+
+      return parseCallResult('emits', emitCall);
+    }
+
+    // Listen
+    if (callId === 'plugin:event|listen') {
+      const listenerCall = mockTauriListener(args);
+
+      return parseCallResult('listeners', listenerCall);
+    }
+
+    // Invoke
+    if (TAURI_COMMANDS.includes(callId as TauriCommand)) {
+      const invokeCall = mockTauriInvoke(callId, args, options.invoke);
+
+      return parseCallResult('invoke', invokeCall);
+    }
+
+    // Tauri API
+    const tauriApiCall = mockTauriApi(callId, args, options.tauriApi);
+
+    if (tauriApiCall) {
+      return parseCallResult('tauriApi', tauriApiCall);
+    }
+  });
+
+  return {
+    calls,
+    promises,
   };
-};
+}
 
-type AskDialogArgsMessage = {
-  buttonLabels: ['Yes', 'No'];
-  cmd: 'askDialog';
-  message: string;
-  title?: string;
-  type?: 'error' | 'info' | 'warning';
-};
+export function clearMockApiResults(results: {
+  calls?: ApiCalls;
+  promises?: Promise<unknown>[];
+}): void {
+  if (results.calls) {
+    Object.values(results.calls).forEach((val) => {
+      if (val instanceof Calls) {
+        val.clear();
+      }
+    });
 
-type OpenDialogArgsMessage = {
-  cmd: 'openDialog';
-  options: {
-    directory?: boolean;
-    multiple?: boolean;
-    recursive?: boolean;
-    title?: string;
-  };
-};
+    results.calls.size = 0;
+  }
 
-type ListenArgsMessage = {
-  cmd: 'listen';
-  event: string;
-  handler: number;
-  windowLabel: string | null;
-};
+  results.promises?.splice(0, results.promises.length);
+}
 
-type EmitArgsMessage = {
-  cmd: 'emit';
-  event: string;
-  payload?: unknown;
-  windowLabel?: string | null;
-};
-
-type ArgsMessage =
-  | ReqArgsMessage
-  | AskDialogArgsMessage
-  | OpenDialogArgsMessage
-  | ListenArgsMessage
-  | EmitArgsMessage
-  | { cmd: 'getAppVersion' | 'createClient' };
-
-type Args = { message?: ArgsMessage };
-
-type RequestResValue = {
-  [E in keyof EndpointPayloads]?: EndpointPayloads[E]['response'][];
-};
-type InvokeResValue = {
-  [C in keyof TauriCommandPayloads]?: TauriCommandPayloads[C]['response'][];
-};
-type TauriApiResValue = Record<string, unknown[]> & {
-  askDialog?: boolean[];
-  openDialog?: string[];
-};
-
-type Call<T = unknown> = {
-  name: string;
-  calledWith?: unknown;
-  promise?: Promise<T>;
-};
+// Internals
 
 class Calls extends Array<Call> {
   has(name: string, count?: number): boolean {
@@ -103,23 +228,9 @@ class Calls extends Array<Call> {
   }
 }
 
-type ApiCallType = 'request' | 'invoke' | 'tauriApi' | 'emits' | 'listeners';
-type ApiCalls = { [T in ApiCallType]: Calls } & { size: number };
-
-export const mockDb: {
-  users: Record<string, string>;
-  encryptedNotes: EncryptedNote[];
-} = {
-  users: {
-    d: '1',
-  },
-  encryptedNotes: undefined as unknown as EncryptedNote[],
-};
-
 /** Mocks requests to the server. */
 function mockRequest(
-  callId: string,
-  args?: Args,
+  args: ReqArgs,
   options: {
     resValue?: RequestResValue;
     error?: {
@@ -127,21 +238,20 @@ function mockRequest(
       status?: number;
     };
   } = {}
-): Call<void | { status: number; data: unknown }> | void {
-  const msg = args?.message;
-
-  if (callId !== 'tauri' || msg?.cmd !== 'httpRequest') return;
-
+): Call<void | {
+  status: number;
+  data: string;
+}> | void {
   if (!s.syncState.isLoading) {
     assert.fail('Loading state not set');
   }
 
-  const reqOptions = msg.options;
-  const endpoint = reqOptions.url.split(/\/api(?=\/)/)[1] as Endpoint;
-  const reqPayload = reqOptions.body.payload;
+  const endpoint = args.url.split(/\/api(?=\/)/)[1] as Endpoint;
+  const reqPayloadStr = new TextDecoder().decode(new Uint8Array(args!.data).buffer);
+  const reqPayload: { notes?: n.Note[] } = JSON.parse(reqPayloadStr);
 
   if (!ENDPOINTS.includes(endpoint)) {
-    assert.fail('Invalid endpoint');
+    assert.fail(`Invalid endpoint: ${endpoint}`);
   }
 
   if (options.error?.endpoint === endpoint) {
@@ -149,9 +259,6 @@ function mockRequest(
       name: endpoint,
       promise: resolveImmediate({
         status: options.error.status || 500,
-        // TBR: https://github.com/tauri-apps/wry/issues/518
-        //      https://github.com/tauri-apps/wry/issues/444
-        rawHeaders: { 'set-cookie': ['cookie'] },
         data: JSON.stringify({ error: 'Server error' }),
       }),
     };
@@ -277,9 +384,6 @@ function mockRequest(
     name: endpoint,
     promise: resolveImmediate({
       status: httpStatus,
-      // TBR: https://github.com/tauri-apps/wry/issues/518
-      //      https://github.com/tauri-apps/wry/issues/444
-      rawHeaders: { 'set-cookie': ['cookie'] },
       data: JSON.stringify(resData),
     }),
   };
@@ -287,18 +391,10 @@ function mockRequest(
 
 /** Mocks Tauri `invoke` calls. */
 function mockTauriInvoke(
-  callId: string,
+  cmd: string,
   args: Record<string, unknown>,
   options: { resValue?: InvokeResValue; error?: string } = {}
 ): Call<n.Note[] | void> | void {
-  if (callId === 'tauri') return;
-
-  const cmd = callId as TauriCommand;
-
-  if (!TAURI_COMMANDS.includes(cmd)) {
-    assert.fail('Invalid command');
-  }
-
   if (options.error === cmd) {
     return {
       name: cmd,
@@ -373,24 +469,20 @@ function mockTauriInvoke(
 /** Mocks calls to the Tauri API. */
 function mockTauriApi(
   callId: string,
-  args?: Args,
+  args: AskDialogArgs | OpenDialogArgs,
   options: { resValue?: TauriApiResValue } = {}
 ): Call<string | boolean | void> | void {
-  if (callId !== 'tauri') return;
-
-  const msg = args?.message;
-
-  if (!msg?.cmd || /emit|listen|createClient/.test(msg.cmd)) return;
-
   let resData: string | boolean | undefined;
   let calledWith;
 
-  switch (msg.cmd) {
-    case 'getAppVersion':
+  switch (callId) {
+    case 'plugin:app|version':
       resData = pkg.version;
 
       break;
-    case 'askDialog': {
+    case 'plugin:dialog|ask': {
+      const askDialogArgs = args as AskDialogArgs;
+
       const resValue = options.resValue?.askDialog?.[0];
 
       if (resValue) {
@@ -399,14 +491,15 @@ function mockTauriApi(
 
       resData = resValue === undefined ? true : resValue;
       calledWith = {
-        message: msg.message,
-        title: msg.title,
-        type: msg.type,
+        message: askDialogArgs.message,
+        title: askDialogArgs.title,
+        kind: askDialogArgs.kind,
       };
 
       break;
     }
-    case 'openDialog': {
+    case 'plugin:dialog|open': {
+      const openDialogArgs = args as OpenDialogArgs;
       const resValue = options.resValue?.openDialog?.[0];
 
       if (resValue) {
@@ -415,183 +508,103 @@ function mockTauriApi(
 
       resData = resValue === undefined ? 'C:\\path' : resValue;
       calledWith = {
-        directory: msg.options.directory,
-        multiple: msg.options.multiple,
-        recursive: msg.options.recursive,
-        title: msg.options.title,
+        directory: openDialogArgs.options.directory,
+        multiple: openDialogArgs.options.multiple,
+        recursive: openDialogArgs.options.recursive,
+        title: openDialogArgs.options.title,
       };
+
+      break;
+    }
+    case 'plugin:updater|check': {
+      const resValue = options.resValue?.checkUpdate?.[0];
+
+      resData = resValue || false;
+
+      break;
     }
   }
 
   return {
-    name: msg.cmd,
+    name: callId,
     calledWith,
     promise: resolveImmediate(resData),
   };
 }
 
 /** Mocks Tauri `event.emit` calls. */
-function mockTauriEmit(callId: string, args?: Args): Call | void {
-  if (callId !== 'tauri') return;
-
-  const msg = args?.message as EmitArgsMessage;
-
-  if (msg?.cmd !== 'emit') return;
-
+function mockTauriEmit(args: EmitArgs): Call | void {
   return {
-    name: msg.event,
-    calledWith: msg.payload,
+    name: args.event,
+    calledWith: args.payload,
   };
 }
 
 /** Mocks Tauri `event.listen` calls. */
-function mockTauriListener(callId: string, args?: Args): string | void {
-  if (callId !== 'tauri') return;
-
-  const msg = args?.message;
-
-  if (msg?.cmd !== 'listen') return;
-
-  return msg.event;
-}
-
-/**
- * Mocks the full API and returns results for each call made, along with
- * an array of all created promises.
- *
- * To clear results, use {@link clearMockApiResults}.
- *
- * Values can be passed to mock specific res values for `request`,
- * `invoke`, and `tauriApi`. Array order corresponds to the res value
- * for each call from left to right.
- *
- * @example
- * ```ts
- * const { calls, promises } = mockApi({
- *   tauriApi: {
- *     resValue: {
- *       // First call will answer true, second will answer false
- *       askDialog: [true, false],
- *     },
- *   },
- * });
- * ```
- *
- * Errors can also be mocked for `request` and `invoke`:
- *
- * @example
- * ```ts
- * const { calls } = mockApi({
- *   request: {
- *     error: {
- *       endpoint: '/login'
- *     },
- *   },
- * });
- * ```
- */
-export function mockApi(
-  options: {
-    request?: {
-      resValue?: RequestResValue;
-      error?: {
-        endpoint: Endpoint;
-        status?: number;
-      };
-    };
-    invoke?: {
-      resValue?: InvokeResValue;
-      error?: TauriCommand;
-    };
-    tauriApi?: {
-      resValue?: TauriApiResValue;
-    };
-  } = {}
-): {
-  calls: ApiCalls;
-  promises: Promise<unknown>[];
-} {
-  const calls = {
-    request: new Calls(),
-    invoke: new Calls(),
-    tauriApi: new Calls(),
-    emits: new Calls(),
-    listeners: new Calls(),
-    size: 0,
-  } satisfies ApiCalls;
-
-  const promises: Promise<unknown>[] = [];
-
-  function parseCallResult(callType: Exclude<keyof ApiCalls, 'size'>, call: Call) {
-    calls[callType].push(call);
-    calls.size += 1;
-
-    if (call.promise) {
-      promises.push(call.promise);
-    }
-
-    return call.promise;
-  }
-
-  mockIPC((callId, untypedArgs = {} as Args) => {
-    const args = untypedArgs as Args;
-
-    if (args.message?.cmd === 'createClient') {
-      promises.push(resolveImmediate());
-
-      return;
-    }
-
-    const reqCall = mockRequest(callId, args, options.request);
-
-    if (reqCall) {
-      return parseCallResult('request', reqCall);
-    }
-
-    const invokeCall = mockTauriInvoke(callId, args, options.invoke);
-
-    if (invokeCall) {
-      return parseCallResult('invoke', invokeCall);
-    }
-
-    const tauriApiCall = mockTauriApi(callId, args, options.tauriApi);
-
-    if (tauriApiCall) {
-      return parseCallResult('tauriApi', tauriApiCall);
-    }
-
-    const emitCall = mockTauriEmit(callId, args);
-
-    if (emitCall) {
-      return parseCallResult('emits', emitCall);
-    }
-
-    const listenerCall = mockTauriListener(callId, args);
-
-    if (listenerCall) {
-      return parseCallResult('listeners', { name: listenerCall });
-    }
-  });
-
+function mockTauriListener(args: ListenArgs): Call | void {
   return {
-    calls,
-    promises,
+    name: args.event,
   };
 }
 
-export function clearMockApiResults(results: {
-  calls?: ApiCalls;
-  promises?: Promise<unknown>[];
-}): void {
-  if (results.calls) {
-    Object.values(results.calls).forEach((val) => {
-      if (val instanceof Calls) {
-        val.clear();
-      }
-    });
+// Types
 
-    results.calls.size = 0;
-  }
+type ReqArgs = {
+  url: string;
+  method: string;
+  data: number[];
+  headers: [string, string][];
+  status: number;
+  statusText: string;
+};
 
-  results.promises?.splice(0, results.promises.length);
-}
+type AskDialogArgs = {
+  message: string;
+  kind?: 'error' | 'info' | 'warning';
+  title?: string;
+  yesButtonLabel?: string;
+  noButtonLabel?: string;
+};
+
+type OpenDialogArgs = {
+  options: {
+    directory?: boolean;
+    multiple?: boolean;
+    recursive?: boolean;
+    title?: string;
+  };
+};
+
+type ListenArgs = {
+  event: string;
+  handler: number;
+  target: {
+    kind: string;
+  };
+};
+
+type EmitArgs = {
+  event: string;
+  payload?: unknown;
+};
+
+type RequestResValue = {
+  [E in keyof EndpointPayloads]?: EndpointPayloads[E]['response'][];
+};
+type InvokeResValue = {
+  [C in keyof TauriCommandPayloads]?: TauriCommandPayloads[C]['response'][];
+};
+type TauriApiResValue = Record<string, unknown[]> & {
+  askDialog?: boolean[];
+  openDialog?: string[];
+  checkUpdate?: boolean[];
+};
+
+type Call<T = unknown> = {
+  name: string;
+  calledWith?: unknown;
+  promise?: Promise<T>;
+};
+
+type ApiCallType = 'request' | 'invoke' | 'tauriApi' | 'emits' | 'listeners';
+type ApiCalls = { [T in ApiCallType]: Calls } & { size: number };

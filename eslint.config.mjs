@@ -35,6 +35,11 @@ export default typescriptEslint.config(
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.chai,
+        ...globals.mocha,
+        ...globals.jest,
+        RequestInit: 'readonly',
+        vi: 'readonly',
         defineProps: 'readonly',
         defineEmits: 'readonly',
         CustomEventInit: 'readonly',
@@ -59,6 +64,10 @@ export default typescriptEslint.config(
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-module-boundary-types': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-use-before-define': [
+        'error',
+        { functions: false, classes: false, variables: false },
+      ],
 
       'vue/multi-word-component-names': 'off',
       'vue/no-multiple-template-root': 'off',
@@ -130,7 +139,7 @@ export default typescriptEslint.config(
       'lines-around-comment': 'off',
       'lines-between-class-members': 'off',
       'max-classes-per-file': 'off',
-      'max-nested-callbacks': ['error', 3],
+      'max-nested-callbacks': ['error', 4],
       'max-params': ['error', 4],
       'max-statements': 'off',
       'multiline-comment-style': 'off',
@@ -186,7 +195,7 @@ export default typescriptEslint.config(
       'no-misleading-character-class': 'error',
       'no-mixed-spaces-and-tabs': 'error',
       'no-multi-assign': 'error',
-      'no-negated-condition': 'error',
+      'no-negated-condition': 'off',
       'no-nested-ternary': 'error',
       'no-new': 'error',
       'no-new-object': 'error',
@@ -240,8 +249,8 @@ export default typescriptEslint.config(
       'no-unsafe-optional-chaining': ['error', { disallowArithmeticOperators: true }],
       'no-unused-expressions': 'error',
       'no-unused-labels': 'error',
-      'no-unused-vars': 'off',
-      'no-use-before-define': ['error', { functions: false }],
+      'no-unused-vars': 'off', // Handled by @typescript-eslint/no-unused-vars
+      'no-use-before-define': 'off', // Handled by @typescript-eslint/no-use-before-define
       'no-useless-backreference': 'error',
       'no-useless-catch': 'error',
       'no-useless-computed-key': 'error',

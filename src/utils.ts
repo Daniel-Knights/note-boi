@@ -1,4 +1,5 @@
-import { event, invoke } from '@tauri-apps/api';
+import { event } from '@tauri-apps/api';
+import { invoke } from '@tauri-apps/api/core';
 import { EventCallback, UnlistenFn } from '@tauri-apps/api/event';
 
 import { TauriCommand, TauriCommandPayloads, TauriEmit, TauriListener } from './constant';
