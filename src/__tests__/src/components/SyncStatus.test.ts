@@ -4,7 +4,7 @@ import { nextTick } from 'vue';
 import * as s from '../../../store/sync';
 import { openedPopup, PopupType } from '../../../store/popup';
 import { mockApi } from '../../api';
-import { findByTestId, getByTestId, resolveImmediate, waitUntil } from '../../utils';
+import { findByTestId, getByTestId, waitUntil } from '../../utils';
 
 import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
 import PopupSyncError from '../../../components/PopupSyncError.vue';
@@ -48,19 +48,15 @@ describe('SyncStatus', () => {
   });
 
   it('Mounts when logged in', async () => {
-    const { calls, promises } = mockApi();
+    const { calls } = mockApi();
     const pullSpy = vi.spyOn(s, 'pull');
     s.syncState.username = 'd';
     s.syncState.isLoggedIn = true;
 
     const wrapper = mount(SyncStatus);
 
-    await Promise.all(promises);
-    await resolveImmediate(); // Defer execution to /notes/pull
-
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.size, 5);
-    assert.isTrue(calls.emits.has('login'));
+    assert.strictEqual(calls.size, 3);
     expect(pullSpy).toHaveBeenCalledOnce();
 
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
@@ -74,7 +70,8 @@ describe('SyncStatus', () => {
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
-    assert.strictEqual(calls.size, 7);
+    assert.strictEqual(calls.size, 7); // 3 = listeners
+    assert.isTrue(calls.emits.has('login'));
     assert.isTrue(calls.request.has('/notes/pull'));
     assert.isTrue(calls.invoke.has('new_note'));
     assert.isTrue(calls.invoke.has('sync_local_notes'));

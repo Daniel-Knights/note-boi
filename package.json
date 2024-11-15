@@ -16,7 +16,7 @@
     "info": "tauri info",
     "test": "vitest",
     "test:build": "vitest run",
-    "lint": "eslint ./**/*.{ts,js,vue} --no-error-on-unmatched-pattern && vue-tsc --noEmit && tsc --noEmit",
+    "lint": "eslint ./**/*.{test.ts,ts,js,vue} --no-error-on-unmatched-pattern && vue-tsc --noEmit && tsc --noEmit",
     "checks": "pnpm run lint && pnpm run test:build",
     "format": "prettier --write ./src",
     "release:patch": "tsx ./scripts/release.ts patch",
@@ -24,7 +24,12 @@
     "release:major": "tsx ./scripts/release.ts major"
   },
   "dependencies": {
-    "@tauri-apps/api": "1.6.0",
+    "@tauri-apps/api": "2.0.3",
+    "@tauri-apps/plugin-dialog": "~2",
+    "@tauri-apps/plugin-http": "~2",
+    "@tauri-apps/plugin-process": "~2",
+    "@tauri-apps/plugin-shell": "~2",
+    "@tauri-apps/plugin-updater": "~2",
     "quill": "^2.0.2",
     "vue": "^3.5.12"
   },
@@ -33,7 +38,7 @@
     "@eslint/compat": "^1.2.2",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.14.0",
-    "@tauri-apps/cli": "^1.6.3",
+    "@tauri-apps/cli": "^2.0.4",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/eslint": "^9.6.1",
     "@types/node": "^22.9.0",

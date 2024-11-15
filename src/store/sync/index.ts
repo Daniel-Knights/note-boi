@@ -1,11 +1,16 @@
-import { http } from '@tauri-apps/api';
-import type { Response } from '@tauri-apps/api/http';
+import * as http from '@tauri-apps/plugin-http';
 import { reactive } from 'vue';
 
 import { Endpoint, EndpointPayloads, STORAGE_KEYS } from '../../constant';
 import { isDev } from '../../utils';
 
 import { storedUnsyncedNoteIds, UnsyncedNoteIds } from './note';
+
+type ParsedResponse<T> = {
+  status: number;
+  ok: boolean;
+  data: T;
+};
 
 export enum ErrorType {
   None,
@@ -73,7 +78,7 @@ export const syncState = reactive({
 // Utils //
 
 /** Parses an error response and returns a formatted message. */
-export function parseErrorRes(res: Response<{ error: string }>): string {
+export function parseErrorRes(res: ParsedResponse<{ error: string }>): string {
   const unknownErrorMessage = 'Unknown error, please try again';
 
   if (!res.data) return unknownErrorMessage;
@@ -94,38 +99,48 @@ export async function tauriFetch<
   endpoint: E,
   method: 'POST' | 'PUT',
   payload?: EndpointPayloads[E]['payload']
-): Promise<Response<R> | Response<{ error: string }>> {
+): Promise<ParsedResponse<R> | ParsedResponse<{ error: string }>> {
   const baseUrl = isDev()
     ? 'http://localhost:8000'
     : 'https://note-boi-server.herokuapp.com';
 
-  const options: http.FetchOptions = {
+  const options = {
     method,
-    body: {
-      type: 'Json',
-      payload: payload ?? {},
+    body: JSON.stringify(payload ?? {}),
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: '',
     },
-  };
+  } satisfies RequestInit;
 
   // TBR: https://github.com/tauri-apps/wry/issues/518
   //      https://github.com/tauri-apps/wry/issues/444
   const cookie = localStorage.getItem(STORAGE_KEYS.COOKIE);
   if (cookie) {
-    options.headers = { Cookie: cookie };
+    options.headers.Cookie = cookie;
   }
 
-  const res = await http.fetch<R>(`${baseUrl}/api${endpoint}`, options);
+  const res = await http.fetch(`${baseUrl}/api${endpoint}`, options);
 
-  if (res.rawHeaders['set-cookie']) {
-    localStorage.setItem(STORAGE_KEYS.COOKIE, res.rawHeaders['set-cookie'].join(';'));
+  if (res.headers.getSetCookie()) {
+    localStorage.setItem(STORAGE_KEYS.COOKIE, res.headers.getSetCookie().join(';'));
   }
 
-  return res;
+  const contentType = res.headers.get('content-type');
+
+  return {
+    status: res.status,
+    ok: res.status >= 200 && res.status < 300,
+    data:
+      res.body !== null && contentType?.includes('application/json')
+        ? await res.json()
+        : {},
+  };
 }
 
 export function resIsOk<T extends EndpointPayloads[Endpoint]['response']>(
-  res: Response<T> | Response<{ error: string }> | void
-): res is Response<T> {
+  res: ParsedResponse<T> | ParsedResponse<{ error: string }> | void
+): res is ParsedResponse<T> {
   return res?.ok === true;
 }
 

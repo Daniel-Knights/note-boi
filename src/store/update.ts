@@ -1,18 +1,20 @@
-import { dialog } from '@tauri-apps/api';
-import { relaunch } from '@tauri-apps/api/process';
-import { checkUpdate, installUpdate, UpdateResult } from '@tauri-apps/api/updater';
+import * as dialog from '@tauri-apps/plugin-dialog';
+import { relaunch } from '@tauri-apps/plugin-process';
+import { check, Update } from '@tauri-apps/plugin-updater';
 import { ref } from 'vue';
 
-export const updateAvailable = ref<UpdateResult>();
+export const update = ref<Update>();
 export const updateDownloading = ref<boolean>(false);
 
 export async function updateAndRelaunch(): Promise<void> {
+  if (!update.value) return;
+
   updateDownloading.value = true;
 
   try {
-    await installUpdate();
+    await update.value?.downloadAndInstall();
 
-    updateAvailable.value = undefined;
+    update.value = undefined;
 
     await relaunch();
   } catch (error) {
@@ -20,27 +22,34 @@ export async function updateAndRelaunch(): Promise<void> {
 
     const shouldRetry = await dialog.ask('Try again?', {
       title: 'Unable to install update',
-      type: 'error',
+      kind: 'error',
     });
 
     if (shouldRetry) {
       await updateAndRelaunch();
     } else {
+      update.value = undefined;
       updateDownloading.value = false;
     }
   }
 }
 
+// TODO: swap these functions
 export async function handleUpdate(): Promise<void> {
-  updateAvailable.value = await checkUpdate();
-  if (!updateAvailable.value.shouldUpdate) return;
+  const checkResult = await check();
+  if (!checkResult?.available) return;
 
-  const newVersion = updateAvailable.value.manifest?.version;
-  if (!newVersion) return;
+  update.value = checkResult;
+
+  const newVersion = checkResult.version;
 
   // Check if the user has already been notified
   const seenVersion = localStorage.getItem('update-seen');
-  if (seenVersion === newVersion) return;
+  if (seenVersion === newVersion) {
+    update.value = undefined;
+
+    return;
+  }
 
   const shouldInstall = await dialog.ask(
     'A new version of NoteBoi is available.\nDo you want to update now?',
@@ -48,6 +57,8 @@ export async function handleUpdate(): Promise<void> {
   );
   if (!shouldInstall) {
     localStorage.setItem('update-seen', newVersion);
+
+    update.value = undefined;
 
     return;
   }

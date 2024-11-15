@@ -19,14 +19,20 @@ pub struct AppState {
 }
 
 fn main() {
-  let mut builder = tauri::Builder::default().invoke_handler(tauri::generate_handler![
-    delete_note,
-    edit_note,
-    export_notes,
-    get_all_notes,
-    new_note,
-    sync_local_notes
-  ]);
+  let mut builder = tauri::Builder::default()
+    .plugin(tauri_plugin_http::init())
+    .plugin(tauri_plugin_updater::Builder::new().build())
+    .plugin(tauri_plugin_process::init())
+    .plugin(tauri_plugin_shell::init())
+    .plugin(tauri_plugin_dialog::init())
+    .invoke_handler(tauri::generate_handler![
+      delete_note,
+      edit_note,
+      export_notes,
+      get_all_notes,
+      new_note,
+      sync_local_notes
+    ]);
 
   if cfg!(target_os = "macos") {
     // Only set menu for MacOS

@@ -169,7 +169,7 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isTrue(calls.emits.has('logout'));
       assert.isFalse(s.syncState.isLoading);
@@ -187,7 +187,7 @@ describe('Account', () => {
       await s.deleteAccount();
 
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isFalse(s.syncState.isLoading);
     });
 
@@ -223,7 +223,7 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isFalse(s.syncState.isLoading);
     });
@@ -257,7 +257,7 @@ describe('Account', () => {
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.emits.has('logout'));
-      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isFalse(s.syncState.isLoading);
     });
@@ -286,7 +286,7 @@ describe('Account', () => {
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.emits.has('logout'));
-      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isFalse(s.syncState.isLoading);
     });

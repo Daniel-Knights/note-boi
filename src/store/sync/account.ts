@@ -1,4 +1,4 @@
-import { dialog } from '@tauri-apps/api';
+import * as dialog from '@tauri-apps/plugin-dialog';
 
 import { noteState } from '../note';
 
@@ -59,7 +59,7 @@ export async function changePassword(): Promise<void> {
 export async function deleteAccount(): Promise<void> {
   const askRes = await dialog.ask('Are you sure?', {
     title: 'Delete account',
-    type: 'warning',
+    kind: 'warning',
   });
   if (!askRes) return;
 

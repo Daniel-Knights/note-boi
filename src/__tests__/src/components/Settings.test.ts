@@ -7,7 +7,7 @@ import * as updateStore from '../../../store/update';
 import { STORAGE_KEYS } from '../../../constant';
 import { openedPopup, PopupType } from '../../../store/popup';
 import { COLOUR_THEMES, selectedTheme } from '../../../store/theme';
-import { updateAvailable } from '../../../store/update';
+import { update } from '../../../store/update';
 import { mockApi } from '../../api';
 import { findByTestId, getByTestId, resolveImmediate } from '../../utils';
 
@@ -67,7 +67,6 @@ describe('Settings', () => {
   it('Sets theme preference', async () => {
     const wrapper = await mountSettingsAndOpen();
 
-    // eslint-disable-next-line no-restricted-syntax
     for (const theme of COLOUR_THEMES) {
       const currentThemeWrapper = getByTestId(wrapper, theme);
       assert.isFalse(currentThemeWrapper.classes('drop-menu__item--selected'));
@@ -104,7 +103,7 @@ describe('Settings', () => {
     expect(exportNotesSpy).toHaveBeenCalledOnce();
     expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes);
     assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.tauriApi.has('openDialog'));
+    assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
     assert.isTrue(calls.invoke.has('export_notes'));
   });
 
@@ -142,7 +141,12 @@ describe('Settings', () => {
     assert.isFalse(findByTestId(wrapper, 'update').exists());
     assert.lengthOf(wrapperVm.menuItems, 3);
 
-    updateAvailable.value = { shouldUpdate: true };
+    // @ts-expect-error - don't need to set all properties
+    update.value = {
+      available: true,
+      downloadAndInstall: () => Promise.resolve(),
+    };
+
     await nextTick();
 
     const updateWrapper = findByTestId(wrapper, 'update');
@@ -154,9 +158,10 @@ describe('Settings', () => {
     await Promise.all(promises);
 
     expect(updateSpy).toHaveBeenCalledOnce();
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.emits.has('tauri://update-install'));
-    assert.isTrue(calls.listeners.has('tauri://update-status'));
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
+
+    update.value = undefined;
   });
 
   describe('Account menu item', () => {
@@ -211,7 +216,7 @@ describe('Settings', () => {
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isTrue(calls.emits.has('logout'));
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
