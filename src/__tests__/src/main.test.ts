@@ -27,14 +27,9 @@ describe('main', () => {
     expect(spyGetAllNotes).toHaveBeenCalledOnce();
     expect(spyHandleUpdate).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.size, 12);
-    assert.lengthOf(calls.invoke, 1);
+    assert.strictEqual(calls.size, 10);
     assert.isTrue(calls.invoke.has('get_all_notes'));
-    assert.lengthOf(calls.emits, 1);
-    assert.isTrue(calls.emits.has('tauri://update'));
-    assert.lengthOf(calls.listeners, 10);
-    assert.isTrue(calls.listeners.has('tauri://update-available'));
-    assert.isTrue(calls.listeners.has('tauri://update-status'));
+    assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
     assert.isTrue(calls.listeners.has('tauri://close-requested'));
     assert.isTrue(calls.listeners.has('reload'));
     assert.isTrue(calls.listeners.has('new-note'));
@@ -91,7 +86,7 @@ describe('main', () => {
       expect(mockCb).not.toHaveBeenCalledOnce();
       expect(spyPush).toHaveBeenCalledOnce();
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
 
       const askDialogCalledWith = calls.tauriApi[0]!.calledWith as Record<
         string,
@@ -103,7 +98,7 @@ describe('main', () => {
         'ERROR: Failed to push unsynced notes.\nClose anyway?'
       );
       assert.strictEqual(askDialogCalledWith.title, 'NoteBoi');
-      assert.strictEqual(askDialogCalledWith.type, 'error');
+      assert.strictEqual(askDialogCalledWith.kind, 'error');
       assert.strictEqual(openedPopup.value, PopupType.Error);
     });
 
@@ -126,7 +121,7 @@ describe('main', () => {
       expect(mockCb).toHaveBeenCalledOnce();
       expect(spyPush).toHaveBeenCalledOnce();
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.tauriApi.has('askDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
 
       const askDialogCalledWith = calls.tauriApi[0]!.calledWith as Record<
         string,
@@ -138,7 +133,7 @@ describe('main', () => {
         'ERROR: Failed to push unsynced notes.\nClose anyway?'
       );
       assert.strictEqual(askDialogCalledWith.title, 'NoteBoi');
-      assert.strictEqual(askDialogCalledWith.type, 'error');
+      assert.strictEqual(askDialogCalledWith.kind, 'error');
       assert.isUndefined(openedPopup.value);
     });
   });

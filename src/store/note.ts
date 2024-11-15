@@ -1,4 +1,4 @@
-import { dialog } from '@tauri-apps/api';
+import * as dialog from '@tauri-apps/plugin-dialog';
 import type Delta from 'quill-delta';
 import { reactive } from 'vue';
 

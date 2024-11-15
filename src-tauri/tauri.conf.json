@@ -1,82 +1,58 @@
 {
-  "package": {
-    "productName": "NoteBoi",
-    "version": "../package.json"
-  },
+  "productName": "NoteBoi",
+  "mainBinaryName": "NoteBoi",
+  "version": "../package.json",
+  "identifier": "com.daniel-knights.note-boi",
   "build": {
-    "distDir": "../dist",
-    "devPath": "http://localhost:3000",
+    "beforeBuildCommand": "pnpm run checks && pnpm run vite:build",
+    "frontendDist": "../dist",
     "beforeDevCommand": "pnpm run vite:dev",
-    "beforeBuildCommand": "pnpm run checks && pnpm run vite:build"
+    "devUrl": "http://localhost:3000"
   },
-  "tauri": {
-    "bundle": {
-      "active": true,
-      "targets": "all",
-      "identifier": "com.daniel-knights.note-boi",
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ],
-      "resources": [],
-      "externalBin": [],
-      "copyright": "MIT",
-      "category": "Productivity",
-      "shortDescription": "Notes app",
-      "longDescription": "An app for syncing notes across multiple devices.",
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": ""
+    },
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": [],
+    "externalBin": [],
+    "copyright": "MIT",
+    "category": "Productivity",
+    "shortDescription": "Notes app",
+    "longDescription": "An app for syncing notes across multiple devices.",
+    "macOS": {
+      "frameworks": [],
+      "minimumSystemVersion": "",
+      "exceptionDomain": "",
+      "signingIdentity": null,
+      "entitlements": null
+    },
+    "linux": {
       "deb": {
         "depends": []
-      },
-      "macOS": {
-        "frameworks": [],
-        "minimumSystemVersion": "",
-        "exceptionDomain": "",
-        "signingIdentity": null,
-        "entitlements": null
-      },
-      "windows": {
-        "certificateThumbprint": null,
-        "digestAlgorithm": "sha256",
-        "timestampUrl": ""
       }
     },
+    "createUpdaterArtifacts": "v1Compatible"
+  },
+  "plugins": {
     "updater": {
-      "active": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERGQjZENzRGOTA4MUY0NjQKUldSazlJR1FUOWUyM3dtNGpwQnVTcjg4MytZSU9WSkwyQzlOWFRjVGlnKzhIUWRGam5pM0ozcHUK",
       "endpoints": [
         "https://github.com/Daniel-Knights/note-boi/releases/latest/download/latest.json"
-      ],
-      "dialog": false,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERGQjZENzRGOTA4MUY0NjQKUldSazlJR1FUOWUyM3dtNGpwQnVTcjg4MytZSU9WSkwyQzlOWFRjVGlnKzhIUWRGam5pM0ozcHUK"
-    },
-    "allowlist": {
-      "shell": {
-        "open": true
-      },
-      "http": {
-        "request": true,
-        "scope": [
-          "http://localhost:8000/api/*",
-          "https://note-boi-server.herokuapp.com/api/*"
-        ]
-      },
-      "window": {
-        "close": true
-      },
-      "dialog": {
-        "ask": true,
-        "open": true
-      },
-      "process": {
-        "exit": true,
-        "relaunch": true
-      }
-    },
-    "security": {
-      "csp": "default-src 'self'"
-    },
+      ]
+    }
+  },
+  "app": {
     "windows": [
       {
         "title": "NoteBoi",
@@ -85,6 +61,9 @@
         "resizable": true,
         "fullscreen": false
       }
-    ]
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src ipc: http://ipc.localhost"
+    }
   }
 }

@@ -25,7 +25,7 @@ describe('PopupInfo', () => {
 
     assert.isTrue(wrapper.isVisible());
     assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.tauriApi.has('getAppVersion'));
+    assert.isTrue(calls.tauriApi.has('plugin:app|version'));
   });
 
   it('Emits close', () => {

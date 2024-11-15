@@ -19,7 +19,7 @@ import { exportNotes, noteState } from '../store/note';
 import { openedPopup, PopupType } from '../store/popup';
 import { deleteAccount, syncState } from '../store/sync';
 import { COLOUR_THEMES, selectedTheme, setTheme } from '../store/theme';
-import { updateAndRelaunch, updateAvailable } from '../store/update';
+import { update, updateAndRelaunch } from '../store/update';
 
 import { DropMenuItemData } from './types';
 
@@ -54,8 +54,8 @@ const menuItems = reactive<DropMenuItemData[]>([
   },
 ]);
 
-watch(updateAvailable, () => {
-  if (!updateAvailable.value?.shouldUpdate) return;
+watch(update, () => {
+  if (!update.value?.available) return;
 
   menuItems.unshift({
     label: 'Update and restart',

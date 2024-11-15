@@ -4,7 +4,7 @@ import { NOTE_EVENTS } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
 import localNotes from '../../notes.json';
-import { UUID_REGEX } from '../../utils';
+import { resolveImmediate, UUID_REGEX } from '../../utils';
 
 const existingNoteIndexSorted = 2;
 const existingNote = localNotes[8]!;
@@ -303,7 +303,7 @@ describe('Note store', () => {
       n.deleteNote(otherExistingNote.id);
 
       await Promise.all(promises);
-      await Promise.resolve();
+      await resolveImmediate();
 
       expect(autoPushSpy).toHaveBeenCalledOnce();
 
@@ -437,7 +437,7 @@ describe('Note store', () => {
       await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.tauriApi.has('openDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
       assert.isTrue(calls.invoke.has('export_notes'));
       assert.deepEqual(calls.tauriApi[0]!.calledWith, {
         directory: true,
@@ -463,7 +463,7 @@ describe('Note store', () => {
       await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.tauriApi.has('openDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
     });
 
     it('Passed selection of notes', async () => {
@@ -476,7 +476,7 @@ describe('Note store', () => {
       await n.exportNotes([n.noteState.notes[0]!.id]);
 
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.tauriApi.has('openDialog'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
       assert.isTrue(calls.invoke.has('export_notes'));
     });
   });

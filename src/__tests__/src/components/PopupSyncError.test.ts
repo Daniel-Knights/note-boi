@@ -73,7 +73,7 @@ describe('PopupSyncError', () => {
     await waitUntil(() => !s.syncState.isLoading);
 
     expect(pullSpy).toHaveBeenCalledOnce();
-    expect(resetErrorSpy).toHaveBeenCalledOnce();
+    expect(resetErrorSpy).toHaveBeenCalledTimes(1);
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
@@ -92,7 +92,7 @@ describe('PopupSyncError', () => {
     await waitUntil(() => !s.syncState.isLoading);
 
     expect(logoutSpy).toHaveBeenCalledOnce();
-    expect(resetErrorSpy).toHaveBeenCalledOnce();
+    expect(resetErrorSpy).toHaveBeenCalledTimes(1);
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 });

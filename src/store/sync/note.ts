@@ -117,6 +117,12 @@ export async function pull(): Promise<void> {
       // Users' session must still be valid
       syncState.isLoggedIn = true;
 
+      if (!res.data.notes) {
+        await syncNotes([]);
+
+        return;
+      }
+
       const decryptedNotes = await Encryptor.decryptNotes(res.data.notes).catch((err) => {
         return catchEncryptorError(err);
       });
@@ -148,6 +154,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
   syncState.isLoading = true;
 
   try {
+    // TODO: check if undefined notes passed encrypt/decrypt anywhere
     const encryptedNotes = await Encryptor.encryptNotes(
       noteState.notes.filter((nt) => !isEmptyNote(nt))
     ).catch((err) => catchEncryptorError(err));
