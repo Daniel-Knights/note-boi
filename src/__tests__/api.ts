@@ -114,31 +114,38 @@ export function mockApi(
     return parseCallResult('request', reqCall) as Promise<Response>;
   };
 
-  // TODO: args isn't typed?
   mockIPC((callId, args) => {
     // Emit
     if (callId === 'plugin:event|emit') {
-      const emitCall = mockTauriEmit(args);
+      const emitCall = mockTauriEmit(args as EmitArgs);
 
       return parseCallResult('emits', emitCall);
     }
 
     // Listen
     if (callId === 'plugin:event|listen') {
-      const listenerCall = mockTauriListener(args);
+      const listenerCall = mockTauriListener(args as ListenArgs);
 
       return parseCallResult('listeners', listenerCall);
     }
 
     // Invoke
     if (TAURI_COMMANDS.includes(callId as TauriCommand)) {
-      const invokeCall = mockTauriInvoke(callId, args, options.invoke);
+      const invokeCall = mockTauriInvoke(
+        callId,
+        args as Record<string, unknown>,
+        options.invoke
+      );
 
       return parseCallResult('invoke', invokeCall);
     }
 
     // Tauri API
-    const tauriApiCall = mockTauriApi(callId, args, options.tauriApi);
+    const tauriApiCall = mockTauriApi(
+      callId,
+      args as AskDialogArgs | OpenDialogArgs,
+      options.tauriApi
+    );
 
     if (tauriApiCall) {
       return parseCallResult('tauriApi', tauriApiCall);
