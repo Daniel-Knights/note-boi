@@ -19,11 +19,12 @@ export default defineConfig({
     },
   },
   build: {
-    // tauri supports es2021
-    target: ['es2021', 'chrome97', 'safari13'],
+    // Tauri uses Chromium on Windows and WebKit on macOS and Linux
+    target: process.env.TAURI_ENV_PLATFORM === 'windows' ? 'chrome105' : 'safari13',
+    // don't minify for debug builds
+    minify: !process.env.TAURI_ENV_DEBUG ? 'esbuild' : false,
     // produce sourcemaps for debug builds
-    sourcemap: !!process.env.TAURI_DEBUG,
-    minify: !process.env.TAURI_DEBUG,
+    sourcemap: !!process.env.TAURI_ENV_DEBUG,
   },
   test: {
     environment: 'jsdom',
