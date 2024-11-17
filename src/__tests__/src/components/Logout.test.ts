@@ -44,6 +44,12 @@ describe('Logout', () => {
     assert.isFalse(s.syncState.isLoggedIn);
     assert.strictEqual(calls.size, 2);
     assert.isTrue(calls.request.has('/logout'));
-    assert.isTrue(calls.emits.has('logout'));
+    assert.isTrue(calls.emits.has('auth'));
+    assert.deepEqual(calls.emits[0]!.calledWith, {
+      isFrontendEmit: true,
+      data: {
+        is_logged_in: false,
+      },
+    });
   });
 });

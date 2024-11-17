@@ -75,10 +75,16 @@ describe('SyncStatus', () => {
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
     assert.strictEqual(calls.size, 7); // 3 = listeners
-    assert.isTrue(calls.emits.has('login'));
     assert.isTrue(calls.request.has('/notes/pull'));
     assert.isTrue(calls.invoke.has('new_note'));
     assert.isTrue(calls.invoke.has('sync_local_notes'));
+    assert.isTrue(calls.emits.has('auth'));
+    assert.deepEqual(calls.emits[0]!.calledWith, {
+      isFrontendEmit: true,
+      data: {
+        is_logged_in: true,
+      },
+    });
   });
 
   it.each(['Logout', 'Pull', 'Push'] as const)(
