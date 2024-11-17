@@ -1,4 +1,5 @@
 {
+  "$schema": "https://schema.tauri.app/config/2",
   "productName": "NoteBoi",
   "mainBinaryName": "NoteBoi",
   "version": "../package.json",
@@ -59,7 +60,8 @@
         "minHeight": 400,
         "minWidth": 600,
         "resizable": true,
-        "fullscreen": false
+        "fullscreen": false,
+        "useHttpsScheme": true
       }
     ],
     "security": {

@@ -8,12 +8,12 @@ import {
   clientSideLogout,
   Encryptor,
   ErrorType,
+  fetchData,
   KeyStore,
   parseErrorRes,
   resetError,
   resIsOk,
   syncState,
-  tauriFetch,
 } from '.';
 
 export async function changePassword(): Promise<void> {
@@ -26,12 +26,11 @@ export async function changePassword(): Promise<void> {
     ).catch((err) => catchEncryptorError(err));
     if (!encryptedNotes) return;
 
-    const res = await tauriFetch('/account/password/change', 'PUT', {
+    const res = await fetchData('/account/password/change', 'PUT', {
       current_password: syncState.password,
       new_password: syncState.newPassword,
       notes: encryptedNotes,
     }).catch((err) => catchHang(err, ErrorType.Auth));
-
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -66,10 +65,9 @@ export async function deleteAccount(): Promise<void> {
   try {
     syncState.isLoading = true;
 
-    const res = await tauriFetch('/account/delete', 'POST').catch((err) => {
+    const res = await fetchData('/account/delete', 'POST').catch((err) => {
       catchHang(err, ErrorType.Auth);
     });
-
     if (!res) return;
 
     if (resIsOk(res)) {
