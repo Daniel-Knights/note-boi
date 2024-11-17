@@ -12,6 +12,7 @@
 - [x] E2E encryption
 - [x] WYSIWYG editor
 - [x] Light/dark themes
+- [ ] Web version (planned)
 - [ ] Mobile support (planned)
 
 <p align="center">
