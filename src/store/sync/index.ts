@@ -1,4 +1,3 @@
-import * as http from '@tauri-apps/plugin-http';
 import { reactive } from 'vue';
 
 import { Endpoint, EndpointPayloads, STORAGE_KEYS } from '../../constant';
@@ -91,8 +90,8 @@ export function resetError(): void {
   syncState.error = { type: ErrorType.None, message: '' };
 }
 
-/** Wrapper for {@link http.fetch}. */
-export async function tauriFetch<
+/** Wrapper for {@link fetch}. */
+export async function fetchData<
   E extends Endpoint = Endpoint,
   R = EndpointPayloads[E]['response'],
 >(
@@ -100,31 +99,19 @@ export async function tauriFetch<
   method: 'POST' | 'PUT',
   payload?: EndpointPayloads[E]['payload']
 ): Promise<ParsedResponse<R> | ParsedResponse<{ error: string }>> {
-  const baseUrl = isDev()
+  const serverUrl = isDev()
     ? 'http://localhost:8000'
     : 'https://note-boi-server.herokuapp.com';
 
-  const options = {
+  const res = await fetch(`${serverUrl}/api${endpoint}`, {
     method,
     body: JSON.stringify(payload ?? {}),
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
-      Cookie: '',
+      'Content-Security-Policy': `default-src: 'self'; connect-src ${serverUrl};`,
     },
-  } satisfies RequestInit;
-
-  // TBR: https://github.com/tauri-apps/wry/issues/518
-  //      https://github.com/tauri-apps/wry/issues/444
-  const cookie = localStorage.getItem(STORAGE_KEYS.COOKIE);
-  if (cookie) {
-    options.headers.Cookie = cookie;
-  }
-
-  const res = await http.fetch(`${baseUrl}/api${endpoint}`, options);
-
-  if (res.headers.getSetCookie()) {
-    localStorage.setItem(STORAGE_KEYS.COOKIE, res.headers.getSetCookie().join(';'));
-  }
+  });
 
   const contentType = res.headers.get('content-type');
 
