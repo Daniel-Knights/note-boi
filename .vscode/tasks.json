@@ -7,8 +7,15 @@
       "label": "dev",
       "type": "shell",
       "isBackground": true,
-      "command": "pnpm",
+      "command": "npm",
       "args": ["run", "vite:dev"]
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "isBackground": true,
+      "command": "npm",
+      "args": ["run", "vite:build"]
     },
     {
       "label": "kill tasks",
