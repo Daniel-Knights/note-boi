@@ -6,35 +6,6 @@ import { ref } from 'vue';
 export const update = ref<Update>();
 export const updateDownloading = ref<boolean>(false);
 
-export async function updateAndRelaunch(): Promise<void> {
-  if (!update.value) return;
-
-  updateDownloading.value = true;
-
-  try {
-    await update.value?.downloadAndInstall();
-
-    update.value = undefined;
-
-    await relaunch();
-  } catch (error) {
-    console.error(error);
-
-    const shouldRetry = await dialog.ask('Try again?', {
-      title: 'Unable to install update',
-      kind: 'error',
-    });
-
-    if (shouldRetry) {
-      await updateAndRelaunch();
-    } else {
-      update.value = undefined;
-      updateDownloading.value = false;
-    }
-  }
-}
-
-// TODO: swap these functions
 export async function handleUpdate(): Promise<void> {
   const checkResult = await check();
   if (!checkResult?.available) return;
@@ -64,4 +35,32 @@ export async function handleUpdate(): Promise<void> {
   }
 
   updateAndRelaunch();
+}
+
+export async function updateAndRelaunch(): Promise<void> {
+  if (!update.value) return;
+
+  updateDownloading.value = true;
+
+  try {
+    await update.value?.downloadAndInstall();
+
+    update.value = undefined;
+
+    await relaunch();
+  } catch (error) {
+    console.error(error);
+
+    const shouldRetry = await dialog.ask('Try again?', {
+      title: 'Unable to install update',
+      kind: 'error',
+    });
+
+    if (shouldRetry) {
+      await updateAndRelaunch();
+    } else {
+      update.value = undefined;
+      updateDownloading.value = false;
+    }
+  }
 }
