@@ -17,7 +17,6 @@ export const STORAGE_KEYS = {
   UNSYNCED: 'unsynced-note-ids',
   THEME: 'theme',
   MENU_WIDTH: 'note-menu-width',
-  COOKIE: 'cookie',
 } as const;
 
 export type EndpointPayloads = {

@@ -7,13 +7,13 @@ import {
   catchHang,
   Encryptor,
   ErrorType,
+  fetchData,
   KeyStore,
   parseErrorRes,
   resetError,
   resIsOk,
   syncNotes,
   syncState,
-  tauriFetch,
 } from '.';
 
 export function clientSideLogout(): Promise<void> {
@@ -21,9 +21,6 @@ export function clientSideLogout(): Promise<void> {
   syncState.isLoggedIn = false;
 
   localStorage.removeItem(STORAGE_KEYS.USERNAME);
-  // TBR: https://github.com/tauri-apps/wry/issues/518
-  //      https://github.com/tauri-apps/wry/issues/444
-  localStorage.removeItem(STORAGE_KEYS.COOKIE);
 
   return tauriEmit('logout');
 }
@@ -33,11 +30,10 @@ export async function login(): Promise<void> {
   syncState.isLoading = true;
 
   try {
-    const res = await tauriFetch('/login', 'POST', {
+    const res = await fetchData('/login', 'POST', {
       username: syncState.username,
       password: syncState.password,
     }).catch((err) => catchHang(err, ErrorType.Auth));
-
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -51,15 +47,10 @@ export async function login(): Promise<void> {
       resetError();
       tauriEmit('login');
 
-      if (!res.data.notes) {
-        await syncNotes([]);
-
-        return;
-      }
-
-      const decryptedNotes = await Encryptor.decryptNotes(res.data.notes, password).catch(
-        (err) => catchEncryptorError(err)
-      );
+      const decryptedNotes = await Encryptor.decryptNotes(
+        res.data.notes ?? [],
+        password
+      ).catch((err) => catchEncryptorError(err));
       if (!decryptedNotes) return;
 
       await syncNotes(decryptedNotes);
@@ -87,12 +78,11 @@ export async function signup(): Promise<void> {
     ).catch((err) => catchEncryptorError(err));
     if (!encryptedNotes) return;
 
-    const res = await tauriFetch('/signup', 'POST', {
+    const res = await fetchData('/signup', 'POST', {
       username: syncState.username,
       password: syncState.password,
       notes: encryptedNotes,
     }).catch((err) => catchHang(err, ErrorType.Auth));
-
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -121,12 +111,13 @@ export async function logout(): Promise<void> {
 
   try {
     const [res] = await Promise.all([
-      tauriFetch('/logout', 'POST').catch((err) => {
+      fetchData('/logout', 'POST').catch((err) => {
         catchHang(err, ErrorType.Logout);
       }),
       clientSideLogout(),
       KeyStore.reset(),
     ]);
+    if (!res) return;
 
     if (resIsOk(res)) {
       resetError();

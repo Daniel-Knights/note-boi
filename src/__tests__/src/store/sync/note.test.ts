@@ -255,10 +255,10 @@ describe('Sync', () => {
 
       await s.login();
 
-      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const fetchDataSpy = vi.spyOn(s, 'fetchData');
       const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
 
-      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
 
       try {
         await s.pull();
@@ -267,7 +267,7 @@ describe('Sync', () => {
         assert.isFalse(s.syncState.isLoading);
       }
 
-      expect(tauriFetchSpy).toHaveBeenCalledOnce();
+      expect(fetchDataSpy).toHaveBeenCalledOnce();
     });
   });
 
@@ -432,10 +432,10 @@ describe('Sync', () => {
 
       n.editNote({}, 'title', 'body');
 
-      const tauriFetchSpy = vi.spyOn(s, 'tauriFetch');
+      const fetchDataSpy = vi.spyOn(s, 'fetchData');
       const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
 
-      tauriFetchSpy.mockRejectedValue(new Error('Mock reject'));
+      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
 
       try {
         await s.push();
@@ -444,7 +444,7 @@ describe('Sync', () => {
         assert.isFalse(s.syncState.isLoading);
       }
 
-      expect(tauriFetchSpy).toHaveBeenCalledOnce();
+      expect(fetchDataSpy).toHaveBeenCalledOnce();
     });
   });
 

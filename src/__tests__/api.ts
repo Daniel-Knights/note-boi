@@ -107,59 +107,15 @@ export function mockApi(
     return call.promise;
   }
 
-  const reqCache: Record<
-    string,
-    {
-      req: ReqArgs;
-      res?: {
-        // TODO: type this better
-        data?: string;
-        [key: string]: unknown;
-      };
-    }
-  > = {};
+  // Request
+  global.fetch = (url, fetchOptions) => {
+    const reqCall = mockRequest(url.toString(), fetchOptions!, options.request);
+
+    return parseCallResult('request', reqCall) as Promise<Response>;
+  };
 
   // TODO: args isn't typed?
-  mockIPC(async (callId, args) => {
-    // Fetch
-    // TODO: simplify this fetch caching
-    if (callId === 'plugin:http|fetch') {
-      const rid = crypto.randomUUID();
-
-      reqCache[rid] = { req: args.clientConfig };
-
-      return rid;
-    }
-
-    if (callId === 'plugin:http|fetch_send') {
-      const reqCall = mockRequest(reqCache[args.rid]!.req, options.request);
-
-      parseCallResult('request', reqCall);
-
-      const reqRes = await reqCall!.promise;
-
-      reqCache[args.rid]!.res = {
-        rid: args.rid,
-        status: reqRes?.status,
-        url: reqCache[args.rid]!.req.url,
-        headers: {
-          'content-type': 'application/json',
-          // TBR: https://github.com/tauri-apps/wry/issues/518
-          //      https://github.com/tauri-apps/wry/issues/444
-          'set-cookie': 'cookie',
-        },
-        data: reqRes?.data,
-      };
-
-      return reqCache[args.rid]!.res;
-    }
-
-    if (callId === 'plugin:http|fetch_read_body') {
-      return reqCache[args.rid]?.res?.status === 204
-        ? null
-        : [...new TextEncoder().encode(reqCache[args.rid]!.res!.data!)];
-    }
-
+  mockIPC((callId, args) => {
     // Emit
     if (callId === 'plugin:event|emit') {
       const emitCall = mockTauriEmit(args);
@@ -230,7 +186,8 @@ class Calls extends Array<Call> {
 
 /** Mocks requests to the server. */
 function mockRequest(
-  args: ReqArgs,
+  url: string,
+  fetchOptions: RequestInit,
   options: {
     resValue?: RequestResValue;
     error?: {
@@ -238,17 +195,13 @@ function mockRequest(
       status?: number;
     };
   } = {}
-): Call<void | {
-  status: number;
-  data: string;
-}> | void {
+): Call<void | Response> {
   if (!s.syncState.isLoading) {
     assert.fail('Loading state not set');
   }
 
-  const endpoint = args.url.split(/\/api(?=\/)/)[1] as Endpoint;
-  const reqPayloadStr = new TextDecoder().decode(new Uint8Array(args!.data).buffer);
-  const reqPayload: { notes?: n.Note[] } = JSON.parse(reqPayloadStr);
+  const endpoint = url.split(/\/api(?=\/)/)[1] as Endpoint;
+  const reqPayload: { notes?: n.Note[] } = JSON.parse(fetchOptions.body!.toString());
 
   if (!ENDPOINTS.includes(endpoint)) {
     assert.fail(`Invalid endpoint: ${endpoint}`);
@@ -257,10 +210,14 @@ function mockRequest(
   if (options.error?.endpoint === endpoint) {
     return {
       name: endpoint,
-      promise: resolveImmediate({
-        status: options.error.status || 500,
-        data: JSON.stringify({ error: 'Server error' }),
-      }),
+      promise: resolveImmediate(
+        new Response(JSON.stringify({ error: 'Server error' }), {
+          status: options.error.status || 500,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+      ),
     };
   }
 
@@ -382,10 +339,14 @@ function mockRequest(
 
   return {
     name: endpoint,
-    promise: resolveImmediate({
-      status: httpStatus,
-      data: JSON.stringify(resData),
-    }),
+    promise: resolveImmediate(
+      new Response(httpStatus === 204 ? null : JSON.stringify(resData), {
+        status: httpStatus,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+    ),
   };
 }
 
@@ -548,15 +509,6 @@ function mockTauriListener(args: ListenArgs): Call | void {
 }
 
 // Types
-
-type ReqArgs = {
-  url: string;
-  method: string;
-  data: number[];
-  headers: [string, string][];
-  status: number;
-  statusText: string;
-};
 
 type AskDialogArgs = {
   message: string;

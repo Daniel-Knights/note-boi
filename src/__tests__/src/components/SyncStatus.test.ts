@@ -56,7 +56,11 @@ describe('SyncStatus', () => {
     const wrapper = mount(SyncStatus);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.size, 3);
+    assert.strictEqual(calls.size, 4);
+    assert.isTrue(calls.listeners.has('login'));
+    assert.isTrue(calls.listeners.has('logout'));
+    assert.isTrue(calls.listeners.has('signup'));
+    assert.isTrue(calls.request.has('/notes/pull'));
     expect(pullSpy).toHaveBeenCalledOnce();
 
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
