@@ -102,13 +102,15 @@ describe('Utils', () => {
     it('tauriEmit', async () => {
       const { calls } = mockApi();
 
-      await tauriEmit('login', 'test');
+      await tauriEmit('auth', { is_logged_in: false });
 
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.emits.has('login'));
+      assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
-        data: 'test',
+        data: {
+          is_logged_in: false,
+        },
       });
     });
 

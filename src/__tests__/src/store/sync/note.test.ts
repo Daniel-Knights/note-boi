@@ -57,9 +57,15 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.emits.has('login'));
       assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
     });
 
     it('With server error', async () => {
@@ -117,8 +123,14 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/notes/pull'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('User not found', async () => {
@@ -137,8 +149,14 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/notes/pull'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('Updates editor if selected note is unedited', async () => {
@@ -389,8 +407,14 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/notes/push'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('User not found', async () => {
@@ -418,8 +442,14 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/notes/push'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('Sets and resets loading state', async () => {

@@ -128,7 +128,7 @@ export const TAURI_COMMANDS = [
   'export_notes',
 ] satisfies TauriCommand[];
 
-export const TAURI_EMITS = ['login', 'logout', 'tauri://update-install'] as const;
+export const TAURI_EMITS = ['auth'] as const;
 
 export type TauriEmit = (typeof TAURI_EMITS)[number];
 

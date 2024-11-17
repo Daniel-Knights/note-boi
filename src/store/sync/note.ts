@@ -111,7 +111,7 @@ export async function pull(): Promise<void> {
 
     if (resIsOk(res)) {
       resetError();
-      tauriEmit('login');
+      tauriEmit('auth', { is_logged_in: true });
 
       // Users' session must still be valid
       syncState.isLoggedIn = true;

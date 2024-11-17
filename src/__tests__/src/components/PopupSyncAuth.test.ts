@@ -126,9 +126,15 @@ describe('PopupSyncAuth', () => {
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/login'));
-      assert.isTrue(calls.emits.has('login'));
       assert.isTrue(calls.invoke.has('new_note'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
     });
 
     it('On signup', async () => {
@@ -233,7 +239,13 @@ describe('PopupSyncAuth', () => {
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
-      assert.isTrue(calls.emits.has('login'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
     });
   });
 });

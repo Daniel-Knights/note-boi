@@ -21,7 +21,13 @@ describe('Sync', () => {
     assert.isFalse(s.syncState.isLoggedIn);
     assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
     assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.emits.has('logout'));
+    assert.isTrue(calls.emits.has('auth'));
+    assert.deepEqual(calls.emits[0]!.calledWith, {
+      isFrontendEmit: true,
+      data: {
+        is_logged_in: false,
+      },
+    });
   });
 
   describe('login', () => {
@@ -54,7 +60,13 @@ describe('Sync', () => {
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/login'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
-      assert.isTrue(calls.emits.has('login'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
     });
 
     it('With notes', async () => {
@@ -90,7 +102,13 @@ describe('Sync', () => {
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/login'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
-      assert.isTrue(calls.emits.has('login'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
     });
 
     it('With server error', async () => {
@@ -162,7 +180,13 @@ describe('Sync', () => {
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
-      assert.isTrue(calls.emits.has('login'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
     });
 
     it('With notes', async () => {
@@ -190,7 +214,13 @@ describe('Sync', () => {
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
-      assert.isTrue(calls.emits.has('login'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
     });
 
     it("Doesn't push empty notes", async () => {
@@ -219,7 +249,13 @@ describe('Sync', () => {
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
-      assert.isTrue(calls.emits.has('login'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
     });
 
     it('With server error', async () => {
@@ -292,7 +328,13 @@ describe('Sync', () => {
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/logout'));
-      assert.isTrue(calls.emits.has('logout'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('With server error', async () => {
@@ -320,8 +362,14 @@ describe('Sync', () => {
       assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.emits.has('logout'));
       assert.isTrue(calls.request.has('/logout'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('Sets and resets loading state', async () => {

@@ -22,7 +22,7 @@ export function clientSideLogout(): Promise<void> {
 
   localStorage.removeItem(STORAGE_KEYS.USERNAME);
 
-  return tauriEmit('logout');
+  return tauriEmit('auth', { is_logged_in: false });
 }
 
 // Login
@@ -45,7 +45,7 @@ export async function login(): Promise<void> {
       localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
 
       resetError();
-      tauriEmit('login');
+      tauriEmit('auth', { is_logged_in: true });
 
       const decryptedNotes = await Encryptor.decryptNotes(
         res.data.notes ?? [],
@@ -87,7 +87,7 @@ export async function signup(): Promise<void> {
 
     if (resIsOk(res)) {
       resetError();
-      tauriEmit('login');
+      tauriEmit('auth', { is_logged_in: true });
 
       syncState.password = '';
       syncState.isLoggedIn = true;
