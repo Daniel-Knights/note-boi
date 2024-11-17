@@ -11,10 +11,6 @@
     "dialog:allow-open",
     "dialog:allow-ask",
     "process:allow-restart",
-    "process:allow-exit",
-    "dialog:default",
-    "shell:default",
-    "process:default"
-  ],
-  "comment": "// TODO: are these defaults needed? ^"
+    "process:allow-exit"
+  ]
 }
