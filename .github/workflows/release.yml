@@ -47,7 +47,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install pnpm dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
