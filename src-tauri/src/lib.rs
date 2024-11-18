@@ -7,6 +7,7 @@ use crate::command::{
 };
 use std::path::PathBuf;
 use tauri::Manager;
+use tauri_plugin_log::{Target, TargetKind};
 
 #[derive(Debug)]
 pub struct AppState {
@@ -15,7 +16,16 @@ pub struct AppState {
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+  // Only log to the log file
+  let log_targets = [Target::new(TargetKind::LogDir { file_name: None })];
+
   tauri::Builder::default()
+    .plugin(
+      tauri_plugin_log::Builder::new()
+        .clear_targets()
+        .targets(log_targets)
+        .build(),
+    )
     .plugin(tauri_plugin_updater::Builder::new().build())
     .plugin(tauri_plugin_process::init())
     .plugin(tauri_plugin_shell::init())

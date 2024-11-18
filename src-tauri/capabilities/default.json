@@ -11,6 +11,7 @@
     "dialog:allow-open",
     "dialog:allow-ask",
     "process:allow-restart",
-    "process:allow-exit"
+    "process:allow-exit",
+    "log:default"
   ]
 }

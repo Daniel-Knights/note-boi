@@ -62,7 +62,7 @@ export default typescriptEslint.config(
       '@typescript-eslint/no-shadow': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/explicit-module-boundary-types': 'warn',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-use-before-define': [
         'error',
