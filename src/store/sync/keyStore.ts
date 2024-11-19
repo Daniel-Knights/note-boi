@@ -54,7 +54,7 @@ export class KeyStore {
 
       await promisifyRequest(deleteRequest);
 
-      this.#db.close();
+      this.#db?.close();
     }
 
     this.#db = undefined;
