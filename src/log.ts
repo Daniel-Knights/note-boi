@@ -15,8 +15,21 @@ function forwardConsole(
 ) {
   const original = console[fnName];
 
-  console[fnName] = (message) => {
+  console[fnName] = (message: unknown) => {
     original(message);
-    logger(message);
+
+    if (message instanceof Error) {
+      logger(message.name);
+      logger(message.message);
+      logger(message.stack?.replaceAll(/\n/g, '\n    ') || '');
+
+      return;
+    }
+
+    if (typeof message === 'object') {
+      logger(JSON.stringify(message));
+    }
+
+    logger(String(message));
   };
 }

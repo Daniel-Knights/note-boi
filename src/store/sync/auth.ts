@@ -99,6 +99,8 @@ export async function signup(): Promise<void> {
         type: ErrorType.Auth,
         message: parseErrorRes(res),
       };
+
+      console.error(res.data);
     }
   } finally {
     syncState.isLoading = false;
