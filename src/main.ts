@@ -48,7 +48,6 @@ tauriListen('delete-account', deleteAccount);
 tauriListen('change-password', () => {
   openedPopup.value = PopupType.ChangePassword;
 });
-// TODO: update production db URI and user privileges
 
 export async function exitApp(cb: () => void): Promise<void> {
   if (syncState.unsyncedNoteIds.size > 0) {
