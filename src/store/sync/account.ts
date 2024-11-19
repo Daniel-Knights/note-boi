@@ -9,7 +9,6 @@ import {
   Encryptor,
   ErrorType,
   fetchData,
-  KeyStore,
   parseErrorRes,
   resetError,
   resIsOk,
@@ -75,8 +74,6 @@ export async function deleteAccount(): Promise<void> {
       resetError();
 
       syncState.unsyncedNoteIds.clear();
-
-      await KeyStore.reset();
     } else {
       syncState.error = {
         type: ErrorType.Auth,

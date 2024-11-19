@@ -22,6 +22,8 @@ export function clientSideLogout(): Promise<void> {
 
   localStorage.removeItem(STORAGE_KEYS.USERNAME);
 
+  KeyStore.reset();
+
   return tauriEmit('auth', { is_logged_in: false });
 }
 
@@ -117,7 +119,6 @@ export async function logout(): Promise<void> {
         catchHang(err, ErrorType.Logout);
       }),
       clientSideLogout(),
-      KeyStore.reset(),
     ]);
     if (!res) return;
 
