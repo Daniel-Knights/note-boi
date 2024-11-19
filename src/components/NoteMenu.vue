@@ -1,5 +1,12 @@
 <template>
-  <section @click="listIsFocused = true" id="note-menu" :style="{ width: menuWidth }">
+  <section
+    @click="listIsFocused = true"
+    id="note-menu"
+    :style="{
+      width: menuWidth,
+      marginLeft: isHidden ? `-${menuWidth}` : '',
+    }"
+  >
     <ul
       @click="handleNoteSelect"
       @contextmenu.prevent="contextMenuEv = $event"
@@ -44,6 +51,11 @@
       class="note-menu__drag-bar"
       data-test-id="drag-bar"
     ></div>
+    <button @click="isHidden = !isHidden" class="note-menu__toggle" data-test-id="toggle">
+      <svg viewBox="0 0 6 12">
+        <path d="M1 -100V100M5 -100V100" stroke="#fff" stroke-width="2" />
+      </svg>
+    </button>
   </section>
 </template>
 
@@ -67,6 +79,7 @@ import ContextMenu from './ContextMenu.vue';
 const noteList = ref<HTMLElement>();
 const contextMenuEv = ref<MouseEvent>();
 const isDragging = ref(false);
+const isHidden = ref(false);
 const listIsFocused = ref(true);
 const menuWidth = ref(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH) || '260px');
 
@@ -169,8 +182,15 @@ function handleDragBar() {
   isDragging.value = true;
 
   document.addEventListener('mousemove', (ev) => {
-    if (!isDragging.value || ev.clientX < 150) return;
+    if (!isDragging.value) return;
 
+    if (ev.clientX < 150) {
+      isHidden.value = true;
+
+      return;
+    }
+
+    isHidden.value = false;
     menuWidth.value = `${ev.clientX}px`;
   });
   document.addEventListener(
@@ -334,6 +354,31 @@ $new-note-height: 50px;
     height: 100%;
     width: 1px;
     border: 1px solid var(--colour__interactive);
+  }
+}
+
+.note-menu__toggle {
+  cursor: pointer;
+  @include v.flex-x(center, center);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  height: 20px;
+  width: 10px;
+  background-color: var(--colour__interactive);
+  transform: translate(100%, -50%);
+
+  // Hit box
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: -10px;
+  }
+
+  svg {
+    height: 10px;
+    transform: translateX(-1px);
   }
 }
 </style>

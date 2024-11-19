@@ -1,4 +1,5 @@
 import { shallowMount, VueWrapper } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
 import { STORAGE_KEYS } from '../../../constant';
@@ -164,6 +165,7 @@ describe('NoteMenu', () => {
     const wrapperVm = wrapper.vm as unknown as {
       menuWidth: string;
       isDragging: boolean;
+      isHidden: boolean;
     };
     const initialWidth = wrapperVm.menuWidth;
 
@@ -197,15 +199,46 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mousemove', { clientX: 100 }));
 
     assert.strictEqual(initialWidth, wrapperVm.menuWidth);
+    assert.isTrue(wrapperVm.isHidden);
 
     document.dispatchEvent(new MouseEvent('mousemove', { clientX: 400 }));
 
     assert.strictEqual(wrapperVm.menuWidth, '400px');
 
+    await nextTick();
+
+    assert.strictEqual(wrapper.element.style.width, '400px');
+    assert.isFalse(wrapperVm.isHidden);
+
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
     assert.strictEqual(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH), '400px');
+  });
+
+  it('Toggles menu visibility', async () => {
+    const wrapper = shallowMount(NoteMenu);
+    const wrapperVm = wrapper.vm as unknown as {
+      menuWidth: string;
+      isHidden: boolean;
+    };
+    const initialWidth = wrapperVm.menuWidth;
+
+    assert.isFalse(wrapperVm.isHidden);
+
+    const toggleButton = getByTestId(wrapper, 'toggle');
+
+    await toggleButton.trigger('click');
+
+    assert.isTrue(wrapperVm.isHidden);
+    assert.strictEqual(wrapperVm.menuWidth, initialWidth);
+    assert.strictEqual(wrapper.element.style.marginLeft, `-${wrapperVm.menuWidth}`);
+
+    await toggleButton.trigger('click');
+
+    assert.isFalse(wrapperVm.isHidden);
+    assert.strictEqual(wrapperVm.menuWidth, initialWidth);
+    assert.strictEqual(wrapper.element.style.marginLeft, '');
   });
 
   describe('Selects/deselects extra notes', () => {
