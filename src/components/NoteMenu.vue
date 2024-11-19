@@ -255,6 +255,8 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 @use 'sass:math';
 
+@use '../sass/vars' as v;
+
 $new-note-height: 50px;
 
 #note-menu {

@@ -42,6 +42,8 @@ onBeforeUnmount(closePopup);
 </script>
 
 <style lang="scss" scoped>
+@use '../sass/vars' as v;
+
 .popup {
   @include v.flex-x(center, center);
   position: fixed;

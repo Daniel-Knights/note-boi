@@ -25,6 +25,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
+@use '../sass/vars' as v;
+
 $list-bg-colour: var(--colour__interactive);
 
 .drop-menu {

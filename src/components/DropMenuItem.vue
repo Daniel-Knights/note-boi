@@ -27,6 +27,8 @@ defineProps<{ items: DropMenuItemData[] }>();
 </script>
 
 <style lang="scss" scoped>
+@use '../sass/vars' as v;
+
 .drop-menu__item--disabled {
   pointer-events: none;
   color: var(--colour__tertiary);

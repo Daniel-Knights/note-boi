@@ -11,6 +11,8 @@
 <script lang="ts" setup></script>
 
 <style lang="scss">
+@use '../sass/vars' as v;
+
 #loading {
   @include v.flex-x(center, center);
   position: fixed;

@@ -17,6 +17,8 @@ import UtilityMenu from './components/UtilityMenu.vue';
 </script>
 
 <style lang="scss">
+@use './sass/vars' as v;
+
 html,
 body {
   height: 100%;

@@ -81,6 +81,8 @@ onBeforeUnmount(() => {
 
 <!-- Can't be scoped, affects Quill styles -->
 <style lang="scss">
+@use '../sass/vars' as v;
+
 #editor {
   flex-grow: 1;
   height: 100%;

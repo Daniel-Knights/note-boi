@@ -11,6 +11,8 @@ import Settings from './Settings.vue';
 </script>
 
 <style lang="scss">
+@use '../sass/vars' as v;
+
 #utility-menu {
   @include v.flex-y;
   position: absolute;

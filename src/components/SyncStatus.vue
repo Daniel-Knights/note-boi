@@ -91,6 +91,8 @@ if (syncState.username) {
 </script>
 
 <style lang="scss" scoped>
+@use '../sass/vars' as v;
+
 #sync-status {
   position: absolute;
   right: v.$utility-menu-right;
