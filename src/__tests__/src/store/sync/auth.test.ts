@@ -5,7 +5,7 @@ import { isEmptyNote } from '../../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
 
-describe('Sync', () => {
+describe('Auth', () => {
   it('clientSideLogout', async () => {
     const { calls } = mockApi();
     s.syncState.username = 'd';

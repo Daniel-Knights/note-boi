@@ -45,7 +45,7 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "debug current test file",
+      "name": "test:current-file",
       "type": "node",
       "request": "launch",
       "autoAttachChildProcesses": true,
