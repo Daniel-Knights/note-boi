@@ -1,6 +1,6 @@
 <template>
   <ul class="drop-menu" data-test-id="drop-menu">
-    <DropMenuItem :items="items" />
+    <DropMenuItems :items="items" />
   </ul>
 </template>
 
@@ -9,7 +9,7 @@ import { onMounted } from 'vue';
 
 import { DropMenuItemData } from './types';
 
-import DropMenuItem from './DropMenuItem.vue';
+import DropMenuItems from './DropMenuItems.vue';
 
 defineProps<{ items: DropMenuItemData[] }>();
 

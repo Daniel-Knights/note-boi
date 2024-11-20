@@ -15,7 +15,7 @@
   >
     {{ item.label }}
     <ul v-if="item.subMenu">
-      <DropMenuItem :items="item.subMenu" />
+      <DropMenuItems :items="item.subMenu" />
     </ul>
   </li>
 </template>

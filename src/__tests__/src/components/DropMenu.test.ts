@@ -32,7 +32,7 @@ describe('DropMenu', () => {
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
-  describe('DropMenuItem', () => {
+  describe('DropMenuItems', () => {
     const itemClass = 'drop-menu__item';
 
     it('Renders each item', () => {
