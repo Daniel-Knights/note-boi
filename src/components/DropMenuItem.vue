@@ -45,14 +45,30 @@ defineProps<{ items: DropMenuItemData[] }>();
 .drop-menu__item--has-sub-menu {
   position: relative;
 
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    @include v.equal-dimensions(0.6em);
+    background-color: var(--colour__secondary);
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+  }
+
   > ul {
     display: none;
     top: -(v.$drop-menu-padding);
     right: calc(100% + v.$drop-menu-padding);
   }
 
-  &:hover > ul {
-    display: block;
+  &:hover {
+    &::before {
+      display: none;
+    }
+
+    > ul {
+      display: block;
+    }
   }
 }
 </style>
