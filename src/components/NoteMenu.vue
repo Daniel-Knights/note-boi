@@ -104,8 +104,8 @@ function handleNoteSelect(ev: MouseEvent) {
 
   const hasExtraNotes = noteState.extraSelectedNotes.length > 0;
 
-  // Alt key + click
-  if (ev.altKey) {
+  // Shift key + click
+  if (ev.shiftKey) {
     const targetNoteIndex = findNoteIndex(targetNoteId);
 
     if (targetNoteIndex >= 0) {

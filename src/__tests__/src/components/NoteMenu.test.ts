@@ -299,8 +299,8 @@ describe('NoteMenu', () => {
       }
     }
 
-    /** Triggers clicks with cmd/ctrl and alt keys. */
-    function testMetaAltKeySelects(wrapper: VueWrapper) {
+    /** Triggers clicks with cmd/ctrl and shift keys. */
+    function testMetaShiftKeySelects(wrapper: VueWrapper) {
       const indexesToSelect = [2, 4, 7];
       const lowestIndex = indexesToSelect[0]!;
       const highestIndex = indexesToSelect[indexesToSelect.length - 1]!;
@@ -340,9 +340,9 @@ describe('NoteMenu', () => {
         // Select with cmd/ctrl
         await testMetaKeySelects(wrapper, notesToSelect);
 
-        // Select with alt
+        // Select with shift
         const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[noteItemIndex]!.id));
-        await noteItem.trigger('click', { altKey: true });
+        await noteItem.trigger('click', { shiftKey: true });
 
         if (n.noteState.extraSelectedNotes.length !== expectedLength) {
           assert.fail();
@@ -378,11 +378,11 @@ describe('NoteMenu', () => {
       await testMetaKeyDeselects(wrapper);
     });
 
-    it('With alt', async () => {
+    it('With shift', async () => {
       const wrapper = shallowMount(NoteMenu);
       const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[6]!.id));
 
-      await noteItem.trigger('click', { altKey: true });
+      await noteItem.trigger('click', { shiftKey: true });
 
       assert.lengthOf(n.noteState.extraSelectedNotes, 6);
 
@@ -394,12 +394,12 @@ describe('NoteMenu', () => {
     });
 
     describe.each(['setLowerToHigher', 'setHigherToLower'] as const)(
-      'With cmd/ctrl and alt',
+      'With cmd/ctrl and shift',
       (testSelectsMethodName) => {
         it(testSelectsMethodName, async () => {
           const wrapper = shallowMount(NoteMenu);
 
-          const testSelects = testMetaAltKeySelects(wrapper);
+          const testSelects = testMetaShiftKeySelects(wrapper);
           testSelects[testSelectsMethodName]();
 
           await testSelects.run();
