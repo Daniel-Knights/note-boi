@@ -451,12 +451,7 @@ function mockTauriApi(
       break;
     case 'plugin:dialog|ask': {
       const askDialogArgs = args as AskDialogArgs;
-
-      const resValue = options.resValue?.askDialog?.[0];
-
-      if (resValue) {
-        options.resValue?.askDialog?.shift();
-      }
+      const resValue = options.resValue?.askDialog?.shift();
 
       resData = resValue === undefined ? true : resValue;
       calledWith = {
@@ -469,11 +464,7 @@ function mockTauriApi(
     }
     case 'plugin:dialog|open': {
       const openDialogArgs = args as OpenDialogArgs;
-      const resValue = options.resValue?.openDialog?.[0];
-
-      if (resValue) {
-        options.resValue?.openDialog?.shift();
-      }
+      const resValue = options.resValue?.openDialog?.shift();
 
       resData = resValue === undefined ? 'C:\\path' : resValue;
       calledWith = {
