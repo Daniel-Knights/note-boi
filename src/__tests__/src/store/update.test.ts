@@ -1,13 +1,23 @@
 import { Update } from '@tauri-apps/plugin-updater';
 
 import * as u from '../../../store/update';
+import { STORAGE_KEYS } from '../../../constant';
 import { mockApi } from '../../api';
+import { resetUpdateStore } from '../../utils';
 
-const { check, downloadAndInstall, relaunch } = vi.hoisted(() => ({
-  check: vi.fn(),
-  downloadAndInstall: vi.fn(),
-  relaunch: vi.fn(),
-}));
+const { check, downloadAndInstall, relaunch } = vi.hoisted(() => {
+  // Vitest doesn't mock modules that are imported in setup files, and both
+  // `@tauri-apps/plugin-updater` and `@tauri-apps/plugin-process` are
+  // transitively imported via `resetUpdateStore` in `setup.ts`.
+  // To mock them, we need to clear the module cache before the test file runs.
+  vi.resetModules();
+
+  return {
+    check: vi.fn(),
+    downloadAndInstall: vi.fn(),
+    relaunch: vi.fn(),
+  };
+});
 
 let downloadAndInstallShouldThrow = false;
 let mockUpdate: Update;
@@ -37,13 +47,14 @@ beforeEach(() => {
       return Promise.resolve();
     },
   };
+
+  // Because of `vi.resetModules` above, we need to reset the store here, as the
+  // reset in `setup.ts` is resetting a different instance of the store.
+  resetUpdateStore();
 });
 
 afterEach(() => {
   downloadAndInstallShouldThrow = false;
-
-  u.update.value = undefined;
-  u.updateDownloading.value = false;
 });
 
 describe('Update', () => {
@@ -78,18 +89,35 @@ describe('Update', () => {
       assert.strictEqual(calls.size, 0);
     });
 
-    it('Returns if version has been seen', async () => {
+    it("Updates without asking, if updateStrategy is 'auto'", async () => {
       const { calls } = mockApi();
 
-      localStorage.setItem('update-seen', '1.0.0');
+      u.setUpdateStrategy('auto');
 
       await u.handleUpdate();
 
-      expect(check).toHaveBeenCalled();
-      expect(downloadAndInstall).not.toHaveBeenCalled();
+      expect(check).toHaveBeenCalledOnce();
+      expect(downloadAndInstall).toHaveBeenCalledOnce();
+      expect(relaunch).toHaveBeenCalledOnce();
+
+      assert.isTrue(u.updateDownloading.value);
+      assert.isUndefined(u.update.value);
+      assert.strictEqual(calls.size, 0);
+    });
+
+    it('Returns if version has been seen', async () => {
+      const { calls } = mockApi();
+
+      localStorage.setItem(STORAGE_KEYS.UPDATE_SEEN, '1.0.0');
+
+      await u.handleUpdate();
+
+      expect(check).toHaveBeenCalledOnce();
+      expect(downloadAndInstall).not.toHaveBeenCalledOnce();
+      expect(relaunch).not.toHaveBeenCalledOnce();
 
       assert.isFalse(u.updateDownloading.value);
-      assert.isUndefined(u.update.value);
+      assert.deepEqual(u.update.value, mockUpdate);
       assert.strictEqual(calls.size, 0);
     });
 
@@ -102,15 +130,14 @@ describe('Update', () => {
         },
       });
 
-      u.update.value = mockUpdate;
-
       await u.handleUpdate();
 
       expect(check).toHaveBeenCalled();
       expect(downloadAndInstall).not.toHaveBeenCalled();
+      expect(relaunch).not.toHaveBeenCalled();
 
       assert.isFalse(u.updateDownloading.value);
-      assert.isUndefined(u.update.value);
+      assert.deepEqual(u.update.value, mockUpdate);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.deepEqual(calls.tauriApi[0]!.calledWith, {
@@ -118,7 +145,7 @@ describe('Update', () => {
         title: 'Update available: v1.0.0',
         kind: undefined,
       });
-      assert.strictEqual(localStorage.getItem('update-seen'), '1.0.0');
+      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.UPDATE_SEEN), '1.0.0');
     });
   });
 
@@ -197,5 +224,15 @@ describe('Update', () => {
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask', 2));
     });
+  });
+
+  it('setUpdateStrategy', () => {
+    assert.strictEqual(u.updateStrategy.value, 'manual');
+    assert.isNull(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY));
+
+    u.setUpdateStrategy('auto');
+
+    assert.strictEqual(u.updateStrategy.value, 'auto');
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY), 'auto');
   });
 });

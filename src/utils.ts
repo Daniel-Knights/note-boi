@@ -30,6 +30,10 @@ export function isWhitespaceOnly(text?: string): boolean {
   return text?.trim() === '';
 }
 
+export function capitalise(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 /** Returns true if note content is empty or note is `undefined`. */
 export function isEmptyNote(note?: Note): boolean {
   if (!note) return true;

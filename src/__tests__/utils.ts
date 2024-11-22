@@ -2,7 +2,7 @@ import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 
 import * as n from '../store/note';
 import * as s from '../store/sync';
-import { STORAGE_KEYS } from '../constant';
+import * as u from '../store/update';
 import { EncryptedNote } from '../store/sync/encryptor';
 import { hasKeys } from '../utils';
 
@@ -21,9 +21,6 @@ export function resetNoteStore(): void {
 }
 
 export function resetSyncStore(): void {
-  localStorage.removeItem(STORAGE_KEYS.USERNAME);
-  localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
-
   s.syncState.username = '';
   s.syncState.password = '';
   s.syncState.newPassword = '';
@@ -33,6 +30,12 @@ export function resetSyncStore(): void {
   s.syncState.unsyncedNoteIds.clear();
 
   s.resetError();
+}
+
+export function resetUpdateStore(): void {
+  u.update.value = undefined;
+  u.updateDownloading.value = false;
+  u.updateStrategy.value = 'manual';
 }
 
 const formatTestId = (id: string) => `[data-test-id="${id}"]`;

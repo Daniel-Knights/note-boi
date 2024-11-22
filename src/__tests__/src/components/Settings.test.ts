@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import * as updateStore from '../../../store/update';
+import * as u from '../../../store/update';
 import { STORAGE_KEYS } from '../../../constant';
 import { openedPopup, PopupType } from '../../../store/popup';
 import { COLOUR_THEMES, selectedTheme } from '../../../store/theme';
@@ -82,17 +82,7 @@ describe('Settings', () => {
 
   it('Exports all notes', async () => {
     const { calls, promises } = mockApi();
-    const appDiv = document.createElement('div');
-    appDiv.id = 'app';
-    document.body.appendChild(appDiv);
-
-    const wrapper = await mountSettingsAndOpen({
-      attachTo: appDiv,
-      global: {
-        stubs: { teleport: true },
-      },
-    });
-
+    const wrapper = await mountSettingsAndOpen();
     const exportNotesSpy = vi.spyOn(n, 'exportNotes');
     const exportWrapper = findByTestId(wrapper, 'export');
 
@@ -107,7 +97,39 @@ describe('Settings', () => {
     assert.isTrue(calls.invoke.has('export_notes'));
   });
 
-  it('Opens and closes info popup', async () => {
+  it('Sets update strategy', async () => {
+    const { calls, promises } = mockApi();
+    const wrapper = await mountSettingsAndOpen();
+    const setUpdateStrategySpy = vi.spyOn(u, 'setUpdateStrategy');
+    const updateAutoWrapper = findByTestId(wrapper, 'update-auto');
+
+    assert.strictEqual(u.updateStrategy.value, 'manual');
+    assert.isNull(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY));
+
+    await updateAutoWrapper.trigger('click');
+    await Promise.all(promises);
+
+    expect(setUpdateStrategySpy).toHaveBeenCalledOnce();
+    expect(setUpdateStrategySpy).toHaveBeenCalledWith('auto');
+    assert.strictEqual(calls.size, 0);
+    assert.strictEqual(u.updateStrategy.value, 'auto');
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY), 'auto');
+
+    const updateManualWrapper = findByTestId(wrapper, 'update-manual');
+
+    vi.clearAllMocks();
+
+    await updateManualWrapper.trigger('click');
+    await Promise.all(promises);
+
+    expect(setUpdateStrategySpy).toHaveBeenCalledOnce();
+    expect(setUpdateStrategySpy).toHaveBeenCalledWith('manual');
+    assert.strictEqual(calls.size, 0);
+    assert.strictEqual(u.updateStrategy.value, 'manual');
+    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY), 'manual');
+  });
+
+  it('Opens info popup', async () => {
     const { promises } = mockApi();
     const appDiv = document.createElement('div');
     appDiv.id = 'app';
@@ -132,14 +154,16 @@ describe('Settings', () => {
 
     assert.isUndefined(openedPopup.value);
     assert.isFalse(findByTestId(wrapper, 'popup-info').exists());
+
+    document.body.removeChild(appDiv);
   });
 
-  it('Update menu item', async () => {
+  it('Update and restart menu item', async () => {
     const { calls, promises } = mockApi();
     const wrapper = await mountSettingsAndOpen();
     const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
-    assert.isFalse(findByTestId(wrapper, 'update').exists());
-    assert.lengthOf(wrapperVm.menuItems, 3);
+    assert.isFalse(findByTestId(wrapper, 'update-restart').exists());
+    assert.lengthOf(wrapperVm.menuItems, 4);
 
     // @ts-expect-error - don't need to set all properties
     update.value = {
@@ -149,11 +173,11 @@ describe('Settings', () => {
 
     await nextTick();
 
-    const updateWrapper = findByTestId(wrapper, 'update');
+    const updateWrapper = findByTestId(wrapper, 'update-restart');
     assert.isTrue(updateWrapper.isVisible());
-    assert.lengthOf(wrapperVm.menuItems, 4);
+    assert.lengthOf(wrapperVm.menuItems, 5);
 
-    const updateSpy = vi.spyOn(updateStore, 'updateAndRelaunch');
+    const updateSpy = vi.spyOn(u, 'updateAndRelaunch');
     await updateWrapper.trigger('click');
     await Promise.all(promises);
 
@@ -198,7 +222,7 @@ describe('Settings', () => {
       const wrapper = await mountSettingsAndOpen();
       const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-      assert.lengthOf(wrapperVm.menuItems, 3);
+      assert.lengthOf(wrapperVm.menuItems, 4);
 
       s.syncState.username = 'd';
       s.syncState.isLoggedIn = true;
@@ -206,7 +230,7 @@ describe('Settings', () => {
 
       const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
       assert.isTrue(deleteAccountWrapper.isVisible());
-      assert.lengthOf(wrapperVm.menuItems, 4);
+      assert.lengthOf(wrapperVm.menuItems, 5);
 
       const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
@@ -216,7 +240,7 @@ describe('Settings', () => {
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-      assert.lengthOf(wrapperVm.menuItems, 3);
+      assert.lengthOf(wrapperVm.menuItems, 4);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));

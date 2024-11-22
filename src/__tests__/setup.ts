@@ -7,7 +7,7 @@ import * as s from '../store/sync';
 
 import { mockDb } from './api';
 import localNotes from './notes.json';
-import { resetNoteStore, resetSyncStore } from './utils';
+import { resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
 
 const spyAssertFail = vi.spyOn(assert, 'fail');
 
@@ -32,6 +32,7 @@ beforeAll(async () => {
 afterEach(async () => {
   resetSyncStore();
   resetNoteStore();
+  resetUpdateStore();
 
   await s.KeyStore.reset();
 

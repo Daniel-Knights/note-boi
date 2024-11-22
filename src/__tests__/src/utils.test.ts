@@ -1,5 +1,6 @@
 import { Note } from '../../store/note';
 import {
+  capitalise,
   hasKeys,
   isDev,
   isEmptyNote,
@@ -63,6 +64,16 @@ describe('Utils', () => {
     assert.isTrue(isWhitespaceOnly(' '));
     assert.isTrue(isWhitespaceOnly('\n'));
     assert.isFalse(isWhitespaceOnly('Not whitespace'));
+  });
+
+  it('capitalise', () => {
+    assert.strictEqual(capitalise('text'), 'Text');
+    assert.strictEqual(capitalise('Text'), 'Text');
+    assert.strictEqual(capitalise(''), '');
+    assert.strictEqual(capitalise('t'), 'T');
+    assert.strictEqual(capitalise('text text'), 'Text text');
+    assert.strictEqual(capitalise('text-text'), 'Text-text');
+    assert.strictEqual(capitalise('tExT-TexT'), 'TExT-TexT');
   });
 
   it('isEmptyNote', () => {

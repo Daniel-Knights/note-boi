@@ -19,7 +19,14 @@ import { exportNotes, noteState } from '../store/note';
 import { openedPopup, PopupType } from '../store/popup';
 import { deleteAccount, syncState } from '../store/sync';
 import { COLOUR_THEMES, selectedTheme, setTheme } from '../store/theme';
-import { update, updateAndRelaunch } from '../store/update';
+import {
+  setUpdateStrategy,
+  update,
+  UPDATE_STRATEGIES,
+  updateAndRelaunch,
+  updateStrategy,
+} from '../store/update';
+import { capitalise } from '../utils';
 
 import { DropMenuItemData } from './types';
 
@@ -46,6 +53,15 @@ const menuItems = reactive<DropMenuItemData[]>([
     clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.id)),
   },
   {
+    label: 'Updates',
+    subMenu: UPDATE_STRATEGIES.map((strategy) => ({
+      label: capitalise(strategy),
+      testId: `update-${strategy}`,
+      selected: computed(() => updateStrategy.value === strategy),
+      clickHandler: () => setUpdateStrategy(strategy),
+    })),
+  },
+  {
     label: 'Info',
     testId: 'info',
     clickHandler: () => {
@@ -59,7 +75,7 @@ watch(update, () => {
 
   menuItems.unshift({
     label: 'Update and restart',
-    testId: 'update',
+    testId: 'update-restart',
     clickHandler: () => updateAndRelaunch(),
   });
 });

@@ -1,4 +1,5 @@
 import { mockIPC } from '@tauri-apps/api/mocks';
+import { Update } from '@tauri-apps/plugin-updater';
 
 import * as n from '../store/note';
 import * as s from '../store/sync';
@@ -439,8 +440,8 @@ function mockTauriApi(
   callId: string,
   args: AskDialogArgs | OpenDialogArgs,
   options: { resValue?: TauriApiResValue } = {}
-): Call<string | boolean | void> | void {
-  let resData: string | boolean | undefined;
+) {
+  let resData: TauriApiResValue[string][number] | undefined;
   let calledWith;
 
   switch (callId) {
@@ -481,13 +482,6 @@ function mockTauriApi(
         recursive: openDialogArgs.options.recursive,
         title: openDialogArgs.options.title,
       };
-
-      break;
-    }
-    case 'plugin:updater|check': {
-      const resValue = options.resValue?.checkUpdate?.[0];
-
-      resData = resValue || false;
 
       break;
     }
@@ -556,7 +550,7 @@ type InvokeResValue = {
 type TauriApiResValue = Record<string, unknown[]> & {
   askDialog?: boolean[];
   openDialog?: string[];
-  checkUpdate?: boolean[];
+  checkUpdate?: ConstructorParameters<typeof Update>[0][];
 };
 
 type Call<T = unknown> = {

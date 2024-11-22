@@ -17,8 +17,11 @@ export const STORAGE_KEYS = {
   UNSYNCED: 'unsynced-note-ids',
   THEME: 'theme',
   MENU_WIDTH: 'note-menu-width',
+  UPDATE_SEEN: 'update-seen',
+  UPDATE_STRATEGY: 'update-strategy',
 } as const;
 
+// Endpoints
 export type EndpointPayloads = {
   '/signup': {
     payload: {
@@ -79,6 +82,7 @@ export const ENDPOINTS = [
   '/account/password/change',
 ] satisfies Endpoint[];
 
+// Tauri commands
 export type TauriCommandPayloads = {
   get_all_notes: {
     payload: never;
@@ -128,10 +132,12 @@ export const TAURI_COMMANDS = [
   'export_notes',
 ] satisfies TauriCommand[];
 
+// Tauri emits
 export const TAURI_EMITS = ['auth'] as const;
 
 export type TauriEmit = (typeof TAURI_EMITS)[number];
 
+// Tauri listeners
 export const TAURI_LISTENERS = [
   'reload',
   'new-note',
