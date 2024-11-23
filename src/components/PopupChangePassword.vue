@@ -31,7 +31,7 @@
           placeholder="Confirm New Password"
           data-test-id="confirm-new-password"
         />
-        <p v-if="syncState.error.type === ErrorType.Auth" class="form__error">
+        <p v-if="syncState.error.kind === ErrorKind.Auth" class="form__error">
           {{ syncState.error.message }}
         </p>
         <input type="submit" value="Submit" class="button button--default" />
@@ -44,7 +44,7 @@
 import { onMounted, reactive, ref } from 'vue';
 
 import { MIN_PASSWORD_LENGTH } from '../constant';
-import { changePassword, ErrorType, syncState } from '../store/sync';
+import { changePassword, ErrorKind, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 
@@ -70,7 +70,7 @@ async function handleSubmit() {
 
   if (syncState.newPassword.length < MIN_PASSWORD_LENGTH) {
     syncState.error = {
-      type: ErrorType.Auth,
+      kind: ErrorKind.Auth,
       message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`,
     };
 
@@ -79,7 +79,7 @@ async function handleSubmit() {
 
   if (confirmNewPassword.value !== syncState.newPassword) {
     syncState.error = {
-      type: ErrorType.Auth,
+      kind: ErrorKind.Auth,
       message: "Passwords don't match",
     };
 
@@ -88,7 +88,7 @@ async function handleSubmit() {
 
   if (syncState.newPassword === syncState.password) {
     syncState.error = {
-      type: ErrorType.Auth,
+      kind: ErrorKind.Auth,
       message: 'Current and new passwords must be different',
     };
 
@@ -97,7 +97,7 @@ async function handleSubmit() {
 
   await changePassword();
 
-  if (syncState.error.type === ErrorType.None) {
+  if (syncState.error.kind === ErrorKind.None) {
     confirmNewPassword.value = '';
 
     emit('close');

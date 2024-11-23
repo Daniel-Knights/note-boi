@@ -55,7 +55,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/login'));
@@ -97,7 +97,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/login'));
@@ -131,7 +131,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.password, '1');
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/login'));
@@ -176,7 +176,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
@@ -210,7 +210,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.password);
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
@@ -245,7 +245,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'k');
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
@@ -278,7 +278,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'k');
       assert.strictEqual(s.syncState.password, '2');
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/signup'));
@@ -324,7 +324,7 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/logout'));
@@ -359,7 +359,7 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/logout'));

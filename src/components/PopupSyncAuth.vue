@@ -32,7 +32,7 @@
           placeholder="Confirm Password"
           data-test-id="confirm-password"
         />
-        <p v-if="syncState.error.type === ErrorType.Auth" class="form__error">
+        <p v-if="syncState.error.kind === ErrorKind.Auth" class="form__error">
           {{ syncState.error.message }}
         </p>
         <input type="submit" value="Submit" class="button button--default" />
@@ -55,7 +55,7 @@
 import { onMounted, reactive, ref } from 'vue';
 
 import { MIN_PASSWORD_LENGTH } from '../constant';
-import { ErrorType, login, resetError, signup, syncState } from '../store/sync';
+import { ErrorKind, login, resetError, signup, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 
@@ -91,7 +91,7 @@ async function handleSubmit() {
 
     if (syncState.password.length < MIN_PASSWORD_LENGTH) {
       syncState.error = {
-        type: ErrorType.Auth,
+        kind: ErrorKind.Auth,
         message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`,
       };
 
@@ -100,7 +100,7 @@ async function handleSubmit() {
 
     if (confirmPassword.value !== syncState.password) {
       syncState.error = {
-        type: ErrorType.Auth,
+        kind: ErrorKind.Auth,
         message: "Passwords don't match",
       };
 
@@ -110,7 +110,7 @@ async function handleSubmit() {
     await signup();
   }
 
-  if (syncState.error.type === ErrorType.None) {
+  if (syncState.error.kind === ErrorKind.None) {
     confirmPassword.value = '';
 
     emit('close');

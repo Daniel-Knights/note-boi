@@ -96,21 +96,21 @@ describe('PopupSyncAuth', () => {
       assert.isFalse(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       usernameInput.setValue('d');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       passwordInput.setValue('1');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       clearMockApiResults({ calls });
 
@@ -121,7 +121,7 @@ describe('PopupSyncAuth', () => {
       expect(spySignup).not.toHaveBeenCalled();
 
       assert.isEmpty(wrapperVm.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 4);
@@ -181,28 +181,28 @@ describe('PopupSyncAuth', () => {
       assert.isFalse(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       usernameInput.setValue('k');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       passwordInput.setValue('2');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       confirmPasswordInput.setValue('2');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       await formWrapper.trigger('submit');
 
@@ -215,7 +215,7 @@ describe('PopupSyncAuth', () => {
 
       await formWrapper.trigger('submit');
 
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.strictEqual(s.syncState.error.message, "Passwords don't match");
 
       confirmPasswordInput.setValue('123456');
@@ -234,7 +234,7 @@ describe('PopupSyncAuth', () => {
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).toHaveBeenCalledOnce();
       assert.isEmpty(wrapperVm.confirmPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 2);

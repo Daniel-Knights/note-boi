@@ -9,7 +9,7 @@ import { autoPush, syncState, UnsyncedNoteIds } from './sync';
 
 export type UnsyncedEventDetail = {
   noteId: string;
-  type: keyof Pick<UnsyncedNoteIds, 'edited' | 'deleted'>;
+  kind: keyof Pick<UnsyncedNoteIds, 'edited' | 'deleted'>;
 };
 
 export class Note {
@@ -36,9 +36,9 @@ export const changeNoteEvent = new CustomEvent(NOTE_EVENTS.change);
 
 function getUnsyncedEvent(
   noteId: UnsyncedEventDetail['noteId'],
-  type: UnsyncedEventDetail['type']
+  kind: UnsyncedEventDetail['kind']
 ) {
-  return new CustomEvent(NOTE_EVENTS.unsynced, { detail: { noteId, type } });
+  return new CustomEvent(NOTE_EVENTS.unsynced, { detail: { noteId, kind } });
 }
 
 /** Sorts notes in descending order by timestamp. */

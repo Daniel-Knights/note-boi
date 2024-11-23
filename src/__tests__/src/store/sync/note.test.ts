@@ -54,7 +54,7 @@ describe('Note (sync)', () => {
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/notes/pull'));
@@ -93,7 +93,7 @@ describe('Note (sync)', () => {
       assert.strictEqual(n.noteState.notes[0]!.id, n.noteState.selectedNote.id);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Pull);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/pull'));
@@ -120,7 +120,7 @@ describe('Note (sync)', () => {
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Pull);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/pull'));
@@ -146,7 +146,7 @@ describe('Note (sync)', () => {
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Pull);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Pull);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/pull'));
@@ -320,7 +320,7 @@ describe('Note (sync)', () => {
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/push'));
@@ -345,7 +345,7 @@ describe('Note (sync)', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 0);
     });
@@ -372,7 +372,7 @@ describe('Note (sync)', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Push);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/push'));
@@ -404,7 +404,7 @@ describe('Note (sync)', () => {
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Push);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
@@ -439,7 +439,7 @@ describe('Note (sync)', () => {
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Push);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Push);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
@@ -831,7 +831,7 @@ describe('Note (sync)', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
     });
 
@@ -862,7 +862,7 @@ describe('Note (sync)', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
     });
 
@@ -899,7 +899,7 @@ describe('Note (sync)', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
     });
   });

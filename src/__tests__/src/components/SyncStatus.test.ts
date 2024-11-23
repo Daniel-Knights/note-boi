@@ -82,9 +82,9 @@ describe('SyncStatus', () => {
 
   it.each(['Logout', 'Pull', 'Push'] as const)(
     '%s - Displays error icon and opens popup on click',
-    async (errorType) => {
+    async (errorKind) => {
       mockApi();
-      s.syncState.error.type = s.ErrorType[errorType];
+      s.syncState.error.kind = s.ErrorKind[errorKind];
 
       const appDiv = getAppDiv();
 
@@ -117,7 +117,7 @@ describe('SyncStatus', () => {
 
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
 
-      s.syncState.error.type = s.ErrorType.Logout;
+      s.syncState.error.kind = s.ErrorKind.Logout;
       s.syncState.error.message = 'Error';
 
       await nextTick();
@@ -134,7 +134,7 @@ describe('SyncStatus', () => {
       expect(resetErrorSpy).not.toHaveBeenCalled();
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
       assert.isUndefined(openedPopup.value);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Logout);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Logout);
       assert.isNotEmpty(s.syncState.error.message);
     });
 

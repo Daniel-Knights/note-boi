@@ -11,7 +11,7 @@ type ParsedResponse<T> = {
   data: T;
 };
 
-export enum ErrorType {
+export enum ErrorKind {
   None,
   Auth,
   Push,
@@ -28,7 +28,7 @@ export const syncState = reactive({
   isLogin: true, // For switching login/signup form
   isLoggedIn: false,
   error: {
-    type: ErrorType.None,
+    kind: ErrorKind.None,
     message: '',
   },
   unsyncedNoteIds: <UnsyncedNoteIds>{
@@ -87,7 +87,7 @@ export function parseErrorRes(res: ParsedResponse<{ error: string }>): string {
 
 /** Resets {@link syncState.error}. */
 export function resetError(): void {
-  syncState.error = { type: ErrorType.None, message: '' };
+  syncState.error = { kind: ErrorKind.None, message: '' };
 }
 
 /** Wrapper for {@link fetch}. */
@@ -132,10 +132,10 @@ export function resIsOk<T extends EndpointPayloads[Endpoint]['response']>(
 }
 
 /** Catches hanging requests (e.g. due to server error). */
-export function catchHang(err: unknown, type: ErrorType): void {
+export function catchHang(err: unknown, kind: ErrorKind): void {
   syncState.isLoading = false;
   syncState.error = {
-    type,
+    kind,
     message: 'Request failed',
   };
 
@@ -146,7 +146,7 @@ export function catchHang(err: unknown, type: ErrorType): void {
 export function catchEncryptorError(err: unknown): void {
   syncState.isLoading = false;
   syncState.error = {
-    type: ErrorType.Encryptor,
+    kind: ErrorKind.Encryptor,
     message: 'Note encryption/decryption failed',
   };
 

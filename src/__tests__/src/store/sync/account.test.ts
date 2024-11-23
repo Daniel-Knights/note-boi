@@ -31,7 +31,7 @@ describe('Account', () => {
       assert.isTrue(calls.request.has('/account/password/change'));
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
 
@@ -47,7 +47,7 @@ describe('Account', () => {
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
     });
@@ -76,7 +76,7 @@ describe('Account', () => {
 
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 1);
@@ -107,7 +107,7 @@ describe('Account', () => {
 
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 2);
@@ -172,7 +172,7 @@ describe('Account', () => {
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
       assert.isEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 3);
@@ -232,7 +232,7 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
@@ -265,7 +265,7 @@ describe('Account', () => {
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 3);
@@ -300,7 +300,7 @@ describe('Account', () => {
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
-      assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
       assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 3);

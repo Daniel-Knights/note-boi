@@ -6,7 +6,7 @@ import {
   catchEncryptorError,
   catchHang,
   Encryptor,
-  ErrorType,
+  ErrorKind,
   fetchData,
   KeyStore,
   parseErrorRes,
@@ -35,7 +35,7 @@ export async function login(): Promise<void> {
     const res = await fetchData('/login', 'POST', {
       username: syncState.username,
       password: syncState.password,
-    }).catch((err) => catchHang(err, ErrorType.Auth));
+    }).catch((err) => catchHang(err, ErrorKind.Auth));
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -58,7 +58,7 @@ export async function login(): Promise<void> {
       await syncNotes(decryptedNotes);
     } else {
       syncState.error = {
-        type: ErrorType.Auth,
+        kind: ErrorKind.Auth,
         message: parseErrorRes(res),
       };
 
@@ -84,7 +84,7 @@ export async function signup(): Promise<void> {
       username: syncState.username,
       password: syncState.password,
       notes: encryptedNotes,
-    }).catch((err) => catchHang(err, ErrorType.Auth));
+    }).catch((err) => catchHang(err, ErrorKind.Auth));
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -98,7 +98,7 @@ export async function signup(): Promise<void> {
       localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
     } else {
       syncState.error = {
-        type: ErrorType.Auth,
+        kind: ErrorKind.Auth,
         message: parseErrorRes(res),
       };
 
@@ -116,7 +116,7 @@ export async function logout(): Promise<void> {
   try {
     const [res] = await Promise.all([
       fetchData('/logout', 'POST').catch((err) => {
-        catchHang(err, ErrorType.Logout);
+        catchHang(err, ErrorKind.Logout);
       }),
       clientSideLogout(),
     ]);

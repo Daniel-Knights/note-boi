@@ -7,7 +7,7 @@ import {
   catchHang,
   clientSideLogout,
   Encryptor,
-  ErrorType,
+  ErrorKind,
   fetchData,
   parseErrorRes,
   resetError,
@@ -29,7 +29,7 @@ export async function changePassword(): Promise<void> {
       current_password: syncState.password,
       new_password: syncState.newPassword,
       notes: encryptedNotes,
-    }).catch((err) => catchHang(err, ErrorType.Auth));
+    }).catch((err) => catchHang(err, ErrorKind.Auth));
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -39,7 +39,7 @@ export async function changePassword(): Promise<void> {
       syncState.newPassword = '';
     } else {
       syncState.error = {
-        type: ErrorType.Auth,
+        kind: ErrorKind.Auth,
         message: parseErrorRes(res),
       };
 
@@ -65,7 +65,7 @@ export async function deleteAccount(): Promise<void> {
     syncState.isLoading = true;
 
     const res = await fetchData('/account/delete', 'POST').catch((err) => {
-      catchHang(err, ErrorType.Auth);
+      catchHang(err, ErrorKind.Auth);
     });
     if (!res) return;
 
@@ -76,7 +76,7 @@ export async function deleteAccount(): Promise<void> {
       syncState.unsyncedNoteIds.clear();
     } else {
       syncState.error = {
-        type: ErrorType.Auth,
+        kind: ErrorKind.Auth,
         message: parseErrorRes(res),
       };
 

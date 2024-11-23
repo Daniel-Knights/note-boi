@@ -81,7 +81,7 @@ describe('main', () => {
       const spyPush = vi.spyOn(s, 'push');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
-      s.syncState.error.type = s.ErrorType.Push;
+      s.syncState.error.kind = s.ErrorKind.Push;
 
       await main.exitApp(mockCb);
 
@@ -110,7 +110,7 @@ describe('main', () => {
       const spyPush = vi.spyOn(s, 'push');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
-      s.syncState.error.type = s.ErrorType.Push;
+      s.syncState.error.kind = s.ErrorKind.Push;
 
       // Setting openedPopup to undefined emits this component's close event
       // and resets syncState.error, so we mock it to prevent that

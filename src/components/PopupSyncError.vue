@@ -10,26 +10,26 @@
 </template>
 
 <script lang="ts" setup>
-import { ErrorType, logout, pull, push, resetError, syncState } from '../store/sync';
+import { ErrorKind, logout, pull, push, resetError, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 
 const emit = defineEmits(['close']);
 
 function tryAgain() {
-  const errorType = syncState.error.type;
+  const errorKind = syncState.error.kind;
 
   resetError();
   emit('close');
 
-  switch (errorType) {
-    case ErrorType.Push:
+  switch (errorKind) {
+    case ErrorKind.Push:
       push();
       break;
-    case ErrorType.Pull:
+    case ErrorKind.Pull:
       pull();
       break;
-    case ErrorType.Logout:
+    case ErrorKind.Logout:
       logout();
       break;
   }

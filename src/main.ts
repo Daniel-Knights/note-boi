@@ -17,7 +17,7 @@ import {
   noteState,
 } from './store/note';
 import { openedPopup, PopupType } from './store/popup';
-import { deleteAccount, ErrorType, push, syncState } from './store/sync';
+import { deleteAccount, ErrorKind, push, syncState } from './store/sync';
 import { handleUpdate } from './store/update';
 import { isDev, tauriListen } from './utils';
 
@@ -53,7 +53,7 @@ export async function exitApp(cb: () => void): Promise<void> {
   if (syncState.unsyncedNoteIds.size > 0) {
     await push();
 
-    if (syncState.error.type === ErrorType.Push) {
+    if (syncState.error.kind === ErrorKind.Push) {
       const closeAnyway = await dialog.ask(
         'ERROR: Failed to push unsynced notes.\nClose anyway?',
         {

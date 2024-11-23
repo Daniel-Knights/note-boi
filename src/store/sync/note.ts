@@ -15,7 +15,7 @@ import {
   catchHang,
   clientSideLogout,
   Encryptor,
-  ErrorType,
+  ErrorKind,
   fetchData,
   parseErrorRes,
   resetError,
@@ -105,7 +105,7 @@ export async function pull(): Promise<void> {
 
   try {
     const res = await fetchData('/notes/pull', 'POST').catch((err) => {
-      catchHang(err, ErrorType.Pull);
+      catchHang(err, ErrorKind.Pull);
     });
     if (!res) return;
 
@@ -126,7 +126,7 @@ export async function pull(): Promise<void> {
       await syncNotes(decryptedNotes);
     } else {
       syncState.error = {
-        type: ErrorType.Pull,
+        kind: ErrorKind.Pull,
         message: parseErrorRes(res),
       };
 
@@ -166,7 +166,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 
     const res = await fetchData('/notes/push', 'PUT', {
       notes: encryptedNotes,
-    }).catch((err) => catchHang(err, ErrorType.Push));
+    }).catch((err) => catchHang(err, ErrorKind.Push));
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -178,7 +178,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
       syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
 
       syncState.error = {
-        type: ErrorType.Push,
+        kind: ErrorKind.Push,
         message: parseErrorRes(res),
       };
 
@@ -209,6 +209,6 @@ document.addEventListener(
   (ev: CustomEventInit<UnsyncedEventDetail>) => {
     if (!ev.detail) return;
 
-    syncState.unsyncedNoteIds.add({ [ev.detail.type]: [ev.detail.noteId] });
+    syncState.unsyncedNoteIds.add({ [ev.detail.kind]: [ev.detail.noteId] });
   }
 );

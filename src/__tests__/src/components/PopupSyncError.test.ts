@@ -46,7 +46,7 @@ describe('PopupSyncError', () => {
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();
 
-    s.syncState.error.type = s.ErrorType.Push;
+    s.syncState.error.kind = s.ErrorKind.Push;
 
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
@@ -65,7 +65,7 @@ describe('PopupSyncError', () => {
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();
 
-    s.syncState.error.type = s.ErrorType.Pull;
+    s.syncState.error.kind = s.ErrorKind.Pull;
 
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');
@@ -84,7 +84,7 @@ describe('PopupSyncError', () => {
     const resetErrorSpy = vi.spyOn(s, 'resetError');
     const wrapper = mountPopupSyncError();
 
-    s.syncState.error.type = s.ErrorType.Logout;
+    s.syncState.error.kind = s.ErrorKind.Logout;
 
     const tryAgainButton = getByTestId(wrapper, 'try-again');
     await tryAgainButton.trigger('click');

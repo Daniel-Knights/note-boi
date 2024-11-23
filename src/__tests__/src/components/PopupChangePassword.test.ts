@@ -84,32 +84,32 @@ describe('PopupChangePassword', () => {
     assert.isFalse(wrapperVm.validation.currentPassword);
     assert.isFalse(wrapperVm.validation.newPassword);
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
-    assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
     await currentPasswordInput.setValue('1');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isFalse(wrapperVm.validation.newPassword);
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
-    assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
     newPasswordInput.setValue('2');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
-    assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
     confirmNewPasswordInput.setValue('2');
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isTrue(wrapperVm.validation.confirmNewPassword);
-    assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
     await formWrapper.trigger('submit');
 
-    assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
     assert.strictEqual(
       s.syncState.error.message,
       `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`
@@ -119,7 +119,7 @@ describe('PopupChangePassword', () => {
 
     await formWrapper.trigger('submit');
 
-    assert.strictEqual(s.syncState.error.type, s.ErrorType.Auth);
+    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
     assert.strictEqual(s.syncState.error.message, "Passwords don't match");
 
     confirmNewPasswordInput.setValue('123456');
@@ -139,7 +139,7 @@ describe('PopupChangePassword', () => {
     await waitUntil(() => !s.syncState.isLoading);
 
     expect(spyChangePassword).toHaveBeenCalledOnce();
-    assert.strictEqual(s.syncState.error.type, s.ErrorType.None);
+    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
     assert.isEmpty(s.syncState.error.message);
     assert.isEmpty(wrapperVm.confirmNewPassword);
     assert.lengthOf(wrapper.emitted('close')!, 1);

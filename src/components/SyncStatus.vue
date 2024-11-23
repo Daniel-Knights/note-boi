@@ -43,7 +43,7 @@
 import { computed } from 'vue';
 
 import { openedPopup, PopupType } from '../store/popup';
-import { ErrorType, logout, pull, resetError, syncState } from '../store/sync';
+import { ErrorKind, logout, pull, resetError, syncState } from '../store/sync';
 import { tauriListen } from '../utils';
 
 import PopupSyncAuth from './PopupSyncAuth.vue';
@@ -54,9 +54,9 @@ import CloudTickIcon from './svg/CloudTickIcon.vue';
 
 const isSyncError = computed(() => {
   return (
-    syncState.error.type === ErrorType.Logout ||
-    syncState.error.type === ErrorType.Pull ||
-    syncState.error.type === ErrorType.Push
+    syncState.error.kind === ErrorKind.Logout ||
+    syncState.error.kind === ErrorKind.Pull ||
+    syncState.error.kind === ErrorKind.Push
   );
 });
 
