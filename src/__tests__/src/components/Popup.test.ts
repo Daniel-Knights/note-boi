@@ -1,21 +1,23 @@
 import { mount } from '@vue/test-utils';
 
 import { mockApi } from '../../api';
+import { getAppDiv, getTeleportMountOptions } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 
 const SLOT_CONTENT = '<div>Hello World</div>';
 
 function mountPopup() {
-  const appDiv = document.createElement('div');
-  appDiv.id = 'app';
+  const appDiv = getAppDiv();
+
   document.body.appendChild(appDiv);
 
+  const teleportMountOptions = getTeleportMountOptions(appDiv);
+
   return mount(Popup, {
-    attachTo: appDiv,
-    slots: { default: SLOT_CONTENT },
-    global: {
-      stubs: { teleport: true },
+    ...teleportMountOptions,
+    slots: {
+      default: SLOT_CONTENT,
     },
   });
 }

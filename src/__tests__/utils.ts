@@ -102,3 +102,29 @@ export function isEncryptedNote(note: unknown): note is EncryptedNote {
 
   return isNote({ ...nt, content: { delta: {}, title: '', body: '' } });
 }
+
+/**
+ * @returns a `div` element with an `id` of `app`.
+ */
+export function getAppDiv() {
+  const appDiv = document.createElement('div');
+
+  appDiv.id = 'app';
+
+  return appDiv;
+}
+
+/**
+ * Returns options to be used when mounting a component that uses `Teleport`.
+ *
+ * @param appDiv use {@link getAppDiv}
+ * @returns options to be passed to `mount`
+ */
+export function getTeleportMountOptions(appDiv: HTMLElement) {
+  return {
+    attachTo: appDiv,
+    global: {
+      stubs: { teleport: true },
+    },
+  };
+}

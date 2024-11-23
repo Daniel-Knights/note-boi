@@ -4,24 +4,17 @@ import { nextTick } from 'vue';
 import * as s from '../../../store/sync';
 import { openedPopup, PopupType } from '../../../store/popup';
 import { mockApi } from '../../api';
-import { findByTestId, getByTestId, waitUntil } from '../../utils';
+import {
+  findByTestId,
+  getAppDiv,
+  getByTestId,
+  getTeleportMountOptions,
+  waitUntil,
+} from '../../utils';
 
 import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
 import PopupSyncError from '../../../components/PopupSyncError.vue';
 import SyncStatus from '../../../components/SyncStatus.vue';
-
-function mountWithPopup() {
-  const appDiv = document.createElement('div');
-  appDiv.id = 'app';
-  document.body.appendChild(appDiv);
-
-  return mount(SyncStatus, {
-    attachTo: appDiv,
-    global: {
-      stubs: { teleport: true },
-    },
-  });
-}
 
 describe('SyncStatus', () => {
   it('Mounts when logged out', async () => {
@@ -93,7 +86,12 @@ describe('SyncStatus', () => {
       mockApi();
       s.syncState.error.type = s.ErrorType[errorType];
 
-      const wrapper = mountWithPopup();
+      const appDiv = getAppDiv();
+
+      document.body.appendChild(appDiv);
+
+      const teleportMountOptions = getTeleportMountOptions(appDiv);
+      const wrapper = mount(SyncStatus, teleportMountOptions);
 
       assert.isTrue(wrapper.isVisible());
 
@@ -110,7 +108,12 @@ describe('SyncStatus', () => {
     it('PopupSyncError', async () => {
       mockApi();
 
-      const wrapper = mountWithPopup();
+      const appDiv = getAppDiv();
+
+      document.body.appendChild(appDiv);
+
+      const teleportMountOptions = getTeleportMountOptions(appDiv);
+      const wrapper = mount(SyncStatus, teleportMountOptions);
 
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
 
@@ -138,7 +141,12 @@ describe('SyncStatus', () => {
     it('PopupSyncAuth', async () => {
       mockApi();
 
-      const wrapper = mountWithPopup();
+      const appDiv = getAppDiv();
+
+      document.body.appendChild(appDiv);
+
+      const teleportMountOptions = getTeleportMountOptions(appDiv);
+      const wrapper = mount(SyncStatus, teleportMountOptions);
       const wrapperVm = wrapper.vm as unknown as { handlePopupAuthEvent: () => void };
 
       assert.isTrue(wrapper.isVisible());

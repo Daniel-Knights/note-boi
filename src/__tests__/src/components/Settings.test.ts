@@ -9,7 +9,13 @@ import { openedPopup, PopupType } from '../../../store/popup';
 import { COLOUR_THEMES, selectedTheme } from '../../../store/theme';
 import { update } from '../../../store/update';
 import { mockApi } from '../../api';
-import { findByTestId, getByTestId, resolveImmediate } from '../../utils';
+import {
+  findByTestId,
+  getAppDiv,
+  getByTestId,
+  getTeleportMountOptions,
+  resolveImmediate,
+} from '../../utils';
 
 import DropMenu from '../../../components/DropMenu.vue';
 import PopupChangePassword from '../../../components/PopupChangePassword.vue';
@@ -131,16 +137,12 @@ describe('Settings', () => {
 
   it('Opens info popup', async () => {
     const { promises } = mockApi();
-    const appDiv = document.createElement('div');
-    appDiv.id = 'app';
+    const appDiv = getAppDiv();
+
     document.body.appendChild(appDiv);
 
-    const wrapper = await mountSettingsAndOpen({
-      attachTo: appDiv,
-      global: {
-        stubs: { teleport: true },
-      },
-    });
+    const teleportMountOptions = getTeleportMountOptions(appDiv);
+    const wrapper = await mountSettingsAndOpen(teleportMountOptions);
 
     const infoWrapper = findByTestId(wrapper, 'info');
     await infoWrapper.trigger('click');
@@ -154,8 +156,6 @@ describe('Settings', () => {
 
     assert.isUndefined(openedPopup.value);
     assert.isFalse(findByTestId(wrapper, 'popup-info').exists());
-
-    document.body.removeChild(appDiv);
   });
 
   it('Update and restart menu item', async () => {
@@ -190,16 +190,12 @@ describe('Settings', () => {
 
   describe('Account menu item', () => {
     it('Opens and closes change password popup', async () => {
-      const appDiv = document.createElement('div');
-      appDiv.id = 'app';
+      const appDiv = getAppDiv();
+
       document.body.appendChild(appDiv);
 
-      const wrapper = await mountSettingsAndOpen({
-        attachTo: appDiv,
-        global: {
-          stubs: { teleport: true },
-        },
-      });
+      const teleportMountOptions = getTeleportMountOptions(appDiv);
+      const wrapper = await mountSettingsAndOpen(teleportMountOptions);
 
       s.syncState.isLoggedIn = true;
       await nextTick();
