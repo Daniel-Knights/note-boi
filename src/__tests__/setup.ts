@@ -43,6 +43,8 @@ afterEach(async () => {
   vi.restoreAllMocks();
   localStorage.clear();
 
+  document.body.innerHTML = '';
+
   expect(spyAssertFail).not.toHaveBeenCalled();
 });
 

@@ -22,10 +22,6 @@ function mountPopup() {
   });
 }
 
-afterEach(() => {
-  document.body.innerHTML = '';
-});
-
 describe('Popup', () => {
   it('Mounts', async () => {
     const { calls, promises } = mockApi();
