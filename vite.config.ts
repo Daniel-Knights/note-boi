@@ -30,7 +30,7 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: './src/__tests__/setup.ts',
-    clearMocks: true,
+    restoreMocks: true,
     hookTimeout: 30000,
     testTimeout: 30000,
     // Seems to help reduce test flakiness

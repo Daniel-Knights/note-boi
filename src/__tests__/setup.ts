@@ -39,10 +39,8 @@ afterEach(async () => {
   mockDb.users = structuredClone(initialMockDb.users);
 
   clearMocks();
-  // Setting restoreMocks: true in global config doesn't seem to work
-  vi.restoreAllMocks();
-  localStorage.clear();
 
+  localStorage.clear();
   document.body.innerHTML = '';
 
   expect(spyAssertFail).not.toHaveBeenCalled();
