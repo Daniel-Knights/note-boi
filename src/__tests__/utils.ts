@@ -33,9 +33,9 @@ export function resetSyncStore(): void {
 }
 
 export function resetUpdateStore(): void {
-  u.update.value = undefined;
-  u.updateDownloading.value = false;
-  u.updateStrategy.value = 'manual';
+  u.updateState.isAvailable = false;
+  u.updateState.isDownloading = false;
+  u.updateState.strategy = 'manual';
 }
 
 const formatTestId = (id: string) => `[data-test-id="${id}"]`;

@@ -45,7 +45,9 @@ describe('Note store', () => {
     it('With undefined notes', async () => {
       const { calls } = mockApi({
         invoke: {
-          error: 'get_all_notes',
+          resValue: {
+            get_all_notes: [],
+          },
         },
       });
 

@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive, ref, watch } from 'vue';
+import { check } from '@tauri-apps/plugin-updater';
+import { computed, ref } from 'vue';
 
 import { exportNotes, noteState } from '../store/note';
 import { openedPopup, PopupType } from '../store/popup';
@@ -21,10 +22,9 @@ import { deleteAccount, syncState } from '../store/sync';
 import { COLOUR_THEMES, selectedTheme, setTheme } from '../store/theme';
 import {
   setUpdateStrategy,
-  update,
   UPDATE_STRATEGIES,
   updateAndRelaunch,
-  updateStrategy,
+  updateState,
 } from '../store/update';
 import { capitalise } from '../utils';
 
@@ -37,54 +37,55 @@ import CogIcon from './svg/CogIcon.vue';
 
 const show = ref(false);
 
-const menuItems = reactive<DropMenuItemData[]>([
-  {
-    label: 'Theme',
-    subMenu: COLOUR_THEMES.map((theme) => ({
-      label: theme,
-      testId: theme,
-      clickHandler: () => setTheme(theme),
-      selected: computed(() => selectedTheme.value === theme),
-    })),
-  },
-  {
-    label: 'Export',
-    testId: 'export',
-    clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.id)),
-  },
-  {
-    label: 'Updates',
-    subMenu: UPDATE_STRATEGIES.map((strategy) => ({
-      label: capitalise(strategy),
-      testId: `update-${strategy}`,
-      selected: computed(() => updateStrategy.value === strategy),
-      clickHandler: () => setUpdateStrategy(strategy),
-    })),
-  },
-  {
-    label: 'Info',
-    testId: 'info',
-    clickHandler: () => {
-      openedPopup.value = PopupType.Info;
+const menuItems = computed(() => {
+  const items: DropMenuItemData[] = [
+    {
+      label: 'Theme',
+      subMenu: COLOUR_THEMES.map((theme) => ({
+        label: theme,
+        testId: theme,
+        clickHandler: () => setTheme(theme),
+        selected: selectedTheme.value === theme,
+      })),
     },
-  },
-]);
+    {
+      label: 'Export',
+      testId: 'export',
+      clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.id)),
+    },
+    {
+      label: 'Updates',
+      subMenu: UPDATE_STRATEGIES.map((strategy) => ({
+        label: capitalise(strategy),
+        testId: `update-${strategy}`,
+        selected: updateState.strategy === strategy,
+        clickHandler: () => setUpdateStrategy(strategy),
+      })),
+    },
+    {
+      label: 'Info',
+      testId: 'info',
+      clickHandler: () => {
+        openedPopup.value = PopupType.Info;
+      },
+    },
+  ];
 
-watch(update, () => {
-  if (!update.value?.available) return;
+  if (updateState.isAvailable) {
+    items.unshift({
+      label: 'Update and restart',
+      testId: 'update-restart',
+      clickHandler: async () => {
+        const update = await check();
+        if (!update?.available) return;
 
-  menuItems.unshift({
-    label: 'Update and restart',
-    testId: 'update-restart',
-    clickHandler: () => updateAndRelaunch(),
-  });
-});
+        updateAndRelaunch(update);
+      },
+    });
+  }
 
-watch(syncState, () => {
-  const hasAccountItem = menuItems.some((item) => item.label === 'Account');
-
-  if (syncState.isLoggedIn && !hasAccountItem) {
-    menuItems.push({
+  if (syncState.isLoggedIn) {
+    items.push({
       label: 'Account',
       subMenu: [
         {
@@ -102,9 +103,9 @@ watch(syncState, () => {
         },
       ],
     });
-  } else if (!syncState.isLoggedIn && hasAccountItem) {
-    menuItems.pop();
   }
+
+  return items;
 });
 </script>
 

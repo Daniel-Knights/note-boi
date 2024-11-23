@@ -7,14 +7,14 @@ import * as u from '../../../store/update';
 import { STORAGE_KEYS } from '../../../constant';
 import { openedPopup, PopupType } from '../../../store/popup';
 import { COLOUR_THEMES, selectedTheme } from '../../../store/theme';
-import { update } from '../../../store/update';
-import { mockApi } from '../../api';
+import { clearMockApiResults, mockApi } from '../../api';
 import {
   findByTestId,
   getAppDiv,
   getByTestId,
   getTeleportMountOptions,
   resolveImmediate,
+  waitUntil,
 } from '../../utils';
 
 import DropMenu from '../../../components/DropMenu.vue';
@@ -109,7 +109,7 @@ describe('Settings', () => {
     const setUpdateStrategySpy = vi.spyOn(u, 'setUpdateStrategy');
     const updateAutoWrapper = findByTestId(wrapper, 'update-auto');
 
-    assert.strictEqual(u.updateStrategy.value, 'manual');
+    assert.strictEqual(u.updateState.strategy, 'manual');
     assert.isNull(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY));
 
     await updateAutoWrapper.trigger('click');
@@ -118,7 +118,7 @@ describe('Settings', () => {
     expect(setUpdateStrategySpy).toHaveBeenCalledOnce();
     expect(setUpdateStrategySpy).toHaveBeenCalledWith('auto');
     assert.strictEqual(calls.size, 0);
-    assert.strictEqual(u.updateStrategy.value, 'auto');
+    assert.strictEqual(u.updateState.strategy, 'auto');
     assert.strictEqual(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY), 'auto');
 
     const updateManualWrapper = findByTestId(wrapper, 'update-manual');
@@ -131,7 +131,7 @@ describe('Settings', () => {
     expect(setUpdateStrategySpy).toHaveBeenCalledOnce();
     expect(setUpdateStrategySpy).toHaveBeenCalledWith('manual');
     assert.strictEqual(calls.size, 0);
-    assert.strictEqual(u.updateStrategy.value, 'manual');
+    assert.strictEqual(u.updateState.strategy, 'manual');
     assert.strictEqual(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY), 'manual');
   });
 
@@ -165,27 +165,22 @@ describe('Settings', () => {
     assert.isFalse(findByTestId(wrapper, 'update-restart').exists());
     assert.lengthOf(wrapperVm.menuItems, 4);
 
-    // @ts-expect-error - don't need to set all properties
-    update.value = {
-      available: true,
-      downloadAndInstall: () => Promise.resolve(),
-    };
-
+    await u.handleUpdate();
     await nextTick();
 
     const updateWrapper = findByTestId(wrapper, 'update-restart');
     assert.isTrue(updateWrapper.isVisible());
     assert.lengthOf(wrapperVm.menuItems, 5);
 
-    const updateSpy = vi.spyOn(u, 'updateAndRelaunch');
+    clearMockApiResults({ calls, promises });
+
     await updateWrapper.trigger('click');
-    await Promise.all(promises);
+    await waitUntil(() => calls.size === 3);
 
-    expect(updateSpy).toHaveBeenCalledOnce();
-    assert.strictEqual(calls.size, 1);
+    assert.strictEqual(calls.size, 3);
+    assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
+    assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
     assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
-
-    update.value = undefined;
   });
 
   describe('Account menu item', () => {

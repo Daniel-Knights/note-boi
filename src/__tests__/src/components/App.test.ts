@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
-import { updateDownloading } from '../../../store/update';
+import { updateState } from '../../../store/update';
 import { mockApi } from '../../api';
 
 import App from '../../../App.vue';
@@ -35,7 +35,7 @@ describe('App', () => {
 
     const wrapper = mount(App);
 
-    updateDownloading.value = true;
+    updateState.isDownloading = true;
     await nextTick();
 
     assert.isTrue(wrapper.getComponent(Loading).isVisible());

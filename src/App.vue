@@ -1,5 +1,5 @@
 <template>
-  <Loading v-if="updateDownloading" />
+  <Loading v-if="updateState.isDownloading" />
   <NoteMenu />
   <Editor />
   <UtilityMenu />
@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { updateDownloading } from './store/update';
+import { updateState } from './store/update';
 
 import Editor from './components/Editor.vue';
 import Loading from './components/Loading.vue';

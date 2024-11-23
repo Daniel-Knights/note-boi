@@ -1,7 +1,7 @@
 import * as dialog from '@tauri-apps/plugin-dialog';
 import { relaunch } from '@tauri-apps/plugin-process';
 import { check, Update } from '@tauri-apps/plugin-updater';
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
 import { STORAGE_KEYS } from '../constant';
 
@@ -9,23 +9,24 @@ export const UPDATE_STRATEGIES = ['auto', 'manual'] as const;
 
 export type UpdateStrategy = (typeof UPDATE_STRATEGIES)[number];
 
-export const update = ref<Update>();
-export const updateDownloading = ref<boolean>(false);
-export const updateStrategy = ref<'auto' | 'manual'>(
-  (localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY) as 'auto' | 'manual') ?? 'manual'
-);
+export const updateState = reactive({
+  isAvailable: false,
+  isDownloading: false,
+  strategy:
+    (localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY) as 'auto' | 'manual') ?? 'manual',
+});
 
 export async function handleUpdate(): Promise<void> {
-  const checkResult = await check();
-  if (!checkResult?.available) return;
+  const update = await check();
+  if (!update?.available) return;
 
-  update.value = checkResult;
+  updateState.isAvailable = true;
 
-  if (updateStrategy.value === 'auto') {
-    return updateAndRelaunch();
+  if (updateState.strategy === 'auto') {
+    return updateAndRelaunch(update);
   }
 
-  const newVersion = checkResult.version;
+  const newVersion = update.version;
 
   // Check if the user has already been notified
   const seenVersion = localStorage.getItem(STORAGE_KEYS.UPDATE_SEEN);
@@ -41,19 +42,14 @@ export async function handleUpdate(): Promise<void> {
     return;
   }
 
-  return updateAndRelaunch();
+  return updateAndRelaunch(update);
 }
 
-export async function updateAndRelaunch(): Promise<void> {
-  if (!update.value) return;
-
-  updateDownloading.value = true;
+export async function updateAndRelaunch(update: Update): Promise<void> {
+  updateState.isDownloading = true;
 
   try {
-    await update.value?.downloadAndInstall();
-
-    update.value = undefined;
-
+    await update.downloadAndInstall();
     await relaunch();
   } catch (error) {
     console.error(error);
@@ -64,16 +60,15 @@ export async function updateAndRelaunch(): Promise<void> {
     });
 
     if (shouldRetry) {
-      await updateAndRelaunch();
+      await updateAndRelaunch(update);
     } else {
-      update.value = undefined;
-      updateDownloading.value = false;
+      updateState.isDownloading = false;
     }
   }
 }
 
 export function setUpdateStrategy(strategy: 'auto' | 'manual'): void {
-  updateStrategy.value = strategy;
+  updateState.strategy = strategy;
 
   localStorage.setItem(STORAGE_KEYS.UPDATE_STRATEGY, strategy);
 }

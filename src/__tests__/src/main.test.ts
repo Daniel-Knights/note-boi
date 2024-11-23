@@ -3,17 +3,14 @@ import * as s from '../../store/sync';
 import * as u from '../../store/update';
 import { openedPopup, PopupType } from '../../store/popup';
 import { mockApi } from '../api';
+import { getAppDiv, waitUntil } from '../utils';
 
 let main: typeof import('../../main');
 
 beforeEach(() => {
-  const div = document.createElement('div');
-  div.id = 'app';
-  document.body.appendChild(div);
-});
+  const appDiv = getAppDiv();
 
-afterEach(() => {
-  document.body.innerHTML = '';
+  document.body.appendChild(appDiv);
 });
 
 describe('main', () => {
@@ -24,12 +21,17 @@ describe('main', () => {
 
     main = await import('../../main');
 
+    await waitUntil(() => calls.size >= 13);
+
     expect(spyGetAllNotes).toHaveBeenCalledOnce();
     expect(spyHandleUpdate).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.size, 10);
+    assert.strictEqual(calls.size, 13);
     assert.isTrue(calls.invoke.has('get_all_notes'));
     assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
+    assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+    assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
+    assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
     assert.isTrue(calls.listeners.has('tauri://close-requested'));
     assert.isTrue(calls.listeners.has('reload'));
     assert.isTrue(calls.listeners.has('new-note'));

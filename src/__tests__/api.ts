@@ -78,6 +78,7 @@ export function mockApi(
     };
     tauriApi?: {
       resValue?: TauriApiResValue;
+      error?: string;
     };
   } = {}
 ): {
@@ -362,23 +363,21 @@ function mockRequest(
 function mockTauriInvoke(
   cmd: string,
   args: Record<string, unknown>,
-  options: { resValue?: InvokeResValue; error?: string } = {}
+  options: { resValue?: InvokeResValue; error?: TauriCommand } = {}
 ): Call<n.Note[] | void> | void {
   if (options.error === cmd) {
-    return {
-      name: cmd,
-      calledWith: args,
-      promise: resolveImmediate(undefined),
-    };
+    throw new Error('Mock Tauri Invoke error');
   }
 
-  let resData: n.Note[] = [];
+  let resData: n.Note[] | undefined = [];
 
   switch (cmd) {
     case 'get_all_notes': {
-      const resValue = options.resValue?.get_all_notes?.shift();
-
-      resData = resValue || copyObjArr(localNotes);
+      resData =
+        // Allow undefined res values for returning no notes
+        !options.resValue || !('get_all_notes' in options.resValue)
+          ? copyObjArr(localNotes)
+          : options.resValue.get_all_notes!.shift();
 
       break;
     }
@@ -439,8 +438,12 @@ function mockTauriInvoke(
 function mockTauriApi(
   callId: string,
   args: AskDialogArgs | OpenDialogArgs,
-  options: { resValue?: TauriApiResValue } = {}
+  options: { resValue?: TauriApiResValue; error?: string } = {}
 ) {
+  if (options.error === callId) {
+    throw new Error('Mock Tauri API error');
+  }
+
   let resData: TauriApiResValue[string][number] | undefined;
   let calledWith;
 
@@ -473,6 +476,30 @@ function mockTauriApi(
         recursive: openDialogArgs.options.recursive,
         title: openDialogArgs.options.title,
       };
+
+      break;
+    }
+    case 'plugin:updater|check': {
+      const resValue = options.resValue?.checkUpdate?.shift();
+
+      const defaultResValue = {
+        rid: 1,
+        available: true,
+        version: '1.0.0',
+        currentVersion: '0.9.0',
+      } satisfies NonNullable<typeof resValue>;
+
+      resData = {
+        ...defaultResValue,
+        ...resValue,
+      };
+
+      break;
+    }
+    case 'plugin:updater|download_and_install': {
+      const resValue = options.resValue?.downloadAndInstallUpdate?.shift();
+
+      resData = resValue;
 
       break;
     }
@@ -541,7 +568,8 @@ type InvokeResValue = {
 type TauriApiResValue = Record<string, unknown[]> & {
   askDialog?: boolean[];
   openDialog?: string[];
-  checkUpdate?: ConstructorParameters<typeof Update>[0][];
+  checkUpdate?: Partial<ConstructorParameters<typeof Update>[0]>[];
+  downloadAndInstallUpdate?: ReturnType<Update['downloadAndInstall']>[];
 };
 
 type Call<T = unknown> = {
