@@ -2,9 +2,11 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
+import { AppError, ERROR_CODE } from '../../../appError';
 import { openedPopup, PopupType } from '../../../store/popup';
 import { mockApi } from '../../api';
 import {
+  assertAppError,
   findByTestId,
   getAppDiv,
   getByTestId,
@@ -80,33 +82,42 @@ describe('SyncStatus', () => {
     });
   });
 
-  it.each(['Logout', 'Pull', 'Push'] as const)(
-    '%s - Displays error icon and opens popup on click',
-    async (errorKind) => {
-      mockApi();
-      s.syncState.error.kind = s.ErrorKind[errorKind];
+  it('Displays error icon and opens popup on click', async () => {
+    mockApi();
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+      display: { sync: true },
+      retry: {
+        fn: () => {
+          //
+        },
+      },
+    });
 
-      const appDiv = getAppDiv();
+    const appDiv = getAppDiv();
 
-      document.body.appendChild(appDiv);
+    document.body.appendChild(appDiv);
 
-      const teleportMountOptions = getTeleportMountOptions(appDiv);
-      const wrapper = mount(SyncStatus, teleportMountOptions);
+    const teleportMountOptions = getTeleportMountOptions(appDiv);
+    const wrapper = mount(SyncStatus, teleportMountOptions);
 
-      assert.isTrue(wrapper.isVisible());
+    assert.isTrue(wrapper.isVisible());
 
-      const errorButton = getByTestId(wrapper, 'error');
-      await errorButton.trigger('click');
+    const errorButton = getByTestId(wrapper, 'error');
+    await errorButton.trigger('click');
 
-      assert.strictEqual(openedPopup.value, PopupType.Error);
-      assert.isTrue(findByTestId(wrapper, 'error-message').exists());
-      assert.isTrue(findByTestId(wrapper, 'try-again').exists());
-    }
-  );
+    assert.strictEqual(openedPopup.value, PopupType.Error);
+    assert.isTrue(findByTestId(wrapper, 'error-message').exists());
+    assert.isTrue(findByTestId(wrapper, 'try-again').exists());
+  });
 
   describe('Handles popups', () => {
     it('PopupSyncError', async () => {
-      mockApi();
+      mockApi({
+        request: {
+          error: { endpoint: '/login' },
+        },
+      });
 
       const appDiv = getAppDiv();
 
@@ -117,25 +128,31 @@ describe('SyncStatus', () => {
 
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
 
-      s.syncState.error.kind = s.ErrorKind.Logout;
-      s.syncState.error.message = 'Error';
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
 
+      await s.login();
       await nextTick();
       await findByTestId(wrapper, 'error').trigger('click');
 
       assert.isTrue(findByTestId(wrapper, 'popup-error').isVisible());
       assert.strictEqual(openedPopup.value, PopupType.Error);
 
-      const resetErrorSpy = vi.spyOn(s, 'resetError');
+      const resetErrorSpy = vi.spyOn(s, 'resetAppError');
 
       wrapper.getComponent(PopupSyncError).vm.$emit('close');
       await nextTick();
 
       expect(resetErrorSpy).not.toHaveBeenCalled();
+
+      assertAppError({
+        code: ERROR_CODE.LOGIN,
+        retry: { fn: s.login },
+        display: { form: true, sync: true },
+      });
+
       assert.isFalse(findByTestId(wrapper, 'popup-error').exists());
       assert.isUndefined(openedPopup.value);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Logout);
-      assert.isNotEmpty(s.syncState.error.message);
     });
 
     it('PopupSyncAuth', async () => {
@@ -157,7 +174,7 @@ describe('SyncStatus', () => {
 
       assert.isTrue(findByTestId(wrapper, 'popup-auth').isVisible());
 
-      const resetErrorSpy = vi.spyOn(s, 'resetError');
+      const resetErrorSpy = vi.spyOn(s, 'resetAppError');
 
       wrapper.getComponent(PopupSyncAuth).vm.$emit('close');
       await nextTick();

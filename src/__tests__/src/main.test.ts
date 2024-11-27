@@ -1,6 +1,7 @@
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import * as u from '../../store/update';
+import { AppError, ERROR_CODE } from '../../appError';
 import { openedPopup, PopupType } from '../../store/popup';
 import { mockApi } from '../api';
 import { getAppDiv, waitUntil } from '../utils';
@@ -81,7 +82,7 @@ describe('main', () => {
       const spyPush = vi.spyOn(s, 'push');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
-      s.syncState.error.kind = s.ErrorKind.Push;
+      s.syncState.appError = new AppError({ code: ERROR_CODE.PUSH });
 
       await main.exitApp(mockCb);
 
@@ -110,7 +111,7 @@ describe('main', () => {
       const spyPush = vi.spyOn(s, 'push');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
-      s.syncState.error.kind = s.ErrorKind.Push;
+      s.syncState.appError = new AppError({ code: ERROR_CODE.PUSH });
 
       // Setting openedPopup to undefined emits this component's close event
       // and resets syncState.error, so we mock it to prevent that

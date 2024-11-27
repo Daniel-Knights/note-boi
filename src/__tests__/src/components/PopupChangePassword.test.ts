@@ -1,9 +1,10 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
+import { AppError, ERROR_CODE } from '../../../appError';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
-import { getByTestId, waitUntil } from '../../utils';
+import { assertAppError, getByTestId, waitUntil } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupChangePassword from '../../../components/PopupChangePassword.vue';
@@ -32,6 +33,43 @@ describe('PopupChangePassword', () => {
     wrapper.getComponent(Popup).vm.$emit('close');
 
     assert.lengthOf(wrapper.emitted('close')!, 1);
+  });
+
+  it('Shows error message', async () => {
+    const { calls, promises } = mockApi();
+    const wrapper = mountPopupChangePassword();
+
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+      message: 'Mock error',
+      display: { form: true },
+    });
+
+    await Promise.all(promises);
+
+    assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.size, 0);
+
+    const errorMessageWrapper = getByTestId(wrapper, 'error-message');
+    assert.strictEqual(errorMessageWrapper.text(), 'Mock error');
+  });
+
+  it('Shows default error message when none provided', async () => {
+    const { calls, promises } = mockApi();
+    const wrapper = mountPopupChangePassword();
+
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+      display: { form: true },
+    });
+
+    await Promise.all(promises);
+
+    assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.size, 0);
+
+    const errorMessageWrapper = getByTestId(wrapper, 'error-message');
+    assert.strictEqual(errorMessageWrapper.text(), 'Something went wrong');
   });
 
   it('Validates fields and submits', async () => {
@@ -81,48 +119,53 @@ describe('PopupChangePassword', () => {
 
     expect(spyChangePassword).not.toHaveBeenCalled();
 
+    assertAppError();
     assert.isFalse(wrapperVm.validation.currentPassword);
     assert.isFalse(wrapperVm.validation.newPassword);
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
-    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
     await currentPasswordInput.setValue('1');
 
+    assertAppError();
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isFalse(wrapperVm.validation.newPassword);
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
-    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
     newPasswordInput.setValue('2');
 
+    assertAppError();
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isFalse(wrapperVm.validation.confirmNewPassword);
-    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
     confirmNewPasswordInput.setValue('2');
 
+    assertAppError();
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isTrue(wrapperVm.validation.confirmNewPassword);
-    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
     await formWrapper.trigger('submit');
 
-    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-    assert.strictEqual(
-      s.syncState.error.message,
-      `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`
-    );
+    assertAppError({
+      code: ERROR_CODE.FORM_VALIDATION,
+      message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`,
+      display: { form: true },
+    });
 
     newPasswordInput.setValue('123456');
 
     await formWrapper.trigger('submit');
 
-    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-    assert.strictEqual(s.syncState.error.message, "Passwords don't match");
+    assertAppError({
+      code: ERROR_CODE.FORM_VALIDATION,
+      message: "Passwords don't match",
+      display: { form: true },
+    });
 
     confirmNewPasswordInput.setValue('123456');
+
+    expect(spyChangePassword).not.toHaveBeenCalled();
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
@@ -131,7 +174,6 @@ describe('PopupChangePassword', () => {
     assert.isTrue(s.syncState.isLoggedIn);
     assert.isNotEmpty(s.syncState.password);
     assert.isNotEmpty(s.syncState.newPassword);
-    expect(spyChangePassword).not.toHaveBeenCalled();
 
     clearMockApiResults({ calls });
 
@@ -139,8 +181,8 @@ describe('PopupChangePassword', () => {
     await waitUntil(() => !s.syncState.isLoading);
 
     expect(spyChangePassword).toHaveBeenCalledOnce();
-    assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-    assert.isEmpty(s.syncState.error.message);
+
+    assertAppError();
     assert.isEmpty(wrapperVm.confirmNewPassword);
     assert.lengthOf(wrapper.emitted('close')!, 1);
     assert.strictEqual(calls.size, 1);

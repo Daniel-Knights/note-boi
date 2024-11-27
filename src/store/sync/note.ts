@@ -1,3 +1,4 @@
+import { AppError, ERROR_CODE, ErrorConfig } from '../../appError';
 import { NOTE_EVENTS, STORAGE_KEYS } from '../../constant';
 import { isEmptyNote, localStorageParse, tauriEmit, tauriInvoke } from '../../utils';
 import {
@@ -10,18 +11,16 @@ import {
   UnsyncedEventDetail,
 } from '../note';
 
+import { clientSideLogout, Encryptor, syncState } from '.';
+
 import {
   catchEncryptorError,
   catchHang,
-  clientSideLogout,
-  Encryptor,
-  ErrorKind,
   fetchData,
   parseErrorRes,
-  resetError,
+  resetAppError,
   resIsOk,
-  syncState,
-} from '.';
+} from './utils';
 
 export type UnsyncedNoteIds = {
   new: string;
@@ -103,14 +102,22 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
 export async function pull(): Promise<void> {
   syncState.isLoading = true;
 
+  const errorConfig = {
+    code: ERROR_CODE.PULL,
+    retry: { fn: pull },
+    display: {
+      sync: true,
+    },
+  } satisfies Omit<ErrorConfig<typeof pull>, 'message'>;
+
   try {
     const res = await fetchData('/notes/pull', 'POST').catch((err) => {
-      catchHang(err, ErrorKind.Pull);
+      catchHang(errorConfig, err);
     });
     if (!res) return;
 
     if (resIsOk(res)) {
-      resetError();
+      resetAppError();
       tauriEmit('auth', { is_logged_in: true });
 
       // Users' session must still be valid
@@ -118,22 +125,23 @@ export async function pull(): Promise<void> {
 
       const decryptedNotes = await Encryptor.decryptNotes(res.data.notes ?? []).catch(
         (err) => {
-          return catchEncryptorError(err);
+          return catchEncryptorError(errorConfig, err);
         }
       );
       if (!decryptedNotes) return;
 
       await syncNotes(decryptedNotes);
     } else {
-      syncState.error = {
-        kind: ErrorKind.Pull,
+      syncState.appError = new AppError({
+        ...errorConfig,
         message: parseErrorRes(res),
-      };
+      });
 
       if (res.status === 401 || res.status === 404) {
         await clientSideLogout();
       }
 
+      console.error(`ERROR_CODE: ${errorConfig.code}`);
       console.error(res.data);
     }
   } finally {
@@ -148,10 +156,21 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 
   syncState.isLoading = true;
 
+  const errorConfig = {
+    code: ERROR_CODE.PUSH,
+    retry: {
+      fn: push,
+      args: isSyncCleanup ? [isSyncCleanup] : [],
+    },
+    display: {
+      sync: true,
+    },
+  } satisfies Omit<ErrorConfig<typeof push>, 'message'>;
+
   try {
     const encryptedNotes = await Encryptor.encryptNotes(
       noteState.notes.filter((nt) => !isEmptyNote(nt))
-    ).catch((err) => catchEncryptorError(err));
+    ).catch((err) => catchEncryptorError(errorConfig, err));
     if (!encryptedNotes) return;
 
     // Cache ids and clear before request to prevent
@@ -166,26 +185,27 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 
     const res = await fetchData('/notes/push', 'PUT', {
       notes: encryptedNotes,
-    }).catch((err) => catchHang(err, ErrorKind.Push));
+    }).catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
     if (resIsOk(res)) {
-      resetError();
+      resetAppError();
 
       syncState.isLoggedIn = true;
     } else {
       // Add back unsynced note ids
       syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
 
-      syncState.error = {
-        kind: ErrorKind.Push,
+      syncState.appError = new AppError({
+        ...errorConfig,
         message: parseErrorRes(res),
-      };
+      });
 
       if (res.status === 401 || res.status === 404) {
         await clientSideLogout();
       }
 
+      console.error(`ERROR_CODE: ${errorConfig.code}`);
       console.error(res.data);
     }
   } finally {

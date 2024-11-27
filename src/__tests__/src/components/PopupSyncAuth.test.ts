@@ -1,9 +1,10 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
+import { AppError, ERROR_CODE } from '../../../appError';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
-import { findByTestId, getByTestId, waitUntil } from '../../utils';
+import { assertAppError, findByTestId, getByTestId, waitUntil } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
@@ -36,10 +37,47 @@ describe('PopupSyncAuth', () => {
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
+  it('Shows error message', async () => {
+    const { calls, promises } = mockApi();
+    const wrapper = mountPopupSyncAuth();
+
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+      message: 'Mock error',
+      display: { form: true },
+    });
+
+    await Promise.all(promises);
+
+    assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.size, 0);
+
+    const errorMessageWrapper = getByTestId(wrapper, 'error-message');
+    assert.strictEqual(errorMessageWrapper.text(), 'Mock error');
+  });
+
+  it('Shows default error message when none provided', async () => {
+    const { calls, promises } = mockApi();
+    const wrapper = mountPopupSyncAuth();
+
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+      display: { form: true },
+    });
+
+    await Promise.all(promises);
+
+    assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.size, 0);
+
+    const errorMessageWrapper = getByTestId(wrapper, 'error-message');
+    assert.strictEqual(errorMessageWrapper.text(), 'Something went wrong');
+  });
+
   it('Switches between login/signup', async () => {
     mockApi();
 
-    const resetErrorSpy = vi.spyOn(s, 'resetError');
+    const resetErrorSpy = vi.spyOn(s, 'resetAppError');
     const wrapper = mountPopupSyncAuth();
 
     assert.equal(getByTestId(wrapper, 'heading').text(), 'Login');
@@ -93,24 +131,24 @@ describe('PopupSyncAuth', () => {
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).not.toHaveBeenCalled();
 
+      assertAppError();
       assert.isFalse(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       usernameInput.setValue('d');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
+      assertAppError();
 
       passwordInput.setValue('1');
 
+      assertAppError();
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       clearMockApiResults({ calls });
 
@@ -120,9 +158,8 @@ describe('PopupSyncAuth', () => {
       expect(spyLogin).toHaveBeenCalledOnce();
       expect(spySignup).not.toHaveBeenCalled();
 
+      assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/login'));
@@ -181,42 +218,46 @@ describe('PopupSyncAuth', () => {
       assert.isFalse(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
+      assertAppError();
 
       usernameInput.setValue('k');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
+      assertAppError();
 
       passwordInput.setValue('2');
 
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isFalse(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
+      assertAppError();
 
       confirmPasswordInput.setValue('2');
 
+      assertAppError();
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
 
       await formWrapper.trigger('submit');
 
-      assert.strictEqual(
-        s.syncState.error.message,
-        `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`
-      );
+      assertAppError({
+        code: ERROR_CODE.FORM_VALIDATION,
+        message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`,
+        display: { form: true },
+      });
 
       passwordInput.setValue('123456');
 
       await formWrapper.trigger('submit');
 
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.strictEqual(s.syncState.error.message, "Passwords don't match");
+      assertAppError({
+        code: ERROR_CODE.FORM_VALIDATION,
+        message: "Passwords don't match",
+        display: { form: true },
+      });
 
       confirmPasswordInput.setValue('123456');
 
@@ -233,9 +274,9 @@ describe('PopupSyncAuth', () => {
 
       expect(spyLogin).not.toHaveBeenCalled();
       expect(spySignup).toHaveBeenCalledOnce();
+
+      assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));

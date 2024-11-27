@@ -31,8 +31,12 @@
           placeholder="Confirm New Password"
           data-test-id="confirm-new-password"
         />
-        <p v-if="syncState.error.kind === ErrorKind.Auth" class="form__error">
-          {{ syncState.error.message }}
+        <p
+          v-if="syncState.appError.display?.form"
+          class="form__error"
+          data-test-id="error-message"
+        >
+          {{ syncState.appError.message || 'Something went wrong' }}
         </p>
         <input type="submit" value="Submit" class="button button--default" />
       </form>
@@ -43,8 +47,9 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 
+import { AppError, ERROR_CODE } from '../appError';
 import { MIN_PASSWORD_LENGTH } from '../constant';
-import { changePassword, ErrorKind, syncState } from '../store/sync';
+import { changePassword, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 
@@ -69,35 +74,44 @@ async function handleSubmit() {
   }
 
   if (syncState.newPassword.length < MIN_PASSWORD_LENGTH) {
-    syncState.error = {
-      kind: ErrorKind.Auth,
+    syncState.appError = new AppError({
+      code: ERROR_CODE.FORM_VALIDATION,
       message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`,
-    };
+      display: {
+        form: true,
+      },
+    });
 
     return;
   }
 
   if (confirmNewPassword.value !== syncState.newPassword) {
-    syncState.error = {
-      kind: ErrorKind.Auth,
+    syncState.appError = new AppError({
+      code: ERROR_CODE.FORM_VALIDATION,
       message: "Passwords don't match",
-    };
+      display: {
+        form: true,
+      },
+    });
 
     return;
   }
 
   if (syncState.newPassword === syncState.password) {
-    syncState.error = {
-      kind: ErrorKind.Auth,
+    syncState.appError = new AppError({
+      code: ERROR_CODE.FORM_VALIDATION,
       message: 'Current and new passwords must be different',
-    };
+      display: {
+        form: true,
+      },
+    });
 
     return;
   }
 
   await changePassword();
 
-  if (syncState.error.kind === ErrorKind.None) {
+  if (syncState.appError.isNone) {
     confirmNewPassword.value = '';
 
     emit('close');

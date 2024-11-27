@@ -3,8 +3,11 @@ import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 import * as n from '../store/note';
 import * as s from '../store/sync';
 import * as u from '../store/update';
+import { AppError, ErrorConfig } from '../appError';
 import { EncryptedNote } from '../store/sync/encryptor';
 import { hasKeys } from '../utils';
+
+import { mockApi } from './api';
 
 export const UUID_REGEX =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
@@ -29,7 +32,7 @@ export function resetSyncStore(): void {
   s.syncState.isLoggedIn = false;
   s.syncState.unsyncedNoteIds.clear();
 
-  s.resetError();
+  s.resetAppError();
 }
 
 export function resetUpdateStore(): void {
@@ -127,4 +130,57 @@ export function getTeleportMountOptions(appDiv: HTMLElement) {
       stubs: { teleport: true },
     },
   };
+}
+
+/**
+ * Asserts current `appError` against expected.
+ * No `expectedErrorConfig` asserts a `NONE` error.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function assertAppError<T extends (...args: any[]) => void>(
+  expectedErrorConfig?: ErrorConfig<T>
+) {
+  const { appError } = s.syncState;
+
+  if (!expectedErrorConfig && appError.isNone) {
+    assert.hasAllDeepKeys(appError, new AppError());
+
+    return;
+  }
+
+  if (!expectedErrorConfig) {
+    assert.fail('Missing expectedErrorConfig');
+  }
+
+  if (expectedErrorConfig.message) {
+    assert.strictEqual(appError.message, expectedErrorConfig.message);
+  } else {
+    assert.isNotEmpty(appError.message, expectedErrorConfig.message);
+  }
+
+  assert.strictEqual(appError.code, expectedErrorConfig.code);
+  assert.strictEqual(appError.retryConfig?.fn, expectedErrorConfig.retry?.fn);
+  assert.sameOrderedMembers(
+    appError.retryConfig?.args || [],
+    expectedErrorConfig.retry?.args || []
+  );
+  assert.deepEqual(appError.display, expectedErrorConfig.display);
+}
+
+/**
+ * Asserts loading state is `false` before `cb`, `true` during, and `false` after.
+ */
+export async function assertLoadingState(cb: () => Promise<void>) {
+  const { promises } = mockApi();
+
+  assert.isFalse(s.syncState.isLoading);
+
+  const cbPromise = cb();
+
+  assert.isTrue(s.syncState.isLoading);
+
+  await cbPromise;
+  await Promise.all(promises);
+
+  assert.isFalse(s.syncState.isLoading);
 }

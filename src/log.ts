@@ -9,7 +9,7 @@ export function initLogger() {
   forwardConsole('error', error);
 }
 
-function forwardConsole(
+export function forwardConsole(
   fnName: 'log' | 'debug' | 'info' | 'warn' | 'error',
   logger: (message: string) => Promise<void>
 ) {

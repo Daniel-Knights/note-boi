@@ -8,7 +8,7 @@
     ></div>
     <!-- Error -->
     <button
-      v-else-if="isSyncError"
+      v-else-if="syncState.appError.display?.sync"
       @click="openedPopup = PopupType.Error"
       class="sync-status__error button"
       title="Sync error"
@@ -40,10 +40,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-
 import { openedPopup, PopupType } from '../store/popup';
-import { ErrorKind, logout, pull, resetError, syncState } from '../store/sync';
+import { logout, pull, resetAppError, syncState } from '../store/sync';
 import { tauriListen } from '../utils';
 
 import PopupSyncAuth from './PopupSyncAuth.vue';
@@ -51,14 +49,6 @@ import PopupSyncError from './PopupSyncError.vue';
 import CloudErrorIcon from './svg/CloudErrorIcon.vue';
 import CloudSyncIcon from './svg/CloudSyncIcon.vue';
 import CloudTickIcon from './svg/CloudTickIcon.vue';
-
-const isSyncError = computed(() => {
-  return (
-    syncState.error.kind === ErrorKind.Logout ||
-    syncState.error.kind === ErrorKind.Pull ||
-    syncState.error.kind === ErrorKind.Push
-  );
-});
 
 function handlePopupAuthEvent() {
   // Prevent bug where event.emit triggers event.listen
@@ -71,7 +61,7 @@ function closeSyncPopup(reset?: boolean) {
   openedPopup.value = undefined;
 
   if (reset) {
-    resetError();
+    resetAppError();
   }
 }
 

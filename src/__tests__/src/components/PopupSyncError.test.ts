@@ -1,8 +1,9 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
+import { AppError, ERROR_CODE } from '../../../appError';
 import { mockApi } from '../../api';
-import { getByTestId, waitUntil } from '../../utils';
+import { findByTestId, getByTestId, waitUntil } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupSyncError from '../../../components/PopupSyncError.vue';
@@ -16,12 +17,15 @@ function mountPopupSyncError() {
 }
 
 describe('PopupSyncError', () => {
-  const errorMessage = 'I am a sync error';
-  s.syncState.error.message = errorMessage;
-
   it('Mounts', async () => {
     const { calls, promises } = mockApi();
     const wrapper = mountPopupSyncError();
+    const errorMessage = 'I am a sync error';
+
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+      message: errorMessage,
+    });
 
     await Promise.all(promises);
 
@@ -39,60 +43,55 @@ describe('PopupSyncError', () => {
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
-  it('Retries push', async () => {
+  it('Retries', async () => {
     mockApi();
 
-    const pushSpy = vi.spyOn(s, 'push');
-    const resetErrorSpy = vi.spyOn(s, 'resetError');
+    const retryMock = vi.fn();
+    const resetErrorSpy = vi.spyOn(s, 'resetAppError');
+
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+      retry: { fn: retryMock },
+    });
+
     const wrapper = mountPopupSyncError();
-
-    s.syncState.error.kind = s.ErrorKind.Push;
-
     const tryAgainButton = getByTestId(wrapper, 'try-again');
-    await tryAgainButton.trigger('click');
 
+    await tryAgainButton.trigger('click');
     await waitUntil(() => !s.syncState.isLoading);
 
-    expect(pushSpy).toHaveBeenCalledOnce();
     expect(resetErrorSpy).toHaveBeenCalledOnce();
+    expect(retryMock).toHaveBeenCalledOnce();
+
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
-  it('Retries pull', async () => {
+  it('No try again button when no retry function', () => {
     mockApi();
 
-    const pullSpy = vi.spyOn(s, 'pull');
-    const resetErrorSpy = vi.spyOn(s, 'resetError');
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+    });
+
     const wrapper = mountPopupSyncError();
 
-    s.syncState.error.kind = s.ErrorKind.Pull;
-
-    const tryAgainButton = getByTestId(wrapper, 'try-again');
-    await tryAgainButton.trigger('click');
-
-    await waitUntil(() => !s.syncState.isLoading);
-
-    expect(pullSpy).toHaveBeenCalledOnce();
-    expect(resetErrorSpy).toHaveBeenCalledTimes(1);
-    assert.lengthOf(wrapper.emitted('close')!, 1);
+    assert.isFalse(findByTestId(wrapper, 'try-again').exists());
   });
 
-  it('Retries logout', async () => {
-    mockApi();
-
-    const logoutSpy = vi.spyOn(s, 'logout');
-    const resetErrorSpy = vi.spyOn(s, 'resetError');
+  it('Shows default error message when none provided', async () => {
+    const { calls, promises } = mockApi();
     const wrapper = mountPopupSyncError();
 
-    s.syncState.error.kind = s.ErrorKind.Logout;
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.PULL,
+    });
 
-    const tryAgainButton = getByTestId(wrapper, 'try-again');
-    await tryAgainButton.trigger('click');
+    await Promise.all(promises);
 
-    await waitUntil(() => !s.syncState.isLoading);
+    assert.isTrue(wrapper.isVisible());
+    assert.strictEqual(calls.size, 0);
 
-    expect(logoutSpy).toHaveBeenCalledOnce();
-    expect(resetErrorSpy).toHaveBeenCalledTimes(1);
-    assert.lengthOf(wrapper.emitted('close')!, 1);
+    const errorMessageWrapper = getByTestId(wrapper, 'error-message');
+    assert.strictEqual(errorMessageWrapper.text(), 'Error: Something went wrong');
   });
 });

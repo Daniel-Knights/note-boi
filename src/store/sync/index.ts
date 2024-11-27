@@ -1,24 +1,9 @@
 import { reactive } from 'vue';
 
-import { Endpoint, EndpointPayloads, STORAGE_KEYS } from '../../constant';
-import { isDev } from '../../utils';
+import { AppError } from '../../appError';
+import { STORAGE_KEYS } from '../../constant';
 
 import { storedUnsyncedNoteIds, UnsyncedNoteIds } from './note';
-
-type ParsedResponse<T> = {
-  status: number;
-  ok: boolean;
-  data: T;
-};
-
-export enum ErrorKind {
-  None,
-  Auth,
-  Push,
-  Pull,
-  Logout,
-  Encryptor,
-}
 
 export const syncState = reactive({
   username: localStorage.getItem(STORAGE_KEYS.USERNAME) || '',
@@ -27,10 +12,7 @@ export const syncState = reactive({
   isLoading: false,
   isLogin: true, // For switching login/signup form
   isLoggedIn: false,
-  error: {
-    kind: ErrorKind.None,
-    message: '',
-  },
+  appError: new AppError(),
   unsyncedNoteIds: <UnsyncedNoteIds>{
     new: storedUnsyncedNoteIds?.new || '',
     edited: new Set<string>(storedUnsyncedNoteIds?.edited),
@@ -74,88 +56,9 @@ export const syncState = reactive({
   },
 });
 
-// Utils //
-
-/** Parses an error response and returns a formatted message. */
-export function parseErrorRes(res: ParsedResponse<{ error: string }>): string {
-  const unknownErrorMessage = 'Unknown error, please try again';
-
-  if (!res.data) return unknownErrorMessage;
-
-  return typeof res.data.error === 'string' ? res.data.error : unknownErrorMessage;
-}
-
-/** Resets {@link syncState.error}. */
-export function resetError(): void {
-  syncState.error = { kind: ErrorKind.None, message: '' };
-}
-
-/** Wrapper for {@link fetch}. */
-export async function fetchData<
-  E extends Endpoint = Endpoint,
-  R = EndpointPayloads[E]['response'],
->(
-  endpoint: E,
-  method: 'POST' | 'PUT',
-  payload?: EndpointPayloads[E]['payload']
-): Promise<ParsedResponse<R> | ParsedResponse<{ error: string }>> {
-  const serverUrl = isDev()
-    ? 'http://localhost:8000'
-    : 'https://note-boi-server.herokuapp.com';
-
-  const res = await fetch(`${serverUrl}/api${endpoint}`, {
-    method,
-    body: JSON.stringify(payload ?? {}),
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-      'Content-Security-Policy': `default-src: 'self'; connect-src ${serverUrl};`,
-    },
-  });
-
-  const contentType = res.headers.get('content-type');
-
-  return {
-    status: res.status,
-    ok: res.status >= 200 && res.status < 300,
-    data:
-      res.body !== null && contentType?.includes('application/json')
-        ? await res.json()
-        : {},
-  };
-}
-
-export function resIsOk<T extends EndpointPayloads[Endpoint]['response']>(
-  res: ParsedResponse<T> | ParsedResponse<{ error: string }> | void
-): res is ParsedResponse<T> {
-  return res?.ok === true;
-}
-
-/** Catches hanging requests (e.g. due to server error). */
-export function catchHang(err: unknown, kind: ErrorKind): void {
-  syncState.isLoading = false;
-  syncState.error = {
-    kind,
-    message: 'Request failed',
-  };
-
-  console.error(err);
-}
-
-/** Catches note encryption errors. */
-export function catchEncryptorError(err: unknown): void {
-  syncState.isLoading = false;
-  syncState.error = {
-    kind: ErrorKind.Encryptor,
-    message: 'Note encryption/decryption failed',
-  };
-
-  console.error(err);
-}
-
-export type { UnsyncedNoteIds, StoredUnsyncedNoteIds } from './note';
-export { autoPush, push, pull, syncNotes } from './note';
-export { clientSideLogout, login, signup, logout } from './auth';
-export { changePassword, deleteAccount } from './account';
-export { Encryptor } from './encryptor';
-export { KeyStore } from './keyStore';
+export * from './auth';
+export * from './account';
+export * from './encryptor';
+export * from './keyStore';
+export * from './note';
+export * from './utils';

@@ -1,9 +1,11 @@
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
+import { ERROR_CODE } from '../../../../appError';
 import { STORAGE_KEYS } from '../../../../constant';
 import { isEmptyNote } from '../../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
+import { assertAppError, assertLoadingState } from '../../../utils';
 
 describe('Auth', () => {
   it('clientSideLogout', async () => {
@@ -47,6 +49,7 @@ describe('Auth', () => {
 
       await s.login();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.lengthOf(n.noteState.notes, localNotes.length);
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
@@ -55,8 +58,6 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/login'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
@@ -91,17 +92,51 @@ describe('Auth', () => {
 
       await s.login();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/login'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
+    });
+
+    it('With encryptor error', async () => {
+      const { calls } = mockApi({
+        request: {
+          resValue: {
+            '/login': [
+              { notes: [{ id: '0', timestamp: 0, content: 'Unencrypted content' }] },
+            ],
+          },
+        },
+      });
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      assertAppError({
+        code: ERROR_CODE.ENCRYPTOR,
+        message: 'Note encryption/decryption failed',
+        retry: { fn: s.login },
+        display: { form: true, sync: true },
+      });
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.request.has('/login'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -125,39 +160,29 @@ describe('Auth', () => {
 
       await s.login();
 
+      assertAppError({
+        code: ERROR_CODE.LOGIN,
+        retry: { fn: s.login },
+        display: { form: true, sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
       assert.isEmpty(n.noteState.notes);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.password, '1');
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/login'));
     });
 
-    it('Sets and resets loading state', async () => {
-      mockApi();
+    it('Sets and resets loading state', () => {
+      return assertLoadingState(() => {
+        s.syncState.username = 'd';
+        s.syncState.password = '1';
 
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
-      await s.login();
-
-      const fetchDataSpy = vi.spyOn(s, 'fetchData');
-      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
-
-      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
-
-      try {
-        await s.logout();
-      } catch {
-        expect(isLoadingSpy).toHaveBeenCalledWith(true);
-        assert.isFalse(s.syncState.isLoading);
-      }
-
-      expect(fetchDataSpy).toHaveBeenCalledOnce();
+        return s.login();
+      });
     });
   });
 
@@ -170,14 +195,13 @@ describe('Auth', () => {
 
       await s.signup();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.isEmpty(n.noteState.notes);
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
       assert.isTrue(calls.emits.has('auth'));
@@ -203,15 +227,15 @@ describe('Auth', () => {
 
       await s.signup();
 
+      expect(unsyncedClearSpy).toHaveBeenCalledOnce();
+
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
-      expect(unsyncedClearSpy).toHaveBeenCalledOnce();
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
       assert.isTrue(calls.emits.has('auth'));
@@ -239,14 +263,13 @@ describe('Auth', () => {
 
       await s.signup();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(s.syncState.username, 'k');
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'k');
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/signup'));
       assert.isTrue(calls.emits.has('auth'));
@@ -256,6 +279,26 @@ describe('Auth', () => {
           is_logged_in: true,
         },
       });
+    });
+
+    it('With encryptor error', async () => {
+      const { calls } = mockApi();
+
+      await n.getAllNotes();
+
+      clearMockApiResults({ calls });
+
+      await s.signup();
+
+      assertAppError({
+        code: ERROR_CODE.ENCRYPTOR,
+        message: 'Note encryption/decryption failed',
+        retry: { fn: s.signup },
+        display: { form: true, sync: true },
+      });
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(calls.size, 0);
     });
 
     it('With server error', async () => {
@@ -272,37 +315,29 @@ describe('Auth', () => {
 
       await s.signup();
 
+      assertAppError({
+        code: ERROR_CODE.SIGNUP,
+        retry: { fn: s.signup },
+        display: { form: true, sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
       assert.isEmpty(n.noteState.notes);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.strictEqual(s.syncState.password, '2');
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/signup'));
     });
 
-    it('Sets and resets loading state', async () => {
-      mockApi();
+    it('Sets and resets loading state', () => {
+      return assertLoadingState(() => {
+        s.syncState.username = 'd';
+        s.syncState.password = '1';
 
-      const fetchDataSpy = vi.spyOn(s, 'fetchData');
-      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
-
-      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
-
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
-      try {
-        await s.signup();
-      } catch {
-        expect(isLoadingSpy).toHaveBeenCalledWith(true);
-        assert.isFalse(s.syncState.isLoading);
-      }
-
-      expect(fetchDataSpy).toHaveBeenCalledOnce();
+        return s.signup();
+      });
     });
   });
 
@@ -320,12 +355,11 @@ describe('Auth', () => {
 
       await s.logout();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/logout'));
       assert.isTrue(calls.emits.has('auth'));
@@ -355,12 +389,11 @@ describe('Auth', () => {
 
       await s.logout();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.USERNAME));
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/logout'));
       assert.isTrue(calls.emits.has('auth'));
@@ -372,27 +405,15 @@ describe('Auth', () => {
       });
     });
 
-    it('Sets and resets loading state', async () => {
-      mockApi();
+    it('Sets and resets loading state', () => {
+      return assertLoadingState(async () => {
+        s.syncState.username = 'd';
+        s.syncState.password = '1';
 
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
+        await s.login();
 
-      await s.login();
-
-      const fetchDataSpy = vi.spyOn(s, 'fetchData');
-      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
-
-      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
-
-      try {
-        await s.logout();
-      } catch {
-        expect(isLoadingSpy).toHaveBeenCalledWith(true);
-        assert.isFalse(s.syncState.isLoading);
-      }
-
-      expect(fetchDataSpy).toHaveBeenCalledOnce();
+        return s.logout();
+      });
     });
   });
 });

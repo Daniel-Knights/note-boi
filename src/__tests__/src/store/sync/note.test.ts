@@ -3,11 +3,14 @@ import { mount, shallowMount } from '@vue/test-utils';
 
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
+import { ERROR_CODE } from '../../../../appError';
 import { STORAGE_KEYS } from '../../../../constant';
 import { isEmptyNote, localStorageParse } from '../../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
 import {
+  assertAppError,
+  assertLoadingState,
   copyObjArr,
   findByTestId,
   getByTestId,
@@ -50,15 +53,58 @@ describe('Note (sync)', () => {
 
       await s.pull();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: true,
+        },
+      });
+    });
+
+    it('With encryptor error', async () => {
+      const { calls } = mockApi({
+        invoke: {
+          resValue: {
+            get_all_notes: [[]],
+          },
+        },
+        request: {
+          resValue: {
+            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
+          },
+        },
+      });
+
+      s.syncState.username = 'd';
+
+      await n.getAllNotes();
+
+      clearMockApiResults({ calls });
+
+      await s.pull();
+
+      assertAppError({
+        code: ERROR_CODE.ENCRYPTOR,
+        message: 'Note encryption/decryption failed',
+        retry: { fn: s.pull },
+        display: { sync: true },
+      });
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -86,6 +132,12 @@ describe('Note (sync)', () => {
 
       await s.pull();
 
+      assertAppError({
+        code: ERROR_CODE.PULL,
+        retry: { fn: s.pull },
+        display: { sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
       assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
@@ -93,8 +145,6 @@ describe('Note (sync)', () => {
       assert.strictEqual(n.noteState.notes[0]!.id, n.noteState.selectedNote.id);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Pull);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/pull'));
     });
@@ -119,9 +169,13 @@ describe('Note (sync)', () => {
 
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
+      assertAppError({
+        code: ERROR_CODE.PULL,
+        retry: { fn: s.pull },
+        display: { sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Pull);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.emits.has('auth'));
@@ -145,9 +199,13 @@ describe('Note (sync)', () => {
 
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
+      assertAppError({
+        code: ERROR_CODE.PULL,
+        retry: { fn: s.pull },
+        display: { sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Pull);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.emits.has('auth'));
@@ -265,27 +323,10 @@ describe('Note (sync)', () => {
       assertNoteItemText(newRemoteNote.id, 'New note-body');
     });
 
-    it('Sets and resets loading state', async () => {
-      mockApi();
-
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
-      await s.login();
-
-      const fetchDataSpy = vi.spyOn(s, 'fetchData');
-      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
-
-      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
-
-      try {
-        await s.pull();
-      } catch {
-        expect(isLoadingSpy).toHaveBeenCalledWith(true);
-        assert.isFalse(s.syncState.isLoading);
-      }
-
-      expect(fetchDataSpy).toHaveBeenCalledOnce();
+    it('Sets and resets loading state', () => {
+      return assertLoadingState(() => {
+        return s.pull();
+      });
     });
   });
 
@@ -313,6 +354,7 @@ describe('Note (sync)', () => {
 
       await s.push();
 
+      assertAppError();
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
       assert.isFalse(s.syncState.isLoading);
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
@@ -320,8 +362,6 @@ describe('Note (sync)', () => {
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/push'));
     });
@@ -343,10 +383,37 @@ describe('Note (sync)', () => {
 
       await s.push();
 
+      assertAppError();
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
+      assert.strictEqual(calls.size, 0);
+    });
+
+    it('With encryptor error', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      n.editNote({}, 'Title', 'Body');
+
+      await s.KeyStore.reset();
+
+      clearMockApiResults({ calls });
+
+      await s.push(true);
+
+      assertAppError({
+        code: ERROR_CODE.ENCRYPTOR,
+        message: 'Note encryption/decryption failed',
+        retry: { fn: s.push, args: [true] },
+        display: { sync: true },
+      });
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(n.noteState.notes.length, 1);
       assert.strictEqual(calls.size, 0);
     });
 
@@ -370,10 +437,14 @@ describe('Note (sync)', () => {
 
       await s.push();
 
+      assertAppError({
+        code: ERROR_CODE.PUSH,
+        retry: { fn: s.push, args: [] },
+        display: { sync: true },
+      });
+
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Push);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/push'));
     });
@@ -403,9 +474,13 @@ describe('Note (sync)', () => {
 
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
+      assertAppError({
+        code: ERROR_CODE.PUSH,
+        retry: { fn: s.push, args: [] },
+        display: { sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Push);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
       assert.isTrue(calls.emits.has('auth'));
@@ -438,9 +513,13 @@ describe('Note (sync)', () => {
 
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
+      assertAppError({
+        code: ERROR_CODE.PUSH,
+        retry: { fn: s.push, args: [] },
+        display: { sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Push);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
       assert.isTrue(calls.emits.has('auth'));
@@ -452,29 +531,17 @@ describe('Note (sync)', () => {
       });
     });
 
-    it('Sets and resets loading state', async () => {
-      mockApi();
+    it('Sets and resets loading state', () => {
+      return assertLoadingState(async () => {
+        s.syncState.username = 'd';
+        s.syncState.password = '1';
 
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
+        await s.login();
 
-      await s.login();
+        n.editNote({}, 'title', 'body');
 
-      n.editNote({}, 'title', 'body');
-
-      const fetchDataSpy = vi.spyOn(s, 'fetchData');
-      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
-
-      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
-
-      try {
-        await s.push();
-      } catch {
-        expect(isLoadingSpy).toHaveBeenCalledWith(true);
-        assert.isFalse(s.syncState.isLoading);
-      }
-
-      expect(fetchDataSpy).toHaveBeenCalledOnce();
+        return s.push();
+      });
     });
   });
 
@@ -823,6 +890,7 @@ describe('Note (sync)', () => {
 
       await s.login();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.isTrue(findByTestId(wrapper, 'success').exists());
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
@@ -831,8 +899,6 @@ describe('Note (sync)', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
     });
 
     it('No remote, some local', async () => {
@@ -854,6 +920,7 @@ describe('Note (sync)', () => {
 
       await s.login();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.isTrue(findByTestId(wrapper, 'success').exists());
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
@@ -862,8 +929,6 @@ describe('Note (sync)', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
     });
 
     it('No local, no remote', async () => {
@@ -891,6 +956,7 @@ describe('Note (sync)', () => {
 
       await s.login();
 
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.isTrue(findByTestId(wrapper, 'success').exists());
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
@@ -899,8 +965,6 @@ describe('Note (sync)', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
     });
   });
 });

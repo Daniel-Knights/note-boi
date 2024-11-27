@@ -4,6 +4,7 @@ import { exit, relaunch } from '@tauri-apps/plugin-process';
 import 'quill/dist/quill.snow.css';
 import { createApp } from 'vue';
 
+import { ERROR_CODE } from './appError';
 import { initLogger } from './log';
 import './sass/_button.scss';
 import './sass/_form.scss';
@@ -17,7 +18,7 @@ import {
   noteState,
 } from './store/note';
 import { openedPopup, PopupType } from './store/popup';
-import { deleteAccount, ErrorKind, push, syncState } from './store/sync';
+import { deleteAccount, push, syncState } from './store/sync';
 import { handleUpdate } from './store/update';
 import { isDev, tauriListen } from './utils';
 
@@ -53,7 +54,7 @@ export async function exitApp(cb: () => void): Promise<void> {
   if (syncState.unsyncedNoteIds.size > 0) {
     await push();
 
-    if (syncState.error.kind === ErrorKind.Push) {
+    if (syncState.appError.code === ERROR_CODE.PUSH) {
       const closeAnyway = await dialog.ask(
         'ERROR: Failed to push unsynced notes.\nClose anyway?',
         {

@@ -1,6 +1,9 @@
+import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
+import { ERROR_CODE } from '../../../../appError';
 import { STORAGE_KEYS } from '../../../../constant';
 import { clearMockApiResults, mockApi, mockDb } from '../../../api';
+import { assertAppError, assertLoadingState } from '../../../utils';
 
 describe('Account', () => {
   describe('changePassword', () => {
@@ -27,12 +30,16 @@ describe('Account', () => {
 
       await s.changePassword();
 
+      assertAppError({
+        code: ERROR_CODE.CHANGE_PASSWORD,
+        retry: { fn: s.changePassword },
+        display: { form: true, sync: true },
+      });
+
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/account/password/change'));
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
 
       s.syncState.password = '1';
@@ -42,14 +49,33 @@ describe('Account', () => {
 
       await s.changePassword();
 
+      assertAppError();
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/account/password/change'));
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
+    });
+
+    it('With encryptor error', async () => {
+      const { calls } = mockApi();
+
+      await n.getAllNotes();
+
+      clearMockApiResults({ calls });
+
+      await s.changePassword();
+
+      assertAppError({
+        code: ERROR_CODE.ENCRYPTOR,
+        message: 'Note encryption/decryption failed',
+        retry: { fn: s.changePassword },
+        display: { form: true, sync: true },
+      });
+
+      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(calls.size, 0);
     });
 
     it('With server error', async () => {
@@ -74,10 +100,14 @@ describe('Account', () => {
 
       await s.changePassword();
 
+      assertAppError({
+        code: ERROR_CODE.CHANGE_PASSWORD,
+        retry: { fn: s.changePassword },
+        display: { form: true, sync: true },
+      });
+
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/account/password/change'));
@@ -105,10 +135,14 @@ describe('Account', () => {
 
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
+      assertAppError({
+        code: ERROR_CODE.CHANGE_PASSWORD,
+        retry: { fn: s.changePassword },
+        display: { form: true, sync: true },
+      });
+
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/account/password/change'));
@@ -121,30 +155,18 @@ describe('Account', () => {
       });
     });
 
-    it('Sets and resets loading state', async () => {
-      mockApi();
+    it('Sets and resets loading state', () => {
+      return assertLoadingState(async () => {
+        s.syncState.username = 'd';
+        s.syncState.password = '1';
 
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
+        await s.login();
 
-      await s.login();
+        s.syncState.password = '1';
+        s.syncState.newPassword = '2';
 
-      const fetchDataSpy = vi.spyOn(s, 'fetchData');
-      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
-
-      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
-
-      s.syncState.password = '1';
-      s.syncState.newPassword = '2';
-
-      try {
-        await s.changePassword();
-      } catch {
-        expect(isLoadingSpy).toHaveBeenCalledWith(true);
-        assert.isFalse(s.syncState.isLoading);
-      }
-
-      expect(fetchDataSpy).toHaveBeenCalledOnce();
+        return s.changePassword();
+      });
     });
   });
 
@@ -172,8 +194,7 @@ describe('Account', () => {
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.None);
-      assert.isEmpty(s.syncState.error.message);
+      assertAppError();
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
@@ -229,11 +250,15 @@ describe('Account', () => {
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
 
+      assertAppError({
+        code: ERROR_CODE.DELETE_ACCOUNT,
+        retry: { fn: s.deleteAccount },
+        display: { sync: true },
+      });
+
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
@@ -265,8 +290,12 @@ describe('Account', () => {
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
+      assertAppError({
+        code: ERROR_CODE.DELETE_ACCOUNT,
+        retry: { fn: s.deleteAccount },
+        display: { sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
@@ -300,8 +329,12 @@ describe('Account', () => {
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
-      assert.strictEqual(s.syncState.error.kind, s.ErrorKind.Auth);
-      assert.isNotEmpty(s.syncState.error.message);
+      assertAppError({
+        code: ERROR_CODE.DELETE_ACCOUNT,
+        retry: { fn: s.deleteAccount },
+        display: { sync: true },
+      });
+
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
@@ -315,27 +348,15 @@ describe('Account', () => {
       });
     });
 
-    it('Sets and resets loading state', async () => {
-      mockApi();
+    it('Sets and resets loading state', () => {
+      return assertLoadingState(async () => {
+        s.syncState.username = 'd';
+        s.syncState.password = '1';
 
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
+        await s.login();
 
-      await s.login();
-
-      const fetchDataSpy = vi.spyOn(s, 'fetchData');
-      const isLoadingSpy = vi.spyOn(s.syncState, 'isLoading', 'set');
-
-      fetchDataSpy.mockRejectedValue(new Error('Mock reject'));
-
-      try {
-        await s.deleteAccount();
-      } catch {
-        expect(isLoadingSpy).toHaveBeenCalledWith(true);
-        assert.isFalse(s.syncState.isLoading);
-      }
-
-      expect(fetchDataSpy).toHaveBeenCalledOnce();
+        return s.deleteAccount();
+      });
     });
   });
 });
