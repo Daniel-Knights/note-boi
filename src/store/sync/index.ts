@@ -1,12 +1,12 @@
 import { reactive } from 'vue';
 
 import { AppError } from '../../appError';
-import { STORAGE_KEYS } from '../../constant';
+import { storage } from '../../storage';
 
 import { storedUnsyncedNoteIds, UnsyncedNoteIds } from './note';
 
 export const syncState = reactive({
-  username: localStorage.getItem(STORAGE_KEYS.USERNAME) || '',
+  username: storage.get('USERNAME') || '',
   password: '',
   newPassword: '',
   isLoading: false,
@@ -24,7 +24,7 @@ export const syncState = reactive({
       this.new = '';
       this.edited.clear();
       this.deleted.clear();
-      localStorage.removeItem(STORAGE_KEYS.UNSYNCED);
+      storage.remove('UNSYNCED');
     },
     add(ids): void {
       if (ids.new !== undefined) this.new = ids.new;
@@ -44,14 +44,11 @@ export const syncState = reactive({
         this.new = '';
       }
 
-      localStorage.setItem(
-        STORAGE_KEYS.UNSYNCED,
-        JSON.stringify({
-          new: this.new,
-          edited: [...this.edited],
-          deleted: [...this.deleted],
-        })
-      );
+      storage.setJson('UNSYNCED', {
+        new: this.new,
+        edited: [...this.edited],
+        deleted: [...this.deleted],
+      });
     },
   },
 });

@@ -12,15 +12,6 @@ export const NOTE_EVENTS = {
   unsynced: 'note-unsynced',
 } as const;
 
-export const STORAGE_KEYS = {
-  USERNAME: 'username',
-  UNSYNCED: 'unsynced-note-ids',
-  THEME: 'theme',
-  MENU_WIDTH: 'note-menu-width',
-  UPDATE_SEEN: 'update-seen',
-  UPDATE_STRATEGY: 'update-strategy',
-} as const;
-
 // Endpoints
 export type EndpointPayloads = {
   '/signup': {
@@ -152,3 +143,13 @@ export const TAURI_LISTENERS = [
 ] as const;
 
 export type TauriListener = (typeof TAURI_LISTENERS)[number];
+
+// Update strategies
+export const UPDATE_STRATEGIES = ['auto', 'manual'] as const;
+
+export type UpdateStrategy = (typeof UPDATE_STRATEGIES)[number];
+
+// Colour themes
+export const COLOUR_THEMES = ['Light', 'Dark', 'System'] as const;
+
+export type ColourTheme = (typeof COLOUR_THEMES)[number];

@@ -4,6 +4,7 @@ import { indexedDB } from 'fake-indexeddb';
 import crypto from 'node:crypto';
 
 import * as s from '../store/sync';
+import { storage } from '../storage';
 
 import { mockDb } from './api';
 import localNotes from './notes.json';
@@ -40,7 +41,7 @@ afterEach(async () => {
 
   clearMocks();
 
-  localStorage.clear();
+  storage.clear();
   document.body.innerHTML = '';
 
   expect(assertFailSpy).not.toHaveBeenCalled();

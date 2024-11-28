@@ -2,7 +2,7 @@ import { shallowMount, VueWrapper } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
-import { STORAGE_KEYS } from '../../../constant';
+import { storage } from '../../../storage';
 import { isEmptyNote } from '../../../utils';
 import { mockApi } from '../../api';
 import localNotes from '../../notes.json';
@@ -190,7 +190,7 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.isNotNull(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH));
+    assert.isNotNull(storage.get('MENU_WIDTH'));
 
     await dragBar.trigger('mousedown');
 
@@ -213,7 +213,7 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.MENU_WIDTH), '400px');
+    assert.strictEqual(storage.get('MENU_WIDTH'), '400px');
   });
 
   it('Toggles menu visibility', async () => {

@@ -4,9 +4,10 @@ import { nextTick } from 'vue';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import * as u from '../../../store/update';
-import { STORAGE_KEYS } from '../../../constant';
+import { COLOUR_THEMES } from '../../../constant';
+import { storage } from '../../../storage';
 import { openedPopup, PopupType } from '../../../store/popup';
-import { COLOUR_THEMES, selectedTheme } from '../../../store/theme';
+import { selectedTheme } from '../../../store/theme';
 import { clearMockApiResults, mockApi } from '../../api';
 import {
   findByTestId,
@@ -81,7 +82,7 @@ describe('Settings', () => {
       await currentThemeWrapper.trigger('click');
 
       assert.strictEqual(selectedTheme.value, theme);
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.THEME), theme);
+      assert.strictEqual(storage.get('THEME'), theme);
       assert.isTrue(currentThemeWrapper.classes('drop-menu__item--selected'));
     }
   });
@@ -110,7 +111,7 @@ describe('Settings', () => {
     const updateAutoWrapper = findByTestId(wrapper, 'update-auto');
 
     assert.strictEqual(u.updateState.strategy, 'manual');
-    assert.isNull(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY));
+    assert.isNull(storage.get('UPDATE_STRATEGY'));
 
     await updateAutoWrapper.trigger('click');
     await Promise.all(promises);
@@ -119,7 +120,7 @@ describe('Settings', () => {
     expect(setUpdateStrategySpy).toHaveBeenCalledWith('auto');
     assert.strictEqual(calls.size, 0);
     assert.strictEqual(u.updateState.strategy, 'auto');
-    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY), 'auto');
+    assert.strictEqual(storage.get('UPDATE_STRATEGY'), 'auto');
 
     const updateManualWrapper = findByTestId(wrapper, 'update-manual');
 
@@ -132,7 +133,7 @@ describe('Settings', () => {
     expect(setUpdateStrategySpy).toHaveBeenCalledWith('manual');
     assert.strictEqual(calls.size, 0);
     assert.strictEqual(u.updateState.strategy, 'manual');
-    assert.strictEqual(localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY), 'manual');
+    assert.strictEqual(storage.get('UPDATE_STRATEGY'), 'manual');
   });
 
   it('Opens info popup', async () => {

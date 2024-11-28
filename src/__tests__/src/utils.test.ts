@@ -5,7 +5,6 @@ import {
   isDev,
   isEmptyNote,
   isWhitespaceOnly,
-  localStorageParse,
   tauriEmit,
   tauriInvoke,
   tauriListen,
@@ -24,39 +23,6 @@ describe('Utils', () => {
 
     // 6 is for GitHub workflow, 7 is for local testing
     assert.isTrue(/Apr 15, 2022, (6|7):11 AM/.test(formattedDateTime));
-  });
-
-  it('localStorageParse', () => {
-    const storedItem = localStorageParse('null');
-
-    assert.isNull(storedItem);
-
-    localStorage.setItem(
-      'key',
-      JSON.stringify({
-        value: 'value',
-        set: new Set(),
-        array: [1, 2, 3],
-        nested: {
-          value: 'value',
-          set: new Set(),
-          array: [1, 2, 3],
-        },
-      })
-    );
-
-    const storedItem2 = localStorageParse('key');
-
-    assert.deepEqual(storedItem2, {
-      value: 'value',
-      set: {},
-      array: [1, 2, 3],
-      nested: {
-        value: 'value',
-        set: {},
-        array: [1, 2, 3],
-      },
-    });
   });
 
   it('isWhitespaceOnly', () => {

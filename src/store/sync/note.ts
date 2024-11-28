@@ -1,6 +1,7 @@
 import { AppError, ERROR_CODE, ErrorConfig } from '../../appError';
-import { NOTE_EVENTS, STORAGE_KEYS } from '../../constant';
-import { isEmptyNote, localStorageParse, tauriEmit, tauriInvoke } from '../../utils';
+import { NOTE_EVENTS } from '../../constant';
+import { storage } from '../../storage';
+import { isEmptyNote, tauriEmit, tauriInvoke } from '../../utils';
 import {
   findNote,
   newNote,
@@ -31,16 +32,7 @@ export type UnsyncedNoteIds = {
   add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
 };
 
-export type StoredUnsyncedNoteIds = {
-  new: string;
-  // The original Set objects are stringified as arrays for storage
-  edited: string[];
-  deleted: string[];
-};
-
-export const storedUnsyncedNoteIds: StoredUnsyncedNoteIds | null = localStorageParse(
-  STORAGE_KEYS.UNSYNCED
-);
+export const storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
 
 /** Syncs local and remote notes. */
 export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {

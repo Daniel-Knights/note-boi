@@ -16,16 +16,12 @@
 import { check } from '@tauri-apps/plugin-updater';
 import { computed, ref } from 'vue';
 
+import { COLOUR_THEMES, UPDATE_STRATEGIES } from '../constant';
 import { exportNotes, noteState } from '../store/note';
 import { openedPopup, PopupType } from '../store/popup';
 import { deleteAccount, syncState } from '../store/sync';
-import { COLOUR_THEMES, selectedTheme, setTheme } from '../store/theme';
-import {
-  setUpdateStrategy,
-  UPDATE_STRATEGIES,
-  updateAndRelaunch,
-  updateState,
-} from '../store/update';
+import { selectedTheme, setTheme } from '../store/theme';
+import { setUpdateStrategy, updateAndRelaunch, updateState } from '../store/update';
 import { capitalise } from '../utils';
 
 import { DropMenuItemData } from './types';

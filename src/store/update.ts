@@ -3,17 +3,12 @@ import { relaunch } from '@tauri-apps/plugin-process';
 import { check, Update } from '@tauri-apps/plugin-updater';
 import { reactive } from 'vue';
 
-import { STORAGE_KEYS } from '../constant';
-
-export const UPDATE_STRATEGIES = ['auto', 'manual'] as const;
-
-export type UpdateStrategy = (typeof UPDATE_STRATEGIES)[number];
+import { storage } from '../storage';
 
 export const updateState = reactive({
   isAvailable: false,
   isDownloading: false,
-  strategy:
-    (localStorage.getItem(STORAGE_KEYS.UPDATE_STRATEGY) as 'auto' | 'manual') ?? 'manual',
+  strategy: storage.get('UPDATE_STRATEGY') ?? 'manual',
 });
 
 export async function handleUpdate(): Promise<void> {
@@ -29,7 +24,7 @@ export async function handleUpdate(): Promise<void> {
   const newVersion = update.version;
 
   // Check if the user has already been notified
-  const seenVersion = localStorage.getItem(STORAGE_KEYS.UPDATE_SEEN);
+  const seenVersion = storage.get('UPDATE_SEEN');
   if (seenVersion === newVersion) return;
 
   const shouldInstall = await dialog.ask(
@@ -37,7 +32,7 @@ export async function handleUpdate(): Promise<void> {
     `Update available: v${newVersion}`
   );
   if (!shouldInstall) {
-    localStorage.setItem(STORAGE_KEYS.UPDATE_SEEN, newVersion);
+    storage.set('UPDATE_SEEN', newVersion);
 
     return;
   }
@@ -70,5 +65,5 @@ export async function updateAndRelaunch(update: Update): Promise<void> {
 export function setUpdateStrategy(strategy: 'auto' | 'manual'): void {
   updateState.strategy = strategy;
 
-  localStorage.setItem(STORAGE_KEYS.UPDATE_STRATEGY, strategy);
+  storage.set('UPDATE_STRATEGY', strategy);
 }

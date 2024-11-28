@@ -1,5 +1,5 @@
 import { AppError, ERROR_CODE, ErrorConfig } from '../../appError';
-import { STORAGE_KEYS } from '../../constant';
+import { storage } from '../../storage';
 import { isEmptyNote, tauriEmit } from '../../utils';
 import { noteState } from '../note';
 
@@ -18,7 +18,7 @@ export function clientSideLogout(): Promise<void> {
   syncState.username = '';
   syncState.isLoggedIn = false;
 
-  localStorage.removeItem(STORAGE_KEYS.USERNAME);
+  storage.remove('USERNAME');
 
   KeyStore.reset();
 
@@ -51,7 +51,7 @@ export async function login(): Promise<void> {
       syncState.password = '';
       syncState.isLoggedIn = true;
 
-      localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
+      storage.set('USERNAME', syncState.username);
 
       resetAppError();
       tauriEmit('auth', { is_logged_in: true });
@@ -112,7 +112,7 @@ export async function signup(): Promise<void> {
       syncState.isLoggedIn = true;
       syncState.unsyncedNoteIds.clear();
 
-      localStorage.setItem(STORAGE_KEYS.USERNAME, syncState.username);
+      storage.set('USERNAME', syncState.username);
     } else {
       syncState.appError = new AppError({
         ...errorConfig,

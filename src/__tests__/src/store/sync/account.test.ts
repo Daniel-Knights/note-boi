@@ -1,7 +1,7 @@
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { ERROR_CODE } from '../../../../appError';
-import { STORAGE_KEYS } from '../../../../constant';
+import { storage } from '../../../../storage';
 import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import { assertAppError, assertLoadingState } from '../../../utils';
 
@@ -21,7 +21,7 @@ describe('Account', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(storage.get('USERNAME'), 'd');
 
       s.syncState.password = '2';
       s.syncState.newPassword = '1';
@@ -187,7 +187,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(storage.get('USERNAME'), 'd');
 
       await s.deleteAccount();
 
@@ -244,7 +244,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(storage.get('USERNAME'), 'd');
 
       await s.deleteAccount();
 
@@ -258,7 +258,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(localStorage.getItem(STORAGE_KEYS.USERNAME), 'd');
+      assert.strictEqual(storage.get('USERNAME'), 'd');
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
