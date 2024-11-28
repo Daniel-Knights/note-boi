@@ -61,26 +61,26 @@ describe('main', () => {
     it('With no unsynced notes', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const spyPush = vi.spyOn(s, 'push');
+      const pushSpy = vi.spyOn(s, 'push');
 
       await main.exitApp(mockCb);
 
       expect(mockCb).toHaveBeenCalledOnce();
-      expect(spyPush).not.toHaveBeenCalled();
+      expect(pushSpy).not.toHaveBeenCalled();
       assert.strictEqual(calls.size, 0);
     });
 
     it('With unsynced notes', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const spyPush = vi.spyOn(s, 'push');
+      const pushSpy = vi.spyOn(s, 'push');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
 
       await main.exitApp(mockCb);
 
       expect(mockCb).toHaveBeenCalledOnce();
-      expect(spyPush).toHaveBeenCalledOnce();
+      expect(pushSpy).toHaveBeenCalledOnce();
       assert.strictEqual(calls.size, 0);
     });
 
@@ -93,7 +93,7 @@ describe('main', () => {
         },
       });
       const mockCb = vi.fn();
-      const spyPush = vi.spyOn(s, 'push');
+      const pushSpy = vi.spyOn(s, 'push');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
       s.syncState.appError = new AppError({ code: ERROR_CODE.PUSH });
@@ -101,7 +101,7 @@ describe('main', () => {
       await main.exitApp(mockCb);
 
       expect(mockCb).not.toHaveBeenCalledOnce();
-      expect(spyPush).toHaveBeenCalledOnce();
+      expect(pushSpy).toHaveBeenCalledOnce();
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
 
@@ -122,7 +122,7 @@ describe('main', () => {
     it('Triggers ask dialog on push error, and answers "Yes"', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const spyPush = vi.spyOn(s, 'push');
+      const pushSpy = vi.spyOn(s, 'push');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
       s.syncState.appError = new AppError({ code: ERROR_CODE.PUSH });
@@ -136,7 +136,7 @@ describe('main', () => {
       await main.exitApp(mockCb);
 
       expect(mockCb).toHaveBeenCalledOnce();
-      expect(spyPush).toHaveBeenCalledOnce();
+      expect(pushSpy).toHaveBeenCalledOnce();
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
 

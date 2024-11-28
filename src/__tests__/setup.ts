@@ -9,7 +9,7 @@ import { mockDb } from './api';
 import localNotes from './notes.json';
 import { resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
 
-const spyAssertFail = vi.spyOn(assert, 'fail');
+const assertFailSpy = vi.spyOn(assert, 'fail');
 
 const initialMockDb = structuredClone(mockDb);
 
@@ -43,7 +43,7 @@ afterEach(async () => {
   localStorage.clear();
   document.body.innerHTML = '';
 
-  expect(spyAssertFail).not.toHaveBeenCalled();
+  expect(assertFailSpy).not.toHaveBeenCalled();
 });
 
 enableAutoUnmount(afterEach);

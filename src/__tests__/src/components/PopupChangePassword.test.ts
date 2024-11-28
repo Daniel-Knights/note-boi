@@ -112,12 +112,12 @@ describe('PopupChangePassword', () => {
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isTrue(wrapperVm.validation.confirmNewPassword);
 
-    const spyChangePassword = vi.spyOn(s, 'changePassword');
+    const changePasswordSpy = vi.spyOn(s, 'changePassword');
 
     const formWrapper = getByTestId(wrapper, 'form');
     await formWrapper.trigger('submit');
 
-    expect(spyChangePassword).not.toHaveBeenCalled();
+    expect(changePasswordSpy).not.toHaveBeenCalled();
 
     assertAppError();
     assert.isFalse(wrapperVm.validation.currentPassword);
@@ -165,7 +165,7 @@ describe('PopupChangePassword', () => {
 
     confirmNewPasswordInput.setValue('123456');
 
-    expect(spyChangePassword).not.toHaveBeenCalled();
+    expect(changePasswordSpy).not.toHaveBeenCalled();
 
     assert.isTrue(wrapperVm.validation.currentPassword);
     assert.isTrue(wrapperVm.validation.newPassword);
@@ -180,7 +180,7 @@ describe('PopupChangePassword', () => {
     await formWrapper.trigger('submit');
     await waitUntil(() => !s.syncState.isLoading);
 
-    expect(spyChangePassword).toHaveBeenCalledOnce();
+    expect(changePasswordSpy).toHaveBeenCalledOnce();
 
     assertAppError();
     assert.isEmpty(wrapperVm.confirmNewPassword);

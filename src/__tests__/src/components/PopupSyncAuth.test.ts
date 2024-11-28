@@ -122,14 +122,14 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      const spyLogin = vi.spyOn(s, 'login');
-      const spySignup = vi.spyOn(s, 'signup');
+      const loginSpy = vi.spyOn(s, 'login');
+      const signupSpy = vi.spyOn(s, 'signup');
 
       const formWrapper = getByTestId(wrapper, 'form');
       await formWrapper.trigger('submit');
 
-      expect(spyLogin).not.toHaveBeenCalled();
-      expect(spySignup).not.toHaveBeenCalled();
+      expect(loginSpy).not.toHaveBeenCalled();
+      expect(signupSpy).not.toHaveBeenCalled();
 
       assertAppError();
       assert.isFalse(wrapperVm.validation.username);
@@ -155,8 +155,8 @@ describe('PopupSyncAuth', () => {
       await formWrapper.trigger('submit');
       await waitUntil(() => !s.syncState.isLoading);
 
-      expect(spyLogin).toHaveBeenCalledOnce();
-      expect(spySignup).not.toHaveBeenCalled();
+      expect(loginSpy).toHaveBeenCalledOnce();
+      expect(signupSpy).not.toHaveBeenCalled();
 
       assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
@@ -206,14 +206,14 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      const spyLogin = vi.spyOn(s, 'login');
-      const spySignup = vi.spyOn(s, 'signup');
+      const loginSpy = vi.spyOn(s, 'login');
+      const signupSpy = vi.spyOn(s, 'signup');
 
       const formWrapper = getByTestId(wrapper, 'form');
       await formWrapper.trigger('submit');
 
-      expect(spyLogin).not.toHaveBeenCalled();
-      expect(spySignup).not.toHaveBeenCalled();
+      expect(loginSpy).not.toHaveBeenCalled();
+      expect(signupSpy).not.toHaveBeenCalled();
 
       assert.isFalse(wrapperVm.validation.username);
       assert.isFalse(wrapperVm.validation.password);
@@ -264,16 +264,16 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.username);
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
-      expect(spyLogin).not.toHaveBeenCalled();
-      expect(spySignup).not.toHaveBeenCalled();
+      expect(loginSpy).not.toHaveBeenCalled();
+      expect(signupSpy).not.toHaveBeenCalled();
 
       clearMockApiResults({ calls });
 
       await formWrapper.trigger('submit');
       await waitUntil(() => !s.syncState.isLoading);
 
-      expect(spyLogin).not.toHaveBeenCalled();
-      expect(spySignup).toHaveBeenCalledOnce();
+      expect(loginSpy).not.toHaveBeenCalled();
+      expect(signupSpy).toHaveBeenCalledOnce();
 
       assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
