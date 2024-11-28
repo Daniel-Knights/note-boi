@@ -41,7 +41,7 @@
 
 <script lang="ts" setup>
 import { openedPopup, PopupType } from '../store/popup';
-import { logout, pull, resetAppError, syncState } from '../store/sync';
+import { logout, resetAppError, syncState } from '../store/sync';
 import { tauriListen } from '../utils';
 
 import PopupSyncAuth from './PopupSyncAuth.vue';
@@ -74,10 +74,6 @@ tauriListen('signup', () => {
   syncState.isLogin = false;
   handlePopupAuthEvent();
 });
-
-if (syncState.username) {
-  pull();
-}
 </script>
 
 <style lang="scss" scoped>
