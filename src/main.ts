@@ -18,7 +18,7 @@ import {
   noteState,
 } from './store/note';
 import { openedPopup, PopupType } from './store/popup';
-import { deleteAccount, push, syncState } from './store/sync';
+import { deleteAccount, pull, push, syncState } from './store/sync';
 import { handleUpdate } from './store/update';
 import { isDev, tauriListen } from './utils';
 
@@ -28,6 +28,10 @@ createApp(App).mount('#app');
 initLogger();
 getAllNotes();
 handleUpdate();
+
+if (syncState.username) {
+  pull();
+}
 
 webview.getCurrentWebview().listen('tauri://close-requested', () => {
   exitApp(exit);

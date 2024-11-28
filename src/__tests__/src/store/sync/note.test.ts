@@ -1,5 +1,6 @@
 import { clearMocks } from '@tauri-apps/api/mocks';
 import { mount, shallowMount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
@@ -569,6 +570,8 @@ describe('Note (sync)', () => {
         },
       });
 
+      await n.getAllNotes();
+
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
@@ -580,16 +583,20 @@ describe('Note (sync)', () => {
 
       const statusWrapper = mount(SyncStatus);
 
+      s.pull();
+
+      await nextTick();
+
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
-
-      await waitUntil(() => !s.syncState.isLoading);
-
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.isNull(localStorage.getItem(STORAGE_KEYS.UNSYNCED));
 
+      // New note mid-pull
       const newButton = getByTestId(wrapper, 'new');
       await newButton.trigger('click');
+
+      await waitUntil(() => !s.syncState.isLoading);
 
       assertNotOverwritten();
 
@@ -685,6 +692,10 @@ describe('Note (sync)', () => {
 
       const statusWrapper = mount(SyncStatus);
 
+      s.pull();
+
+      await nextTick();
+
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
 
@@ -775,6 +786,10 @@ describe('Note (sync)', () => {
       assert.strictEqual(storedUnsyncedNoteIds?.deleted[0], firstCachedNote.id);
 
       const statusWrapper = mount(SyncStatus);
+
+      s.pull();
+
+      await nextTick();
 
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());

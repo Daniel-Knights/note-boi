@@ -4,7 +4,7 @@ import * as u from '../../store/update';
 import { AppError, ERROR_CODE } from '../../appError';
 import { openedPopup, PopupType } from '../../store/popup';
 import { mockApi } from '../api';
-import { getAppDiv, waitUntil } from '../utils';
+import { getAppDiv, resolveImmediate, waitUntil } from '../utils';
 
 let main: typeof import('../../main');
 
@@ -15,20 +15,27 @@ beforeEach(() => {
 });
 
 describe('main', () => {
-  it('Gets all notes, checks for update, and adds listeners', async () => {
+  it('Gets all notes, checks for update, pulls notes, and adds listeners', async () => {
     const { calls } = mockApi();
-    const spyGetAllNotes = vi.spyOn(n, 'getAllNotes');
-    const spyHandleUpdate = vi.spyOn(u, 'handleUpdate');
+    const getAllNotesSpy = vi.spyOn(n, 'getAllNotes');
+    const handleUpdateSpy = vi.spyOn(u, 'handleUpdate');
+    const pullSpy = vi.spyOn(s, 'pull');
+
+    s.syncState.username = 'd';
 
     main = await import('../../main');
 
-    await waitUntil(() => calls.size >= 13);
+    await waitUntil(() => calls.size >= 16);
+    await resolveImmediate(); // Just in case
 
-    expect(spyGetAllNotes).toHaveBeenCalledOnce();
-    expect(spyHandleUpdate).toHaveBeenCalledOnce();
+    expect(getAllNotesSpy).toHaveBeenCalledOnce();
+    expect(handleUpdateSpy).toHaveBeenCalledOnce();
+    expect(pullSpy).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.size, 13);
+    assert.strictEqual(calls.size, 16);
     assert.isTrue(calls.invoke.has('get_all_notes'));
+    assert.isTrue(calls.invoke.has('sync_local_notes'));
+    assert.isTrue(calls.request.has('/notes/pull'));
     assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
     assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
     assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
@@ -41,6 +48,13 @@ describe('main', () => {
     assert.isTrue(calls.listeners.has('export-all-notes'));
     assert.isTrue(calls.listeners.has('delete-account'));
     assert.isTrue(calls.listeners.has('change-password'));
+    assert.isTrue(calls.emits.has('auth'));
+    assert.deepEqual(calls.emits[0]!.calledWith, {
+      isFrontendEmit: true,
+      data: {
+        is_logged_in: true,
+      },
+    });
   });
 
   describe('exitApp', () => {

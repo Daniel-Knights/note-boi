@@ -19,45 +19,51 @@ import PopupSyncError from '../../../components/PopupSyncError.vue';
 import SyncStatus from '../../../components/SyncStatus.vue';
 
 describe('SyncStatus', () => {
-  it('Mounts when logged out', async () => {
+  it('Mounts when logged out', () => {
     const { calls } = mockApi();
     const wrapper = mount(SyncStatus);
 
     assert.isTrue(wrapper.isVisible());
+    assert.isFalse(findByTestId(wrapper, 'loading').exists());
+    assert.isFalse(findByTestId(wrapper, 'error').exists());
+    assert.isFalse(findByTestId(wrapper, 'success').exists());
+    assert.isTrue(getByTestId(wrapper, 'sync-button').isVisible());
     assert.strictEqual(calls.size, 3);
     assert.isTrue(calls.listeners.has('login'));
     assert.isTrue(calls.listeners.has('logout'));
     assert.isTrue(calls.listeners.has('signup'));
-
-    await waitUntil(() => !s.syncState.isLoading);
-
-    const loadingWrapper = findByTestId(wrapper, 'loading');
-    const errorButton = findByTestId(wrapper, 'error');
-    const successWrapper = findByTestId(wrapper, 'success');
-    const syncButton = getByTestId(wrapper, 'sync-button');
-
-    assert.isFalse(loadingWrapper.exists());
-    assert.isFalse(errorButton.exists());
-    assert.isFalse(successWrapper.exists());
-    assert.isTrue(syncButton.isVisible());
   });
 
-  it('Mounts when logged in', async () => {
+  it('Mounts when logged in', () => {
     const { calls } = mockApi();
-    const pullSpy = vi.spyOn(s, 'pull');
     s.syncState.username = 'd';
     s.syncState.isLoggedIn = true;
 
     const wrapper = mount(SyncStatus);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.size, 4);
+    assert.isFalse(findByTestId(wrapper, 'loading').exists());
+    assert.isFalse(findByTestId(wrapper, 'error').exists());
+    assert.isTrue(findByTestId(wrapper, 'success').isVisible());
+    assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
+    assert.strictEqual(calls.size, 3);
     assert.isTrue(calls.listeners.has('login'));
     assert.isTrue(calls.listeners.has('logout'));
     assert.isTrue(calls.listeners.has('signup'));
-    assert.isTrue(calls.request.has('/notes/pull'));
-    expect(pullSpy).toHaveBeenCalledOnce();
+  });
 
+  it('Displays loading spinner', async () => {
+    mockApi();
+
+    const wrapper = mount(SyncStatus);
+
+    s.syncState.username = 'd';
+
+    s.pull();
+
+    await nextTick();
+
+    assert.isTrue(wrapper.isVisible());
     assert.isTrue(getByTestId(wrapper, 'loading').isVisible());
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isFalse(findByTestId(wrapper, 'success').exists());
@@ -69,17 +75,6 @@ describe('SyncStatus', () => {
     assert.isFalse(findByTestId(wrapper, 'error').exists());
     assert.isTrue(getByTestId(wrapper, 'success').isVisible());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
-    assert.strictEqual(calls.size, 7); // 3 = listeners
-    assert.isTrue(calls.request.has('/notes/pull'));
-    assert.isTrue(calls.invoke.has('new_note'));
-    assert.isTrue(calls.invoke.has('sync_local_notes'));
-    assert.isTrue(calls.emits.has('auth'));
-    assert.deepEqual(calls.emits[0]!.calledWith, {
-      isFrontendEmit: true,
-      data: {
-        is_logged_in: true,
-      },
-    });
   });
 
   it('Displays error icon and opens popup on click', async () => {
