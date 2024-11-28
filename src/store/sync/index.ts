@@ -3,7 +3,7 @@ import { reactive } from 'vue';
 import { AppError } from '../../appError';
 import { storage } from '../../storage';
 
-import { storedUnsyncedNoteIds, UnsyncedNoteIds } from './note';
+import { storedUnsyncedNoteIds, UnsyncedNoteIds } from './noteSync';
 
 export const syncState = reactive({
   username: storage.get('USERNAME') || '',
@@ -57,5 +57,5 @@ export * from './auth';
 export * from './account';
 export * from './encryptor';
 export * from './keyStore';
-export * from './note';
+export * from './noteSync';
 export * from './utils';
