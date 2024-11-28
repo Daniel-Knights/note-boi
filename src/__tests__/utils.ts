@@ -65,20 +65,8 @@ export function resolveImmediate<T>(val?: T): Promise<T | void> {
 }
 
 /** Waits until `cond` is `true`. */
-export async function waitUntil(condFn: () => boolean): Promise<void> {
-  let i = 0;
-
-  while (!condFn()) {
-    // eslint-disable-next-line no-await-in-loop
-    await resolveImmediate();
-
-    // A lower limit will work with tests in isolation, but not with all tests running concurrently
-    if (i >= 100000) {
-      assert.fail('`waitUntil` call limit exceeded');
-    }
-
-    i += 1;
-  }
+export function waitUntil<T>(condFn: () => T): Promise<T> {
+  return vi.waitUntil(condFn, { timeout: 10000 });
 }
 
 export function isNote(note: unknown): note is n.Note {
