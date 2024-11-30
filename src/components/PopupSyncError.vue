@@ -3,19 +3,28 @@
     <div class="sync-error__message" data-test-id="error-message">
       Error: {{ syncState.appError.message || 'Something went wrong' }}
     </div>
-    <button
-      v-if="syncState.appError.retryConfig"
-      @click="tryAgain"
-      class="sync-error__button button button--default"
-      data-test-id="try-again"
-    >
-      Try again
-    </button>
+    <div>
+      <button
+        v-if="syncState.appError.retryConfig"
+        @click="tryAgain"
+        class="sync-error__button button button--default"
+        data-test-id="try-again"
+      >
+        Try again
+      </button>
+      <button
+        @click="ignore"
+        class="sync-error__button button button--default"
+        data-test-id="ignore"
+      >
+        Ignore
+      </button>
+    </div>
   </Popup>
 </template>
 
 <script lang="ts" setup>
-import { resetAppError, syncState } from '../store/sync';
+import { clientSideLogout, resetAppError, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 
@@ -28,6 +37,12 @@ function tryAgain() {
   emit('close');
   retryFn?.();
 }
+
+function ignore() {
+  resetAppError();
+  clientSideLogout();
+  emit('close');
+}
 </script>
 
 <style lang="scss" scoped>
@@ -39,6 +54,8 @@ function tryAgain() {
 }
 
 .sync-error__button {
-  margin-top: 12px;
+  display: block;
+  margin: 12px auto 0;
+  width: 150px;
 }
 </style>

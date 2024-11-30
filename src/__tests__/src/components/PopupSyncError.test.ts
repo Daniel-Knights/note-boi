@@ -1,9 +1,16 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../appError';
 import { mockApi } from '../../api';
-import { findByTestId, getByTestId, waitUntil } from '../../utils';
+import {
+  assertAppError,
+  findByTestId,
+  getByTestId,
+  resolveImmediate,
+  waitUntil,
+} from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupSyncError from '../../../components/PopupSyncError.vue';
@@ -63,6 +70,7 @@ describe('PopupSyncError', () => {
     expect(resetErrorSpy).toHaveBeenCalledOnce();
     expect(retryMock).toHaveBeenCalledOnce();
 
+    assertAppError();
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
 
@@ -76,6 +84,28 @@ describe('PopupSyncError', () => {
     const wrapper = mountPopupSyncError();
 
     assert.isFalse(findByTestId(wrapper, 'try-again').exists());
+  });
+
+  it('Ignores', async () => {
+    const { calls, promises } = mockApi();
+
+    const wrapper = mountPopupSyncError();
+    const ignoreButton = getByTestId(wrapper, 'ignore');
+    const resetErrorSpy = vi.spyOn(s, 'resetAppError');
+    const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+
+    await ignoreButton.trigger('click');
+    await nextTick();
+    await resolveImmediate();
+    await Promise.all(promises);
+
+    expect(resetErrorSpy).toHaveBeenCalledOnce();
+    expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+
+    assertAppError();
+    assert.lengthOf(wrapper.emitted('close')!, 1);
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.emits.has('auth'));
   });
 
   it('Shows default error message when none provided', async () => {
