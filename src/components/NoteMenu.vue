@@ -329,7 +329,7 @@ $new-note-height: 50px;
   -webkit-user-select: none;
   position: absolute;
   top: calc(100% - $new-note-height);
-  padding-bottom: 8px;
+  padding-bottom: 10px;
   height: $new-note-height;
   width: 100%;
   font-size: 32px;
