@@ -2,17 +2,24 @@
 
 @use './vars' as v;
 
-@mixin light-theme {
-  --colour__primary: #{color.invert(v.$primary)};
-  --colour__secondary: #{color.invert(v.$secondary)};
-  --colour__tertiary: #{color.scale(v.$tertiary, $lightness: -5%)};
-  --colour__interactive: #{color.scale(v.$interactive, $lightness: 30%)};
+$primary: v.$black;
+$secondary: v.$white;
+$tertiary: #6e7677;
+$interactive: #53595a;
+
+@mixin theme($p: $primary, $s: $secondary, $t: $tertiary, $i: $interactive) {
+  --colour__primary: #{$p};
+  --colour__secondary: #{$s};
+  --colour__tertiary: #{$t};
+  --colour__interactive: #{$i};
 }
-@mixin dark-theme {
-  --colour__primary: #{v.$primary};
-  --colour__secondary: #{v.$secondary};
-  --colour__tertiary: #{v.$tertiary};
-  --colour__interactive: #{v.$interactive};
+@mixin light-theme {
+  @include theme(
+    color.invert($primary),
+    color.invert($secondary),
+    color.scale($tertiary, $lightness: -5%),
+    color.scale($interactive, $lightness: 30%)
+  );
 }
 
 // CSS Vars
@@ -26,13 +33,13 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    @include dark-theme;
+    @include theme;
   }
 }
 
+.theme--dark {
+  @include theme;
+}
 .theme--light {
   @include light-theme;
-}
-.theme--dark {
-  @include dark-theme;
 }
