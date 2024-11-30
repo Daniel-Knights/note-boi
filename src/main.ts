@@ -6,10 +6,7 @@ import { createApp } from 'vue';
 
 import { ERROR_CODE } from './appError';
 import { initLogger } from './log';
-import './sass/_button.scss';
-import './sass/_form.scss';
-import './sass/_reset.scss';
-import './sass/_theme.scss';
+import './sass/style.scss';
 import {
   deleteSelectedNotes,
   exportNotes,

@@ -40,11 +40,11 @@ body {
 }
 
 a {
-  color: rgb(47, 175, 122);
+  color: var(--colour__highlight);
 
   &:hover {
     text-decoration: none;
-    color: rgb(74, 196, 145);
+    color: var(--colour__highlight-hover);
   }
 }
 </style>

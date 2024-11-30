@@ -40,7 +40,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 @use '../sass/vars' as v;
 
-$list-bg-colour: var(--colour__interactive);
+$list-bg-colour: var(--colour__tertiary);
 
 .drop-menu {
   position: absolute;
@@ -58,17 +58,17 @@ $list-bg-colour: var(--colour__interactive);
   border: v.$drop-menu-padding solid $list-bg-colour;
 
   &:hover {
-    background-color: var(--colour__tertiary);
+    background-color: var(--colour__tertiary-light);
   }
 }
 
 .drop-menu__item--disabled {
   pointer-events: none;
-  color: var(--colour__tertiary);
+  color: var(--colour__tertiary-light);
 }
 
 .drop-menu__item--selected {
-  background-color: var(--colour__tertiary);
+  background-color: var(--colour__tertiary-light);
 }
 
 .drop-menu__item--danger {
@@ -84,7 +84,7 @@ $list-bg-colour: var(--colour__interactive);
     left: 0;
     bottom: 0;
     @include v.equal-dimensions(0.5em);
-    background-color: var(--colour__secondary);
+    background-color: var(--colour__white);
     clip-path: polygon(0 0, 0 100%, 100% 100%);
   }
 

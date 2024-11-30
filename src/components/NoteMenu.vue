@@ -260,6 +260,7 @@ onUnmounted(() => {
 $new-note-height: 50px;
 
 #note-menu {
+  flex-shrink: 0;
   position: relative;
   max-height: 100vh;
   max-width: 50vw;
@@ -289,7 +290,7 @@ $new-note-height: 50px;
   &:hover,
   &--selected {
     color: #fff;
-    background-color: var(--colour__interactive);
+    background-color: var(--colour__tertiary);
   }
 
   &--empty::before {
@@ -355,7 +356,7 @@ $new-note-height: 50px;
     left: math.div($width, 2);
     height: 100%;
     width: 1px;
-    border: 1px solid var(--colour__interactive);
+    border: 1px solid var(--colour__tertiary);
   }
 }
 
@@ -367,7 +368,7 @@ $new-note-height: 50px;
   right: 0;
   height: 20px;
   width: 10px;
-  background-color: var(--colour__interactive);
+  background-color: var(--colour__tertiary);
   transform: translate(100%, -50%);
 
   // Hit box

@@ -1,24 +1,19 @@
 @use 'sass:color';
 
-@use './vars' as v;
+@use 'vars' as v;
 
-$primary: v.$black;
-$secondary: v.$white;
-$tertiary: #6e7677;
-$interactive: #53595a;
-
-@mixin theme($p: $primary, $s: $secondary, $t: $tertiary, $i: $interactive) {
+@mixin theme($p: v.$primary, $s: v.$secondary, $i: v.$tertiary, $t: v.$tertiary-light) {
   --colour__primary: #{$p};
   --colour__secondary: #{$s};
-  --colour__tertiary: #{$t};
-  --colour__interactive: #{$i};
+  --colour__tertiary: #{$i};
+  --colour__tertiary-light: #{$t};
 }
 @mixin light-theme {
   @include theme(
-    color.invert($primary),
-    color.invert($secondary),
-    color.scale($tertiary, $lightness: -5%),
-    color.scale($interactive, $lightness: 30%)
+    color.invert(v.$primary),
+    color.invert(v.$secondary),
+    color.scale(v.$tertiary, $lightness: 30%),
+    color.scale(v.$tertiary-light, $lightness: -5%)
   );
 }
 
@@ -28,8 +23,10 @@ $interactive: #53595a;
 
   --colour__white: #{v.$white};
   --colour__black: #{v.$black};
-  --colour__error: #e71414;
-  --colour__danger: rgba(231, 20, 20, 0.4);
+  --colour__error: #{v.$error};
+  --colour__danger: #{v.$danger};
+  --colour__highlight: #{v.$highlight};
+  --colour__highlight-hover: #{v.$highlight-hover};
 }
 @media (prefers-color-scheme: dark) {
   :root {
