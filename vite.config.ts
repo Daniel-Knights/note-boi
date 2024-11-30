@@ -14,13 +14,6 @@ export default defineConfig({
     },
   },
   clearScreen: false,
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-      },
-    },
-  },
   build: {
     // Tauri uses Chromium on Windows and WebKit on macOS and Linux
     target: process.env.TAURI_ENV_PLATFORM === 'windows' ? 'chrome105' : 'safari13',
