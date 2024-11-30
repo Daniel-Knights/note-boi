@@ -1,0 +1,909 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": undefined,
+        "message": "A new version of NoteBoi is available.
+Do you want to update now?",
+        "title": "Update available: v1.0.0",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+]
+`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > openedPopup 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > selectedTheme 1`] = `"System"`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > updateState 1`] = `
+{
+  "isAvailable": true,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Update > handleUpdate > Handles update > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Handles update > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": undefined,
+        "message": "A new version of NoteBoi is available.
+Do you want to update now?",
+        "title": "Update available: v1.0.0",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|download_and_install",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:process|restart",
+    },
+  ],
+]
+`;
+
+exports[`Update > handleUpdate > Handles update > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > handleUpdate > Handles update > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Handles update > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Handles update > openedPopup 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Handles update > selectedTheme 1`] = `"System"`;
+
+exports[`Update > handleUpdate > Handles update > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > handleUpdate > Handles update > updateState 1`] = `
+{
+  "isAvailable": true,
+  "isDownloading": true,
+  "strategy": "manual",
+}
+`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+]
+`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > openedPopup 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > selectedTheme 1`] = `"System"`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+]
+`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > openedPopup 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > selectedTheme 1`] = `"System"`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > storage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > updateState 1`] = `
+{
+  "isAvailable": true,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|download_and_install",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:process|restart",
+    },
+  ],
+]
+`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > openedPopup 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > selectedTheme 1`] = `"System"`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > updateState 1`] = `
+{
+  "isAvailable": true,
+  "isDownloading": true,
+  "strategy": "auto",
+}
+`;
+
+exports[`Update > setUpdateStrategy > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > setUpdateStrategy > allCalls 1`] = `[]`;
+
+exports[`Update > setUpdateStrategy > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > setUpdateStrategy > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > setUpdateStrategy > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > setUpdateStrategy > openedPopup 1`] = `undefined`;
+
+exports[`Update > setUpdateStrategy > selectedTheme 1`] = `"System"`;
+
+exports[`Update > setUpdateStrategy > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > setUpdateStrategy > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > setUpdateStrategy > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > setUpdateStrategy > storage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
+
+exports[`Update > setUpdateStrategy > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > setUpdateStrategy > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > setUpdateStrategy > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "auto",
+}
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Try again?",
+        "title": "Unable to install update",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+]
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > openedPopup 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > selectedTheme 1`] = `"System"`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Try again?",
+        "title": "Unable to install update",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Try again?",
+        "title": "Unable to install update",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+]
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > openedPopup 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > selectedTheme 1`] = `"System"`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|download_and_install",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:process|restart",
+    },
+  ],
+]
+`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > openedPopup 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > selectedTheme 1`] = `"System"`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('THEME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": true,
+  "strategy": "manual",
+}
+`;

@@ -1,0 +1,667 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PopupSyncAuth > Emits close > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Emits close > allCalls 1`] = `[]`;
+
+exports[`PopupSyncAuth > Emits close > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Emits close > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Emits close > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Emits close > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Emits close > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Emits close > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`PopupSyncAuth > Emits close > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`PopupSyncAuth > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Mounts > allCalls 1`] = `[]`;
+
+exports[`PopupSyncAuth > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Mounts > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Mounts > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Mounts > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Mounts > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`PopupSyncAuth > Mounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > allCalls 1`] = `[]`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 5,
+    "display": {
+      "form": true,
+    },
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`PopupSyncAuth > Shows error message > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Shows error message > allCalls 1`] = `[]`;
+
+exports[`PopupSyncAuth > Shows error message > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Shows error message > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Shows error message > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Shows error message > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Shows error message > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Shows error message > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 5,
+    "display": {
+      "form": true,
+    },
+    "message": "Mock error",
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`PopupSyncAuth > Shows error message > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Switches between login/signup > allCalls 1`] = `[]`;
+
+exports[`PopupSyncAuth > Switches between login/signup > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Switches between login/signup > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Switches between login/signup > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Switches between login/signup > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`PopupSyncAuth > Validates fields > On login > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+]
+`;
+
+exports[`PopupSyncAuth > Validates fields > On login > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Validates fields > On login > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Validates fields > On login > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Validates fields > On login > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Validates fields > On login > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Validates fields > On login > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On login > storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On login > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On login > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On login > storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`PopupSyncAuth > Validates fields > On login > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`PopupSyncAuth > Validates fields > On login > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/signup",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+    "k": "123456",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > storage.get('USERNAME') 1`] = `"k"`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "k",
+}
+`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

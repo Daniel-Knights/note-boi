@@ -1,0 +1,205 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Mounts > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Mounts > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Mounts > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`App > Mounts > openedPopup 1`] = `undefined`;
+
+exports[`App > Mounts > selectedTheme 1`] = `"System"`;
+
+exports[`App > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Mounts > storage.get('THEME') 1`] = `null`;
+
+exports[`App > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Mounts > storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Mounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Mounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`App > Shows loading spinner when update is downloading > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Shows loading spinner when update is downloading > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Shows loading spinner when update is downloading > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Shows loading spinner when update is downloading > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Shows loading spinner when update is downloading > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`App > Shows loading spinner when update is downloading > openedPopup 1`] = `undefined`;
+
+exports[`App > Shows loading spinner when update is downloading > selectedTheme 1`] = `"System"`;
+
+exports[`App > Shows loading spinner when update is downloading > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > storage.get('THEME') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Shows loading spinner when update is downloading > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": true,
+  "strategy": "manual",
+}
+`;

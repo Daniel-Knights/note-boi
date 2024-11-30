@@ -1,0 +1,163 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Theme > Uses system as default > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Theme > Uses system as default > allCalls 1`] = `[]`;
+
+exports[`Theme > Uses system as default > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Theme > Uses system as default > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Theme > Uses system as default > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Theme > Uses system as default > openedPopup 1`] = `undefined`;
+
+exports[`Theme > Uses system as default > selectedTheme 1`] = `"System"`;
+
+exports[`Theme > Uses system as default > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Theme > Uses system as default > storage.get('THEME') 1`] = `null`;
+
+exports[`Theme > Uses system as default > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Theme > Uses system as default > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Theme > Uses system as default > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Theme > Uses system as default > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Theme > Uses system as default > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Theme > setTheme > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Theme > setTheme > allCalls 1`] = `[]`;
+
+exports[`Theme > setTheme > document.body.outerHTML 1`] = `"<body class="theme--dark"></body>"`;
+
+exports[`Theme > setTheme > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Theme > setTheme > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Theme > setTheme > openedPopup 1`] = `undefined`;
+
+exports[`Theme > setTheme > selectedTheme 1`] = `"Dark"`;
+
+exports[`Theme > setTheme > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Theme > setTheme > storage.get('THEME') 1`] = `"Dark"`;
+
+exports[`Theme > setTheme > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Theme > setTheme > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Theme > setTheme > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Theme > setTheme > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Theme > setTheme > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

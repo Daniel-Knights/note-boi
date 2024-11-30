@@ -6,8 +6,9 @@ import crypto from 'node:crypto';
 import * as s from '../store/sync';
 import { storage } from '../storage';
 
-import { mockDb } from './api';
+import { allCalls, mockDb } from './api';
 import localNotes from './notes.json';
+import { snapshotState } from './snapshot';
 import { resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
 
 const assertFailSpy = vi.spyOn(assert, 'fail');
@@ -31,6 +32,10 @@ beforeAll(async () => {
 });
 
 afterEach(async () => {
+  await snapshotState();
+
+  allCalls.splice(0, allCalls.length);
+
   resetSyncStore();
   resetNoteStore();
   resetUpdateStore();

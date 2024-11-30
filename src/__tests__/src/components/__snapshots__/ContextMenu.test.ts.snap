@@ -1,0 +1,2105 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ContextMenu > Closes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Closes > allCalls 1`] = `[]`;
+
+exports[`ContextMenu > Closes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Closes > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Closes > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Closes > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Closes > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Closes > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Closes > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Closes > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Closes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Closes > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Closes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Closes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Creates a new note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Creates a new note > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Creates a new note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Creates a new note > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Creates a new note > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Creates a new note > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Creates a new note > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Creates a new note > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "id",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Creates a new note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Delete button disabled with no notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Delete button disabled with no notes > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Delete button disabled with no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Delete button disabled with no notes > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Delete button disabled with no notes > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Delete button disabled with no notes > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Delete button disabled with no notes > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Delete button disabled with no notes > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Delete button disabled with no notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Deletes a note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Deletes a note > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "id": "id",
+      },
+      "name": "delete_note",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Deletes a note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Deletes a note > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Deletes a note > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Deletes a note > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Deletes a note > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Deletes a note > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {
+      "id",
+    },
+    "edited": Set {},
+    "new": "",
+    "size": 1,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Deletes a note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Deletes all selected notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Deletes all selected notes > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "id": "id",
+      },
+      "name": "delete_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "id": "id",
+      },
+      "name": "delete_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "id": "id",
+      },
+      "name": "delete_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "id": "id",
+      },
+      "name": "delete_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "id": "id",
+      },
+      "name": "delete_note",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Deletes all selected notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Deletes all selected notes > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Deletes all selected notes > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Deletes all selected notes > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Deletes all selected notes > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Deletes all selected notes > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {
+      "id",
+    },
+    "edited": Set {},
+    "new": "",
+    "size": 1,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Deletes all selected notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Export button disabled with no notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Export button disabled with no notes > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Export button disabled with no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Export button disabled with no notes > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Export button disabled with no notes > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Export button disabled with no notes > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Export button disabled with no notes > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Export button disabled with no notes > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Export button disabled with no notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Exports a note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Exports a note > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": true,
+        "multiple": false,
+        "recursive": false,
+        "title": "Choose a location",
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Exports a note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Exports a note > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Exports a note > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Exports a note > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Exports a note > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Exports a note > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Exports a note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Exports all selected notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": true,
+        "multiple": false,
+        "recursive": false,
+        "title": "Choose a location",
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Exports all selected notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Exports all selected notes > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Exports all selected notes > noteState 1`] = `
+{
+  "extraSelectedNotes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+      "timestamp": 739056902017,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+      "timestamp": 157836992432,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+      "timestamp": 1066734006578,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+      "timestamp": 1642640862249,
+    },
+  ],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Exports all selected notes > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Exports all selected notes > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Exports all selected notes > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Exports all selected notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Mounts with ev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Mounts with ev > allCalls 1`] = `[]`;
+
+exports[`ContextMenu > Mounts with ev > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Mounts with ev > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Mounts with ev > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Mounts with ev > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Mounts with ev > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Mounts with ev > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Mounts with ev > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`ContextMenu > Mounts without passed ev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Mounts without passed ev > allCalls 1`] = `[]`;
+
+exports[`ContextMenu > Mounts without passed ev > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Mounts without passed ev > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Mounts without passed ev > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`ContextMenu > Mounts without passed ev > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Mounts without passed ev > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Mounts without passed ev > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Mounts without passed ev > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

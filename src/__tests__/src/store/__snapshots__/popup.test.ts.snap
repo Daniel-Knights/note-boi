@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Popup > Sets opened popup > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup > Sets opened popup > allCalls 1`] = `[]`;
+
+exports[`Popup > Sets opened popup > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Popup > Sets opened popup > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup > Sets opened popup > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Popup > Sets opened popup > openedPopup 1`] = `2`;
+
+exports[`Popup > Sets opened popup > selectedTheme 1`] = `"System"`;
+
+exports[`Popup > Sets opened popup > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup > Sets opened popup > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

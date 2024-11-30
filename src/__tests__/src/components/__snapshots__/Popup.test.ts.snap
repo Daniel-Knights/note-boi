@@ -1,0 +1,325 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Popup > Closes on click outside > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup > Closes on click outside > allCalls 1`] = `[]`;
+
+exports[`Popup > Closes on click outside > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`Popup > Closes on click outside > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup > Closes on click outside > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Popup > Closes on click outside > openedPopup 1`] = `undefined`;
+
+exports[`Popup > Closes on click outside > selectedTheme 1`] = `"System"`;
+
+exports[`Popup > Closes on click outside > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup > Closes on click outside > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Popup > Closes on escape key > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup > Closes on escape key > allCalls 1`] = `[]`;
+
+exports[`Popup > Closes on escape key > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`Popup > Closes on escape key > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup > Closes on escape key > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Popup > Closes on escape key > openedPopup 1`] = `undefined`;
+
+exports[`Popup > Closes on escape key > selectedTheme 1`] = `"System"`;
+
+exports[`Popup > Closes on escape key > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup > Closes on escape key > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Popup > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup > Mounts > allCalls 1`] = `[]`;
+
+exports[`Popup > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`Popup > Mounts > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup > Mounts > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Popup > Mounts > openedPopup 1`] = `undefined`;
+
+exports[`Popup > Mounts > selectedTheme 1`] = `"System"`;
+
+exports[`Popup > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Mounts > storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Mounts > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup > Mounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup > Mounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Popup > Unmounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup > Unmounts > allCalls 1`] = `[]`;
+
+exports[`Popup > Unmounts > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`Popup > Unmounts > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup > Unmounts > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Popup > Unmounts > openedPopup 1`] = `undefined`;
+
+exports[`Popup > Unmounts > selectedTheme 1`] = `"System"`;
+
+exports[`Popup > Unmounts > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Unmounts > storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Unmounts > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Unmounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Unmounts > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup > Unmounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup > Unmounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

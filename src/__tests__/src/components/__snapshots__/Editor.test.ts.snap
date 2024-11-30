@@ -1,0 +1,453 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Editor > Has the correct timestamp > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Has the correct timestamp > allCalls 1`] = `[]`;
+
+exports[`Editor > Has the correct timestamp > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Editor > Has the correct timestamp > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Editor > Has the correct timestamp > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Editor > Has the correct timestamp > openedPopup 1`] = `undefined`;
+
+exports[`Editor > Has the correct timestamp > selectedTheme 1`] = `"System"`;
+
+exports[`Editor > Has the correct timestamp > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Editor > Has the correct timestamp > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Editor > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Mounts > allCalls 1`] = `[]`;
+
+exports[`Editor > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Editor > Mounts > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Editor > Mounts > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Editor > Mounts > openedPopup 1`] = `undefined`;
+
+exports[`Editor > Mounts > selectedTheme 1`] = `"System"`;
+
+exports[`Editor > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Mounts > storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Mounts > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Editor > Mounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Editor > Mounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Editor > Sets the correct note text > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Sets the correct note text > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`Editor > Sets the correct note text > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Editor > Sets the correct note text > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Editor > Sets the correct note text > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Editor > Sets the correct note text > openedPopup 1`] = `undefined`;
+
+exports[`Editor > Sets the correct note text > selectedTheme 1`] = `"System"`;
+
+exports[`Editor > Sets the correct note text > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Editor > Sets the correct note text > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

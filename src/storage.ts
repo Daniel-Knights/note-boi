@@ -1,15 +1,22 @@
 import { ColourTheme, UpdateStrategy } from './constant';
 
-const STORAGE_KEYS = {
+export const STORAGE_KEYS_STRING = {
   USERNAME: 'username',
-  UNSYNCED: 'unsynced-note-ids',
   THEME: 'theme',
   MENU_WIDTH: 'note-menu-width',
   UPDATE_SEEN: 'update-seen',
   UPDATE_STRATEGY: 'update-strategy',
 } as const;
 
-type StorageKey = keyof typeof STORAGE_KEYS;
+export const STORAGE_KEYS_JSON = {
+  UNSYNCED: 'unsynced-note-ids',
+} as const;
+
+export const STORAGE_KEYS = { ...STORAGE_KEYS_STRING, ...STORAGE_KEYS_JSON };
+
+export type StorageKey = keyof typeof STORAGE_KEYS;
+export type StorageKeyString = keyof typeof STORAGE_KEYS_STRING;
+export type StorageKeyJson = keyof typeof STORAGE_KEYS_JSON;
 
 type StorageValues = {
   USERNAME: string;
@@ -25,15 +32,11 @@ type StorageValues = {
 };
 
 type StorageValuesString = {
-  [K in keyof StorageValues as StorageValues[K] extends string
-    ? K
-    : never]: StorageValues[K];
+  [K in StorageKey as StorageValues[K] extends string ? K : never]: StorageValues[K];
 };
 
 type StorageValuesJson = {
-  [K in keyof StorageValues as StorageValues[K] extends object
-    ? K
-    : never]: StorageValues[K];
+  [K in StorageKey as StorageValues[K] extends object ? K : never]: StorageValues[K];
 };
 
 /** `localStorage` convenience methods with stronger typing. */

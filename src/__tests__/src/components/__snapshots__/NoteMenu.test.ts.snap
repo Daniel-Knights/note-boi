@@ -1,0 +1,4190 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoteMenu > Creates a new note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Creates a new note > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Creates a new note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Creates a new note > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Creates a new note > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Creates a new note > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Creates a new note > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Creates a new note > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "id",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Creates a new note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Mounts > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Mounts > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Mounts > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Mounts > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Mounts > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Mounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Renders a list item for every note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Renders a list item for every note > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Renders a list item for every note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Renders a list item for every note > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Renders a list item for every note > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Renders a list item for every note > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Renders a list item for every note > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Renders a list item for every note > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Renders a list item for every note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Renders a single empty note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Renders a single empty note > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Renders a single empty note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Renders a single empty note > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Renders a single empty note > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Renders a single empty note > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Renders a single empty note > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Renders a single empty note > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Renders a single empty note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Selects a clicked note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects a clicked note > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Selects a clicked note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Selects a clicked note > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Selects a clicked note > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Selects a clicked note > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Selects a clicked note > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Selects a clicked note > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Selects a clicked note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Sets contextmenu ev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Sets contextmenu ev > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Sets contextmenu ev > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Sets contextmenu ev > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Sets contextmenu ev > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Sets contextmenu ev > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Sets contextmenu ev > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Sets contextmenu ev > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Sets contextmenu ev > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > storage.get('MENU_WIDTH') 1`] = `"400px"`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`NoteMenu > Toggles menu visibility > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Toggles menu visibility > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`NoteMenu > Toggles menu visibility > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`NoteMenu > Toggles menu visibility > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`NoteMenu > Toggles menu visibility > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`NoteMenu > Toggles menu visibility > openedPopup 1`] = `undefined`;
+
+exports[`NoteMenu > Toggles menu visibility > selectedTheme 1`] = `"System"`;
+
+exports[`NoteMenu > Toggles menu visibility > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > storage.get('USERNAME') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`NoteMenu > Toggles menu visibility > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

@@ -1,0 +1,698 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SyncStatus > Displays error icon and opens popup on click > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > openedPopup 1`] = `undefined`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > selectedTheme 1`] = `"System"`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('USERNAME') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 5,
+    "display": {
+      "sync": true,
+    },
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`SyncStatus > Displays loading spinner > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/notes/pull",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+]
+`;
+
+exports[`SyncStatus > Displays loading spinner > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`SyncStatus > Displays loading spinner > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`SyncStatus > Displays loading spinner > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`SyncStatus > Displays loading spinner > openedPopup 1`] = `undefined`;
+
+exports[`SyncStatus > Displays loading spinner > selectedTheme 1`] = `"System"`;
+
+exports[`SyncStatus > Displays loading spinner > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > storage.get('USERNAME') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`SyncStatus > Displays loading spinner > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > openedPopup 1`] = `undefined`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > selectedTheme 1`] = `"System"`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('USERNAME') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+]
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > openedPopup 1`] = `undefined`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > selectedTheme 1`] = `"System"`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('USERNAME') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 1,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "Server error",
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "1",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`SyncStatus > Mounts when logged in > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Mounts when logged in > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`SyncStatus > Mounts when logged in > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`SyncStatus > Mounts when logged in > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`SyncStatus > Mounts when logged in > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`SyncStatus > Mounts when logged in > openedPopup 1`] = `undefined`;
+
+exports[`SyncStatus > Mounts when logged in > selectedTheme 1`] = `"System"`;
+
+exports[`SyncStatus > Mounts when logged in > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > storage.get('USERNAME') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`SyncStatus > Mounts when logged in > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`SyncStatus > Mounts when logged out > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Mounts when logged out > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`SyncStatus > Mounts when logged out > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`SyncStatus > Mounts when logged out > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`SyncStatus > Mounts when logged out > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`SyncStatus > Mounts when logged out > openedPopup 1`] = `undefined`;
+
+exports[`SyncStatus > Mounts when logged out > selectedTheme 1`] = `"System"`;
+
+exports[`SyncStatus > Mounts when logged out > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > storage.get('USERNAME') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`SyncStatus > Mounts when logged out > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

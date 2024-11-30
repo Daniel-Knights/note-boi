@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UtilityMenu > Mounts with correct components > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`UtilityMenu > Mounts with correct components > allCalls 1`] = `[]`;
+
+exports[`UtilityMenu > Mounts with correct components > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`UtilityMenu > Mounts with correct components > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`UtilityMenu > Mounts with correct components > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`UtilityMenu > Mounts with correct components > openedPopup 1`] = `undefined`;
+
+exports[`UtilityMenu > Mounts with correct components > selectedTheme 1`] = `"System"`;
+
+exports[`UtilityMenu > Mounts with correct components > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`UtilityMenu > Mounts with correct components > storage.get('THEME') 1`] = `null`;
+
+exports[`UtilityMenu > Mounts with correct components > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`UtilityMenu > Mounts with correct components > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`UtilityMenu > Mounts with correct components > storage.get('USERNAME') 1`] = `null`;
+
+exports[`UtilityMenu > Mounts with correct components > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`UtilityMenu > Mounts with correct components > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

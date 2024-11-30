@@ -28,6 +28,8 @@ export const mockDb: {
   encryptedNotes: undefined as unknown as EncryptedNote[],
 };
 
+export const allCalls: [ApiCallType, Call][] = [];
+
 /**
  * Mocks the full API and returns results for each call made, along with
  * an array of all created promises.
@@ -96,7 +98,7 @@ export function mockApi(
 
   const promises: Promise<unknown>[] = [];
 
-  function parseCallResult(callType: Exclude<keyof ApiCalls, 'size'>, call: Call | void) {
+  function parseCallResult(callType: ApiCallType, call: Call | void) {
     if (!call) return;
 
     calls[callType].push(call);
@@ -105,6 +107,8 @@ export function mockApi(
     if (call.promise) {
       promises.push(call.promise);
     }
+
+    allCalls.push([callType, call]);
 
     return call.promise;
   }

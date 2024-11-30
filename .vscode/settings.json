@@ -5,5 +5,8 @@
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
+  "files.associations": {
+    "*.snap": "typescript"
+  },
   "cSpell.words": ["chrono", "esbuild", "punycode", "tauri", "unsynced", "vitest"]
 }

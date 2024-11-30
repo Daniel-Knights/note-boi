@@ -1,0 +1,852 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Settings > Account menu item > Delete account menu item > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Account menu item > Delete account menu item > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "warning",
+        "message": "Are you sure?",
+        "title": "Delete account",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/delete",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Settings > Account menu item > Delete account menu item > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Account menu item > Delete account menu item > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {},
+}
+`;
+
+exports[`Settings > Account menu item > Delete account menu item > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Account menu item > Delete account menu item > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Account menu item > Delete account menu item > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Account menu item > Delete account menu item > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Account menu item > Delete account menu item > storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Account menu item > Delete account menu item > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Account menu item > Delete account menu item > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Account menu item > Delete account menu item > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Account menu item > Delete account menu item > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Account menu item > Delete account menu item > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > allCalls 1`] = `[]`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Account menu item > Opens and closes change password popup > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Exports all notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Exports all notes > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": true,
+        "multiple": false,
+        "recursive": false,
+        "title": "Choose a location",
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [],
+        "saveDir": "C:\\path",
+      },
+      "name": "export_notes",
+    },
+  ],
+]
+`;
+
+exports[`Settings > Exports all notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Exports all notes > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Exports all notes > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Exports all notes > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Exports all notes > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Exports all notes > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Exports all notes > storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Exports all notes > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Exports all notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Exports all notes > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Exports all notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Exports all notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Mounts > allCalls 1`] = `[]`;
+
+exports[`Settings > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Mounts > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Mounts > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Mounts > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Mounts > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Mounts > storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Mounts > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Mounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Mounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Opens and closes drop menu > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Opens and closes drop menu > allCalls 1`] = `[]`;
+
+exports[`Settings > Opens and closes drop menu > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Opens and closes drop menu > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Opens and closes drop menu > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Opens and closes drop menu > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Opens and closes drop menu > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Opens and closes drop menu > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Opens and closes drop menu > storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Opens and closes drop menu > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Opens and closes drop menu > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Opens and closes drop menu > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Opens and closes drop menu > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Opens and closes drop menu > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Opens info popup > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Opens info popup > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:app|version",
+    },
+  ],
+]
+`;
+
+exports[`Settings > Opens info popup > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+
+exports[`Settings > Opens info popup > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Opens info popup > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Opens info popup > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Opens info popup > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Opens info popup > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Opens info popup > storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Opens info popup > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Opens info popup > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Opens info popup > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Opens info popup > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Opens info popup > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Sets theme preference > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Sets theme preference > allCalls 1`] = `[]`;
+
+exports[`Settings > Sets theme preference > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Sets theme preference > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Sets theme preference > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Sets theme preference > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Sets theme preference > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Sets theme preference > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Sets theme preference > storage.get('THEME') 1`] = `"System"`;
+
+exports[`Settings > Sets theme preference > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Sets theme preference > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Sets theme preference > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Sets theme preference > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Sets theme preference > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Sets update strategy > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Sets update strategy > allCalls 1`] = `[]`;
+
+exports[`Settings > Sets update strategy > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Sets update strategy > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Sets update strategy > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Sets update strategy > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Sets update strategy > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Sets update strategy > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Sets update strategy > storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Sets update strategy > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Sets update strategy > storage.get('UPDATE_STRATEGY') 1`] = `"manual"`;
+
+exports[`Settings > Sets update strategy > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Sets update strategy > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Sets update strategy > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Update and restart menu item > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Update and restart menu item > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": undefined,
+        "message": "A new version of NoteBoi is available.
+Do you want to update now?",
+        "title": "Update available: v1.0.0",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|download_and_install",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:process|restart",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|check",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|download_and_install",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:process|restart",
+    },
+  ],
+]
+`;
+
+exports[`Settings > Update and restart menu item > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Update and restart menu item > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Update and restart menu item > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Settings > Update and restart menu item > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Update and restart menu item > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Update and restart menu item > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Update and restart menu item > storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Update and restart menu item > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Update and restart menu item > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Update and restart menu item > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Update and restart menu item > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Update and restart menu item > updateState 1`] = `
+{
+  "isAvailable": true,
+  "isDownloading": true,
+  "strategy": "manual",
+}
+`;

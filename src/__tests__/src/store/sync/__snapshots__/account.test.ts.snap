@@ -1,0 +1,1920 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Account > changePassword > Changes password for currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/password/change",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/password/change",
+    },
+  ],
+]
+`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > openedPopup 1`] = `undefined`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > selectedTheme 1`] = `"System"`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > changePassword > Sets and resets loading state > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/password/change",
+    },
+  ],
+]
+`;
+
+exports[`Account > changePassword > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > changePassword > Sets and resets loading state > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > changePassword > Sets and resets loading state > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > changePassword > Sets and resets loading state > openedPopup 1`] = `undefined`;
+
+exports[`Account > changePassword > Sets and resets loading state > selectedTheme 1`] = `"System"`;
+
+exports[`Account > changePassword > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > Sets and resets loading state > storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Account > changePassword > Sets and resets loading state > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`Account > changePassword > Sets and resets loading state > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > changePassword > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > changePassword > User not found > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/signup",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/password/change",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > changePassword > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > changePassword > User not found > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > changePassword > User not found > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > changePassword > User not found > openedPopup 1`] = `undefined`;
+
+exports[`Account > changePassword > User not found > selectedTheme 1`] = `"System"`;
+
+exports[`Account > changePassword > User not found > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 7,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "User not found",
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "1",
+  "password": "2",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > changePassword > User not found > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > changePassword > With encryptor error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Account > changePassword > With encryptor error > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`Account > changePassword > With encryptor error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > changePassword > With encryptor error > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > changePassword > With encryptor error > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > changePassword > With encryptor error > openedPopup 1`] = `undefined`;
+
+exports[`Account > changePassword > With encryptor error > selectedTheme 1`] = `"System"`;
+
+exports[`Account > changePassword > With encryptor error > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 8,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "Note encryption/decryption failed",
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > changePassword > With encryptor error > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > changePassword > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > changePassword > With server error > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/password/change",
+    },
+  ],
+]
+`;
+
+exports[`Account > changePassword > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > changePassword > With server error > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > changePassword > With server error > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > changePassword > With server error > openedPopup 1`] = `undefined`;
+
+exports[`Account > changePassword > With server error > selectedTheme 1`] = `"System"`;
+
+exports[`Account > changePassword > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > With server error > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > With server error > storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Account > changePassword > With server error > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 7,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "Server error",
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "2",
+  "password": "1",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`Account > changePassword > With server error > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "warning",
+        "message": "Are you sure?",
+        "title": "Delete account",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/delete",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {},
+}
+`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > openedPopup 1`] = `undefined`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > selectedTheme 1`] = `"System"`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [MockFunction clear] {
+      "calls": [
+        [],
+      ],
+      "results": [
+        {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    },
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "warning",
+        "message": "Are you sure?",
+        "title": "Delete account",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+]
+`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > openedPopup 1`] = `undefined`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > selectedTheme 1`] = `"System"`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "warning",
+        "message": "Are you sure?",
+        "title": "Delete account",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/delete",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {},
+}
+`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > openedPopup 1`] = `undefined`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > selectedTheme 1`] = `"System"`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > deleteAccount > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > User not found > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/signup",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "warning",
+        "message": "Are you sure?",
+        "title": "Delete account",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/delete",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > deleteAccount > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > deleteAccount > User not found > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > deleteAccount > User not found > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > deleteAccount > User not found > openedPopup 1`] = `undefined`;
+
+exports[`Account > deleteAccount > User not found > selectedTheme 1`] = `"System"`;
+
+exports[`Account > deleteAccount > User not found > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 6,
+    "display": {
+      "sync": true,
+    },
+    "message": "User not found",
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [MockFunction clear],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > deleteAccount > User not found > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > deleteAccount > User unauthorised > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > User unauthorised > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "warning",
+        "message": "Are you sure?",
+        "title": "Delete account",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/delete",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > deleteAccount > User unauthorised > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > deleteAccount > User unauthorised > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > deleteAccount > User unauthorised > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > deleteAccount > User unauthorised > openedPopup 1`] = `undefined`;
+
+exports[`Account > deleteAccount > User unauthorised > selectedTheme 1`] = `"System"`;
+
+exports[`Account > deleteAccount > User unauthorised > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 6,
+    "display": {
+      "sync": true,
+    },
+    "message": "Server error",
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [MockFunction clear],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > deleteAccount > User unauthorised > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > deleteAccount > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > With server error > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "warning",
+        "message": "Are you sure?",
+        "title": "Delete account",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/delete",
+    },
+  ],
+]
+`;
+
+exports[`Account > deleteAccount > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > deleteAccount > With server error > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > deleteAccount > With server error > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Account > deleteAccount > With server error > openedPopup 1`] = `undefined`;
+
+exports[`Account > deleteAccount > With server error > selectedTheme 1`] = `"System"`;
+
+exports[`Account > deleteAccount > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > With server error > storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > With server error > storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Account > deleteAccount > With server error > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 6,
+    "display": {
+      "sync": true,
+    },
+    "message": "Server error",
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoading": false,
+  "isLoggedIn": true,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [MockFunction clear],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`Account > deleteAccount > With server error > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

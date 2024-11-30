@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Loading > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Loading > Mounts > allCalls 1`] = `[]`;
+
+exports[`Loading > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Loading > Mounts > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Loading > Mounts > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Loading > Mounts > openedPopup 1`] = `undefined`;
+
+exports[`Loading > Mounts > selectedTheme 1`] = `"System"`;
+
+exports[`Loading > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Loading > Mounts > storage.get('THEME') 1`] = `null`;
+
+exports[`Loading > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Loading > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Loading > Mounts > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Loading > Mounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Loading > Mounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

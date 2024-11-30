@@ -1,0 +1,487 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Log > forwardConsole > console.debug > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.debug > allCalls 1`] = `[]`;
+
+exports[`Log > forwardConsole > console.debug > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Log > forwardConsole > console.debug > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.debug > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.debug > openedPopup 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.debug > selectedTheme 1`] = `"System"`;
+
+exports[`Log > forwardConsole > console.debug > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.debug > storage.get('THEME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.debug > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.debug > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.debug > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.debug > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Log > forwardConsole > console.debug > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Log > forwardConsole > console.error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.error > allCalls 1`] = `[]`;
+
+exports[`Log > forwardConsole > console.error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Log > forwardConsole > console.error > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.error > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.error > openedPopup 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.error > selectedTheme 1`] = `"System"`;
+
+exports[`Log > forwardConsole > console.error > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.error > storage.get('THEME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.error > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.error > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.error > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Log > forwardConsole > console.error > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Log > forwardConsole > console.info > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.info > allCalls 1`] = `[]`;
+
+exports[`Log > forwardConsole > console.info > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Log > forwardConsole > console.info > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.info > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.info > openedPopup 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.info > selectedTheme 1`] = `"System"`;
+
+exports[`Log > forwardConsole > console.info > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.info > storage.get('THEME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.info > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.info > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.info > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.info > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Log > forwardConsole > console.info > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Log > forwardConsole > console.log > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.log > allCalls 1`] = `[]`;
+
+exports[`Log > forwardConsole > console.log > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Log > forwardConsole > console.log > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.log > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.log > openedPopup 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.log > selectedTheme 1`] = `"System"`;
+
+exports[`Log > forwardConsole > console.log > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.log > storage.get('THEME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.log > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.log > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.log > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.log > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Log > forwardConsole > console.log > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Log > forwardConsole > console.warn > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.warn > allCalls 1`] = `[]`;
+
+exports[`Log > forwardConsole > console.warn > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Log > forwardConsole > console.warn > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.warn > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Log > forwardConsole > console.warn > openedPopup 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.warn > selectedTheme 1`] = `"System"`;
+
+exports[`Log > forwardConsole > console.warn > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.warn > storage.get('THEME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.warn > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.warn > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.warn > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Log > forwardConsole > console.warn > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Log > forwardConsole > console.warn > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Log > initLogger > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > initLogger > allCalls 1`] = `[]`;
+
+exports[`Log > initLogger > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Log > initLogger > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Log > initLogger > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Log > initLogger > openedPopup 1`] = `undefined`;
+
+exports[`Log > initLogger > selectedTheme 1`] = `"System"`;
+
+exports[`Log > initLogger > storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Log > initLogger > storage.get('THEME') 1`] = `null`;
+
+exports[`Log > initLogger > storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Log > initLogger > storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Log > initLogger > storage.get('USERNAME') 1`] = `null`;
+
+exports[`Log > initLogger > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "isLogin": true,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Log > initLogger > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
