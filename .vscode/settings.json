@@ -8,5 +8,12 @@
   "files.associations": {
     "*.snap": "typescript"
   },
+  "search.exclude": {
+    "**/*.test.ts.snap": true,
+    "**/src-tauri/gen": true,
+    "**/CHANGELOG.md": true,
+    "**/Cargo.lock": true,
+    "**/pnpm-lock.yaml": true
+  },
   "cSpell.words": ["chrono", "esbuild", "punycode", "tauri", "unsynced", "vitest"]
 }
