@@ -65,7 +65,7 @@
       }
     ],
     "security": {
-      "csp": "default-src 'self'; connect-src ipc: http://ipc.localhost"
+      "csp": "default-src 'self'; connect-src https://note-boi-server-1098279308841.europe-west2.run.app ipc: http://ipc.localhost"
     }
   }
 }

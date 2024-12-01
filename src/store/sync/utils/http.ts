@@ -18,7 +18,7 @@ export async function fetchData<
 ): Promise<ParsedResponse<R> | ParsedResponse<{ error: string }>> {
   const serverUrl = isDev()
     ? 'http://localhost:8000'
-    : 'https://note-boi-server.herokuapp.com';
+    : 'https://note-boi-server-1098279308841.europe-west2.run.app';
 
   const res = await fetch(`${serverUrl}/api${endpoint}`, {
     method,
@@ -26,7 +26,7 @@ export async function fetchData<
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
-      'Content-Security-Policy': `default-src: 'self'; connect-src ${serverUrl};`,
+      'Content-Security-Policy': `default-src 'self'; connect-src ${serverUrl};`,
     },
   });
 
