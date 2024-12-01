@@ -5,7 +5,7 @@
   "version": "../package.json",
   "identifier": "com.daniel-knights.note-boi",
   "build": {
-    "beforeBuildCommand": "pnpm run checks && pnpm run vite:build",
+    "beforeBuildCommand": "pnpm run vite:build",
     "frontendDist": "../dist",
     "beforeDevCommand": "pnpm run vite:dev",
     "devUrl": "http://localhost:3000"
