@@ -130,7 +130,7 @@ async function handleSubmit() {
 function handleFormSwitch() {
   mode.value = mode.value === 'login' ? 'signup' : 'login';
 
-  if (!syncState.appError.display?.sync) {
+  if (syncState.appError.display?.form && !syncState.appError.display?.sync) {
     resetAppError();
   }
 }
