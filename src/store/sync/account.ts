@@ -7,6 +7,7 @@ import {
   ErrorConfig,
   FetchBuilder,
 } from '../../classes';
+import { tauriInvoke } from '../../utils';
 import { noteState } from '../note';
 
 import { clientSideLogout, syncState } from '.';
@@ -32,6 +33,10 @@ export async function changePassword(): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof changePassword>, 'message'>;
 
   try {
+    const accessToken = await tauriInvoke('get_access_token', {
+      username: syncState.username,
+    });
+
     const encryptedNotes = await Encryptor.encryptNotes(
       noteState.notes,
       syncState.newPassword
@@ -40,13 +45,13 @@ export async function changePassword(): Promise<void> {
 
     const res = await new FetchBuilder('/account/password/change')
       .method('PUT')
-      .withAuth(syncState.username)
+      .withAuth(syncState.username, accessToken)
       .body({
         current_password: syncState.password,
         new_password: syncState.newPassword,
         notes: encryptedNotes,
       })
-      .fetch()
+      .fetch(syncState.username)
       .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
@@ -91,9 +96,13 @@ export async function deleteAccount(): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof deleteAccount>, 'message'>;
 
   try {
+    const accessToken = await tauriInvoke('get_access_token', {
+      username: syncState.username,
+    });
+
     const res = await new FetchBuilder('/account/delete')
       .method('POST')
-      .withAuth(syncState.username)
+      .withAuth(syncState.username, accessToken)
       .fetch()
       .catch((err) => catchHang(errorConfig, err));
     if (!res) return;

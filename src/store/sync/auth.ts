@@ -52,7 +52,7 @@ export async function login(): Promise<void> {
         username: syncState.username,
         password: syncState.password,
       })
-      .fetch()
+      .fetch(syncState.username)
       .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
@@ -115,7 +115,7 @@ export async function signup(): Promise<void> {
         password: syncState.password,
         notes: encryptedNotes,
       })
-      .fetch()
+      .fetch(syncState.username)
       .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
@@ -155,9 +155,13 @@ export async function logout(): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof logout>, 'message'>;
 
   try {
+    const accessToken = await tauriInvoke('get_access_token', {
+      username: syncState.username,
+    });
+
     const fetchPromise = new FetchBuilder('/logout')
       .method('POST')
-      .withAuth(syncState.username)
+      .withAuth(syncState.username, accessToken)
       .fetch()
       .catch((err) => catchHang(errorConfig, err));
 

@@ -8,16 +8,20 @@ export class FetchBuilder<
 > {
   #endpoint;
   #init: RequestInit = {};
-  // Only `fetch` can be async, other methods need to cache promises here
-  #promises: Promise<unknown>[] = [];
-  #username?: string;
-  #serverUrl = isDev()
-    ? 'http://localhost:8000'
-    : 'https://note-boi-server-1098279308841.europe-west2.run.app';
 
   constructor(e: E) {
     this.#endpoint = e;
   }
+
+  static serverUrl =
+    isDev() || process.env.NODE_ENV === 'test'
+      ? 'http://localhost:8000'
+      : 'https://note-boi-server-1098279308841.europe-west2.run.app';
+
+  static defaultHeaders = {
+    'Content-Type': 'application/json',
+    'Content-Security-Policy': `default-src 'self'; connect-src ${FetchBuilder.serverUrl};`,
+  };
 
   method(m: 'PUT' | 'POST') {
     this.#init.method = m;
@@ -40,31 +44,26 @@ export class FetchBuilder<
     return this;
   }
 
-  /** Gets access token and adds auth headers */
-  withAuth(username: string) {
-    const tokenPromise = tauriInvoke('get_access_token', { username }).then((token) => {
-      this.#init.headers = {
-        ...this.#init.headers,
-        'X-Username': username,
-        Authorization: `Bearer ${token}`,
-      };
-    });
+  /** Adds auth headers */
+  withAuth(username: string, token: string) {
+    this.#init.headers = {
+      ...this.#init.headers,
+      'X-Username': username,
+      Authorization: `Bearer ${token}`,
+    };
 
-    this.#promises.push(tokenPromise);
-    this.#username = username;
     this.#init.credentials = 'same-origin';
 
     return this;
   }
 
-  async fetch(): Promise<ParsedResponse<R> | ParsedResponse<{ error: string }>> {
-    await Promise.all(this.#promises);
-
-    const res = await fetch(`${this.#serverUrl}/api${this.#endpoint}`, {
+  async fetch(
+    username?: string
+  ): Promise<ParsedResponse<R> | ParsedResponse<{ error: string }>> {
+    const res = await fetch(`${FetchBuilder.serverUrl}/api${this.#endpoint}`, {
       ...this.#init,
       headers: {
-        'Content-Type': 'application/json',
-        'Content-Security-Policy': `default-src 'self'; connect-src ${this.#serverUrl};`,
+        ...FetchBuilder.defaultHeaders,
         ...this.#init.headers,
       },
     });
@@ -77,11 +76,13 @@ export class FetchBuilder<
         : {};
 
     // TBR: Use secure cookies - https://github.com/tauri-apps/wry/issues/444
-    if (body.access_token && this.#username) {
+    if (body.access_token && username) {
       await tauriInvoke('set_access_token', {
-        username: this.#username,
+        username,
         accessToken: body.access_token,
       });
+    } else if (body.access_token) {
+      console.error('Unexpected access_token');
     }
 
     return {

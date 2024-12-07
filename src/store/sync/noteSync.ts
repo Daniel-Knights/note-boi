@@ -110,10 +110,14 @@ export async function pull(): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof pull>, 'message'>;
 
   try {
+    const accessToken = await tauriInvoke('get_access_token', {
+      username: syncState.username,
+    });
+
     const res = await new FetchBuilder('/notes/pull')
       .method('POST')
-      .withAuth(syncState.username)
-      .fetch()
+      .withAuth(syncState.username, accessToken)
+      .fetch(syncState.username)
       .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
@@ -170,6 +174,10 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof push>, 'message'>;
 
   try {
+    const accessToken = await tauriInvoke('get_access_token', {
+      username: syncState.username,
+    });
+
     const encryptedNotes = await Encryptor.encryptNotes(
       noteState.notes.filter((nt) => !isEmptyNote(nt))
     ).catch((err) => catchEncryptorError(errorConfig, err));
@@ -187,7 +195,7 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 
     const res = await new FetchBuilder('/notes/push')
       .method('PUT')
-      .withAuth(syncState.username)
+      .withAuth(syncState.username, accessToken)
       .body({ notes: encryptedNotes })
       .fetch()
       .catch((err) => catchHang(errorConfig, err));
