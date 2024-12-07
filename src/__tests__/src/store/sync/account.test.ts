@@ -136,16 +136,12 @@ describe('Account', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls });
 
-      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
-
       delete mockDb.users.k; // Deleted from different device, for example
 
       s.syncState.password = '2';
       s.syncState.newPassword = '1';
 
       await s.changePassword();
-
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assertAppError({
         code: ERROR_CODE.CHANGE_PASSWORD,
@@ -156,19 +152,10 @@ describe('Account', () => {
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/account/password/change'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('Sets and resets loading state', () => {
@@ -297,7 +284,6 @@ describe('Account', () => {
         },
       });
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
-      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -310,7 +296,6 @@ describe('Account', () => {
       await s.deleteAccount();
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assertAppError({
         code: ERROR_CODE.DELETE_ACCOUNT,
@@ -319,26 +304,16 @@ describe('Account', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 5);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('User not found', async () => {
       const { calls, promises } = mockApi();
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
-      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
 
       s.syncState.username = 'k';
       s.syncState.password = '2';
@@ -353,7 +328,6 @@ describe('Account', () => {
       await s.deleteAccount();
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assertAppError({
         code: ERROR_CODE.DELETE_ACCOUNT,
@@ -362,20 +336,11 @@ describe('Account', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 5);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('Sets and resets loading state', () => {

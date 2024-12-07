@@ -2037,27 +2037,6 @@ exports[`Note (sync) > pull > Sets and resets loading state > allCalls 1`] = `
       "name": "/notes/pull",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
 ]
 `;
 
@@ -3146,7 +3125,7 @@ exports[`Note (sync) > pull > User not found > Storage.get('UPDATE_SEEN') 1`] = 
 
 exports[`Note (sync) > pull > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > pull > User not found > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note (sync) > pull > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
 exports[`Note (sync) > pull > User not found > allCalls 1`] = `
 [
@@ -3163,27 +3142,6 @@ exports[`Note (sync) > pull > User not found > allCalls 1`] = `
     "request",
     {
       "name": "/notes/pull",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "k",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
     },
   ],
 ]
@@ -3236,7 +3194,7 @@ exports[`Note (sync) > pull > User not found > syncState 1`] = `
     },
   },
   "isLoading": false,
-  "isLoggedIn": false,
+  "isLoggedIn": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3247,7 +3205,7 @@ exports[`Note (sync) > pull > User not found > syncState 1`] = `
     "new": "",
     "size": 0,
   },
-  "username": "",
+  "username": "k",
 }
 `;
 
@@ -3269,7 +3227,7 @@ exports[`Note (sync) > pull > User unauthorised > Storage.get('UPDATE_SEEN') 1`]
 
 exports[`Note (sync) > pull > User unauthorised > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > pull > User unauthorised > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note (sync) > pull > User unauthorised > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Note (sync) > pull > User unauthorised > allCalls 1`] = `
 [
@@ -3286,27 +3244,6 @@ exports[`Note (sync) > pull > User unauthorised > allCalls 1`] = `
     "request",
     {
       "name": "/notes/pull",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
     },
   ],
 ]
@@ -3370,7 +3307,7 @@ exports[`Note (sync) > pull > User unauthorised > syncState 1`] = `
     "new": "",
     "size": 0,
   },
-  "username": "",
+  "username": "d",
 }
 `;
 
@@ -4680,7 +4617,7 @@ exports[`Note (sync) > push > User not found > Storage.get('UPDATE_SEEN') 1`] = 
 
 exports[`Note (sync) > push > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > push > User not found > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note (sync) > push > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
 exports[`Note (sync) > push > User not found > allCalls 1`] = `
 [
@@ -4749,27 +4686,6 @@ exports[`Note (sync) > push > User not found > allCalls 1`] = `
     "request",
     {
       "name": "/notes/push",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "k",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
     },
   ],
 ]
@@ -5016,7 +4932,7 @@ exports[`Note (sync) > push > User not found > syncState 1`] = `
     },
   },
   "isLoading": false,
-  "isLoggedIn": false,
+  "isLoggedIn": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5029,7 +4945,7 @@ exports[`Note (sync) > push > User not found > syncState 1`] = `
     "new": "",
     "size": 1,
   },
-  "username": "",
+  "username": "k",
 }
 `;
 
@@ -5051,7 +4967,7 @@ exports[`Note (sync) > push > User unauthorised > Storage.get('UPDATE_SEEN') 1`]
 
 exports[`Note (sync) > push > User unauthorised > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > push > User unauthorised > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note (sync) > push > User unauthorised > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Note (sync) > push > User unauthorised > allCalls 1`] = `
 [
@@ -5153,27 +5069,6 @@ exports[`Note (sync) > push > User unauthorised > allCalls 1`] = `
       "name": "/notes/push",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
 ]
 `;
 
@@ -5235,7 +5130,7 @@ exports[`Note (sync) > push > User unauthorised > syncState 1`] = `
     },
   },
   "isLoading": false,
-  "isLoggedIn": false,
+  "isLoggedIn": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5248,7 +5143,7 @@ exports[`Note (sync) > push > User unauthorised > syncState 1`] = `
     "new": "",
     "size": 1,
   },
-  "username": "",
+  "username": "d",
 }
 `;
 

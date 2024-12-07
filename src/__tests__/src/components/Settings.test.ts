@@ -231,22 +231,13 @@ describe('Settings', () => {
       await resolveImmediate(); // Defer execution to /account/delete
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-      assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-      assert.lengthOf(wrapperVm.menuItems, 4);
-      assert.strictEqual(calls.size, 5);
+      assert.isTrue(getByTestId(wrapper, 'delete-account').isVisible());
+      assert.lengthOf(wrapperVm.menuItems, 5);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
   });
 });

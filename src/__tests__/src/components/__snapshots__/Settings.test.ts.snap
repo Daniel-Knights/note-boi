@@ -40,27 +40,6 @@ exports[`Settings > Account menu item > Delete account menu item > allCalls 1`] 
       "name": "/account/delete",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
 ]
 `;
 
@@ -111,7 +90,7 @@ exports[`Settings > Account menu item > Delete account menu item > syncState 1`]
     },
   },
   "isLoading": false,
-  "isLoggedIn": false,
+  "isLoggedIn": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -122,7 +101,7 @@ exports[`Settings > Account menu item > Delete account menu item > syncState 1`]
     "new": "",
     "size": 0,
   },
-  "username": "",
+  "username": "d",
 }
 `;
 

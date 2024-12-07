@@ -66,10 +66,6 @@ export async function changePassword(): Promise<void> {
         message: parseErrorRes(res),
       });
 
-      if (res.status === 404) {
-        await clientSideLogout();
-      }
-
       console.error(`ERROR_CODE: ${errorConfig.code}`);
       console.error(res.data);
     }
@@ -117,10 +113,6 @@ export async function deleteAccount(): Promise<void> {
         ...errorConfig,
         message: parseErrorRes(res),
       });
-
-      if (res.status === 401 || res.status === 404) {
-        await clientSideLogout();
-      }
 
       console.error(`ERROR_CODE: ${errorConfig.code}`);
       console.error(res.data);

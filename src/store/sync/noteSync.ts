@@ -18,7 +18,7 @@ import {
   UnsyncedEventDetail,
 } from '../note';
 
-import { clientSideLogout, syncState } from '.';
+import { syncState } from '.';
 
 import {
   catchEncryptorError,
@@ -142,10 +142,6 @@ export async function pull(): Promise<void> {
         message: parseErrorRes(res),
       });
 
-      if (res.status === 401 || res.status === 404) {
-        await clientSideLogout();
-      }
-
       console.error(`ERROR_CODE: ${errorConfig.code}`);
       console.error(res.data);
     }
@@ -213,10 +209,6 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
         ...errorConfig,
         message: parseErrorRes(res),
       });
-
-      if (res.status === 401 || res.status === 404) {
-        await clientSideLogout();
-      }
 
       console.error(`ERROR_CODE: ${errorConfig.code}`);
       console.error(res.data);

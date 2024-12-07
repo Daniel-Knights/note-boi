@@ -401,7 +401,7 @@ exports[`Account > changePassword > User not found > Storage.get('UPDATE_SEEN') 
 
 exports[`Account > changePassword > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Account > changePassword > User not found > Storage.get('USERNAME') 1`] = `null`;
+exports[`Account > changePassword > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
 exports[`Account > changePassword > User not found > allCalls 1`] = `
 [
@@ -446,27 +446,6 @@ exports[`Account > changePassword > User not found > allCalls 1`] = `
     "request",
     {
       "name": "/account/password/change",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "k",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
     },
   ],
 ]
@@ -520,7 +499,7 @@ exports[`Account > changePassword > User not found > syncState 1`] = `
     },
   },
   "isLoading": false,
-  "isLoggedIn": false,
+  "isLoggedIn": true,
   "newPassword": "1",
   "password": "2",
   "unsyncedNoteIds": {
@@ -531,7 +510,7 @@ exports[`Account > changePassword > User not found > syncState 1`] = `
     "new": "",
     "size": 0,
   },
-  "username": "",
+  "username": "k",
 }
 `;
 
@@ -1603,7 +1582,7 @@ exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_SEEN') 1
 
 exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Account > deleteAccount > User not found > Storage.get('USERNAME') 1`] = `null`;
+exports[`Account > deleteAccount > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
 exports[`Account > deleteAccount > User not found > allCalls 1`] = `
 [
@@ -1661,27 +1640,6 @@ exports[`Account > deleteAccount > User not found > allCalls 1`] = `
       "name": "/account/delete",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "k",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
 ]
 `;
 
@@ -1732,7 +1690,7 @@ exports[`Account > deleteAccount > User not found > syncState 1`] = `
     },
   },
   "isLoading": false,
-  "isLoggedIn": false,
+  "isLoggedIn": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1743,7 +1701,7 @@ exports[`Account > deleteAccount > User not found > syncState 1`] = `
     "new": "",
     "size": 0,
   },
-  "username": "",
+  "username": "k",
 }
 `;
 
@@ -1765,7 +1723,7 @@ exports[`Account > deleteAccount > User unauthorised > Storage.get('UPDATE_SEEN'
 
 exports[`Account > deleteAccount > User unauthorised > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Account > deleteAccount > User unauthorised > Storage.get('USERNAME') 1`] = `null`;
+exports[`Account > deleteAccount > User unauthorised > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Account > deleteAccount > User unauthorised > allCalls 1`] = `
 [
@@ -1863,27 +1821,6 @@ exports[`Account > deleteAccount > User unauthorised > allCalls 1`] = `
       "name": "/account/delete",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
 ]
 `;
 
@@ -1946,7 +1883,7 @@ exports[`Account > deleteAccount > User unauthorised > syncState 1`] = `
     },
   },
   "isLoading": false,
-  "isLoggedIn": false,
+  "isLoggedIn": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1957,7 +1894,7 @@ exports[`Account > deleteAccount > User unauthorised > syncState 1`] = `
     "new": "",
     "size": 0,
   },
-  "username": "",
+  "username": "d",
 }
 `;
 

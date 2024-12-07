@@ -180,15 +180,11 @@ describe('Note (sync)', () => {
         },
       });
 
-      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
-
       s.syncState.username = 'd';
       s.syncState.password = '1';
       Storage.set('USERNAME', 'd');
 
       await s.pull();
-
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assertAppError({
         code: ERROR_CODE.PULL,
@@ -197,24 +193,14 @@ describe('Note (sync)', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('User not found', async () => {
       const { calls } = mockApi();
-      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
 
       s.syncState.username = 'k';
       s.syncState.isLoggedIn = true;
@@ -222,8 +208,6 @@ describe('Note (sync)', () => {
 
       await s.pull();
 
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
-
       assertAppError({
         code: ERROR_CODE.PULL,
         retry: { fn: s.pull },
@@ -231,19 +215,10 @@ describe('Note (sync)', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('Updates editor if selected note is unedited', async () => {
@@ -500,11 +475,7 @@ describe('Note (sync)', () => {
 
       clearMockApiResults({ calls });
 
-      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
-
       await s.push();
-
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assertAppError({
         code: ERROR_CODE.PUSH,
@@ -513,19 +484,10 @@ describe('Note (sync)', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('User not found', async () => {
@@ -543,11 +505,7 @@ describe('Note (sync)', () => {
 
       delete mockDb.users.k; // Deleted from different device, for example
 
-      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
-
       await s.push();
-
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assertAppError({
         code: ERROR_CODE.PUSH,
@@ -556,19 +514,10 @@ describe('Note (sync)', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('Sets and resets loading state', () => {
