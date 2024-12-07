@@ -4,6 +4,7 @@ import { Update } from '@tauri-apps/plugin-updater';
 import * as n from '../store/note';
 import * as s from '../store/sync';
 import pkg from '../../package.json';
+import { EncryptedNote } from '../classes';
 import {
   Endpoint,
   EndpointPayloads,
@@ -12,7 +13,6 @@ import {
   TauriCommand,
   TauriCommandPayloads,
 } from '../constant';
-import { EncryptedNote } from '../store/sync/encryptor';
 import { hasKeys } from '../utils';
 
 import localNotes from './notes.json';

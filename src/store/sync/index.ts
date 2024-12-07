@@ -1,12 +1,11 @@
 import { reactive } from 'vue';
 
-import { AppError } from '../../appError';
-import { storage } from '../../storage';
+import { AppError, Storage } from '../../classes';
 
 import { storedUnsyncedNoteIds, UnsyncedNoteIds } from './noteSync';
 
 export const syncState = reactive({
-  username: storage.get('USERNAME') || '',
+  username: Storage.get('USERNAME') || '',
   password: '',
   newPassword: '',
   isLoading: false,
@@ -24,7 +23,8 @@ export const syncState = reactive({
       this.new = '';
       this.edited.clear();
       this.deleted.clear();
-      storage.remove('UNSYNCED');
+
+      Storage.remove('UNSYNCED');
     },
     add(ids): void {
       if (ids.new !== undefined) this.new = ids.new;
@@ -44,7 +44,7 @@ export const syncState = reactive({
         this.new = '';
       }
 
-      storage.setJson('UNSYNCED', {
+      Storage.setJson('UNSYNCED', {
         new: this.new,
         edited: [...this.edited],
         deleted: [...this.deleted],
@@ -55,7 +55,5 @@ export const syncState = reactive({
 
 export * from './auth';
 export * from './account';
-export * from './encryptor';
-export * from './keyStore';
 export * from './noteSync';
 export * from './utils';

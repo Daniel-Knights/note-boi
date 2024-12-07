@@ -1,25 +1,32 @@
-import { AppError, ERROR_CODE, ErrorConfig } from '../../appError';
-import { storage } from '../../storage';
-import { isEmptyNote, tauriEmit } from '../../utils';
+import {
+  AppError,
+  Encryptor,
+  ERROR_CODE,
+  ErrorConfig,
+  FetchBuilder,
+  KeyStore,
+  Storage,
+} from '../../classes';
+import { isEmptyNote, tauriEmit, tauriInvoke } from '../../utils';
 import { noteState } from '../note';
 
-import { Encryptor, KeyStore, syncNotes, syncState } from '.';
+import { syncNotes, syncState } from '.';
 
 import {
   catchEncryptorError,
   catchHang,
-  fetchData,
   parseErrorRes,
   resetAppError,
   resIsOk,
 } from './utils';
 
 export function clientSideLogout(): Promise<void> {
+  tauriInvoke('delete_access_token', { username: syncState.username });
+
   syncState.username = '';
   syncState.isLoggedIn = false;
 
-  storage.remove('USERNAME');
-
+  Storage.remove('USERNAME');
   KeyStore.reset();
 
   return tauriEmit('auth', { is_logged_in: false });
@@ -39,10 +46,14 @@ export async function login(): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof login>, 'message'>;
 
   try {
-    const res = await fetchData('/login', 'POST', {
-      username: syncState.username,
-      password: syncState.password,
-    }).catch((err) => catchHang(errorConfig, err));
+    const res = await new FetchBuilder('/login')
+      .method('POST')
+      .body({
+        username: syncState.username,
+        password: syncState.password,
+      })
+      .fetch()
+      .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -51,7 +62,7 @@ export async function login(): Promise<void> {
       syncState.password = '';
       syncState.isLoggedIn = true;
 
-      storage.set('USERNAME', syncState.username);
+      Storage.set('USERNAME', syncState.username);
 
       resetAppError();
       tauriEmit('auth', { is_logged_in: true });
@@ -97,11 +108,15 @@ export async function signup(): Promise<void> {
     ).catch((err) => catchEncryptorError(errorConfig, err));
     if (!encryptedNotes) return;
 
-    const res = await fetchData('/signup', 'POST', {
-      username: syncState.username,
-      password: syncState.password,
-      notes: encryptedNotes,
-    }).catch((err) => catchHang(errorConfig, err));
+    const res = await new FetchBuilder('/signup')
+      .method('POST')
+      .body({
+        username: syncState.username,
+        password: syncState.password,
+        notes: encryptedNotes,
+      })
+      .fetch()
+      .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -112,7 +127,7 @@ export async function signup(): Promise<void> {
       syncState.isLoggedIn = true;
       syncState.unsyncedNoteIds.clear();
 
-      storage.set('USERNAME', syncState.username);
+      Storage.set('USERNAME', syncState.username);
     } else {
       syncState.appError = new AppError({
         ...errorConfig,
@@ -140,12 +155,13 @@ export async function logout(): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof logout>, 'message'>;
 
   try {
-    const [res] = await Promise.all([
-      fetchData('/logout', 'POST').catch((err) => {
-        catchHang(errorConfig, err);
-      }),
-      clientSideLogout(),
-    ]);
+    const fetchPromise = new FetchBuilder('/logout')
+      .method('POST')
+      .withAuth(syncState.username)
+      .fetch()
+      .catch((err) => catchHang(errorConfig, err));
+
+    const [res] = await Promise.all([fetchPromise, clientSideLogout()]);
     if (!res) return;
 
     if (resIsOk(res)) {

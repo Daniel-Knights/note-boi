@@ -4,7 +4,7 @@ import { exit, relaunch } from '@tauri-apps/plugin-process';
 import 'quill/dist/quill.snow.css';
 import { createApp } from 'vue';
 
-import { ERROR_CODE } from './appError';
+import { ERROR_CODE } from './classes';
 import { initLogger } from './log';
 import './sass/style.scss';
 import {

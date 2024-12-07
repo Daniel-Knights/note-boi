@@ -62,7 +62,7 @@
 <script lang="ts" setup>
 import { onUnmounted, ref, watchEffect } from 'vue';
 
-import { storage } from '../storage';
+import { Storage } from '../classes';
 import {
   findNote,
   findNoteIndex,
@@ -81,7 +81,7 @@ const contextMenuEv = ref<MouseEvent>();
 const isDragging = ref(false);
 const isHidden = ref(false);
 const listIsFocused = ref(true);
-const menuWidth = ref(storage.get('MENU_WIDTH') || '260px');
+const menuWidth = ref(Storage.get('MENU_WIDTH') || '260px');
 
 // Clear all extra notes and remove event listener
 function clearExtraNotes(ev?: MouseEvent) {
@@ -197,7 +197,8 @@ function handleDragBar() {
     'mouseup',
     () => {
       isDragging.value = false;
-      storage.set('MENU_WIDTH', menuWidth.value);
+
+      Storage.set('MENU_WIDTH', menuWidth.value);
     },
     { once: true }
   );

@@ -58,7 +58,7 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 
-import { AppError, ERROR_CODE } from '../appError';
+import { AppError, ERROR_CODE } from '../classes';
 import { MIN_PASSWORD_LENGTH } from '../constant';
 import { login, resetAppError, signup, syncState } from '../store/sync';
 

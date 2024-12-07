@@ -1,5 +1,5 @@
+import { EncryptedNote } from './classes';
 import { Note } from './store/note';
-import { EncryptedNote } from './store/sync/encryptor';
 
 export const MIN_PASSWORD_LENGTH = 6;
 
@@ -110,6 +110,25 @@ export type TauriCommandPayloads = {
     };
     response: never;
   };
+  set_access_token: {
+    payload: {
+      username: string;
+      accessToken: string;
+    };
+    response: never;
+  };
+  get_access_token: {
+    payload: {
+      username: string;
+    };
+    response: string;
+  };
+  delete_access_token: {
+    payload: {
+      username: string;
+    };
+    response: never;
+  };
 };
 
 export type TauriCommand = keyof TauriCommandPayloads;
@@ -121,6 +140,9 @@ export const TAURI_COMMANDS = [
   'edit_note',
   'sync_local_notes',
   'export_notes',
+  'set_access_token',
+  'get_access_token',
+  'delete_access_token',
 ] satisfies TauriCommand[];
 
 // Tauri emits

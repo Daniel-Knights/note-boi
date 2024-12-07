@@ -1,4 +1,4 @@
-import { Note } from '../note';
+import { Note } from '../store/note';
 
 import { KeyStore } from './keyStore';
 
@@ -94,6 +94,26 @@ export class Encryptor {
     );
 
     return dec.decode(decryptedContent);
+  }
+
+  static async encrypt(plaintext: string, password?: string): Promise<string> {
+    if (password) {
+      await this.setPasswordKey(password);
+    }
+
+    const passwordKey = await KeyStore.getKey();
+
+    return this.#encryptData(plaintext, passwordKey);
+  }
+
+  static async decrypt(ciphertext: string, password?: string): Promise<string> {
+    if (password) {
+      await this.setPasswordKey(password);
+    }
+
+    const passwordKey = await KeyStore.getKey();
+
+    return this.#decryptData(ciphertext, passwordKey);
   }
 
   static async encryptNotes(notes: Note[], password?: string): Promise<EncryptedNote[]> {

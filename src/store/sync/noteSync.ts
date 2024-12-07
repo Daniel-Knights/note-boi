@@ -1,6 +1,12 @@
-import { AppError, ERROR_CODE, ErrorConfig } from '../../appError';
+import {
+  AppError,
+  Encryptor,
+  ERROR_CODE,
+  ErrorConfig,
+  FetchBuilder,
+  Storage,
+} from '../../classes';
 import { NOTE_EVENTS } from '../../constant';
-import { storage } from '../../storage';
 import { isEmptyNote, tauriEmit, tauriInvoke } from '../../utils';
 import {
   findNote,
@@ -12,12 +18,11 @@ import {
   UnsyncedEventDetail,
 } from '../note';
 
-import { clientSideLogout, Encryptor, syncState } from '.';
+import { clientSideLogout, syncState } from '.';
 
 import {
   catchEncryptorError,
   catchHang,
-  fetchData,
   parseErrorRes,
   resetAppError,
   resIsOk,
@@ -32,7 +37,7 @@ export type UnsyncedNoteIds = {
   add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
 };
 
-export const storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+export const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
 /** Syncs local and remote notes. */
 export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
@@ -105,9 +110,11 @@ export async function pull(): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof pull>, 'message'>;
 
   try {
-    const res = await fetchData('/notes/pull', 'POST').catch((err) => {
-      catchHang(errorConfig, err);
-    });
+    const res = await new FetchBuilder('/notes/pull')
+      .method('POST')
+      .withAuth(syncState.username)
+      .fetch()
+      .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -178,9 +185,12 @@ export async function push(isSyncCleanup?: boolean): Promise<void> {
 
     syncState.unsyncedNoteIds.clear();
 
-    const res = await fetchData('/notes/push', 'PUT', {
-      notes: encryptedNotes,
-    }).catch((err) => catchHang(errorConfig, err));
+    const res = await new FetchBuilder('/notes/push')
+      .method('PUT')
+      .withAuth(syncState.username)
+      .body({ notes: encryptedNotes })
+      .fetch()
+      .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
     if (resIsOk(res)) {

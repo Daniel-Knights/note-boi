@@ -1,4 +1,4 @@
-import { AppError, ERROR_CODE, ErrorConfig } from '../../../appError';
+import { AppError, ERROR_CODE, ErrorConfig } from '../../../classes';
 import { syncState } from '../index';
 
 /** Resets {@link syncState.appError}. */

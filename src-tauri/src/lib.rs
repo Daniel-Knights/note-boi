@@ -3,7 +3,8 @@ mod menu;
 mod note;
 
 use crate::command::{
-  delete_note, edit_note, export_notes, get_all_notes, new_note, sync_local_notes,
+  delete_access_token, delete_note, edit_note, export_notes, get_access_token, get_all_notes,
+  new_note, set_access_token, sync_local_notes,
 };
 use std::path::PathBuf;
 use tauri::Manager;
@@ -36,7 +37,10 @@ pub fn run() {
       export_notes,
       get_all_notes,
       new_note,
-      sync_local_notes
+      sync_local_notes,
+      set_access_token,
+      get_access_token,
+      delete_access_token
     ])
     .setup(|app| {
       let state = AppState {

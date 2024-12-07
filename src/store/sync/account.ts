@@ -1,14 +1,19 @@
 import * as dialog from '@tauri-apps/plugin-dialog';
 
-import { AppError, ERROR_CODE, ErrorConfig } from '../../appError';
+import {
+  AppError,
+  Encryptor,
+  ERROR_CODE,
+  ErrorConfig,
+  FetchBuilder,
+} from '../../classes';
 import { noteState } from '../note';
 
-import { clientSideLogout, Encryptor, syncState } from '.';
+import { clientSideLogout, syncState } from '.';
 
 import {
   catchEncryptorError,
   catchHang,
-  fetchData,
   parseErrorRes,
   resetAppError,
   resIsOk,
@@ -33,11 +38,16 @@ export async function changePassword(): Promise<void> {
     ).catch((err) => catchEncryptorError(errorConfig, err));
     if (!encryptedNotes) return;
 
-    const res = await fetchData('/account/password/change', 'PUT', {
-      current_password: syncState.password,
-      new_password: syncState.newPassword,
-      notes: encryptedNotes,
-    }).catch((err) => catchHang(errorConfig, err));
+    const res = await new FetchBuilder('/account/password/change')
+      .method('PUT')
+      .withAuth(syncState.username)
+      .body({
+        current_password: syncState.password,
+        new_password: syncState.newPassword,
+        notes: encryptedNotes,
+      })
+      .fetch()
+      .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
     if (resIsOk(res)) {
@@ -81,9 +91,11 @@ export async function deleteAccount(): Promise<void> {
   } satisfies Omit<ErrorConfig<typeof deleteAccount>, 'message'>;
 
   try {
-    const res = await fetchData('/account/delete', 'POST').catch((err) => {
-      catchHang(errorConfig, err);
-    });
+    const res = await new FetchBuilder('/account/delete')
+      .method('POST')
+      .withAuth(syncState.username)
+      .fetch()
+      .catch((err) => catchHang(errorConfig, err));
     if (!res) return;
 
     if (resIsOk(res)) {

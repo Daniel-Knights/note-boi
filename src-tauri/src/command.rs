@@ -1,10 +1,13 @@
 use std::path::PathBuf;
 
+use keyring::Entry;
+
 use crate::{
   note::{Note, NoteError},
   AppState,
 };
 
+// Note commands
 #[tauri::command]
 pub fn new_note(state: tauri::State<AppState>, note: Note) -> Result<(), NoteError> {
   Note::new(&state.app_dir, &note)
@@ -33,4 +36,29 @@ pub fn sync_local_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Resu
 #[tauri::command]
 pub fn export_notes(save_dir: PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
   Note::export(&save_dir, notes)
+}
+
+// Access token commands
+#[tauri::command]
+pub fn set_access_token(username: String, access_token: String) -> Result<(), String> {
+  Entry::new("note-boi", &username)
+    .unwrap()
+    .set_password(&access_token)
+    .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub fn get_access_token(username: String) -> Result<String, String> {
+  Entry::new("note-boi", &username)
+    .unwrap()
+    .get_password()
+    .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+pub fn delete_access_token(username: String) -> Result<(), String> {
+  Entry::new("note-boi", &username)
+    .unwrap()
+    .delete_credential()
+    .map_err(|e| e.to_string())
 }
