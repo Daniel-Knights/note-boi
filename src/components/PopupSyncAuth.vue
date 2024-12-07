@@ -1,7 +1,7 @@
 <template>
   <Popup @close="emit('close')">
     <div id="sync-auth" data-test-id="popup-auth">
-      <h2 data-test-id="heading">{{ syncState.isLogin ? 'Login' : 'Signup' }}</h2>
+      <h2 data-test-id="heading">{{ capitalise(mode) }}</h2>
       <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
         <input
           v-model="syncState.username"
@@ -23,7 +23,7 @@
           data-test-id="password"
         />
         <input
-          v-if="!syncState.isLogin"
+          v-if="mode === 'signup'"
           v-model="confirmPassword"
           @input="validation.confirmPassword = true"
           class="form__input"
@@ -42,14 +42,11 @@
         <input type="submit" value="Submit" class="button button--default" />
       </form>
       <button
-        @click="
-          syncState.isLogin = !syncState.isLogin;
-          resetAppError();
-        "
+        @click="handleFormSwitch"
         class="sync-auth__switch button"
         data-test-id="switch"
       >
-        Switch to {{ syncState.isLogin ? 'signup' : 'login' }}
+        Switch to {{ mode === 'login' ? 'signup' : 'login' }}
       </button>
     </div>
   </Popup>
@@ -61,11 +58,13 @@ import { onMounted, reactive, ref } from 'vue';
 import { AppError, ERROR_CODE } from '../classes';
 import { MIN_PASSWORD_LENGTH } from '../constant';
 import { login, resetAppError, signup, syncState } from '../store/sync';
+import { capitalise, tauriListen } from '../utils';
 
 import Popup from './Popup.vue';
 
 const emit = defineEmits(['close']);
 
+const mode = ref<'login' | 'signup'>('login');
 const usernameInput = ref<HTMLInputElement>();
 const confirmPassword = ref('');
 
@@ -79,7 +78,7 @@ async function handleSubmit() {
   validation.username = !!syncState.username;
   validation.password = !!syncState.password;
 
-  if (!syncState.isLogin) {
+  if (mode.value === 'signup') {
     validation.confirmPassword = !!confirmPassword.value;
   }
 
@@ -87,7 +86,7 @@ async function handleSubmit() {
     return;
   }
 
-  if (syncState.isLogin) {
+  if (mode.value === 'login') {
     await login();
   } else {
     if (!validation.confirmPassword) {
@@ -127,6 +126,21 @@ async function handleSubmit() {
     emit('close');
   }
 }
+
+function handleFormSwitch() {
+  mode.value = mode.value === 'login' ? 'signup' : 'login';
+
+  if (!syncState.appError.display?.sync) {
+    resetAppError();
+  }
+}
+
+tauriListen('login', () => {
+  mode.value = 'login';
+});
+tauriListen('signup', () => {
+  mode.value = 'signup';
+});
 
 onMounted(() => {
   usernameInput.value?.focus();

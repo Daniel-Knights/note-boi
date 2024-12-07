@@ -9,7 +9,6 @@ export const syncState = reactive({
   password: '',
   newPassword: '',
   isLoading: false,
-  isLogin: true, // For switching login/signup form
   isLoggedIn: false,
   appError: new AppError(),
   unsyncedNoteIds: <UnsyncedNoteIds>{

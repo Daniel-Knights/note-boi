@@ -35,13 +35,13 @@
       <CloudSyncIcon />
     </button>
   </div>
-  <PopupSyncAuth v-if="openedPopup === PopupType.Auth" @close="closeSyncPopup(true)" />
-  <PopupSyncError v-if="openedPopup === PopupType.Error" @close="closeSyncPopup" />
+  <PopupSyncAuth v-if="openedPopup === PopupType.Auth" @close="handlePopupClose" />
+  <PopupSyncError v-if="openedPopup === PopupType.Error" @close="handlePopupClose" />
 </template>
 
 <script lang="ts" setup>
 import { openedPopup, PopupType } from '../store/popup';
-import { logout, resetAppError, syncState } from '../store/sync';
+import { logout, syncState } from '../store/sync';
 import { tauriListen } from '../utils';
 
 import PopupSyncAuth from './PopupSyncAuth.vue';
@@ -57,21 +57,17 @@ function handlePopupAuthEvent() {
   }
 }
 
-function closeSyncPopup(reset?: boolean) {
+function handlePopupClose() {
   openedPopup.value = undefined;
-
-  if (reset) {
-    resetAppError();
-  }
 }
 
 tauriListen('login', () => {
-  syncState.isLogin = true;
   handlePopupAuthEvent();
 });
-tauriListen('logout', logout);
+tauriListen('logout', () => {
+  logout();
+});
 tauriListen('signup', () => {
-  syncState.isLogin = false;
   handlePopupAuthEvent();
 });
 </script>
