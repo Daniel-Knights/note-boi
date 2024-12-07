@@ -20,7 +20,9 @@ export type EndpointPayloads = {
       password: string;
       notes: EncryptedNote[];
     };
-    response: never;
+    response: {
+      access_token: string;
+    };
   };
   '/login': {
     payload: {
@@ -29,6 +31,7 @@ export type EndpointPayloads = {
     };
     response: {
       notes: EncryptedNote[];
+      access_token: string;
     };
   };
   '/logout': {
@@ -45,6 +48,7 @@ export type EndpointPayloads = {
     payload: never;
     response: {
       notes: EncryptedNote[];
+      access_token: string;
     };
   };
   '/account/delete': {
@@ -57,7 +61,9 @@ export type EndpointPayloads = {
       new_password: string;
       notes: EncryptedNote[];
     };
-    response: never;
+    response: {
+      access_token: string;
+    };
   };
 };
 
