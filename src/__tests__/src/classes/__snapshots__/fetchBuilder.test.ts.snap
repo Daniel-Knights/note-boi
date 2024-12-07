@@ -1,0 +1,189 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FetchBuilder > With auth > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`FetchBuilder > With auth > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`FetchBuilder > With auth > Storage.get('THEME') 1`] = `null`;
+
+exports[`FetchBuilder > With auth > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`FetchBuilder > With auth > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`FetchBuilder > With auth > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`FetchBuilder > With auth > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+]
+`;
+
+exports[`FetchBuilder > With auth > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`FetchBuilder > With auth > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`FetchBuilder > With auth > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`FetchBuilder > With auth > openedPopup 1`] = `undefined`;
+
+exports[`FetchBuilder > With auth > selectedTheme 1`] = `"System"`;
+
+exports[`FetchBuilder > With auth > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": true,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`FetchBuilder > With auth > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`FetchBuilder > Without auth > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`FetchBuilder > Without auth > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`FetchBuilder > Without auth > Storage.get('THEME') 1`] = `null`;
+
+exports[`FetchBuilder > Without auth > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`FetchBuilder > Without auth > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`FetchBuilder > Without auth > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`FetchBuilder > Without auth > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+]
+`;
+
+exports[`FetchBuilder > Without auth > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`FetchBuilder > Without auth > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`FetchBuilder > Without auth > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`FetchBuilder > Without auth > openedPopup 1`] = `undefined`;
+
+exports[`FetchBuilder > Without auth > selectedTheme 1`] = `"System"`;
+
+exports[`FetchBuilder > Without auth > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": true,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`FetchBuilder > Without auth > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

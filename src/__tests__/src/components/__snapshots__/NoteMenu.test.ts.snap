@@ -2,6 +2,16 @@
 
 exports[`NoteMenu > Creates a new note > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`NoteMenu > Creates a new note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Creates a new note > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`NoteMenu > Creates a new note > allCalls 1`] = `
 [
   [
@@ -272,16 +282,6 @@ exports[`NoteMenu > Creates a new note > openedPopup 1`] = `undefined`;
 
 exports[`NoteMenu > Creates a new note > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Creates a new note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Creates a new note > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Creates a new note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Creates a new note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Creates a new note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Creates a new note > syncState 1`] = `
 {
   "appError": AppError {
@@ -293,7 +293,6 @@ exports[`NoteMenu > Creates a new note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -317,6 +316,16 @@ exports[`NoteMenu > Creates a new note > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Mounts > allCalls 1`] = `
 [
@@ -606,16 +615,6 @@ exports[`NoteMenu > Mounts > openedPopup 1`] = `undefined`;
 
 exports[`NoteMenu > Mounts > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Mounts > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Mounts > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Mounts > syncState 1`] = `
 {
   "appError": AppError {
@@ -627,7 +626,6 @@ exports[`NoteMenu > Mounts > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -651,6 +649,16 @@ exports[`NoteMenu > Mounts > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > allCalls 1`] = `
 [
@@ -896,16 +904,6 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > openedPopup 1`] = 
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Navigates notes with up/down arrow keys > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Navigates notes with up/down arrow keys > syncState 1`] = `
 {
   "appError": AppError {
@@ -917,7 +915,6 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -941,6 +938,16 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > updateState 1`] = 
 `;
 
 exports[`NoteMenu > Renders a list item for every note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Renders a list item for every note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Renders a list item for every note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Renders a list item for every note > allCalls 1`] = `
 [
@@ -1230,16 +1237,6 @@ exports[`NoteMenu > Renders a list item for every note > openedPopup 1`] = `unde
 
 exports[`NoteMenu > Renders a list item for every note > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Renders a list item for every note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Renders a list item for every note > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Renders a list item for every note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Renders a list item for every note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Renders a list item for every note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Renders a list item for every note > syncState 1`] = `
 {
   "appError": AppError {
@@ -1251,7 +1248,6 @@ exports[`NoteMenu > Renders a list item for every note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1275,6 +1271,16 @@ exports[`NoteMenu > Renders a list item for every note > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Renders a single empty note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Renders a single empty note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Renders a single empty note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Renders a single empty note > allCalls 1`] = `
 [
@@ -1359,16 +1365,6 @@ exports[`NoteMenu > Renders a single empty note > openedPopup 1`] = `undefined`;
 
 exports[`NoteMenu > Renders a single empty note > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Renders a single empty note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Renders a single empty note > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Renders a single empty note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Renders a single empty note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Renders a single empty note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Renders a single empty note > syncState 1`] = `
 {
   "appError": AppError {
@@ -1380,7 +1376,6 @@ exports[`NoteMenu > Renders a single empty note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1404,6 +1399,16 @@ exports[`NoteMenu > Renders a single empty note > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Selects a clicked note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects a clicked note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects a clicked note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects a clicked note > allCalls 1`] = `
 [
@@ -1649,16 +1654,6 @@ exports[`NoteMenu > Selects a clicked note > openedPopup 1`] = `undefined`;
 
 exports[`NoteMenu > Selects a clicked note > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Selects a clicked note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Selects a clicked note > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Selects a clicked note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Selects a clicked note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Selects a clicked note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Selects a clicked note > syncState 1`] = `
 {
   "appError": AppError {
@@ -1670,7 +1665,6 @@ exports[`NoteMenu > Selects a clicked note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1694,6 +1688,16 @@ exports[`NoteMenu > Selects a clicked note > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > allCalls 1`] = `
 [
@@ -1983,16 +1987,6 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > o
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > syncState 1`] = `
 {
   "appError": AppError {
@@ -2004,7 +1998,6 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > s
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2028,6 +2021,16 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > u
 `;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > allCalls 1`] = `
 [
@@ -2273,16 +2276,6 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > openedPopup 
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > syncState 1`] = `
 {
   "appError": AppError {
@@ -2294,7 +2287,6 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > syncState 1`
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2318,6 +2310,16 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > updateState 
 `;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > allCalls 1`] = `
 [
@@ -2563,16 +2565,6 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > syncState 1`] = `
 {
   "appError": AppError {
@@ -2584,7 +2576,6 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2608,6 +2599,16 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 `;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > allCalls 1`] = `
 [
@@ -2853,16 +2854,6 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > syncState 1`] = `
 {
   "appError": AppError {
@@ -2874,7 +2865,6 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2898,6 +2888,16 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 `;
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > allCalls 1`] = `
 [
@@ -3143,16 +3143,6 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > openedPopup 1`]
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Selects/deselects extra notes > With shift > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Selects/deselects extra notes > With shift > syncState 1`] = `
 {
   "appError": AppError {
@@ -3164,7 +3154,6 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > syncState 1`] =
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3188,6 +3177,16 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > updateState 1`]
 `;
 
 exports[`NoteMenu > Sets contextmenu ev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Sets contextmenu ev > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Sets contextmenu ev > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Sets contextmenu ev > allCalls 1`] = `
 [
@@ -3477,16 +3476,6 @@ exports[`NoteMenu > Sets contextmenu ev > openedPopup 1`] = `undefined`;
 
 exports[`NoteMenu > Sets contextmenu ev > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Sets contextmenu ev > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Sets contextmenu ev > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Sets contextmenu ev > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Sets contextmenu ev > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Sets contextmenu ev > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Sets contextmenu ev > syncState 1`] = `
 {
   "appError": AppError {
@@ -3498,7 +3487,6 @@ exports[`NoteMenu > Sets contextmenu ev > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3522,6 +3510,16 @@ exports[`NoteMenu > Sets contextmenu ev > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Sets menu width with drag-bar > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('MENU_WIDTH') 1`] = `"400px"`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Sets menu width with drag-bar > allCalls 1`] = `
 [
@@ -3811,16 +3809,6 @@ exports[`NoteMenu > Sets menu width with drag-bar > openedPopup 1`] = `undefined
 
 exports[`NoteMenu > Sets menu width with drag-bar > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > storage.get('MENU_WIDTH') 1`] = `"400px"`;
-
-exports[`NoteMenu > Sets menu width with drag-bar > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Sets menu width with drag-bar > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Sets menu width with drag-bar > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Sets menu width with drag-bar > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Sets menu width with drag-bar > syncState 1`] = `
 {
   "appError": AppError {
@@ -3832,7 +3820,6 @@ exports[`NoteMenu > Sets menu width with drag-bar > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3856,6 +3843,16 @@ exports[`NoteMenu > Sets menu width with drag-bar > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Toggles menu visibility > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Toggles menu visibility > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > Storage.get('THEME') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`NoteMenu > Toggles menu visibility > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Toggles menu visibility > allCalls 1`] = `
 [
@@ -4145,16 +4142,6 @@ exports[`NoteMenu > Toggles menu visibility > openedPopup 1`] = `undefined`;
 
 exports[`NoteMenu > Toggles menu visibility > selectedTheme 1`] = `"System"`;
 
-exports[`NoteMenu > Toggles menu visibility > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > storage.get('USERNAME') 1`] = `null`;
-
 exports[`NoteMenu > Toggles menu visibility > syncState 1`] = `
 {
   "appError": AppError {
@@ -4166,7 +4153,6 @@ exports[`NoteMenu > Toggles menu visibility > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

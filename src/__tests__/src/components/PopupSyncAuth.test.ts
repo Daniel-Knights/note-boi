@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
-import { AppError, ERROR_CODE } from '../../../appError';
+import { AppError, ERROR_CODE } from '../../../classes';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
 import { assertAppError, findByTestId, getByTestId, waitUntil } from '../../utils';
@@ -25,7 +25,9 @@ describe('PopupSyncAuth', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.size, 0);
+    assert.strictEqual(calls.size, 2);
+    assert.isTrue(calls.listeners.has('login'));
+    assert.isTrue(calls.listeners.has('signup'));
   });
 
   it('Emits close', () => {
@@ -50,7 +52,9 @@ describe('PopupSyncAuth', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.size, 0);
+    assert.strictEqual(calls.size, 2);
+    assert.isTrue(calls.listeners.has('login'));
+    assert.isTrue(calls.listeners.has('signup'));
 
     const errorMessageWrapper = getByTestId(wrapper, 'error-message');
     assert.strictEqual(errorMessageWrapper.text(), 'Mock error');
@@ -68,30 +72,87 @@ describe('PopupSyncAuth', () => {
     await Promise.all(promises);
 
     assert.isTrue(wrapper.isVisible());
-    assert.strictEqual(calls.size, 0);
+    assert.strictEqual(calls.size, 2);
+    assert.isTrue(calls.listeners.has('login'));
+    assert.isTrue(calls.listeners.has('signup'));
 
     const errorMessageWrapper = getByTestId(wrapper, 'error-message');
     assert.strictEqual(errorMessageWrapper.text(), 'Something went wrong');
   });
 
-  it('Switches between login/signup', async () => {
-    mockApi();
+  describe('Switches between login/signup', () => {
+    it('Switches', async () => {
+      mockApi();
 
-    const resetErrorSpy = vi.spyOn(s, 'resetAppError');
-    const wrapper = mountPopupSyncAuth();
+      const resetErrorSpy = vi.spyOn(s, 'resetAppError');
+      const wrapper = mountPopupSyncAuth();
 
-    assert.equal(getByTestId(wrapper, 'heading').text(), 'Login');
-    assert.isFalse(findByTestId(wrapper, 'confirm-password').exists());
+      assert.strictEqual(getByTestId(wrapper, 'heading').text(), 'Login');
+      assert.isFalse(findByTestId(wrapper, 'confirm-password').exists());
 
-    const switchAuthButton = getByTestId(wrapper, 'switch');
-    assert.equal(switchAuthButton.text(), 'Switch to signup');
+      const switchAuthButton = getByTestId(wrapper, 'switch');
+      assert.strictEqual(switchAuthButton.text(), 'Switch to signup');
 
-    await switchAuthButton.trigger('click');
+      await switchAuthButton.trigger('click');
 
-    assert.isFalse(s.syncState.isLogin);
-    assert.equal(getByTestId(wrapper, 'heading').text(), 'Signup');
-    assert.isTrue(findByTestId(wrapper, 'confirm-password').exists());
-    expect(resetErrorSpy).toHaveBeenCalledOnce();
+      assert.strictEqual(getByTestId(wrapper, 'heading').text(), 'Signup');
+      assert.isTrue(findByTestId(wrapper, 'confirm-password').isVisible());
+      expect(resetErrorSpy).not.toHaveBeenCalledOnce();
+    });
+
+    it('Clears form validation errors', async () => {
+      mockApi();
+
+      s.syncState.appError = new AppError({
+        code: ERROR_CODE.FORM_VALIDATION,
+        message: 'Mock error',
+        display: { form: true },
+      });
+
+      const resetErrorSpy = vi.spyOn(s, 'resetAppError');
+      const wrapper = mountPopupSyncAuth();
+
+      assert.strictEqual(getByTestId(wrapper, 'heading').text(), 'Login');
+      assert.strictEqual(getByTestId(wrapper, 'error-message').text(), 'Mock error');
+      assert.isFalse(findByTestId(wrapper, 'confirm-password').exists());
+
+      const switchAuthButton = getByTestId(wrapper, 'switch');
+      assert.strictEqual(switchAuthButton.text(), 'Switch to signup');
+
+      await switchAuthButton.trigger('click');
+
+      assert.strictEqual(getByTestId(wrapper, 'heading').text(), 'Signup');
+      assert.isFalse(findByTestId(wrapper, 'error-message').exists());
+      assert.isTrue(findByTestId(wrapper, 'confirm-password').isVisible());
+      expect(resetErrorSpy).toHaveBeenCalledOnce();
+    });
+
+    it('Retains sync errors', async () => {
+      mockApi();
+
+      s.syncState.appError = new AppError({
+        code: ERROR_CODE.PULL,
+        message: 'Mock error',
+        display: { form: true, sync: true },
+      });
+
+      const resetErrorSpy = vi.spyOn(s, 'resetAppError');
+      const wrapper = mountPopupSyncAuth();
+
+      assert.strictEqual(getByTestId(wrapper, 'heading').text(), 'Login');
+      assert.strictEqual(getByTestId(wrapper, 'error-message').text(), 'Mock error');
+      assert.isFalse(findByTestId(wrapper, 'confirm-password').exists());
+
+      const switchAuthButton = getByTestId(wrapper, 'switch');
+      assert.strictEqual(switchAuthButton.text(), 'Switch to signup');
+
+      await switchAuthButton.trigger('click');
+
+      assert.strictEqual(getByTestId(wrapper, 'heading').text(), 'Signup');
+      assert.strictEqual(getByTestId(wrapper, 'error-message').text(), 'Mock error');
+      assert.isTrue(findByTestId(wrapper, 'confirm-password').isVisible());
+      expect(resetErrorSpy).not.toHaveBeenCalledOnce();
+    });
   });
 
   describe('Validates fields', () => {
@@ -161,8 +222,13 @@ describe('PopupSyncAuth', () => {
       assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.lengthOf(wrapper.emitted('close')!, 1);
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.invoke.has('set_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, {
+        username: 'd',
+        accessToken: 'test-token',
+      });
       assert.isTrue(calls.invoke.has('new_note'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.isTrue(calls.emits.has('auth'));
@@ -278,8 +344,13 @@ describe('PopupSyncAuth', () => {
       assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.lengthOf(wrapper.emitted('close')!, 1);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.invoke.has('set_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, {
+        username: 'k',
+        accessToken: 'test-token',
+      });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,

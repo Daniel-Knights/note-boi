@@ -4,9 +4,8 @@ import { nextTick } from 'vue';
 
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
-import { ERROR_CODE } from '../../../../appError';
-import { storage } from '../../../../storage';
-import { isEmptyNote } from '../../../../utils';
+import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../../classes';
+import { isEmptyNote, tauriInvoke } from '../../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
 import {
@@ -59,8 +58,15 @@ describe('Note (sync)', () => {
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.request.has('/notes/pull'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('set_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, {
+        username: 'd',
+        accessToken: 'test-token',
+      });
       assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
@@ -87,6 +93,11 @@ describe('Note (sync)', () => {
 
       s.syncState.username = 'd';
 
+      await tauriInvoke('set_access_token', {
+        username: 'd',
+        accessToken: 'test-token',
+      });
+
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
@@ -104,8 +115,15 @@ describe('Note (sync)', () => {
       assert.strictEqual(n.noteState.notes.length, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/notes/pull'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('set_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, {
+        username: 'd',
+        accessToken: 'test-token',
+      });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -146,8 +164,10 @@ describe('Note (sync)', () => {
       assert.strictEqual(n.noteState.notes[0]!.id, n.noteState.selectedNote.id);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/pull'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it('User unauthorised', async () => {
@@ -164,7 +184,7 @@ describe('Note (sync)', () => {
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
-      storage.set('USERNAME', 'd');
+      Storage.set('USERNAME', 'd');
 
       await s.pull();
 
@@ -177,8 +197,12 @@ describe('Note (sync)', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/notes/pull'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -194,7 +218,7 @@ describe('Note (sync)', () => {
 
       s.syncState.username = 'k';
       s.syncState.isLoggedIn = true;
-      storage.set('USERNAME', 'k');
+      Storage.set('USERNAME', 'k');
 
       await s.pull();
 
@@ -207,8 +231,12 @@ describe('Note (sync)', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/notes/pull'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -246,7 +274,7 @@ describe('Note (sync)', () => {
         body: '',
       };
 
-      const encryptedRemoteNotes = await s.Encryptor.encryptNotes(unencryptedRemoteNotes);
+      const encryptedRemoteNotes = await Encryptor.encryptNotes(unencryptedRemoteNotes);
 
       clearMocks();
 
@@ -305,7 +333,7 @@ describe('Note (sync)', () => {
       unencryptedRemoteNotes.push(newRemoteNote);
       unencryptedRemoteNotes.splice(5, 2); // Deleted remote notes
 
-      const encryptedRemoteNotes = await s.Encryptor.encryptNotes(unencryptedRemoteNotes);
+      const encryptedRemoteNotes = await Encryptor.encryptNotes(unencryptedRemoteNotes);
 
       clearMocks();
 
@@ -346,22 +374,24 @@ describe('Note (sync)', () => {
 
       s.syncState.unsyncedNoteIds.add(unsynced);
 
-      assert.deepEqual(storage.getJson('UNSYNCED'), unsynced);
+      assert.deepEqual(Storage.getJson('UNSYNCED'), unsynced);
 
       clearMockApiResults({ calls });
 
       await s.push();
 
       assertAppError();
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
       assert.isFalse(s.syncState.isLoading);
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it("Doesn't push empty notes", async () => {
@@ -397,7 +427,7 @@ describe('Note (sync)', () => {
 
       n.editNote({}, 'Title', 'Body');
 
-      await s.KeyStore.reset();
+      await KeyStore.reset();
 
       clearMockApiResults({ calls });
 
@@ -412,7 +442,9 @@ describe('Note (sync)', () => {
 
       assert.isFalse(s.syncState.isLoading);
       assert.strictEqual(n.noteState.notes.length, 1);
-      assert.strictEqual(calls.size, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it('With server error', async () => {
@@ -443,8 +475,10 @@ describe('Note (sync)', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it('User unauthorised', async () => {
@@ -479,8 +513,12 @@ describe('Note (sync)', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/notes/push'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -518,8 +556,12 @@ describe('Note (sync)', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/notes/push'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -546,7 +588,7 @@ describe('Note (sync)', () => {
   describe('unsyncedNoteIds', () => {
     it('new', async () => {
       function assertNotOverwritten() {
-        const storedId = storage.getJson('UNSYNCED')?.new;
+        const storedId = Storage.getJson('UNSYNCED')?.new;
 
         assert.isNotEmpty(s.syncState.unsyncedNoteIds.new);
         assert.match(storedId || '', UUID_REGEX);
@@ -585,7 +627,7 @@ describe('Note (sync)', () => {
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(findByTestId(statusWrapper, 'loading').exists());
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
 
       // New note mid-pull
       const newButton = getByTestId(wrapper, 'new');
@@ -595,7 +637,7 @@ describe('Note (sync)', () => {
 
       assertNotOverwritten();
 
-      let storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      let storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.strictEqual(s.syncState.unsyncedNoteIds.new, n.noteState.selectedNote.id);
@@ -605,7 +647,7 @@ describe('Note (sync)', () => {
 
       await s.logout();
 
-      storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
       assert.strictEqual(s.syncState.unsyncedNoteIds.new, n.noteState.selectedNote.id);
@@ -628,7 +670,7 @@ describe('Note (sync)', () => {
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       // See editNote for why we expect selectedNote to be empty
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
@@ -639,7 +681,7 @@ describe('Note (sync)', () => {
 
       n.selectNote(n.noteState.notes[1]!.id);
 
-      storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
@@ -666,13 +708,13 @@ describe('Note (sync)', () => {
       await s.login();
 
       assert.isEmpty(s.syncState.unsyncedNoteIds.edited);
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
 
       const firstCachedNote = { ...n.noteState.selectedNote };
 
       n.editNote({}, 'title', 'body');
 
-      let storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      let storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isTrue(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.strictEqual(storedUnsyncedNoteIds?.edited[0], firstCachedNote.id);
@@ -692,7 +734,7 @@ describe('Note (sync)', () => {
 
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
       assert.strictEqual(n.noteState.selectedNote.id, firstCachedNote.id);
       // See editNote for why we don't use selectedNote here
       assert.deepEqual(n.findNote(n.noteState.selectedNote.id)!.content, {
@@ -707,7 +749,7 @@ describe('Note (sync)', () => {
 
       n.editNote({}, 'title2', 'body2');
 
-      storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.isTrue(s.syncState.unsyncedNoteIds.edited.has(secondCachedNote.id));
@@ -719,7 +761,7 @@ describe('Note (sync)', () => {
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(secondCachedNote.id));
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
       assert.strictEqual(n.noteState.selectedNote.id, secondCachedNote.id);
       // See editNote for why we don't use selectedNote here
       assert.deepEqual(n.findNote(n.noteState.selectedNote.id)!.content, {
@@ -732,7 +774,7 @@ describe('Note (sync)', () => {
 
       await waitUntil(() => !s.syncState.isLoading);
 
-      storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isTrue(findByTestId(statusWrapper, 'sync-button').exists());
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(secondCachedNote.id));
@@ -755,13 +797,13 @@ describe('Note (sync)', () => {
       await s.login();
 
       assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
 
       const firstCachedNote = { ...n.noteState.selectedNote };
 
       n.deleteNote(n.noteState.selectedNote.id);
 
-      let storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      let storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.strictEqual(storedUnsyncedNoteIds?.deleted[0], firstCachedNote.id);
@@ -783,7 +825,7 @@ describe('Note (sync)', () => {
 
       n.deleteNote(n.noteState.selectedNote.id);
 
-      storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isFalse(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(secondCachedNote.id));
@@ -795,7 +837,7 @@ describe('Note (sync)', () => {
       assert.isTrue(findByTestId(statusWrapper, 'success').exists());
       assert.isFalse(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.isFalse(s.syncState.unsyncedNoteIds.deleted.has(secondCachedNote.id));
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
     });
 
     it('Registers unsynced notes if not logged in', async () => {
@@ -803,14 +845,14 @@ describe('Note (sync)', () => {
 
       await n.getAllNotes();
 
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.isEmpty(s.syncState.unsyncedNoteIds.edited);
       assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
 
       n.newNote(true);
 
-      let storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      let storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
@@ -821,7 +863,7 @@ describe('Note (sync)', () => {
 
       n.editNote({}, 'title', 'body');
 
-      storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       // See editNote for why selectedNote should be empty
@@ -836,7 +878,7 @@ describe('Note (sync)', () => {
 
       n.deleteNote(n.noteState.selectedNote.id);
 
-      storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+      storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
@@ -886,7 +928,7 @@ describe('Note (sync)', () => {
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
     });
 
     it('No remote, some local', async () => {
@@ -916,7 +958,7 @@ describe('Note (sync)', () => {
       assert.deepEqual(n.noteState.notes, localNotes);
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
     });
 
     it('No local, no remote', async () => {
@@ -952,7 +994,7 @@ describe('Note (sync)', () => {
       assert.strictEqual(n.noteState.notes.length, 1);
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
-      assert.isNull(storage.getJson('UNSYNCED'));
+      assert.isNull(Storage.getJson('UNSYNCED'));
     });
   });
 });

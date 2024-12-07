@@ -2,6 +2,16 @@
 
 exports[`ContextMenu > Closes > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`ContextMenu > Closes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Closes > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Closes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Closes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Closes > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`ContextMenu > Closes > allCalls 1`] = `[]`;
 
 exports[`ContextMenu > Closes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
@@ -37,16 +47,6 @@ exports[`ContextMenu > Closes > openedPopup 1`] = `undefined`;
 
 exports[`ContextMenu > Closes > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Closes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Closes > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Closes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Closes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Closes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Closes > syncState 1`] = `
 {
   "appError": AppError {
@@ -58,7 +58,6 @@ exports[`ContextMenu > Closes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -82,6 +81,16 @@ exports[`ContextMenu > Closes > updateState 1`] = `
 `;
 
 exports[`ContextMenu > Creates a new note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Creates a new note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Creates a new note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Creates a new note > allCalls 1`] = `
 [
@@ -353,16 +362,6 @@ exports[`ContextMenu > Creates a new note > openedPopup 1`] = `undefined`;
 
 exports[`ContextMenu > Creates a new note > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Creates a new note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Creates a new note > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Creates a new note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Creates a new note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Creates a new note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Creates a new note > syncState 1`] = `
 {
   "appError": AppError {
@@ -374,7 +373,6 @@ exports[`ContextMenu > Creates a new note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -398,6 +396,16 @@ exports[`ContextMenu > Creates a new note > updateState 1`] = `
 `;
 
 exports[`ContextMenu > Delete button disabled with no notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Delete button disabled with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Delete button disabled with no notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Delete button disabled with no notes > allCalls 1`] = `
 [
@@ -475,16 +483,6 @@ exports[`ContextMenu > Delete button disabled with no notes > openedPopup 1`] = 
 
 exports[`ContextMenu > Delete button disabled with no notes > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Delete button disabled with no notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Delete button disabled with no notes > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Delete button disabled with no notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Delete button disabled with no notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Delete button disabled with no notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -496,7 +494,6 @@ exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -520,6 +517,16 @@ exports[`ContextMenu > Delete button disabled with no notes > updateState 1`] = 
 `;
 
 exports[`ContextMenu > Deletes a note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Deletes a note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Deletes a note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Deletes a note > allCalls 1`] = `
 [
@@ -803,16 +810,6 @@ exports[`ContextMenu > Deletes a note > openedPopup 1`] = `undefined`;
 
 exports[`ContextMenu > Deletes a note > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Deletes a note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Deletes a note > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Deletes a note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Deletes a note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Deletes a note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Deletes a note > syncState 1`] = `
 {
   "appError": AppError {
@@ -824,7 +821,6 @@ exports[`ContextMenu > Deletes a note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -850,6 +846,16 @@ exports[`ContextMenu > Deletes a note > updateState 1`] = `
 `;
 
 exports[`ContextMenu > Deletes all selected notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Deletes all selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Deletes all selected notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Deletes all selected notes > allCalls 1`] = `
 [
@@ -1109,16 +1115,6 @@ exports[`ContextMenu > Deletes all selected notes > openedPopup 1`] = `undefined
 
 exports[`ContextMenu > Deletes all selected notes > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Deletes all selected notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Deletes all selected notes > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Deletes all selected notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Deletes all selected notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Deletes all selected notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Deletes all selected notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -1130,7 +1126,6 @@ exports[`ContextMenu > Deletes all selected notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1156,6 +1151,16 @@ exports[`ContextMenu > Deletes all selected notes > updateState 1`] = `
 `;
 
 exports[`ContextMenu > Export button disabled with no notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Export button disabled with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Export button disabled with no notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Export button disabled with no notes > allCalls 1`] = `
 [
@@ -1233,16 +1238,6 @@ exports[`ContextMenu > Export button disabled with no notes > openedPopup 1`] = 
 
 exports[`ContextMenu > Export button disabled with no notes > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Export button disabled with no notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Export button disabled with no notes > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Export button disabled with no notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Export button disabled with no notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Export button disabled with no notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -1254,7 +1249,6 @@ exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1278,6 +1272,16 @@ exports[`ContextMenu > Export button disabled with no notes > updateState 1`] = 
 `;
 
 exports[`ContextMenu > Exports a note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Exports a note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Exports a note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Exports a note > allCalls 1`] = `
 [
@@ -1535,16 +1539,6 @@ exports[`ContextMenu > Exports a note > openedPopup 1`] = `undefined`;
 
 exports[`ContextMenu > Exports a note > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Exports a note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Exports a note > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Exports a note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Exports a note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Exports a note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Exports a note > syncState 1`] = `
 {
   "appError": AppError {
@@ -1556,7 +1550,6 @@ exports[`ContextMenu > Exports a note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1580,6 +1573,16 @@ exports[`ContextMenu > Exports a note > updateState 1`] = `
 `;
 
 exports[`ContextMenu > Exports all selected notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Exports all selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Exports all selected notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
 [
@@ -1898,16 +1901,6 @@ exports[`ContextMenu > Exports all selected notes > openedPopup 1`] = `undefined
 
 exports[`ContextMenu > Exports all selected notes > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Exports all selected notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Exports all selected notes > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Exports all selected notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Exports all selected notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Exports all selected notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Exports all selected notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -1919,7 +1912,6 @@ exports[`ContextMenu > Exports all selected notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1943,6 +1935,16 @@ exports[`ContextMenu > Exports all selected notes > updateState 1`] = `
 `;
 
 exports[`ContextMenu > Mounts with ev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Mounts with ev > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Mounts with ev > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Mounts with ev > allCalls 1`] = `[]`;
 
@@ -1979,16 +1981,6 @@ exports[`ContextMenu > Mounts with ev > openedPopup 1`] = `undefined`;
 
 exports[`ContextMenu > Mounts with ev > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Mounts with ev > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Mounts with ev > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Mounts with ev > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Mounts with ev > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Mounts with ev > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Mounts with ev > syncState 1`] = `
 {
   "appError": AppError {
@@ -2000,7 +1992,6 @@ exports[`ContextMenu > Mounts with ev > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2024,6 +2015,16 @@ exports[`ContextMenu > Mounts with ev > updateState 1`] = `
 `;
 
 exports[`ContextMenu > Mounts without passed ev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Mounts without passed ev > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Mounts without passed ev > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Mounts without passed ev > allCalls 1`] = `[]`;
 
@@ -2060,16 +2061,6 @@ exports[`ContextMenu > Mounts without passed ev > openedPopup 1`] = `undefined`;
 
 exports[`ContextMenu > Mounts without passed ev > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Mounts without passed ev > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`ContextMenu > Mounts without passed ev > storage.get('THEME') 1`] = `null`;
-
-exports[`ContextMenu > Mounts without passed ev > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`ContextMenu > Mounts without passed ev > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`ContextMenu > Mounts without passed ev > storage.get('USERNAME') 1`] = `null`;
-
 exports[`ContextMenu > Mounts without passed ev > syncState 1`] = `
 {
   "appError": AppError {
@@ -2081,7 +2072,6 @@ exports[`ContextMenu > Mounts without passed ev > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

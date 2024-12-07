@@ -2,6 +2,16 @@
 
 exports[`Note store > deleteNote > Calls autoPush > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Note store > deleteNote > Calls autoPush > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > deleteNote > Calls autoPush > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > deleteNote > Calls autoPush > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > deleteNote > Calls autoPush > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > deleteNote > Calls autoPush > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Note store > deleteNote > Calls autoPush > allCalls 1`] = `
 [
   [
@@ -284,16 +294,6 @@ exports[`Note store > deleteNote > Calls autoPush > openedPopup 1`] = `undefined
 
 exports[`Note store > deleteNote > Calls autoPush > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > deleteNote > Calls autoPush > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > deleteNote > Calls autoPush > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > deleteNote > Calls autoPush > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > deleteNote > Calls autoPush > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > deleteNote > Calls autoPush > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > deleteNote > Calls autoPush > syncState 1`] = `
 {
   "appError": AppError {
@@ -305,7 +305,6 @@ exports[`Note store > deleteNote > Calls autoPush > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -331,6 +330,16 @@ exports[`Note store > deleteNote > Calls autoPush > updateState 1`] = `
 `;
 
 exports[`Note store > deleteNote > Deletes selected note and selects next > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteNote > Deletes selected note and selects next > allCalls 1`] = `
 [
@@ -614,16 +623,6 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > open
 
 exports[`Note store > deleteNote > Deletes selected note and selects next > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > deleteNote > Deletes selected note and selects next > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > deleteNote > Deletes selected note and selects next > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > deleteNote > Deletes selected note and selects next > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > deleteNote > Deletes selected note and selects next > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > deleteNote > Deletes selected note and selects next > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > deleteNote > Deletes selected note and selects next > syncState 1`] = `
 {
   "appError": AppError {
@@ -635,7 +634,6 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > sync
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -661,6 +659,16 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > upda
 `;
 
 exports[`Note store > deleteNote > Resets unsynced new note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteNote > Resets unsynced new note > allCalls 1`] = `
 [
@@ -935,16 +943,6 @@ exports[`Note store > deleteNote > Resets unsynced new note > openedPopup 1`] = 
 
 exports[`Note store > deleteNote > Resets unsynced new note > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > deleteNote > Resets unsynced new note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > deleteNote > Resets unsynced new note > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > deleteNote > Resets unsynced new note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > deleteNote > Resets unsynced new note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > deleteNote > Resets unsynced new note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > deleteNote > Resets unsynced new note > syncState 1`] = `
 {
   "appError": AppError {
@@ -956,7 +954,6 @@ exports[`Note store > deleteNote > Resets unsynced new note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -980,6 +977,16 @@ exports[`Note store > deleteNote > Resets unsynced new note > updateState 1`] = 
 `;
 
 exports[`Note store > deleteNote > With no notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > deleteNote > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > deleteNote > With no notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > deleteNote > With no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > deleteNote > With no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > deleteNote > With no notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteNote > With no notes > allCalls 1`] = `
 [
@@ -1066,16 +1073,6 @@ exports[`Note store > deleteNote > With no notes > openedPopup 1`] = `undefined`
 
 exports[`Note store > deleteNote > With no notes > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > deleteNote > With no notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > deleteNote > With no notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > deleteNote > With no notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > deleteNote > With no notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > deleteNote > With no notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > deleteNote > With no notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -1087,7 +1084,6 @@ exports[`Note store > deleteNote > With no notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1113,6 +1109,16 @@ exports[`Note store > deleteNote > With no notes > updateState 1`] = `
 `;
 
 exports[`Note store > deleteNote > Without selecting next note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteNote > Without selecting next note > allCalls 1`] = `
 [
@@ -1352,16 +1358,6 @@ exports[`Note store > deleteNote > Without selecting next note > openedPopup 1`]
 
 exports[`Note store > deleteNote > Without selecting next note > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > deleteNote > Without selecting next note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > deleteNote > Without selecting next note > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > deleteNote > Without selecting next note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > deleteNote > Without selecting next note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > deleteNote > Without selecting next note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > deleteNote > Without selecting next note > syncState 1`] = `
 {
   "appError": AppError {
@@ -1373,7 +1369,6 @@ exports[`Note store > deleteNote > Without selecting next note > syncState 1`] =
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1399,6 +1394,16 @@ exports[`Note store > deleteNote > Without selecting next note > updateState 1`]
 `;
 
 exports[`Note store > deleteSelectedNotes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > deleteSelectedNotes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > deleteSelectedNotes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > deleteSelectedNotes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > deleteSelectedNotes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > deleteSelectedNotes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteSelectedNotes > allCalls 1`] = `
 [
@@ -1576,16 +1581,6 @@ exports[`Note store > deleteSelectedNotes > openedPopup 1`] = `undefined`;
 
 exports[`Note store > deleteSelectedNotes > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > deleteSelectedNotes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > deleteSelectedNotes > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > deleteSelectedNotes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > deleteSelectedNotes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > deleteSelectedNotes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > deleteSelectedNotes > syncState 1`] = `
 {
   "appError": AppError {
@@ -1597,7 +1592,6 @@ exports[`Note store > deleteSelectedNotes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1623,6 +1617,16 @@ exports[`Note store > deleteSelectedNotes > updateState 1`] = `
 `;
 
 exports[`Note store > editNote > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > editNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > editNote > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > editNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > editNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > editNote > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > editNote > allCalls 1`] = `
 [
@@ -1893,16 +1897,6 @@ exports[`Note store > editNote > openedPopup 1`] = `undefined`;
 
 exports[`Note store > editNote > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > editNote > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > editNote > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > editNote > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > editNote > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > editNote > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > editNote > syncState 1`] = `
 {
   "appError": AppError {
@@ -1914,7 +1908,6 @@ exports[`Note store > editNote > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1940,6 +1933,16 @@ exports[`Note store > editNote > updateState 1`] = `
 `;
 
 exports[`Note store > exportNotes > All notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > exportNotes > All notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > exportNotes > All notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > exportNotes > All notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > exportNotes > All notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > exportNotes > All notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > exportNotes > All notes > allCalls 1`] = `
 [
@@ -2446,16 +2449,6 @@ exports[`Note store > exportNotes > All notes > openedPopup 1`] = `undefined`;
 
 exports[`Note store > exportNotes > All notes > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > exportNotes > All notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > exportNotes > All notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > exportNotes > All notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > exportNotes > All notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > exportNotes > All notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > exportNotes > All notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -2467,7 +2460,6 @@ exports[`Note store > exportNotes > All notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2491,6 +2483,16 @@ exports[`Note store > exportNotes > All notes > updateState 1`] = `
 `;
 
 exports[`Note store > exportNotes > Passed selection of notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > exportNotes > Passed selection of notes > allCalls 1`] = `
 [
@@ -2862,16 +2864,6 @@ exports[`Note store > exportNotes > Passed selection of notes > openedPopup 1`] 
 
 exports[`Note store > exportNotes > Passed selection of notes > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > exportNotes > Passed selection of notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > exportNotes > Passed selection of notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > exportNotes > Passed selection of notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > exportNotes > Passed selection of notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > exportNotes > Passed selection of notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > exportNotes > Passed selection of notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -2883,7 +2875,6 @@ exports[`Note store > exportNotes > Passed selection of notes > syncState 1`] = 
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2907,6 +2898,16 @@ exports[`Note store > exportNotes > Passed selection of notes > updateState 1`] 
 `;
 
 exports[`Note store > exportNotes > Returns when no location chosen > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > exportNotes > Returns when no location chosen > allCalls 1`] = `
 [
@@ -3208,16 +3209,6 @@ exports[`Note store > exportNotes > Returns when no location chosen > openedPopu
 
 exports[`Note store > exportNotes > Returns when no location chosen > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > exportNotes > Returns when no location chosen > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > exportNotes > Returns when no location chosen > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > exportNotes > Returns when no location chosen > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > exportNotes > Returns when no location chosen > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > exportNotes > Returns when no location chosen > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > exportNotes > Returns when no location chosen > syncState 1`] = `
 {
   "appError": AppError {
@@ -3229,7 +3220,6 @@ exports[`Note store > exportNotes > Returns when no location chosen > syncState 
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3253,6 +3243,16 @@ exports[`Note store > exportNotes > Returns when no location chosen > updateStat
 `;
 
 exports[`Note store > findNote > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > findNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > findNote > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > findNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > findNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > findNote > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > findNote > allCalls 1`] = `
 [
@@ -3542,16 +3542,6 @@ exports[`Note store > findNote > openedPopup 1`] = `undefined`;
 
 exports[`Note store > findNote > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > findNote > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > findNote > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > findNote > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > findNote > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > findNote > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > findNote > syncState 1`] = `
 {
   "appError": AppError {
@@ -3563,7 +3553,6 @@ exports[`Note store > findNote > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3587,6 +3576,16 @@ exports[`Note store > findNote > updateState 1`] = `
 `;
 
 exports[`Note store > findNoteIndex > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > findNoteIndex > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > findNoteIndex > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > findNoteIndex > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > findNoteIndex > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > findNoteIndex > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > findNoteIndex > allCalls 1`] = `
 [
@@ -3876,16 +3875,6 @@ exports[`Note store > findNoteIndex > openedPopup 1`] = `undefined`;
 
 exports[`Note store > findNoteIndex > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > findNoteIndex > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > findNoteIndex > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > findNoteIndex > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > findNoteIndex > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > findNoteIndex > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > findNoteIndex > syncState 1`] = `
 {
   "appError": AppError {
@@ -3897,7 +3886,6 @@ exports[`Note store > findNoteIndex > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3921,6 +3909,16 @@ exports[`Note store > findNoteIndex > updateState 1`] = `
 `;
 
 exports[`Note store > getAllNotes > With empty note array > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > getAllNotes > With empty note array > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With empty note array > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With empty note array > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With empty note array > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With empty note array > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > getAllNotes > With empty note array > allCalls 1`] = `
 [
@@ -3998,16 +3996,6 @@ exports[`Note store > getAllNotes > With empty note array > openedPopup 1`] = `u
 
 exports[`Note store > getAllNotes > With empty note array > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > getAllNotes > With empty note array > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With empty note array > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With empty note array > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With empty note array > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With empty note array > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > getAllNotes > With empty note array > syncState 1`] = `
 {
   "appError": AppError {
@@ -4019,7 +4007,6 @@ exports[`Note store > getAllNotes > With empty note array > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4043,6 +4030,16 @@ exports[`Note store > getAllNotes > With empty note array > updateState 1`] = `
 `;
 
 exports[`Note store > getAllNotes > With notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > getAllNotes > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > getAllNotes > With notes > allCalls 1`] = `
 [
@@ -4332,16 +4329,6 @@ exports[`Note store > getAllNotes > With notes > openedPopup 1`] = `undefined`;
 
 exports[`Note store > getAllNotes > With notes > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > getAllNotes > With notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > getAllNotes > With notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -4353,7 +4340,6 @@ exports[`Note store > getAllNotes > With notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4377,6 +4363,16 @@ exports[`Note store > getAllNotes > With notes > updateState 1`] = `
 `;
 
 exports[`Note store > getAllNotes > With single empty note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > getAllNotes > With single empty note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With single empty note > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With single empty note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With single empty note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With single empty note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > getAllNotes > With single empty note > allCalls 1`] = `
 [
@@ -4431,16 +4427,6 @@ exports[`Note store > getAllNotes > With single empty note > openedPopup 1`] = `
 
 exports[`Note store > getAllNotes > With single empty note > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > getAllNotes > With single empty note > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With single empty note > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With single empty note > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With single empty note > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With single empty note > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > getAllNotes > With single empty note > syncState 1`] = `
 {
   "appError": AppError {
@@ -4452,7 +4438,6 @@ exports[`Note store > getAllNotes > With single empty note > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4476,6 +4461,16 @@ exports[`Note store > getAllNotes > With single empty note > updateState 1`] = `
 `;
 
 exports[`Note store > getAllNotes > With undefined notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > getAllNotes > With undefined notes > allCalls 1`] = `
 [
@@ -4553,16 +4548,6 @@ exports[`Note store > getAllNotes > With undefined notes > openedPopup 1`] = `un
 
 exports[`Note store > getAllNotes > With undefined notes > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > getAllNotes > With undefined notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With undefined notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With undefined notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With undefined notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > getAllNotes > With undefined notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > getAllNotes > With undefined notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -4574,7 +4559,6 @@ exports[`Note store > getAllNotes > With undefined notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4598,6 +4582,16 @@ exports[`Note store > getAllNotes > With undefined notes > updateState 1`] = `
 `;
 
 exports[`Note store > isSelectedNote > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > isSelectedNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > isSelectedNote > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > isSelectedNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > isSelectedNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > isSelectedNote > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > isSelectedNote > allCalls 1`] = `
 [
@@ -4850,16 +4844,6 @@ exports[`Note store > isSelectedNote > openedPopup 1`] = `undefined`;
 
 exports[`Note store > isSelectedNote > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > isSelectedNote > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > isSelectedNote > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > isSelectedNote > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > isSelectedNote > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > isSelectedNote > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > isSelectedNote > syncState 1`] = `
 {
   "appError": AppError {
@@ -4871,7 +4855,6 @@ exports[`Note store > isSelectedNote > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4895,6 +4878,16 @@ exports[`Note store > isSelectedNote > updateState 1`] = `
 `;
 
 exports[`Note store > new Note() > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > new Note() > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > new Note() > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > new Note() > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > new Note() > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > new Note() > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > new Note() > allCalls 1`] = `[]`;
 
@@ -4931,16 +4924,6 @@ exports[`Note store > new Note() > openedPopup 1`] = `undefined`;
 
 exports[`Note store > new Note() > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > new Note() > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > new Note() > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > new Note() > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > new Note() > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > new Note() > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > new Note() > syncState 1`] = `
 {
   "appError": AppError {
@@ -4952,7 +4935,6 @@ exports[`Note store > new Note() > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4976,6 +4958,16 @@ exports[`Note store > new Note() > updateState 1`] = `
 `;
 
 exports[`Note store > newNote > Only updates timestamp when empty note selected > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > newNote > Only updates timestamp when empty note selected > allCalls 1`] = `
 [
@@ -5228,16 +5220,6 @@ exports[`Note store > newNote > Only updates timestamp when empty note selected 
 
 exports[`Note store > newNote > Only updates timestamp when empty note selected > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > newNote > Only updates timestamp when empty note selected > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > newNote > Only updates timestamp when empty note selected > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > newNote > Only updates timestamp when empty note selected > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > newNote > Only updates timestamp when empty note selected > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > newNote > Only updates timestamp when empty note selected > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > newNote > Only updates timestamp when empty note selected > syncState 1`] = `
 {
   "appError": AppError {
@@ -5249,7 +5231,6 @@ exports[`Note store > newNote > Only updates timestamp when empty note selected 
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5273,6 +5254,16 @@ exports[`Note store > newNote > Only updates timestamp when empty note selected 
 `;
 
 exports[`Note store > newNote > When selected note isn't empty > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > newNote > When selected note isn't empty > allCalls 1`] = `
 [
@@ -5544,16 +5535,6 @@ exports[`Note store > newNote > When selected note isn't empty > openedPopup 1`]
 
 exports[`Note store > newNote > When selected note isn't empty > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > newNote > When selected note isn't empty > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > newNote > When selected note isn't empty > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > newNote > When selected note isn't empty > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > newNote > When selected note isn't empty > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > newNote > When selected note isn't empty > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > newNote > When selected note isn't empty > syncState 1`] = `
 {
   "appError": AppError {
@@ -5565,7 +5546,6 @@ exports[`Note store > newNote > When selected note isn't empty > syncState 1`] =
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5589,6 +5569,16 @@ exports[`Note store > newNote > When selected note isn't empty > updateState 1`]
 `;
 
 exports[`Note store > selectNote > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note store > selectNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note store > selectNote > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note store > selectNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note store > selectNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note store > selectNote > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > selectNote > allCalls 1`] = `
 [
@@ -5843,16 +5833,6 @@ exports[`Note store > selectNote > openedPopup 1`] = `undefined`;
 
 exports[`Note store > selectNote > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > selectNote > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note store > selectNote > storage.get('THEME') 1`] = `null`;
-
-exports[`Note store > selectNote > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note store > selectNote > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note store > selectNote > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note store > selectNote > syncState 1`] = `
 {
   "appError": AppError {
@@ -5864,7 +5844,6 @@ exports[`Note store > selectNote > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

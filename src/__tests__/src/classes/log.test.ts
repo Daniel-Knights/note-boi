@@ -1,4 +1,4 @@
-import { forwardConsole, initLogger } from '../../log';
+import { forwardConsole, initLogger } from '../../../log';
 
 const originalConsole = { ...console };
 

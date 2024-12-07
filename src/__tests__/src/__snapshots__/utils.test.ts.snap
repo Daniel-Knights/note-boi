@@ -2,6 +2,16 @@
 
 exports[`Utils > Tauri API wrappers > tauriEmit > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Utils > Tauri API wrappers > tauriEmit > allCalls 1`] = `
 [
   [
@@ -52,16 +62,6 @@ exports[`Utils > Tauri API wrappers > tauriEmit > openedPopup 1`] = `undefined`;
 
 exports[`Utils > Tauri API wrappers > tauriEmit > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriEmit > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriEmit > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriEmit > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriEmit > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > Tauri API wrappers > tauriEmit > syncState 1`] = `
 {
   "appError": AppError {
@@ -73,7 +73,6 @@ exports[`Utils > Tauri API wrappers > tauriEmit > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -97,6 +96,16 @@ exports[`Utils > Tauri API wrappers > tauriEmit > updateState 1`] = `
 `;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > allCalls 1`] = `
 [
@@ -152,16 +161,6 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > openedPopup 1`] = `undefined
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriInvoke > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriInvoke > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriInvoke > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriInvoke > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > Tauri API wrappers > tauriInvoke > syncState 1`] = `
 {
   "appError": AppError {
@@ -173,7 +172,6 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -197,6 +195,16 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > updateState 1`] = `
 `;
 
 exports[`Utils > Tauri API wrappers > tauriListen > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > allCalls 1`] = `
 [
@@ -242,16 +250,6 @@ exports[`Utils > Tauri API wrappers > tauriListen > openedPopup 1`] = `undefined
 
 exports[`Utils > Tauri API wrappers > tauriListen > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriListen > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriListen > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriListen > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > Tauri API wrappers > tauriListen > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > Tauri API wrappers > tauriListen > syncState 1`] = `
 {
   "appError": AppError {
@@ -263,7 +261,6 @@ exports[`Utils > Tauri API wrappers > tauriListen > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -287,6 +284,16 @@ exports[`Utils > Tauri API wrappers > tauriListen > updateState 1`] = `
 `;
 
 exports[`Utils > capitalise > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > capitalise > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > capitalise > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > capitalise > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > capitalise > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > capitalise > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > capitalise > allCalls 1`] = `[]`;
 
@@ -323,16 +330,6 @@ exports[`Utils > capitalise > openedPopup 1`] = `undefined`;
 
 exports[`Utils > capitalise > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > capitalise > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > capitalise > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > capitalise > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > capitalise > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > capitalise > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > capitalise > syncState 1`] = `
 {
   "appError": AppError {
@@ -344,7 +341,6 @@ exports[`Utils > capitalise > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -368,6 +364,16 @@ exports[`Utils > capitalise > updateState 1`] = `
 `;
 
 exports[`Utils > hasKeys > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > hasKeys > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > hasKeys > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > hasKeys > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > hasKeys > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > hasKeys > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > hasKeys > allCalls 1`] = `[]`;
 
@@ -404,16 +410,6 @@ exports[`Utils > hasKeys > openedPopup 1`] = `undefined`;
 
 exports[`Utils > hasKeys > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > hasKeys > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > hasKeys > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > hasKeys > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > hasKeys > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > hasKeys > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > hasKeys > syncState 1`] = `
 {
   "appError": AppError {
@@ -425,7 +421,6 @@ exports[`Utils > hasKeys > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -449,6 +444,16 @@ exports[`Utils > hasKeys > updateState 1`] = `
 `;
 
 exports[`Utils > isDev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > isDev > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > isDev > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > isDev > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > isDev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > isDev > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isDev > allCalls 1`] = `[]`;
 
@@ -485,16 +490,6 @@ exports[`Utils > isDev > openedPopup 1`] = `undefined`;
 
 exports[`Utils > isDev > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > isDev > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > isDev > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > isDev > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > isDev > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > isDev > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > isDev > syncState 1`] = `
 {
   "appError": AppError {
@@ -506,7 +501,6 @@ exports[`Utils > isDev > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -530,6 +524,16 @@ exports[`Utils > isDev > updateState 1`] = `
 `;
 
 exports[`Utils > isEmptyNote > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > isEmptyNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > isEmptyNote > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > isEmptyNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > isEmptyNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > isEmptyNote > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isEmptyNote > allCalls 1`] = `[]`;
 
@@ -566,16 +570,6 @@ exports[`Utils > isEmptyNote > openedPopup 1`] = `undefined`;
 
 exports[`Utils > isEmptyNote > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > isEmptyNote > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > isEmptyNote > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > isEmptyNote > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > isEmptyNote > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > isEmptyNote > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > isEmptyNote > syncState 1`] = `
 {
   "appError": AppError {
@@ -587,7 +581,6 @@ exports[`Utils > isEmptyNote > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -611,6 +604,16 @@ exports[`Utils > isEmptyNote > updateState 1`] = `
 `;
 
 exports[`Utils > isWhitespaceOnly > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > isWhitespaceOnly > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > isWhitespaceOnly > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > isWhitespaceOnly > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > isWhitespaceOnly > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > isWhitespaceOnly > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isWhitespaceOnly > allCalls 1`] = `[]`;
 
@@ -647,16 +650,6 @@ exports[`Utils > isWhitespaceOnly > openedPopup 1`] = `undefined`;
 
 exports[`Utils > isWhitespaceOnly > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > isWhitespaceOnly > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > isWhitespaceOnly > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > isWhitespaceOnly > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > isWhitespaceOnly > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > isWhitespaceOnly > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > isWhitespaceOnly > syncState 1`] = `
 {
   "appError": AppError {
@@ -668,7 +661,6 @@ exports[`Utils > isWhitespaceOnly > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -692,6 +684,16 @@ exports[`Utils > isWhitespaceOnly > updateState 1`] = `
 `;
 
 exports[`Utils > unixToDateTime > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > unixToDateTime > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > unixToDateTime > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > unixToDateTime > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > unixToDateTime > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > unixToDateTime > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > unixToDateTime > allCalls 1`] = `[]`;
 
@@ -728,16 +730,6 @@ exports[`Utils > unixToDateTime > openedPopup 1`] = `undefined`;
 
 exports[`Utils > unixToDateTime > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > unixToDateTime > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Utils > unixToDateTime > storage.get('THEME') 1`] = `null`;
-
-exports[`Utils > unixToDateTime > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Utils > unixToDateTime > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Utils > unixToDateTime > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Utils > unixToDateTime > syncState 1`] = `
 {
   "appError": AppError {
@@ -749,7 +741,6 @@ exports[`Utils > unixToDateTime > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

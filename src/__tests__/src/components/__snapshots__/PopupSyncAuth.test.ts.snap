@@ -2,7 +2,32 @@
 
 exports[`PopupSyncAuth > Emits close > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncAuth > Emits close > allCalls 1`] = `[]`;
+exports[`PopupSyncAuth > Emits close > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Emits close > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
 
 exports[`PopupSyncAuth > Emits close > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
@@ -37,16 +62,6 @@ exports[`PopupSyncAuth > Emits close > openedPopup 1`] = `undefined`;
 
 exports[`PopupSyncAuth > Emits close > selectedTheme 1`] = `"System"`;
 
-exports[`PopupSyncAuth > Emits close > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupSyncAuth > Emits close > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupSyncAuth > Emits close > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupSyncAuth > Emits close > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupSyncAuth > Emits close > storage.get('USERNAME') 1`] = `null`;
-
 exports[`PopupSyncAuth > Emits close > syncState 1`] = `
 {
   "appError": AppError {
@@ -58,7 +73,6 @@ exports[`PopupSyncAuth > Emits close > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -83,7 +97,32 @@ exports[`PopupSyncAuth > Emits close > updateState 1`] = `
 
 exports[`PopupSyncAuth > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncAuth > Mounts > allCalls 1`] = `[]`;
+exports[`PopupSyncAuth > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Mounts > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
 
 exports[`PopupSyncAuth > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
@@ -118,16 +157,6 @@ exports[`PopupSyncAuth > Mounts > openedPopup 1`] = `undefined`;
 
 exports[`PopupSyncAuth > Mounts > selectedTheme 1`] = `"System"`;
 
-exports[`PopupSyncAuth > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupSyncAuth > Mounts > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupSyncAuth > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupSyncAuth > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupSyncAuth > Mounts > storage.get('USERNAME') 1`] = `null`;
-
 exports[`PopupSyncAuth > Mounts > syncState 1`] = `
 {
   "appError": AppError {
@@ -139,7 +168,6 @@ exports[`PopupSyncAuth > Mounts > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -164,7 +192,32 @@ exports[`PopupSyncAuth > Mounts > updateState 1`] = `
 
 exports[`PopupSyncAuth > Shows default error message when none provided > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncAuth > Shows default error message when none provided > allCalls 1`] = `[]`;
+exports[`PopupSyncAuth > Shows default error message when none provided > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
 
 exports[`PopupSyncAuth > Shows default error message when none provided > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
@@ -199,16 +252,6 @@ exports[`PopupSyncAuth > Shows default error message when none provided > opened
 
 exports[`PopupSyncAuth > Shows default error message when none provided > selectedTheme 1`] = `"System"`;
 
-exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupSyncAuth > Shows default error message when none provided > storage.get('USERNAME') 1`] = `null`;
-
 exports[`PopupSyncAuth > Shows default error message when none provided > syncState 1`] = `
 {
   "appError": AppError {
@@ -222,7 +265,6 @@ exports[`PopupSyncAuth > Shows default error message when none provided > syncSt
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -247,7 +289,32 @@ exports[`PopupSyncAuth > Shows default error message when none provided > update
 
 exports[`PopupSyncAuth > Shows error message > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncAuth > Shows error message > allCalls 1`] = `[]`;
+exports[`PopupSyncAuth > Shows error message > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Shows error message > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
 
 exports[`PopupSyncAuth > Shows error message > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
@@ -282,16 +349,6 @@ exports[`PopupSyncAuth > Shows error message > openedPopup 1`] = `undefined`;
 
 exports[`PopupSyncAuth > Shows error message > selectedTheme 1`] = `"System"`;
 
-exports[`PopupSyncAuth > Shows error message > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupSyncAuth > Shows error message > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupSyncAuth > Shows error message > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupSyncAuth > Shows error message > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupSyncAuth > Shows error message > storage.get('USERNAME') 1`] = `null`;
-
 exports[`PopupSyncAuth > Shows error message > syncState 1`] = `
 {
   "appError": AppError {
@@ -305,7 +362,6 @@ exports[`PopupSyncAuth > Shows error message > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -328,13 +384,38 @@ exports[`PopupSyncAuth > Shows error message > updateState 1`] = `
 }
 `;
 
-exports[`PopupSyncAuth > Switches between login/signup > KeyStore.getKey() 1`] = `undefined`;
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncAuth > Switches between login/signup > allCalls 1`] = `[]`;
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupSyncAuth > Switches between login/signup > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > Storage.get('THEME') 1`] = `null`;
 
-exports[`PopupSyncAuth > Switches between login/signup > mockDb 1`] = `
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > mockDb 1`] = `
 {
   "encryptedNotes": 10,
   "users": {
@@ -343,7 +424,7 @@ exports[`PopupSyncAuth > Switches between login/signup > mockDb 1`] = `
 }
 `;
 
-exports[`PopupSyncAuth > Switches between login/signup > noteState 1`] = `
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -361,21 +442,11 @@ exports[`PopupSyncAuth > Switches between login/signup > noteState 1`] = `
 }
 `;
 
-exports[`PopupSyncAuth > Switches between login/signup > openedPopup 1`] = `undefined`;
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > openedPopup 1`] = `undefined`;
 
-exports[`PopupSyncAuth > Switches between login/signup > selectedTheme 1`] = `"System"`;
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > selectedTheme 1`] = `"System"`;
 
-exports[`PopupSyncAuth > Switches between login/signup > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupSyncAuth > Switches between login/signup > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupSyncAuth > Switches between login/signup > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupSyncAuth > Switches between login/signup > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupSyncAuth > Switches between login/signup > storage.get('USERNAME') 1`] = `null`;
-
-exports[`PopupSyncAuth > Switches between login/signup > syncState 1`] = `
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -386,7 +457,6 @@ exports[`PopupSyncAuth > Switches between login/signup > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": false,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -401,7 +471,200 @@ exports[`PopupSyncAuth > Switches between login/signup > syncState 1`] = `
 }
 `;
 
-exports[`PopupSyncAuth > Switches between login/signup > updateState 1`] = `
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 5,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "Mock error",
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Switches > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -411,12 +674,44 @@ exports[`PopupSyncAuth > Switches between login/signup > updateState 1`] = `
 
 exports[`PopupSyncAuth > Validates fields > On login > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`PopupSyncAuth > Validates fields > On login > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On login > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On login > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On login > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On login > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
 [
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -519,16 +814,6 @@ exports[`PopupSyncAuth > Validates fields > On login > openedPopup 1`] = `undefi
 
 exports[`PopupSyncAuth > Validates fields > On login > selectedTheme 1`] = `"System"`;
 
-exports[`PopupSyncAuth > Validates fields > On login > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupSyncAuth > Validates fields > On login > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupSyncAuth > Validates fields > On login > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupSyncAuth > Validates fields > On login > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupSyncAuth > Validates fields > On login > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`PopupSyncAuth > Validates fields > On login > syncState 1`] = `
 {
   "appError": AppError {
@@ -540,7 +825,6 @@ exports[`PopupSyncAuth > Validates fields > On login > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -565,12 +849,44 @@ exports[`PopupSyncAuth > Validates fields > On login > updateState 1`] = `
 
 exports[`PopupSyncAuth > Validates fields > On signup > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`PopupSyncAuth > Validates fields > On signup > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > Storage.get('USERNAME') 1`] = `"k"`;
+
 exports[`PopupSyncAuth > Validates fields > On signup > allCalls 1`] = `
 [
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
   [
     "request",
     {
       "name": "/signup",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "k",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -622,16 +938,6 @@ exports[`PopupSyncAuth > Validates fields > On signup > openedPopup 1`] = `undef
 
 exports[`PopupSyncAuth > Validates fields > On signup > selectedTheme 1`] = `"System"`;
 
-exports[`PopupSyncAuth > Validates fields > On signup > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupSyncAuth > Validates fields > On signup > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupSyncAuth > Validates fields > On signup > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupSyncAuth > Validates fields > On signup > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupSyncAuth > Validates fields > On signup > storage.get('USERNAME') 1`] = `"k"`;
-
 exports[`PopupSyncAuth > Validates fields > On signup > syncState 1`] = `
 {
   "appError": AppError {
@@ -643,7 +949,6 @@ exports[`PopupSyncAuth > Validates fields > On signup > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": false,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

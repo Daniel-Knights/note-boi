@@ -2,6 +2,16 @@
 
 exports[`Popup > Sets opened popup > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Popup > Sets opened popup > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > Storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Sets opened popup > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Popup > Sets opened popup > allCalls 1`] = `[]`;
 
 exports[`Popup > Sets opened popup > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
@@ -37,16 +47,6 @@ exports[`Popup > Sets opened popup > openedPopup 1`] = `2`;
 
 exports[`Popup > Sets opened popup > selectedTheme 1`] = `"System"`;
 
-exports[`Popup > Sets opened popup > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Popup > Sets opened popup > storage.get('THEME') 1`] = `null`;
-
-exports[`Popup > Sets opened popup > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Popup > Sets opened popup > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Popup > Sets opened popup > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Popup > Sets opened popup > syncState 1`] = `
 {
   "appError": AppError {
@@ -58,7 +58,6 @@ exports[`Popup > Sets opened popup > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

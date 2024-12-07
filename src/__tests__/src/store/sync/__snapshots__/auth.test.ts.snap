@@ -2,12 +2,32 @@
 
 exports[`Auth > clientSideLogout > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > clientSideLogout > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > clientSideLogout > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > clientSideLogout > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > clientSideLogout > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > clientSideLogout > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Auth > clientSideLogout > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -60,6 +80,15 @@ exports[`Auth > clientSideLogout > allCalls 1`] = `
         ],
       },
       "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -122,16 +151,6 @@ exports[`Auth > clientSideLogout > openedPopup 1`] = `undefined`;
 
 exports[`Auth > clientSideLogout > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > clientSideLogout > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > clientSideLogout > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > clientSideLogout > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > clientSideLogout > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > clientSideLogout > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Auth > clientSideLogout > syncState 1`] = `
 {
   "appError": AppError {
@@ -143,7 +162,6 @@ exports[`Auth > clientSideLogout > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -168,12 +186,32 @@ exports[`Auth > clientSideLogout > updateState 1`] = `
 
 exports[`Auth > login > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > login > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > login > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > login > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -276,16 +314,6 @@ exports[`Auth > login > Sets and resets loading state > openedPopup 1`] = `undef
 
 exports[`Auth > login > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > login > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > login > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > login > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > login > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > login > Sets and resets loading state > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Auth > login > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
@@ -297,7 +325,6 @@ exports[`Auth > login > Sets and resets loading state > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -322,12 +349,32 @@ exports[`Auth > login > Sets and resets loading state > updateState 1`] = `
 
 exports[`Auth > login > With encryptor error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > login > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > login > With encryptor error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > login > With encryptor error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > login > With encryptor error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > login > With encryptor error > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Auth > login > With encryptor error > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -378,16 +425,6 @@ exports[`Auth > login > With encryptor error > openedPopup 1`] = `undefined`;
 
 exports[`Auth > login > With encryptor error > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > login > With encryptor error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > login > With encryptor error > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > login > With encryptor error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > login > With encryptor error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > login > With encryptor error > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Auth > login > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
@@ -404,7 +441,6 @@ exports[`Auth > login > With encryptor error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -429,12 +465,32 @@ exports[`Auth > login > With encryptor error > updateState 1`] = `
 
 exports[`Auth > login > With no notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > login > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > login > With no notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > login > With no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > login > With no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > login > With no notes > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Auth > login > With no notes > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -932,16 +988,6 @@ exports[`Auth > login > With no notes > openedPopup 1`] = `undefined`;
 
 exports[`Auth > login > With no notes > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > login > With no notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > login > With no notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > login > With no notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > login > With no notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > login > With no notes > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Auth > login > With no notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -953,7 +999,6 @@ exports[`Auth > login > With no notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -978,6 +1023,16 @@ exports[`Auth > login > With no notes > updateState 1`] = `
 
 exports[`Auth > login > With notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > login > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > login > With notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > login > With notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > login > With notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > login > With notes > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Auth > login > With notes > allCalls 1`] = `
 [
   [
@@ -991,6 +1046,16 @@ exports[`Auth > login > With notes > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1488,16 +1553,6 @@ exports[`Auth > login > With notes > openedPopup 1`] = `undefined`;
 
 exports[`Auth > login > With notes > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > login > With notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > login > With notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > login > With notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > login > With notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > login > With notes > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Auth > login > With notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -1509,7 +1564,6 @@ exports[`Auth > login > With notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1533,6 +1587,16 @@ exports[`Auth > login > With notes > updateState 1`] = `
 `;
 
 exports[`Auth > login > With server error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > login > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > login > With server error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > login > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > login > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > login > With server error > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > login > With server error > allCalls 1`] = `
 [
@@ -1578,16 +1642,6 @@ exports[`Auth > login > With server error > openedPopup 1`] = `undefined`;
 
 exports[`Auth > login > With server error > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > login > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > login > With server error > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > login > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > login > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > login > With server error > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Auth > login > With server error > syncState 1`] = `
 {
   "appError": AppError {
@@ -1604,7 +1658,6 @@ exports[`Auth > login > With server error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
@@ -1627,7 +1680,17 @@ exports[`Auth > login > With server error > updateState 1`] = `
 }
 `;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > KeyStore.getKey() 1`] = `undefined`;
+exports[`Auth > logout > Logs a user out and clears user-based state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 1`] = `
 [
@@ -1635,6 +1698,16 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1690,9 +1763,27 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/logout",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -1755,16 +1846,6 @@ exports[`Auth > logout > Logs a user out and clears user-based state > openedPop
 
 exports[`Auth > logout > Logs a user out and clears user-based state > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > logout > Logs a user out and clears user-based state > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > logout > Logs a user out and clears user-based state > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > logout > Logs a user out and clears user-based state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > logout > Logs a user out and clears user-based state > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Auth > logout > Logs a user out and clears user-based state > syncState 1`] = `
 {
   "appError": AppError {
@@ -1776,7 +1857,6 @@ exports[`Auth > logout > Logs a user out and clears user-based state > syncState
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1799,7 +1879,17 @@ exports[`Auth > logout > Logs a user out and clears user-based state > updateSta
 }
 `;
 
-exports[`Auth > logout > Sets and resets loading state > KeyStore.getKey() 1`] = `undefined`;
+exports[`Auth > logout > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > logout > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > logout > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
 [
@@ -1807,6 +1897,16 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1862,9 +1962,27 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/logout",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -1927,16 +2045,6 @@ exports[`Auth > logout > Sets and resets loading state > openedPopup 1`] = `unde
 
 exports[`Auth > logout > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > logout > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > logout > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > logout > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > logout > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > logout > Sets and resets loading state > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Auth > logout > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
@@ -1948,7 +2056,6 @@ exports[`Auth > logout > Sets and resets loading state > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1971,7 +2078,17 @@ exports[`Auth > logout > Sets and resets loading state > updateState 1`] = `
 }
 `;
 
-exports[`Auth > logout > With server error > KeyStore.getKey() 1`] = `undefined`;
+exports[`Auth > logout > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > logout > With server error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > logout > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > logout > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > logout > With server error > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > With server error > allCalls 1`] = `
 [
@@ -1979,6 +2096,16 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -2034,9 +2161,27 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/logout",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -2099,16 +2244,6 @@ exports[`Auth > logout > With server error > openedPopup 1`] = `undefined`;
 
 exports[`Auth > logout > With server error > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > logout > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > logout > With server error > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > logout > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > logout > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > logout > With server error > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Auth > logout > With server error > syncState 1`] = `
 {
   "appError": AppError {
@@ -2120,7 +2255,6 @@ exports[`Auth > logout > With server error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2144,6 +2278,16 @@ exports[`Auth > logout > With server error > updateState 1`] = `
 `;
 
 exports[`Auth > signup > Doesn't push empty notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > signup > Doesn't push empty notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > signup > Doesn't push empty notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > signup > Doesn't push empty notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > signup > Doesn't push empty notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > signup > Doesn't push empty notes > Storage.get('USERNAME') 1`] = `"k"`;
 
 exports[`Auth > signup > Doesn't push empty notes > allCalls 1`] = `
 [
@@ -2170,6 +2314,16 @@ exports[`Auth > signup > Doesn't push empty notes > allCalls 1`] = `
     "request",
     {
       "name": "/signup",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "k",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -2233,16 +2387,6 @@ exports[`Auth > signup > Doesn't push empty notes > openedPopup 1`] = `undefined
 
 exports[`Auth > signup > Doesn't push empty notes > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > signup > Doesn't push empty notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > signup > Doesn't push empty notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > signup > Doesn't push empty notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > signup > Doesn't push empty notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > signup > Doesn't push empty notes > storage.get('USERNAME') 1`] = `"k"`;
-
 exports[`Auth > signup > Doesn't push empty notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -2254,7 +2398,6 @@ exports[`Auth > signup > Doesn't push empty notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2278,6 +2421,16 @@ exports[`Auth > signup > Doesn't push empty notes > updateState 1`] = `
 `;
 
 exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > signup > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > signup > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > signup > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > signup > Sets and resets loading state > allCalls 1`] = `
 [
@@ -2323,16 +2476,6 @@ exports[`Auth > signup > Sets and resets loading state > openedPopup 1`] = `unde
 
 exports[`Auth > signup > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > signup > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > signup > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > signup > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > signup > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > signup > Sets and resets loading state > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Auth > signup > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
@@ -2349,7 +2492,6 @@ exports[`Auth > signup > Sets and resets loading state > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
@@ -2373,6 +2515,16 @@ exports[`Auth > signup > Sets and resets loading state > updateState 1`] = `
 `;
 
 exports[`Auth > signup > With encryptor error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > signup > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > signup > With encryptor error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > signup > With encryptor error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > signup > With encryptor error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > signup > With encryptor error > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > signup > With encryptor error > allCalls 1`] = `
 [
@@ -2662,16 +2814,6 @@ exports[`Auth > signup > With encryptor error > openedPopup 1`] = `undefined`;
 
 exports[`Auth > signup > With encryptor error > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > signup > With encryptor error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > signup > With encryptor error > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > signup > With encryptor error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > signup > With encryptor error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > signup > With encryptor error > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Auth > signup > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
@@ -2688,7 +2830,6 @@ exports[`Auth > signup > With encryptor error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2713,12 +2854,32 @@ exports[`Auth > signup > With encryptor error > updateState 1`] = `
 
 exports[`Auth > signup > With no notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > signup > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > signup > With no notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > signup > With no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > signup > With no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > signup > With no notes > Storage.get('USERNAME') 1`] = `"k"`;
+
 exports[`Auth > signup > With no notes > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/signup",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "k",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -2770,16 +2931,6 @@ exports[`Auth > signup > With no notes > openedPopup 1`] = `undefined`;
 
 exports[`Auth > signup > With no notes > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > signup > With no notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > signup > With no notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > signup > With no notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > signup > With no notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > signup > With no notes > storage.get('USERNAME') 1`] = `"k"`;
-
 exports[`Auth > signup > With no notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -2791,7 +2942,6 @@ exports[`Auth > signup > With no notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2816,6 +2966,16 @@ exports[`Auth > signup > With no notes > updateState 1`] = `
 
 exports[`Auth > signup > With notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > signup > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > signup > With notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > signup > With notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > signup > With notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > signup > With notes > Storage.get('USERNAME') 1`] = `"k"`;
+
 exports[`Auth > signup > With notes > allCalls 1`] = `
 [
   [
@@ -2829,6 +2989,16 @@ exports[`Auth > signup > With notes > allCalls 1`] = `
     "request",
     {
       "name": "/signup",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "k",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -3123,16 +3293,6 @@ exports[`Auth > signup > With notes > openedPopup 1`] = `undefined`;
 
 exports[`Auth > signup > With notes > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > signup > With notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > signup > With notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > signup > With notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > signup > With notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > signup > With notes > storage.get('USERNAME') 1`] = `"k"`;
-
 exports[`Auth > signup > With notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -3144,7 +3304,6 @@ exports[`Auth > signup > With notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3178,6 +3337,16 @@ exports[`Auth > signup > With notes > updateState 1`] = `
 `;
 
 exports[`Auth > signup > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > signup > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > signup > With server error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > signup > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > signup > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > signup > With server error > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > signup > With server error > allCalls 1`] = `
 [
@@ -3223,16 +3392,6 @@ exports[`Auth > signup > With server error > openedPopup 1`] = `undefined`;
 
 exports[`Auth > signup > With server error > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > signup > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > signup > With server error > storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > signup > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > signup > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > signup > With server error > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Auth > signup > With server error > syncState 1`] = `
 {
   "appError": AppError {
@@ -3249,7 +3408,6 @@ exports[`Auth > signup > With server error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "2",
   "unsyncedNoteIds": {

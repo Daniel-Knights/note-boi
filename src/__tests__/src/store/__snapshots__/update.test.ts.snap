@@ -2,6 +2,16 @@
 
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > allCalls 1`] = `
 [
   [
@@ -59,16 +69,6 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
 
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > selectedTheme 1`] = `"System"`;
 
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
-
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > syncState 1`] = `
 {
   "appError": AppError {
@@ -80,7 +80,6 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -104,6 +103,16 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
 `;
 
 exports[`Update > handleUpdate > Handles update > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Handles update > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > handleUpdate > Handles update > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Handles update > allCalls 1`] = `
 [
@@ -176,16 +185,6 @@ exports[`Update > handleUpdate > Handles update > openedPopup 1`] = `undefined`;
 
 exports[`Update > handleUpdate > Handles update > selectedTheme 1`] = `"System"`;
 
-exports[`Update > handleUpdate > Handles update > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > handleUpdate > Handles update > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > handleUpdate > Handles update > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Update > handleUpdate > Handles update > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Update > handleUpdate > Handles update > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > handleUpdate > Handles update > syncState 1`] = `
 {
   "appError": AppError {
@@ -197,7 +196,6 @@ exports[`Update > handleUpdate > Handles update > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -221,6 +219,16 @@ exports[`Update > handleUpdate > Handles update > updateState 1`] = `
 `;
 
 exports[`Update > handleUpdate > Returns if update unavailable > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Returns if update unavailable > allCalls 1`] = `
 [
@@ -267,16 +275,6 @@ exports[`Update > handleUpdate > Returns if update unavailable > openedPopup 1`]
 
 exports[`Update > handleUpdate > Returns if update unavailable > selectedTheme 1`] = `"System"`;
 
-exports[`Update > handleUpdate > Returns if update unavailable > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > handleUpdate > Returns if update unavailable > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > handleUpdate > Returns if update unavailable > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Update > handleUpdate > Returns if update unavailable > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Update > handleUpdate > Returns if update unavailable > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > handleUpdate > Returns if update unavailable > syncState 1`] = `
 {
   "appError": AppError {
@@ -288,7 +286,6 @@ exports[`Update > handleUpdate > Returns if update unavailable > syncState 1`] =
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -312,6 +309,16 @@ exports[`Update > handleUpdate > Returns if update unavailable > updateState 1`]
 `;
 
 exports[`Update > handleUpdate > Returns if version has been seen > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Returns if version has been seen > allCalls 1`] = `
 [
@@ -358,16 +365,6 @@ exports[`Update > handleUpdate > Returns if version has been seen > openedPopup 
 
 exports[`Update > handleUpdate > Returns if version has been seen > selectedTheme 1`] = `"System"`;
 
-exports[`Update > handleUpdate > Returns if version has been seen > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > handleUpdate > Returns if version has been seen > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > handleUpdate > Returns if version has been seen > storage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
-
-exports[`Update > handleUpdate > Returns if version has been seen > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Update > handleUpdate > Returns if version has been seen > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > handleUpdate > Returns if version has been seen > syncState 1`] = `
 {
   "appError": AppError {
@@ -379,7 +376,6 @@ exports[`Update > handleUpdate > Returns if version has been seen > syncState 1`
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -403,6 +399,16 @@ exports[`Update > handleUpdate > Returns if version has been seen > updateState 
 `;
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > allCalls 1`] = `
 [
@@ -463,16 +469,6 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > selectedTheme 1`] = `"System"`;
 
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
-
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > syncState 1`] = `
 {
   "appError": AppError {
@@ -484,7 +480,6 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -508,6 +503,16 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
 `;
 
 exports[`Update > setUpdateStrategy > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > setUpdateStrategy > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > setUpdateStrategy > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > setUpdateStrategy > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > setUpdateStrategy > Storage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
+
+exports[`Update > setUpdateStrategy > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > setUpdateStrategy > allCalls 1`] = `[]`;
 
@@ -544,16 +549,6 @@ exports[`Update > setUpdateStrategy > openedPopup 1`] = `undefined`;
 
 exports[`Update > setUpdateStrategy > selectedTheme 1`] = `"System"`;
 
-exports[`Update > setUpdateStrategy > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > setUpdateStrategy > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > setUpdateStrategy > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Update > setUpdateStrategy > storage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
-
-exports[`Update > setUpdateStrategy > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > setUpdateStrategy > syncState 1`] = `
 {
   "appError": AppError {
@@ -565,7 +560,6 @@ exports[`Update > setUpdateStrategy > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -589,6 +583,16 @@ exports[`Update > setUpdateStrategy > updateState 1`] = `
 `;
 
 exports[`Update > updateAndRelaunch > Catches error and doesn't retry > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Catches error and doesn't retry > allCalls 1`] = `
 [
@@ -646,16 +650,6 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > openedPo
 
 exports[`Update > updateAndRelaunch > Catches error and doesn't retry > selectedTheme 1`] = `"System"`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > updateAndRelaunch > Catches error and doesn't retry > syncState 1`] = `
 {
   "appError": AppError {
@@ -667,7 +661,6 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > syncStat
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -691,6 +684,16 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > updateSt
 `;
 
 exports[`Update > updateAndRelaunch > Catches error and retries > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Catches error and retries > allCalls 1`] = `
 [
@@ -759,16 +762,6 @@ exports[`Update > updateAndRelaunch > Catches error and retries > openedPopup 1`
 
 exports[`Update > updateAndRelaunch > Catches error and retries > selectedTheme 1`] = `"System"`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Catches error and retries > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > updateAndRelaunch > Catches error and retries > syncState 1`] = `
 {
   "appError": AppError {
@@ -780,7 +773,6 @@ exports[`Update > updateAndRelaunch > Catches error and retries > syncState 1`] 
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -804,6 +796,16 @@ exports[`Update > updateAndRelaunch > Catches error and retries > updateState 1`
 `;
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('THEME') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > allCalls 1`] = `
 [
@@ -864,16 +866,6 @@ exports[`Update > updateAndRelaunch > Updates and relaunches > openedPopup 1`] =
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > selectedTheme 1`] = `"System"`;
 
-exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('THEME') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Update > updateAndRelaunch > Updates and relaunches > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Update > updateAndRelaunch > Updates and relaunches > syncState 1`] = `
 {
   "appError": AppError {
@@ -885,7 +877,6 @@ exports[`Update > updateAndRelaunch > Updates and relaunches > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

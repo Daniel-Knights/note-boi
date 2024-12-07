@@ -2,6 +2,16 @@
 
 exports[`PopupInfo > Emits close > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`PopupInfo > Emits close > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupInfo > Emits close > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupInfo > Emits close > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupInfo > Emits close > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupInfo > Emits close > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`PopupInfo > Emits close > allCalls 1`] = `
 [
   [
@@ -47,16 +57,6 @@ exports[`PopupInfo > Emits close > openedPopup 1`] = `undefined`;
 
 exports[`PopupInfo > Emits close > selectedTheme 1`] = `"System"`;
 
-exports[`PopupInfo > Emits close > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupInfo > Emits close > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupInfo > Emits close > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupInfo > Emits close > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupInfo > Emits close > storage.get('USERNAME') 1`] = `null`;
-
 exports[`PopupInfo > Emits close > syncState 1`] = `
 {
   "appError": AppError {
@@ -68,7 +68,6 @@ exports[`PopupInfo > Emits close > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -92,6 +91,16 @@ exports[`PopupInfo > Emits close > updateState 1`] = `
 `;
 
 exports[`PopupInfo > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupInfo > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupInfo > Mounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupInfo > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupInfo > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupInfo > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupInfo > Mounts > allCalls 1`] = `
 [
@@ -138,16 +147,6 @@ exports[`PopupInfo > Mounts > openedPopup 1`] = `undefined`;
 
 exports[`PopupInfo > Mounts > selectedTheme 1`] = `"System"`;
 
-exports[`PopupInfo > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupInfo > Mounts > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupInfo > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupInfo > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupInfo > Mounts > storage.get('USERNAME') 1`] = `null`;
-
 exports[`PopupInfo > Mounts > syncState 1`] = `
 {
   "appError": AppError {
@@ -159,7 +158,6 @@ exports[`PopupInfo > Mounts > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -184,6 +182,16 @@ exports[`PopupInfo > Mounts > updateState 1`] = `
 
 exports[`PopupInfo > Renders correct description list items > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`PopupInfo > Renders correct description list items > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupInfo > Renders correct description list items > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupInfo > Renders correct description list items > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupInfo > Renders correct description list items > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupInfo > Renders correct description list items > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`PopupInfo > Renders correct description list items > allCalls 1`] = `
 [
   [
@@ -197,6 +205,16 @@ exports[`PopupInfo > Renders correct description list items > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -299,16 +317,6 @@ exports[`PopupInfo > Renders correct description list items > openedPopup 1`] = 
 
 exports[`PopupInfo > Renders correct description list items > selectedTheme 1`] = `"System"`;
 
-exports[`PopupInfo > Renders correct description list items > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`PopupInfo > Renders correct description list items > storage.get('THEME') 1`] = `null`;
-
-exports[`PopupInfo > Renders correct description list items > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`PopupInfo > Renders correct description list items > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`PopupInfo > Renders correct description list items > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`PopupInfo > Renders correct description list items > syncState 1`] = `
 {
   "appError": AppError {
@@ -320,7 +328,6 @@ exports[`PopupInfo > Renders correct description list items > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

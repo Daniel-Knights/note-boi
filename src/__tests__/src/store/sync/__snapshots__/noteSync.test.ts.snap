@@ -2,6 +2,16 @@
 
 exports[`Note (sync) > Edge cases > No local, no remote > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > Edge cases > No local, no remote > allCalls 1`] = `
 [
   [
@@ -52,6 +62,16 @@ exports[`Note (sync) > Edge cases > No local, no remote > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -135,16 +155,6 @@ exports[`Note (sync) > Edge cases > No local, no remote > openedPopup 1`] = `und
 
 exports[`Note (sync) > Edge cases > No local, no remote > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No local, no remote > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No local, no remote > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No local, no remote > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No local, no remote > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > Edge cases > No local, no remote > syncState 1`] = `
 {
   "appError": AppError {
@@ -156,7 +166,6 @@ exports[`Note (sync) > Edge cases > No local, no remote > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -180,6 +189,16 @@ exports[`Note (sync) > Edge cases > No local, no remote > updateState 1`] = `
 `;
 
 exports[`Note (sync) > Edge cases > No local, some remote > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Note (sync) > Edge cases > No local, some remote > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No local, some remote > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No local, some remote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No local, some remote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No local, some remote > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Note (sync) > Edge cases > No local, some remote > allCalls 1`] = `
 [
@@ -231,6 +250,16 @@ exports[`Note (sync) > Edge cases > No local, some remote > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -728,16 +757,6 @@ exports[`Note (sync) > Edge cases > No local, some remote > openedPopup 1`] = `u
 
 exports[`Note (sync) > Edge cases > No local, some remote > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > Edge cases > No local, some remote > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No local, some remote > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No local, some remote > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No local, some remote > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No local, some remote > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > Edge cases > No local, some remote > syncState 1`] = `
 {
   "appError": AppError {
@@ -749,7 +768,6 @@ exports[`Note (sync) > Edge cases > No local, some remote > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -773,6 +791,16 @@ exports[`Note (sync) > Edge cases > No local, some remote > updateState 1`] = `
 `;
 
 exports[`Note (sync) > Edge cases > No remote, some local > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Note (sync) > Edge cases > No remote, some local > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No remote, some local > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No remote, some local > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No remote, some local > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > Edge cases > No remote, some local > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Note (sync) > Edge cases > No remote, some local > allCalls 1`] = `
 [
@@ -805,6 +833,16 @@ exports[`Note (sync) > Edge cases > No remote, some local > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1302,16 +1340,6 @@ exports[`Note (sync) > Edge cases > No remote, some local > openedPopup 1`] = `u
 
 exports[`Note (sync) > Edge cases > No remote, some local > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > Edge cases > No remote, some local > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No remote, some local > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No remote, some local > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No remote, some local > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > Edge cases > No remote, some local > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > Edge cases > No remote, some local > syncState 1`] = `
 {
   "appError": AppError {
@@ -1323,7 +1351,6 @@ exports[`Note (sync) > Edge cases > No remote, some local > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1348,12 +1375,32 @@ exports[`Note (sync) > Edge cases > No remote, some local > updateState 1`] = `
 
 exports[`Note (sync) > pull > Pulls notes from the server > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > pull > Pulls notes from the server > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > Pulls notes from the server > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > Pulls notes from the server > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > Pulls notes from the server > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > Pulls notes from the server > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > pull > Pulls notes from the server > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1409,9 +1456,28 @@ exports[`Note (sync) > pull > Pulls notes from the server > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1909,16 +1975,6 @@ exports[`Note (sync) > pull > Pulls notes from the server > openedPopup 1`] = `u
 
 exports[`Note (sync) > pull > Pulls notes from the server > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > pull > Pulls notes from the server > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > Pulls notes from the server > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > Pulls notes from the server > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > Pulls notes from the server > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > Pulls notes from the server > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > pull > Pulls notes from the server > syncState 1`] = `
 {
   "appError": AppError {
@@ -1930,7 +1986,6 @@ exports[`Note (sync) > pull > Pulls notes from the server > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1955,12 +2010,40 @@ exports[`Note (sync) > pull > Pulls notes from the server > updateState 1`] = `
 
 exports[`Note (sync) > pull > Sets and resets loading state > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Note (sync) > pull > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Note (sync) > pull > Sets and resets loading state > allCalls 1`] = `
 [
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "",
+      },
+      "name": "get_access_token",
+    },
+  ],
   [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -2011,16 +2094,6 @@ exports[`Note (sync) > pull > Sets and resets loading state > openedPopup 1`] = 
 
 exports[`Note (sync) > pull > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > pull > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > Sets and resets loading state > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note (sync) > pull > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
@@ -2028,7 +2101,7 @@ exports[`Note (sync) > pull > Sets and resets loading state > syncState 1`] = `
     "display": {
       "sync": true,
     },
-    "message": "User not found",
+    "message": "Unauthorized",
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
@@ -2036,7 +2109,6 @@ exports[`Note (sync) > pull > Sets and resets loading state > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2061,12 +2133,32 @@ exports[`Note (sync) > pull > Sets and resets loading state > updateState 1`] = 
 
 exports[`Note (sync) > pull > Updates editor if selected note is unedited > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > pull > Updates editor if selected note is unedited > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > Updates editor if selected note is unedited > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > Updates editor if selected note is unedited > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > Updates editor if selected note is unedited > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > Updates editor if selected note is unedited > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > pull > Updates editor if selected note is unedited > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -2129,9 +2221,28 @@ exports[`Note (sync) > pull > Updates editor if selected note is unedited > allC
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -2497,16 +2608,6 @@ exports[`Note (sync) > pull > Updates editor if selected note is unedited > open
 
 exports[`Note (sync) > pull > Updates editor if selected note is unedited > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > pull > Updates editor if selected note is unedited > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > Updates editor if selected note is unedited > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > Updates editor if selected note is unedited > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > Updates editor if selected note is unedited > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > Updates editor if selected note is unedited > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > pull > Updates editor if selected note is unedited > syncState 1`] = `
 {
   "appError": AppError {
@@ -2518,7 +2619,6 @@ exports[`Note (sync) > pull > Updates editor if selected note is unedited > sync
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2543,12 +2643,32 @@ exports[`Note (sync) > pull > Updates editor if selected note is unedited > upda
 
 exports[`Note (sync) > pull > Updates note menu > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > pull > Updates note menu > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > Updates note menu > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > Updates note menu > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > Updates note menu > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > Updates note menu > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > pull > Updates note menu > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -2611,9 +2731,28 @@ exports[`Note (sync) > pull > Updates note menu > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -2964,16 +3103,6 @@ exports[`Note (sync) > pull > Updates note menu > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > pull > Updates note menu > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > pull > Updates note menu > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > Updates note menu > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > Updates note menu > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > Updates note menu > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > Updates note menu > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > pull > Updates note menu > syncState 1`] = `
 {
   "appError": AppError {
@@ -2985,7 +3114,6 @@ exports[`Note (sync) > pull > Updates note menu > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3010,12 +3138,40 @@ exports[`Note (sync) > pull > Updates note menu > updateState 1`] = `
 
 exports[`Note (sync) > pull > User not found > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Note (sync) > pull > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > User not found > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > User not found > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Note (sync) > pull > User not found > allCalls 1`] = `
 [
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "k",
+      },
+      "name": "get_access_token",
+    },
+  ],
   [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "k",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -3066,16 +3222,6 @@ exports[`Note (sync) > pull > User not found > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > pull > User not found > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > pull > User not found > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > User not found > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > User not found > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > User not found > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > User not found > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note (sync) > pull > User not found > syncState 1`] = `
 {
   "appError": AppError {
@@ -3083,7 +3229,7 @@ exports[`Note (sync) > pull > User not found > syncState 1`] = `
     "display": {
       "sync": true,
     },
-    "message": "User not found",
+    "message": "Unauthorized",
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
@@ -3091,7 +3237,6 @@ exports[`Note (sync) > pull > User not found > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3116,12 +3261,40 @@ exports[`Note (sync) > pull > User not found > updateState 1`] = `
 
 exports[`Note (sync) > pull > User unauthorised > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Note (sync) > pull > User unauthorised > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > User unauthorised > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > User unauthorised > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > User unauthorised > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > User unauthorised > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Note (sync) > pull > User unauthorised > allCalls 1`] = `
 [
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
   [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -3172,16 +3345,6 @@ exports[`Note (sync) > pull > User unauthorised > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > pull > User unauthorised > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > pull > User unauthorised > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > User unauthorised > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > User unauthorised > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > User unauthorised > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > User unauthorised > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note (sync) > pull > User unauthorised > syncState 1`] = `
 {
   "appError": AppError {
@@ -3197,7 +3360,6 @@ exports[`Note (sync) > pull > User unauthorised > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
@@ -3222,8 +3384,28 @@ exports[`Note (sync) > pull > User unauthorised > updateState 1`] = `
 
 exports[`Note (sync) > pull > With encryptor error > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Note (sync) > pull > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > With encryptor error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > With encryptor error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > With encryptor error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > With encryptor error > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Note (sync) > pull > With encryptor error > allCalls 1`] = `
 [
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
   [
     "invoke",
     {
@@ -3251,9 +3433,28 @@ exports[`Note (sync) > pull > With encryptor error > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -3316,16 +3517,6 @@ exports[`Note (sync) > pull > With encryptor error > openedPopup 1`] = `undefine
 
 exports[`Note (sync) > pull > With encryptor error > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > pull > With encryptor error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > With encryptor error > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > With encryptor error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > With encryptor error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > With encryptor error > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note (sync) > pull > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
@@ -3341,7 +3532,6 @@ exports[`Note (sync) > pull > With encryptor error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3366,12 +3556,32 @@ exports[`Note (sync) > pull > With encryptor error > updateState 1`] = `
 
 exports[`Note (sync) > pull > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > pull > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > With server error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > With server error > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > pull > With server error > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -3424,6 +3634,15 @@ exports[`Note (sync) > pull > With server error > allCalls 1`] = `
         ],
       },
       "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -3480,16 +3699,6 @@ exports[`Note (sync) > pull > With server error > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > pull > With server error > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > pull > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > With server error > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > With server error > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > pull > With server error > syncState 1`] = `
 {
   "appError": AppError {
@@ -3505,7 +3714,6 @@ exports[`Note (sync) > pull > With server error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3530,12 +3738,32 @@ exports[`Note (sync) > pull > With server error > updateState 1`] = `
 
 exports[`Note (sync) > push > Doesn't push empty notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > push > Doesn't push empty notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > push > Doesn't push empty notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > push > Doesn't push empty notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > push > Doesn't push empty notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > push > Doesn't push empty notes > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > push > Doesn't push empty notes > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -3638,16 +3866,6 @@ exports[`Note (sync) > push > Doesn't push empty notes > openedPopup 1`] = `unde
 
 exports[`Note (sync) > push > Doesn't push empty notes > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > push > Doesn't push empty notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > push > Doesn't push empty notes > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > push > Doesn't push empty notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > push > Doesn't push empty notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > push > Doesn't push empty notes > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > push > Doesn't push empty notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -3659,7 +3877,6 @@ exports[`Note (sync) > push > Doesn't push empty notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3684,6 +3901,16 @@ exports[`Note (sync) > push > Doesn't push empty notes > updateState 1`] = `
 
 exports[`Note (sync) > push > Pushes notes to the server > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > push > Pushes notes to the server > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > push > Pushes notes to the server > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > push > Pushes notes to the server > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > push > Pushes notes to the server > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > push > Pushes notes to the server > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > push > Pushes notes to the server > allCalls 1`] = `
 [
   [
@@ -3697,6 +3924,16 @@ exports[`Note (sync) > push > Pushes notes to the server > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -3913,6 +4150,15 @@ Sugar
         ],
       },
       "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -4200,16 +4446,6 @@ exports[`Note (sync) > push > Pushes notes to the server > openedPopup 1`] = `un
 
 exports[`Note (sync) > push > Pushes notes to the server > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > push > Pushes notes to the server > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > push > Pushes notes to the server > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > push > Pushes notes to the server > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > push > Pushes notes to the server > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > push > Pushes notes to the server > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > push > Pushes notes to the server > syncState 1`] = `
 {
   "appError": AppError {
@@ -4221,7 +4457,6 @@ exports[`Note (sync) > push > Pushes notes to the server > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4246,12 +4481,32 @@ exports[`Note (sync) > push > Pushes notes to the server > updateState 1`] = `
 
 exports[`Note (sync) > push > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > push > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > push > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > push > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > push > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > push > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > push > Sets and resets loading state > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -4322,6 +4577,15 @@ exports[`Note (sync) > push > Sets and resets loading state > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/push",
@@ -4373,16 +4637,6 @@ exports[`Note (sync) > push > Sets and resets loading state > openedPopup 1`] = 
 
 exports[`Note (sync) > push > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > push > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > push > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > push > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > push > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > push > Sets and resets loading state > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > push > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
@@ -4394,7 +4648,6 @@ exports[`Note (sync) > push > Sets and resets loading state > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4419,6 +4672,16 @@ exports[`Note (sync) > push > Sets and resets loading state > updateState 1`] = 
 
 exports[`Note (sync) > push > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > push > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > push > User not found > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > push > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > push > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > push > User not found > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Note (sync) > push > User not found > allCalls 1`] = `
 [
   [
@@ -4432,6 +4695,16 @@ exports[`Note (sync) > push > User not found > allCalls 1`] = `
     "request",
     {
       "name": "/signup",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "k",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -4464,9 +4737,27 @@ exports[`Note (sync) > push > User not found > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "k",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/push",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "k",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -4710,16 +5001,6 @@ exports[`Note (sync) > push > User not found > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > push > User not found > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > push > User not found > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > push > User not found > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > push > User not found > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > push > User not found > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > push > User not found > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note (sync) > push > User not found > syncState 1`] = `
 {
   "appError": AppError {
@@ -4736,7 +5017,6 @@ exports[`Note (sync) > push > User not found > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4763,12 +5043,32 @@ exports[`Note (sync) > push > User not found > updateState 1`] = `
 
 exports[`Note (sync) > push > User unauthorised > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > push > User unauthorised > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > push > User unauthorised > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > push > User unauthorised > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > push > User unauthorised > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > push > User unauthorised > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Note (sync) > push > User unauthorised > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -4839,9 +5139,27 @@ exports[`Note (sync) > push > User unauthorised > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/push",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -4902,16 +5220,6 @@ exports[`Note (sync) > push > User unauthorised > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > push > User unauthorised > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > push > User unauthorised > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > push > User unauthorised > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > push > User unauthorised > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > push > User unauthorised > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > push > User unauthorised > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note (sync) > push > User unauthorised > syncState 1`] = `
 {
   "appError": AppError {
@@ -4928,7 +5236,6 @@ exports[`Note (sync) > push > User unauthorised > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4955,12 +5262,32 @@ exports[`Note (sync) > push > User unauthorised > updateState 1`] = `
 
 exports[`Note (sync) > push > With encryptor error > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Note (sync) > push > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > push > With encryptor error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > push > With encryptor error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > push > With encryptor error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > push > With encryptor error > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > push > With encryptor error > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -5030,6 +5357,15 @@ exports[`Note (sync) > push > With encryptor error > allCalls 1`] = `
       "name": "edit_note",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
 ]
 `;
 
@@ -5076,16 +5412,6 @@ exports[`Note (sync) > push > With encryptor error > openedPopup 1`] = `undefine
 
 exports[`Note (sync) > push > With encryptor error > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > push > With encryptor error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > push > With encryptor error > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > push > With encryptor error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > push > With encryptor error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > push > With encryptor error > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > push > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
@@ -5104,7 +5430,6 @@ exports[`Note (sync) > push > With encryptor error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5131,12 +5456,32 @@ exports[`Note (sync) > push > With encryptor error > updateState 1`] = `
 
 exports[`Note (sync) > push > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > push > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > push > With server error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > push > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > push > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > push > With server error > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > push > With server error > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -5207,6 +5552,15 @@ exports[`Note (sync) > push > With server error > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/push",
@@ -5258,16 +5612,6 @@ exports[`Note (sync) > push > With server error > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > push > With server error > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > push > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > push > With server error > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > push > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > push > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > push > With server error > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > push > With server error > syncState 1`] = `
 {
   "appError": AppError {
@@ -5284,7 +5628,6 @@ exports[`Note (sync) > push > With server error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5310,6 +5653,16 @@ exports[`Note (sync) > push > With server error > updateState 1`] = `
 `;
 
 exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > allCalls 1`] = `
 [
@@ -5644,16 +5997,6 @@ exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged 
 
 exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > syncState 1`] = `
 {
   "appError": AppError {
@@ -5665,7 +6008,6 @@ exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged 
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5692,12 +6034,32 @@ exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged 
 
 exports[`Note (sync) > unsyncedNoteIds > deleted > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -5799,9 +6161,28 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -5968,6 +6349,15 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
         "id": "id",
       },
       "name": "delete_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -6152,16 +6542,6 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > openedPopup 1`] = `undefined`
 
 exports[`Note (sync) > unsyncedNoteIds > deleted > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > deleted > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > deleted > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > deleted > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > deleted > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > unsyncedNoteIds > deleted > syncState 1`] = `
 {
   "appError": AppError {
@@ -6173,7 +6553,6 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -6198,12 +6577,32 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > updateState 1`] = `
 
 exports[`Note (sync) > unsyncedNoteIds > edited > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -6292,9 +6691,28 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -6307,6 +6725,15 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -6484,6 +6911,15 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
         },
       },
       "name": "edit_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -6680,16 +7116,6 @@ exports[`Note (sync) > unsyncedNoteIds > edited > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > unsyncedNoteIds > edited > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > edited > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > edited > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > edited > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > edited > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > unsyncedNoteIds > edited > syncState 1`] = `
 {
   "appError": AppError {
@@ -6701,7 +7127,6 @@ exports[`Note (sync) > unsyncedNoteIds > edited > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -6728,6 +7153,16 @@ exports[`Note (sync) > unsyncedNoteIds > edited > updateState 1`] = `
 
 exports[`Note (sync) > unsyncedNoteIds > new > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Note (sync) > unsyncedNoteIds > new > allCalls 1`] = `
 [
   [
@@ -6741,6 +7176,16 @@ exports[`Note (sync) > unsyncedNoteIds > new > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -6987,9 +7432,12 @@ Sugar
     },
   ],
   [
-    "request",
+    "invoke",
     {
-      "name": "/notes/pull",
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -7009,6 +7457,22 @@ Sugar
         },
       },
       "name": "new_note",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -7237,9 +7701,27 @@ Sugar
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/logout",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -7258,6 +7740,16 @@ Sugar
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -7306,6 +7798,15 @@ Sugar
         },
       },
       "name": "edit_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -7377,16 +7878,6 @@ exports[`Note (sync) > unsyncedNoteIds > new > openedPopup 1`] = `undefined`;
 
 exports[`Note (sync) > unsyncedNoteIds > new > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > new > storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > new > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > new > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > unsyncedNoteIds > new > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Note (sync) > unsyncedNoteIds > new > syncState 1`] = `
 {
   "appError": AppError {
@@ -7398,7 +7889,6 @@ exports[`Note (sync) > unsyncedNoteIds > new > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

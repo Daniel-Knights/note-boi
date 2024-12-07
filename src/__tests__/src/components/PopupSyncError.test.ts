@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
-import { AppError, ERROR_CODE } from '../../../appError';
+import { AppError, ERROR_CODE } from '../../../classes';
 import { mockApi } from '../../api';
 import {
   assertAppError,
@@ -104,7 +104,9 @@ describe('PopupSyncError', () => {
 
     assertAppError();
     assert.lengthOf(wrapper.emitted('close')!, 1);
-    assert.strictEqual(calls.size, 1);
+    assert.strictEqual(calls.size, 2);
+    assert.isTrue(calls.invoke.has('delete_access_token'));
+    assert.deepEqual(calls.invoke[0]!.calledWith, { username: '' });
     assert.isTrue(calls.emits.has('auth'));
   });
 

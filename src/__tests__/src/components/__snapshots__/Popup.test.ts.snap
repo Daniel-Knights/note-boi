@@ -2,6 +2,16 @@
 
 exports[`Popup > Closes on click outside > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Popup > Closes on click outside > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > Storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Closes on click outside > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Popup > Closes on click outside > allCalls 1`] = `[]`;
 
 exports[`Popup > Closes on click outside > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
@@ -37,16 +47,6 @@ exports[`Popup > Closes on click outside > openedPopup 1`] = `undefined`;
 
 exports[`Popup > Closes on click outside > selectedTheme 1`] = `"System"`;
 
-exports[`Popup > Closes on click outside > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Popup > Closes on click outside > storage.get('THEME') 1`] = `null`;
-
-exports[`Popup > Closes on click outside > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Popup > Closes on click outside > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Popup > Closes on click outside > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Popup > Closes on click outside > syncState 1`] = `
 {
   "appError": AppError {
@@ -58,7 +58,6 @@ exports[`Popup > Closes on click outside > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -82,6 +81,16 @@ exports[`Popup > Closes on click outside > updateState 1`] = `
 `;
 
 exports[`Popup > Closes on escape key > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup > Closes on escape key > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > Storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Closes on escape key > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Closes on escape key > allCalls 1`] = `[]`;
 
@@ -118,16 +127,6 @@ exports[`Popup > Closes on escape key > openedPopup 1`] = `undefined`;
 
 exports[`Popup > Closes on escape key > selectedTheme 1`] = `"System"`;
 
-exports[`Popup > Closes on escape key > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Popup > Closes on escape key > storage.get('THEME') 1`] = `null`;
-
-exports[`Popup > Closes on escape key > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Popup > Closes on escape key > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Popup > Closes on escape key > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Popup > Closes on escape key > syncState 1`] = `
 {
   "appError": AppError {
@@ -139,7 +138,6 @@ exports[`Popup > Closes on escape key > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -163,6 +161,16 @@ exports[`Popup > Closes on escape key > updateState 1`] = `
 `;
 
 exports[`Popup > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Mounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Mounts > allCalls 1`] = `[]`;
 
@@ -199,16 +207,6 @@ exports[`Popup > Mounts > openedPopup 1`] = `undefined`;
 
 exports[`Popup > Mounts > selectedTheme 1`] = `"System"`;
 
-exports[`Popup > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Popup > Mounts > storage.get('THEME') 1`] = `null`;
-
-exports[`Popup > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Popup > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Popup > Mounts > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Popup > Mounts > syncState 1`] = `
 {
   "appError": AppError {
@@ -220,7 +218,6 @@ exports[`Popup > Mounts > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -244,6 +241,16 @@ exports[`Popup > Mounts > updateState 1`] = `
 `;
 
 exports[`Popup > Unmounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup > Unmounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup > Unmounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`Popup > Unmounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup > Unmounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup > Unmounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Unmounts > allCalls 1`] = `[]`;
 
@@ -280,16 +287,6 @@ exports[`Popup > Unmounts > openedPopup 1`] = `undefined`;
 
 exports[`Popup > Unmounts > selectedTheme 1`] = `"System"`;
 
-exports[`Popup > Unmounts > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Popup > Unmounts > storage.get('THEME') 1`] = `null`;
-
-exports[`Popup > Unmounts > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Popup > Unmounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Popup > Unmounts > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Popup > Unmounts > syncState 1`] = `
 {
   "appError": AppError {
@@ -301,7 +298,6 @@ exports[`Popup > Unmounts > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

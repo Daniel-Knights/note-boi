@@ -2,6 +2,16 @@
 
 exports[`Theme > Uses system as default > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Theme > Uses system as default > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Theme > Uses system as default > Storage.get('THEME') 1`] = `null`;
+
+exports[`Theme > Uses system as default > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Theme > Uses system as default > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Theme > Uses system as default > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Theme > Uses system as default > allCalls 1`] = `[]`;
 
 exports[`Theme > Uses system as default > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
@@ -37,16 +47,6 @@ exports[`Theme > Uses system as default > openedPopup 1`] = `undefined`;
 
 exports[`Theme > Uses system as default > selectedTheme 1`] = `"System"`;
 
-exports[`Theme > Uses system as default > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Theme > Uses system as default > storage.get('THEME') 1`] = `null`;
-
-exports[`Theme > Uses system as default > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Theme > Uses system as default > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Theme > Uses system as default > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Theme > Uses system as default > syncState 1`] = `
 {
   "appError": AppError {
@@ -58,7 +58,6 @@ exports[`Theme > Uses system as default > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -82,6 +81,16 @@ exports[`Theme > Uses system as default > updateState 1`] = `
 `;
 
 exports[`Theme > setTheme > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Theme > setTheme > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Theme > setTheme > Storage.get('THEME') 1`] = `"Dark"`;
+
+exports[`Theme > setTheme > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Theme > setTheme > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Theme > setTheme > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Theme > setTheme > allCalls 1`] = `[]`;
 
@@ -118,16 +127,6 @@ exports[`Theme > setTheme > openedPopup 1`] = `undefined`;
 
 exports[`Theme > setTheme > selectedTheme 1`] = `"Dark"`;
 
-exports[`Theme > setTheme > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Theme > setTheme > storage.get('THEME') 1`] = `"Dark"`;
-
-exports[`Theme > setTheme > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Theme > setTheme > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Theme > setTheme > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Theme > setTheme > syncState 1`] = `
 {
   "appError": AppError {
@@ -139,7 +138,6 @@ exports[`Theme > setTheme > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

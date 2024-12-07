@@ -2,6 +2,16 @@
 
 exports[`Loading > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Loading > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Loading > Mounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`Loading > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Loading > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Loading > Mounts > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Loading > Mounts > allCalls 1`] = `[]`;
 
 exports[`Loading > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
@@ -37,16 +47,6 @@ exports[`Loading > Mounts > openedPopup 1`] = `undefined`;
 
 exports[`Loading > Mounts > selectedTheme 1`] = `"System"`;
 
-exports[`Loading > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Loading > Mounts > storage.get('THEME') 1`] = `null`;
-
-exports[`Loading > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Loading > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Loading > Mounts > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Loading > Mounts > syncState 1`] = `
 {
   "appError": AppError {
@@ -58,7 +58,6 @@ exports[`Loading > Mounts > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

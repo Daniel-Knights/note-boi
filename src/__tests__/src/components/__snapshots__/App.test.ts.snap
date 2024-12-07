@@ -2,6 +2,16 @@
 
 exports[`App > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`App > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Mounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Mounts > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`App > Mounts > allCalls 1`] = `
 [
   [
@@ -58,16 +68,6 @@ exports[`App > Mounts > openedPopup 1`] = `undefined`;
 
 exports[`App > Mounts > selectedTheme 1`] = `"System"`;
 
-exports[`App > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`App > Mounts > storage.get('THEME') 1`] = `null`;
-
-exports[`App > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`App > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`App > Mounts > storage.get('USERNAME') 1`] = `null`;
-
 exports[`App > Mounts > syncState 1`] = `
 {
   "appError": AppError {
@@ -79,7 +79,6 @@ exports[`App > Mounts > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -103,6 +102,16 @@ exports[`App > Mounts > updateState 1`] = `
 `;
 
 exports[`App > Shows loading spinner when update is downloading > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Shows loading spinner when update is downloading > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Shows loading spinner when update is downloading > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Shows loading spinner when update is downloading > allCalls 1`] = `
 [
@@ -160,16 +169,6 @@ exports[`App > Shows loading spinner when update is downloading > openedPopup 1`
 
 exports[`App > Shows loading spinner when update is downloading > selectedTheme 1`] = `"System"`;
 
-exports[`App > Shows loading spinner when update is downloading > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`App > Shows loading spinner when update is downloading > storage.get('THEME') 1`] = `null`;
-
-exports[`App > Shows loading spinner when update is downloading > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`App > Shows loading spinner when update is downloading > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`App > Shows loading spinner when update is downloading > storage.get('USERNAME') 1`] = `null`;
-
 exports[`App > Shows loading spinner when update is downloading > syncState 1`] = `
 {
   "appError": AppError {
@@ -181,7 +180,6 @@ exports[`App > Shows loading spinner when update is downloading > syncState 1`] 
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

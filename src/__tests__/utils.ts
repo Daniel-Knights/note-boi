@@ -3,8 +3,7 @@ import { DOMWrapper, VueWrapper } from '@vue/test-utils';
 import * as n from '../store/note';
 import * as s from '../store/sync';
 import * as u from '../store/update';
-import { AppError, ErrorConfig } from '../appError';
-import { EncryptedNote } from '../store/sync/encryptor';
+import { AppError, EncryptedNote, ErrorConfig } from '../classes';
 import { hasKeys } from '../utils';
 
 import { mockApi } from './api';
@@ -28,7 +27,6 @@ export function resetSyncStore(): void {
   s.syncState.password = '';
   s.syncState.newPassword = '';
   s.syncState.isLoading = false;
-  s.syncState.isLogin = true;
   s.syncState.isLoggedIn = false;
   s.syncState.unsyncedNoteIds.clear();
 

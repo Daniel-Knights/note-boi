@@ -2,6 +2,16 @@
 
 exports[`SyncStatus > Displays error icon and opens popup on click > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`SyncStatus > Displays error icon and opens popup on click > allCalls 1`] = `
 [
   [
@@ -58,16 +68,6 @@ exports[`SyncStatus > Displays error icon and opens popup on click > openedPopup
 
 exports[`SyncStatus > Displays error icon and opens popup on click > selectedTheme 1`] = `"System"`;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('THEME') 1`] = `null`;
-
-exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`SyncStatus > Displays error icon and opens popup on click > storage.get('USERNAME') 1`] = `null`;
-
 exports[`SyncStatus > Displays error icon and opens popup on click > syncState 1`] = `
 {
   "appError": AppError {
@@ -83,7 +83,6 @@ exports[`SyncStatus > Displays error icon and opens popup on click > syncState 1
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -108,6 +107,16 @@ exports[`SyncStatus > Displays error icon and opens popup on click > updateState
 
 exports[`SyncStatus > Displays loading spinner > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`SyncStatus > Displays loading spinner > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > Storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Displays loading spinner > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
 [
   [
@@ -129,9 +138,38 @@ exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/pull",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -234,16 +272,6 @@ exports[`SyncStatus > Displays loading spinner > openedPopup 1`] = `undefined`;
 
 exports[`SyncStatus > Displays loading spinner > selectedTheme 1`] = `"System"`;
 
-exports[`SyncStatus > Displays loading spinner > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`SyncStatus > Displays loading spinner > storage.get('THEME') 1`] = `null`;
-
-exports[`SyncStatus > Displays loading spinner > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`SyncStatus > Displays loading spinner > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`SyncStatus > Displays loading spinner > storage.get('USERNAME') 1`] = `null`;
-
 exports[`SyncStatus > Displays loading spinner > syncState 1`] = `
 {
   "appError": AppError {
@@ -255,7 +283,6 @@ exports[`SyncStatus > Displays loading spinner > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -280,6 +307,16 @@ exports[`SyncStatus > Displays loading spinner > updateState 1`] = `
 
 exports[`SyncStatus > Handles popups > PopupSyncAuth > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`SyncStatus > Handles popups > PopupSyncAuth > allCalls 1`] = `
 [
   [
@@ -292,6 +329,18 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > allCalls 1`] = `
     "listeners",
     {
       "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "login",
     },
   ],
   [
@@ -336,16 +385,6 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > openedPopup 1`] = `undefi
 
 exports[`SyncStatus > Handles popups > PopupSyncAuth > selectedTheme 1`] = `"System"`;
 
-exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('THEME') 1`] = `null`;
-
-exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`SyncStatus > Handles popups > PopupSyncAuth > storage.get('USERNAME') 1`] = `null`;
-
 exports[`SyncStatus > Handles popups > PopupSyncAuth > syncState 1`] = `
 {
   "appError": AppError {
@@ -357,7 +396,6 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -381,6 +419,16 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > updateState 1`] = `
 `;
 
 exports[`SyncStatus > Handles popups > PopupSyncError > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`SyncStatus > Handles popups > PopupSyncError > allCalls 1`] = `
 [
@@ -444,16 +492,6 @@ exports[`SyncStatus > Handles popups > PopupSyncError > openedPopup 1`] = `undef
 
 exports[`SyncStatus > Handles popups > PopupSyncError > selectedTheme 1`] = `"System"`;
 
-exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('THEME') 1`] = `null`;
-
-exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`SyncStatus > Handles popups > PopupSyncError > storage.get('USERNAME') 1`] = `null`;
-
 exports[`SyncStatus > Handles popups > PopupSyncError > syncState 1`] = `
 {
   "appError": AppError {
@@ -470,7 +508,6 @@ exports[`SyncStatus > Handles popups > PopupSyncError > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
@@ -494,6 +531,16 @@ exports[`SyncStatus > Handles popups > PopupSyncError > updateState 1`] = `
 `;
 
 exports[`SyncStatus > Mounts when logged in > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Mounts when logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > Storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged in > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`SyncStatus > Mounts when logged in > allCalls 1`] = `
 [
@@ -551,16 +598,6 @@ exports[`SyncStatus > Mounts when logged in > openedPopup 1`] = `undefined`;
 
 exports[`SyncStatus > Mounts when logged in > selectedTheme 1`] = `"System"`;
 
-exports[`SyncStatus > Mounts when logged in > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`SyncStatus > Mounts when logged in > storage.get('THEME') 1`] = `null`;
-
-exports[`SyncStatus > Mounts when logged in > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`SyncStatus > Mounts when logged in > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`SyncStatus > Mounts when logged in > storage.get('USERNAME') 1`] = `null`;
-
 exports[`SyncStatus > Mounts when logged in > syncState 1`] = `
 {
   "appError": AppError {
@@ -572,7 +609,6 @@ exports[`SyncStatus > Mounts when logged in > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -596,6 +632,16 @@ exports[`SyncStatus > Mounts when logged in > updateState 1`] = `
 `;
 
 exports[`SyncStatus > Mounts when logged out > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Mounts when logged out > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > Storage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Mounts when logged out > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`SyncStatus > Mounts when logged out > allCalls 1`] = `
 [
@@ -653,16 +699,6 @@ exports[`SyncStatus > Mounts when logged out > openedPopup 1`] = `undefined`;
 
 exports[`SyncStatus > Mounts when logged out > selectedTheme 1`] = `"System"`;
 
-exports[`SyncStatus > Mounts when logged out > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`SyncStatus > Mounts when logged out > storage.get('THEME') 1`] = `null`;
-
-exports[`SyncStatus > Mounts when logged out > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`SyncStatus > Mounts when logged out > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`SyncStatus > Mounts when logged out > storage.get('USERNAME') 1`] = `null`;
-
 exports[`SyncStatus > Mounts when logged out > syncState 1`] = `
 {
   "appError": AppError {
@@ -674,7 +710,6 @@ exports[`SyncStatus > Mounts when logged out > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

@@ -1,7 +1,7 @@
 import * as n from '../store/note';
 import * as s from '../store/sync';
 import * as u from '../store/update';
-import { storage, STORAGE_KEYS_STRING, StorageKeyString } from '../storage';
+import { KeyStore, Storage, STORAGE_KEYS_STRING, StorageKeyString } from '../classes';
 import { openedPopup } from '../store/popup';
 import { selectedTheme } from '../store/theme';
 
@@ -23,7 +23,7 @@ export async function snapshotState() {
   }
 
   // storage
-  const storedUnsyncedNoteIds = storage.getJson('UNSYNCED');
+  const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
   if (storedUnsyncedNoteIds) {
     storedUnsyncedNoteIds.edited = [...storedUnsyncedNoteIds.edited].map(() => 'id');
@@ -79,7 +79,7 @@ export async function snapshotState() {
   });
 
   // Snapshots
-  const cryptoKey = await s.KeyStore.getKey();
+  const cryptoKey = await KeyStore.getKey();
 
   expect(s.syncState).toMatchSnapshot('syncState');
   expect(n.noteState).toMatchSnapshot('noteState');
@@ -95,7 +95,7 @@ export async function snapshotState() {
   expect(allCallsNormalised).toMatchSnapshot('allCalls');
 
   Object.keys(STORAGE_KEYS_STRING).forEach((key) => {
-    expect(storage.get(key as StorageKeyString)).toMatchSnapshot(`storage.get('${key}')`);
+    expect(Storage.get(key as StorageKeyString)).toMatchSnapshot(`Storage.get('${key}')`);
   });
 }
 

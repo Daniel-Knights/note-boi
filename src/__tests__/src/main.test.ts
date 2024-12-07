@@ -1,9 +1,10 @@
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import * as u from '../../store/update';
-import { AppError, ERROR_CODE } from '../../appError';
+import { AppError, ERROR_CODE } from '../../classes';
 import { openedPopup, PopupType } from '../../store/popup';
-import { mockApi } from '../api';
+import { tauriInvoke } from '../../utils';
+import { clearMockApiResults, mockApi } from '../api';
 import { getAppDiv, resolveImmediate, waitUntil } from '../utils';
 
 let main: typeof import('../../main');
@@ -23,19 +24,33 @@ describe('main', () => {
 
     s.syncState.username = 'd';
 
+    await tauriInvoke('set_access_token', {
+      username: 'd',
+      accessToken: 'test-token',
+    });
+
+    clearMockApiResults({ calls });
+
     main = await import('../../main');
 
-    await waitUntil(() => calls.size >= 16);
+    await waitUntil(() => calls.size >= 18);
     await resolveImmediate(); // Just in case
 
     expect(getAllNotesSpy).toHaveBeenCalledOnce();
     expect(handleUpdateSpy).toHaveBeenCalledOnce();
     expect(pullSpy).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.size, 16);
-    assert.isTrue(calls.invoke.has('get_all_notes'));
-    assert.isTrue(calls.invoke.has('sync_local_notes'));
+    assert.strictEqual(calls.size, 18);
     assert.isTrue(calls.request.has('/notes/pull'));
+    assert.isTrue(calls.invoke.has('get_all_notes'));
+    assert.isTrue(calls.invoke.has('get_access_token'));
+    assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+    assert.isTrue(calls.invoke.has('set_access_token'));
+    assert.deepEqual(calls.invoke[2]!.calledWith, {
+      username: 'd',
+      accessToken: 'test-token',
+    });
+    assert.isTrue(calls.invoke.has('sync_local_notes'));
     assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
     assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
     assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));

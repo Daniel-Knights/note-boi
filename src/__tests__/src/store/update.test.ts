@@ -1,7 +1,7 @@
 import { check } from '@tauri-apps/plugin-updater';
 
 import * as u from '../../../store/update';
-import { storage } from '../../../storage';
+import { Storage } from '../../../classes';
 import { clearMockApiResults, mockApi } from '../../api';
 
 describe('Update', () => {
@@ -55,7 +55,7 @@ describe('Update', () => {
     it('Returns if version has been seen', async () => {
       const { calls } = mockApi();
 
-      storage.set('UPDATE_SEEN', '1.0.0');
+      Storage.set('UPDATE_SEEN', '1.0.0');
 
       await u.handleUpdate();
 
@@ -86,7 +86,7 @@ describe('Update', () => {
         title: 'Update available: v1.0.0',
         kind: undefined,
       });
-      assert.strictEqual(storage.get('UPDATE_SEEN'), '1.0.0');
+      assert.strictEqual(Storage.get('UPDATE_SEEN'), '1.0.0');
     });
   });
 
@@ -159,11 +159,11 @@ describe('Update', () => {
 
   it('setUpdateStrategy', () => {
     assert.strictEqual(u.updateState.strategy, 'manual');
-    assert.isNull(storage.get('UPDATE_STRATEGY'));
+    assert.isNull(Storage.get('UPDATE_STRATEGY'));
 
     u.setUpdateStrategy('auto');
 
     assert.strictEqual(u.updateState.strategy, 'auto');
-    assert.strictEqual(storage.get('UPDATE_STRATEGY'), 'auto');
+    assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'auto');
   });
 });

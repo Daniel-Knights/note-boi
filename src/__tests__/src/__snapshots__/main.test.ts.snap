@@ -2,8 +2,28 @@
 
 exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > Storage.get('THEME') 1`] = `null`;
+
+exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > allCalls 1`] = `
 [
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
   [
     "invoke",
     {
@@ -19,9 +39,12 @@ exports[`main > Gets all notes, checks for update, pulls notes, and adds listene
     },
   ],
   [
-    "request",
+    "invoke",
     {
-      "name": "/notes/pull",
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -85,15 +108,9 @@ Do you want to update now?",
     },
   ],
   [
-    "emits",
+    "request",
     {
-      "calledWith": {
-        "data": {
-          "is_logged_in": true,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
+      "name": "/notes/pull",
     },
   ],
   [
@@ -104,10 +121,32 @@ Do you want to update now?",
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
     "tauriApi",
     {
       "calledWith": undefined,
       "name": "plugin:process|restart",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
     },
   ],
   [
@@ -593,16 +632,6 @@ exports[`main > Gets all notes, checks for update, pulls notes, and adds listene
 
 exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > selectedTheme 1`] = `"System"`;
 
-exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > storage.get('THEME') 1`] = `null`;
-
-exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > storage.get('USERNAME') 1`] = `null`;
-
 exports[`main > Gets all notes, checks for update, pulls notes, and adds listeners > syncState 1`] = `
 {
   "appError": AppError {
@@ -614,7 +643,6 @@ exports[`main > Gets all notes, checks for update, pulls notes, and adds listene
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -638,6 +666,16 @@ exports[`main > Gets all notes, checks for update, pulls notes, and adds listene
 `;
 
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > Storage.get('THEME') 1`] = `null`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > allCalls 1`] = `
 [
@@ -696,16 +734,6 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > 
 
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > selectedTheme 1`] = `"System"`;
 
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > storage.get('THEME') 1`] = `null`;
-
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > storage.get('USERNAME') 1`] = `null`;
-
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > syncState 1`] = `
 {
   "appError": AppError {
@@ -717,7 +745,6 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > 
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -743,6 +770,16 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > 
 `;
 
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > Storage.get('THEME') 1`] = `null`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > allCalls 1`] = `
 [
@@ -801,16 +838,6 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" >
 
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > selectedTheme 1`] = `"System"`;
 
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > storage.get('THEME') 1`] = `null`;
-
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > storage.get('USERNAME') 1`] = `null`;
-
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > syncState 1`] = `
 {
   "appError": AppError {
@@ -822,7 +849,6 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" >
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -848,6 +874,16 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" >
 `;
 
 exports[`main > exitApp > With no unsynced notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`main > exitApp > With no unsynced notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`main > exitApp > With no unsynced notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`main > exitApp > With no unsynced notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`main > exitApp > With no unsynced notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`main > exitApp > With no unsynced notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`main > exitApp > With no unsynced notes > allCalls 1`] = `
 [
@@ -894,16 +930,6 @@ exports[`main > exitApp > With no unsynced notes > openedPopup 1`] = `undefined`
 
 exports[`main > exitApp > With no unsynced notes > selectedTheme 1`] = `"System"`;
 
-exports[`main > exitApp > With no unsynced notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`main > exitApp > With no unsynced notes > storage.get('THEME') 1`] = `null`;
-
-exports[`main > exitApp > With no unsynced notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`main > exitApp > With no unsynced notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`main > exitApp > With no unsynced notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`main > exitApp > With no unsynced notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -915,7 +941,6 @@ exports[`main > exitApp > With no unsynced notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -939,6 +964,16 @@ exports[`main > exitApp > With no unsynced notes > updateState 1`] = `
 `;
 
 exports[`main > exitApp > With unsynced notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`main > exitApp > With unsynced notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`main > exitApp > With unsynced notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`main > exitApp > With unsynced notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`main > exitApp > With unsynced notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`main > exitApp > With unsynced notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`main > exitApp > With unsynced notes > allCalls 1`] = `
 [
@@ -985,16 +1020,6 @@ exports[`main > exitApp > With unsynced notes > openedPopup 1`] = `undefined`;
 
 exports[`main > exitApp > With unsynced notes > selectedTheme 1`] = `"System"`;
 
-exports[`main > exitApp > With unsynced notes > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`main > exitApp > With unsynced notes > storage.get('THEME') 1`] = `null`;
-
-exports[`main > exitApp > With unsynced notes > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`main > exitApp > With unsynced notes > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`main > exitApp > With unsynced notes > storage.get('USERNAME') 1`] = `null`;
-
 exports[`main > exitApp > With unsynced notes > syncState 1`] = `
 {
   "appError": AppError {
@@ -1006,7 +1031,6 @@ exports[`main > exitApp > With unsynced notes > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

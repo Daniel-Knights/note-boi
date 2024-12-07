@@ -2,12 +2,32 @@
 
 exports[`Account > changePassword > Changes password for currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Account > changePassword > Changes password for currently logged in account > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -63,15 +83,43 @@ exports[`Account > changePassword > Changes password for currently logged in acc
     },
   ],
   [
-    "request",
+    "invoke",
     {
-      "name": "/account/password/change",
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
     "request",
     {
       "name": "/account/password/change",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/account/password/change",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
 ]
@@ -122,16 +170,6 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 
 exports[`Account > changePassword > Changes password for currently logged in account > selectedTheme 1`] = `"System"`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > changePassword > Changes password for currently logged in account > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > changePassword > Changes password for currently logged in account > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > changePassword > Changes password for currently logged in account > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > changePassword > Changes password for currently logged in account > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Account > changePassword > Changes password for currently logged in account > syncState 1`] = `
 {
   "appError": AppError {
@@ -143,7 +181,6 @@ exports[`Account > changePassword > Changes password for currently logged in acc
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -168,12 +205,32 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 
 exports[`Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Account > changePassword > Sets and resets loading state > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -229,9 +286,28 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/account/password/change",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
 ]
@@ -282,16 +358,6 @@ exports[`Account > changePassword > Sets and resets loading state > openedPopup 
 
 exports[`Account > changePassword > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
-exports[`Account > changePassword > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > changePassword > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > changePassword > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > changePassword > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > changePassword > Sets and resets loading state > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Account > changePassword > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
@@ -303,7 +369,6 @@ exports[`Account > changePassword > Sets and resets loading state > syncState 1`
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -328,12 +393,32 @@ exports[`Account > changePassword > Sets and resets loading state > updateState 
 
 exports[`Account > changePassword > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > changePassword > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > User not found > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Account > changePassword > User not found > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/signup",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "k",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -349,9 +434,27 @@ exports[`Account > changePassword > User not found > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "k",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/account/password/change",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "k",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -402,16 +505,6 @@ exports[`Account > changePassword > User not found > openedPopup 1`] = `undefine
 
 exports[`Account > changePassword > User not found > selectedTheme 1`] = `"System"`;
 
-exports[`Account > changePassword > User not found > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > changePassword > User not found > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > changePassword > User not found > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > changePassword > User not found > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > changePassword > User not found > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Account > changePassword > User not found > syncState 1`] = `
 {
   "appError": AppError {
@@ -428,7 +521,6 @@ exports[`Account > changePassword > User not found > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "1",
   "password": "2",
   "unsyncedNoteIds": {
@@ -453,6 +545,16 @@ exports[`Account > changePassword > User not found > updateState 1`] = `
 
 exports[`Account > changePassword > With encryptor error > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Account > changePassword > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > With encryptor error > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Account > changePassword > With encryptor error > allCalls 1`] = `
 [
   [
@@ -460,6 +562,15 @@ exports[`Account > changePassword > With encryptor error > allCalls 1`] = `
     {
       "calledWith": {},
       "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "",
+      },
+      "name": "get_access_token",
     },
   ],
 ]
@@ -741,16 +852,6 @@ exports[`Account > changePassword > With encryptor error > openedPopup 1`] = `un
 
 exports[`Account > changePassword > With encryptor error > selectedTheme 1`] = `"System"`;
 
-exports[`Account > changePassword > With encryptor error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > changePassword > With encryptor error > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > changePassword > With encryptor error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > changePassword > With encryptor error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > changePassword > With encryptor error > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Account > changePassword > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
@@ -767,7 +868,6 @@ exports[`Account > changePassword > With encryptor error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -792,12 +892,32 @@ exports[`Account > changePassword > With encryptor error > updateState 1`] = `
 
 exports[`Account > changePassword > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > changePassword > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > With server error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > With server error > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Account > changePassword > With server error > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -850,6 +970,15 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
         ],
       },
       "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -906,16 +1035,6 @@ exports[`Account > changePassword > With server error > openedPopup 1`] = `undef
 
 exports[`Account > changePassword > With server error > selectedTheme 1`] = `"System"`;
 
-exports[`Account > changePassword > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > changePassword > With server error > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > changePassword > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > changePassword > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > changePassword > With server error > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Account > changePassword > With server error > syncState 1`] = `
 {
   "appError": AppError {
@@ -932,7 +1051,6 @@ exports[`Account > changePassword > With server error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "2",
   "password": "1",
   "unsyncedNoteIds": {
@@ -957,12 +1075,32 @@ exports[`Account > changePassword > With server error > updateState 1`] = `
 
 exports[`Account > deleteAccount > Deletes currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Account > deleteAccount > Deletes currently logged in account > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1029,9 +1167,27 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/account/delete",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -1092,16 +1248,6 @@ exports[`Account > deleteAccount > Deletes currently logged in account > openedP
 
 exports[`Account > deleteAccount > Deletes currently logged in account > selectedTheme 1`] = `"System"`;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > deleteAccount > Deletes currently logged in account > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Account > deleteAccount > Deletes currently logged in account > syncState 1`] = `
 {
   "appError": AppError {
@@ -1113,7 +1259,6 @@ exports[`Account > deleteAccount > Deletes currently logged in account > syncSta
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1147,6 +1292,16 @@ exports[`Account > deleteAccount > Deletes currently logged in account > updateS
 `;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > allCalls 1`] = `
 [
@@ -1197,16 +1352,6 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > openedP
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > selectedTheme 1`] = `"System"`;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > deleteAccount > Returns if ask dialog returns false > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Account > deleteAccount > Returns if ask dialog returns false > syncState 1`] = `
 {
   "appError": AppError {
@@ -1218,7 +1363,6 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > syncSta
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1243,12 +1387,32 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > updateS
 
 exports[`Account > deleteAccount > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1315,9 +1479,27 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/account/delete",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -1378,16 +1560,6 @@ exports[`Account > deleteAccount > Sets and resets loading state > openedPopup 1
 
 exports[`Account > deleteAccount > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
-exports[`Account > deleteAccount > Sets and resets loading state > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > deleteAccount > Sets and resets loading state > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > deleteAccount > Sets and resets loading state > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > deleteAccount > Sets and resets loading state > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > deleteAccount > Sets and resets loading state > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
@@ -1399,7 +1571,6 @@ exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`]
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1424,12 +1595,32 @@ exports[`Account > deleteAccount > Sets and resets loading state > updateState 1
 
 exports[`Account > deleteAccount > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > deleteAccount > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > User not found > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Account > deleteAccount > User not found > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/signup",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "k",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1456,9 +1647,27 @@ exports[`Account > deleteAccount > User not found > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "k",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/account/delete",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "k",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -1509,16 +1718,6 @@ exports[`Account > deleteAccount > User not found > openedPopup 1`] = `undefined
 
 exports[`Account > deleteAccount > User not found > selectedTheme 1`] = `"System"`;
 
-exports[`Account > deleteAccount > User not found > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > deleteAccount > User not found > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > deleteAccount > User not found > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > deleteAccount > User not found > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > deleteAccount > User not found > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Account > deleteAccount > User not found > syncState 1`] = `
 {
   "appError": AppError {
@@ -1534,7 +1733,6 @@ exports[`Account > deleteAccount > User not found > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1559,12 +1757,32 @@ exports[`Account > deleteAccount > User not found > updateState 1`] = `
 
 exports[`Account > deleteAccount > User unauthorised > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > deleteAccount > User unauthorised > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > User unauthorised > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Account > deleteAccount > User unauthorised > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1631,9 +1849,27 @@ exports[`Account > deleteAccount > User unauthorised > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/account/delete",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
     },
   ],
   [
@@ -1696,16 +1932,6 @@ exports[`Account > deleteAccount > User unauthorised > openedPopup 1`] = `undefi
 
 exports[`Account > deleteAccount > User unauthorised > selectedTheme 1`] = `"System"`;
 
-exports[`Account > deleteAccount > User unauthorised > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > deleteAccount > User unauthorised > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > deleteAccount > User unauthorised > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > deleteAccount > User unauthorised > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > deleteAccount > User unauthorised > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Account > deleteAccount > User unauthorised > syncState 1`] = `
 {
   "appError": AppError {
@@ -1721,7 +1947,6 @@ exports[`Account > deleteAccount > User unauthorised > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1746,12 +1971,32 @@ exports[`Account > deleteAccount > User unauthorised > updateState 1`] = `
 
 exports[`Account > deleteAccount > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > deleteAccount > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > With server error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > With server error > Storage.get('USERNAME') 1`] = `"d"`;
+
 exports[`Account > deleteAccount > With server error > allCalls 1`] = `
 [
   [
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
   [
@@ -1818,6 +2063,15 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "request",
     {
       "name": "/account/delete",
@@ -1871,16 +2125,6 @@ exports[`Account > deleteAccount > With server error > openedPopup 1`] = `undefi
 
 exports[`Account > deleteAccount > With server error > selectedTheme 1`] = `"System"`;
 
-exports[`Account > deleteAccount > With server error > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Account > deleteAccount > With server error > storage.get('THEME') 1`] = `null`;
-
-exports[`Account > deleteAccount > With server error > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Account > deleteAccount > With server error > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Account > deleteAccount > With server error > storage.get('USERNAME') 1`] = `"d"`;
-
 exports[`Account > deleteAccount > With server error > syncState 1`] = `
 {
   "appError": AppError {
@@ -1896,7 +2140,6 @@ exports[`Account > deleteAccount > With server error > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": true,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

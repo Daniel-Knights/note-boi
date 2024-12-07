@@ -2,6 +2,16 @@
 
 exports[`Editor > Has the correct timestamp > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Editor > Has the correct timestamp > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > Storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Has the correct timestamp > Storage.get('USERNAME') 1`] = `null`;
+
 exports[`Editor > Has the correct timestamp > allCalls 1`] = `[]`;
 
 exports[`Editor > Has the correct timestamp > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
@@ -37,16 +47,6 @@ exports[`Editor > Has the correct timestamp > openedPopup 1`] = `undefined`;
 
 exports[`Editor > Has the correct timestamp > selectedTheme 1`] = `"System"`;
 
-exports[`Editor > Has the correct timestamp > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Editor > Has the correct timestamp > storage.get('THEME') 1`] = `null`;
-
-exports[`Editor > Has the correct timestamp > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Editor > Has the correct timestamp > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Editor > Has the correct timestamp > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Editor > Has the correct timestamp > syncState 1`] = `
 {
   "appError": AppError {
@@ -58,7 +58,6 @@ exports[`Editor > Has the correct timestamp > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -82,6 +81,16 @@ exports[`Editor > Has the correct timestamp > updateState 1`] = `
 `;
 
 exports[`Editor > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Mounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Mounts > allCalls 1`] = `[]`;
 
@@ -118,16 +127,6 @@ exports[`Editor > Mounts > openedPopup 1`] = `undefined`;
 
 exports[`Editor > Mounts > selectedTheme 1`] = `"System"`;
 
-exports[`Editor > Mounts > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Editor > Mounts > storage.get('THEME') 1`] = `null`;
-
-exports[`Editor > Mounts > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Editor > Mounts > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Editor > Mounts > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Editor > Mounts > syncState 1`] = `
 {
   "appError": AppError {
@@ -139,7 +138,6 @@ exports[`Editor > Mounts > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -163,6 +161,16 @@ exports[`Editor > Mounts > updateState 1`] = `
 `;
 
 exports[`Editor > Sets the correct note text > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Sets the correct note text > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > Storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Sets the correct note text > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Sets the correct note text > allCalls 1`] = `
 [
@@ -408,16 +416,6 @@ exports[`Editor > Sets the correct note text > openedPopup 1`] = `undefined`;
 
 exports[`Editor > Sets the correct note text > selectedTheme 1`] = `"System"`;
 
-exports[`Editor > Sets the correct note text > storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Editor > Sets the correct note text > storage.get('THEME') 1`] = `null`;
-
-exports[`Editor > Sets the correct note text > storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Editor > Sets the correct note text > storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Editor > Sets the correct note text > storage.get('USERNAME') 1`] = `null`;
-
 exports[`Editor > Sets the correct note text > syncState 1`] = `
 {
   "appError": AppError {
@@ -429,7 +427,6 @@ exports[`Editor > Sets the correct note text > syncState 1`] = `
   },
   "isLoading": false,
   "isLoggedIn": false,
-  "isLogin": true,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

@@ -2,8 +2,9 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
-import { AppError, ERROR_CODE } from '../../../appError';
+import { AppError, ERROR_CODE } from '../../../classes';
 import { openedPopup, PopupType } from '../../../store/popup';
+import { tauriInvoke } from '../../../utils';
 import { mockApi } from '../../api';
 import {
   assertAppError,
@@ -58,6 +59,11 @@ describe('SyncStatus', () => {
     const wrapper = mount(SyncStatus);
 
     s.syncState.username = 'd';
+
+    await tauriInvoke('set_access_token', {
+      username: 'd',
+      accessToken: 'test-token',
+    });
 
     s.pull();
 
@@ -169,14 +175,9 @@ describe('SyncStatus', () => {
 
       assert.isTrue(findByTestId(wrapper, 'popup-auth').isVisible());
 
-      const resetErrorSpy = vi.spyOn(s, 'resetAppError');
-
       wrapper.getComponent(PopupSyncAuth).vm.$emit('close');
       await nextTick();
 
-      // Registers emitted close from both Popup and PopupSyncAuth here
-      // This isn't the case when using the actual app
-      expect(resetErrorSpy).toHaveBeenCalledTimes(2);
       assert.isFalse(findByTestId(wrapper, 'popup-auth').exists());
       assert.isUndefined(openedPopup.value);
 

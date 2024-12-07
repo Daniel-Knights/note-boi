@@ -1,0 +1,561 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AppError > With default values > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`AppError > With default values > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`AppError > With default values > Storage.get('THEME') 1`] = `null`;
+
+exports[`AppError > With default values > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`AppError > With default values > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`AppError > With default values > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`AppError > With default values > allCalls 1`] = `[]`;
+
+exports[`AppError > With default values > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`AppError > With default values > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`AppError > With default values > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`AppError > With default values > openedPopup 1`] = `undefined`;
+
+exports[`AppError > With default values > selectedTheme 1`] = `"System"`;
+
+exports[`AppError > With default values > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`AppError > With default values > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`AppError > With provided values > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`AppError > With provided values > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`AppError > With provided values > Storage.get('THEME') 1`] = `null`;
+
+exports[`AppError > With provided values > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`AppError > With provided values > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`AppError > With provided values > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`AppError > With provided values > allCalls 1`] = `[]`;
+
+exports[`AppError > With provided values > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`AppError > With provided values > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`AppError > With provided values > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`AppError > With provided values > openedPopup 1`] = `undefined`;
+
+exports[`AppError > With provided values > selectedTheme 1`] = `"System"`;
+
+exports[`AppError > With provided values > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`AppError > With provided values > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('THEME') 1`] = `null`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > allCalls 1`] = `[]`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > openedPopup 1`] = `undefined`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > selectedTheme 1`] = `"System"`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`AppError > isNone > Returns false when code is not NONE > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`AppError > isNone > Returns true when code is NONE > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`AppError > isNone > Returns true when code is NONE > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`AppError > isNone > Returns true when code is NONE > Storage.get('THEME') 1`] = `null`;
+
+exports[`AppError > isNone > Returns true when code is NONE > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`AppError > isNone > Returns true when code is NONE > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`AppError > isNone > Returns true when code is NONE > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`AppError > isNone > Returns true when code is NONE > allCalls 1`] = `[]`;
+
+exports[`AppError > isNone > Returns true when code is NONE > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`AppError > isNone > Returns true when code is NONE > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`AppError > isNone > Returns true when code is NONE > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`AppError > isNone > Returns true when code is NONE > openedPopup 1`] = `undefined`;
+
+exports[`AppError > isNone > Returns true when code is NONE > selectedTheme 1`] = `"System"`;
+
+exports[`AppError > isNone > Returns true when code is NONE > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`AppError > isNone > Returns true when code is NONE > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`AppError > retry > With no arguments > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`AppError > retry > With no arguments > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`AppError > retry > With no arguments > Storage.get('THEME') 1`] = `null`;
+
+exports[`AppError > retry > With no arguments > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`AppError > retry > With no arguments > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`AppError > retry > With no arguments > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`AppError > retry > With no arguments > allCalls 1`] = `[]`;
+
+exports[`AppError > retry > With no arguments > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`AppError > retry > With no arguments > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`AppError > retry > With no arguments > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`AppError > retry > With no arguments > openedPopup 1`] = `undefined`;
+
+exports[`AppError > retry > With no arguments > selectedTheme 1`] = `"System"`;
+
+exports[`AppError > retry > With no arguments > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`AppError > retry > With no arguments > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`AppError > retry > With provided arguments > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`AppError > retry > With provided arguments > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`AppError > retry > With provided arguments > Storage.get('THEME') 1`] = `null`;
+
+exports[`AppError > retry > With provided arguments > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`AppError > retry > With provided arguments > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`AppError > retry > With provided arguments > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`AppError > retry > With provided arguments > allCalls 1`] = `[]`;
+
+exports[`AppError > retry > With provided arguments > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`AppError > retry > With provided arguments > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`AppError > retry > With provided arguments > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`AppError > retry > With provided arguments > openedPopup 1`] = `undefined`;
+
+exports[`AppError > retry > With provided arguments > selectedTheme 1`] = `"System"`;
+
+exports[`AppError > retry > With provided arguments > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`AppError > retry > With provided arguments > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`AppError > retry > Without retryConfig > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`AppError > retry > Without retryConfig > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`AppError > retry > Without retryConfig > Storage.get('THEME') 1`] = `null`;
+
+exports[`AppError > retry > Without retryConfig > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`AppError > retry > Without retryConfig > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`AppError > retry > Without retryConfig > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`AppError > retry > Without retryConfig > allCalls 1`] = `[]`;
+
+exports[`AppError > retry > Without retryConfig > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`AppError > retry > Without retryConfig > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`AppError > retry > Without retryConfig > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`AppError > retry > Without retryConfig > openedPopup 1`] = `undefined`;
+
+exports[`AppError > retry > Without retryConfig > selectedTheme 1`] = `"System"`;
+
+exports[`AppError > retry > Without retryConfig > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`AppError > retry > Without retryConfig > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

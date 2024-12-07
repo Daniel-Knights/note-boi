@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
-import { AppError, ERROR_CODE } from '../../../appError';
+import { AppError, ERROR_CODE } from '../../../classes';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
 import { assertAppError, getByTestId, waitUntil } from '../../utils';
@@ -185,7 +185,14 @@ describe('PopupChangePassword', () => {
     assertAppError();
     assert.isEmpty(wrapperVm.confirmNewPassword);
     assert.lengthOf(wrapper.emitted('close')!, 1);
-    assert.strictEqual(calls.size, 1);
+    assert.strictEqual(calls.size, 3);
     assert.isTrue(calls.request.has('/account/password/change'));
+    assert.isTrue(calls.invoke.has('get_access_token'));
+    assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+    assert.isTrue(calls.invoke.has('set_access_token'));
+    assert.deepEqual(calls.invoke[1]!.calledWith, {
+      username: 'd',
+      accessToken: 'test-token',
+    });
   });
 });

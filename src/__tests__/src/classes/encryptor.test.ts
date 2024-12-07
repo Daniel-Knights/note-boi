@@ -1,7 +1,7 @@
-import { Encryptor, KeyStore } from '../../../../store/sync';
-import { mockDb } from '../../../api';
-import localNotes from '../../../notes.json';
-import { isNote } from '../../../utils';
+import { Encryptor, KeyStore } from '../../../classes';
+import { mockDb } from '../../api';
+import localNotes from '../../notes.json';
+import { isNote } from '../../utils';
 
 describe('Encryptor', () => {
   describe('setPasswordKey', () => {
@@ -36,7 +36,7 @@ describe('Encryptor', () => {
     it('Encrypts notes', async () => {
       const encryptedNotes = await Encryptor.encryptNotes(localNotes, '1');
 
-      expect(encryptedNotes).toHaveLength(localNotes.length);
+      assert.lengthOf(encryptedNotes, localNotes.length);
 
       encryptedNotes.forEach((note) => {
         assert.isString(note.content);
@@ -71,7 +71,7 @@ describe('Encryptor', () => {
       });
     });
 
-    it('Handles already decrypted notes', async () => {
+    it('Handles unencrypted notes', async () => {
       const decryptedNotes = await Encryptor.decryptNotes(localNotes);
 
       assert.lengthOf(decryptedNotes, localNotes.length);

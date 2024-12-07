@@ -1,4 +1,4 @@
-import { KeyStore } from '../../../../store/sync';
+import { KeyStore } from '../../../classes';
 
 const key = await window.crypto.subtle.generateKey(
   { name: 'AES-GCM', length: 256 },

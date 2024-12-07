@@ -1,7 +1,6 @@
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
-import { ERROR_CODE } from '../../../../appError';
-import { storage } from '../../../../storage';
+import { ERROR_CODE, Storage } from '../../../../classes';
 import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import { assertAppError, assertLoadingState } from '../../../utils';
 
@@ -21,7 +20,7 @@ describe('Account', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
-      assert.strictEqual(storage.get('USERNAME'), 'd');
+      assert.strictEqual(Storage.get('USERNAME'), 'd');
 
       s.syncState.password = '2';
       s.syncState.newPassword = '1';
@@ -36,8 +35,10 @@ describe('Account', () => {
         display: { form: true, sync: true },
       });
 
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/account/password/change'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
       assert.isFalse(s.syncState.isLoading);
@@ -50,8 +51,15 @@ describe('Account', () => {
       await s.changePassword();
 
       assertAppError();
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/account/password/change'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('set_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, {
+        username: 'd',
+        accessToken: 'test-token',
+      });
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
       assert.isTrue(s.syncState.isLoggedIn);
@@ -75,7 +83,9 @@ describe('Account', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: '' });
     });
 
     it('With server error', async () => {
@@ -109,8 +119,10 @@ describe('Account', () => {
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/account/password/change'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it('User not found', async () => {
@@ -144,8 +156,12 @@ describe('Account', () => {
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/account/password/change'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -187,7 +203,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(storage.get('USERNAME'), 'd');
+      assert.strictEqual(Storage.get('USERNAME'), 'd');
 
       await s.deleteAccount();
 
@@ -196,9 +212,13 @@ describe('Account', () => {
 
       assertAppError();
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -244,7 +264,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(storage.get('USERNAME'), 'd');
+      assert.strictEqual(Storage.get('USERNAME'), 'd');
 
       await s.deleteAccount();
 
@@ -258,10 +278,12 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(storage.get('USERNAME'), 'd');
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(Storage.get('USERNAME'), 'd');
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isFalse(s.syncState.isLoading);
     });
 
@@ -297,9 +319,13 @@ describe('Account', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -336,9 +362,13 @@ describe('Account', () => {
       });
 
       assert.isFalse(s.syncState.isLoading);
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,

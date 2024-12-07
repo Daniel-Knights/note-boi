@@ -1,0 +1,321 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Storage > clear > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Storage > clear > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Storage > clear > Storage.get('THEME') 1`] = `null`;
+
+exports[`Storage > clear > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Storage > clear > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Storage > clear > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Storage > clear > allCalls 1`] = `[]`;
+
+exports[`Storage > clear > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Storage > clear > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Storage > clear > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Storage > clear > openedPopup 1`] = `undefined`;
+
+exports[`Storage > clear > selectedTheme 1`] = `"System"`;
+
+exports[`Storage > clear > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Storage > clear > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Storage > get/set > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Storage > get/set > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Storage > get/set > Storage.get('THEME') 1`] = `null`;
+
+exports[`Storage > get/set > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Storage > get/set > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Storage > get/set > Storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Storage > get/set > allCalls 1`] = `[]`;
+
+exports[`Storage > get/set > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Storage > get/set > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Storage > get/set > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Storage > get/set > openedPopup 1`] = `undefined`;
+
+exports[`Storage > get/set > selectedTheme 1`] = `"System"`;
+
+exports[`Storage > get/set > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Storage > get/set > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Storage > remove > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Storage > remove > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Storage > remove > Storage.get('THEME') 1`] = `null`;
+
+exports[`Storage > remove > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Storage > remove > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Storage > remove > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Storage > remove > allCalls 1`] = `[]`;
+
+exports[`Storage > remove > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Storage > remove > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Storage > remove > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Storage > remove > openedPopup 1`] = `undefined`;
+
+exports[`Storage > remove > selectedTheme 1`] = `"System"`;
+
+exports[`Storage > remove > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Storage > remove > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Storage > setJson/getJson > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Storage > setJson/getJson > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Storage > setJson/getJson > Storage.get('THEME') 1`] = `null`;
+
+exports[`Storage > setJson/getJson > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Storage > setJson/getJson > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Storage > setJson/getJson > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Storage > setJson/getJson > allCalls 1`] = `[]`;
+
+exports[`Storage > setJson/getJson > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Storage > setJson/getJson > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Storage > setJson/getJson > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Storage > setJson/getJson > openedPopup 1`] = `undefined`;
+
+exports[`Storage > setJson/getJson > selectedTheme 1`] = `"System"`;
+
+exports[`Storage > setJson/getJson > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoading": false,
+  "isLoggedIn": false,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Storage > setJson/getJson > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

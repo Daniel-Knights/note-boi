@@ -3,10 +3,9 @@ import { enableAutoUnmount } from '@vue/test-utils';
 import { indexedDB } from 'fake-indexeddb';
 import crypto from 'node:crypto';
 
-import * as s from '../store/sync';
-import { storage } from '../storage';
+import { Encryptor, KeyStore, Storage } from '../classes';
 
-import { allCalls, mockDb } from './api';
+import { allCalls, mockDb, mockKeyring } from './api';
 import localNotes from './notes.json';
 import { snapshotState } from './snapshot';
 import { resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
@@ -24,9 +23,9 @@ beforeAll(async () => {
     value: indexedDB,
   });
 
-  mockDb.encryptedNotes = await s.Encryptor.encryptNotes(localNotes, '1');
+  mockDb.encryptedNotes = await Encryptor.encryptNotes(localNotes, '1');
 
-  await s.KeyStore.reset();
+  await KeyStore.reset();
 
   mockWindows('main');
 });
@@ -40,13 +39,17 @@ afterEach(async () => {
   resetNoteStore();
   resetUpdateStore();
 
-  await s.KeyStore.reset();
+  await KeyStore.reset();
 
   mockDb.users = structuredClone(initialMockDb.users);
 
-  clearMocks();
+  Object.keys(mockKeyring).forEach((key) => {
+    delete mockKeyring[key];
+  });
 
-  storage.clear();
+  clearMocks();
+  Storage.clear();
+
   document.body.innerHTML = '';
 
   expect(assertFailSpy).not.toHaveBeenCalled();

@@ -28,6 +28,7 @@ export const mockDb: {
   encryptedNotes: undefined as unknown as EncryptedNote[],
 };
 
+export const mockKeyring: Record<string, string> = {};
 export const allCalls: [ApiCallType, Call][] = [];
 
 /**
@@ -197,10 +198,20 @@ class Calls extends Array<Call> {
   }
 }
 
+// eslint-disable-next-line no-undef
+function hasValidAuthHeaders(headers?: HeadersInit) {
+  return (
+    headers &&
+    'Authorization' in headers &&
+    'X-Username' in headers &&
+    headers.Authorization === 'Bearer test-token'
+  );
+}
+
 /** Mocks requests to the server. */
 function mockRequest(
   url: string,
-  fetchOptions: RequestInit,
+  req: RequestInit,
   options: {
     resValue?: RequestResValue;
     error?: {
@@ -214,28 +225,35 @@ function mockRequest(
   }
 
   const endpoint = url.split(/\/api(?=\/)/)[1] as Endpoint;
-  const reqPayload: { notes?: n.Note[] } = JSON.parse(fetchOptions.body!.toString());
+  const reqPayload: { notes?: n.Note[] } = JSON.parse(req.body?.toString() ?? '{}');
 
   if (!ENDPOINTS.includes(endpoint)) {
     assert.fail(`Invalid endpoint: ${endpoint}`);
   }
 
+  // Mock server error
   if (options.error?.endpoint === endpoint) {
+    const resInit = {
+      status: options.error.status || 500,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = new Response(JSON.stringify({ error: 'Server error' }), resInit);
+
     return {
       name: endpoint,
-      promise: resolveImmediate(
-        new Response(JSON.stringify({ error: 'Server error' }), {
-          status: options.error.status || 500,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-      ),
+      promise: resolveImmediate(res),
     };
   }
 
+  // @ts-expect-error - doesn't matter if undefined
+  const username: string = req.headers!['X-Username'] ?? '';
+
   const resData: {
     notes?: n.Note[] | EncryptedNote[];
+    access_token?: string;
     error?: string;
   } = {};
 
@@ -257,7 +275,11 @@ function mockRequest(
         resData.error = 'User already exists';
         httpStatus = 409;
       } else {
+        const resValue = options.resValue?.['/signup']?.shift();
+
         mockDb.users[reqPayload.username] = reqPayload.password;
+        resData.access_token = resValue?.access_token ?? 'test-token';
+
         httpStatus = 201;
       }
 
@@ -281,12 +303,16 @@ function mockRequest(
       } else {
         const resValue = options.resValue?.['/login']?.shift();
 
-        resData.notes = resValue?.notes || [];
+        resData.notes = resValue?.notes ?? [];
+        resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
       break;
     case '/logout':
-      if (!mockDb.users[s.syncState.username]) {
+      if (!hasValidAuthHeaders(req.headers)) {
+        resData.error = 'Unauthorized';
+        httpStatus = 401;
+      } else if (!(username in mockDb.users)) {
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
@@ -296,24 +322,31 @@ function mockRequest(
       break;
     case '/notes/pull':
       // Pull
-      if (!mockDb.users[s.syncState.username]) {
+      if (!hasValidAuthHeaders(req.headers)) {
+        resData.error = 'Unauthorized';
+        httpStatus = 401;
+      } else if (!mockDb.users[username]) {
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
         const resValue = options.resValue?.['/notes/pull']?.shift();
 
-        resData.notes = resValue?.notes || [];
+        resData.notes = resValue?.notes ?? [];
+        resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
       break;
     case '/notes/push':
-      if (!hasKeys(reqPayload, ['notes'])) {
+      if (!hasValidAuthHeaders(req.headers)) {
+        resData.error = 'Unauthorized';
+        httpStatus = 401;
+      } else if (!hasKeys(reqPayload, ['notes'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (reqPayload.notes?.some((nt) => !isEncryptedNote(nt))) {
         resData.error = 'Invalid fields';
         httpStatus = 400;
-      } else if (!mockDb.users[s.syncState.username]) {
+      } else if (!mockDb.users[username]) {
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
@@ -322,7 +355,10 @@ function mockRequest(
 
       break;
     case '/account/password/change':
-      if (!hasKeys(reqPayload, ['current_password', 'new_password'])) {
+      if (!hasValidAuthHeaders(req.headers)) {
+        resData.error = 'Unauthorized';
+        httpStatus = 401;
+      } else if (!hasKeys(reqPayload, ['current_password', 'new_password'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -331,21 +367,28 @@ function mockRequest(
       ) {
         resData.error = 'Invalid fields';
         httpStatus = 400;
-      } else if (!mockDb.users[s.syncState.username]) {
+      } else if (!mockDb.users[username]) {
         resData.error = 'User not found';
         httpStatus = 404;
-      } else if (reqPayload.current_password !== mockDb.users[s.syncState.username]) {
+      } else if (reqPayload.current_password !== mockDb.users[username]) {
         resData.error = 'Unauthorized';
         httpStatus = 401;
+      } else {
+        const resValue = options.resValue?.['/notes/pull']?.shift();
+
+        resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
       break;
     case '/account/delete':
-      if (!mockDb.users[s.syncState.username]) {
+      if (!hasValidAuthHeaders(req.headers)) {
+        resData.error = 'Unauthorized';
+        httpStatus = 401;
+      } else if (!mockDb.users[username]) {
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
-        delete mockDb.users[s.syncState.username];
+        delete mockDb.users[username];
         httpStatus = 204;
       }
   }
@@ -368,12 +411,12 @@ function mockTauriInvoke(
   cmd: string,
   args: Record<string, unknown>,
   options: { resValue?: InvokeResValue; error?: TauriCommand } = {}
-): Call<n.Note[] | void> | void {
+) {
   if (options.error === cmd) {
     throw new Error('Mock Tauri Invoke error');
   }
 
-  let resData: n.Note[] | undefined = [];
+  let resData: n.Note[] | string | undefined = [];
 
   switch (cmd) {
     case 'get_all_notes': {
@@ -427,6 +470,38 @@ function mockTauriInvoke(
       ) {
         assert.fail('Invalid saveDir or notes');
       }
+
+      break;
+    case 'set_access_token':
+      if (!hasKeys(args, ['username', 'accessToken'])) {
+        assert.fail('Missing username or accessToken');
+      } else if (typeof args.username !== 'string') {
+        assert.fail('Invalid username');
+      } else if (typeof args.accessToken !== 'string') {
+        assert.fail('Invalid accessToken');
+      }
+
+      mockKeyring[args.username] = args.accessToken;
+
+      break;
+    case 'get_access_token':
+      if (!hasKeys(args, ['username'])) {
+        assert.fail('Missing username');
+      } else if (typeof args.username !== 'string') {
+        assert.fail('Invalid username');
+      }
+
+      resData = mockKeyring[args.username];
+
+      break;
+    case 'delete_access_token':
+      if (!hasKeys(args, ['username'])) {
+        assert.fail('Missing username');
+      } else if (typeof args.username !== 'string') {
+        assert.fail('Invalid username');
+      }
+
+      delete mockKeyring[args.username];
 
       break;
   }
@@ -564,7 +639,7 @@ type EmitArgs = {
 };
 
 type RequestResValue = {
-  [E in keyof EndpointPayloads]?: EndpointPayloads[E]['response'][];
+  [E in keyof EndpointPayloads]?: Partial<EndpointPayloads[E]['response']>[];
 };
 type InvokeResValue = {
   [C in keyof TauriCommandPayloads]?: TauriCommandPayloads[C]['response'][];
