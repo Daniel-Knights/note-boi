@@ -35,14 +35,11 @@ export default typescriptEslint.config(
       globals: {
         ...globals.browser,
         ...globals.node,
-        ...globals.chai,
-        ...globals.mocha,
-        ...globals.jest,
+        CustomEventInit: 'readonly',
         RequestInit: 'readonly',
-        vi: 'readonly',
+        HeadersInit: 'readonly',
         defineProps: 'readonly',
         defineEmits: 'readonly',
-        CustomEventInit: 'readonly',
       },
     },
     settings: {
@@ -285,6 +282,26 @@ export default typescriptEslint.config(
       'use-isnan': 'error',
       'valid-typeof': ['error', { requireStringLiterals: true }],
       'wrap-regex': 'off',
+    },
+  },
+  {
+    files: ['src/__tests__/**/*'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        vi: 'readonly',
+        assert: 'readonly',
+      },
+    },
+    rules: {
+      'max-nested-callbacks': 'off',
     },
   },
   eslintPluginPrettierRecommended
