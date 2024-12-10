@@ -8,6 +8,7 @@ import { Storage } from '../../../classes';
 import { COLOUR_THEMES } from '../../../constant';
 import { openedPopup, PopupType } from '../../../store/popup';
 import { selectedTheme } from '../../../store/theme';
+import { tauriInvoke } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
 import {
   findByTestId,
@@ -218,7 +219,14 @@ describe('Settings', () => {
 
       s.syncState.username = 'd';
       s.syncState.isLoggedIn = true;
+      await tauriInvoke('set_access_token', {
+        username: 'd',
+        accessToken: 'test-token',
+      });
+
       await nextTick();
+
+      clearMockApiResults({ calls, promises });
 
       const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
       assert.isTrue(deleteAccountWrapper.isVisible());
@@ -231,13 +239,22 @@ describe('Settings', () => {
       await resolveImmediate(); // Defer execution to /account/delete
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-      assert.isTrue(getByTestId(wrapper, 'delete-account').isVisible());
-      assert.lengthOf(wrapperVm.menuItems, 5);
-      assert.strictEqual(calls.size, 3);
+      assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
+      assert.lengthOf(wrapperVm.menuItems, 4);
+      assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
   });
 });

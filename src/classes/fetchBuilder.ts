@@ -82,7 +82,7 @@ export class FetchBuilder<
         accessToken: body.access_token,
       });
     } else if (body.access_token) {
-      console.error('Unexpected access_token');
+      console.error(`Unexpected access_token for endpoint: ${this.#endpoint}`);
     }
 
     return {

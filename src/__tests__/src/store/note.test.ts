@@ -4,7 +4,7 @@ import { NOTE_EVENTS } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
 import localNotes from '../../notes.json';
-import { resolveImmediate, UUID_REGEX } from '../../utils';
+import { UUID_REGEX, waitForAutoPush } from '../../utils';
 
 const existingNoteIndexSorted = 2;
 const existingNote = localNotes[8]!;
@@ -302,10 +302,7 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
 
-      n.deleteNote(otherExistingNote.id);
-
-      await Promise.all(promises);
-      await resolveImmediate();
+      await waitForAutoPush(() => n.deleteNote(otherExistingNote.id), calls);
 
       expect(autoPushSpy).toHaveBeenCalledOnce();
 
@@ -408,7 +405,10 @@ describe('Note store', () => {
     vi.clearAllMocks();
     clearMockApiResults({ calls });
 
-    n.editNote({ ops: [{ insert: 'Title\nBody' }] }, 'Title', 'Body');
+    await waitForAutoPush(
+      () => n.editNote({ ops: [{ insert: 'Title\nBody' }] }, 'Title', 'Body'),
+      calls
+    );
 
     expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
 
@@ -416,7 +416,7 @@ describe('Note store', () => {
 
     assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
     assert.notDeepEqual(editedNote, noteToEdit);
-    // See editNote for why selectedNote content should remain the same
+    // See `editNote` for why selectedNote content should remain the same
     assert.deepEqual(n.noteState.selectedNote.content, currentSelectedNote.content);
     assert.notDeepEqual(editedNote.content, noteToEdit.content);
     assert.notStrictEqual(

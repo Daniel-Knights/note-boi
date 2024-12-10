@@ -220,7 +220,7 @@ function mockRequest(
     };
   } = {}
 ): Call<void | Response> {
-  if (!s.syncState.isLoading) {
+  if (s.syncState.loadingCount === 0) {
     assert.fail('Loading state not set');
   }
 

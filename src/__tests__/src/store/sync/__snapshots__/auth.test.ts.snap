@@ -157,11 +157,12 @@ exports[`Auth > clientSideLogout > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -320,11 +321,12 @@ exports[`Auth > login > Sets and resets loading state > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -428,19 +430,20 @@ exports[`Auth > login > With encryptor error > selectedTheme 1`] = `"System"`;
 exports[`Auth > login > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 8,
+    "code": 9,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "Note encryption/decryption failed",
+    "originalError": [OperationError: The provided data is too small.],
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -994,11 +997,12 @@ exports[`Auth > login > With no notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1559,11 +1563,12 @@ exports[`Auth > login > With notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1645,19 +1650,20 @@ exports[`Auth > login > With server error > selectedTheme 1`] = `"System"`;
 exports[`Auth > login > With server error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 1,
+    "code": 2,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
@@ -1852,11 +1858,12 @@ exports[`Auth > logout > Logs a user out and clears user-based state > syncState
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2051,11 +2058,12 @@ exports[`Auth > logout > Sets and resets loading state > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2247,14 +2255,15 @@ exports[`Auth > logout > With server error > selectedTheme 1`] = `"System"`;
 exports[`Auth > logout > With server error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 0,
+    "code": 4,
     "display": undefined,
-    "message": undefined,
+    "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2393,11 +2402,12 @@ exports[`Auth > signup > Doesn't push empty notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2479,19 +2489,20 @@ exports[`Auth > signup > Sets and resets loading state > selectedTheme 1`] = `"S
 exports[`Auth > signup > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 2,
+    "code": 3,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "User already exists",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
@@ -2817,19 +2828,20 @@ exports[`Auth > signup > With encryptor error > selectedTheme 1`] = `"System"`;
 exports[`Auth > signup > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 8,
+    "code": 9,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "Note encryption/decryption failed",
+    "originalError": [TypeError: Failed to execute 'deriveKey' on 'SubtleCrypto': 2nd argument is not of type CryptoKey.],
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2937,11 +2949,12 @@ exports[`Auth > signup > With no notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3299,11 +3312,12 @@ exports[`Auth > signup > With notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3395,19 +3409,20 @@ exports[`Auth > signup > With server error > selectedTheme 1`] = `"System"`;
 exports[`Auth > signup > With server error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 2,
+    "code": 3,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "2",
   "unsyncedNoteIds": {

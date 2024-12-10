@@ -16,13 +16,13 @@ describe('FetchBuilder', () => {
       password: '1',
     };
 
-    s.syncState.isLoading = true; // Mock request expects this
+    s.syncState.loadingCount = 1; // Mock request expects this
 
     const res = await new FetchBuilder('/login')
       .method('POST')
       .headers(testHeaders)
       .body(body)
-      .fetch();
+      .fetch('d');
 
     expect(fetchSpy).toHaveBeenCalledOnce();
     expect(fetchSpy).toHaveBeenCalledWith(`${FetchBuilder.serverUrl}/api/login`, {
@@ -34,7 +34,12 @@ describe('FetchBuilder', () => {
       },
     });
 
-    assert.strictEqual(calls.size, 1);
+    assert.strictEqual(calls.size, 2);
+    assert.isTrue(calls.invoke.has('set_access_token'));
+    assert.deepEqual(calls.invoke[0]!.calledWith, {
+      username: 'd',
+      accessToken: 'test-token',
+    });
     assert.isTrue(calls.request.has('/login'));
     assert.deepEqual(res, {
       ok: true,
@@ -51,7 +56,7 @@ describe('FetchBuilder', () => {
 
     const fetchSpy = vi.spyOn(window, 'fetch');
 
-    s.syncState.isLoading = true; // Mock request expects this
+    s.syncState.loadingCount = 1; // Mock request expects this
 
     const res = await new FetchBuilder('/notes/pull')
       .method('POST')

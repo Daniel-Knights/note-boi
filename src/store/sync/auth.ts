@@ -13,11 +13,12 @@ import { noteState } from '../note';
 import { syncNotes, syncState } from '.';
 
 import {
-  catchEncryptorError,
-  catchHang,
   parseErrorRes,
   resetAppError,
   resIsOk,
+  route,
+  throwEncryptorError,
+  throwFetchError,
 } from './utils';
 
 export function clientSideLogout(): Promise<void> {
@@ -33,9 +34,7 @@ export function clientSideLogout(): Promise<void> {
 }
 
 // Login
-export async function login(): Promise<void> {
-  syncState.isLoading = true;
-
+export const login = route(async (): Promise<void> => {
   const errorConfig = {
     code: ERROR_CODE.LOGIN,
     retry: { fn: login },
@@ -45,53 +44,44 @@ export async function login(): Promise<void> {
     },
   } satisfies Omit<ErrorConfig<typeof login>, 'message'>;
 
-  try {
-    const res = await new FetchBuilder('/login')
-      .method('POST')
-      .body({
-        username: syncState.username,
-        password: syncState.password,
-      })
-      .fetch(syncState.username)
-      .catch((err) => catchHang(errorConfig, err));
-    if (!res) return;
+  const res = await new FetchBuilder('/login')
+    .method('POST')
+    .body({
+      username: syncState.username,
+      password: syncState.password,
+    })
+    .fetch(syncState.username)
+    .catch((err) => throwFetchError(errorConfig, err));
+  if (!res) return;
 
-    if (resIsOk(res)) {
-      const { password } = syncState;
+  if (resIsOk(res)) {
+    const { password } = syncState;
 
-      syncState.password = '';
-      syncState.isLoggedIn = true;
+    syncState.password = '';
+    syncState.isLoggedIn = true;
 
-      Storage.set('USERNAME', syncState.username);
+    Storage.set('USERNAME', syncState.username);
 
-      resetAppError();
-      tauriEmit('auth', { is_logged_in: true });
+    resetAppError();
+    tauriEmit('auth', { is_logged_in: true });
 
-      const decryptedNotes = await Encryptor.decryptNotes(
-        res.data.notes ?? [],
-        password
-      ).catch((err) => catchEncryptorError(errorConfig, err));
-      if (!decryptedNotes) return;
+    const decryptedNotes = await Encryptor.decryptNotes(
+      res.data.notes ?? [],
+      password
+    ).catch((err) => throwEncryptorError(errorConfig, err));
+    if (!decryptedNotes) return;
 
-      await syncNotes(decryptedNotes);
-    } else {
-      syncState.appError = new AppError({
-        ...errorConfig,
-        message: parseErrorRes(res),
-      });
-
-      console.error(`ERROR_CODE: ${errorConfig.code}`);
-      console.error(res.data);
-    }
-  } finally {
-    syncState.isLoading = false;
+    await syncNotes(decryptedNotes);
+  } else {
+    throw new AppError({
+      ...errorConfig,
+      message: parseErrorRes(res),
+    });
   }
-}
+});
 
 // Signup
-export async function signup(): Promise<void> {
-  syncState.isLoading = true;
-
+export const signup = route(async (): Promise<void> => {
   const errorConfig = {
     code: ERROR_CODE.SIGNUP,
     retry: { fn: signup },
@@ -101,80 +91,68 @@ export async function signup(): Promise<void> {
     },
   } satisfies Omit<ErrorConfig<typeof signup>, 'message'>;
 
-  try {
-    const encryptedNotes = await Encryptor.encryptNotes(
-      noteState.notes.filter((nt) => !isEmptyNote(nt)),
-      syncState.password
-    ).catch((err) => catchEncryptorError(errorConfig, err));
-    if (!encryptedNotes) return;
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes.filter((nt) => !isEmptyNote(nt)),
+    syncState.password
+  ).catch((err) => throwEncryptorError(errorConfig, err));
+  if (!encryptedNotes) return;
 
-    const res = await new FetchBuilder('/signup')
-      .method('POST')
-      .body({
-        username: syncState.username,
-        password: syncState.password,
-        notes: encryptedNotes,
-      })
-      .fetch(syncState.username)
-      .catch((err) => catchHang(errorConfig, err));
-    if (!res) return;
+  const res = await new FetchBuilder('/signup')
+    .method('POST')
+    .body({
+      username: syncState.username,
+      password: syncState.password,
+      notes: encryptedNotes,
+    })
+    .fetch(syncState.username)
+    .catch((err) => throwFetchError(errorConfig, err));
+  if (!res) return;
 
-    if (resIsOk(res)) {
-      resetAppError();
-      tauriEmit('auth', { is_logged_in: true });
+  if (resIsOk(res)) {
+    resetAppError();
+    tauriEmit('auth', { is_logged_in: true });
 
-      syncState.password = '';
-      syncState.isLoggedIn = true;
-      syncState.unsyncedNoteIds.clear();
+    syncState.password = '';
+    syncState.isLoggedIn = true;
+    syncState.unsyncedNoteIds.clear();
 
-      Storage.set('USERNAME', syncState.username);
-    } else {
-      syncState.appError = new AppError({
-        ...errorConfig,
-        message: parseErrorRes(res),
-      });
-
-      console.error(`ERROR_CODE: ${errorConfig.code}`);
-      console.error(res.data);
-    }
-  } finally {
-    syncState.isLoading = false;
+    Storage.set('USERNAME', syncState.username);
+  } else {
+    throw new AppError({
+      ...errorConfig,
+      message: parseErrorRes(res),
+    });
   }
-}
+});
 
 // Logout
-export async function logout(): Promise<void> {
-  syncState.isLoading = true;
-
+export const logout = route(async (): Promise<void> => {
   const errorConfig = {
     code: ERROR_CODE.LOGOUT,
     retry: { fn: logout },
-    display: {
-      form: true,
-    },
+    display: { form: true },
   } satisfies Omit<ErrorConfig<typeof logout>, 'message'>;
 
-  try {
-    const accessToken = await tauriInvoke('get_access_token', {
-      username: syncState.username,
+  const accessToken = await tauriInvoke('get_access_token', {
+    username: syncState.username,
+  });
+
+  const fetchPromise = new FetchBuilder('/logout')
+    .method('POST')
+    .withAuth(syncState.username, accessToken)
+    .fetch()
+    .catch((err) => throwFetchError(errorConfig, err));
+
+  const [res] = await Promise.all([fetchPromise, clientSideLogout()]);
+  if (!res) return;
+
+  if (resIsOk(res)) {
+    resetAppError();
+  } else {
+    // No use bringing this to the user's attention
+    throw new AppError({
+      code: ERROR_CODE.LOGOUT,
+      message: parseErrorRes(res),
     });
-
-    const fetchPromise = new FetchBuilder('/logout')
-      .method('POST')
-      .withAuth(syncState.username, accessToken)
-      .fetch()
-      .catch((err) => catchHang(errorConfig, err));
-
-    const [res] = await Promise.all([fetchPromise, clientSideLogout()]);
-    if (!res) return;
-
-    if (resIsOk(res)) {
-      resetAppError();
-    } else {
-      console.error(`ERROR_CODE: ${errorConfig.code}`);
-      console.error(res.data);
-    }
-  } finally {
-    syncState.isLoading = false;
   }
-}
+});

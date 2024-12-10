@@ -2,7 +2,7 @@
   <div id="sync-status">
     <!-- Loading -->
     <div
-      v-if="syncState.isLoading"
+      v-if="syncState.loadingCount > 0"
       class="sync-status__loading-spinner"
       data-test-id="loading"
     ></div>

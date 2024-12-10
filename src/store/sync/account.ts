@@ -13,16 +13,15 @@ import { noteState } from '../note';
 import { clientSideLogout, syncState } from '.';
 
 import {
-  catchEncryptorError,
-  catchHang,
   parseErrorRes,
   resetAppError,
   resIsOk,
+  route,
+  throwEncryptorError,
+  throwFetchError,
 } from './utils';
 
-export async function changePassword(): Promise<void> {
-  syncState.isLoading = true;
-
+export const changePassword = route(async (): Promise<void> => {
   const errorConfig = {
     code: ERROR_CODE.CHANGE_PASSWORD,
     retry: { fn: changePassword },
@@ -32,56 +31,47 @@ export async function changePassword(): Promise<void> {
     },
   } satisfies Omit<ErrorConfig<typeof changePassword>, 'message'>;
 
-  try {
-    const accessToken = await tauriInvoke('get_access_token', {
-      username: syncState.username,
+  const accessToken = await tauriInvoke('get_access_token', {
+    username: syncState.username,
+  });
+
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes,
+    syncState.newPassword
+  ).catch((err) => throwEncryptorError(errorConfig, err));
+  if (!encryptedNotes) return;
+
+  const res = await new FetchBuilder('/account/password/change')
+    .method('PUT')
+    .withAuth(syncState.username, accessToken)
+    .body({
+      current_password: syncState.password,
+      new_password: syncState.newPassword,
+      notes: encryptedNotes,
+    })
+    .fetch(syncState.username)
+    .catch((err) => throwFetchError(errorConfig, err));
+  if (!res) return;
+
+  if (resIsOk(res)) {
+    resetAppError();
+
+    syncState.password = '';
+    syncState.newPassword = '';
+  } else {
+    throw new AppError({
+      ...errorConfig,
+      message: parseErrorRes(res),
     });
-
-    const encryptedNotes = await Encryptor.encryptNotes(
-      noteState.notes,
-      syncState.newPassword
-    ).catch((err) => catchEncryptorError(errorConfig, err));
-    if (!encryptedNotes) return;
-
-    const res = await new FetchBuilder('/account/password/change')
-      .method('PUT')
-      .withAuth(syncState.username, accessToken)
-      .body({
-        current_password: syncState.password,
-        new_password: syncState.newPassword,
-        notes: encryptedNotes,
-      })
-      .fetch(syncState.username)
-      .catch((err) => catchHang(errorConfig, err));
-    if (!res) return;
-
-    if (resIsOk(res)) {
-      resetAppError();
-
-      syncState.password = '';
-      syncState.newPassword = '';
-    } else {
-      syncState.appError = new AppError({
-        ...errorConfig,
-        message: parseErrorRes(res),
-      });
-
-      console.error(`ERROR_CODE: ${errorConfig.code}`);
-      console.error(res.data);
-    }
-  } finally {
-    syncState.isLoading = false;
   }
-}
+});
 
-export async function deleteAccount(): Promise<void> {
+export const deleteAccount = route(async (): Promise<void> => {
   const askRes = await dialog.ask('Are you sure?', {
     title: 'Delete account',
     kind: 'warning',
   });
   if (!askRes) return;
-
-  syncState.isLoading = true;
 
   const errorConfig = {
     code: ERROR_CODE.DELETE_ACCOUNT,
@@ -91,33 +81,26 @@ export async function deleteAccount(): Promise<void> {
     },
   } satisfies Omit<ErrorConfig<typeof deleteAccount>, 'message'>;
 
-  try {
-    const accessToken = await tauriInvoke('get_access_token', {
-      username: syncState.username,
+  const accessToken = await tauriInvoke('get_access_token', {
+    username: syncState.username,
+  });
+
+  const res = await new FetchBuilder('/account/delete')
+    .method('POST')
+    .withAuth(syncState.username, accessToken)
+    .fetch()
+    .catch((err) => throwFetchError(errorConfig, err));
+  if (!res) return;
+
+  if (resIsOk(res)) {
+    await clientSideLogout();
+    resetAppError();
+
+    syncState.unsyncedNoteIds.clear();
+  } else {
+    throw new AppError({
+      ...errorConfig,
+      message: parseErrorRes(res),
     });
-
-    const res = await new FetchBuilder('/account/delete')
-      .method('POST')
-      .withAuth(syncState.username, accessToken)
-      .fetch()
-      .catch((err) => catchHang(errorConfig, err));
-    if (!res) return;
-
-    if (resIsOk(res)) {
-      await clientSideLogout();
-      resetAppError();
-
-      syncState.unsyncedNoteIds.clear();
-    } else {
-      syncState.appError = new AppError({
-        ...errorConfig,
-        message: parseErrorRes(res),
-      });
-
-      console.error(`ERROR_CODE: ${errorConfig.code}`);
-      console.error(res.data);
-    }
-  } finally {
-    syncState.isLoading = false;
   }
-}
+});

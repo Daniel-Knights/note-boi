@@ -15,6 +15,16 @@ exports[`Settings > Account menu item > Delete account menu item > Storage.get('
 exports[`Settings > Account menu item > Delete account menu item > allCalls 1`] = `
 [
   [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
     "tauriApi",
     {
       "calledWith": {
@@ -40,6 +50,27 @@ exports[`Settings > Account menu item > Delete account menu item > allCalls 1`] 
       "name": "/account/delete",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
 ]
 `;
 
@@ -48,9 +79,7 @@ exports[`Settings > Account menu item > Delete account menu item > document.body
 exports[`Settings > Account menu item > Delete account menu item > mockDb 1`] = `
 {
   "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-  },
+  "users": {},
 }
 `;
 
@@ -79,18 +108,15 @@ exports[`Settings > Account menu item > Delete account menu item > selectedTheme
 exports[`Settings > Account menu item > Delete account menu item > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 6,
-    "display": {
-      "sync": true,
-    },
-    "message": "Unauthorized",
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
-    "retryConfig": {
-      "fn": [Function],
-    },
+    "retryConfig": undefined,
   },
-  "isLoading": false,
-  "isLoggedIn": true,
+  "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -101,7 +127,7 @@ exports[`Settings > Account menu item > Delete account menu item > syncState 1`]
     "new": "",
     "size": 0,
   },
-  "username": "d",
+  "username": "",
 }
 `;
 
@@ -166,11 +192,12 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -271,11 +298,12 @@ exports[`Settings > Exports all notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -351,11 +379,12 @@ exports[`Settings > Mounts > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -431,11 +460,12 @@ exports[`Settings > Opens and closes drop menu > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -521,11 +551,12 @@ exports[`Settings > Opens info popup > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -601,11 +632,12 @@ exports[`Settings > Sets theme preference > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -681,11 +713,12 @@ exports[`Settings > Sets update strategy > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -818,11 +851,12 @@ exports[`Settings > Update and restart menu item > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

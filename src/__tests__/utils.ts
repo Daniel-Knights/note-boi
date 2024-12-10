@@ -26,7 +26,7 @@ export function resetSyncStore(): void {
   s.syncState.username = '';
   s.syncState.password = '';
   s.syncState.newPassword = '';
-  s.syncState.isLoading = false;
+  s.syncState.loadingCount = 0;
   s.syncState.isLoggedIn = false;
   s.syncState.unsyncedNoteIds.clear();
 
@@ -65,6 +65,28 @@ export function resolveImmediate<T>(val?: T): Promise<T | void> {
 /** Waits until `cond` is `true`. */
 export function waitUntil<T>(condFn: () => T): Promise<T> {
   return vi.waitUntil(condFn, { timeout: 10000 });
+}
+
+/**
+ * Uses fake timers and waits for `autoPush` to run.
+ * Specifically intended for `n.editNote` and `n.deleteNote`.
+ */
+export async function waitForAutoPush(
+  cb: () => void | Promise<void>,
+  calls: ReturnType<typeof mockApi>['calls']
+) {
+  vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] });
+
+  await cb();
+
+  await waitUntil(() => calls.invoke.has('edit_note') || calls.invoke.has('delete_note'));
+  await resolveImmediate(); // Defer to `.then` and `autoPush`
+
+  vi.runAllTimers();
+
+  await waitUntil(() => !s.syncState.loadingCount);
+
+  vi.useRealTimers();
 }
 
 export function isNote(note: unknown): note is n.Note {
@@ -154,19 +176,24 @@ export function assertAppError<T extends (...args: any[]) => void>(
 }
 
 /**
- * Asserts loading state is `false` before `cb`, `true` during, and `false` after.
+ * Asserts loading count is 0 before `cb`, >= 1 during, and 0 after.
  */
-export async function assertLoadingState(cb: () => Promise<void>) {
-  const { promises } = mockApi();
+export async function assertLoadingState(
+  cb: (
+    calls: ReturnType<typeof mockApi>['calls'],
+    promises: Promise<unknown>[]
+  ) => Promise<void>
+) {
+  const { calls, promises } = mockApi();
 
-  assert.isFalse(s.syncState.isLoading);
+  assert.strictEqual(s.syncState.loadingCount, 0);
 
-  const cbPromise = cb();
+  const cbPromise = cb(calls, promises);
 
-  assert.isTrue(s.syncState.isLoading);
+  assert.isAtLeast(s.syncState.loadingCount, 1);
 
   await cbPromise;
   await Promise.all(promises);
 
-  assert.isFalse(s.syncState.isLoading);
+  assert.strictEqual(s.syncState.loadingCount, 0);
 }

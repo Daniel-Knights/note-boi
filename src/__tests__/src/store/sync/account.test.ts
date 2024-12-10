@@ -41,7 +41,7 @@ describe('Account', () => {
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
 
       s.syncState.password = '1';
       s.syncState.newPassword = '2';
@@ -63,7 +63,7 @@ describe('Account', () => {
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
     });
 
     it('With encryptor error', async () => {
@@ -82,7 +82,7 @@ describe('Account', () => {
         display: { form: true, sync: true },
       });
 
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: '' });
@@ -118,7 +118,7 @@ describe('Account', () => {
 
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/account/password/change'));
       assert.isTrue(calls.invoke.has('get_access_token'));
@@ -151,7 +151,7 @@ describe('Account', () => {
 
       assert.isNotEmpty(s.syncState.password);
       assert.isNotEmpty(s.syncState.newPassword);
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/account/password/change'));
       assert.isTrue(calls.invoke.has('get_access_token'));
@@ -198,7 +198,7 @@ describe('Account', () => {
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
 
       assertAppError();
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
@@ -228,7 +228,7 @@ describe('Account', () => {
 
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
     });
 
     it('With server error', async () => {
@@ -271,7 +271,7 @@ describe('Account', () => {
       assert.isTrue(calls.request.has('/account/delete'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
     });
 
     it('User unauthorised', async () => {
@@ -303,7 +303,7 @@ describe('Account', () => {
         display: { sync: true },
       });
 
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
@@ -335,7 +335,7 @@ describe('Account', () => {
         display: { sync: true },
       });
 
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));

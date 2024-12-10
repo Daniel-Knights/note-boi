@@ -21,11 +21,12 @@ import {
 import { syncState } from '.';
 
 import {
-  catchEncryptorError,
-  catchHang,
   parseErrorRes,
   resetAppError,
   resIsOk,
+  route,
+  throwEncryptorError,
+  throwFetchError,
 } from './utils';
 
 export type UnsyncedNoteIds = {
@@ -92,131 +93,104 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
   }
 
   // Sync any notes that were edited during pull
-  await push(true);
+  await push();
 
   return tauriInvoke('sync_local_notes', { notes: noteState.notes }).catch(console.error);
 }
 
 // Pull
-export async function pull(): Promise<void> {
-  syncState.isLoading = true;
-
+export const pull = route(async () => {
   const errorConfig = {
     code: ERROR_CODE.PULL,
     retry: { fn: pull },
-    display: {
-      sync: true,
-    },
+    display: { sync: true },
   } satisfies Omit<ErrorConfig<typeof pull>, 'message'>;
 
-  try {
-    const accessToken = await tauriInvoke('get_access_token', {
-      username: syncState.username,
+  const accessToken = await tauriInvoke('get_access_token', {
+    username: syncState.username,
+  }).catch((err) => {
+    throw new AppError({ ...errorConfig, originalError: err });
+  });
+
+  const res = await new FetchBuilder('/notes/pull')
+    .method('POST')
+    .withAuth(syncState.username, accessToken)
+    .fetch(syncState.username)
+    .catch((err) => throwFetchError(errorConfig, err));
+  if (!res) return;
+
+  if (resIsOk(res)) {
+    resetAppError();
+    tauriEmit('auth', { is_logged_in: true });
+
+    // Users' session must still be valid
+    syncState.isLoggedIn = true;
+
+    const decryptedNotes = await Encryptor.decryptNotes(res.data.notes ?? []).catch(
+      (err) => throwEncryptorError(errorConfig, err)
+    );
+    if (!decryptedNotes) return;
+
+    await syncNotes(decryptedNotes);
+  } else {
+    throw new AppError({
+      ...errorConfig,
+      message: parseErrorRes(res),
     });
-
-    const res = await new FetchBuilder('/notes/pull')
-      .method('POST')
-      .withAuth(syncState.username, accessToken)
-      .fetch(syncState.username)
-      .catch((err) => catchHang(errorConfig, err));
-    if (!res) return;
-
-    if (resIsOk(res)) {
-      resetAppError();
-      tauriEmit('auth', { is_logged_in: true });
-
-      // Users' session must still be valid
-      syncState.isLoggedIn = true;
-
-      const decryptedNotes = await Encryptor.decryptNotes(res.data.notes ?? []).catch(
-        (err) => {
-          return catchEncryptorError(errorConfig, err);
-        }
-      );
-      if (!decryptedNotes) return;
-
-      await syncNotes(decryptedNotes);
-    } else {
-      syncState.appError = new AppError({
-        ...errorConfig,
-        message: parseErrorRes(res),
-      });
-
-      console.error(`ERROR_CODE: ${errorConfig.code}`);
-      console.error(res.data);
-    }
-  } finally {
-    syncState.isLoading = false;
   }
-}
+});
 
 // Push
-export async function push(isSyncCleanup?: boolean): Promise<void> {
-  if (!syncState.isLoggedIn) return;
-  if (syncState.isLoading && !isSyncCleanup) return;
-  if (syncState.unsyncedNoteIds.size === 0) return;
-
-  syncState.isLoading = true;
+export const push = route(async () => {
+  if (!syncState.isLoggedIn || syncState.unsyncedNoteIds.size === 0) return;
 
   const errorConfig = {
     code: ERROR_CODE.PUSH,
-    retry: {
-      fn: push,
-      args: isSyncCleanup ? [isSyncCleanup] : [],
-    },
-    display: {
-      sync: true,
-    },
+    retry: { fn: push },
+    display: { sync: true },
   } satisfies Omit<ErrorConfig<typeof push>, 'message'>;
 
-  try {
-    const accessToken = await tauriInvoke('get_access_token', {
-      username: syncState.username,
+  const accessToken = await tauriInvoke('get_access_token', {
+    username: syncState.username,
+  });
+
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes.filter((nt) => !isEmptyNote(nt))
+  ).catch((err) => throwEncryptorError(errorConfig, err));
+  if (!encryptedNotes) return;
+
+  // Cache ids and clear before request to prevent
+  // race condition if a note is edited mid-push
+  const cachedUnsyncedNoteIds = {
+    new: syncState.unsyncedNoteIds.new,
+    edited: [...syncState.unsyncedNoteIds.edited],
+    deleted: [...syncState.unsyncedNoteIds.deleted],
+  };
+
+  syncState.unsyncedNoteIds.clear();
+
+  const res = await new FetchBuilder('/notes/push')
+    .method('PUT')
+    .withAuth(syncState.username, accessToken)
+    .body({ notes: encryptedNotes })
+    .fetch()
+    .catch((err) => throwFetchError(errorConfig, err));
+  if (!res) return;
+
+  if (resIsOk(res)) {
+    resetAppError();
+
+    syncState.isLoggedIn = true;
+  } else {
+    // Add back unsynced note ids
+    syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
+
+    throw new AppError({
+      ...errorConfig,
+      message: parseErrorRes(res),
     });
-
-    const encryptedNotes = await Encryptor.encryptNotes(
-      noteState.notes.filter((nt) => !isEmptyNote(nt))
-    ).catch((err) => catchEncryptorError(errorConfig, err));
-    if (!encryptedNotes) return;
-
-    // Cache ids and clear before request to prevent
-    // race condition if a note is edited mid-push
-    const cachedUnsyncedNoteIds = {
-      new: syncState.unsyncedNoteIds.new,
-      edited: [...syncState.unsyncedNoteIds.edited],
-      deleted: [...syncState.unsyncedNoteIds.deleted],
-    };
-
-    syncState.unsyncedNoteIds.clear();
-
-    const res = await new FetchBuilder('/notes/push')
-      .method('PUT')
-      .withAuth(syncState.username, accessToken)
-      .body({ notes: encryptedNotes })
-      .fetch()
-      .catch((err) => catchHang(errorConfig, err));
-    if (!res) return;
-
-    if (resIsOk(res)) {
-      resetAppError();
-
-      syncState.isLoggedIn = true;
-    } else {
-      // Add back unsynced note ids
-      syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
-
-      syncState.appError = new AppError({
-        ...errorConfig,
-        message: parseErrorRes(res),
-      });
-
-      console.error(`ERROR_CODE: ${errorConfig.code}`);
-      console.error(res.data);
-    }
-  } finally {
-    syncState.isLoading = false;
   }
-}
+});
 
 // Auto-syncing
 let timeout: number | undefined;

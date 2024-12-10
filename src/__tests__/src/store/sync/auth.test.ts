@@ -51,7 +51,7 @@ describe('Auth', () => {
       await s.login();
 
       assertAppError();
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.lengthOf(n.noteState.notes, localNotes.length);
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
@@ -99,7 +99,7 @@ describe('Auth', () => {
       await s.login();
 
       assertAppError();
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
@@ -145,7 +145,7 @@ describe('Auth', () => {
         display: { form: true, sync: true },
       });
 
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/login'));
       assert.isTrue(calls.invoke.has('set_access_token'));
@@ -182,7 +182,7 @@ describe('Auth', () => {
         display: { form: true, sync: true },
       });
 
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isEmpty(n.noteState.notes);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
@@ -212,7 +212,7 @@ describe('Auth', () => {
       await s.signup();
 
       assertAppError();
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isEmpty(n.noteState.notes);
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
@@ -251,7 +251,7 @@ describe('Auth', () => {
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
 
       assertAppError();
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
@@ -290,7 +290,7 @@ describe('Auth', () => {
       await s.signup();
 
       assertAppError();
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(s.syncState.username, 'k');
@@ -328,7 +328,7 @@ describe('Auth', () => {
         display: { form: true, sync: true },
       });
 
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 0);
     });
 
@@ -352,7 +352,7 @@ describe('Auth', () => {
         display: { form: true, sync: true },
       });
 
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isEmpty(n.noteState.notes);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
@@ -387,7 +387,7 @@ describe('Auth', () => {
       await s.logout();
 
       assertAppError();
-      assert.isFalse(s.syncState.isLoading);
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
@@ -424,8 +424,11 @@ describe('Auth', () => {
 
       await s.logout();
 
-      assertAppError();
-      assert.isFalse(s.syncState.isLoading);
+      assertAppError({
+        code: ERROR_CODE.LOGOUT,
+      });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));

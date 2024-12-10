@@ -65,7 +65,7 @@ describe('PopupSyncError', () => {
     const tryAgainButton = getByTestId(wrapper, 'try-again');
 
     await tryAgainButton.trigger('click');
-    await waitUntil(() => !s.syncState.isLoading);
+    await waitUntil(() => !s.syncState.loadingCount);
 
     expect(resetErrorSpy).toHaveBeenCalledOnce();
     expect(retryMock).toHaveBeenCalledOnce();

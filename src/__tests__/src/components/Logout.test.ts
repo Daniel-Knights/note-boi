@@ -39,7 +39,7 @@ describe('Logout', () => {
     clearMockApiResults({ calls });
 
     await wrapper.trigger('click');
-    await waitUntil(() => !s.syncState.isLoading);
+    await waitUntil(() => !s.syncState.loadingCount);
 
     assert.isFalse(s.syncState.isLoggedIn);
     assert.strictEqual(calls.size, 4);

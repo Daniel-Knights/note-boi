@@ -39,15 +39,6 @@ exports[`main > Gets all notes, checks for update, pulls notes, and adds listene
     },
   ],
   [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "get_access_token",
-    },
-  ],
-  [
     "listeners",
     {
       "name": "tauri://close-requested",
@@ -93,6 +84,15 @@ exports[`main > Gets all notes, checks for update, pulls notes, and adds listene
     "listeners",
     {
       "name": "change-password",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
     },
   ],
   [
@@ -638,11 +638,12 @@ exports[`main > Gets all notes, checks for update, pulls notes, and adds listene
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -737,14 +738,15 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > 
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 4,
+    "code": 5,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -841,14 +843,15 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" >
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "Yes" > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 4,
+    "code": 5,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -936,11 +939,12 @@ exports[`main > exitApp > With no unsynced notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1026,11 +1030,12 @@ exports[`main > exitApp > With unsynced notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

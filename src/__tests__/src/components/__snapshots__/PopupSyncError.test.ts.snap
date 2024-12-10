@@ -53,11 +53,12 @@ exports[`PopupSyncError > Emits close > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -157,11 +158,12 @@ exports[`PopupSyncError > Ignores > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -234,14 +236,15 @@ exports[`PopupSyncError > Mounts > selectedTheme 1`] = `"System"`;
 exports[`PopupSyncError > Mounts > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": undefined,
     "message": "I am a sync error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -314,14 +317,15 @@ exports[`PopupSyncError > No try again button when no retry function > selectedT
 exports[`PopupSyncError > No try again button when no retry function > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -397,11 +401,12 @@ exports[`PopupSyncError > Retries > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -474,14 +479,15 @@ exports[`PopupSyncError > Shows default error message when none provided > selec
 exports[`PopupSyncError > Shows default error message when none provided > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

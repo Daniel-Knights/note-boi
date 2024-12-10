@@ -75,7 +75,7 @@ describe('SyncStatus', () => {
     assert.isFalse(findByTestId(wrapper, 'success').exists());
     assert.isFalse(findByTestId(wrapper, 'sync-button').exists());
 
-    await waitUntil(() => !s.syncState.isLoading);
+    await waitUntil(() => !s.syncState.loadingCount);
 
     assert.isFalse(findByTestId(wrapper, 'loading').exists());
     assert.isFalse(findByTestId(wrapper, 'error').exists());

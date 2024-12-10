@@ -8,7 +8,7 @@ export const syncState = reactive({
   username: Storage.get('USERNAME') || '',
   password: '',
   newPassword: '',
-  isLoading: false,
+  loadingCount: 0,
   isLoggedIn: false,
   appError: new AppError(),
   unsyncedNoteIds: <UnsyncedNoteIds>{

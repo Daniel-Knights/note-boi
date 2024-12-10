@@ -72,11 +72,12 @@ exports[`FetchBuilder > With auth > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": true,
   "isLoggedIn": false,
+  "loadingCount": 1,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -117,6 +118,16 @@ exports[`FetchBuilder > Without auth > allCalls 1`] = `
     "request",
     {
       "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
     },
   ],
 ]
@@ -161,11 +172,12 @@ exports[`FetchBuilder > Without auth > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": true,
   "isLoggedIn": false,
+  "loadingCount": 1,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

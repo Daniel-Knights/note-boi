@@ -176,11 +176,12 @@ exports[`Account > changePassword > Changes password for currently logged in acc
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -364,11 +365,12 @@ exports[`Account > changePassword > Sets and resets loading state > syncState 1`
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -487,19 +489,20 @@ exports[`Account > changePassword > User not found > selectedTheme 1`] = `"Syste
 exports[`Account > changePassword > User not found > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 7,
+    "code": 8,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "User not found",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "1",
   "password": "2",
   "unsyncedNoteIds": {
@@ -834,19 +837,20 @@ exports[`Account > changePassword > With encryptor error > selectedTheme 1`] = `
 exports[`Account > changePassword > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 8,
+    "code": 9,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "Note encryption/decryption failed",
+    "originalError": [TypeError: Failed to execute 'deriveKey' on 'SubtleCrypto': 2nd argument is not of type CryptoKey.],
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1017,19 +1021,20 @@ exports[`Account > changePassword > With server error > selectedTheme 1`] = `"Sy
 exports[`Account > changePassword > With server error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 7,
+    "code": 8,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "2",
   "password": "1",
   "unsyncedNoteIds": {
@@ -1233,11 +1238,12 @@ exports[`Account > deleteAccount > Deletes currently logged in account > syncSta
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1337,11 +1343,12 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > syncSta
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1545,11 +1552,12 @@ exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`]
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1679,18 +1687,19 @@ exports[`Account > deleteAccount > User not found > selectedTheme 1`] = `"System
 exports[`Account > deleteAccount > User not found > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 6,
+    "code": 7,
     "display": {
       "sync": true,
     },
     "message": "User not found",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1872,18 +1881,19 @@ exports[`Account > deleteAccount > User unauthorised > selectedTheme 1`] = `"Sys
 exports[`Account > deleteAccount > User unauthorised > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 6,
+    "code": 7,
     "display": {
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2065,18 +2075,19 @@ exports[`Account > deleteAccount > With server error > selectedTheme 1`] = `"Sys
 exports[`Account > deleteAccount > With server error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 6,
+    "code": 7,
     "display": {
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

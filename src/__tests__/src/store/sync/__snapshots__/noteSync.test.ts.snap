@@ -161,11 +161,12 @@ exports[`Note (sync) > Edge cases > No local, no remote > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -763,11 +764,12 @@ exports[`Note (sync) > Edge cases > No local, some remote > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1346,11 +1348,12 @@ exports[`Note (sync) > Edge cases > No remote, some local > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -1981,11 +1984,12 @@ exports[`Note (sync) > pull > Pulls notes from the server > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2076,18 +2080,19 @@ exports[`Note (sync) > pull > Sets and resets loading state > selectedTheme 1`] 
 exports[`Note (sync) > pull > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": {
       "sync": true,
     },
     "message": "Unauthorized",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -2593,11 +2598,12 @@ exports[`Note (sync) > pull > Updates editor if selected note is unedited > sync
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3088,11 +3094,12 @@ exports[`Note (sync) > pull > Updates note menu > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3183,18 +3190,19 @@ exports[`Note (sync) > pull > User not found > selectedTheme 1`] = `"System"`;
 exports[`Note (sync) > pull > User not found > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": {
       "sync": true,
     },
     "message": "Unauthorized",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3285,18 +3293,19 @@ exports[`Note (sync) > pull > User unauthorised > selectedTheme 1`] = `"System"`
 exports[`Note (sync) > pull > User unauthorised > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": {
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
@@ -3457,18 +3466,19 @@ exports[`Note (sync) > pull > With encryptor error > selectedTheme 1`] = `"Syste
 exports[`Note (sync) > pull > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 8,
+    "code": 9,
     "display": {
       "sync": true,
     },
     "message": "Note encryption/decryption failed",
+    "originalError": [TypeError: Failed to execute 'deriveKey' on 'SubtleCrypto': 2nd argument is not of type CryptoKey.],
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3639,18 +3649,19 @@ exports[`Note (sync) > pull > With server error > selectedTheme 1`] = `"System"`
 exports[`Note (sync) > pull > With server error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": {
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -3809,11 +3820,12 @@ exports[`Note (sync) > push > Doesn't push empty notes > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4389,11 +4401,12 @@ exports[`Note (sync) > push > Pushes notes to the server > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4580,11 +4593,12 @@ exports[`Note (sync) > push > Sets and resets loading state > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -4920,19 +4934,19 @@ exports[`Note (sync) > push > User not found > selectedTheme 1`] = `"System"`;
 exports[`Note (sync) > push > User not found > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 4,
+    "code": 5,
     "display": {
       "sync": true,
     },
     "message": "User not found",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
-      "args": [],
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5118,19 +5132,19 @@ exports[`Note (sync) > push > User unauthorised > selectedTheme 1`] = `"System"`
 exports[`Note (sync) > push > User unauthorised > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 4,
+    "code": 5,
     "display": {
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
-      "args": [],
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5223,9 +5237,9 @@ exports[`Note (sync) > push > With encryptor error > allCalls 1`] = `
         "notes": [
           {
             "content": {
-              "body": "Body",
+              "body": "body",
               "delta": {},
-              "title": "Title",
+              "title": "title",
             },
             "id": "id",
             "timestamp": 0,
@@ -5241,9 +5255,9 @@ exports[`Note (sync) > push > With encryptor error > allCalls 1`] = `
       "calledWith": {
         "note": {
           "content": {
-            "body": "Body",
+            "body": "body",
             "delta": {},
-            "title": "Title",
+            "title": "title",
           },
           "id": "id",
           "timestamp": 0,
@@ -5281,9 +5295,9 @@ exports[`Note (sync) > push > With encryptor error > noteState 1`] = `
   "notes": [
     {
       "content": {
-        "body": "Body",
+        "body": "body",
         "delta": {},
-        "title": "Title",
+        "title": "title",
       },
       "id": "id",
       "timestamp": 0,
@@ -5310,21 +5324,19 @@ exports[`Note (sync) > push > With encryptor error > selectedTheme 1`] = `"Syste
 exports[`Note (sync) > push > With encryptor error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 8,
+    "code": 9,
     "display": {
       "sync": true,
     },
     "message": "Note encryption/decryption failed",
+    "originalError": [TypeError: Failed to execute 'deriveKey' on 'SubtleCrypto': 2nd argument is not of type CryptoKey.],
     "retry": [Function],
     "retryConfig": {
-      "args": [
-        true,
-      ],
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5510,19 +5522,19 @@ exports[`Note (sync) > push > With server error > selectedTheme 1`] = `"System"`
 exports[`Note (sync) > push > With server error > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 4,
+    "code": 5,
     "display": {
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
-      "args": [],
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -5898,11 +5910,12 @@ exports[`Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged 
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -6010,6 +6023,33 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
     },
   ],
   [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
     "invoke",
     {
       "calledWith": {
@@ -6038,33 +6078,6 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
     },
   ],
   [
-    "listeners",
-    {
-      "name": "login",
-    },
-  ],
-  [
-    "listeners",
-    {
-      "name": "logout",
-    },
-  ],
-  [
-    "listeners",
-    {
-      "name": "signup",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "get_access_token",
-    },
-  ],
-  [
     "request",
     {
       "name": "/notes/pull",
@@ -6090,6 +6103,21 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/notes/push",
     },
   ],
   [
@@ -6443,11 +6471,12 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -6551,23 +6580,6 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
     },
   ],
   [
-    "invoke",
-    {
-      "calledWith": {
-        "note": {
-          "content": {
-            "body": "body",
-            "delta": {},
-            "title": "title",
-          },
-          "id": "id",
-          "timestamp": 0,
-        },
-      },
-      "name": "edit_note",
-    },
-  ],
-  [
     "listeners",
     {
       "name": "login",
@@ -6592,6 +6604,23 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
         "username": "d",
       },
       "name": "get_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "body",
+            "delta": {},
+            "title": "title",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "edit_note",
     },
   ],
   [
@@ -6632,6 +6661,21 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
     },
   ],
   [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/notes/push",
+    },
+  ],
+  [
     "request",
     {
       "name": "/notes/push",
@@ -6642,6 +6686,15 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
+          {
+            "content": {
+              "body": "body2",
+              "delta": {},
+              "title": "title2",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
           {
             "content": {
               "body": "body",
@@ -6823,15 +6876,6 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
       "name": "/notes/push",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "id": "id",
-      },
-      "name": "delete_note",
-    },
-  ],
 ]
 `;
 
@@ -6850,6 +6894,15 @@ exports[`Note (sync) > unsyncedNoteIds > edited > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
+    {
+      "content": {
+        "body": "body2",
+        "delta": {},
+        "title": "title2",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
     {
       "content": {
         "body": "body",
@@ -6997,9 +7050,59 @@ exports[`Note (sync) > unsyncedNoteIds > edited > noteState 1`] = `
   ],
   "selectedNote": {
     "content": {
-      "body": "body",
-      "delta": {},
-      "title": "title",
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
     },
     "id": "id",
     "timestamp": 0,
@@ -7017,22 +7120,21 @@ exports[`Note (sync) > unsyncedNoteIds > edited > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
     "add": [Function],
     "clear": [Function],
-    "deleted": Set {
-      "id",
-    },
+    "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "size": 1,
+    "size": 0,
   },
   "username": "d",
 }
@@ -7779,11 +7881,12 @@ exports[`Note (sync) > unsyncedNoteIds > new > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

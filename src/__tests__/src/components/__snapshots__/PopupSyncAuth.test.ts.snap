@@ -68,11 +68,12 @@ exports[`PopupSyncAuth > Emits close > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -163,11 +164,12 @@ exports[`PopupSyncAuth > Mounts > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -255,16 +257,17 @@ exports[`PopupSyncAuth > Shows default error message when none provided > select
 exports[`PopupSyncAuth > Shows default error message when none provided > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": {
       "form": true,
     },
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -352,16 +355,17 @@ exports[`PopupSyncAuth > Shows error message > selectedTheme 1`] = `"System"`;
 exports[`PopupSyncAuth > Shows error message > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": {
       "form": true,
     },
     "message": "Mock error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -452,11 +456,12 @@ exports[`PopupSyncAuth > Switches between login/signup > Clears form validation 
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -544,17 +549,18 @@ exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > s
 exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "Mock error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -645,11 +651,12 @@ exports[`PopupSyncAuth > Switches between login/signup > Switches > syncState 1`
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -820,11 +827,12 @@ exports[`PopupSyncAuth > Validates fields > On login > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -944,11 +952,12 @@ exports[`PopupSyncAuth > Validates fields > On signup > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

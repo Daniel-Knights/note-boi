@@ -1,14 +1,15 @@
 export const ERROR_CODE = {
   NONE: 0,
-  LOGIN: 1,
-  SIGNUP: 2,
-  LOGOUT: 3,
-  PUSH: 4,
-  PULL: 5,
-  DELETE_ACCOUNT: 6,
-  CHANGE_PASSWORD: 7,
-  ENCRYPTOR: 8,
-  FORM_VALIDATION: 9,
+  UNKNOWN: 1,
+  LOGIN: 2,
+  SIGNUP: 3,
+  LOGOUT: 4,
+  PUSH: 5,
+  PULL: 6,
+  DELETE_ACCOUNT: 7,
+  CHANGE_PASSWORD: 8,
+  ENCRYPTOR: 9,
+  FORM_VALIDATION: 10,
 } as const;
 
 type ErrorCodes = typeof ERROR_CODE;
@@ -20,6 +21,7 @@ type ErrorCode = ErrorCodes[ErrorKey];
 export type ErrorConfig<T extends (...args: any) => void> = {
   code: ErrorCode;
   message?: string;
+  originalError?: unknown;
   /** Function to call on 'Try again', and its arguments */
   retry?: {
     fn: T;
@@ -38,12 +40,14 @@ export class AppError<T extends (...args: any) => void> {
   readonly message;
   readonly display;
   readonly retryConfig;
+  readonly originalError;
 
   constructor(config: ErrorConfig<T> = { code: ERROR_CODE.NONE }) {
     this.code = config.code;
     this.message = config.message;
     this.display = Object.freeze(config.display);
     this.retryConfig = Object.freeze(config.retry);
+    this.originalError = config.originalError;
 
     this.retry = this.retry.bind(this);
   }

@@ -214,7 +214,7 @@ describe('PopupSyncAuth', () => {
       clearMockApiResults({ calls });
 
       await formWrapper.trigger('submit');
-      await waitUntil(() => !s.syncState.isLoading);
+      await waitUntil(() => !s.syncState.loadingCount);
 
       expect(loginSpy).toHaveBeenCalledOnce();
       expect(signupSpy).not.toHaveBeenCalled();
@@ -336,7 +336,7 @@ describe('PopupSyncAuth', () => {
       clearMockApiResults({ calls });
 
       await formWrapper.trigger('submit');
-      await waitUntil(() => !s.syncState.isLoading);
+      await waitUntil(() => !s.syncState.loadingCount);
 
       expect(loginSpy).not.toHaveBeenCalled();
       expect(signupSpy).toHaveBeenCalledOnce();

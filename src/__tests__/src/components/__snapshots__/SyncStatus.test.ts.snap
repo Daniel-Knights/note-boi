@@ -71,18 +71,19 @@ exports[`SyncStatus > Displays error icon and opens popup on click > selectedThe
 exports[`SyncStatus > Displays error icon and opens popup on click > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 5,
+    "code": 6,
     "display": {
       "sync": true,
     },
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -278,11 +279,12 @@ exports[`SyncStatus > Displays loading spinner > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -391,11 +393,12 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -495,19 +498,20 @@ exports[`SyncStatus > Handles popups > PopupSyncError > selectedTheme 1`] = `"Sy
 exports[`SyncStatus > Handles popups > PopupSyncError > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 1,
+    "code": 2,
     "display": {
       "form": true,
       "sync": true,
     },
     "message": "Server error",
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
@@ -604,11 +608,12 @@ exports[`SyncStatus > Mounts when logged in > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": true,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
@@ -705,11 +710,12 @@ exports[`SyncStatus > Mounts when logged out > syncState 1`] = `
     "code": 0,
     "display": undefined,
     "message": undefined,
+    "originalError": undefined,
     "retry": [Function],
     "retryConfig": undefined,
   },
-  "isLoading": false,
   "isLoggedIn": false,
+  "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {

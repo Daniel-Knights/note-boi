@@ -178,7 +178,7 @@ describe('PopupChangePassword', () => {
     clearMockApiResults({ calls });
 
     await formWrapper.trigger('submit');
-    await waitUntil(() => !s.syncState.isLoading);
+    await waitUntil(() => !s.syncState.loadingCount);
 
     expect(changePasswordSpy).toHaveBeenCalledOnce();
 
