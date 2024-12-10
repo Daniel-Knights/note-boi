@@ -198,13 +198,12 @@ class Calls extends Array<Call> {
   }
 }
 
-// eslint-disable-next-line no-undef
 function hasValidAuthHeaders(headers?: HeadersInit) {
   return (
     headers &&
     'Authorization' in headers &&
     'X-Username' in headers &&
-    headers.Authorization === 'Bearer test-token'
+    headers.Authorization.replace('Bearer ', '') === mockKeyring[headers['X-Username']]
   );
 }
 

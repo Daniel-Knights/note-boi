@@ -1,6 +1,6 @@
 import * as s from '../../../store/sync';
 import { FetchBuilder } from '../../../classes';
-import { mockApi } from '../../api';
+import { mockApi, mockKeyring } from '../../api';
 
 describe('FetchBuilder', () => {
   const testHeaders = {
@@ -56,7 +56,9 @@ describe('FetchBuilder', () => {
 
     const fetchSpy = vi.spyOn(window, 'fetch');
 
-    s.syncState.loadingCount = 1; // Mock request expects this
+    // Mock request expects these
+    s.syncState.loadingCount = 1;
+    mockKeyring.d = 'test-token';
 
     const res = await new FetchBuilder('/notes/pull')
       .method('POST')
