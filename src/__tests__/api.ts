@@ -239,7 +239,15 @@ function mockRequest(
       },
     };
 
-    const res = new Response(JSON.stringify({ error: 'Server error' }), resInit);
+    let errorMsg = 'Server error';
+
+    if (options.error.status === 401) {
+      errorMsg = 'Unauthorized';
+    } else if (options.error.status === 404) {
+      errorMsg = 'User not found';
+    }
+
+    const res = new Response(JSON.stringify({ error: errorMsg }), resInit);
 
     return {
       name: endpoint,

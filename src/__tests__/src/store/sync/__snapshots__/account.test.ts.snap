@@ -1885,7 +1885,7 @@ exports[`Account > deleteAccount > User unauthorised > syncState 1`] = `
     "display": {
       "sync": true,
     },
-    "message": "Server error",
+    "message": "Unauthorized",
     "originalError": undefined,
     "retry": [Function],
     "retryConfig": {

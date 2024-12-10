@@ -3194,7 +3194,7 @@ exports[`Note (sync) > pull > User not found > syncState 1`] = `
     "display": {
       "sync": true,
     },
-    "message": "Unauthorized",
+    "message": "User not found",
     "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
@@ -3297,7 +3297,7 @@ exports[`Note (sync) > pull > User unauthorised > syncState 1`] = `
     "display": {
       "sync": true,
     },
-    "message": "Server error",
+    "message": "Unauthorized",
     "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
@@ -5136,7 +5136,7 @@ exports[`Note (sync) > push > User unauthorised > syncState 1`] = `
     "display": {
       "sync": true,
     },
-    "message": "Server error",
+    "message": "Unauthorized",
     "originalError": undefined,
     "retry": [Function],
     "retryConfig": {

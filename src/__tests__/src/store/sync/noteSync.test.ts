@@ -6,7 +6,7 @@ import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../../classes';
 import { isEmptyNote, tauriInvoke } from '../../../../utils';
-import { clearMockApiResults, mockApi, mockDb } from '../../../api';
+import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../api';
 import localNotes from '../../../notes.json';
 import {
   assertAppError,
@@ -152,6 +152,7 @@ describe('Note (sync)', () => {
 
       assertAppError({
         code: ERROR_CODE.PULL,
+        message: 'Server error',
         retry: { fn: s.pull },
         display: { sync: true },
       });
@@ -187,6 +188,7 @@ describe('Note (sync)', () => {
 
       assertAppError({
         code: ERROR_CODE.PULL,
+        message: 'Unauthorized',
         retry: { fn: s.pull },
         display: { sync: true },
       });
@@ -203,12 +205,14 @@ describe('Note (sync)', () => {
 
       s.syncState.username = 'k';
       s.syncState.isLoggedIn = true;
+      mockKeyring.k = 'test-token';
       Storage.set('USERNAME', 'k');
 
       await s.pull();
 
       assertAppError({
         code: ERROR_CODE.PULL,
+        message: 'User not found',
         retry: { fn: s.pull },
         display: { sync: true },
       });
@@ -439,6 +443,7 @@ describe('Note (sync)', () => {
 
       assertAppError({
         code: ERROR_CODE.PUSH,
+        message: 'Server error',
         retry: { fn: s.push, args: [] },
         display: { sync: true },
       });
@@ -473,6 +478,7 @@ describe('Note (sync)', () => {
 
       assertAppError({
         code: ERROR_CODE.PUSH,
+        message: 'Unauthorized',
         retry: { fn: s.push, args: [] },
         display: { sync: true },
       });
@@ -502,6 +508,7 @@ describe('Note (sync)', () => {
 
       assertAppError({
         code: ERROR_CODE.PUSH,
+        message: 'User not found',
         retry: { fn: s.push, args: [] },
         display: { sync: true },
       });

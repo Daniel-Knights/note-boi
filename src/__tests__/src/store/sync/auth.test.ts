@@ -178,6 +178,7 @@ describe('Auth', () => {
 
       assertAppError({
         code: ERROR_CODE.LOGIN,
+        message: 'Server error',
         retry: { fn: s.login },
         display: { form: true, sync: true },
       });
@@ -348,6 +349,7 @@ describe('Auth', () => {
 
       assertAppError({
         code: ERROR_CODE.SIGNUP,
+        message: 'Server error',
         retry: { fn: s.signup },
         display: { form: true, sync: true },
       });
@@ -426,6 +428,7 @@ describe('Auth', () => {
 
       assertAppError({
         code: ERROR_CODE.LOGOUT,
+        message: 'Server error',
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);

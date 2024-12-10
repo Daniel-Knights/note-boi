@@ -31,6 +31,7 @@ describe('Account', () => {
 
       assertAppError({
         code: ERROR_CODE.CHANGE_PASSWORD,
+        message: 'Unauthorized',
         retry: { fn: s.changePassword },
         display: { form: true, sync: true },
       });
@@ -112,6 +113,7 @@ describe('Account', () => {
 
       assertAppError({
         code: ERROR_CODE.CHANGE_PASSWORD,
+        message: 'Server error',
         retry: { fn: s.changePassword },
         display: { form: true, sync: true },
       });
@@ -145,6 +147,7 @@ describe('Account', () => {
 
       assertAppError({
         code: ERROR_CODE.CHANGE_PASSWORD,
+        message: 'User not found',
         retry: { fn: s.changePassword },
         display: { form: true, sync: true },
       });
@@ -259,6 +262,7 @@ describe('Account', () => {
 
       assertAppError({
         code: ERROR_CODE.DELETE_ACCOUNT,
+        message: 'Server error',
         retry: { fn: s.deleteAccount },
         display: { sync: true },
       });
@@ -299,6 +303,7 @@ describe('Account', () => {
 
       assertAppError({
         code: ERROR_CODE.DELETE_ACCOUNT,
+        message: 'Unauthorized',
         retry: { fn: s.deleteAccount },
         display: { sync: true },
       });
@@ -331,6 +336,7 @@ describe('Account', () => {
 
       assertAppError({
         code: ERROR_CODE.DELETE_ACCOUNT,
+        message: 'User not found',
         retry: { fn: s.deleteAccount },
         display: { sync: true },
       });

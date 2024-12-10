@@ -148,6 +148,7 @@ describe('SyncStatus', () => {
 
       assertAppError({
         code: ERROR_CODE.LOGIN,
+        message: 'Server error',
         retry: { fn: s.login },
         display: { form: true, sync: true },
       });
