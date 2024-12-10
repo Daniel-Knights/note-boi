@@ -3,7 +3,6 @@ import { nextTick } from 'vue';
 import { AppError, ERROR_CODE } from '../../../classes';
 import { syncState } from '../index';
 
-// TODO: test this - need to refactor existing route tests?
 /** Decorator for request calls that handles load state setting, and errors. */
 export function route<K, T extends (...args: K[]) => Promise<Awaited<ReturnType<T>>>>(
   cb: T
