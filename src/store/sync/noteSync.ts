@@ -41,7 +41,7 @@ export type UnsyncedNoteIds = {
 export const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
 /** Syncs local and remote notes. */
-export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
+export async function syncNotes(remoteNotes: Note[]) {
   const hasNoLocalNotes =
     noteState.notes.length <= 1 &&
     (!noteState.notes[0] || isEmptyNote(noteState.notes[0]));
@@ -95,7 +95,7 @@ export async function syncNotes(remoteNotes: Note[]): Promise<unknown> {
   // Sync any notes that were edited during pull
   await push();
 
-  return tauriInvoke('sync_local_notes', { notes: noteState.notes }).catch(console.error);
+  return tauriInvoke('sync_local_notes', { notes: noteState.notes });
 }
 
 // Pull
@@ -108,8 +108,6 @@ export const pull = route(async () => {
 
   const accessToken = await tauriInvoke('get_access_token', {
     username: syncState.username,
-  }).catch((err) => {
-    throw new AppError({ ...errorConfig, originalError: err });
   });
 
   const res = await new FetchBuilder('/notes/pull')
