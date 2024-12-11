@@ -1,4 +1,4 @@
-## [1.1.1](https://github.com/Daniel-Knights/note-boi-client/compare/v1.1.0...v1.1.1) (6/18/24)
+## [1.1.1](https://github.com/Daniel-Knights/note-boi-client/compare/v1.1.0...v1.1.1) (18/06/2024)
 
 - chore(release): reset package version ([99d5677](https://github.com/Daniel-Knights/note-boi-client/commit/99d5677de6930a4e8bc8092c0e56c7794a4a1fe3))
 - ci(release): install pnpm before node for caching ([7502cf1](https://github.com/Daniel-Knights/note-boi-client/commit/7502cf1942c6a08d79e2d1d7d4839a9d93114312))
