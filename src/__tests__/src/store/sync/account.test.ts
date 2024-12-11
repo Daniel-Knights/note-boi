@@ -278,7 +278,7 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.loadingCount, 0);
     });
 
-    it('User unauthorised', async () => {
+    it('Unauthorized', async () => {
       const { calls, promises } = mockApi({
         request: {
           error: {

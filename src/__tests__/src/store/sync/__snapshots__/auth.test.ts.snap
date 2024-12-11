@@ -349,6 +349,196 @@ exports[`Auth > login > Sets and resets loading state > updateState 1`] = `
 }
 `;
 
+exports[`Auth > login > Unauthorized > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > login > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > login > Unauthorized > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > login > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > login > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > login > Unauthorized > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Auth > login > Unauthorized > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+]
+`;
+
+exports[`Auth > login > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Auth > login > Unauthorized > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Auth > login > Unauthorized > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Auth > login > Unauthorized > openedPopup 1`] = `undefined`;
+
+exports[`Auth > login > Unauthorized > selectedTheme 1`] = `"System"`;
+
+exports[`Auth > login > Unauthorized > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 2,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "Unauthorized",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "2",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`Auth > login > Unauthorized > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Auth > login > User not found > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > login > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > login > User not found > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > login > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > login > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > login > User not found > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Auth > login > User not found > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+]
+`;
+
+exports[`Auth > login > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Auth > login > User not found > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Auth > login > User not found > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Auth > login > User not found > openedPopup 1`] = `undefined`;
+
+exports[`Auth > login > User not found > selectedTheme 1`] = `"System"`;
+
+exports[`Auth > login > User not found > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 2,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "User not found",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "2",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "k",
+}
+`;
+
+exports[`Auth > login > User not found > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Auth > login > With encryptor error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
 exports[`Auth > login > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -2079,6 +2269,404 @@ exports[`Auth > logout > Sets and resets loading state > syncState 1`] = `
 `;
 
 exports[`Auth > logout > Sets and resets loading state > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Auth > logout > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > logout > Unauthorized > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > logout > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > logout > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > logout > Unauthorized > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Auth > logout > Unauthorized > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/logout",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Auth > logout > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Auth > logout > Unauthorized > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Auth > logout > Unauthorized > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Auth > logout > Unauthorized > openedPopup 1`] = `undefined`;
+
+exports[`Auth > logout > Unauthorized > selectedTheme 1`] = `"System"`;
+
+exports[`Auth > logout > Unauthorized > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 4,
+    "display": undefined,
+    "message": "Unauthorized",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Auth > logout > Unauthorized > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Auth > logout > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > logout > User not found > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > logout > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > logout > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > logout > User not found > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Auth > logout > User not found > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/logout",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Auth > logout > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Auth > logout > User not found > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {},
+}
+`;
+
+exports[`Auth > logout > User not found > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Auth > logout > User not found > openedPopup 1`] = `undefined`;
+
+exports[`Auth > logout > User not found > selectedTheme 1`] = `"System"`;
+
+exports[`Auth > logout > User not found > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 4,
+    "display": undefined,
+    "message": "User not found",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`Auth > logout > User not found > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

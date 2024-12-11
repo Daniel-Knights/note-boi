@@ -2115,6 +2115,109 @@ exports[`Note (sync) > pull > Sets and resets loading state > updateState 1`] = 
 }
 `;
 
+exports[`Note (sync) > pull > Unauthorized > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Note (sync) > pull > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > pull > Unauthorized > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > pull > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > pull > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > pull > Unauthorized > Storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Note (sync) > pull > Unauthorized > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/notes/pull",
+    },
+  ],
+]
+`;
+
+exports[`Note (sync) > pull > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Note (sync) > pull > Unauthorized > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Note (sync) > pull > Unauthorized > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Note (sync) > pull > Unauthorized > openedPopup 1`] = `undefined`;
+
+exports[`Note (sync) > pull > Unauthorized > selectedTheme 1`] = `"System"`;
+
+exports[`Note (sync) > pull > Unauthorized > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 6,
+    "display": {
+      "sync": true,
+    },
+    "message": "Unauthorized",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "1",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "d",
+}
+`;
+
+exports[`Note (sync) > pull > Unauthorized > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Note (sync) > pull > Updates editor if selected note is unedited > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
 exports[`Note (sync) > pull > Updates editor if selected note is unedited > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -3218,109 +3321,6 @@ exports[`Note (sync) > pull > User not found > syncState 1`] = `
 `;
 
 exports[`Note (sync) > pull > User not found > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Note (sync) > pull > User unauthorised > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`Note (sync) > pull > User unauthorised > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > pull > User unauthorised > Storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > pull > User unauthorised > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > pull > User unauthorised > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > pull > User unauthorised > Storage.get('USERNAME') 1`] = `"d"`;
-
-exports[`Note (sync) > pull > User unauthorised > allCalls 1`] = `
-[
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "get_access_token",
-    },
-  ],
-  [
-    "request",
-    {
-      "name": "/notes/pull",
-    },
-  ],
-]
-`;
-
-exports[`Note (sync) > pull > User unauthorised > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Note (sync) > pull > User unauthorised > mockDb 1`] = `
-{
-  "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Note (sync) > pull > User unauthorised > noteState 1`] = `
-{
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "id": "id",
-    "timestamp": 0,
-  },
-}
-`;
-
-exports[`Note (sync) > pull > User unauthorised > openedPopup 1`] = `undefined`;
-
-exports[`Note (sync) > pull > User unauthorised > selectedTheme 1`] = `"System"`;
-
-exports[`Note (sync) > pull > User unauthorised > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 6,
-    "display": {
-      "sync": true,
-    },
-    "message": "Unauthorized",
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": {
-      "fn": [Function],
-    },
-  },
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "1",
-  "unsyncedNoteIds": {
-    "add": [Function],
-    "clear": [Function],
-    "deleted": Set {},
-    "edited": Set {},
-    "new": "",
-    "size": 0,
-  },
-  "username": "d",
-}
-`;
-
-exports[`Note (sync) > pull > User unauthorised > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -4621,6 +4621,204 @@ exports[`Note (sync) > push > Sets and resets loading state > updateState 1`] = 
 }
 `;
 
+exports[`Note (sync) > push > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Note (sync) > push > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Note (sync) > push > Unauthorized > Storage.get('THEME') 1`] = `null`;
+
+exports[`Note (sync) > push > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Note (sync) > push > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Note (sync) > push > Unauthorized > Storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Note (sync) > push > Unauthorized > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "name": "/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "body",
+              "delta": {},
+              "title": "title",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "body",
+            "delta": {},
+            "title": "title",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "edit_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "name": "/notes/push",
+    },
+  ],
+]
+`;
+
+exports[`Note (sync) > push > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Note (sync) > push > Unauthorized > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Note (sync) > push > Unauthorized > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "body",
+        "delta": {},
+        "title": "title",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Note (sync) > push > Unauthorized > openedPopup 1`] = `undefined`;
+
+exports[`Note (sync) > push > Unauthorized > selectedTheme 1`] = `"System"`;
+
+exports[`Note (sync) > push > Unauthorized > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 5,
+    "display": {
+      "sync": true,
+    },
+    "message": "Unauthorized",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoggedIn": true,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {
+      "id",
+    },
+    "new": "",
+    "size": 1,
+  },
+  "username": "d",
+}
+`;
+
+exports[`Note (sync) > push > Unauthorized > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Note (sync) > push > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
 exports[`Note (sync) > push > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -4964,204 +5162,6 @@ exports[`Note (sync) > push > User not found > syncState 1`] = `
 `;
 
 exports[`Note (sync) > push > User not found > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Note (sync) > push > User unauthorised > KeyStore.getKey() 1`] = `CryptoKey {}`;
-
-exports[`Note (sync) > push > User unauthorised > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Note (sync) > push > User unauthorised > Storage.get('THEME') 1`] = `null`;
-
-exports[`Note (sync) > push > User unauthorised > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Note (sync) > push > User unauthorised > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Note (sync) > push > User unauthorised > Storage.get('USERNAME') 1`] = `"d"`;
-
-exports[`Note (sync) > push > User unauthorised > allCalls 1`] = `
-[
-  [
-    "request",
-    {
-      "name": "/login",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "accessToken": "test-token",
-        "username": "d",
-      },
-      "name": "set_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": true,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "id": "id",
-          "timestamp": 0,
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "notes": [
-          {
-            "content": {
-              "body": "body",
-              "delta": {},
-              "title": "title",
-            },
-            "id": "id",
-            "timestamp": 0,
-          },
-        ],
-      },
-      "name": "sync_local_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": {
-          "content": {
-            "body": "body",
-            "delta": {},
-            "title": "title",
-          },
-          "id": "id",
-          "timestamp": 0,
-        },
-      },
-      "name": "edit_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "get_access_token",
-    },
-  ],
-  [
-    "request",
-    {
-      "name": "/notes/push",
-    },
-  ],
-]
-`;
-
-exports[`Note (sync) > push > User unauthorised > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Note (sync) > push > User unauthorised > mockDb 1`] = `
-{
-  "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Note (sync) > push > User unauthorised > noteState 1`] = `
-{
-  "extraSelectedNotes": [],
-  "notes": [
-    {
-      "content": {
-        "body": "body",
-        "delta": {},
-        "title": "title",
-      },
-      "id": "id",
-      "timestamp": 0,
-    },
-  ],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "id": "id",
-    "timestamp": 0,
-  },
-}
-`;
-
-exports[`Note (sync) > push > User unauthorised > openedPopup 1`] = `undefined`;
-
-exports[`Note (sync) > push > User unauthorised > selectedTheme 1`] = `"System"`;
-
-exports[`Note (sync) > push > User unauthorised > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 5,
-    "display": {
-      "sync": true,
-    },
-    "message": "Unauthorized",
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": {
-      "fn": [Function],
-    },
-  },
-  "isLoggedIn": true,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNoteIds": {
-    "add": [Function],
-    "clear": [Function],
-    "deleted": Set {},
-    "edited": Set {
-      "id",
-    },
-    "new": "",
-    "size": 1,
-  },
-  "username": "d",
-}
-`;
-
-exports[`Note (sync) > push > User unauthorised > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

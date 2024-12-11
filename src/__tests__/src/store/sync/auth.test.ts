@@ -2,7 +2,7 @@ import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { ERROR_CODE, Storage } from '../../../../classes';
 import { isEmptyNote } from '../../../../utils';
-import { clearMockApiResults, mockApi, mockDb } from '../../../api';
+import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../api';
 import localNotes from '../../../notes.json';
 import { assertAppError, assertLoadingState } from '../../../utils';
 
@@ -188,6 +188,56 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.password, '1');
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/login'));
+    });
+
+    it('Unauthorized', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '2';
+
+      await s.login();
+
+      assertAppError({
+        code: ERROR_CODE.LOGIN,
+        message: 'Unauthorized',
+        retry: { fn: s.login },
+        display: { form: true, sync: true },
+      });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isEmpty(n.noteState.notes);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.strictEqual(s.syncState.username, 'd');
+      assert.strictEqual(s.syncState.password, '2');
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.request.has('/login'));
+    });
+
+    it('User not found', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'k';
+      s.syncState.password = '2';
+
+      await s.login();
+
+      assertAppError({
+        code: ERROR_CODE.LOGIN,
+        message: 'User not found',
+        retry: { fn: s.login },
+        display: { form: true, sync: true },
+      });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isEmpty(n.noteState.notes);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.strictEqual(s.syncState.username, 'k');
+      assert.strictEqual(s.syncState.password, '2');
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/login'));
@@ -429,6 +479,82 @@ describe('Auth', () => {
       assertAppError({
         code: ERROR_CODE.LOGOUT,
         message: 'Server error',
+      });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 4);
+      assert.isTrue(calls.request.has('/logout'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('Unauthorized', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      clearMockApiResults({ calls });
+
+      delete mockKeyring.d;
+
+      await s.logout();
+
+      assertAppError({
+        code: ERROR_CODE.LOGOUT,
+        message: 'Unauthorized',
+      });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 4);
+      assert.isTrue(calls.request.has('/logout'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('User not found', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      clearMockApiResults({ calls });
+
+      delete mockDb.users.d;
+
+      await s.logout();
+
+      assertAppError({
+        code: ERROR_CODE.LOGOUT,
+        message: 'User not found',
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);

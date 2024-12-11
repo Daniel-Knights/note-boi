@@ -170,7 +170,7 @@ describe('Note (sync)', () => {
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
-    it('User unauthorised', async () => {
+    it('Unauthorized', async () => {
       const { calls } = mockApi({
         request: {
           error: {
@@ -457,7 +457,7 @@ describe('Note (sync)', () => {
       assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
     });
 
-    it('User unauthorised', async () => {
+    it('Unauthorized', async () => {
       const { calls } = mockApi({
         request: {
           error: {
@@ -683,6 +683,9 @@ describe('Note (sync)', () => {
         assert.strictEqual(n.noteState.selectedNote.id, firstCachedNote.id);
         assert.isDefined(n.findNote(firstCachedNote.id));
       }, calls);
+
+      // Can be flaky and only have one call
+      await waitUntil(() => calls.request.has('/notes/push', 2));
 
       assert.isTrue(calls.request.has('/notes/pull'));
       assert.isTrue(calls.request.has('/notes/push', 2)); // `syncNotes` and `autoPush`
