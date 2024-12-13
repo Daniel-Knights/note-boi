@@ -186,7 +186,7 @@ describe('PopupChangePassword', () => {
     assert.isEmpty(wrapperVm.confirmNewPassword);
     assert.lengthOf(wrapper.emitted('close')!, 1);
     assert.strictEqual(calls.size, 3);
-    assert.isTrue(calls.request.has('/account/password/change'));
+    assert.isTrue(calls.request.has('/account/change-password'));
     assert.isTrue(calls.invoke.has('get_access_token'));
     assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     assert.isTrue(calls.invoke.has('set_access_token'));

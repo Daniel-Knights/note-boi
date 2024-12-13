@@ -37,7 +37,7 @@ describe('Account', () => {
       });
 
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.request.has('/account/password/change'));
+      assert.isTrue(calls.request.has('/account/change-password'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isNotEmpty(s.syncState.password);
@@ -53,7 +53,7 @@ describe('Account', () => {
 
       assertAppError();
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/account/password/change'));
+      assert.isTrue(calls.request.has('/account/change-password'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('set_access_token'));
@@ -93,7 +93,7 @@ describe('Account', () => {
       const { calls } = mockApi({
         request: {
           error: {
-            endpoint: '/account/password/change',
+            endpoint: '/account/change-password',
           },
         },
       });
@@ -122,7 +122,7 @@ describe('Account', () => {
       assert.isNotEmpty(s.syncState.newPassword);
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.request.has('/account/password/change'));
+      assert.isTrue(calls.request.has('/account/change-password'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
@@ -156,7 +156,7 @@ describe('Account', () => {
       assert.isNotEmpty(s.syncState.newPassword);
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.request.has('/account/password/change'));
+      assert.isTrue(calls.request.has('/account/change-password'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
     });

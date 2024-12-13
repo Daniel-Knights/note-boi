@@ -41,7 +41,7 @@ export const changePassword = route(async (): Promise<void> => {
   ).catch((err) => throwEncryptorError(errorConfig, err));
   if (!encryptedNotes) return;
 
-  const res = await new FetchBuilder('/account/password/change')
+  const res = await new FetchBuilder('/account/change-password')
     .method('PUT')
     .withAuth(syncState.username, accessToken)
     .body({

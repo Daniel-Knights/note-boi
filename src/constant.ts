@@ -55,7 +55,7 @@ export type EndpointPayloads = {
     payload: never;
     response: never;
   };
-  '/account/password/change': {
+  '/account/change-password': {
     payload: {
       current_password: string;
       new_password: string;
@@ -76,7 +76,7 @@ export const ENDPOINTS = [
   '/notes/push',
   '/notes/pull',
   '/account/delete',
-  '/account/password/change',
+  '/account/change-password',
 ] satisfies Endpoint[];
 
 // Tauri commands

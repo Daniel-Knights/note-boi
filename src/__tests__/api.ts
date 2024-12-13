@@ -361,7 +361,7 @@ function mockRequest(
       }
 
       break;
-    case '/account/password/change':
+    case '/account/change-password':
       if (!hasValidAuthHeaders(req.headers)) {
         resData.error = 'Unauthorized';
         httpStatus = 401;
