@@ -57,6 +57,16 @@ export function findNote(id?: string): Note | undefined {
   return noteState.notes.find((nt) => nt.id === id);
 }
 
+export function catchNoteInvokeError(err: unknown) {
+  console.error('Note invoke error:');
+  console.error(err);
+
+  return dialog.message(
+    'Something went wrong. Please try again or open an issue in the GitHub repo.',
+    { kind: 'error' }
+  );
+}
+
 /** Deletes {@link noteState.selectedNote} when note is empty. */
 function clearEmptyNote(): void {
   const isValidClear = noteState.notes.length > 1;
@@ -101,7 +111,7 @@ export function isSelectedNote(note: Note): boolean {
 
 /** Fetches all notes and updates {@link noteState}. */
 export async function getAllNotes(): Promise<void> {
-  const fetchedNotes = await tauriInvoke('get_all_notes').catch(console.error);
+  const fetchedNotes = await tauriInvoke('get_all_notes').catch(catchNoteInvokeError);
 
   const hasNotes = fetchedNotes && fetchedNotes.length > 0;
   if (!hasNotes) return newNote();
@@ -149,7 +159,7 @@ export function deleteNote(id: string): void {
 
     tauriInvoke('delete_note', { id })
       .then(() => autoPush())
-      .catch(console.error);
+      .catch(catchNoteInvokeError);
   }
 }
 
@@ -189,7 +199,7 @@ export function newNote(isButtonClick?: boolean): void {
   document.dispatchEvent(changeNoteEvent);
   document.dispatchEvent(newNoteEvent);
 
-  tauriInvoke('new_note', { note: { ...freshNote } }).catch(console.error);
+  tauriInvoke('new_note', { note: { ...freshNote } }).catch(catchNoteInvokeError);
 }
 
 /**
@@ -216,7 +226,7 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
 
   tauriInvoke('edit_note', { note: { ...foundNote } })
     .then(autoPush)
-    .catch(console.error);
+    .catch(catchNoteInvokeError);
 }
 
 /** Exports all notes, or a given selection. */
@@ -231,5 +241,5 @@ export async function exportNotes(noteIds: string[]): Promise<void> {
 
   const notes = noteState.notes.filter((nt) => noteIds?.includes(nt.id));
 
-  tauriInvoke('export_notes', { saveDir, notes }).catch(console.error);
+  tauriInvoke('export_notes', { saveDir, notes }).catch(catchNoteInvokeError);
 }

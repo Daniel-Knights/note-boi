@@ -565,6 +565,18 @@ function mockTauriApi(
 
       break;
     }
+    case 'plugin:dialog|message': {
+      const messageDialogArgs = args as MessageDialogArgs;
+
+      calledWith = {
+        message: messageDialogArgs.message,
+        okLabel: messageDialogArgs.okLabel,
+        title: messageDialogArgs.title,
+        kind: messageDialogArgs.kind,
+      };
+
+      break;
+    }
     case 'plugin:updater|check': {
       const resValue = options.resValue?.checkUpdate?.shift();
 
@@ -630,6 +642,13 @@ type OpenDialogArgs = {
     recursive?: boolean;
     title?: string;
   };
+};
+
+type MessageDialogArgs = {
+  message: string;
+  okLabel?: string;
+  title?: string;
+  kind?: 'error' | 'info' | 'warning';
 };
 
 type ListenArgs = {
