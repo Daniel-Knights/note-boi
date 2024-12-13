@@ -223,7 +223,7 @@ describe('PopupSyncAuth', () => {
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 5);
-      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.request.has('/auth/login'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'd',
@@ -345,7 +345,7 @@ describe('PopupSyncAuth', () => {
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.request.has('/auth/signup'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'k',

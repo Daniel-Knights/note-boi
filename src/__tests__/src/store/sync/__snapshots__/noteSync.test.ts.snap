@@ -61,7 +61,7 @@ exports[`Note (sync) > Edge cases > No local, no remote > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -250,7 +250,7 @@ exports[`Note (sync) > Edge cases > No local, some remote > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -834,7 +834,7 @@ exports[`Note (sync) > Edge cases > No remote, some local > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -1393,7 +1393,7 @@ exports[`Note (sync) > pull > Pulls notes from the server > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -2235,7 +2235,7 @@ exports[`Note (sync) > pull > Updates editor if selected note is unedited > allC
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -2746,7 +2746,7 @@ exports[`Note (sync) > pull > Updates note menu > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -3518,7 +3518,7 @@ exports[`Note (sync) > pull > With server error > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -3701,7 +3701,7 @@ exports[`Note (sync) > push > Doesn't push empty notes > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -3872,7 +3872,7 @@ exports[`Note (sync) > push > Pushes notes to the server > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -4446,7 +4446,7 @@ exports[`Note (sync) > push > Sets and resets loading state > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -4638,7 +4638,7 @@ exports[`Note (sync) > push > Unauthorized > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -4843,7 +4843,7 @@ exports[`Note (sync) > push > User not found > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/signup",
+      "name": "/auth/signup",
     },
   ],
   [
@@ -5186,7 +5186,7 @@ exports[`Note (sync) > push > With encryptor error > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -5378,7 +5378,7 @@ exports[`Note (sync) > push > With server error > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -5957,7 +5957,7 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -6516,7 +6516,7 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -7172,7 +7172,7 @@ exports[`Note (sync) > unsyncedNoteIds > new > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -7709,7 +7709,7 @@ Sugar
   [
     "request",
     {
-      "name": "/logout",
+      "name": "/auth/logout",
     },
   ],
   [
@@ -7736,7 +7736,7 @@ Sugar
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [

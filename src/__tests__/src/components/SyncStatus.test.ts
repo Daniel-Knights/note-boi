@@ -116,7 +116,7 @@ describe('SyncStatus', () => {
     it('PopupSyncError', async () => {
       mockApi({
         request: {
-          error: { endpoint: '/login' },
+          error: { endpoint: '/auth/login' },
         },
       });
 

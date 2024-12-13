@@ -17,7 +17,7 @@ exports[`Account > changePassword > Changes password for currently logged in acc
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -221,7 +221,7 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -410,7 +410,7 @@ exports[`Account > changePassword > User not found > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/signup",
+      "name": "/auth/signup",
     },
   ],
   [
@@ -890,7 +890,7 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -1074,7 +1074,7 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -1388,7 +1388,7 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -1597,7 +1597,7 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -1791,7 +1791,7 @@ exports[`Account > deleteAccount > User not found > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/signup",
+      "name": "/auth/signup",
     },
   ],
   [
@@ -1933,7 +1933,7 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [

@@ -117,7 +117,7 @@ exports[`FetchBuilder > Without auth > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [

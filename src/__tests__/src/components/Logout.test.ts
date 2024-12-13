@@ -21,7 +21,7 @@ describe('Logout', () => {
     const { calls } = mockApi({
       request: {
         resValue: {
-          '/login': [{ notes: mockDb.encryptedNotes }],
+          '/auth/login': [{ notes: mockDb.encryptedNotes }],
         },
       },
     });
@@ -43,7 +43,7 @@ describe('Logout', () => {
 
     assert.isFalse(s.syncState.isLoggedIn);
     assert.strictEqual(calls.size, 4);
-    assert.isTrue(calls.request.has('/logout'));
+    assert.isTrue(calls.request.has('/auth/logout'));
     assert.isTrue(calls.invoke.has('get_access_token'));
     assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     assert.isTrue(calls.invoke.has('delete_access_token'));

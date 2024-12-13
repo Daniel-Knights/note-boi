@@ -883,7 +883,7 @@ describe('Note (sync)', () => {
         },
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes }],
+            '/auth/login': [{ notes: mockDb.encryptedNotes }],
           },
         },
       });

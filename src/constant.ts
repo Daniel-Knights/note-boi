@@ -14,7 +14,7 @@ export const NOTE_EVENTS = {
 
 // Endpoints
 export type EndpointPayloads = {
-  '/signup': {
+  '/auth/signup': {
     payload: {
       username: string;
       password: string;
@@ -24,7 +24,7 @@ export type EndpointPayloads = {
       access_token: string;
     };
   };
-  '/login': {
+  '/auth/login': {
     payload: {
       username: string;
       password: string;
@@ -34,7 +34,7 @@ export type EndpointPayloads = {
       access_token: string;
     };
   };
-  '/logout': {
+  '/auth/logout': {
     payload: never;
     response: never;
   };
@@ -70,9 +70,9 @@ export type EndpointPayloads = {
 export type Endpoint = keyof EndpointPayloads;
 
 export const ENDPOINTS = [
-  '/signup',
-  '/login',
-  '/logout',
+  '/auth/signup',
+  '/auth/login',
+  '/auth/logout',
   '/notes/push',
   '/notes/pull',
   '/account/delete',

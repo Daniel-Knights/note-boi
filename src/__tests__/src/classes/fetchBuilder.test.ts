@@ -18,14 +18,14 @@ describe('FetchBuilder', () => {
 
     s.syncState.loadingCount = 1; // Mock request expects this
 
-    const res = await new FetchBuilder('/login')
+    const res = await new FetchBuilder('/auth/login')
       .method('POST')
       .headers(testHeaders)
       .body(body)
       .fetch('d');
 
     expect(fetchSpy).toHaveBeenCalledOnce();
-    expect(fetchSpy).toHaveBeenCalledWith(`${FetchBuilder.serverUrl}/api/login`, {
+    expect(fetchSpy).toHaveBeenCalledWith(`${FetchBuilder.serverUrl}/api/auth/login`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
@@ -40,7 +40,7 @@ describe('FetchBuilder', () => {
       username: 'd',
       accessToken: 'test-token',
     });
-    assert.isTrue(calls.request.has('/login'));
+    assert.isTrue(calls.request.has('/auth/login'));
     assert.deepEqual(res, {
       ok: true,
       data: {

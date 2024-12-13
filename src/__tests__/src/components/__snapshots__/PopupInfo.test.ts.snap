@@ -206,7 +206,7 @@ exports[`PopupInfo > Renders correct description list items > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [

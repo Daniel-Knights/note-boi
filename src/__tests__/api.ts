@@ -60,7 +60,7 @@ export const allCalls: [ApiCallType, Call][] = [];
  * const { calls } = mockApi({
  *   request: {
  *     error: {
- *       endpoint: '/login'
+ *       endpoint: '/auth/login'
  *     },
  *   },
  * });
@@ -267,7 +267,7 @@ function mockRequest(
   let httpStatus = 200;
 
   switch (endpoint) {
-    case '/signup':
+    case '/auth/signup':
       if (!hasKeys(reqPayload, ['notes', 'username', 'password'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
@@ -282,7 +282,7 @@ function mockRequest(
         resData.error = 'User already exists';
         httpStatus = 409;
       } else {
-        const resValue = options.resValue?.['/signup']?.shift();
+        const resValue = options.resValue?.['/auth/signup']?.shift();
 
         mockDb.users[reqPayload.username] = reqPayload.password;
         resData.access_token = resValue?.access_token ?? 'test-token';
@@ -291,7 +291,7 @@ function mockRequest(
       }
 
       break;
-    case '/login':
+    case '/auth/login':
       if (!hasKeys(reqPayload, ['username', 'password'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
@@ -308,14 +308,14 @@ function mockRequest(
         resData.error = 'Unauthorized';
         httpStatus = 401;
       } else {
-        const resValue = options.resValue?.['/login']?.shift();
+        const resValue = options.resValue?.['/auth/login']?.shift();
 
         resData.notes = resValue?.notes ?? [];
         resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
       break;
-    case '/logout':
+    case '/auth/logout':
       if (!hasValidAuthHeaders(req.headers)) {
         resData.error = 'Unauthorized';
         httpStatus = 401;

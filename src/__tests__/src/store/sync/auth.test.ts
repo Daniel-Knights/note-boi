@@ -38,7 +38,7 @@ describe('Auth', () => {
       const { calls } = mockApi({
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes }],
+            '/auth/login': [{ notes: mockDb.encryptedNotes }],
           },
         },
       });
@@ -60,7 +60,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(Storage.get('USERNAME'), 'd');
       assert.strictEqual(calls.size, 4);
-      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.request.has('/auth/login'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'd',
@@ -80,7 +80,7 @@ describe('Auth', () => {
       const { calls } = mockApi({
         request: {
           resValue: {
-            '/login': [{ notes: mockDb.encryptedNotes }],
+            '/auth/login': [{ notes: mockDb.encryptedNotes }],
           },
         },
       });
@@ -106,7 +106,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(Storage.get('USERNAME'), 'd');
       assert.strictEqual(calls.size, 4);
-      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.request.has('/auth/login'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'd',
@@ -126,7 +126,7 @@ describe('Auth', () => {
       const { calls } = mockApi({
         request: {
           resValue: {
-            '/login': [
+            '/auth/login': [
               { notes: [{ id: '0', timestamp: 0, content: 'Unencrypted content' }] },
             ],
           },
@@ -147,7 +147,7 @@ describe('Auth', () => {
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.request.has('/auth/login'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'd',
@@ -166,7 +166,7 @@ describe('Auth', () => {
       const { calls } = mockApi({
         request: {
           error: {
-            endpoint: '/login',
+            endpoint: '/auth/login',
           },
         },
       });
@@ -190,7 +190,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.password, '1');
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.request.has('/auth/login'));
     });
 
     it('Unauthorized', async () => {
@@ -215,7 +215,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.password, '2');
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.request.has('/auth/login'));
     });
 
     it('User not found', async () => {
@@ -240,7 +240,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.password, '2');
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.request.has('/login'));
+      assert.isTrue(calls.request.has('/auth/login'));
     });
 
     it('Sets and resets loading state', () => {
@@ -270,7 +270,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(Storage.get('USERNAME'), 'k');
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.request.has('/auth/signup'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'k',
@@ -309,7 +309,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(Storage.get('USERNAME'), 'k');
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.request.has('/auth/signup'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'k',
@@ -348,7 +348,7 @@ describe('Auth', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(Storage.get('USERNAME'), 'k');
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.request.has('/auth/signup'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'k',
@@ -387,7 +387,7 @@ describe('Auth', () => {
       const { calls } = mockApi({
         request: {
           error: {
-            endpoint: '/signup',
+            endpoint: '/auth/signup',
           },
         },
       });
@@ -411,7 +411,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.password, '2');
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.request.has('/signup'));
+      assert.isTrue(calls.request.has('/auth/signup'));
     });
 
     it('Sets and resets loading state', () => {
@@ -444,7 +444,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 4);
-      assert.isTrue(calls.request.has('/logout'));
+      assert.isTrue(calls.request.has('/auth/logout'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('delete_access_token'));
@@ -462,7 +462,7 @@ describe('Auth', () => {
       const { calls } = mockApi({
         request: {
           error: {
-            endpoint: '/logout',
+            endpoint: '/auth/logout',
           },
         },
       });
@@ -486,7 +486,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 4);
-      assert.isTrue(calls.request.has('/logout'));
+      assert.isTrue(calls.request.has('/auth/logout'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('delete_access_token'));
@@ -524,7 +524,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 4);
-      assert.isTrue(calls.request.has('/logout'));
+      assert.isTrue(calls.request.has('/auth/logout'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('delete_access_token'));
@@ -562,7 +562,7 @@ describe('Auth', () => {
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
       assert.strictEqual(calls.size, 4);
-      assert.isTrue(calls.request.has('/logout'));
+      assert.isTrue(calls.request.has('/auth/logout'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('delete_access_token'));

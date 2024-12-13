@@ -17,7 +17,7 @@ exports[`Logout > Logs out on click > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -258,7 +258,7 @@ Sugar
   [
     "request",
     {
-      "name": "/logout",
+      "name": "/auth/logout",
     },
   ],
   [

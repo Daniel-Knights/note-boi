@@ -44,7 +44,7 @@ export const login = route(async (): Promise<void> => {
     },
   } satisfies Omit<ErrorConfig<typeof login>, 'message'>;
 
-  const res = await new FetchBuilder('/login')
+  const res = await new FetchBuilder('/auth/login')
     .method('POST')
     .body({
       username: syncState.username,
@@ -97,7 +97,7 @@ export const signup = route(async (): Promise<void> => {
   ).catch((err) => throwEncryptorError(errorConfig, err));
   if (!encryptedNotes) return;
 
-  const res = await new FetchBuilder('/signup')
+  const res = await new FetchBuilder('/auth/signup')
     .method('POST')
     .body({
       username: syncState.username,
@@ -137,7 +137,7 @@ export const logout = route(async (): Promise<void> => {
     username: syncState.username,
   });
 
-  const fetchPromise = new FetchBuilder('/logout')
+  const fetchPromise = new FetchBuilder('/auth/logout')
     .method('POST')
     .withAuth(syncState.username, accessToken)
     .fetch()

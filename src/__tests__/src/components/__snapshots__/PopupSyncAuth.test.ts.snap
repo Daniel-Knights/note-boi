@@ -708,7 +708,7 @@ exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/login",
+      "name": "/auth/login",
     },
   ],
   [
@@ -884,7 +884,7 @@ exports[`PopupSyncAuth > Validates fields > On signup > allCalls 1`] = `
   [
     "request",
     {
-      "name": "/signup",
+      "name": "/auth/signup",
     },
   ],
   [
