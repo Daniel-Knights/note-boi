@@ -86,7 +86,7 @@ export const deleteAccount = route(async (): Promise<void> => {
   });
 
   const res = await new FetchBuilder('/account/delete')
-    .method('POST')
+    .method('DELETE')
     .withAuth(syncState.username, accessToken)
     .fetch()
     .catch((err) => throwFetchError(errorConfig, err));
