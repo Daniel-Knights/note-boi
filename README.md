@@ -26,3 +26,7 @@ Go to the [releases page](https://github.com/Daniel-Knights/note-boi/releases) a
 - MacOS: `.dmg`, `.app`
 - Windows: `.msi`, `-setup.exe`
 - Linux: `.deb`, `.AppImage`
+
+## V1
+
+NoteBoi v1 is no longer supported. It can still be used without sync functionality, but the server is no longer running.
