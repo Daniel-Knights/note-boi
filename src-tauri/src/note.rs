@@ -129,7 +129,7 @@ impl Note {
             .get("insert")
             .unwrap_or(&default_insert)
             .as_str()
-            .unwrap();
+            .unwrap_or("");
 
           acc + insert
         });
