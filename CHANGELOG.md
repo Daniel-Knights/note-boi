@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/Daniel-Knights/note-boi/compare/v2.0.0...v2.0.1) (12/14/24)
+
+- fix(editor): code block padding ([818710b](https://github.com/Daniel-Knights/note-boi/commit/818710bb5757538da2e675720a3bca21d56d4333))
+- fix(export notes): image inserts causing panic ([bf5e5af](https://github.com/Daniel-Knights/note-boi/commit/bf5e5afb9ee332312acb134e723df16d6535987f))
+- docs(readme): v1 section ([538aebd](https://github.com/Daniel-Knights/note-boi/commit/538aebdbf81164f5d066b41430053e1388a7d343))
+- docs(changelog): v2.0.0 ([d26ad9b](https://github.com/Daniel-Knights/note-boi/commit/d26ad9bc553db6d3362778763b3b3f44693778e0))
+
 ## [2.0.0](https://github.com/Daniel-Knights/note-boi/compare/v1.1.1...v2.0.0) (12/14/24)
 
 - chore(deps): bump npm deps ([97ff90f](https://github.com/Daniel-Knights/note-boi/commit/97ff90fe649844a16a673958d77734d1925a1a94))
