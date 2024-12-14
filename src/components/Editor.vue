@@ -126,6 +126,10 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
       display: none;
     }
 
+    .ql-code-block-container {
+      padding: 5px 20px;
+    }
+
     code {
       color: var(--colour__white);
       background-color: var(--colour__tertiary);
