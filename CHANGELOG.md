@@ -1,3 +1,13 @@
+## [2.0.2](https://github.com/Daniel-Knights/note-boi/compare/v2.0.1...v2.0.2) (12/15/24)
+
+- feat: update server url for v2.0.2 ([8467f73](https://github.com/Daniel-Knights/note-boi/commit/8467f7347cf33f4962db8eaf57c7820c24d70c41))
+- feat(noteSync): POST to GET for pull fetch ([cfa9ee5](https://github.com/Daniel-Knights/note-boi/commit/cfa9ee5bda162adc3338cb1b1e01fb7a87684f31))
+- test(noteSync): remove todo comment ([f42fb9a](https://github.com/Daniel-Knights/note-boi/commit/f42fb9a7510f3cd48c096775bbcddb911548523f))
+- test(mock): mockRequest calledWith, split utils file into separate modules ([37440e8](https://github.com/Daniel-Knights/note-boi/commit/37440e8aaf3cc7c290548ee4c7dc852b476f7d02))
+- build(deps): bump nanoid in the npm_and_yarn group across 1 directory ([dd8a484](https://github.com/Daniel-Knights/note-boi/commit/dd8a4841b773e9282219fe9a4bb2302b367cdfd9))
+- docs(changelog): fix date formats ([b9f5d8c](https://github.com/Daniel-Knights/note-boi/commit/b9f5d8ccc24af3016b44335bd2b39d9bc8abef17))
+- docs(changelog): v2.0.1 ([4bc30dd](https://github.com/Daniel-Knights/note-boi/commit/4bc30dd1370100a68c1d1d291ff1e921573aec37))
+
 ## [2.0.1](https://github.com/Daniel-Knights/note-boi/compare/v2.0.0...v2.0.1) (14/12/2024)
 
 - fix(editor): code block padding ([818710b](https://github.com/Daniel-Knights/note-boi/commit/818710bb5757538da2e675720a3bca21d56d4333))
