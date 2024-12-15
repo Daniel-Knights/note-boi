@@ -694,7 +694,6 @@ describe('Note (sync)', () => {
         assert.isDefined(n.findNote(firstCachedNote.id));
       }, calls);
 
-      // TODO: sometimes there is only one call
       // Can be flaky and only have one call
       await waitUntil(() => getByTestId(statusWrapper, 'success').isVisible());
 
