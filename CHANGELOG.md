@@ -1,3 +1,8 @@
+## [2.0.3](https://github.com/Daniel-Knights/note-boi/compare/v2.0.2...v2.0.3) (12/15/24)
+
+- fix(tauri): connect-src url ([974339b](https://github.com/Daniel-Knights/note-boi/commit/974339be532242991c4ca435f8bc9baaee37efb8))
+- docs(changelog): v2.0.2 ([d81d8a8](https://github.com/Daniel-Knights/note-boi/commit/d81d8a80b981f001b08b2dbfb90c93b769f750b4))
+
 ## [2.0.2](https://github.com/Daniel-Knights/note-boi/compare/v2.0.1...v2.0.2) (12/15/24)
 
 - feat: update server url for v2.0.2 ([8467f73](https://github.com/Daniel-Knights/note-boi/commit/8467f7347cf33f4962db8eaf57c7820c24d70c41))
