@@ -23,7 +23,7 @@ export class FetchBuilder<
     'Content-Security-Policy': `default-src 'self'; connect-src ${FetchBuilder.serverUrl};`,
   };
 
-  method(m: 'PUT' | 'POST' | 'DELETE') {
+  method(m: 'GET' | 'PUT' | 'POST' | 'DELETE') {
     this.#init.method = m;
 
     return this;

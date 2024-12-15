@@ -168,7 +168,7 @@ exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
           "Content-Type": "application/json",
           "X-Username": "d",
         },
-        "method": "POST",
+        "method": "GET",
       },
       "name": "/notes/pull",
     },

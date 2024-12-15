@@ -109,9 +109,8 @@ export const pull = route(async () => {
   const accessToken = await tauriInvoke('get_access_token', {
     username: syncState.username,
   });
-
   const res = await new FetchBuilder('/notes/pull')
-    .method('POST')
+    .method('GET')
     .withAuth(syncState.username, accessToken)
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));

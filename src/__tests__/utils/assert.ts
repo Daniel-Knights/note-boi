@@ -169,7 +169,7 @@ const expectedRequests = {
     },
   },
   '/notes/pull': {
-    method: 'POST',
+    method: 'GET',
     withAuth: true,
   },
   '/account/delete': {
