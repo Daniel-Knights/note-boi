@@ -218,17 +218,23 @@ function mockRequest(
       status?: number;
     };
   } = {}
-): Call<void | Response> {
+) {
   if (s.syncState.loadingCount === 0) {
     assert.fail('Loading state not set');
   }
 
   const endpoint = url.split(/\/api(?=\/)/)[1] as Endpoint;
-  const reqPayload: { notes?: n.Note[] } = JSON.parse(req.body?.toString() ?? '{}');
 
   if (!ENDPOINTS.includes(endpoint)) {
     assert.fail(`Invalid endpoint: ${endpoint}`);
   }
+
+  const reqPayload: { notes?: n.Note[] } = JSON.parse(req.body?.toString() ?? '{}');
+  const calledWith = {
+    body: req.body,
+    method: req.method,
+    headers: req.headers,
+  };
 
   // Mock server error
   if (options.error?.endpoint === endpoint) {
@@ -251,6 +257,7 @@ function mockRequest(
 
     return {
       name: endpoint,
+      calledWith,
       promise: resolveImmediate(res),
     };
   }
@@ -402,6 +409,7 @@ function mockRequest(
 
   return {
     name: endpoint,
+    calledWith,
     promise: resolveImmediate(
       new Response(httpStatus === 204 ? null : JSON.stringify(resData), {
         status: httpStatus,
@@ -611,7 +619,7 @@ function mockTauriApi(
 }
 
 /** Mocks Tauri `event.emit` calls. */
-function mockTauriEmit(args: EmitArgs): Call | void {
+function mockTauriEmit(args: EmitArgs) {
   return {
     name: args.event,
     calledWith: args.payload,
@@ -619,7 +627,7 @@ function mockTauriEmit(args: EmitArgs): Call | void {
 }
 
 /** Mocks Tauri `event.listen` calls. */
-function mockTauriListener(args: ListenArgs): Call | void {
+function mockTauriListener(args: ListenArgs) {
   return {
     name: args.event,
   };
@@ -661,7 +669,7 @@ type ListenArgs = {
 
 type EmitArgs = {
   event: string;
-  payload?: unknown;
+  payload?: Record<string, unknown>;
 };
 
 type RequestResValue = {
@@ -679,7 +687,7 @@ type TauriApiResValue = Record<string, unknown[]> & {
 
 type Call<T = unknown> = {
   name: string;
-  calledWith?: unknown;
+  calledWith?: Record<string, unknown>;
   promise?: Promise<T>;
 };
 

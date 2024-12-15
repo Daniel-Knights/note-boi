@@ -160,6 +160,16 @@ exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -456,6 +466,14 @@ exports[`SyncStatus > Handles popups > PopupSyncError > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],

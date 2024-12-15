@@ -5,7 +5,7 @@ import { AppError, ERROR_CODE } from '../../classes';
 import { openedPopup, PopupType } from '../../store/popup';
 import { tauriInvoke } from '../../utils';
 import { clearMockApiResults, mockApi } from '../api';
-import { getAppDiv, resolveImmediate, waitUntil } from '../utils';
+import { assertRequest, getAppDiv, resolveImmediate, waitUntil } from '../utils';
 
 let main: typeof import('../../main');
 
@@ -42,6 +42,7 @@ describe('main', () => {
 
     assert.strictEqual(calls.size, 18);
     assert.isTrue(calls.request.has('/notes/pull'));
+    assertRequest('/notes/pull', calls.request[0]!.calledWith!);
     assert.isTrue(calls.invoke.has('get_all_notes'));
     assert.isTrue(calls.invoke.has('get_access_token'));
     assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });

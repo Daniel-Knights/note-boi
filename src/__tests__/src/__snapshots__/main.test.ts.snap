@@ -110,6 +110,16 @@ Do you want to update now?",
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],

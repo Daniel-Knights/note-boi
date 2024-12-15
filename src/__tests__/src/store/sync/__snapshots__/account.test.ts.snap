@@ -17,6 +17,14 @@ exports[`Account > changePassword > Changes password for currently logged in acc
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -94,6 +102,16 @@ exports[`Account > changePassword > Changes password for currently logged in acc
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"current_password":"2","new_password":"1","notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/account/change-password",
     },
   ],
@@ -109,6 +127,16 @@ exports[`Account > changePassword > Changes password for currently logged in acc
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"current_password":"1","new_password":"2","notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/account/change-password",
     },
   ],
@@ -221,6 +249,14 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -298,6 +334,16 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"current_password":"1","new_password":"2","notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/account/change-password",
     },
   ],
@@ -410,6 +456,14 @@ exports[`Account > changePassword > User not found > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"k","password":"2","notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/signup",
     },
   ],
@@ -447,6 +501,16 @@ exports[`Account > changePassword > User not found > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"current_password":"2","new_password":"1","notes":[]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "k",
+        },
+        "method": "PUT",
+      },
       "name": "/account/change-password",
     },
   ],
@@ -890,6 +954,14 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -967,6 +1039,16 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"current_password":"1","new_password":"2","notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/account/change-password",
     },
   ],
@@ -1074,6 +1156,14 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -1162,6 +1252,16 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "DELETE",
+      },
       "name": "/account/delete",
     },
   ],
@@ -1388,6 +1488,14 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -1476,6 +1584,16 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "DELETE",
+      },
       "name": "/account/delete",
     },
   ],
@@ -1597,6 +1715,14 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -1685,6 +1811,16 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "DELETE",
+      },
       "name": "/account/delete",
     },
   ],
@@ -1791,6 +1927,14 @@ exports[`Account > deleteAccount > User not found > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"k","password":"2","notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/signup",
     },
   ],
@@ -1839,6 +1983,16 @@ exports[`Account > deleteAccount > User not found > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "k",
+        },
+        "method": "DELETE",
+      },
       "name": "/account/delete",
     },
   ],
@@ -1933,6 +2087,14 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -2021,6 +2183,16 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "DELETE",
+      },
       "name": "/account/delete",
     },
   ],

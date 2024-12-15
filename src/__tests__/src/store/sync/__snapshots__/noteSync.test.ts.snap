@@ -61,6 +61,14 @@ exports[`Note (sync) > Edge cases > No local, no remote > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -250,6 +258,14 @@ exports[`Note (sync) > Edge cases > No local, some remote > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -834,6 +850,14 @@ exports[`Note (sync) > Edge cases > No remote, some local > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -1393,6 +1417,14 @@ exports[`Note (sync) > pull > Pulls notes from the server > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -1470,6 +1502,16 @@ exports[`Note (sync) > pull > Pulls notes from the server > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -2038,6 +2080,16 @@ exports[`Note (sync) > pull > Sets and resets loading state > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer undefined",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -2141,6 +2193,16 @@ exports[`Note (sync) > pull > Unauthorized > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer undefined",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -2235,6 +2297,14 @@ exports[`Note (sync) > pull > Updates editor if selected note is unedited > allC
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -2319,6 +2389,16 @@ exports[`Note (sync) > pull > Updates editor if selected note is unedited > allC
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -2746,6 +2826,14 @@ exports[`Note (sync) > pull > Updates note menu > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -2830,6 +2918,16 @@ exports[`Note (sync) > pull > Updates note menu > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -3251,6 +3349,16 @@ exports[`Note (sync) > pull > User not found > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "k",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -3390,6 +3498,16 @@ exports[`Note (sync) > pull > With encryptor error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -3518,6 +3636,14 @@ exports[`Note (sync) > pull > With server error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -3595,6 +3721,16 @@ exports[`Note (sync) > pull > With server error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -3701,6 +3837,14 @@ exports[`Note (sync) > push > Doesn't push empty notes > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -3872,6 +4016,14 @@ exports[`Note (sync) > push > Pushes notes to the server > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -4113,6 +4265,16 @@ Sugar
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -4446,6 +4608,14 @@ exports[`Note (sync) > push > Sets and resets loading state > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -4538,6 +4708,16 @@ exports[`Note (sync) > push > Sets and resets loading state > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -4638,6 +4818,14 @@ exports[`Note (sync) > push > Unauthorized > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -4730,6 +4918,16 @@ exports[`Note (sync) > push > Unauthorized > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -4843,6 +5041,14 @@ exports[`Note (sync) > push > User not found > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"k","password":"2","notes":[{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/signup",
     },
   ],
@@ -4897,6 +5103,16 @@ exports[`Note (sync) > push > User not found > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "k",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -5186,6 +5402,14 @@ exports[`Note (sync) > push > With encryptor error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -5378,6 +5602,14 @@ exports[`Note (sync) > push > With server error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -5470,6 +5702,16 @@ exports[`Note (sync) > push > With server error > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -5957,6 +6199,14 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -6080,6 +6330,16 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -6117,6 +6377,16 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -6286,6 +6556,16 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -6516,6 +6796,14 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -6626,6 +6914,16 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -6672,12 +6970,32 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -6873,6 +7191,16 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],
@@ -7172,6 +7500,14 @@ exports[`Note (sync) > unsyncedNoteIds > new > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -7459,6 +7795,16 @@ Sugar
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -7709,6 +8055,16 @@ Sugar
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/auth/logout",
     },
   ],
@@ -7736,6 +8092,14 @@ Sugar
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],
@@ -7809,6 +8173,16 @@ Sugar
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
       "name": "/notes/push",
     },
   ],

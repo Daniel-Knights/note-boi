@@ -3,8 +3,9 @@ import * as s from '../../../store/sync';
 import { NOTE_EVENTS } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
+import { UUID_REGEX } from '../../constant';
 import localNotes from '../../notes.json';
-import { UUID_REGEX, waitForAutoPush, waitUntil } from '../../utils';
+import { waitForAutoPush, waitUntil } from '../../utils';
 
 const existingNoteIndexSorted = 2;
 const existingNote = localNotes[8]!;

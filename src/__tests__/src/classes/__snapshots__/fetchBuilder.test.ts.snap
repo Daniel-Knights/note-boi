@@ -17,6 +17,17 @@ exports[`FetchBuilder > With auth > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Test-Header": "test",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
       "name": "/notes/pull",
     },
   ],
@@ -117,6 +128,15 @@ exports[`FetchBuilder > Without auth > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Test-Header": "test",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],

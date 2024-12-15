@@ -4,7 +4,7 @@ import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
-import { assertAppError, getByTestId, waitUntil } from '../../utils';
+import { assertAppError, assertRequest, getByTestId, waitUntil } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupChangePassword from '../../../components/PopupChangePassword.vue';
@@ -187,6 +187,7 @@ describe('PopupChangePassword', () => {
     assert.lengthOf(wrapper.emitted('close')!, 1);
     assert.strictEqual(calls.size, 3);
     assert.isTrue(calls.request.has('/account/change-password'));
+    assertRequest('/account/change-password', calls.request[0]!.calledWith!);
     assert.isTrue(calls.invoke.has('get_access_token'));
     assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     assert.isTrue(calls.invoke.has('set_access_token'));

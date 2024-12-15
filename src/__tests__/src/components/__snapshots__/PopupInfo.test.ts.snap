@@ -206,6 +206,14 @@ exports[`PopupInfo > Renders correct description list items > allCalls 1`] = `
   [
     "request",
     {
+      "calledWith": {
+        "body": "{"username":"d","password":"1"}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
       "name": "/auth/login",
     },
   ],

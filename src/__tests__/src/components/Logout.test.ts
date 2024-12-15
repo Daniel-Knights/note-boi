@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
 import { clearMockApiResults, mockApi, mockDb } from '../../api';
-import { waitUntil } from '../../utils';
+import { assertRequest, waitUntil } from '../../utils';
 
 import Logout from '../../../components/Logout.vue';
 
@@ -44,6 +44,7 @@ describe('Logout', () => {
     assert.isFalse(s.syncState.isLoggedIn);
     assert.strictEqual(calls.size, 4);
     assert.isTrue(calls.request.has('/auth/logout'));
+    assertRequest('/auth/logout', calls.request[0]!.calledWith!);
     assert.isTrue(calls.invoke.has('get_access_token'));
     assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     assert.isTrue(calls.invoke.has('delete_access_token'));

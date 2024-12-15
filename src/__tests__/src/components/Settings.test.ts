@@ -11,6 +11,7 @@ import { selectedTheme } from '../../../store/theme';
 import { tauriInvoke } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
 import {
+  assertRequest,
   findByTestId,
   getAppDiv,
   getByTestId,
@@ -244,6 +245,7 @@ describe('Settings', () => {
       assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
+      assertRequest('/account/delete', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('delete_access_token'));

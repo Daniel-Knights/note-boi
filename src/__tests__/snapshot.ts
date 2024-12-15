@@ -1,12 +1,19 @@
 import * as n from '../store/note';
 import * as s from '../store/sync';
 import * as u from '../store/update';
-import { KeyStore, Storage, STORAGE_KEYS_STRING, StorageKeyString } from '../classes';
+import {
+  EncryptedNote,
+  KeyStore,
+  Storage,
+  STORAGE_KEYS_STRING,
+  StorageKeyString,
+} from '../classes';
 import { openedPopup } from '../store/popup';
 import { selectedTheme } from '../store/theme';
 
 import { allCalls, mockDb } from './api';
-import { UUID_REGEX } from './utils';
+import { UUID_REGEX } from './constant';
+import { isObj } from './utils';
 
 /** Snapshots app state. Replaces variable values with placeholders. */
 export async function snapshotState() {
@@ -71,6 +78,21 @@ export async function snapshotState() {
       }));
     }
 
+    if ('body' in calledWith && typeof calledWith.body === 'string') {
+      const parsedBody = JSON.parse(calledWith.body);
+
+      if ('notes' in parsedBody) {
+        parsedBody.notes = (parsedBody.notes as EncryptedNote[]).map((note) => ({
+          ...note,
+          id: 'id',
+          timestamp: 0,
+          content: 'content',
+        }));
+      }
+
+      calledWith.body = JSON.stringify(parsedBody);
+    }
+
     if (typeof calledWith.id === 'string' && UUID_REGEX.test(calledWith.id)) {
       calledWith.id = 'id';
     }
@@ -97,8 +119,4 @@ export async function snapshotState() {
   Object.keys(STORAGE_KEYS_STRING).forEach((key) => {
     expect(Storage.get(key as StorageKeyString)).toMatchSnapshot(`Storage.get('${key}')`);
   });
-}
-
-function isObj(obj: unknown): obj is Record<string, unknown> {
-  return typeof obj === 'object' && obj !== null;
 }

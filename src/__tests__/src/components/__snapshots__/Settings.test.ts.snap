@@ -47,6 +47,16 @@ exports[`Settings > Account menu item > Delete account menu item > allCalls 1`] 
   [
     "request",
     {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "DELETE",
+      },
       "name": "/account/delete",
     },
   ],

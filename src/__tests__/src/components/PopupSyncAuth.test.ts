@@ -4,7 +4,13 @@ import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
 import { clearMockApiResults, mockApi } from '../../api';
-import { assertAppError, findByTestId, getByTestId, waitUntil } from '../../utils';
+import {
+  assertAppError,
+  assertRequest,
+  findByTestId,
+  getByTestId,
+  waitUntil,
+} from '../../utils';
 
 import Popup from '../../../components/Popup.vue';
 import PopupSyncAuth from '../../../components/PopupSyncAuth.vue';
@@ -224,6 +230,7 @@ describe('PopupSyncAuth', () => {
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.request.has('/auth/login'));
+      assertRequest('/auth/login', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'd',
@@ -346,6 +353,7 @@ describe('PopupSyncAuth', () => {
       assert.lengthOf(wrapper.emitted('close')!, 1);
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/auth/signup'));
+      assertRequest('/auth/signup', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
         username: 'k',
