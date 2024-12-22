@@ -64,8 +64,8 @@ importers:
         specifier: 2.4.6
         version: 2.4.6
       changenog:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.2.0
+        version: 1.2.0
       eslint:
         specifier: ^9.17.0
         version: 9.17.0
@@ -1176,8 +1176,8 @@ packages:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
 
-  changenog@1.0.0:
-    resolution: {integrity: sha512-8za4HhYaeVKmpCC4O8ITphm5ckBaUus/CDK03Yj5xjRjvB9sHMEodWkOYxOCMPo9eGJaNTCh+398UDZD53273A==}
+  changenog@1.2.0:
+    resolution: {integrity: sha512-OzSnyleNYEJbprFWTCsW3AFQ9LWHH/QBKLbkJH+tyELh2B1q+44kbB6APhMCPJdZIrHjZVZV6edQWYTw4gcuEQ==}
     hasBin: true
 
   check-error@2.1.1:
@@ -3677,7 +3677,7 @@ snapshots:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  changenog@1.0.0:
+  changenog@1.2.0:
     dependencies:
       gitlog: 5.1.0
     transitivePeerDependencies:
