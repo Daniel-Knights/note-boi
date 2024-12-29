@@ -13,7 +13,7 @@
     "dev": "tauri dev",
     "build": "pnpm run checks && tauri build",
     "build:debug": "tauri build --debug",
-    "icon": "pnpx @tauri-apps/tauricon ./artwork/icon.png",
+    "icon": "tauri icon ./artwork/icon.png",
     "info": "tauri info",
     "test": "vitest run",
     "test:watch": "vitest",
