@@ -1,5 +1,6 @@
 import {
   AppError,
+  DebounceQueue,
   Encryptor,
   ERROR_CODE,
   ErrorConfig,
@@ -40,6 +41,8 @@ export type UnsyncedNoteIds = {
 
 export const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
+const pushQueue = new DebounceQueue();
+
 /** Syncs local and remote notes. */
 export async function syncNotes(remoteNotes: Note[]) {
   const hasNoLocalNotes =
@@ -65,6 +68,7 @@ export async function syncNotes(remoteNotes: Note[]) {
   if (remoteSelectedNote && selectedNoteIsUnsynced) {
     noteState.selectedNote.content = remoteSelectedNote.content;
     noteState.selectedNote.timestamp = remoteSelectedNote.timestamp;
+
     document.dispatchEvent(new Event(NOTE_EVENTS.change));
   }
 
@@ -82,6 +86,7 @@ export async function syncNotes(remoteNotes: Note[]) {
 
   if (mergedNotes.length > 0) {
     noteState.notes = mergedNotes;
+
     sortStateNotes();
   } else if (hasNoLocalNotes) {
     newNote();
@@ -138,7 +143,7 @@ export const pull = route(async () => {
 });
 
 // Push
-export const push = route(async () => {
+export const push = route(async (timeoutId?: number) => {
   if (!syncState.isLoggedIn || syncState.unsyncedNoteIds.size === 0) return;
 
   const errorConfig = {
@@ -147,24 +152,15 @@ export const push = route(async () => {
     display: { sync: true },
   } satisfies Omit<ErrorConfig<typeof push>, 'message'>;
 
-  const accessToken = await tauriInvoke('get_access_token', {
-    username: syncState.username,
-  });
-
-  const encryptedNotes = await Encryptor.encryptNotes(
-    noteState.notes.filter((nt) => !isEmptyNote(nt))
-  ).catch((err) => throwEncryptorError(errorConfig, err));
-  if (!encryptedNotes) return;
-
-  // Cache ids and clear before request to prevent
-  // race condition if a note is edited mid-push
-  const cachedUnsyncedNoteIds = {
-    new: syncState.unsyncedNoteIds.new,
-    edited: [...syncState.unsyncedNoteIds.edited],
-    deleted: [...syncState.unsyncedNoteIds.deleted],
-  };
-
-  syncState.unsyncedNoteIds.clear();
+  const [accessToken, encryptedNotes] = await Promise.all([
+    tauriInvoke('get_access_token', {
+      username: syncState.username,
+    }),
+    Encryptor.encryptNotes(noteState.notes.filter((nt) => !isEmptyNote(nt))).catch(
+      (err) => throwEncryptorError(errorConfig, err)
+    ),
+  ]);
+  if (!encryptedNotes || pushQueue.isCancelled(timeoutId)) return;
 
   const res = await new FetchBuilder('/notes/push')
     .method('PUT')
@@ -172,16 +168,15 @@ export const push = route(async () => {
     .body({ notes: encryptedNotes })
     .fetch()
     .catch((err) => throwFetchError(errorConfig, err));
-  if (!res) return;
+  if (!res || pushQueue.isCancelled(timeoutId)) return;
 
   if (resIsOk(res)) {
+    syncState.unsyncedNoteIds.clear();
+
     resetAppError();
 
     syncState.isLoggedIn = true;
   } else {
-    // Add back unsynced note ids
-    syncState.unsyncedNoteIds.add(cachedUnsyncedNoteIds);
-
     throw new AppError({
       ...errorConfig,
       message: parseErrorRes(res),
@@ -190,13 +185,12 @@ export const push = route(async () => {
 });
 
 // Auto-syncing
-let timeout: number | undefined;
-
 export function autoPush(): void {
   if (!syncState.isLoggedIn) return;
 
-  clearTimeout(timeout);
-  timeout = window.setTimeout(push, 500);
+  const timeoutId = pushQueue.add(() => {
+    return push(timeoutId);
+  }, 500);
 }
 
 // Keep track of notes with unsynced changes
