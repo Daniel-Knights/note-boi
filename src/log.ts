@@ -15,21 +15,23 @@ export function forwardConsole(
 ) {
   const original = console[fnName];
 
-  console[fnName] = (message: unknown) => {
-    original(message);
+  console[fnName] = (...messages: unknown[]) => {
+    original(...messages);
 
-    if (message instanceof Error) {
-      logger(message.name);
-      logger(message.message);
-      logger(message.stack?.replaceAll(/\n/g, '\n    ') || '');
+    if (messages[0] instanceof Error) {
+      logger(messages[0].name);
+      logger(messages[0].message);
+      logger(messages[0].stack?.replaceAll(/\n/g, '\n    ') || '');
 
       return;
     }
 
-    if (typeof message === 'object') {
-      logger(JSON.stringify(message));
-    }
+    messages.forEach((msg) => {
+      if (typeof msg === 'object') {
+        logger(JSON.stringify(msg));
+      }
 
-    logger(String(message));
+      logger(String(msg));
+    });
   };
 }
