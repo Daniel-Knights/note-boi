@@ -39,10 +39,11 @@ describe('Log', () => {
     it('console.log', () => {
       forwardConsole('log', mockLogger);
 
-      console.log('test message');
+      console.log('test message', 'test message 2');
 
-      expect(mockLogger).toHaveBeenCalledOnce();
+      expect(mockLogger).toHaveBeenCalledTimes(2);
       expect(mockLogger).toHaveBeenCalledWith('test message');
+      expect(mockLogger).toHaveBeenCalledWith('test message 2');
     });
 
     it('console.error', () => {
