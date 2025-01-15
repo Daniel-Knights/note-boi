@@ -4,7 +4,7 @@ import { AppError, ERROR_CODE } from '../../../classes';
 import { syncState } from '../index';
 
 /** Decorator for request calls that handles load state setting, and errors. */
-export function route<K, T extends (...args: K[]) => Promise<Awaited<ReturnType<T>>>>(
+export function route<T extends (...args: never[]) => Promise<Awaited<ReturnType<T>>>>(
   cb: T
 ) {
   return async (...args: Parameters<T>): Promise<Awaited<ReturnType<T>> | void> => {
