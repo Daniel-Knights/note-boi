@@ -235,12 +235,10 @@ describe('Settings', () => {
 
       const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
-      await resolveImmediate(); // We can't await the deleteAccount click handler directly
-      await Promise.all(promises);
-      await resolveImmediate(); // Defer execution to /account/delete
+
+      await waitUntil(() => !findByTestId(wrapper, 'delete-account').exists());
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-      assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
       assert.lengthOf(wrapperVm.menuItems, 4);
       assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
