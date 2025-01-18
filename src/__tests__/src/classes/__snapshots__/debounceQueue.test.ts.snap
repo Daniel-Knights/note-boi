@@ -1,0 +1,244 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DebounceQueue > add > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DebounceQueue > add > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DebounceQueue > add > Storage.get('THEME') 1`] = `null`;
+
+exports[`DebounceQueue > add > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DebounceQueue > add > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DebounceQueue > add > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`DebounceQueue > add > allCalls 1`] = `[]`;
+
+exports[`DebounceQueue > add > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DebounceQueue > add > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DebounceQueue > add > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`DebounceQueue > add > openedPopup 1`] = `undefined`;
+
+exports[`DebounceQueue > add > selectedTheme 1`] = `"System"`;
+
+exports[`DebounceQueue > add > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`DebounceQueue > add > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`DebounceQueue > clear > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DebounceQueue > clear > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DebounceQueue > clear > Storage.get('THEME') 1`] = `null`;
+
+exports[`DebounceQueue > clear > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DebounceQueue > clear > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DebounceQueue > clear > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`DebounceQueue > clear > allCalls 1`] = `[]`;
+
+exports[`DebounceQueue > clear > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DebounceQueue > clear > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DebounceQueue > clear > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`DebounceQueue > clear > openedPopup 1`] = `undefined`;
+
+exports[`DebounceQueue > clear > selectedTheme 1`] = `"System"`;
+
+exports[`DebounceQueue > clear > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`DebounceQueue > clear > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`DebounceQueue > isCancelled > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DebounceQueue > isCancelled > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DebounceQueue > isCancelled > Storage.get('THEME') 1`] = `null`;
+
+exports[`DebounceQueue > isCancelled > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DebounceQueue > isCancelled > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DebounceQueue > isCancelled > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`DebounceQueue > isCancelled > allCalls 1`] = `[]`;
+
+exports[`DebounceQueue > isCancelled > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DebounceQueue > isCancelled > mockDb 1`] = `
+{
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DebounceQueue > isCancelled > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`DebounceQueue > isCancelled > openedPopup 1`] = `undefined`;
+
+exports[`DebounceQueue > isCancelled > selectedTheme 1`] = `"System"`;
+
+exports[`DebounceQueue > isCancelled > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNoteIds": {
+    "add": [Function],
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "size": 0,
+  },
+  "username": "",
+}
+`;
+
+exports[`DebounceQueue > isCancelled > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

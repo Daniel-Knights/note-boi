@@ -8,6 +8,13 @@ export function resolveImmediate<T>(val?: T): Promise<T | void> {
   });
 }
 
+/** Returns a promise that resolves after `time`. */
+export function wait(time: number): Promise<void> {
+  return new Promise((res) => {
+    setTimeout(res, time);
+  });
+}
+
 /** Waits until `cond` is `true`. */
 export function waitUntil<T>(condFn: () => T): Promise<T> {
   return vi.waitUntil(condFn, { timeout: 10000 });

@@ -5,7 +5,7 @@ import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
 import { UUID_REGEX } from '../../constant';
 import localNotes from '../../notes.json';
-import { waitForAutoPush, waitUntil } from '../../utils';
+import { wait, waitForAutoPush, waitUntil } from '../../utils';
 
 const existingNoteIndexSorted = 2;
 const existingNote = localNotes[8]!;
@@ -480,10 +480,7 @@ describe('Note store', () => {
       const emptyNote = new n.Note();
 
       // Ensure reliable timestamp check later on
-      await new Promise((res) => {
-        setTimeout(res, 1);
-      });
-
+      await wait(10);
       await n.getAllNotes();
 
       n.noteState.notes.push(emptyNote);
