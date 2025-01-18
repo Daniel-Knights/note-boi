@@ -1,3 +1,8 @@
+## [2.0.4](https://github.com/Daniel-Knights/note-boi/compare/v2.0.3...v2.0.4) (18/01/2025)
+
+- fix(sync): auto push DebounceQueue, push perf improvements ([afb48ac](https://github.com/Daniel-Knights/note-boi/commit/afb48ace60386eb7fd1407722e680c02a8a6472a))
+- fix(log): support variadic ([aef0179](https://github.com/Daniel-Knights/note-boi/commit/aef017925ba2e70eea128241ac32b46422ab3ca7))
+
 ## [2.0.3](https://github.com/Daniel-Knights/note-boi/compare/v2.0.2...v2.0.3) (15/12/2024)
 
 - fix(tauri): connect-src url ([974339b](https://github.com/Daniel-Knights/note-boi/commit/974339be532242991c4ca435f8bc9baaee37efb8))
