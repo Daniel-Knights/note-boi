@@ -1,3 +1,7 @@
+## [2.1.0](https://github.com/Daniel-Knights/note-boi/compare/v2.0.4...v2.1.0) (19/01/2025)
+
+- feat(menu): add maximise item ([37920af](https://github.com/Daniel-Knights/note-boi/commit/37920af176d19e0f6e33cca0f22eefc3d7f01732))
+
 ## [2.0.4](https://github.com/Daniel-Knights/note-boi/compare/v2.0.3...v2.0.4) (18/01/2025)
 
 - fix(sync): auto push DebounceQueue, push perf improvements ([afb48ac](https://github.com/Daniel-Knights/note-boi/commit/afb48ace60386eb7fd1407722e680c02a8a6472a))
