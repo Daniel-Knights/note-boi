@@ -82,8 +82,8 @@ fn build_menu(app: &App<Wry>) -> Menu<Wry> {
   // View menu
   let view_menu = &SubmenuBuilder::new(app, "View")
     .minimize()
+    .maximize()
     .hide()
-    // .zoom()
     .fullscreen()
     .build()
     .unwrap();
