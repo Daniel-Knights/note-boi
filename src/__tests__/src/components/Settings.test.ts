@@ -6,7 +6,7 @@ import * as s from '../../../store/sync';
 import * as u from '../../../store/update';
 import { Storage } from '../../../classes';
 import { COLOUR_THEMES } from '../../../constant';
-import { openedPopup, PopupType } from '../../../store/popup';
+import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { selectedTheme } from '../../../store/theme';
 import { tauriInvoke } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
@@ -151,7 +151,7 @@ describe('Settings', () => {
     await infoWrapper.trigger('click');
     await Promise.all(promises);
 
-    assert.strictEqual(openedPopup.value, PopupType.Info);
+    assert.strictEqual(openedPopup.value, POPUP_TYPE.INFO);
     assert.isTrue(findByTestId(wrapper, 'popup-info').isVisible());
 
     wrapper.getComponent(PopupInfo).vm.$emit('close');
@@ -201,7 +201,7 @@ describe('Settings', () => {
       const changePasswordWrapper = findByTestId(wrapper, 'change-password');
       await changePasswordWrapper.trigger('click');
 
-      assert.strictEqual(openedPopup.value, PopupType.ChangePassword);
+      assert.strictEqual(openedPopup.value, POPUP_TYPE.CHANGE_PASSWORD);
       assert.isTrue(findByTestId(wrapper, 'popup-change-password').isVisible());
 
       wrapper.getComponent(PopupChangePassword).vm.$emit('close');

@@ -1,15 +1,15 @@
-import { openedPopup, PopupType } from '../../../store/popup';
+import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 
 describe('Popup', () => {
   it('Sets opened popup', () => {
     assert.isUndefined(openedPopup.value);
-    openedPopup.value = PopupType.Auth;
-    assert.strictEqual(openedPopup.value, PopupType.Auth);
-    openedPopup.value = PopupType.Error;
-    assert.strictEqual(openedPopup.value, PopupType.Error);
-    openedPopup.value = PopupType.Info;
-    assert.strictEqual(openedPopup.value, PopupType.Info);
+    openedPopup.value = POPUP_TYPE.AUTH;
+    assert.strictEqual(openedPopup.value, POPUP_TYPE.AUTH);
+    openedPopup.value = POPUP_TYPE.ERROR;
+    assert.strictEqual(openedPopup.value, POPUP_TYPE.ERROR);
+    openedPopup.value = POPUP_TYPE.INFO;
+    assert.strictEqual(openedPopup.value, POPUP_TYPE.INFO);
 
-    assert.lengthOf(Object.keys(PopupType), 4 * 2);
+    assert.lengthOf(Object.keys(POPUP_TYPE), 4);
   });
 });

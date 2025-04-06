@@ -2,7 +2,7 @@ import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import * as u from '../../store/update';
 import { AppError, ERROR_CODE } from '../../classes';
-import { openedPopup, PopupType } from '../../store/popup';
+import { openedPopup, POPUP_TYPE } from '../../store/popup';
 import { tauriInvoke } from '../../utils';
 import { clearMockApiResults, mockApi } from '../api';
 import { assertRequest, getAppDiv, resolveImmediate, waitUntil } from '../utils';
@@ -121,7 +121,7 @@ describe('main', () => {
       expect(mockCb).not.toHaveBeenCalledOnce();
       expect(pushSpy).toHaveBeenCalledOnce();
 
-      assert.strictEqual(openedPopup.value, PopupType.Error);
+      assert.strictEqual(openedPopup.value, POPUP_TYPE.ERROR);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.deepEqual(calls.tauriApi[0]!.calledWith, {

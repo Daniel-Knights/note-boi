@@ -14,7 +14,7 @@ import {
   newNote,
   noteState,
 } from './store/note';
-import { openedPopup, PopupType } from './store/popup';
+import { openedPopup, POPUP_TYPE } from './store/popup';
 import { deleteAccount, pull, push, syncState } from './store/sync';
 import { handleUpdate } from './store/update';
 import { isDev, tauriListen } from './utils';
@@ -48,7 +48,7 @@ tauriListen('export-note', () => {
 tauriListen('export-all-notes', () => exportNotes(noteState.notes.map((nt) => nt.id)));
 tauriListen('delete-account', deleteAccount);
 tauriListen('change-password', () => {
-  openedPopup.value = PopupType.ChangePassword;
+  openedPopup.value = POPUP_TYPE.CHANGE_PASSWORD;
 });
 
 export async function exitApp(cb: () => void): Promise<void> {
@@ -65,7 +65,7 @@ export async function exitApp(cb: () => void): Promise<void> {
       );
 
       if (closeAnyway) cb();
-      else openedPopup.value = PopupType.Error;
+      else openedPopup.value = POPUP_TYPE.ERROR;
 
       return;
     }

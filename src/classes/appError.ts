@@ -35,7 +35,7 @@ export type ErrorConfig<T extends (...args: any) => void> = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class AppError<T extends (...args: any) => void> {
+export class AppError<T extends (...args: any) => void = (...args: any) => void> {
   readonly code;
   readonly message;
   readonly display;

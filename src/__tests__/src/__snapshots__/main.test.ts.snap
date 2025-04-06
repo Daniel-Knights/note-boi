@@ -741,7 +741,7 @@ exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > 
 }
 `;
 
-exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > openedPopup 1`] = `1`;
+exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > openedPopup 1`] = `"error"`;
 
 exports[`main > exitApp > Triggers ask dialog on push error, and answers "No" > selectedTheme 1`] = `"System"`;
 

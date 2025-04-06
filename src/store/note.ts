@@ -15,19 +15,29 @@ export type UnsyncedEventDetail = {
 export class Note {
   readonly id: string = crypto.randomUUID();
   timestamp = Date.now();
-  content = {
-    delta: <Partial<Delta>>{
-      ops: [],
-    },
+  content: NoteContent = {
     title: '',
     body: '',
+    delta: {
+      ops: [],
+    },
   };
 }
 
-export const noteState = reactive({
-  notes: <Note[]>[],
+type NoteContent = {
+  title: string;
+  body: string;
+  delta: Partial<Delta>;
+};
+
+export const noteState = reactive<{
+  notes: Note[];
+  selectedNote: Note;
+  extraSelectedNotes: Note[];
+}>({
+  notes: [],
   selectedNote: new Note(),
-  extraSelectedNotes: <Note[]>[],
+  extraSelectedNotes: [],
 });
 
 const newNoteEvent = new CustomEvent(NOTE_EVENTS.new);

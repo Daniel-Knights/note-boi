@@ -30,15 +30,6 @@ import {
   throwFetchError,
 } from './utils';
 
-export type UnsyncedNoteIds = {
-  new: string;
-  edited: Set<string>;
-  deleted: Set<string>;
-  size: number;
-  clear: () => void;
-  add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
-};
-
 export const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
 const pushQueue = new DebounceQueue();

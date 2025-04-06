@@ -9,7 +9,7 @@
     <!-- Error -->
     <button
       v-else-if="syncState.appError.display?.sync"
-      @click="openedPopup = PopupType.Error"
+      @click="openedPopup = POPUP_TYPE.ERROR"
       class="sync-status__error button"
       title="Sync error"
       data-test-id="error"
@@ -35,12 +35,12 @@
       <CloudSyncIcon />
     </button>
   </div>
-  <PopupSyncAuth v-if="openedPopup === PopupType.Auth" @close="handlePopupClose" />
-  <PopupSyncError v-if="openedPopup === PopupType.Error" @close="handlePopupClose" />
+  <PopupSyncAuth v-if="openedPopup === POPUP_TYPE.AUTH" @close="handlePopupClose" />
+  <PopupSyncError v-if="openedPopup === POPUP_TYPE.ERROR" @close="handlePopupClose" />
 </template>
 
 <script lang="ts" setup>
-import { openedPopup, PopupType } from '../store/popup';
+import { openedPopup, POPUP_TYPE } from '../store/popup';
 import { logout, syncState } from '../store/sync';
 import { tauriListen } from '../utils';
 
@@ -53,7 +53,7 @@ import CloudTickIcon from './svg/CloudTickIcon.vue';
 function handlePopupAuthEvent() {
   // Prevent bug where event.emit triggers event.listen
   if (!syncState.isLoggedIn) {
-    openedPopup.value = PopupType.Auth;
+    openedPopup.value = POPUP_TYPE.AUTH;
   }
 }
 

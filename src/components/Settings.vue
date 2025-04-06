@@ -5,9 +5,9 @@
     </button>
     <DropMenu v-if="show" @close="show = false" :items="menuItems" />
   </div>
-  <PopupInfo v-if="openedPopup === PopupType.Info" @close="openedPopup = undefined" />
+  <PopupInfo v-if="openedPopup === POPUP_TYPE.INFO" @close="openedPopup = undefined" />
   <PopupChangePassword
-    v-if="openedPopup === PopupType.ChangePassword"
+    v-if="openedPopup === POPUP_TYPE.CHANGE_PASSWORD"
     @close="openedPopup = undefined"
   />
 </template>
@@ -18,7 +18,7 @@ import { computed, ref } from 'vue';
 
 import { COLOUR_THEMES, UPDATE_STRATEGIES } from '../constant';
 import { exportNotes, noteState } from '../store/note';
-import { openedPopup, PopupType } from '../store/popup';
+import { openedPopup, POPUP_TYPE } from '../store/popup';
 import { deleteAccount, syncState } from '../store/sync';
 import { selectedTheme, setTheme } from '../store/theme';
 import { setUpdateStrategy, updateAndRelaunch, updateState } from '../store/update';
@@ -62,7 +62,7 @@ const menuItems = computed(() => {
       label: 'Info',
       testId: 'info',
       clickHandler: () => {
-        openedPopup.value = PopupType.Info;
+        openedPopup.value = POPUP_TYPE.INFO;
       },
     },
   ];
@@ -88,7 +88,7 @@ const menuItems = computed(() => {
           label: 'Change password',
           testId: 'change-password',
           clickHandler: () => {
-            openedPopup.value = PopupType.ChangePassword;
+            openedPopup.value = POPUP_TYPE.CHANGE_PASSWORD;
           },
         },
         {

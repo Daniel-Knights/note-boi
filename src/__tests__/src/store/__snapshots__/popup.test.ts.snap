@@ -43,7 +43,7 @@ exports[`Popup > Sets opened popup > noteState 1`] = `
 }
 `;
 
-exports[`Popup > Sets opened popup > openedPopup 1`] = `2`;
+exports[`Popup > Sets opened popup > openedPopup 1`] = `"info"`;
 
 exports[`Popup > Sets opened popup > selectedTheme 1`] = `"System"`;
 

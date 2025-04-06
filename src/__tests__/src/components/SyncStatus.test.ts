@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
-import { openedPopup, PopupType } from '../../../store/popup';
+import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { tauriInvoke } from '../../../utils';
 import { mockApi } from '../../api';
 import {
@@ -107,7 +107,7 @@ describe('SyncStatus', () => {
     const errorButton = getByTestId(wrapper, 'error');
     await errorButton.trigger('click');
 
-    assert.strictEqual(openedPopup.value, PopupType.Error);
+    assert.strictEqual(openedPopup.value, POPUP_TYPE.ERROR);
     assert.isTrue(findByTestId(wrapper, 'error-message').exists());
     assert.isTrue(findByTestId(wrapper, 'try-again').exists());
   });
@@ -137,7 +137,7 @@ describe('SyncStatus', () => {
       await findByTestId(wrapper, 'error').trigger('click');
 
       assert.isTrue(findByTestId(wrapper, 'popup-error').isVisible());
-      assert.strictEqual(openedPopup.value, PopupType.Error);
+      assert.strictEqual(openedPopup.value, POPUP_TYPE.ERROR);
 
       const resetErrorSpy = vi.spyOn(s, 'resetAppError');
 
