@@ -13,7 +13,7 @@ export const updateState = reactive({
 
 export async function handleUpdate(): Promise<void> {
   const update = await check();
-  if (!update?.available) return;
+  if (!update) return;
 
   updateState.isAvailable = true;
 

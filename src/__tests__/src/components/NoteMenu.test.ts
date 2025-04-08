@@ -149,7 +149,7 @@ describe('NoteMenu', () => {
   it('Sets contextmenu ev', async () => {
     const wrapper = shallowMount(NoteMenu);
     const wrapperVm = wrapper.vm as unknown as {
-      contextMenuEv: MouseEvent;
+      contextMenuEv?: MouseEvent;
     };
 
     assert.isUndefined(wrapperVm.contextMenuEv);
@@ -157,7 +157,7 @@ describe('NoteMenu', () => {
     const listWrapper = getByTestId(wrapper, 'note-list');
     await listWrapper.trigger('contextmenu');
 
-    assert.isTrue(wrapperVm.contextMenuEv instanceof MouseEvent);
+    assert.isTrue(wrapperVm.contextMenuEv! instanceof MouseEvent);
   });
 
   it('Sets menu width with drag-bar', async () => {

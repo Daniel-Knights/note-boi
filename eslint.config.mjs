@@ -1,23 +1,23 @@
 // @ts-check
 import js from '@eslint/js';
-import vueEslintConfigTypescript from '@vue/eslint-config-typescript';
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
 import eslintConfigPrettier from 'eslint-config-prettier';
 // @ts-expect-error - eslint-plugin-import does not have types
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintPluginVue from 'eslint-plugin-vue';
 import globals from 'globals';
-import typescriptEslint, { configs as typescriptEslintConfigs } from 'typescript-eslint';
+import { configs as typescriptEslintConfigs } from 'typescript-eslint';
 import vueEslintParser from 'vue-eslint-parser';
 
-export default typescriptEslint.config(
+export default defineConfigWithVueTs(
   js.configs.recommended,
   eslintConfigPrettier,
   eslintPluginImport.flatConfigs.recommended,
   eslintPluginImport.flatConfigs.typescript,
   ...typescriptEslintConfigs.recommended,
   ...eslintPluginVue.configs['flat/strongly-recommended'],
-  ...vueEslintConfigTypescript(),
+  vueTsConfigs.recommended,
   {
     ignores: ['**/node_modules/**/*', '**/dist/**/*', '**/src-tauri'],
   },

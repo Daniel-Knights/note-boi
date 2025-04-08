@@ -73,7 +73,7 @@ const menuItems = computed(() => {
       testId: 'update-restart',
       clickHandler: async () => {
         const update = await check();
-        if (!update?.available) return;
+        if (!update) return;
 
         updateAndRelaunch(update);
       },
