@@ -2,7 +2,7 @@ import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { ERROR_CODE, Storage } from '../../../../classes';
 import { isEmptyNote } from '../../../../utils';
-import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../api';
+import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import localNotes from '../../../notes.json';
 import { assertAppError, assertLoadingState, assertRequest } from '../../../utils';
 
@@ -21,9 +21,7 @@ describe('Auth', () => {
     assert.isEmpty(s.syncState.username);
     assert.isFalse(s.syncState.isLoggedIn);
     assert.isNull(Storage.get('USERNAME'));
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.invoke.has('delete_access_token'));
-    assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+    assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.emits.has('auth'));
     assert.deepEqual(calls.emits[0]!.calledWith, {
       isFrontendEmit: true,
@@ -59,14 +57,9 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(Storage.get('USERNAME'), 'd');
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'd',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
@@ -106,14 +99,9 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(Storage.get('USERNAME'), 'd');
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'd',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
@@ -148,14 +136,9 @@ describe('Auth', () => {
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'd',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -275,14 +258,9 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(Storage.get('USERNAME'), 'k');
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/signup'));
       assertRequest('/auth/signup', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'k',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -315,14 +293,9 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
       assert.strictEqual(Storage.get('USERNAME'), 'k');
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/signup'));
       assertRequest('/auth/signup', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'k',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -355,14 +328,9 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.username, 'k');
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(Storage.get('USERNAME'), 'k');
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/signup'));
       assertRequest('/auth/signup', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'k',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -453,13 +421,9 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -496,13 +460,9 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -522,8 +482,6 @@ describe('Auth', () => {
 
       clearMockApiResults({ calls });
 
-      delete mockKeyring.d;
-
       await s.logout();
 
       assertAppError({
@@ -535,13 +493,9 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -574,13 +528,9 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
       assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,

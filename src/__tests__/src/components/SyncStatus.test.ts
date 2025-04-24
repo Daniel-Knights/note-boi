@@ -4,7 +4,6 @@ import { nextTick } from 'vue';
 import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
-import { tauriInvoke } from '../../../utils';
 import { mockApi } from '../../api';
 import {
   assertAppError,
@@ -59,12 +58,6 @@ describe('SyncStatus', () => {
     const wrapper = mount(SyncStatus);
 
     s.syncState.username = 'd';
-
-    await tauriInvoke('set_access_token', {
-      username: 'd',
-      accessToken: 'test-token',
-    });
-
     s.pull();
 
     await nextTick();

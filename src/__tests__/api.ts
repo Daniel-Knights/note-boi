@@ -28,7 +28,6 @@ export const mockDb: {
   encryptedNotes: undefined as unknown as EncryptedNote[],
 };
 
-export const mockKeyring: Record<string, string> = {};
 export const allCalls: [ApiCallType, Call][] = [];
 
 /**
@@ -198,15 +197,6 @@ class Calls extends Array<Call> {
   }
 }
 
-function hasValidAuthHeaders(headers?: HeadersInit) {
-  return (
-    headers &&
-    'Authorization' in headers &&
-    'X-Username' in headers &&
-    headers.Authorization.replace('Bearer ', '') === mockKeyring[headers['X-Username']]
-  );
-}
-
 /** Mocks requests to the server. */
 function mockRequest(
   url: string,
@@ -262,12 +252,8 @@ function mockRequest(
     };
   }
 
-  // @ts-expect-error - doesn't matter if undefined
-  const username: string = req.headers!['X-Username'] ?? '';
-
   const resData: {
     notes?: n.Note[] | EncryptedNote[];
-    access_token?: string;
     error?: string;
   } = {};
 
@@ -289,10 +275,7 @@ function mockRequest(
         resData.error = 'User already exists';
         httpStatus = 409;
       } else {
-        const resValue = options.resValue?.['/auth/signup']?.shift();
-
         mockDb.users[reqPayload.username] = reqPayload.password;
-        resData.access_token = resValue?.access_token ?? 'test-token';
 
         httpStatus = 201;
       }
@@ -318,15 +301,12 @@ function mockRequest(
         const resValue = options.resValue?.['/auth/login']?.shift();
 
         resData.notes = resValue?.notes ?? [];
-        resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
       break;
     case '/auth/logout':
-      if (!hasValidAuthHeaders(req.headers)) {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
-      } else if (!(username in mockDb.users)) {
+      // TODO: pass username in body of requests
+      if (!(username in mockDb.users)) {
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
@@ -336,25 +316,18 @@ function mockRequest(
       break;
     case '/notes/pull':
       // Pull
-      if (!hasValidAuthHeaders(req.headers)) {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
-      } else if (!mockDb.users[username]) {
+      if (!mockDb.users[username]) {
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
         const resValue = options.resValue?.['/notes/pull']?.shift();
 
         resData.notes = resValue?.notes ?? [];
-        resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
       break;
     case '/notes/push':
-      if (!hasValidAuthHeaders(req.headers)) {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
-      } else if (!hasKeys(reqPayload, ['notes'])) {
+      if (!hasKeys(reqPayload, ['notes'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (reqPayload.notes?.some((nt) => !isEncryptedNote(nt))) {
@@ -369,10 +342,7 @@ function mockRequest(
 
       break;
     case '/account/change-password':
-      if (!hasValidAuthHeaders(req.headers)) {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
-      } else if (!hasKeys(reqPayload, ['current_password', 'new_password'])) {
+      if (!hasKeys(reqPayload, ['current_password', 'new_password'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -387,18 +357,11 @@ function mockRequest(
       } else if (reqPayload.current_password !== mockDb.users[username]) {
         resData.error = 'Unauthorized';
         httpStatus = 401;
-      } else {
-        const resValue = options.resValue?.['/notes/pull']?.shift();
-
-        resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
       break;
     case '/account/delete':
-      if (!hasValidAuthHeaders(req.headers)) {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
-      } else if (!mockDb.users[username]) {
+      if (!mockDb.users[username]) {
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
@@ -485,38 +448,6 @@ function mockTauriInvoke(
       ) {
         assert.fail('Invalid saveDir or notes');
       }
-
-      break;
-    case 'set_access_token':
-      if (!hasKeys(args, ['username', 'accessToken'])) {
-        assert.fail('Missing username or accessToken');
-      } else if (typeof args.username !== 'string') {
-        assert.fail('Invalid username');
-      } else if (typeof args.accessToken !== 'string') {
-        assert.fail('Invalid accessToken');
-      }
-
-      mockKeyring[args.username] = args.accessToken;
-
-      break;
-    case 'get_access_token':
-      if (!hasKeys(args, ['username'])) {
-        assert.fail('Missing username');
-      } else if (typeof args.username !== 'string') {
-        assert.fail('Invalid username');
-      }
-
-      resData = mockKeyring[args.username];
-
-      break;
-    case 'delete_access_token':
-      if (!hasKeys(args, ['username'])) {
-        assert.fail('Missing username');
-      } else if (typeof args.username !== 'string') {
-        assert.fail('Invalid username');
-      }
-
-      delete mockKeyring[args.username];
 
       break;
   }

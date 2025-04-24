@@ -5,8 +5,8 @@ import { nextTick } from 'vue';
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../../classes';
-import { isEmptyNote, tauriInvoke } from '../../../../utils';
-import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../api';
+import { isEmptyNote } from '../../../../utils';
+import { clearMockApiResults, mockApi, mockDb } from '../../../api';
 import { UUID_REGEX } from '../../../constant';
 import localNotes from '../../../notes.json';
 import {
@@ -58,16 +58,9 @@ describe('Note (sync)', () => {
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
       assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
-      assert.strictEqual(calls.size, 5);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/notes/pull'));
       assertRequest('/notes/pull', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, {
-        username: 'd',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
@@ -94,11 +87,6 @@ describe('Note (sync)', () => {
 
       s.syncState.username = 'd';
 
-      await tauriInvoke('set_access_token', {
-        username: 'd',
-        accessToken: 'test-token',
-      });
-
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
@@ -116,16 +104,9 @@ describe('Note (sync)', () => {
       assert.strictEqual(n.noteState.notes.length, 1);
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(calls.size, 4);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/pull'));
       assertRequest('/notes/pull', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, {
-        username: 'd',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
@@ -167,11 +148,9 @@ describe('Note (sync)', () => {
       assert.strictEqual(n.noteState.notes[0]!.id, n.noteState.selectedNote.id);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/pull'));
       assertRequest('/notes/pull', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it('Unauthorized', async () => {
@@ -198,11 +177,9 @@ describe('Note (sync)', () => {
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/pull'));
       assertRequest('/notes/pull', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it('User not found', async () => {
@@ -210,7 +187,6 @@ describe('Note (sync)', () => {
 
       s.syncState.username = 'k';
       s.syncState.isLoggedIn = true;
-      mockKeyring.k = 'test-token';
       Storage.set('USERNAME', 'k');
 
       await s.pull();
@@ -223,11 +199,9 @@ describe('Note (sync)', () => {
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/pull'));
       assertRequest('/notes/pull', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
     });
 
     it('Updates editor if selected note is unedited', async () => {
@@ -372,11 +346,9 @@ describe('Note (sync)', () => {
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/notes/push'));
       assertRequest('/notes/push', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it("Doesn't push empty notes", async () => {
@@ -424,10 +396,8 @@ describe('Note (sync)', () => {
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(n.noteState.notes.length, 1);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('edit_note'));
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
     });
 
     it('With server error', async () => {
@@ -457,12 +427,10 @@ describe('Note (sync)', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
       assertRequest('/notes/push', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('edit_note'));
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
     });
 
     it('Unauthorized', async () => {
@@ -492,12 +460,10 @@ describe('Note (sync)', () => {
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
       assertRequest('/notes/push', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('edit_note'));
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
     });
 
     it('User not found', async () => {
@@ -523,12 +489,10 @@ describe('Note (sync)', () => {
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/notes/push'));
       assertRequest('/notes/push', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('edit_note'));
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
     });
 
     it('Sets and resets loading state', () => {

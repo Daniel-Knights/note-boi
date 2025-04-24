@@ -86,19 +86,6 @@ export function assertRequest(endpoint: Endpoint, req: RequestInit) {
   assert.strictEqual(req.method, expectedRequests[endpoint].method);
   assert.deepInclude(req.headers, FetchBuilder.defaultHeaders);
 
-  if ('withAuth' in expectedRequests[endpoint] && expectedRequests[endpoint].withAuth) {
-    assertHasAllKeys(req.headers, [
-      ...Object.keys(FetchBuilder.defaultHeaders),
-      'Authorization',
-      'X-Username',
-    ]);
-    assertIsString(req.headers.Authorization);
-    assertIsString(req.headers['X-Username']);
-    assert.isTrue(req.headers.Authorization?.startsWith('Bearer '));
-    assert.isTrue(req.headers.Authorization?.length > 'Bearer '.length);
-    assert.isTrue(req.headers['X-Username'].length > 0);
-  }
-
   if ('body' in expectedRequests[endpoint] && isObj(expectedRequests[endpoint].body)) {
     const parsedBody = JSON.parse(req.body as string) as Record<string, unknown>;
 
@@ -152,11 +139,9 @@ const expectedRequests = {
   },
   '/auth/logout': {
     method: 'POST',
-    withAuth: true,
   },
   '/notes/push': {
     method: 'PUT',
-    withAuth: true,
     body: {
       notes: {
         isArray: true,
@@ -170,15 +155,12 @@ const expectedRequests = {
   },
   '/notes/pull': {
     method: 'GET',
-    withAuth: true,
   },
   '/account/delete': {
     method: 'DELETE',
-    withAuth: true,
   },
   '/account/change-password': {
     method: 'PUT',
-    withAuth: true,
     body: {
       current_password: 'string',
       new_password: 'string',
@@ -196,7 +178,6 @@ const expectedRequests = {
   Endpoint,
   {
     method: string;
-    withAuth?: boolean;
     body?: Record<
       string,
       string | { isArray?: boolean; expectedKeys: Record<string, string> }

@@ -1,6 +1,6 @@
 import { Endpoint, EndpointPayloads } from '../constant';
 import { ParsedResponse } from '../store/sync';
-import { isDev, tauriInvoke } from '../utils';
+import { isDev } from '../utils';
 
 export class FetchBuilder<
   E extends Endpoint = Endpoint,
@@ -44,22 +44,7 @@ export class FetchBuilder<
     return this;
   }
 
-  /** Adds auth headers */
-  withAuth(username: string, token: string) {
-    this.#init.headers = {
-      ...this.#init.headers,
-      'X-Username': username,
-      Authorization: `Bearer ${token}`,
-    };
-
-    this.#init.credentials = 'same-origin';
-
-    return this;
-  }
-
-  async fetch(
-    username?: string
-  ): Promise<ParsedResponse<R> | ParsedResponse<{ error: string }>> {
+  async fetch(): Promise<ParsedResponse<R> | ParsedResponse<{ error: string }>> {
     const res = await fetch(`${FetchBuilder.serverUrl}/api${this.#endpoint}`, {
       ...this.#init,
       headers: {
@@ -74,16 +59,6 @@ export class FetchBuilder<
       res.body !== null && contentType?.includes('application/json')
         ? await res.json()
         : {};
-
-    // TBR: Use secure cookies - https://github.com/tauri-apps/wry/issues/444
-    if (body.access_token && username) {
-      await tauriInvoke('set_access_token', {
-        username,
-        accessToken: body.access_token,
-      });
-    } else if (body.access_token) {
-      console.error(`Unexpected access_token for endpoint: ${this.#endpoint}`);
-    }
 
     return {
       status: res.status,

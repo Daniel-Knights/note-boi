@@ -1,6 +1,6 @@
 import * as s from '../../../store/sync';
 import { FetchBuilder } from '../../../classes';
-import { mockApi, mockKeyring } from '../../api';
+import { mockApi } from '../../api';
 
 describe('FetchBuilder', () => {
   const testHeaders = {
@@ -22,7 +22,7 @@ describe('FetchBuilder', () => {
       .method('POST')
       .headers(testHeaders)
       .body(body)
-      .fetch('d');
+      .fetch();
 
     expect(fetchSpy).toHaveBeenCalledOnce();
     expect(fetchSpy).toHaveBeenCalledWith(`${FetchBuilder.serverUrl}/api/auth/login`, {
@@ -34,18 +34,12 @@ describe('FetchBuilder', () => {
       },
     });
 
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.invoke.has('set_access_token'));
-    assert.deepEqual(calls.invoke[0]!.calledWith, {
-      username: 'd',
-      accessToken: 'test-token',
-    });
+    assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.request.has('/auth/login'));
     assert.deepEqual(res, {
       ok: true,
       data: {
         notes: [],
-        access_token: 'test-token',
       },
       status: 200,
     });
@@ -56,40 +50,31 @@ describe('FetchBuilder', () => {
 
     const fetchSpy = vi.spyOn(window, 'fetch');
 
-    // Mock request expects these
+    // Mock request expects this
     s.syncState.loadingCount = 1;
-    mockKeyring.d = 'test-token';
 
     const res = await new FetchBuilder('/notes/pull')
       .method('POST')
       .headers(testHeaders)
-      .withAuth('d', 'test-token')
-      .fetch('d');
+      .fetch();
 
     expect(fetchSpy).toHaveBeenCalledOnce();
     expect(fetchSpy).toHaveBeenCalledWith(`${FetchBuilder.serverUrl}/api/notes/pull`, {
       method: 'POST',
+      // TODO: check this is still needed
       credentials: 'same-origin',
       headers: {
         ...FetchBuilder.defaultHeaders,
         ...testHeaders,
-        'X-Username': 'd',
-        Authorization: 'Bearer test-token',
       },
     });
 
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.invoke.has('set_access_token'));
-    assert.deepEqual(calls.invoke[0]!.calledWith, {
-      username: 'd',
-      accessToken: 'test-token',
-    });
+    assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.request.has('/notes/pull'));
     assert.deepEqual(res, {
       ok: true,
       data: {
         notes: [],
-        access_token: 'test-token',
       },
       status: 200,
     });

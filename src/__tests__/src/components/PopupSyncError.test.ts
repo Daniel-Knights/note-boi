@@ -104,9 +104,7 @@ describe('PopupSyncError', () => {
 
     assertAppError();
     assert.lengthOf(wrapper.emitted('close')!, 1);
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.invoke.has('delete_access_token'));
-    assert.deepEqual(calls.invoke[0]!.calledWith, { username: '' });
+    assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.emits.has('auth'));
   });
 

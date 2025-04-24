@@ -8,7 +8,6 @@ import { Storage } from '../../../classes';
 import { COLOUR_THEMES } from '../../../constant';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { selectedTheme } from '../../../store/theme';
-import { tauriInvoke } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
 import {
   assertRequest,
@@ -220,10 +219,6 @@ describe('Settings', () => {
 
       s.syncState.username = 'd';
       s.syncState.isLoggedIn = true;
-      await tauriInvoke('set_access_token', {
-        username: 'd',
-        accessToken: 'test-token',
-      });
 
       await nextTick();
 
@@ -240,14 +235,10 @@ describe('Settings', () => {
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
       assert.lengthOf(wrapperVm.menuItems, 4);
-      assert.strictEqual(calls.size, 5);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
       assertRequest('/account/delete', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,

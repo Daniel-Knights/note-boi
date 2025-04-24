@@ -42,13 +42,9 @@ describe('Logout', () => {
     await waitUntil(() => !s.syncState.loadingCount);
 
     assert.isFalse(s.syncState.isLoggedIn);
-    assert.strictEqual(calls.size, 4);
+    assert.strictEqual(calls.size, 2);
     assert.isTrue(calls.request.has('/auth/logout'));
     assertRequest('/auth/logout', calls.request[0]!.calledWith!);
-    assert.isTrue(calls.invoke.has('get_access_token'));
-    assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-    assert.isTrue(calls.invoke.has('delete_access_token'));
-    assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
     assert.isTrue(calls.emits.has('auth'));
     assert.deepEqual(calls.emits[0]!.calledWith, {
       isFrontendEmit: true,

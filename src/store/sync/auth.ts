@@ -7,7 +7,7 @@ import {
   KeyStore,
   Storage,
 } from '../../classes';
-import { isEmptyNote, tauriEmit, tauriInvoke } from '../../utils';
+import { isEmptyNote, tauriEmit } from '../../utils';
 import { noteState } from '../note';
 
 import { syncNotes, syncState } from '.';
@@ -22,8 +22,6 @@ import {
 } from './utils';
 
 export function clientSideLogout(): Promise<void> {
-  tauriInvoke('delete_access_token', { username: syncState.username });
-
   syncState.username = '';
   syncState.isLoggedIn = false;
 
@@ -50,7 +48,7 @@ export const login = route(async (): Promise<void> => {
       username: syncState.username,
       password: syncState.password,
     })
-    .fetch(syncState.username)
+    .fetch()
     .catch((err) => throwFetchError(errorConfig, err));
   if (!res) return;
 
@@ -104,7 +102,7 @@ export const signup = route(async (): Promise<void> => {
       password: syncState.password,
       notes: encryptedNotes,
     })
-    .fetch(syncState.username)
+    .fetch()
     .catch((err) => throwFetchError(errorConfig, err));
   if (!res) return;
 
@@ -133,13 +131,8 @@ export const logout = route(async (): Promise<void> => {
     display: { form: true },
   } satisfies Omit<ErrorConfig<typeof logout>, 'message'>;
 
-  const accessToken = await tauriInvoke('get_access_token', {
-    username: syncState.username,
-  });
-
   const fetchPromise = new FetchBuilder('/auth/logout')
     .method('POST')
-    .withAuth(syncState.username, accessToken)
     .fetch()
     .catch((err) => throwFetchError(errorConfig, err));
 

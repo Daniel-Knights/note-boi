@@ -102,13 +102,9 @@ export const pull = route(async () => {
     display: { sync: true },
   } satisfies Omit<ErrorConfig<typeof pull>, 'message'>;
 
-  const accessToken = await tauriInvoke('get_access_token', {
-    username: syncState.username,
-  });
   const res = await new FetchBuilder('/notes/pull')
     .method('GET')
-    .withAuth(syncState.username, accessToken)
-    .fetch(syncState.username)
+    .fetch()
     .catch((err) => throwFetchError(errorConfig, err));
   if (!res) return;
 
@@ -143,19 +139,13 @@ export const push = route(async (timeoutId?: number) => {
     display: { sync: true },
   } satisfies Omit<ErrorConfig<typeof push>, 'message'>;
 
-  const [accessToken, encryptedNotes] = await Promise.all([
-    tauriInvoke('get_access_token', {
-      username: syncState.username,
-    }),
-    Encryptor.encryptNotes(noteState.notes.filter((nt) => !isEmptyNote(nt))).catch(
-      (err) => throwEncryptorError(errorConfig, err)
-    ),
-  ]);
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes.filter((nt) => !isEmptyNote(nt))
+  ).catch((err) => throwEncryptorError(errorConfig, err));
   if (!encryptedNotes || pushQueue.isCancelled(timeoutId)) return;
 
   const res = await new FetchBuilder('/notes/push')
     .method('PUT')
-    .withAuth(syncState.username, accessToken)
     .body({ notes: encryptedNotes })
     .fetch()
     .catch((err) => throwFetchError(errorConfig, err));

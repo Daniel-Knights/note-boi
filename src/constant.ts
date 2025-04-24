@@ -20,9 +20,7 @@ export type EndpointPayloads = {
       password: string;
       notes: EncryptedNote[];
     };
-    response: {
-      access_token: string;
-    };
+    response: never;
   };
   '/auth/login': {
     payload: {
@@ -31,7 +29,6 @@ export type EndpointPayloads = {
     };
     response: {
       notes: EncryptedNote[];
-      access_token: string;
     };
   };
   '/auth/logout': {
@@ -48,7 +45,6 @@ export type EndpointPayloads = {
     payload: never;
     response: {
       notes: EncryptedNote[];
-      access_token: string;
     };
   };
   '/account/delete': {
@@ -61,9 +57,7 @@ export type EndpointPayloads = {
       new_password: string;
       notes: EncryptedNote[];
     };
-    response: {
-      access_token: string;
-    };
+    response: never;
   };
 };
 
@@ -116,25 +110,6 @@ export type TauriCommandPayloads = {
     };
     response: never;
   };
-  set_access_token: {
-    payload: {
-      username: string;
-      accessToken: string;
-    };
-    response: never;
-  };
-  get_access_token: {
-    payload: {
-      username: string;
-    };
-    response: string;
-  };
-  delete_access_token: {
-    payload: {
-      username: string;
-    };
-    response: never;
-  };
 };
 
 export type TauriCommand = keyof TauriCommandPayloads;
@@ -146,9 +121,6 @@ export const TAURI_COMMANDS = [
   'edit_note',
   'sync_local_notes',
   'export_notes',
-  'set_access_token',
-  'get_access_token',
-  'delete_access_token',
 ] satisfies TauriCommand[];
 
 // Tauri emits

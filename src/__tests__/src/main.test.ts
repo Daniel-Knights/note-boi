@@ -3,7 +3,6 @@ import * as s from '../../store/sync';
 import * as u from '../../store/update';
 import { AppError, ERROR_CODE } from '../../classes';
 import { openedPopup, POPUP_TYPE } from '../../store/popup';
-import { tauriInvoke } from '../../utils';
 import { clearMockApiResults, mockApi } from '../api';
 import { assertRequest, getAppDiv, resolveImmediate, waitUntil } from '../utils';
 
@@ -24,11 +23,6 @@ describe('main', () => {
 
     s.syncState.username = 'd';
 
-    await tauriInvoke('set_access_token', {
-      username: 'd',
-      accessToken: 'test-token',
-    });
-
     clearMockApiResults({ calls });
 
     main = await import('../../main');
@@ -40,17 +34,11 @@ describe('main', () => {
     expect(handleUpdateSpy).toHaveBeenCalledOnce();
     expect(pullSpy).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.size, 18);
+    assert.strictEqual(calls.size, 17);
     assert.isTrue(calls.request.has('/notes/pull'));
     assertRequest('/notes/pull', calls.request[0]!.calledWith!);
     assert.isTrue(calls.invoke.has('get_all_notes'));
-    assert.isTrue(calls.invoke.has('get_access_token'));
     assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-    assert.isTrue(calls.invoke.has('set_access_token'));
-    assert.deepEqual(calls.invoke[2]!.calledWith, {
-      username: 'd',
-      accessToken: 'test-token',
-    });
     assert.isTrue(calls.invoke.has('sync_local_notes'));
     assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
     assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));

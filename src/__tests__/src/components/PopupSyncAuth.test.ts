@@ -228,14 +228,9 @@ describe('PopupSyncAuth', () => {
       assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.lengthOf(wrapper.emitted('close')!, 1);
-      assert.strictEqual(calls.size, 5);
+      assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'd',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.invoke.has('new_note'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.isTrue(calls.emits.has('auth'));
@@ -351,14 +346,9 @@ describe('PopupSyncAuth', () => {
       assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.lengthOf(wrapper.emitted('close')!, 1);
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.request.has('/auth/signup'));
       assertRequest('/auth/signup', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'k',
-        accessToken: 'test-token',
-      });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,

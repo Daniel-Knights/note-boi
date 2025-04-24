@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 
 import { Encryptor, KeyStore, Storage } from '../classes';
 
-import { allCalls, mockDb, mockKeyring } from './api';
+import { allCalls, mockDb } from './api';
 import localNotes from './notes.json';
 import { snapshotState } from './snapshot';
 import { resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
@@ -42,10 +42,6 @@ afterEach(async () => {
   await KeyStore.reset();
 
   mockDb.users = structuredClone(initialMockDb.users);
-
-  Object.keys(mockKeyring).forEach((key) => {
-    delete mockKeyring[key];
-  });
 
   clearMocks();
   Storage.clear();
