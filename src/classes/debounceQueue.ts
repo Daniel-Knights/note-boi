@@ -54,7 +54,7 @@ export class DebounceQueue {
    * Checks if task with the given timeout ID has been cancelled.
    */
   isCancelled(timeoutId: number | undefined) {
-    if (!timeoutId) return;
+    if (!timeoutId) return this.#current.isRunning;
 
     return !!this.#cancelled.get(timeoutId);
   }

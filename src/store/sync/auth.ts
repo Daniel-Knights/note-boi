@@ -10,8 +10,8 @@ import {
 import { isEmptyNote, tauriEmit, tauriInvoke } from '../../utils';
 import { noteState } from '../note';
 
-import { syncNotes, syncState } from '.';
-
+import { syncState } from './index';
+import { syncLocalStateWithRemoteNotes } from './notes';
 import {
   parseErrorRes,
   resetAppError,
@@ -34,7 +34,7 @@ export function clientSideLogout(): Promise<void> {
 }
 
 // Login
-export const login = route(async (): Promise<void> => {
+export const login = route(async () => {
   const errorConfig = {
     code: ERROR_CODE.LOGIN,
     retry: { fn: login },
@@ -44,19 +44,27 @@ export const login = route(async (): Promise<void> => {
     },
   } satisfies Omit<ErrorConfig<typeof login>, 'message'>;
 
+  const passwordKey = await Encryptor.generatePasswordKey(syncState.password);
+
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes.filter((nt) => !isEmptyNote(nt)),
+    passwordKey
+  ).catch((err) => throwEncryptorError(errorConfig, err));
+  if (!encryptedNotes) return;
+
   const res = await new FetchBuilder('/auth/login')
     .method('POST')
     .body({
       username: syncState.username,
       password: syncState.password,
+      notes: encryptedNotes,
+      deleted_note_ids: [...syncState.unsyncedNoteIds.deleted],
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
   if (!res) return;
 
   if (resIsOk(res)) {
-    const { password } = syncState;
-
     syncState.password = '';
     syncState.isLoggedIn = true;
 
@@ -65,13 +73,17 @@ export const login = route(async (): Promise<void> => {
     resetAppError();
     tauriEmit('auth', { is_logged_in: true });
 
+    await KeyStore.storeKey(passwordKey);
+
     const decryptedNotes = await Encryptor.decryptNotes(
       res.data.notes ?? [],
-      password
+      passwordKey
     ).catch((err) => throwEncryptorError(errorConfig, err));
     if (!decryptedNotes) return;
 
-    await syncNotes(decryptedNotes);
+    await syncLocalStateWithRemoteNotes(decryptedNotes);
+
+    syncState.unsyncedNoteIds.clear();
   } else {
     throw new AppError({
       ...errorConfig,
@@ -81,7 +93,7 @@ export const login = route(async (): Promise<void> => {
 });
 
 // Signup
-export const signup = route(async (): Promise<void> => {
+export const signup = route(async () => {
   const errorConfig = {
     code: ERROR_CODE.SIGNUP,
     retry: { fn: signup },
@@ -91,9 +103,13 @@ export const signup = route(async (): Promise<void> => {
     },
   } satisfies Omit<ErrorConfig<typeof signup>, 'message'>;
 
+  const passwordKey = await Encryptor.generatePasswordKey(syncState.password);
+
+  await KeyStore.storeKey(passwordKey);
+
   const encryptedNotes = await Encryptor.encryptNotes(
     noteState.notes.filter((nt) => !isEmptyNote(nt)),
-    syncState.password
+    passwordKey
   ).catch((err) => throwEncryptorError(errorConfig, err));
   if (!encryptedNotes) return;
 
@@ -126,7 +142,7 @@ export const signup = route(async (): Promise<void> => {
 });
 
 // Logout
-export const logout = route(async (): Promise<void> => {
+export const logout = route(async () => {
   const errorConfig = {
     code: ERROR_CODE.LOGOUT,
     retry: { fn: logout },
