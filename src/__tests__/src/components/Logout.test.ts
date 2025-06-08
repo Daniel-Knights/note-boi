@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 
+import * as a from '../../../api';
 import * as s from '../../../store/sync';
 import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import { assertRequest, waitUntil } from '../../utils';
@@ -28,7 +29,7 @@ describe('Logout', () => {
 
     setResValues.request({ '/auth/login': [{ notes: mockDb.encryptedNotes }] });
 
-    await s.login();
+    await a.login();
 
     assert.isTrue(wrapper.isVisible());
 

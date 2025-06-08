@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
+import * as a from '../../../api';
 import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
 import { mockApi } from '../../mock';
@@ -92,7 +93,7 @@ describe('PopupSyncError', () => {
     const wrapper = mountPopupSyncError();
     const ignoreButton = getByTestId(wrapper, 'ignore');
     const resetErrorSpy = vi.spyOn(s, 'resetAppError');
-    const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+    const clientSideLogoutSpy = vi.spyOn(a, 'clientSideLogout');
 
     await ignoreButton.trigger('click');
     await nextTick();

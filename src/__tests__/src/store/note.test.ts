@@ -1,3 +1,4 @@
+import * as a from '../../../api';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import { NOTE_EVENTS } from '../../../constant';
@@ -325,7 +326,7 @@ describe('Note store', () => {
     it('Calls autoSync', async () => {
       const { calls, promises } = mockApi();
       const otherExistingNote = { ...localNotes[1]! };
-      const autoSyncSpy = vi.spyOn(s, 'autoSync');
+      const autoSyncSpy = vi.spyOn(a, 'autoSync');
 
       await n.getAllNotes();
 
