@@ -2,23 +2,19 @@
 
 exports[`Encryptor > decryptNotes > Decrypts notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('THEME') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > allCalls 1`] = `[]`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Encryptor > decryptNotes > Decrypts notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > mockDb 1`] = `
 {
@@ -86,33 +82,21 @@ exports[`Encryptor > decryptNotes > Decrypts notes > updateState 1`] = `
 }
 `;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > allCalls 1`] = `[]`;
 
-exports[
-  `Encryptor > decryptNotes > Handles unencrypted notes > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > mockDb 1`] = `
 {
@@ -141,11 +125,9 @@ exports[`Encryptor > decryptNotes > Handles unencrypted notes > noteState 1`] = 
 }
 `;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > openedPopup 1`] =
-  `undefined`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > openedPopup 1`] = `undefined`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > selectedTheme 1`] =
-  `"System"`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > selectedTheme 1`] = `"System"`;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > syncState 1`] = `
 {
@@ -196,8 +178,7 @@ exports[`Encryptor > encryptNotes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > encryptNotes > allCalls 1`] = `[]`;
 
-exports[`Encryptor > encryptNotes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Encryptor > encryptNotes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Encryptor > encryptNotes > mockDb 1`] = `
 {

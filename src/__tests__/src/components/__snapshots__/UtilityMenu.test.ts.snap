@@ -1,27 +1,20 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UtilityMenu > Mounts with correct components > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`UtilityMenu > Mounts with correct components > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UtilityMenu > Mounts with correct components > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`UtilityMenu > Mounts with correct components > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`UtilityMenu > Mounts with correct components > Storage.get('THEME') 1`] = `null`;
 
-exports[`UtilityMenu > Mounts with correct components > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`UtilityMenu > Mounts with correct components > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `UtilityMenu > Mounts with correct components > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`UtilityMenu > Mounts with correct components > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UtilityMenu > Mounts with correct components > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`UtilityMenu > Mounts with correct components > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`UtilityMenu > Mounts with correct components > allCalls 1`] = `[]`;
 
-exports[`UtilityMenu > Mounts with correct components > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`UtilityMenu > Mounts with correct components > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`UtilityMenu > Mounts with correct components > mockDb 1`] = `
 {

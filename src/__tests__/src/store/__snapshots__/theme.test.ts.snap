@@ -14,8 +14,7 @@ exports[`Theme > Uses system as default > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Theme > Uses system as default > allCalls 1`] = `[]`;
 
-exports[`Theme > Uses system as default > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Theme > Uses system as default > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Theme > Uses system as default > mockDb 1`] = `
 {
@@ -97,8 +96,7 @@ exports[`Theme > setTheme > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Theme > setTheme > allCalls 1`] = `[]`;
 
-exports[`Theme > setTheme > document.body.outerHTML 1`] =
-  `"<body class="theme--dark"></body>"`;
+exports[`Theme > setTheme > document.body.outerHTML 1`] = `"<body class="theme--dark"></body>"`;
 
 exports[`Theme > setTheme > mockDb 1`] = `
 {

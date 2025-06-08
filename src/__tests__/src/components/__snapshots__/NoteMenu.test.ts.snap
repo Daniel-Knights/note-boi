@@ -43,8 +43,7 @@ exports[`NoteMenu > Creates a new note > allCalls 1`] = `
 ]
 `;
 
-exports[`NoteMenu > Creates a new note > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Creates a new note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Creates a new note > mockDb 1`] = `
 {
@@ -342,8 +341,7 @@ exports[`NoteMenu > Mounts > allCalls 1`] = `
 ]
 `;
 
-exports[`NoteMenu > Mounts > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Mounts > mockDb 1`] = `
 {
@@ -654,27 +652,17 @@ exports[`NoteMenu > Mounts > updateState 1`] = `
 }
 `;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Navigates notes with up/down arrow keys > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('THEME') 1`] =
-  `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Navigates notes with up/down arrow keys > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `NoteMenu > Navigates notes with up/down arrow keys > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `NoteMenu > Navigates notes with up/down arrow keys > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > allCalls 1`] = `
 [
@@ -688,9 +676,7 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > allCalls 1`] = `
 ]
 `;
 
-exports[
-  `NoteMenu > Navigates notes with up/down arrow keys > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > mockDb 1`] = `
 {
@@ -918,11 +904,9 @@ Sugar
 }
 `;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > openedPopup 1`] =
-  `undefined`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > openedPopup 1`] = `undefined`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > selectedTheme 1`] =
-  `"System"`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > selectedTheme 1`] = `"System"`;
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > syncState 1`] = `
 {
@@ -959,24 +943,17 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > updateState 1`] = 
 }
 `;
 
-exports[`NoteMenu > Renders a list item for every note > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`NoteMenu > Renders a list item for every note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`NoteMenu > Renders a list item for every note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('THEME') 1`] =
-  `null`;
+exports[`NoteMenu > Renders a list item for every note > Storage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`NoteMenu > Renders a list item for every note > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `NoteMenu > Renders a list item for every note > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`NoteMenu > Renders a list item for every note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`NoteMenu > Renders a list item for every note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Renders a list item for every note > allCalls 1`] = `
 [
@@ -990,8 +967,7 @@ exports[`NoteMenu > Renders a list item for every note > allCalls 1`] = `
 ]
 `;
 
-exports[`NoteMenu > Renders a list item for every note > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Renders a list item for every note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Renders a list item for every note > mockDb 1`] = `
 {
@@ -1310,8 +1286,7 @@ exports[`NoteMenu > Renders a single empty note > Storage.get('THEME') 1`] = `nu
 
 exports[`NoteMenu > Renders a single empty note > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Renders a single empty note > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`NoteMenu > Renders a single empty note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`NoteMenu > Renders a single empty note > Storage.get('USERNAME') 1`] = `null`;
 
@@ -1353,8 +1328,7 @@ exports[`NoteMenu > Renders a single empty note > allCalls 1`] = `
 ]
 `;
 
-exports[`NoteMenu > Renders a single empty note > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Renders a single empty note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Renders a single empty note > mockDb 1`] = `
 {
@@ -1458,8 +1432,7 @@ exports[`NoteMenu > Selects a clicked note > allCalls 1`] = `
 ]
 `;
 
-exports[`NoteMenu > Selects a clicked note > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Selects a clicked note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Selects a clicked note > mockDb 1`] = `
 {
@@ -1726,33 +1699,19 @@ exports[`NoteMenu > Selects a clicked note > updateState 1`] = `
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('THEME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('USERNAME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > allCalls 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > allCalls 1`] = `
 [
   [
     "invoke",
@@ -1764,13 +1723,9 @@ exports[
 ]
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > mockDb 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > mockDb 1`] = `
 {
   "encryptedNotes": 10,
   "users": {
@@ -1779,9 +1734,7 @@ exports[
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > noteState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -2042,17 +1995,11 @@ Sugar
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > openedPopup 1`
-] = `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > openedPopup 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > selectedTheme 1`
-] = `"System"`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > selectedTheme 1`] = `"System"`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > syncState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -2079,9 +2026,7 @@ exports[
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > Not single selected note > updateState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -2089,29 +2034,17 @@ exports[
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('THEME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > allCalls 1`] = `
 [
@@ -2125,9 +2058,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > allCalls 1`]
 ]
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > mockDb 1`] = `
 {
@@ -2355,11 +2286,9 @@ Sugar
 }
 `;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > openedPopup 1`] =
-  `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > openedPopup 1`] = `undefined`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > selectedTheme 1`] =
-  `"System"`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > selectedTheme 1`] = `"System"`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > syncState 1`] = `
 {
@@ -2396,33 +2325,19 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > updateState 
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('THEME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('USERNAME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > allCalls 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > allCalls 1`] = `
 [
   [
     "invoke",
@@ -2434,13 +2349,9 @@ exports[
 ]
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > mockDb 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > mockDb 1`] = `
 {
   "encryptedNotes": 10,
   "users": {
@@ -2449,9 +2360,7 @@ exports[
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > noteState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -2668,17 +2577,11 @@ Sugar
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > openedPopup 1`
-] = `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > openedPopup 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > selectedTheme 1`
-] = `"System"`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > selectedTheme 1`] = `"System"`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > syncState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -2705,9 +2608,7 @@ exports[
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > updateState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -2715,33 +2616,19 @@ exports[
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('THEME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('USERNAME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > allCalls 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > allCalls 1`] = `
 [
   [
     "invoke",
@@ -2753,13 +2640,9 @@ exports[
 ]
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > mockDb 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > mockDb 1`] = `
 {
   "encryptedNotes": 10,
   "users": {
@@ -2768,9 +2651,7 @@ exports[
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > noteState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -2987,17 +2868,11 @@ Sugar
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > openedPopup 1`
-] = `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > openedPopup 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > selectedTheme 1`
-] = `"System"`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > selectedTheme 1`] = `"System"`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > syncState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -3024,9 +2899,7 @@ exports[
 }
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > updateState 1`
-] = `
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -3034,28 +2907,17 @@ exports[
 }
 `;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With shift > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With shift > Storage.get('THEME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With shift > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With shift > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With shift > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > allCalls 1`] = `
 [
@@ -3069,9 +2931,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > allCalls 1`] = 
 ]
 `;
 
-exports[
-  `NoteMenu > Selects/deselects extra notes > With shift > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > mockDb 1`] = `
 {
@@ -3299,11 +3159,9 @@ Sugar
 }
 `;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > openedPopup 1`] =
-  `undefined`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > openedPopup 1`] = `undefined`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > selectedTheme 1`] =
-  `"System"`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > selectedTheme 1`] = `"System"`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > syncState 1`] = `
 {
@@ -3364,8 +3222,7 @@ exports[`NoteMenu > Sets contextmenu ev > allCalls 1`] = `
 ]
 `;
 
-exports[`NoteMenu > Sets contextmenu ev > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Sets contextmenu ev > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Sets contextmenu ev > mockDb 1`] = `
 {
@@ -3678,16 +3535,13 @@ exports[`NoteMenu > Sets contextmenu ev > updateState 1`] = `
 
 exports[`NoteMenu > Sets menu width with drag-bar > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('MENU_WIDTH') 1`] =
-  `"400px"`;
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('MENU_WIDTH') 1`] = `"400px"`;
 
 exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('USERNAME') 1`] = `null`;
 
@@ -3703,8 +3557,7 @@ exports[`NoteMenu > Sets menu width with drag-bar > allCalls 1`] = `
 ]
 `;
 
-exports[`NoteMenu > Sets menu width with drag-bar > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Sets menu width with drag-bar > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Sets menu width with drag-bar > mockDb 1`] = `
 {
@@ -4039,8 +3892,7 @@ exports[`NoteMenu > Toggles menu visibility > allCalls 1`] = `
 ]
 `;
 
-exports[`NoteMenu > Toggles menu visibility > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`NoteMenu > Toggles menu visibility > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`NoteMenu > Toggles menu visibility > mockDb 1`] = `
 {
