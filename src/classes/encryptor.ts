@@ -1,7 +1,5 @@
 import { Note } from '../store/note';
 
-import { KeyStore } from './keyStore';
-
 export type EncryptedNote = Omit<Note, 'content'> & {
   content: string;
 };
@@ -21,16 +19,14 @@ function base64ToBuff(b64: string): Uint8Array {
 }
 
 export class Encryptor {
-  static #generatePasswordKey(password: string) {
+  static generatePasswordKey(password: string) {
+    if (password === '') {
+      throw new Error('Password cannot be empty');
+    }
+
     return crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, [
       'deriveKey',
     ]);
-  }
-
-  static async setPasswordKey(password: string): Promise<void> {
-    const passwordKey = await this.#generatePasswordKey(password);
-
-    await KeyStore.storeKey(passwordKey);
   }
 
   static #deriveKey(
@@ -96,13 +92,7 @@ export class Encryptor {
     return dec.decode(decryptedContent);
   }
 
-  static async encryptNotes(notes: Note[], password?: string): Promise<EncryptedNote[]> {
-    if (password) {
-      await this.setPasswordKey(password);
-    }
-
-    const passwordKey = await KeyStore.getKey();
-
+  static encryptNotes(notes: Note[], passwordKey: CryptoKey): Promise<EncryptedNote[]> {
     const encryptedNotePromises = notes.map(async (nt) => {
       const encryptedNoteContent = await this.#encryptData(
         JSON.stringify(nt.content),
@@ -120,16 +110,10 @@ export class Encryptor {
     return Promise.all(encryptedNotePromises);
   }
 
-  static async decryptNotes(
+  static decryptNotes(
     notes: (EncryptedNote | Note)[],
-    password?: string
+    passwordKey: CryptoKey
   ): Promise<Note[]> {
-    if (password) {
-      await this.setPasswordKey(password);
-    }
-
-    const passwordKey = await KeyStore.getKey();
-
     const decryptedNotePromises = notes.map(async (nt) => {
       if (typeof nt.content !== 'string') {
         return nt as Note;

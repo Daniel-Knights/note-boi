@@ -5,7 +5,7 @@ import { reactive } from 'vue';
 import { NOTE_EVENTS } from '../constant';
 import { isEmptyNote, tauriInvoke } from '../utils';
 
-import { autoPush, syncState, UnsyncedNoteIds } from './sync';
+import { autoSync, syncState, UnsyncedNoteIds } from './sync';
 
 export type UnsyncedEventDetail = {
   noteId: string;
@@ -94,18 +94,20 @@ function clearEmptyNote(): void {
  * Looks for note with given `id` in {@link noteState.notes},
  * and sets it to {@link noteState.selectedNote}.
  */
-export function selectNote(id?: string): void {
-  if (noteState.selectedNote.id === id) return;
+export function selectNote(id?: string): boolean {
+  if (noteState.selectedNote.id === id) return false;
 
   clearEmptyNote();
 
   const foundNote = findNote(id);
-  if (!foundNote) return;
+  if (!foundNote) return false;
 
   noteState.selectedNote = { ...foundNote };
 
   document.dispatchEvent(selectNoteEvent);
   document.dispatchEvent(changeNoteEvent);
+
+  return true;
 }
 
 /**
@@ -163,12 +165,12 @@ export function deleteNote(id: string): void {
   }
 
   if (syncState.unsyncedNoteIds.new === id) {
-    syncState.unsyncedNoteIds.add({ new: '' });
+    syncState.unsyncedNoteIds.set({ new: '' });
   } else {
     document.dispatchEvent(getUnsyncedEvent(id, 'deleted'));
 
     tauriInvoke('delete_note', { id })
-      .then(() => autoPush())
+      .then(() => autoSync())
       .catch(catchNoteInvokeError);
   }
 }
@@ -192,6 +194,11 @@ export function newNote(isButtonClick?: boolean): void {
   if (foundNote && isEmptyNote(foundNote)) {
     noteState.selectedNote.timestamp = Date.now();
 
+    // Ensure found note isn't overwritten on sync
+    if (isButtonClick) {
+      syncState.unsyncedNoteIds.set({ new: foundNote.id });
+    }
+
     return;
   }
 
@@ -200,9 +207,9 @@ export function newNote(isButtonClick?: boolean): void {
   noteState.notes.unshift(freshNote);
   noteState.selectedNote = { ...freshNote };
 
-  // Ensure fresh note isn't overwritten on pull
+  // Ensure new note isn't overwritten on sync
   if (isButtonClick) {
-    syncState.unsyncedNoteIds.add({ new: freshNote.id });
+    syncState.unsyncedNoteIds.set({ new: freshNote.id });
   }
 
   document.dispatchEvent(selectNoteEvent);
@@ -235,7 +242,7 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
   document.dispatchEvent(getUnsyncedEvent(foundNote.id, 'edited'));
 
   tauriInvoke('edit_note', { note: { ...foundNote } })
-    .then(autoPush)
+    .then(() => autoSync())
     .catch(catchNoteInvokeError);
 }
 

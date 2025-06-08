@@ -4,12 +4,13 @@ export const ERROR_CODE = {
   LOGIN: 2,
   SIGNUP: 3,
   LOGOUT: 4,
-  PUSH: 5,
-  PULL: 6,
+  // PUSH was 5
+  // PULL was 6
   DELETE_ACCOUNT: 7,
   CHANGE_PASSWORD: 8,
   ENCRYPTOR: 9,
   FORM_VALIDATION: 10,
+  SYNC: 11,
 } as const;
 
 type ErrorCodes = typeof ERROR_CODE;
