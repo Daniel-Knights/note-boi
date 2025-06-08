@@ -145,19 +145,19 @@ exports[`Note store > catchNoteInvokeError > updateState 1`] = `
 }
 `;
 
-exports[`Note store > deleteNote > Calls autoSync > KeyStore.getKey() 1`] = `undefined`;
+exports[`Note store > deleteNote > Calls debounceSync > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note store > deleteNote > Calls autoSync > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note store > deleteNote > Calls debounceSync > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note store > deleteNote > Calls autoSync > Storage.get('THEME') 1`] = `null`;
+exports[`Note store > deleteNote > Calls debounceSync > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note store > deleteNote > Calls autoSync > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note store > deleteNote > Calls debounceSync > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > deleteNote > Calls autoSync > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note store > deleteNote > Calls debounceSync > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note store > deleteNote > Calls autoSync > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note store > deleteNote > Calls debounceSync > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Note store > deleteNote > Calls autoSync > allCalls 1`] = `
+exports[`Note store > deleteNote > Calls debounceSync > allCalls 1`] = `
 [
   [
     "invoke",
@@ -178,9 +178,9 @@ exports[`Note store > deleteNote > Calls autoSync > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > deleteNote > Calls autoSync > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteNote > Calls debounceSync > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note store > deleteNote > Calls autoSync > mockDb 1`] = `
+exports[`Note store > deleteNote > Calls debounceSync > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
   "encryptedNotes": [
@@ -241,7 +241,7 @@ exports[`Note store > deleteNote > Calls autoSync > mockDb 1`] = `
 }
 `;
 
-exports[`Note store > deleteNote > Calls autoSync > noteState 1`] = `
+exports[`Note store > deleteNote > Calls debounceSync > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -487,11 +487,11 @@ Sugar
 }
 `;
 
-exports[`Note store > deleteNote > Calls autoSync > openedPopup 1`] = `undefined`;
+exports[`Note store > deleteNote > Calls debounceSync > openedPopup 1`] = `undefined`;
 
-exports[`Note store > deleteNote > Calls autoSync > selectedTheme 1`] = `"System"`;
+exports[`Note store > deleteNote > Calls debounceSync > selectedTheme 1`] = `"System"`;
 
-exports[`Note store > deleteNote > Calls autoSync > syncState 1`] = `
+exports[`Note store > deleteNote > Calls debounceSync > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -516,7 +516,7 @@ exports[`Note store > deleteNote > Calls autoSync > syncState 1`] = `
 }
 `;
 
-exports[`Note store > deleteNote > Calls autoSync > updateState 1`] = `
+exports[`Note store > deleteNote > Calls debounceSync > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
