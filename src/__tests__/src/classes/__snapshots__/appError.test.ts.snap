@@ -14,7 +14,8 @@ exports[`AppError > With default values > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`AppError > With default values > allCalls 1`] = `[]`;
 
-exports[`AppError > With default values > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`AppError > With default values > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`AppError > With default values > mockDb 1`] = `
 {
@@ -62,12 +63,13 @@ exports[`AppError > With default values > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -95,7 +97,8 @@ exports[`AppError > With provided values > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`AppError > With provided values > allCalls 1`] = `[]`;
 
-exports[`AppError > With provided values > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`AppError > With provided values > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`AppError > With provided values > mockDb 1`] = `
 {
@@ -143,12 +146,13 @@ exports[`AppError > With provided values > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -162,21 +166,34 @@ exports[`AppError > With provided values > updateState 1`] = `
 }
 `;
 
-exports[`AppError > isNone > Returns false when code is not NONE > KeyStore.getKey() 1`] = `undefined`;
+exports[`AppError > isNone > Returns false when code is not NONE > KeyStore.getKey() 1`] =
+  `undefined`;
 
-exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns false when code is not NONE > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('THEME') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns false when code is not NONE > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns false when code is not NONE > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns false when code is not NONE > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`AppError > isNone > Returns false when code is not NONE > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns false when code is not NONE > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`AppError > isNone > Returns false when code is not NONE > allCalls 1`] = `[]`;
 
-exports[`AppError > isNone > Returns false when code is not NONE > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `AppError > isNone > Returns false when code is not NONE > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`AppError > isNone > Returns false when code is not NONE > mockDb 1`] = `
 {
@@ -205,9 +222,11 @@ exports[`AppError > isNone > Returns false when code is not NONE > noteState 1`]
 }
 `;
 
-exports[`AppError > isNone > Returns false when code is not NONE > openedPopup 1`] = `undefined`;
+exports[`AppError > isNone > Returns false when code is not NONE > openedPopup 1`] =
+  `undefined`;
 
-exports[`AppError > isNone > Returns false when code is not NONE > selectedTheme 1`] = `"System"`;
+exports[`AppError > isNone > Returns false when code is not NONE > selectedTheme 1`] =
+  `"System"`;
 
 exports[`AppError > isNone > Returns false when code is not NONE > syncState 1`] = `
 {
@@ -224,12 +243,13 @@ exports[`AppError > isNone > Returns false when code is not NONE > syncState 1`]
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -243,21 +263,33 @@ exports[`AppError > isNone > Returns false when code is not NONE > updateState 1
 }
 `;
 
-exports[`AppError > isNone > Returns true when code is NONE > KeyStore.getKey() 1`] = `undefined`;
+exports[`AppError > isNone > Returns true when code is NONE > KeyStore.getKey() 1`] =
+  `undefined`;
 
-exports[`AppError > isNone > Returns true when code is NONE > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns true when code is NONE > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`AppError > isNone > Returns true when code is NONE > Storage.get('THEME') 1`] = `null`;
+exports[`AppError > isNone > Returns true when code is NONE > Storage.get('THEME') 1`] =
+  `null`;
 
-exports[`AppError > isNone > Returns true when code is NONE > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns true when code is NONE > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`AppError > isNone > Returns true when code is NONE > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns true when code is NONE > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`AppError > isNone > Returns true when code is NONE > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `AppError > isNone > Returns true when code is NONE > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`AppError > isNone > Returns true when code is NONE > allCalls 1`] = `[]`;
 
-exports[`AppError > isNone > Returns true when code is NONE > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `AppError > isNone > Returns true when code is NONE > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`AppError > isNone > Returns true when code is NONE > mockDb 1`] = `
 {
@@ -286,9 +318,11 @@ exports[`AppError > isNone > Returns true when code is NONE > noteState 1`] = `
 }
 `;
 
-exports[`AppError > isNone > Returns true when code is NONE > openedPopup 1`] = `undefined`;
+exports[`AppError > isNone > Returns true when code is NONE > openedPopup 1`] =
+  `undefined`;
 
-exports[`AppError > isNone > Returns true when code is NONE > selectedTheme 1`] = `"System"`;
+exports[`AppError > isNone > Returns true when code is NONE > selectedTheme 1`] =
+  `"System"`;
 
 exports[`AppError > isNone > Returns true when code is NONE > syncState 1`] = `
 {
@@ -305,12 +339,13 @@ exports[`AppError > isNone > Returns true when code is NONE > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -332,13 +367,15 @@ exports[`AppError > retry > With no arguments > Storage.get('THEME') 1`] = `null
 
 exports[`AppError > retry > With no arguments > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`AppError > retry > With no arguments > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`AppError > retry > With no arguments > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`AppError > retry > With no arguments > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`AppError > retry > With no arguments > allCalls 1`] = `[]`;
 
-exports[`AppError > retry > With no arguments > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`AppError > retry > With no arguments > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`AppError > retry > With no arguments > mockDb 1`] = `
 {
@@ -386,12 +423,13 @@ exports[`AppError > retry > With no arguments > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -407,19 +445,24 @@ exports[`AppError > retry > With no arguments > updateState 1`] = `
 
 exports[`AppError > retry > With provided arguments > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`AppError > retry > With provided arguments > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`AppError > retry > With provided arguments > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`AppError > retry > With provided arguments > Storage.get('THEME') 1`] = `null`;
 
-exports[`AppError > retry > With provided arguments > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`AppError > retry > With provided arguments > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`AppError > retry > With provided arguments > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`AppError > retry > With provided arguments > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
-exports[`AppError > retry > With provided arguments > Storage.get('USERNAME') 1`] = `null`;
+exports[`AppError > retry > With provided arguments > Storage.get('USERNAME') 1`] =
+  `null`;
 
 exports[`AppError > retry > With provided arguments > allCalls 1`] = `[]`;
 
-exports[`AppError > retry > With provided arguments > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`AppError > retry > With provided arguments > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`AppError > retry > With provided arguments > mockDb 1`] = `
 {
@@ -467,12 +510,13 @@ exports[`AppError > retry > With provided arguments > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -494,13 +538,15 @@ exports[`AppError > retry > Without retryConfig > Storage.get('THEME') 1`] = `nu
 
 exports[`AppError > retry > Without retryConfig > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`AppError > retry > Without retryConfig > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`AppError > retry > Without retryConfig > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`AppError > retry > Without retryConfig > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`AppError > retry > Without retryConfig > allCalls 1`] = `[]`;
 
-exports[`AppError > retry > Without retryConfig > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`AppError > retry > Without retryConfig > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`AppError > retry > Without retryConfig > mockDb 1`] = `
 {
@@ -548,12 +594,13 @@ exports[`AppError > retry > Without retryConfig > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }

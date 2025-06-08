@@ -1,16 +1,28 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SyncStatus > Displays error icon and opens popup on click > KeyStore.getKey() 1`] = `undefined`;
+exports[
+  `SyncStatus > Displays error icon and opens popup on click > KeyStore.getKey() 1`
+] = `undefined`;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `SyncStatus > Displays error icon and opens popup on click > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('THEME') 1`] = `null`;
+exports[
+  `SyncStatus > Displays error icon and opens popup on click > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `SyncStatus > Displays error icon and opens popup on click > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `SyncStatus > Displays error icon and opens popup on click > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `SyncStatus > Displays error icon and opens popup on click > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`SyncStatus > Displays error icon and opens popup on click > allCalls 1`] = `
 [
@@ -35,10 +47,13 @@ exports[`SyncStatus > Displays error icon and opens popup on click > allCalls 1`
 ]
 `;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[
+  `SyncStatus > Displays error icon and opens popup on click > document.body.outerHTML 1`
+] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
 exports[`SyncStatus > Displays error icon and opens popup on click > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -64,14 +79,16 @@ exports[`SyncStatus > Displays error icon and opens popup on click > noteState 1
 }
 `;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > openedPopup 1`] = `undefined`;
+exports[`SyncStatus > Displays error icon and opens popup on click > openedPopup 1`] =
+  `undefined`;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > selectedTheme 1`] = `"System"`;
+exports[`SyncStatus > Displays error icon and opens popup on click > selectedTheme 1`] =
+  `"System"`;
 
 exports[`SyncStatus > Displays error icon and opens popup on click > syncState 1`] = `
 {
   "appError": AppError {
-    "code": 6,
+    "code": 11,
     "display": {
       "sync": true,
     },
@@ -87,12 +104,13 @@ exports[`SyncStatus > Displays error icon and opens popup on click > syncState 1
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -106,7 +124,7 @@ exports[`SyncStatus > Displays error icon and opens popup on click > updateState
 }
 `;
 
-exports[`SyncStatus > Displays loading spinner > KeyStore.getKey() 1`] = `undefined`;
+exports[`SyncStatus > Displays loading spinner > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
 exports[`SyncStatus > Displays loading spinner > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -114,7 +132,8 @@ exports[`SyncStatus > Displays loading spinner > Storage.get('THEME') 1`] = `nul
 
 exports[`SyncStatus > Displays loading spinner > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`SyncStatus > Displays loading spinner > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`SyncStatus > Displays loading spinner > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`SyncStatus > Displays loading spinner > Storage.get('USERNAME') 1`] = `null`;
 
@@ -161,16 +180,16 @@ exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": undefined,
+        "body": "{"notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
           "X-Username": "d",
         },
-        "method": "GET",
+        "method": "PUT",
       },
-      "name": "/notes/pull",
+      "name": "/notes/sync",
     },
   ],
   [
@@ -238,10 +257,12 @@ exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
 ]
 `;
 
-exports[`SyncStatus > Displays loading spinner > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`SyncStatus > Displays loading spinner > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`SyncStatus > Displays loading spinner > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -298,12 +319,13 @@ exports[`SyncStatus > Displays loading spinner > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -317,17 +339,23 @@ exports[`SyncStatus > Displays loading spinner > updateState 1`] = `
 }
 `;
 
-exports[`SyncStatus > Handles popups > PopupSyncAuth > KeyStore.getKey() 1`] = `undefined`;
+exports[`SyncStatus > Handles popups > PopupSyncAuth > KeyStore.getKey() 1`] =
+  `undefined`;
 
-exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('THEME') 1`] = `null`;
 
-exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `SyncStatus > Handles popups > PopupSyncAuth > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('USERNAME') 1`] = `null`;
+exports[`SyncStatus > Handles popups > PopupSyncAuth > Storage.get('USERNAME') 1`] =
+  `null`;
 
 exports[`SyncStatus > Handles popups > PopupSyncAuth > allCalls 1`] = `
 [
@@ -364,10 +392,12 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > allCalls 1`] = `
 ]
 `;
 
-exports[`SyncStatus > Handles popups > PopupSyncAuth > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`SyncStatus > Handles popups > PopupSyncAuth > document.body.outerHTML 1`] =
+  `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
 exports[`SyncStatus > Handles popups > PopupSyncAuth > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -412,12 +442,13 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -431,17 +462,23 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > updateState 1`] = `
 }
 `;
 
-exports[`SyncStatus > Handles popups > PopupSyncError > KeyStore.getKey() 1`] = `undefined`;
+exports[`SyncStatus > Handles popups > PopupSyncError > KeyStore.getKey() 1`] =
+  `undefined`;
 
-exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('THEME') 1`] = `null`;
 
-exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `SyncStatus > Handles popups > PopupSyncError > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('USERNAME') 1`] = `null`;
+exports[`SyncStatus > Handles popups > PopupSyncError > Storage.get('USERNAME') 1`] =
+  `null`;
 
 exports[`SyncStatus > Handles popups > PopupSyncError > allCalls 1`] = `
 [
@@ -467,7 +504,7 @@ exports[`SyncStatus > Handles popups > PopupSyncError > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -480,10 +517,12 @@ exports[`SyncStatus > Handles popups > PopupSyncError > allCalls 1`] = `
 ]
 `;
 
-exports[`SyncStatus > Handles popups > PopupSyncError > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`SyncStatus > Handles popups > PopupSyncError > document.body.outerHTML 1`] =
+  `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
 exports[`SyncStatus > Handles popups > PopupSyncError > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -533,12 +572,13 @@ exports[`SyncStatus > Handles popups > PopupSyncError > syncState 1`] = `
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -587,7 +627,8 @@ exports[`SyncStatus > Mounts when logged in > allCalls 1`] = `
 ]
 `;
 
-exports[`SyncStatus > Mounts when logged in > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`SyncStatus > Mounts when logged in > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`SyncStatus > Mounts when logged in > mockDb 1`] = `
 {
@@ -635,12 +676,13 @@ exports[`SyncStatus > Mounts when logged in > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -662,7 +704,8 @@ exports[`SyncStatus > Mounts when logged out > Storage.get('THEME') 1`] = `null`
 
 exports[`SyncStatus > Mounts when logged out > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`SyncStatus > Mounts when logged out > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`SyncStatus > Mounts when logged out > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`SyncStatus > Mounts when logged out > Storage.get('USERNAME') 1`] = `null`;
 
@@ -689,7 +732,8 @@ exports[`SyncStatus > Mounts when logged out > allCalls 1`] = `
 ]
 `;
 
-exports[`SyncStatus > Mounts when logged out > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`SyncStatus > Mounts when logged out > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`SyncStatus > Mounts when logged out > mockDb 1`] = `
 {
@@ -737,12 +781,13 @@ exports[`SyncStatus > Mounts when logged out > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }

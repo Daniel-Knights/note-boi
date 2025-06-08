@@ -14,7 +14,8 @@ exports[`ContextMenu > Closes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Closes > allCalls 1`] = `[]`;
 
-exports[`ContextMenu > Closes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Closes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Closes > mockDb 1`] = `
 {
@@ -62,12 +63,13 @@ exports[`ContextMenu > Closes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -124,7 +126,8 @@ exports[`ContextMenu > Creates a new note > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Creates a new note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Creates a new note > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Creates a new note > mockDb 1`] = `
 {
@@ -378,12 +381,13 @@ exports[`ContextMenu > Creates a new note > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "id",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -397,17 +401,27 @@ exports[`ContextMenu > Creates a new note > updateState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Delete button disabled with no notes > KeyStore.getKey() 1`] = `undefined`;
+exports[`ContextMenu > Delete button disabled with no notes > KeyStore.getKey() 1`] =
+  `undefined`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `ContextMenu > Delete button disabled with no notes > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Delete button disabled with no notes > Storage.get('THEME') 1`] =
+  `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `ContextMenu > Delete button disabled with no notes > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `ContextMenu > Delete button disabled with no notes > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `ContextMenu > Delete button disabled with no notes > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`ContextMenu > Delete button disabled with no notes > allCalls 1`] = `
 [
@@ -440,7 +454,9 @@ exports[`ContextMenu > Delete button disabled with no notes > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Delete button disabled with no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `ContextMenu > Delete button disabled with no notes > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Delete button disabled with no notes > mockDb 1`] = `
 {
@@ -481,9 +497,11 @@ exports[`ContextMenu > Delete button disabled with no notes > noteState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Delete button disabled with no notes > openedPopup 1`] = `undefined`;
+exports[`ContextMenu > Delete button disabled with no notes > openedPopup 1`] =
+  `undefined`;
 
-exports[`ContextMenu > Delete button disabled with no notes > selectedTheme 1`] = `"System"`;
+exports[`ContextMenu > Delete button disabled with no notes > selectedTheme 1`] =
+  `"System"`;
 
 exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
 {
@@ -500,12 +518,13 @@ exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -552,7 +571,8 @@ exports[`ContextMenu > Deletes a note > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Deletes a note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Deletes a note > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Deletes a note > mockDb 1`] = `
 {
@@ -828,14 +848,15 @@ exports[`ContextMenu > Deletes a note > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {
       "id",
     },
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 1,
+    "store": [Function],
   },
   "username": "",
 }
@@ -851,13 +872,16 @@ exports[`ContextMenu > Deletes a note > updateState 1`] = `
 
 exports[`ContextMenu > Deletes all selected notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`ContextMenu > Deletes all selected notes > Storage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`ContextMenu > Deletes all selected notes > Storage.get('USERNAME') 1`] = `null`;
 
@@ -918,7 +942,8 @@ exports[`ContextMenu > Deletes all selected notes > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Deletes all selected notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Deletes all selected notes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Deletes all selected notes > mockDb 1`] = `
 {
@@ -1134,14 +1159,15 @@ exports[`ContextMenu > Deletes all selected notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {
       "id",
     },
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 1,
+    "store": [Function],
   },
   "username": "",
 }
@@ -1155,17 +1181,27 @@ exports[`ContextMenu > Deletes all selected notes > updateState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Export button disabled with no notes > KeyStore.getKey() 1`] = `undefined`;
+exports[`ContextMenu > Export button disabled with no notes > KeyStore.getKey() 1`] =
+  `undefined`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `ContextMenu > Export button disabled with no notes > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Export button disabled with no notes > Storage.get('THEME') 1`] =
+  `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `ContextMenu > Export button disabled with no notes > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `ContextMenu > Export button disabled with no notes > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `ContextMenu > Export button disabled with no notes > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`ContextMenu > Export button disabled with no notes > allCalls 1`] = `
 [
@@ -1198,7 +1234,9 @@ exports[`ContextMenu > Export button disabled with no notes > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Export button disabled with no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `ContextMenu > Export button disabled with no notes > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Export button disabled with no notes > mockDb 1`] = `
 {
@@ -1239,9 +1277,11 @@ exports[`ContextMenu > Export button disabled with no notes > noteState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Export button disabled with no notes > openedPopup 1`] = `undefined`;
+exports[`ContextMenu > Export button disabled with no notes > openedPopup 1`] =
+  `undefined`;
 
-exports[`ContextMenu > Export button disabled with no notes > selectedTheme 1`] = `"System"`;
+exports[`ContextMenu > Export button disabled with no notes > selectedTheme 1`] =
+  `"System"`;
 
 exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
 {
@@ -1258,12 +1298,13 @@ exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -1313,7 +1354,8 @@ exports[`ContextMenu > Exports a note > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Exports a note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Exports a note > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Exports a note > mockDb 1`] = `
 {
@@ -1560,12 +1602,13 @@ exports[`ContextMenu > Exports a note > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -1581,13 +1624,16 @@ exports[`ContextMenu > Exports a note > updateState 1`] = `
 
 exports[`ContextMenu > Exports all selected notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`ContextMenu > Exports all selected notes > Storage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`ContextMenu > Exports all selected notes > Storage.get('USERNAME') 1`] = `null`;
 
@@ -1615,7 +1661,8 @@ exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Exports all selected notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Exports all selected notes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Exports all selected notes > mockDb 1`] = `
 {
@@ -1923,12 +1970,13 @@ exports[`ContextMenu > Exports all selected notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -1956,7 +2004,8 @@ exports[`ContextMenu > Mounts with ev > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Mounts with ev > allCalls 1`] = `[]`;
 
-exports[`ContextMenu > Mounts with ev > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Mounts with ev > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Mounts with ev > mockDb 1`] = `
 {
@@ -2004,12 +2053,13 @@ exports[`ContextMenu > Mounts with ev > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -2031,13 +2081,15 @@ exports[`ContextMenu > Mounts without passed ev > Storage.get('THEME') 1`] = `nu
 
 exports[`ContextMenu > Mounts without passed ev > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Mounts without passed ev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Mounts without passed ev > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`ContextMenu > Mounts without passed ev > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Mounts without passed ev > allCalls 1`] = `[]`;
 
-exports[`ContextMenu > Mounts without passed ev > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Mounts without passed ev > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`ContextMenu > Mounts without passed ev > mockDb 1`] = `
 {
@@ -2085,12 +2137,13 @@ exports[`ContextMenu > Mounts without passed ev > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }

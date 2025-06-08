@@ -14,7 +14,8 @@ exports[`Popup > Closes on click outside > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Closes on click outside > allCalls 1`] = `[]`;
 
-exports[`Popup > Closes on click outside > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`Popup > Closes on click outside > document.body.outerHTML 1`] =
+  `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
 exports[`Popup > Closes on click outside > mockDb 1`] = `
 {
@@ -62,12 +63,13 @@ exports[`Popup > Closes on click outside > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -95,7 +97,8 @@ exports[`Popup > Closes on escape key > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Closes on escape key > allCalls 1`] = `[]`;
 
-exports[`Popup > Closes on escape key > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`Popup > Closes on escape key > document.body.outerHTML 1`] =
+  `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
 exports[`Popup > Closes on escape key > mockDb 1`] = `
 {
@@ -143,12 +146,13 @@ exports[`Popup > Closes on escape key > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -176,7 +180,8 @@ exports[`Popup > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Mounts > allCalls 1`] = `[]`;
 
-exports[`Popup > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`Popup > Mounts > document.body.outerHTML 1`] =
+  `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
 exports[`Popup > Mounts > mockDb 1`] = `
 {
@@ -224,12 +229,13 @@ exports[`Popup > Mounts > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -257,7 +263,8 @@ exports[`Popup > Unmounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Unmounts > allCalls 1`] = `[]`;
 
-exports[`Popup > Unmounts > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`Popup > Unmounts > document.body.outerHTML 1`] =
+  `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
 exports[`Popup > Unmounts > mockDb 1`] = `
 {
@@ -305,12 +312,13 @@ exports[`Popup > Unmounts > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }

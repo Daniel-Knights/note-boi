@@ -14,7 +14,8 @@ exports[`DropMenu > Adds classes to items > Storage.get('USERNAME') 1`] = `null`
 
 exports[`DropMenu > Adds classes to items > allCalls 1`] = `[]`;
 
-exports[`DropMenu > Adds classes to items > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DropMenu > Adds classes to items > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`DropMenu > Adds classes to items > mockDb 1`] = `
 {
@@ -62,12 +63,13 @@ exports[`DropMenu > Adds classes to items > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -87,15 +89,18 @@ exports[`DropMenu > Adds click handlers to items > Storage.get('MENU_WIDTH') 1`]
 
 exports[`DropMenu > Adds click handlers to items > Storage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Adds click handlers to items > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Adds click handlers to items > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`DropMenu > Adds click handlers to items > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Adds click handlers to items > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`DropMenu > Adds click handlers to items > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Adds click handlers to items > allCalls 1`] = `[]`;
 
-exports[`DropMenu > Adds click handlers to items > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DropMenu > Adds click handlers to items > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`DropMenu > Adds click handlers to items > mockDb 1`] = `
 {
@@ -143,12 +148,13 @@ exports[`DropMenu > Adds click handlers to items > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -176,7 +182,8 @@ exports[`DropMenu > Emits close on click > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Emits close on click > allCalls 1`] = `[]`;
 
-exports[`DropMenu > Emits close on click > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DropMenu > Emits close on click > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`DropMenu > Emits close on click > mockDb 1`] = `
 {
@@ -224,12 +231,13 @@ exports[`DropMenu > Emits close on click > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -257,7 +265,8 @@ exports[`DropMenu > Handles sub-menus > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Handles sub-menus > allCalls 1`] = `[]`;
 
-exports[`DropMenu > Handles sub-menus > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DropMenu > Handles sub-menus > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`DropMenu > Handles sub-menus > mockDb 1`] = `
 {
@@ -305,12 +314,13 @@ exports[`DropMenu > Handles sub-menus > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -338,7 +348,8 @@ exports[`DropMenu > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Mounts > allCalls 1`] = `[]`;
 
-exports[`DropMenu > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DropMenu > Mounts > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`DropMenu > Mounts > mockDb 1`] = `
 {
@@ -386,12 +397,13 @@ exports[`DropMenu > Mounts > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -419,7 +431,8 @@ exports[`DropMenu > Renders each item > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Renders each item > allCalls 1`] = `[]`;
 
-exports[`DropMenu > Renders each item > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DropMenu > Renders each item > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`DropMenu > Renders each item > mockDb 1`] = `
 {
@@ -467,12 +480,13 @@ exports[`DropMenu > Renders each item > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
