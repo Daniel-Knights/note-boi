@@ -13,44 +13,52 @@ import { selectedTheme } from '../store/theme';
 
 import { UUID_REGEX } from './constant';
 import { allCalls, mockDb } from './mock';
-import { isObj } from './utils';
+import localNotes from './notes.json';
+import { isNote, isObj } from './utils';
+
+const staticNoteIds = new Set(localNotes.map((nt) => nt.id));
 
 /** Snapshots app state. Replaces variable values with placeholders. */
 export async function snapshotState() {
+  /** Returns id unchanged if static, otherwise returns `'id'` */
+  const normaliseNoteId = (id: string) => (staticNoteIds.has(id) ? id : 'id');
+
   // syncState
   s.syncState.unsyncedNoteIds.edited = new Set(
-    [...s.syncState.unsyncedNoteIds.edited].map(() => 'id')
+    [...s.syncState.unsyncedNoteIds.edited].map(normaliseNoteId)
   );
   s.syncState.unsyncedNoteIds.deleted = new Set(
-    [...s.syncState.unsyncedNoteIds.deleted].map(() => 'id')
+    [...s.syncState.unsyncedNoteIds.deleted].map(normaliseNoteId)
   );
 
   if (s.syncState.unsyncedNoteIds.new) {
-    s.syncState.unsyncedNoteIds.new = 'id';
+    s.syncState.unsyncedNoteIds.new = normaliseNoteId(s.syncState.unsyncedNoteIds.new);
   }
 
   // storage
   const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
   if (storedUnsyncedNoteIds) {
-    storedUnsyncedNoteIds.edited = [...storedUnsyncedNoteIds.edited].map(() => 'id');
-    storedUnsyncedNoteIds.deleted = [...storedUnsyncedNoteIds.deleted].map(() => 'id');
+    storedUnsyncedNoteIds.edited = [...storedUnsyncedNoteIds.edited].map(normaliseNoteId);
+    storedUnsyncedNoteIds.deleted = [...storedUnsyncedNoteIds.deleted].map(
+      normaliseNoteId
+    );
 
     if (storedUnsyncedNoteIds.new) {
-      storedUnsyncedNoteIds.new = 'id';
+      storedUnsyncedNoteIds.new = normaliseNoteId(storedUnsyncedNoteIds.new);
     }
   }
 
   // noteState
-  n.noteState.notes = n.noteState.notes.map((note) => ({
-    ...note,
-    id: 'id',
+  n.noteState.notes = n.noteState.notes.map((nt) => ({
+    ...nt,
+    id: normaliseNoteId(nt.id),
     timestamp: 0,
   }));
 
   n.noteState.selectedNote = {
     ...n.noteState.selectedNote,
-    id: 'id',
+    id: normaliseNoteId(n.noteState.selectedNote.id),
     timestamp: 0,
   };
 
@@ -62,18 +70,18 @@ export async function snapshotState() {
 
     if (!isObj(calledWith)) return call;
 
-    if (isObj(calledWith.note)) {
+    if (isNote(calledWith.note)) {
       calledWith.note = {
         ...calledWith.note,
-        id: 'id',
+        id: normaliseNoteId(calledWith.note.id),
         timestamp: 0,
       };
     }
 
     if (Array.isArray(calledWith.notes)) {
-      calledWith.notes = calledWith.notes.map((note) => ({
-        ...note,
-        id: 'id',
+      calledWith.notes = calledWith.notes.map((nt) => ({
+        ...nt,
+        id: normaliseNoteId(nt.id),
         timestamp: 0,
       }));
     }
@@ -82,23 +90,40 @@ export async function snapshotState() {
       const parsedBody = JSON.parse(calledWith.body);
 
       if ('notes' in parsedBody) {
-        parsedBody.notes = (parsedBody.notes as EncryptedNote[]).map((note) => ({
-          ...note,
-          id: 'id',
+        parsedBody.notes = (parsedBody.notes as EncryptedNote[]).map((nt) => ({
+          ...nt,
+          id: normaliseNoteId(nt.id),
           timestamp: 0,
           content: 'content',
         }));
+      }
+
+      if ('deleted_note_ids' in parsedBody) {
+        parsedBody.deleted_note_ids = (parsedBody.deleted_note_ids as string[]).map(
+          normaliseNoteId
+        );
       }
 
       calledWith.body = JSON.stringify(parsedBody);
     }
 
     if (typeof calledWith.id === 'string' && UUID_REGEX.test(calledWith.id)) {
-      calledWith.id = 'id';
+      calledWith.id = normaliseNoteId(calledWith.id);
     }
 
     return call;
   });
+
+  // mockDb
+  const mockDbNormalised: typeof mockDb = {
+    ...mockDb,
+    deletedNoteIds: new Set([...(mockDb.deletedNoteIds ?? [])].map(normaliseNoteId)),
+    encryptedNotes: mockDb.encryptedNotes.map((nt) => ({
+      ...nt,
+      id: normaliseNoteId(nt.id),
+      content: 'content',
+    })),
+  };
 
   // Snapshots
   const cryptoKey = await KeyStore.getKey();
@@ -110,10 +135,7 @@ export async function snapshotState() {
   expect(selectedTheme.value).toMatchSnapshot('selectedTheme');
   expect(cryptoKey).toMatchSnapshot('KeyStore.getKey()');
   expect(document.body.outerHTML).toMatchSnapshot('document.body.outerHTML');
-  expect({
-    ...mockDb,
-    encryptedNotes: mockDb.encryptedNotes.length,
-  }).toMatchSnapshot('mockDb');
+  expect(mockDbNormalised).toMatchSnapshot('mockDb');
   expect(allCallsNormalised).toMatchSnapshot('allCalls');
 
   Object.keys(STORAGE_KEYS_STRING).forEach((key) => {

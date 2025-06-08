@@ -4,7 +4,12 @@ import { ERROR_CODE, Storage } from '../../../../classes';
 import { isEmptyNote } from '../../../../utils';
 import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../mock';
 import localNotes from '../../../notes.json';
-import { assertAppError, assertLoadingState, assertRequest } from '../../../utils';
+import {
+  assertAppError,
+  assertLoadingState,
+  assertRequest,
+  hackEncryptionError,
+} from '../../../utils';
 
 describe('Auth', () => {
   it('clientSideLogout', async () => {
@@ -123,12 +128,7 @@ describe('Auth', () => {
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
-
-      // @ts-expect-error - hack to trigger encryption error. A circular reference that
-      // causes `JSON.stringify` to throw when stringifying note content for encryption.
-      // Tried every which way to mock reject on `crypto.subtle.encrypt`, but it
-      // doesn't work.
-      n.noteState.notes[0]!.content = n.noteState.notes[0];
+      hackEncryptionError(n.noteState.notes[0]!);
 
       await s.login();
 
@@ -353,15 +353,10 @@ describe('Auth', () => {
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
+      hackEncryptionError(n.noteState.notes[0]!);
 
       s.syncState.username = 'k';
       s.syncState.password = '2';
-
-      // @ts-expect-error - hack to trigger encryption error. A circular reference that
-      // causes `JSON.stringify` to throw when stringifying note content for encryption.
-      // Tried every which way to mock reject on `crypto.subtle.encrypt`, but it
-      // doesn't work.
-      n.noteState.notes[0]!.content = n.noteState.notes[0];
 
       await s.signup();
 

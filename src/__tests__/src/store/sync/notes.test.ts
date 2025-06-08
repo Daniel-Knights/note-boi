@@ -14,6 +14,7 @@ import {
   assertRequest,
   copyObjArr,
   getByTestId,
+  hackEncryptionError,
   waitForAutoSync,
   waitUntil,
 } from '../../../utils';
@@ -109,12 +110,7 @@ describe('Notes (sync)', () => {
       await s.login();
 
       clearMockApiResults({ calls });
-
-      // @ts-expect-error - hack to trigger encryption error. A circular reference that
-      // causes `JSON.stringify` to throw when stringifying note content for encryption.
-      // Tried every which way to mock reject on `crypto.subtle.encrypt`, but it
-      // doesn't work.
-      n.noteState.notes[0]!.content = n.noteState.notes[0];
+      hackEncryptionError(n.noteState.notes[0]!);
 
       await s.sync();
 

@@ -2,7 +2,12 @@ import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { ERROR_CODE, Storage } from '../../../../classes';
 import { clearMockApiResults, mockApi, mockDb } from '../../../mock';
-import { assertAppError, assertLoadingState, assertRequest } from '../../../utils';
+import {
+  assertAppError,
+  assertLoadingState,
+  assertRequest,
+  hackEncryptionError,
+} from '../../../utils';
 
 describe('Account', () => {
   describe('changePassword', () => {
@@ -79,15 +84,10 @@ describe('Account', () => {
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
+      hackEncryptionError(n.noteState.notes[0]!);
 
       s.syncState.password = '1';
       s.syncState.newPassword = '2';
-
-      // @ts-expect-error - hack to trigger encryption error. A circular reference that
-      // causes `JSON.stringify` to throw when stringifying note content for encryption.
-      // Tried every which way to mock reject on `crypto.subtle.encrypt`, but it
-      // doesn't work.
-      n.noteState.notes[0]!.content = n.noteState.notes[0];
 
       await s.changePassword();
 
