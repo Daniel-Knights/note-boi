@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 
 import { AppError, Storage } from '../../classes';
 
-import { storedUnsyncedNoteIds } from './noteSync';
+import { storedUnsyncedNoteIds } from './notes';
 
 export const syncState = reactive({
   username: Storage.get('USERNAME') || '',
@@ -18,14 +18,16 @@ export const syncState = reactive({
     get size() {
       return this.edited.size + this.deleted.size;
     },
-    clear() {
-      this.new = '';
+    clear(clearNew = false) {
+      if (clearNew) {
+        this.new = '';
+      }
+
       this.edited.clear();
       this.deleted.clear();
-
-      Storage.remove('UNSYNCED');
+      this.store();
     },
-    add(ids) {
+    set(ids) {
       if (ids.new !== undefined) this.new = ids.new;
 
       ids.edited?.forEach((id) => this.edited.add(id));
@@ -43,6 +45,15 @@ export const syncState = reactive({
         this.new = '';
       }
 
+      this.store();
+    },
+    store() {
+      if (this.size === 0 && !this.new) {
+        Storage.remove('UNSYNCED');
+
+        return;
+      }
+
       Storage.setJson('UNSYNCED', {
         new: this.new,
         edited: [...this.edited],
@@ -58,10 +69,11 @@ export type UnsyncedNoteIds = {
   deleted: Set<string>;
   size: number;
   clear: () => void;
-  add: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
+  set: (ids: { new?: string; edited?: string[]; deleted?: string[] }) => void;
+  store: () => void;
 };
 
 export * from './auth';
 export * from './account';
-export * from './noteSync';
+export * from './notes';
 export * from './utils';

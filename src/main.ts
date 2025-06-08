@@ -15,7 +15,7 @@ import {
   noteState,
 } from './store/note';
 import { openedPopup, POPUP_TYPE } from './store/popup';
-import { deleteAccount, pull, push, syncState } from './store/sync';
+import { deleteAccount, sync, syncState } from './store/sync';
 import { handleUpdate } from './store/update';
 import { isDev, tauriListen } from './utils';
 
@@ -23,12 +23,12 @@ import App from './App.vue';
 
 createApp(App).mount('#app');
 initLogger();
-getAllNotes();
 handleUpdate();
 
-if (syncState.username) {
-  pull();
-}
+getAllNotes().then(() => {
+  // TODO: no timeout id results in this completing regardless of whether the sync was cancelled
+  sync();
+});
 
 webview.getCurrentWebview().listen('tauri://close-requested', () => {
   exitApp(exit);
@@ -53,11 +53,11 @@ tauriListen('change-password', () => {
 
 export async function exitApp(cb: () => void): Promise<void> {
   if (syncState.unsyncedNoteIds.size > 0) {
-    await push();
+    await sync();
 
-    if (syncState.appError.code === ERROR_CODE.PUSH) {
+    if (syncState.appError.code === ERROR_CODE.SYNC) {
       const closeAnyway = await dialog.ask(
-        'ERROR: Failed to push unsynced notes.\nClose anyway?',
+        'ERROR: Failed to sync notes.\nClose anyway?',
         {
           title: 'NoteBoi',
           kind: 'error',

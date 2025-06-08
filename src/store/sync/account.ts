@@ -6,6 +6,7 @@ import {
   ERROR_CODE,
   ErrorConfig,
   FetchBuilder,
+  KeyStore,
 } from '../../classes';
 import { tauriInvoke } from '../../utils';
 import { noteState } from '../note';
@@ -31,15 +32,19 @@ export const changePassword = route(async (): Promise<void> => {
     },
   } satisfies Omit<ErrorConfig<typeof changePassword>, 'message'>;
 
-  const accessToken = await tauriInvoke('get_access_token', {
-    username: syncState.username,
-  });
+  const newKey = await Encryptor.generatePasswordKey(syncState.newPassword);
 
-  const encryptedNotes = await Encryptor.encryptNotes(
-    noteState.notes,
-    syncState.newPassword
-  ).catch((err) => throwEncryptorError(errorConfig, err));
-  if (!encryptedNotes) return;
+  await KeyStore.storeKey(newKey);
+
+  const [accessToken, encryptedNotes] = await Promise.all([
+    tauriInvoke('get_access_token', {
+      username: syncState.username,
+    }),
+    Encryptor.encryptNotes(noteState.notes, newKey).catch((err) =>
+      throwEncryptorError(errorConfig, err)
+    ),
+  ]);
+  if (!accessToken || !encryptedNotes) return;
 
   const res = await new FetchBuilder('/account/change-password')
     .method('PUT')
@@ -95,8 +100,7 @@ export const deleteAccount = route(async (): Promise<void> => {
   if (resIsOk(res)) {
     await clientSideLogout();
     resetAppError();
-
-    syncState.unsyncedNoteIds.clear();
+    syncState.unsyncedNoteIds.clear(true);
   } else {
     throw new AppError({
       ...errorConfig,

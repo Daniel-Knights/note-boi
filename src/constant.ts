@@ -28,6 +28,8 @@ export type EndpointPayloads = {
     payload: {
       username: string;
       password: string;
+      notes: EncryptedNote[];
+      deleted_note_ids: string[];
     };
     response: {
       notes: EncryptedNote[];
@@ -38,14 +40,11 @@ export type EndpointPayloads = {
     payload: never;
     response: never;
   };
-  '/notes/push': {
+  '/notes/sync': {
     payload: {
       notes: EncryptedNote[];
+      deleted_note_ids: string[];
     };
-    response: never;
-  };
-  '/notes/pull': {
-    payload: never;
     response: {
       notes: EncryptedNote[];
       access_token: string;
@@ -73,8 +72,7 @@ export const ENDPOINTS = [
   '/auth/signup',
   '/auth/login',
   '/auth/logout',
-  '/notes/push',
-  '/notes/pull',
+  '/notes/sync',
   '/account/delete',
   '/account/change-password',
 ] satisfies Endpoint[];
