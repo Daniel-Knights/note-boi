@@ -6,7 +6,6 @@ import {
   ErrorConfig,
   FetchBuilder,
   KeyStore,
-  Storage,
 } from '../../classes';
 import { NOTE_EVENTS } from '../../constant';
 import { isEmptyNote, tauriEmit, tauriInvoke } from '../../utils';
@@ -19,7 +18,7 @@ import {
   UnsyncedEventDetail,
 } from '../note';
 
-import { syncState } from './index';
+import { syncState } from './state';
 import {
   parseErrorRes,
   resetAppError,
@@ -28,8 +27,6 @@ import {
   throwEncryptorError,
   throwFetchError,
 } from './utils';
-
-export const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
 const syncQueue = new DebounceQueue();
 
