@@ -22,7 +22,7 @@ import Editor from '../../../../components/Editor.vue';
 import NoteMenu from '../../../../components/NoteMenu.vue';
 import SyncStatus from '../../../../components/SyncStatus.vue';
 
-describe('Note (sync)', () => {
+describe('Notes (sync)', () => {
   describe('sync', () => {
     it('Syncs notes with the server', async () => {
       const { calls, setResValues } = mockApi();
