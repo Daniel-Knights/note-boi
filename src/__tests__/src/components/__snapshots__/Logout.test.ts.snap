@@ -303,12 +303,11 @@ Sugar
 ]
 `;
 
-exports[`Logout > Logs out on click > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Logout > Logs out on click > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Logout > Logs out on click > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -586,8 +585,7 @@ exports[`Logout > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Logout > Mounts > allCalls 1`] = `[]`;
 
-exports[`Logout > Mounts > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Logout > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Logout > Mounts > mockDb 1`] = `
 {

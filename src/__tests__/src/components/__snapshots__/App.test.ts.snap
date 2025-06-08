@@ -35,8 +35,7 @@ exports[`App > Mounts > allCalls 1`] = `
 ]
 `;
 
-exports[`App > Mounts > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`App > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`App > Mounts > mockDb 1`] = `
 {
@@ -104,28 +103,17 @@ exports[`App > Mounts > updateState 1`] = `
 }
 `;
 
-exports[`App > Shows loading spinner when update is downloading > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`App > Shows loading spinner when update is downloading > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `App > Shows loading spinner when update is downloading > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`App > Shows loading spinner when update is downloading > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `App > Shows loading spinner when update is downloading > Storage.get('THEME') 1`
-] = `null`;
+exports[`App > Shows loading spinner when update is downloading > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `App > Shows loading spinner when update is downloading > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`App > Shows loading spinner when update is downloading > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `App > Shows loading spinner when update is downloading > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`App > Shows loading spinner when update is downloading > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `App > Shows loading spinner when update is downloading > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`App > Shows loading spinner when update is downloading > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Shows loading spinner when update is downloading > allCalls 1`] = `
 [
@@ -150,9 +138,7 @@ exports[`App > Shows loading spinner when update is downloading > allCalls 1`] =
 ]
 `;
 
-exports[
-  `App > Shows loading spinner when update is downloading > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`App > Shows loading spinner when update is downloading > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`App > Shows loading spinner when update is downloading > mockDb 1`] = `
 {
@@ -181,11 +167,9 @@ exports[`App > Shows loading spinner when update is downloading > noteState 1`] 
 }
 `;
 
-exports[`App > Shows loading spinner when update is downloading > openedPopup 1`] =
-  `undefined`;
+exports[`App > Shows loading spinner when update is downloading > openedPopup 1`] = `undefined`;
 
-exports[`App > Shows loading spinner when update is downloading > selectedTheme 1`] =
-  `"System"`;
+exports[`App > Shows loading spinner when update is downloading > selectedTheme 1`] = `"System"`;
 
 exports[`App > Shows loading spinner when update is downloading > syncState 1`] = `
 {

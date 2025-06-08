@@ -14,8 +14,7 @@ exports[`Editor > Has the correct timestamp > Storage.get('USERNAME') 1`] = `nul
 
 exports[`Editor > Has the correct timestamp > allCalls 1`] = `[]`;
 
-exports[`Editor > Has the correct timestamp > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Editor > Has the correct timestamp > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Editor > Has the correct timestamp > mockDb 1`] = `
 {
@@ -97,8 +96,7 @@ exports[`Editor > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Mounts > allCalls 1`] = `[]`;
 
-exports[`Editor > Mounts > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Editor > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Editor > Mounts > mockDb 1`] = `
 {
@@ -174,8 +172,7 @@ exports[`Editor > Sets the correct note text > Storage.get('THEME') 1`] = `null`
 
 exports[`Editor > Sets the correct note text > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Sets the correct note text > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Editor > Sets the correct note text > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Editor > Sets the correct note text > Storage.get('USERNAME') 1`] = `null`;
 
@@ -191,8 +188,7 @@ exports[`Editor > Sets the correct note text > allCalls 1`] = `
 ]
 `;
 
-exports[`Editor > Sets the correct note text > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Editor > Sets the correct note text > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Editor > Sets the correct note text > mockDb 1`] = `
 {

@@ -1,27 +1,16 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Settings > Account menu item > Delete account menu item > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Settings > Account menu item > Delete account menu item > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Settings > Account menu item > Delete account menu item > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Settings > Account menu item > Delete account menu item > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Delete account menu item > Storage.get('THEME') 1`
-] = `null`;
+exports[`Settings > Account menu item > Delete account menu item > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Delete account menu item > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Settings > Account menu item > Delete account menu item > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Delete account menu item > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Settings > Account menu item > Delete account menu item > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Delete account menu item > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Settings > Account menu item > Delete account menu item > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Settings > Account menu item > Delete account menu item > allCalls 1`] = `
 [
@@ -95,9 +84,7 @@ exports[`Settings > Account menu item > Delete account menu item > allCalls 1`] 
 ]
 `;
 
-exports[
-  `Settings > Account menu item > Delete account menu item > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Settings > Account menu item > Delete account menu item > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Settings > Account menu item > Delete account menu item > mockDb 1`] = `
 {
@@ -124,11 +111,9 @@ exports[`Settings > Account menu item > Delete account menu item > noteState 1`]
 }
 `;
 
-exports[`Settings > Account menu item > Delete account menu item > openedPopup 1`] =
-  `undefined`;
+exports[`Settings > Account menu item > Delete account menu item > openedPopup 1`] = `undefined`;
 
-exports[`Settings > Account menu item > Delete account menu item > selectedTheme 1`] =
-  `"System"`;
+exports[`Settings > Account menu item > Delete account menu item > selectedTheme 1`] = `"System"`;
 
 exports[`Settings > Account menu item > Delete account menu item > syncState 1`] = `
 {
@@ -165,41 +150,23 @@ exports[`Settings > Account menu item > Delete account menu item > updateState 1
 }
 `;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`Settings > Account menu item > Opens and closes change password popup > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Settings > Account menu item > Opens and closes change password popup > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > Storage.get('THEME') 1`
-] = `null`;
+exports[`Settings > Account menu item > Opens and closes change password popup > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Settings > Account menu item > Opens and closes change password popup > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Settings > Account menu item > Opens and closes change password popup > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Settings > Account menu item > Opens and closes change password popup > Storage.get('USERNAME') 1`] = `null`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > allCalls 1`
-] = `[]`;
+exports[`Settings > Account menu item > Opens and closes change password popup > allCalls 1`] = `[]`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > document.body.outerHTML 1`
-] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`Settings > Account menu item > Opens and closes change password popup > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > mockDb 1`
-] = `
+exports[`Settings > Account menu item > Opens and closes change password popup > mockDb 1`] = `
 {
   "encryptedNotes": 10,
   "users": {
@@ -208,9 +175,7 @@ exports[
 }
 `;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > noteState 1`
-] = `
+exports[`Settings > Account menu item > Opens and closes change password popup > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -228,17 +193,11 @@ exports[
 }
 `;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > openedPopup 1`
-] = `undefined`;
+exports[`Settings > Account menu item > Opens and closes change password popup > openedPopup 1`] = `undefined`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > selectedTheme 1`
-] = `"System"`;
+exports[`Settings > Account menu item > Opens and closes change password popup > selectedTheme 1`] = `"System"`;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > syncState 1`
-] = `
+exports[`Settings > Account menu item > Opens and closes change password popup > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -265,9 +224,7 @@ exports[
 }
 `;
 
-exports[
-  `Settings > Account menu item > Opens and closes change password popup > updateState 1`
-] = `
+exports[`Settings > Account menu item > Opens and closes change password popup > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -314,8 +271,7 @@ exports[`Settings > Exports all notes > allCalls 1`] = `
 ]
 `;
 
-exports[`Settings > Exports all notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Settings > Exports all notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Settings > Exports all notes > mockDb 1`] = `
 {
@@ -397,8 +353,7 @@ exports[`Settings > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Settings > Mounts > allCalls 1`] = `[]`;
 
-exports[`Settings > Mounts > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Settings > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Settings > Mounts > mockDb 1`] = `
 {
@@ -474,15 +429,13 @@ exports[`Settings > Opens and closes drop menu > Storage.get('THEME') 1`] = `nul
 
 exports[`Settings > Opens and closes drop menu > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Settings > Opens and closes drop menu > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Settings > Opens and closes drop menu > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Settings > Opens and closes drop menu > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Settings > Opens and closes drop menu > allCalls 1`] = `[]`;
 
-exports[`Settings > Opens and closes drop menu > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Settings > Opens and closes drop menu > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Settings > Opens and closes drop menu > mockDb 1`] = `
 {
@@ -574,8 +527,7 @@ exports[`Settings > Opens info popup > allCalls 1`] = `
 ]
 `;
 
-exports[`Settings > Opens info popup > document.body.outerHTML 1`] =
-  `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`Settings > Opens info popup > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
 
 exports[`Settings > Opens info popup > mockDb 1`] = `
 {
@@ -657,8 +609,7 @@ exports[`Settings > Sets theme preference > Storage.get('USERNAME') 1`] = `null`
 
 exports[`Settings > Sets theme preference > allCalls 1`] = `[]`;
 
-exports[`Settings > Sets theme preference > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Settings > Sets theme preference > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Settings > Sets theme preference > mockDb 1`] = `
 {
@@ -734,15 +685,13 @@ exports[`Settings > Sets update strategy > Storage.get('THEME') 1`] = `null`;
 
 exports[`Settings > Sets update strategy > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Settings > Sets update strategy > Storage.get('UPDATE_STRATEGY') 1`] =
-  `"manual"`;
+exports[`Settings > Sets update strategy > Storage.get('UPDATE_STRATEGY') 1`] = `"manual"`;
 
 exports[`Settings > Sets update strategy > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Settings > Sets update strategy > allCalls 1`] = `[]`;
 
-exports[`Settings > Sets update strategy > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Settings > Sets update strategy > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Settings > Sets update strategy > mockDb 1`] = `
 {
@@ -816,11 +765,9 @@ exports[`Settings > Update and restart menu item > Storage.get('MENU_WIDTH') 1`]
 
 exports[`Settings > Update and restart menu item > Storage.get('THEME') 1`] = `null`;
 
-exports[`Settings > Update and restart menu item > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Settings > Update and restart menu item > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Settings > Update and restart menu item > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Settings > Update and restart menu item > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Settings > Update and restart menu item > Storage.get('USERNAME') 1`] = `null`;
 
@@ -883,8 +830,7 @@ Do you want to update now?",
 ]
 `;
 
-exports[`Settings > Update and restart menu item > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Settings > Update and restart menu item > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Settings > Update and restart menu item > mockDb 1`] = `
 {

@@ -1,32 +1,18 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > KeyStore.getKey() 1`
-] = `CryptoKey {}`;
+exports[`Account > changePassword > Changes password for currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > Storage.get('THEME') 1`
-] = `null`;
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > Storage.get('USERNAME') 1`
-] = `"d"`;
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > allCalls 1`
-] = `
+exports[`Account > changePassword > Changes password for currently logged in account > allCalls 1`] = `
 [
   [
     "request",
@@ -167,15 +153,11 @@ exports[
 ]
 `;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Account > changePassword > Changes password for currently logged in account > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > mockDb 1`
-] = `
+exports[`Account > changePassword > Changes password for currently logged in account > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -183,9 +165,7 @@ exports[
 }
 `;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > noteState 1`
-] = `
+exports[`Account > changePassword > Changes password for currently logged in account > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -215,17 +195,11 @@ exports[
 }
 `;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > openedPopup 1`
-] = `undefined`;
+exports[`Account > changePassword > Changes password for currently logged in account > openedPopup 1`] = `undefined`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > selectedTheme 1`
-] = `"System"`;
+exports[`Account > changePassword > Changes password for currently logged in account > selectedTheme 1`] = `"System"`;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > syncState 1`
-] = `
+exports[`Account > changePassword > Changes password for currently logged in account > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -252,9 +226,7 @@ exports[
 }
 `;
 
-exports[
-  `Account > changePassword > Changes password for currently logged in account > updateState 1`
-] = `
+exports[`Account > changePassword > Changes password for currently logged in account > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -262,29 +234,17 @@ exports[
 }
 `;
 
-exports[
-  `Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`
-] = `CryptoKey {}`;
+exports[`Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Account > changePassword > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Account > changePassword > Sets and resets loading state > Storage.get('THEME') 1`
-] = `null`;
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Account > changePassword > Sets and resets loading state > Storage.get('USERNAME') 1`
-] = `"d"`;
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Account > changePassword > Sets and resets loading state > allCalls 1`] = `
 [
@@ -402,13 +362,11 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
 ]
 `;
 
-exports[
-  `Account > changePassword > Sets and resets loading state > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Account > changePassword > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > changePassword > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -446,11 +404,9 @@ exports[`Account > changePassword > Sets and resets loading state > noteState 1`
 }
 `;
 
-exports[`Account > changePassword > Sets and resets loading state > openedPopup 1`] =
-  `undefined`;
+exports[`Account > changePassword > Sets and resets loading state > openedPopup 1`] = `undefined`;
 
-exports[`Account > changePassword > Sets and resets loading state > selectedTheme 1`] =
-  `"System"`;
+exports[`Account > changePassword > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
 exports[`Account > changePassword > Sets and resets loading state > syncState 1`] = `
 {
@@ -487,19 +443,15 @@ exports[`Account > changePassword > Sets and resets loading state > updateState 
 }
 `;
 
-exports[`Account > changePassword > User not found > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Account > changePassword > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Account > changePassword > User not found > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Account > changePassword > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > changePassword > User not found > Storage.get('THEME') 1`] = `null`;
 
-exports[`Account > changePassword > User not found > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Account > changePassword > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Account > changePassword > User not found > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Account > changePassword > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Account > changePassword > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
@@ -569,12 +521,11 @@ exports[`Account > changePassword > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > changePassword > User not found > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Account > changePassword > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > changePassword > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -644,26 +595,17 @@ exports[`Account > changePassword > User not found > updateState 1`] = `
 }
 `;
 
-exports[`Account > changePassword > With encryption error > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Account > changePassword > With encryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Account > changePassword > With encryption error > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Account > changePassword > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Account > changePassword > With encryption error > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Account > changePassword > With encryption error > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Account > changePassword > With encryption error > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Account > changePassword > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Account > changePassword > With encryption error > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Account > changePassword > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Account > changePassword > With encryption error > Storage.get('USERNAME') 1`] =
-  `"d"`;
+exports[`Account > changePassword > With encryption error > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Account > changePassword > With encryption error > allCalls 1`] = `
 [
@@ -762,12 +704,11 @@ exports[`Account > changePassword > With encryption error > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > changePassword > With encryption error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Account > changePassword > With encryption error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > changePassword > With encryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -988,8 +929,7 @@ Sugar
 
 exports[`Account > changePassword > With encryption error > openedPopup 1`] = `undefined`;
 
-exports[`Account > changePassword > With encryption error > selectedTheme 1`] =
-  `"System"`;
+exports[`Account > changePassword > With encryption error > selectedTheme 1`] = `"System"`;
 
 exports[`Account > changePassword > With encryption error > syncState 1`] = `
 {
@@ -1033,23 +973,17 @@ exports[`Account > changePassword > With encryption error > updateState 1`] = `
 }
 `;
 
-exports[`Account > changePassword > With server error > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Account > changePassword > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Account > changePassword > With server error > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Account > changePassword > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > changePassword > With server error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Account > changePassword > With server error > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Account > changePassword > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Account > changePassword > With server error > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Account > changePassword > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Account > changePassword > With server error > Storage.get('USERNAME') 1`] =
-  `"d"`;
+exports[`Account > changePassword > With server error > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Account > changePassword > With server error > allCalls 1`] = `
 [
@@ -1157,12 +1091,11 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > changePassword > With server error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Account > changePassword > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > changePassword > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1244,29 +1177,17 @@ exports[`Account > changePassword > With server error > updateState 1`] = `
 }
 `;
 
-exports[
-  `Account > deleteAccount > Deletes currently logged in account > KeyStore.getKey() 1`
-] = `CryptoKey {}`;
+exports[`Account > deleteAccount > Deletes currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Account > deleteAccount > Deletes currently logged in account > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Deletes currently logged in account > Storage.get('THEME') 1`
-] = `null`;
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Deletes currently logged in account > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Account > deleteAccount > Deletes currently logged in account > allCalls 1`] = `
 [
@@ -1406,13 +1327,11 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
 ]
 `;
 
-exports[
-  `Account > deleteAccount > Deletes currently logged in account > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > Deletes currently logged in account > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > Deletes currently logged in account > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {},
 }
@@ -1448,12 +1367,9 @@ exports[`Account > deleteAccount > Deletes currently logged in account > noteSta
 }
 `;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > openedPopup 1`] =
-  `undefined`;
+exports[`Account > deleteAccount > Deletes currently logged in account > openedPopup 1`] = `undefined`;
 
-exports[
-  `Account > deleteAccount > Deletes currently logged in account > selectedTheme 1`
-] = `"System"`;
+exports[`Account > deleteAccount > Deletes currently logged in account > selectedTheme 1`] = `"System"`;
 
 exports[`Account > deleteAccount > Deletes currently logged in account > syncState 1`] = `
 {
@@ -1494,8 +1410,7 @@ exports[`Account > deleteAccount > Deletes currently logged in account > syncSta
 }
 `;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > updateState 1`] =
-  `
+exports[`Account > deleteAccount > Deletes currently logged in account > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1503,29 +1418,17 @@ exports[`Account > deleteAccount > Deletes currently logged in account > updateS
 }
 `;
 
-exports[
-  `Account > deleteAccount > Returns if ask dialog returns false > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('THEME') 1`
-] = `null`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > allCalls 1`] = `
 [
@@ -1543,13 +1446,11 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > allCall
 ]
 `;
 
-exports[
-  `Account > deleteAccount > Returns if ask dialog returns false > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1575,12 +1476,9 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > noteSta
 }
 `;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > openedPopup 1`] =
-  `undefined`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > openedPopup 1`] = `undefined`;
 
-exports[
-  `Account > deleteAccount > Returns if ask dialog returns false > selectedTheme 1`
-] = `"System"`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > selectedTheme 1`] = `"System"`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > syncState 1`] = `
 {
@@ -1609,8 +1507,7 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > syncSta
 }
 `;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > updateState 1`] =
-  `
+exports[`Account > deleteAccount > Returns if ask dialog returns false > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1618,28 +1515,17 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > updateS
 }
 `;
 
-exports[`Account > deleteAccount > Sets and resets loading state > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Account > deleteAccount > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Account > deleteAccount > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Sets and resets loading state > Storage.get('THEME') 1`
-] = `null`;
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > Sets and resets loading state > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] = `
 [
@@ -1779,13 +1665,11 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
 ]
 `;
 
-exports[
-  `Account > deleteAccount > Sets and resets loading state > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {},
 }
@@ -1821,11 +1705,9 @@ exports[`Account > deleteAccount > Sets and resets loading state > noteState 1`]
 }
 `;
 
-exports[`Account > deleteAccount > Sets and resets loading state > openedPopup 1`] =
-  `undefined`;
+exports[`Account > deleteAccount > Sets and resets loading state > openedPopup 1`] = `undefined`;
 
-exports[`Account > deleteAccount > Sets and resets loading state > selectedTheme 1`] =
-  `"System"`;
+exports[`Account > deleteAccount > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
 exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`] = `
 {
@@ -1870,8 +1752,7 @@ exports[`Account > deleteAccount > Unauthorized > Storage.get('THEME') 1`] = `nu
 
 exports[`Account > deleteAccount > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Account > deleteAccount > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Account > deleteAccount > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Account > deleteAccount > Unauthorized > Storage.get('USERNAME') 1`] = `"d"`;
 
@@ -1992,12 +1873,11 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > deleteAccount > Unauthorized > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > Unauthorized > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2078,19 +1958,15 @@ exports[`Account > deleteAccount > Unauthorized > updateState 1`] = `
 }
 `;
 
-exports[`Account > deleteAccount > User not found > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Account > deleteAccount > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Account > deleteAccount > User not found > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Account > deleteAccount > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > deleteAccount > User not found > Storage.get('THEME') 1`] = `null`;
 
-exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Account > deleteAccount > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
@@ -2171,12 +2047,11 @@ exports[`Account > deleteAccount > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > deleteAccount > User not found > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2245,23 +2120,17 @@ exports[`Account > deleteAccount > User not found > updateState 1`] = `
 }
 `;
 
-exports[`Account > deleteAccount > With server error > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Account > deleteAccount > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Account > deleteAccount > With server error > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Account > deleteAccount > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > deleteAccount > With server error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Account > deleteAccount > With server error > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Account > deleteAccount > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Account > deleteAccount > With server error > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Account > deleteAccount > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Account > deleteAccount > With server error > Storage.get('USERNAME') 1`] =
-  `"d"`;
+exports[`Account > deleteAccount > With server error > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Account > deleteAccount > With server error > allCalls 1`] = `
 [
@@ -2380,12 +2249,11 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > deleteAccount > With server error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
