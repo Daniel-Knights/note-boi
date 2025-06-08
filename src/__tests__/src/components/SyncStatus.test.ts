@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
+import * as a from '../../../api';
 import * as s from '../../../store/sync';
 import { AppError, Encryptor, ERROR_CODE, KeyStore } from '../../../classes';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
@@ -68,7 +69,7 @@ describe('SyncStatus', () => {
       accessToken: 'test-token',
     });
 
-    s.sync();
+    a.sync();
 
     await nextTick();
 
@@ -132,7 +133,7 @@ describe('SyncStatus', () => {
 
       setErrorValue.request({ endpoint: '/auth/login' });
 
-      await s.login();
+      await a.login();
       await nextTick();
       await findByTestId(wrapper, 'error').trigger('click');
 
@@ -149,7 +150,7 @@ describe('SyncStatus', () => {
       assertAppError({
         code: ERROR_CODE.LOGIN,
         message: 'Server error',
-        retry: { fn: s.login },
+        retry: { fn: a.login },
         display: { form: true, sync: true },
       });
 

@@ -1,13 +1,15 @@
-import * as n from '../../../../store/note';
-import * as s from '../../../../store/sync';
-import { ERROR_CODE, Storage } from '../../../../classes';
-import { clearMockApiResults, mockApi, mockDb } from '../../../mock';
+import * as a from '../../../api';
+import * as auth from '../../../api/auth';
+import * as n from '../../../store/note';
+import * as s from '../../../store/sync';
+import { ERROR_CODE, Storage } from '../../../classes';
+import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
   assertAppError,
   assertLoadingState,
   assertRequest,
   hackEncryptionError,
-} from '../../../utils';
+} from '../../utils';
 
 describe('Account', () => {
   describe('changePassword', () => {
@@ -17,7 +19,7 @@ describe('Account', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       vi.clearAllMocks();
 
@@ -32,12 +34,12 @@ describe('Account', () => {
 
       clearMockApiResults({ calls, promises });
 
-      await s.changePassword();
+      await a.changePassword();
 
       assertAppError({
         code: ERROR_CODE.CHANGE_PASSWORD,
         message: 'Unauthorized',
-        retry: { fn: s.changePassword },
+        retry: { fn: a.changePassword },
         display: { form: true, sync: true },
       });
 
@@ -55,7 +57,7 @@ describe('Account', () => {
 
       clearMockApiResults({ calls, promises });
 
-      await s.changePassword();
+      await a.changePassword();
 
       assertAppError();
       assert.strictEqual(calls.size, 3);
@@ -80,7 +82,7 @@ describe('Account', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
@@ -89,12 +91,12 @@ describe('Account', () => {
       s.syncState.password = '1';
       s.syncState.newPassword = '2';
 
-      await s.changePassword();
+      await a.changePassword();
 
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: s.changePassword },
+        retry: { fn: a.changePassword },
         display: { form: true, sync: true },
       });
 
@@ -110,7 +112,7 @@ describe('Account', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
@@ -122,12 +124,12 @@ describe('Account', () => {
       s.syncState.password = '1';
       s.syncState.newPassword = '2';
 
-      await s.changePassword();
+      await a.changePassword();
 
       assertAppError({
         code: ERROR_CODE.CHANGE_PASSWORD,
         message: 'Server error',
-        retry: { fn: s.changePassword },
+        retry: { fn: a.changePassword },
         display: { form: true, sync: true },
       });
 
@@ -147,7 +149,7 @@ describe('Account', () => {
       s.syncState.username = 'k';
       s.syncState.password = '2';
 
-      await s.signup();
+      await a.signup();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
@@ -157,12 +159,12 @@ describe('Account', () => {
       s.syncState.password = '2';
       s.syncState.newPassword = '1';
 
-      await s.changePassword();
+      await a.changePassword();
 
       assertAppError({
         code: ERROR_CODE.CHANGE_PASSWORD,
         message: 'User not found',
-        retry: { fn: s.changePassword },
+        retry: { fn: a.changePassword },
         display: { form: true, sync: true },
       });
 
@@ -181,12 +183,12 @@ describe('Account', () => {
         s.syncState.username = 'd';
         s.syncState.password = '1';
 
-        await s.login();
+        await a.login();
 
         s.syncState.password = '1';
         s.syncState.newPassword = '2';
 
-        return s.changePassword();
+        return a.changePassword();
       });
     });
   });
@@ -194,14 +196,15 @@ describe('Account', () => {
   describe('deleteAccount', () => {
     it('Deletes currently logged in account', async () => {
       const { calls, promises } = mockApi();
-
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
-      const clientSideLogoutSpy = vi.spyOn(s, 'clientSideLogout');
+      // `clientSideLogout` is imported directly in `account.ts`, so spying on the re-export
+      // doesn't work. Need to spy on it directly from `auth.ts`
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
@@ -210,7 +213,7 @@ describe('Account', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(Storage.get('USERNAME'), 'd');
 
-      await s.deleteAccount();
+      await a.deleteAccount();
 
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
       expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
@@ -239,7 +242,7 @@ describe('Account', () => {
 
       setResValues.tauriApi({ askDialog: [false] });
 
-      await s.deleteAccount();
+      await a.deleteAccount();
 
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
@@ -253,20 +256,20 @@ describe('Account', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
       setErrorValue.request({ endpoint: '/account/delete' });
 
-      await s.deleteAccount();
+      await a.deleteAccount();
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
 
       assertAppError({
         code: ERROR_CODE.DELETE_ACCOUNT,
         message: 'Server error',
-        retry: { fn: s.deleteAccount },
+        retry: { fn: a.deleteAccount },
         display: { sync: true },
       });
 
@@ -289,20 +292,20 @@ describe('Account', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
       setErrorValue.request({ endpoint: '/account/delete', status: 401 });
 
-      await s.deleteAccount();
+      await a.deleteAccount();
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
 
       assertAppError({
         code: ERROR_CODE.DELETE_ACCOUNT,
         message: 'Unauthorized',
-        retry: { fn: s.deleteAccount },
+        retry: { fn: a.deleteAccount },
         display: { sync: true },
       });
 
@@ -322,21 +325,21 @@ describe('Account', () => {
       s.syncState.username = 'k';
       s.syncState.password = '2';
 
-      await s.signup();
+      await a.signup();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
 
       delete mockDb.users.k; // Deleted from different device, for example
 
-      await s.deleteAccount();
+      await a.deleteAccount();
 
       expect(unsyncedClearSpy).not.toHaveBeenCalled();
 
       assertAppError({
         code: ERROR_CODE.DELETE_ACCOUNT,
         message: 'User not found',
-        retry: { fn: s.deleteAccount },
+        retry: { fn: a.deleteAccount },
         display: { sync: true },
       });
 
@@ -354,9 +357,9 @@ describe('Account', () => {
         s.syncState.username = 'd';
         s.syncState.password = '1';
 
-        await s.login();
+        await a.login();
 
-        return s.deleteAccount();
+        return a.deleteAccount();
       });
     });
   });

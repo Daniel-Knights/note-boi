@@ -1,15 +1,16 @@
-import * as n from '../../../../store/note';
-import * as s from '../../../../store/sync';
-import { ERROR_CODE, Storage } from '../../../../classes';
-import { isEmptyNote } from '../../../../utils';
-import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../mock';
-import localNotes from '../../../notes.json';
+import * as a from '../../../api';
+import * as n from '../../../store/note';
+import * as s from '../../../store/sync';
+import { ERROR_CODE, Storage } from '../../../classes';
+import { isEmptyNote } from '../../../utils';
+import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
+import localNotes from '../../notes.json';
 import {
   assertAppError,
   assertLoadingState,
   assertRequest,
   hackEncryptionError,
-} from '../../../utils';
+} from '../../utils';
 
 describe('Auth', () => {
   it('clientSideLogout', async () => {
@@ -17,11 +18,11 @@ describe('Auth', () => {
     s.syncState.username = 'd';
     s.syncState.password = '1';
 
-    await s.login();
+    await a.login();
 
     clearMockApiResults({ calls });
 
-    s.clientSideLogout();
+    a.clientSideLogout();
 
     assert.isEmpty(s.syncState.username);
     assert.isFalse(s.syncState.isLoggedIn);
@@ -48,7 +49,7 @@ describe('Auth', () => {
       assert.lengthOf(n.noteState.notes, 0);
       setResValues.request({ '/auth/login': [{ notes: mockDb.encryptedNotes }] });
 
-      await s.login();
+      await a.login();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
@@ -92,7 +93,7 @@ describe('Auth', () => {
       clearMockApiResults({ calls });
       setResValues.request({ '/auth/login': [{ notes: mockDb.encryptedNotes }] });
 
-      await s.login();
+      await a.login();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
@@ -130,12 +131,12 @@ describe('Auth', () => {
       clearMockApiResults({ calls });
       hackEncryptionError(n.noteState.notes[0]!);
 
-      await s.login();
+      await a.login();
 
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: s.login },
+        retry: { fn: a.login },
         display: { form: true, sync: true },
       });
 
@@ -157,12 +158,12 @@ describe('Auth', () => {
         ],
       });
 
-      await s.login();
+      await a.login();
 
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: s.login },
+        retry: { fn: a.login },
         display: { form: true, sync: true },
       });
 
@@ -192,12 +193,12 @@ describe('Auth', () => {
 
       setErrorValue.request({ endpoint: '/auth/login' });
 
-      await s.login();
+      await a.login();
 
       assertAppError({
         code: ERROR_CODE.LOGIN,
         message: 'Server error',
-        retry: { fn: s.login },
+        retry: { fn: a.login },
         display: { form: true, sync: true },
       });
 
@@ -218,12 +219,12 @@ describe('Auth', () => {
       s.syncState.username = 'd';
       s.syncState.password = '2';
 
-      await s.login();
+      await a.login();
 
       assertAppError({
         code: ERROR_CODE.LOGIN,
         message: 'Unauthorized',
-        retry: { fn: s.login },
+        retry: { fn: a.login },
         display: { form: true, sync: true },
       });
 
@@ -244,12 +245,12 @@ describe('Auth', () => {
       s.syncState.username = 'k';
       s.syncState.password = '2';
 
-      await s.login();
+      await a.login();
 
       assertAppError({
         code: ERROR_CODE.LOGIN,
         message: 'User not found',
-        retry: { fn: s.login },
+        retry: { fn: a.login },
         display: { form: true, sync: true },
       });
 
@@ -269,7 +270,7 @@ describe('Auth', () => {
         s.syncState.username = 'd';
         s.syncState.password = '1';
 
-        return s.login();
+        return a.login();
       });
     });
   });
@@ -281,7 +282,7 @@ describe('Auth', () => {
       s.syncState.username = 'k';
       s.syncState.password = '2';
 
-      await s.signup();
+      await a.signup();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
@@ -319,7 +320,7 @@ describe('Auth', () => {
 
       clearMockApiResults({ calls });
 
-      await s.signup();
+      await a.signup();
 
       expect(unsyncedClearSpy).toHaveBeenCalledOnce();
 
@@ -358,12 +359,12 @@ describe('Auth', () => {
       s.syncState.username = 'k';
       s.syncState.password = '2';
 
-      await s.signup();
+      await a.signup();
 
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: s.signup },
+        retry: { fn: a.signup },
         display: { form: true, sync: true },
       });
 
@@ -379,12 +380,12 @@ describe('Auth', () => {
 
       setErrorValue.request({ endpoint: '/auth/signup' });
 
-      await s.signup();
+      await a.signup();
 
       assertAppError({
         code: ERROR_CODE.SIGNUP,
         message: 'Server error',
-        retry: { fn: s.signup },
+        retry: { fn: a.signup },
         display: { form: true, sync: true },
       });
 
@@ -404,7 +405,7 @@ describe('Auth', () => {
         s.syncState.username = 'd';
         s.syncState.password = '1';
 
-        return s.signup();
+        return a.signup();
       });
     });
   });
@@ -417,11 +418,11 @@ describe('Auth', () => {
       s.syncState.password = '1';
       s.syncState.isLoggedIn = true;
 
-      await s.login();
+      await a.login();
 
       clearMockApiResults({ calls });
 
-      await s.logout();
+      await a.logout();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
@@ -450,12 +451,12 @@ describe('Auth', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       clearMockApiResults({ calls });
       setErrorValue.request({ endpoint: '/auth/logout' });
 
-      await s.logout();
+      await a.logout();
 
       assertAppError({
         code: ERROR_CODE.LOGOUT,
@@ -488,13 +489,13 @@ describe('Auth', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       clearMockApiResults({ calls });
 
       delete mockKeyring.d;
 
-      await s.logout();
+      await a.logout();
 
       assertAppError({
         code: ERROR_CODE.LOGOUT,
@@ -527,13 +528,13 @@ describe('Auth', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       clearMockApiResults({ calls });
 
       delete mockDb.users.d;
 
-      await s.logout();
+      await a.logout();
 
       assertAppError({
         code: ERROR_CODE.LOGOUT,
@@ -565,9 +566,9 @@ describe('Auth', () => {
         s.syncState.username = 'd';
         s.syncState.password = '1';
 
-        await s.login();
+        await a.login();
 
-        return s.logout();
+        return a.logout();
       });
     });
   });

@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
+import * as a from '../../../api';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import * as u from '../../../store/update';
@@ -233,7 +234,7 @@ describe('Settings', () => {
       assert.isTrue(deleteAccountWrapper.isVisible());
       assert.lengthOf(wrapperVm.menuItems, 5);
 
-      const deleteAccountSpy = vi.spyOn(s, 'deleteAccount');
+      const deleteAccountSpy = vi.spyOn(a, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
 
       await waitUntil(() => !findByTestId(wrapper, 'delete-account').exists());

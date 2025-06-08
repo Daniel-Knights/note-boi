@@ -1,13 +1,14 @@
 import { mount, shallowMount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
-import * as n from '../../../../store/note';
-import * as s from '../../../../store/sync';
-import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../../classes';
-import { isEmptyNote } from '../../../../utils';
-import { UUID_REGEX } from '../../../constant';
-import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../mock';
-import localNotes from '../../../notes.json';
+import * as a from '../../../api';
+import * as n from '../../../store/note';
+import * as s from '../../../store/sync';
+import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../classes';
+import { isEmptyNote } from '../../../utils';
+import { UUID_REGEX } from '../../constant';
+import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
+import localNotes from '../../notes.json';
 import {
   assertAppError,
   assertLoadingState,
@@ -17,11 +18,11 @@ import {
   hackEncryptionError,
   waitForAutoSync,
   waitUntil,
-} from '../../../utils';
+} from '../../utils';
 
-import Editor from '../../../../components/Editor.vue';
-import NoteMenu from '../../../../components/NoteMenu.vue';
-import SyncStatus from '../../../../components/SyncStatus.vue';
+import Editor from '../../../components/Editor.vue';
+import NoteMenu from '../../../components/NoteMenu.vue';
+import SyncStatus from '../../../components/SyncStatus.vue';
 
 describe('Notes (sync)', () => {
   describe('sync', () => {
@@ -37,7 +38,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       s.syncState.unsyncedNoteIds.set(unsynced);
 
@@ -54,7 +55,7 @@ describe('Notes (sync)', () => {
         '/notes/sync': [{ notes: mockDb.encryptedNotes }],
       });
 
-      await s.sync();
+      await a.sync();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
@@ -94,7 +95,7 @@ describe('Notes (sync)', () => {
     it('Returns if not logged in', async () => {
       const { calls } = mockApi();
 
-      await s.sync();
+      await a.sync();
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(n.noteState.notes.length, 0);
@@ -107,17 +108,17 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       clearMockApiResults({ calls });
       hackEncryptionError(n.noteState.notes[0]!);
 
-      await s.sync();
+      await a.sync();
 
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: s.sync, args: [] },
+        retry: { fn: a.sync, args: [] },
         display: { sync: true },
       });
 
@@ -134,7 +135,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       clearMockApiResults({ calls });
       setResValues.request({
@@ -143,12 +144,12 @@ describe('Notes (sync)', () => {
         ],
       });
 
-      await s.sync();
+      await a.sync();
 
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: s.sync },
+        retry: { fn: a.sync },
         display: { sync: true },
       });
 
@@ -181,17 +182,17 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       clearMockApiResults({ calls });
       setErrorValue.request({ endpoint: '/notes/sync' });
 
-      await s.sync();
+      await a.sync();
 
       assertAppError({
         code: ERROR_CODE.SYNC,
         message: 'Server error',
-        retry: { fn: s.sync, args: [] },
+        retry: { fn: a.sync, args: [] },
         display: { sync: true },
       });
 
@@ -216,17 +217,17 @@ describe('Notes (sync)', () => {
       s.syncState.password = '1';
       Storage.set('USERNAME', 'd');
 
-      await s.login();
+      await a.login();
 
       clearMockApiResults({ calls });
       setErrorValue.request({ endpoint: '/notes/sync', status: 401 });
 
-      await s.sync();
+      await a.sync();
 
       assertAppError({
         code: ERROR_CODE.SYNC,
         message: 'Unauthorized',
-        retry: { fn: s.sync, args: [] },
+        retry: { fn: a.sync, args: [] },
         display: { sync: true },
       });
 
@@ -247,18 +248,18 @@ describe('Notes (sync)', () => {
       Storage.set('USERNAME', 'k');
 
       await n.getAllNotes();
-      await s.signup();
+      await a.signup();
 
       clearMockApiResults({ calls });
 
       delete mockDb.users.k; // Deleted from different device, for example
 
-      await s.sync();
+      await a.sync();
 
       assertAppError({
         code: ERROR_CODE.SYNC,
         message: 'User not found',
-        retry: { fn: s.sync, args: [] },
+        retry: { fn: a.sync, args: [] },
         display: { sync: true },
       });
 
@@ -276,7 +277,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       const wrapper = mount(Editor);
       const editorBody = getByTestId(wrapper, 'body');
@@ -310,7 +311,7 @@ describe('Notes (sync)', () => {
         '/notes/sync': [{ notes: encryptedRemoteNotes }],
       });
 
-      await s.sync();
+      await a.sync();
 
       assert.include(editorBody.text(), 'Remote update');
     });
@@ -321,7 +322,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       const wrapper = shallowMount(NoteMenu);
 
@@ -373,7 +374,7 @@ describe('Notes (sync)', () => {
         '/notes/sync': [{ notes: encryptedRemoteNotes }],
       });
 
-      await s.sync();
+      await a.sync();
 
       assert.lengthOf(wrapper.findAll('li'), 9);
       assertNoteItemText(n.noteState.selectedNote.id, 'Remote update-body');
@@ -385,8 +386,8 @@ describe('Notes (sync)', () => {
         s.syncState.username = 'd';
         s.syncState.password = '1';
 
-        await s.login();
-        await s.sync();
+        await a.login();
+        await a.sync();
       });
     });
   });
@@ -412,7 +413,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       const wrapper = shallowMount(NoteMenu);
 
@@ -424,7 +425,7 @@ describe('Notes (sync)', () => {
         '/notes/sync': [{ notes: mockDb.encryptedNotes }],
       });
 
-      s.sync();
+      a.sync();
 
       await nextTick();
 
@@ -448,7 +449,7 @@ describe('Notes (sync)', () => {
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
 
-      await s.logout();
+      await a.logout();
 
       storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
@@ -461,7 +462,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       assert.isTrue(getByTestId(statusWrapper, 'success').isVisible());
 
@@ -496,7 +497,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       assert.isEmpty(s.syncState.unsyncedNoteIds.edited);
       assert.isNull(Storage.getJson('UNSYNCED'));
@@ -507,7 +508,7 @@ describe('Notes (sync)', () => {
       clearMockApiResults({ calls, promises });
 
       // We don't set a res value for this call, because it shouldn't complete
-      s.sync();
+      a.sync();
 
       await nextTick();
 
@@ -589,7 +590,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
       assert.isNull(Storage.getJson('UNSYNCED'));
@@ -600,7 +601,7 @@ describe('Notes (sync)', () => {
       clearMockApiResults({ calls, promises });
 
       // We don't set a res value for this call, because it shouldn't complete
-      s.sync();
+      a.sync();
 
       await nextTick();
 
@@ -743,7 +744,7 @@ describe('Notes (sync)', () => {
         '/auth/login': [{ notes: mockDb.encryptedNotes }],
       });
 
-      await s.login();
+      await a.login();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
@@ -773,7 +774,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
@@ -805,7 +806,7 @@ describe('Notes (sync)', () => {
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
-      await s.login();
+      await a.login();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
