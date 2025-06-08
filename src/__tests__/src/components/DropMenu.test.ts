@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 
 import { DropMenuItemData } from '../../../components/types';
-import { mockApi } from '../../api';
+import { mockApi } from '../../mock';
 import { findByTestId, getByTestId } from '../../utils';
 
 import DropMenu from '../../../components/DropMenu.vue';

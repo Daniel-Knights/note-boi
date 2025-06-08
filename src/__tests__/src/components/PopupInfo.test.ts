@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
 import pkg from '../../../../package.json';
-import { clearMockApiResults, mockApi } from '../../api';
+import { clearMockApiResults, mockApi } from '../../mock';
 import { findByTestId, getByTestId } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';

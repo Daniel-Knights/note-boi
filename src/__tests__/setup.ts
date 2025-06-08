@@ -4,7 +4,7 @@ import { indexedDB } from 'fake-indexeddb';
 
 import { Encryptor, KeyStore, Storage } from '../classes';
 
-import { allCalls, mockDb, mockKeyring } from './api';
+import { allCalls, mockDb, mockKeyring } from './mock';
 import localNotes from './notes.json';
 import { snapshotState } from './snapshot';
 import { resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';

@@ -1,7 +1,7 @@
 import * as s from '../../store/sync';
 import { AppError, ErrorConfig, FetchBuilder } from '../../classes';
 import { Endpoint } from '../../constant';
-import { mockApi } from '../api';
+import { mockApi } from '../mock';
 
 /**
  * Asserts current `appError` against expected.

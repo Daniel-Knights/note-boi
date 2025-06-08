@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
-import { clearMockApiResults, mockApi } from '../../api';
+import { clearMockApiResults, mockApi } from '../../mock';
 import { assertAppError, assertRequest, getByTestId, waitUntil } from '../../utils';
 
 import Popup from '../../../components/Popup.vue';

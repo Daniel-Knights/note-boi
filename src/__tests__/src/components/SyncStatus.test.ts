@@ -5,7 +5,7 @@ import * as s from '../../../store/sync';
 import { AppError, Encryptor, ERROR_CODE, KeyStore } from '../../../classes';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { tauriInvoke } from '../../../utils';
-import { mockApi } from '../../api';
+import { mockApi } from '../../mock';
 import {
   assertAppError,
   findByTestId,

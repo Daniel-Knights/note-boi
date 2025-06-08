@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
-import { mockApi } from '../../api';
+import { mockApi } from '../../mock';
 
 import Logout from '../../../components/Logout.vue';
 import Settings from '../../../components/Settings.vue';
