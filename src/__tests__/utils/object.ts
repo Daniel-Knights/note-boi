@@ -35,3 +35,16 @@ export function isEncryptedNote(note: unknown): note is EncryptedNote {
 
   return isNote({ ...nt, content: { delta: {}, title: '', body: '' } });
 }
+
+/**
+ * Hack to trigger encryption error. A circular reference that causes `JSON.stringify`
+ * to throw when stringifying note content for encryption.
+ * Tried every which way to mock reject on `crypto.subtle.encrypt`, but it doesn't work.
+ */
+export function hackEncryptionError(nt: n.Note) {
+  // @ts-expect-error - see function comment
+  nt.id = 'id'; // Normalise for snapshot
+  nt.timestamp = 0;
+  // @ts-expect-error - see function comment
+  nt.content = nt;
+}
