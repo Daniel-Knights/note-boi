@@ -18,7 +18,7 @@ exports[`Auth > clientSideLogout > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -114,10 +114,12 @@ exports[`Auth > clientSideLogout > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > clientSideLogout > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > clientSideLogout > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > clientSideLogout > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -174,12 +176,13 @@ exports[`Auth > clientSideLogout > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -193,17 +196,23 @@ exports[`Auth > clientSideLogout > updateState 1`] = `
 }
 `;
 
-exports[`Auth > login > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Auth > login > Sets and resets loading state > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`Auth > login > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Auth > login > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Auth > login > Sets and resets loading state > Storage.get('USERNAME') 1`] =
+  `"d"`;
 
 exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
 [
@@ -211,7 +220,7 @@ exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -286,10 +295,12 @@ exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > login > Sets and resets loading state > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > Sets and resets loading state > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -346,12 +357,13 @@ exports[`Auth > login > Sets and resets loading state > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -383,7 +395,7 @@ exports[`Auth > login > Unauthorized > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"2"}",
+        "body": "{"username":"d","password":"2","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -396,10 +408,12 @@ exports[`Auth > login > Unauthorized > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > login > Unauthorized > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > Unauthorized > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -449,12 +463,13 @@ exports[`Auth > login > Unauthorized > syncState 1`] = `
   "newPassword": "",
   "password": "2",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -486,7 +501,7 @@ exports[`Auth > login > User not found > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"k","password":"2"}",
+        "body": "{"username":"k","password":"2","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -499,10 +514,12 @@ exports[`Auth > login > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > login > User not found > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > User not found > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -552,12 +569,13 @@ exports[`Auth > login > User not found > syncState 1`] = `
   "newPassword": "",
   "password": "2",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "k",
 }
@@ -571,25 +589,26 @@ exports[`Auth > login > User not found > updateState 1`] = `
 }
 `;
 
-exports[`Auth > login > With encryptor error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Auth > login > With decryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > login > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > With decryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > With encryptor error > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > With decryption error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > With encryptor error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > With decryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > With encryptor error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > With decryption error > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
-exports[`Auth > login > With encryptor error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Auth > login > With decryption error > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Auth > login > With encryptor error > allCalls 1`] = `
+exports[`Auth > login > With decryption error > allCalls 1`] = `
 [
   [
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -624,10 +643,12 @@ exports[`Auth > login > With encryptor error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > With encryptor error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With decryption error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
-exports[`Auth > login > With encryptor error > mockDb 1`] = `
+exports[`Auth > login > With decryption error > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -635,7 +656,7 @@ exports[`Auth > login > With encryptor error > mockDb 1`] = `
 }
 `;
 
-exports[`Auth > login > With encryptor error > noteState 1`] = `
+exports[`Auth > login > With decryption error > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -653,11 +674,11 @@ exports[`Auth > login > With encryptor error > noteState 1`] = `
 }
 `;
 
-exports[`Auth > login > With encryptor error > openedPopup 1`] = `undefined`;
+exports[`Auth > login > With decryption error > openedPopup 1`] = `undefined`;
 
-exports[`Auth > login > With encryptor error > selectedTheme 1`] = `"System"`;
+exports[`Auth > login > With decryption error > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > login > With encryptor error > syncState 1`] = `
+exports[`Auth > login > With decryption error > syncState 1`] = `
 {
   "appError": AppError {
     "code": 9,
@@ -666,7 +687,7 @@ exports[`Auth > login > With encryptor error > syncState 1`] = `
       "sync": true,
     },
     "message": "Note encryption/decryption failed",
-    "originalError": [OperationError: The provided data is too small.],
+    "originalError": [InvalidCharacterError: Invalid character],
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
@@ -677,18 +698,314 @@ exports[`Auth > login > With encryptor error > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
 `;
 
-exports[`Auth > login > With encryptor error > updateState 1`] = `
+exports[`Auth > login > With decryption error > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Auth > login > With encryption error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > login > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > login > With encryption error > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > login > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > login > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
+
+exports[`Auth > login > With encryption error > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Auth > login > With encryption error > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+]
+`;
+
+exports[`Auth > login > With encryption error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
+
+exports[`Auth > login > With encryption error > mockDb 1`] = `
+{
+  "deletedNoteIds": [],
+  "encryptedNotes": 10,
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Auth > login > With encryption error > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "content": [Circular],
+        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "timestamp": 1650008403223,
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "id": "id",
+      "timestamp": 0,
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "id": "id",
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Auth > login > With encryption error > openedPopup 1`] = `undefined`;
+
+exports[`Auth > login > With encryption error > selectedTheme 1`] = `"System"`;
+
+exports[`Auth > login > With encryption error > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 9,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "Note encryption/decryption failed",
+    "originalError": [TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Object'
+    --- property 'content' closes the circle],
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "1",
+  "unsyncedNoteIds": {
+    "clear": [Function],
+    "deleted": Set {},
+    "edited": Set {},
+    "new": "",
+    "set": [Function],
+    "size": 0,
+    "store": [Function],
+  },
+  "username": "d",
+}
+`;
+
+exports[`Auth > login > With encryption error > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -714,7 +1031,7 @@ exports[`Auth > login > With no notes > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -953,10 +1270,12 @@ Sugar
 ]
 `;
 
-exports[`Auth > login > With no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With no notes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > With no notes > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1165,59 +1484,15 @@ Sugar
   ],
   "selectedNote": {
     "content": {
-      "body": "😬ö",
+      "body": "amet consectetur adipisicing",
       "delta": {
         "ops": [
           {
-            "insert": "Note with special characters
-
-😬ö
-  sss
-	
-Ketchup
-Salt 
-Sugar
-
-¯\\_(ツ)_/¯
-
-──────────────────────────────────
-──────▄▀▀▄────────────────▄▀▀▄────
-─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
-─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
-────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
-───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
-─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
-▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
-▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
-▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
-▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
-▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
-▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
-▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
-▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
-▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
-▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
-▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
-▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
-▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
-█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
-█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
-▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-
-",
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
           },
         ],
       },
-      "title": "Note with special characters",
+      "title": "Amet consectetur adipisicing",
     },
     "id": "id",
     "timestamp": 0,
@@ -1244,12 +1519,13 @@ exports[`Auth > login > With no notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -1288,7 +1564,7 @@ exports[`Auth > login > With notes > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"}],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1527,10 +1803,12 @@ Sugar
 ]
 `;
 
-exports[`Auth > login > With notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With notes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > With notes > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1818,12 +2096,13 @@ exports[`Auth > login > With notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -1855,7 +2134,7 @@ exports[`Auth > login > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1868,10 +2147,12 @@ exports[`Auth > login > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With server error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > With server error > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1921,12 +2202,13 @@ exports[`Auth > login > With server error > syncState 1`] = `
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -1940,17 +2222,29 @@ exports[`Auth > login > With server error > updateState 1`] = `
 }
 `;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[
+  `Auth > logout > Logs a user out and clears user-based state > KeyStore.getKey() 1`
+] = `CryptoKey {}`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Auth > logout > Logs a user out and clears user-based state > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('THEME') 1`] = `null`;
+exports[
+  `Auth > logout > Logs a user out and clears user-based state > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `Auth > logout > Logs a user out and clears user-based state > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 1`] = `
 [
@@ -1958,7 +2252,7 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2079,10 +2373,13 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
 ]
 `;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Auth > logout > Logs a user out and clears user-based state > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2120,9 +2417,11 @@ exports[`Auth > logout > Logs a user out and clears user-based state > noteState
 }
 `;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > openedPopup 1`] = `undefined`;
+exports[`Auth > logout > Logs a user out and clears user-based state > openedPopup 1`] =
+  `undefined`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > selectedTheme 1`] = `"System"`;
+exports[`Auth > logout > Logs a user out and clears user-based state > selectedTheme 1`] =
+  `"System"`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > syncState 1`] = `
 {
@@ -2139,12 +2438,13 @@ exports[`Auth > logout > Logs a user out and clears user-based state > syncState
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -2158,17 +2458,24 @@ exports[`Auth > logout > Logs a user out and clears user-based state > updateSta
 }
 `;
 
-exports[`Auth > logout > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Auth > logout > Sets and resets loading state > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('THEME') 1`] =
+  `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Auth > logout > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('USERNAME') 1`] =
+  `null`;
 
 exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
 [
@@ -2176,7 +2483,7 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2297,10 +2604,12 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > logout > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > Sets and resets loading state > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > Sets and resets loading state > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2357,12 +2666,13 @@ exports[`Auth > logout > Sets and resets loading state > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -2394,7 +2704,7 @@ exports[`Auth > logout > Unauthorized > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2515,10 +2825,12 @@ exports[`Auth > logout > Unauthorized > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > logout > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > Unauthorized > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > Unauthorized > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2575,12 +2887,13 @@ exports[`Auth > logout > Unauthorized > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -2612,7 +2925,7 @@ exports[`Auth > logout > User not found > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2733,10 +3046,12 @@ exports[`Auth > logout > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > logout > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > User not found > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > User not found > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {},
 }
@@ -2791,12 +3106,13 @@ exports[`Auth > logout > User not found > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -2828,7 +3144,7 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2949,10 +3265,12 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > logout > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > With server error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > With server error > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3009,12 +3327,13 @@ exports[`Auth > logout > With server error > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -3028,169 +3347,24 @@ exports[`Auth > logout > With server error > updateState 1`] = `
 }
 `;
 
-exports[`Auth > signup > Doesn't push empty notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Auth > signup > Doesn't push empty notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
-exports[`Auth > signup > Doesn't push empty notes > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('THEME') 1`] =
+  `null`;
 
-exports[`Auth > signup > Doesn't push empty notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Auth > signup > Doesn't push empty notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Auth > signup > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Auth > signup > Doesn't push empty notes > Storage.get('USERNAME') 1`] = `"k"`;
-
-exports[`Auth > signup > Doesn't push empty notes > allCalls 1`] = `
-[
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "id": "id",
-          "timestamp": 0,
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "request",
-    {
-      "calledWith": {
-        "body": "{"username":"k","password":"2","notes":[]}",
-        "headers": {
-          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
-          "Content-Type": "application/json",
-        },
-        "method": "POST",
-      },
-      "name": "/auth/signup",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "accessToken": "test-token",
-        "username": "k",
-      },
-      "name": "set_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": true,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
-]
-`;
-
-exports[`Auth > signup > Doesn't push empty notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Auth > signup > Doesn't push empty notes > mockDb 1`] = `
-{
-  "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-    "k": "2",
-  },
-}
-`;
-
-exports[`Auth > signup > Doesn't push empty notes > noteState 1`] = `
-{
-  "extraSelectedNotes": [],
-  "notes": [
-    {
-      "content": {
-        "body": "",
-        "delta": {
-          "ops": [],
-        },
-        "title": "",
-      },
-      "id": "id",
-      "timestamp": 0,
-    },
-  ],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "id": "id",
-    "timestamp": 0,
-  },
-}
-`;
-
-exports[`Auth > signup > Doesn't push empty notes > openedPopup 1`] = `undefined`;
-
-exports[`Auth > signup > Doesn't push empty notes > selectedTheme 1`] = `"System"`;
-
-exports[`Auth > signup > Doesn't push empty notes > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "isLoggedIn": true,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNoteIds": {
-    "add": [Function],
-    "clear": [Function],
-    "deleted": Set {},
-    "edited": Set {},
-    "new": "",
-    "size": 0,
-  },
-  "username": "k",
-}
-`;
-
-exports[`Auth > signup > Doesn't push empty notes > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
-
-exports[`Auth > signup > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > signup > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > signup > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('USERNAME') 1`] =
+  `null`;
 
 exports[`Auth > signup > Sets and resets loading state > allCalls 1`] = `
 [
@@ -3211,10 +3385,12 @@ exports[`Auth > signup > Sets and resets loading state > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > Sets and resets loading state > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > Sets and resets loading state > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3264,12 +3440,13 @@ exports[`Auth > signup > Sets and resets loading state > syncState 1`] = `
   "newPassword": "",
   "password": "1",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -3283,19 +3460,20 @@ exports[`Auth > signup > Sets and resets loading state > updateState 1`] = `
 }
 `;
 
-exports[`Auth > signup > With encryptor error > KeyStore.getKey() 1`] = `undefined`;
+exports[`Auth > signup > With encryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > signup > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > signup > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > signup > With encryptor error > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > signup > With encryption error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Auth > signup > With encryptor error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > signup > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > signup > With encryptor error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > signup > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
-exports[`Auth > signup > With encryptor error > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > signup > With encryption error > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Auth > signup > With encryptor error > allCalls 1`] = `
+exports[`Auth > signup > With encryption error > allCalls 1`] = `
 [
   [
     "invoke",
@@ -3307,10 +3485,12 @@ exports[`Auth > signup > With encryptor error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > With encryptor error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > With encryption error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
-exports[`Auth > signup > With encryptor error > mockDb 1`] = `
+exports[`Auth > signup > With encryption error > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3318,65 +3498,15 @@ exports[`Auth > signup > With encryptor error > mockDb 1`] = `
 }
 `;
 
-exports[`Auth > signup > With encryptor error > noteState 1`] = `
+exports[`Auth > signup > With encryption error > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
     {
       "content": {
-        "body": "😬ö",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Note with special characters
-
-😬ö
-  sss
-	
-Ketchup
-Salt 
-Sugar
-
-¯\\_(ツ)_/¯
-
-──────────────────────────────────
-──────▄▀▀▄────────────────▄▀▀▄────
-─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
-─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
-────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
-───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
-─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
-▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
-▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
-▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
-▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
-▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
-▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
-▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
-▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
-▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
-▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
-▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
-▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
-▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
-█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
-█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
-▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-
-",
-            },
-          ],
-        },
-        "title": "Note with special characters",
+        "content": [Circular],
+        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "timestamp": 1650008403223,
       },
       "id": "id",
       "timestamp": 0,
@@ -3579,11 +3709,11 @@ Sugar
 }
 `;
 
-exports[`Auth > signup > With encryptor error > openedPopup 1`] = `undefined`;
+exports[`Auth > signup > With encryption error > openedPopup 1`] = `undefined`;
 
-exports[`Auth > signup > With encryptor error > selectedTheme 1`] = `"System"`;
+exports[`Auth > signup > With encryption error > selectedTheme 1`] = `"System"`;
 
-exports[`Auth > signup > With encryptor error > syncState 1`] = `
+exports[`Auth > signup > With encryption error > syncState 1`] = `
 {
   "appError": AppError {
     "code": 9,
@@ -3592,7 +3722,9 @@ exports[`Auth > signup > With encryptor error > syncState 1`] = `
       "sync": true,
     },
     "message": "Note encryption/decryption failed",
-    "originalError": [TypeError: Failed to execute 'deriveKey' on 'SubtleCrypto': 2nd argument is not of type CryptoKey.],
+    "originalError": [TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Object'
+    --- property 'content' closes the circle],
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
@@ -3601,20 +3733,21 @@ exports[`Auth > signup > With encryptor error > syncState 1`] = `
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
-  "password": "",
+  "password": "2",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
-  "username": "",
+  "username": "k",
 }
 `;
 
-exports[`Auth > signup > With encryptor error > updateState 1`] = `
+exports[`Auth > signup > With encryption error > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -3675,10 +3808,12 @@ exports[`Auth > signup > With no notes > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > With no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > With no notes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > With no notes > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3724,12 +3859,13 @@ exports[`Auth > signup > With no notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "k",
 }
@@ -3803,10 +3939,12 @@ exports[`Auth > signup > With notes > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > With notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > With notes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > With notes > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -4095,7 +4233,6 @@ exports[`Auth > signup > With notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [MockFunction clear] {
       "calls": [
         [],
@@ -4110,7 +4247,9 @@ exports[`Auth > signup > With notes > syncState 1`] = `
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "k",
 }
@@ -4155,10 +4294,12 @@ exports[`Auth > signup > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > With server error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > With server error > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -4208,12 +4349,13 @@ exports[`Auth > signup > With server error > syncState 1`] = `
   "newPassword": "",
   "password": "2",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "k",
 }

@@ -18,7 +18,7 @@ exports[`FetchBuilder > With auth > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": undefined,
+        "body": "{"notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -28,7 +28,7 @@ exports[`FetchBuilder > With auth > allCalls 1`] = `
         },
         "method": "POST",
       },
-      "name": "/notes/pull",
+      "name": "/notes/sync",
     },
   ],
   [
@@ -44,10 +44,12 @@ exports[`FetchBuilder > With auth > allCalls 1`] = `
 ]
 `;
 
-exports[`FetchBuilder > With auth > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`FetchBuilder > With auth > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`FetchBuilder > With auth > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -92,12 +94,13 @@ exports[`FetchBuilder > With auth > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -129,7 +132,7 @@ exports[`FetchBuilder > Without auth > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -153,10 +156,12 @@ exports[`FetchBuilder > Without auth > allCalls 1`] = `
 ]
 `;
 
-exports[`FetchBuilder > Without auth > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`FetchBuilder > Without auth > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`FetchBuilder > Without auth > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -201,12 +206,13 @@ exports[`FetchBuilder > Without auth > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }

@@ -1,24 +1,38 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Account > changePassword > Changes password for currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > KeyStore.getKey() 1`
+] = `CryptoKey {}`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('THEME') 1`] = `null`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('USERNAME') 1`] = `"d"`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > Storage.get('USERNAME') 1`
+] = `"d"`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > allCalls 1`] = `
+exports[
+  `Account > changePassword > Changes password for currently logged in account > allCalls 1`
+] = `
 [
   [
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -153,10 +167,15 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 ]
 `;
 
-exports[`Account > changePassword > Changes password for currently logged in account > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > mockDb 1`] = `
+exports[
+  `Account > changePassword > Changes password for currently logged in account > mockDb 1`
+] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -164,7 +183,9 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 }
 `;
 
-exports[`Account > changePassword > Changes password for currently logged in account > noteState 1`] = `
+exports[
+  `Account > changePassword > Changes password for currently logged in account > noteState 1`
+] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -194,11 +215,17 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 }
 `;
 
-exports[`Account > changePassword > Changes password for currently logged in account > openedPopup 1`] = `undefined`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > openedPopup 1`
+] = `undefined`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > selectedTheme 1`] = `"System"`;
+exports[
+  `Account > changePassword > Changes password for currently logged in account > selectedTheme 1`
+] = `"System"`;
 
-exports[`Account > changePassword > Changes password for currently logged in account > syncState 1`] = `
+exports[
+  `Account > changePassword > Changes password for currently logged in account > syncState 1`
+] = `
 {
   "appError": AppError {
     "code": 0,
@@ -213,18 +240,21 @@ exports[`Account > changePassword > Changes password for currently logged in acc
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
 `;
 
-exports[`Account > changePassword > Changes password for currently logged in account > updateState 1`] = `
+exports[
+  `Account > changePassword > Changes password for currently logged in account > updateState 1`
+] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -232,17 +262,29 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 }
 `;
 
-exports[`Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[
+  `Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`
+] = `CryptoKey {}`;
 
-exports[`Account > changePassword > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Account > changePassword > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Account > changePassword > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+exports[
+  `Account > changePassword > Sets and resets loading state > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Account > changePassword > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Account > changePassword > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
+exports[
+  `Account > changePassword > Sets and resets loading state > Storage.get('USERNAME') 1`
+] = `"d"`;
 
 exports[`Account > changePassword > Sets and resets loading state > allCalls 1`] = `
 [
@@ -250,7 +292,7 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -360,10 +402,13 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
 ]
 `;
 
-exports[`Account > changePassword > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Account > changePassword > Sets and resets loading state > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > changePassword > Sets and resets loading state > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -401,9 +446,11 @@ exports[`Account > changePassword > Sets and resets loading state > noteState 1`
 }
 `;
 
-exports[`Account > changePassword > Sets and resets loading state > openedPopup 1`] = `undefined`;
+exports[`Account > changePassword > Sets and resets loading state > openedPopup 1`] =
+  `undefined`;
 
-exports[`Account > changePassword > Sets and resets loading state > selectedTheme 1`] = `"System"`;
+exports[`Account > changePassword > Sets and resets loading state > selectedTheme 1`] =
+  `"System"`;
 
 exports[`Account > changePassword > Sets and resets loading state > syncState 1`] = `
 {
@@ -420,12 +467,13 @@ exports[`Account > changePassword > Sets and resets loading state > syncState 1`
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -439,15 +487,19 @@ exports[`Account > changePassword > Sets and resets loading state > updateState 
 }
 `;
 
-exports[`Account > changePassword > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Account > changePassword > User not found > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Account > changePassword > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Account > changePassword > User not found > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`Account > changePassword > User not found > Storage.get('THEME') 1`] = `null`;
 
-exports[`Account > changePassword > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Account > changePassword > User not found > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Account > changePassword > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Account > changePassword > User not found > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`Account > changePassword > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
@@ -517,10 +569,12 @@ exports[`Account > changePassword > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > changePassword > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Account > changePassword > User not found > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Account > changePassword > User not found > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -570,12 +624,13 @@ exports[`Account > changePassword > User not found > syncState 1`] = `
   "newPassword": "1",
   "password": "2",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "k",
 }
@@ -589,20 +644,105 @@ exports[`Account > changePassword > User not found > updateState 1`] = `
 }
 `;
 
-exports[`Account > changePassword > With encryptor error > KeyStore.getKey() 1`] = `undefined`;
+exports[`Account > changePassword > With encryption error > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Account > changePassword > With encryptor error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Account > changePassword > With encryption error > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Account > changePassword > With encryptor error > Storage.get('THEME') 1`] = `null`;
+exports[`Account > changePassword > With encryption error > Storage.get('THEME') 1`] =
+  `null`;
 
-exports[`Account > changePassword > With encryptor error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Account > changePassword > With encryption error > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Account > changePassword > With encryptor error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Account > changePassword > With encryption error > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Account > changePassword > With encryptor error > Storage.get('USERNAME') 1`] = `null`;
+exports[`Account > changePassword > With encryption error > Storage.get('USERNAME') 1`] =
+  `"d"`;
 
-exports[`Account > changePassword > With encryptor error > allCalls 1`] = `
+exports[`Account > changePassword > With encryption error > allCalls 1`] = `
 [
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "id": "id",
+          "timestamp": 0,
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "id": "id",
+            "timestamp": 0,
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
   [
     "invoke",
     {
@@ -614,7 +754,7 @@ exports[`Account > changePassword > With encryptor error > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "username": "",
+        "username": "d",
       },
       "name": "get_access_token",
     },
@@ -622,10 +762,12 @@ exports[`Account > changePassword > With encryptor error > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > changePassword > With encryptor error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Account > changePassword > With encryption error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
-exports[`Account > changePassword > With encryptor error > mockDb 1`] = `
+exports[`Account > changePassword > With encryption error > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -633,65 +775,15 @@ exports[`Account > changePassword > With encryptor error > mockDb 1`] = `
 }
 `;
 
-exports[`Account > changePassword > With encryptor error > noteState 1`] = `
+exports[`Account > changePassword > With encryption error > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
     {
       "content": {
-        "body": "😬ö",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Note with special characters
-
-😬ö
-  sss
-	
-Ketchup
-Salt 
-Sugar
-
-¯\\_(ツ)_/¯
-
-──────────────────────────────────
-──────▄▀▀▄────────────────▄▀▀▄────
-─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
-─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
-────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
-───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
-─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
-▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
-▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
-▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
-▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
-▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
-▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
-▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
-▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
-▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
-▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
-▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
-▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
-▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
-█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
-█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
-▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-
-",
-            },
-          ],
-        },
-        "title": "Note with special characters",
+        "content": [Circular],
+        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "timestamp": 1650008403223,
       },
       "id": "id",
       "timestamp": 0,
@@ -894,11 +986,12 @@ Sugar
 }
 `;
 
-exports[`Account > changePassword > With encryptor error > openedPopup 1`] = `undefined`;
+exports[`Account > changePassword > With encryption error > openedPopup 1`] = `undefined`;
 
-exports[`Account > changePassword > With encryptor error > selectedTheme 1`] = `"System"`;
+exports[`Account > changePassword > With encryption error > selectedTheme 1`] =
+  `"System"`;
 
-exports[`Account > changePassword > With encryptor error > syncState 1`] = `
+exports[`Account > changePassword > With encryption error > syncState 1`] = `
 {
   "appError": AppError {
     "code": 9,
@@ -907,29 +1000,32 @@ exports[`Account > changePassword > With encryptor error > syncState 1`] = `
       "sync": true,
     },
     "message": "Note encryption/decryption failed",
-    "originalError": [TypeError: Failed to execute 'deriveKey' on 'SubtleCrypto': 2nd argument is not of type CryptoKey.],
+    "originalError": [TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Object'
+    --- property 'content' closes the circle],
     "retry": [Function],
     "retryConfig": {
       "fn": [Function],
     },
   },
-  "isLoggedIn": false,
+  "isLoggedIn": true,
   "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
+  "newPassword": "2",
+  "password": "1",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
-  "username": "",
+  "username": "d",
 }
 `;
 
-exports[`Account > changePassword > With encryptor error > updateState 1`] = `
+exports[`Account > changePassword > With encryption error > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -937,17 +1033,23 @@ exports[`Account > changePassword > With encryptor error > updateState 1`] = `
 }
 `;
 
-exports[`Account > changePassword > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Account > changePassword > With server error > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Account > changePassword > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Account > changePassword > With server error > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`Account > changePassword > With server error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Account > changePassword > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Account > changePassword > With server error > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Account > changePassword > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Account > changePassword > With server error > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Account > changePassword > With server error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Account > changePassword > With server error > Storage.get('USERNAME') 1`] =
+  `"d"`;
 
 exports[`Account > changePassword > With server error > allCalls 1`] = `
 [
@@ -955,7 +1057,7 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1055,10 +1157,12 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > changePassword > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Account > changePassword > With server error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Account > changePassword > With server error > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1120,12 +1224,13 @@ exports[`Account > changePassword > With server error > syncState 1`] = `
   "newPassword": "2",
   "password": "1",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -1139,17 +1244,29 @@ exports[`Account > changePassword > With server error > updateState 1`] = `
 }
 `;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[
+  `Account > deleteAccount > Deletes currently logged in account > KeyStore.getKey() 1`
+] = `CryptoKey {}`;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Deletes currently logged in account > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('THEME') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Deletes currently logged in account > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Deletes currently logged in account > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Deletes currently logged in account > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`Account > deleteAccount > Deletes currently logged in account > allCalls 1`] = `
 [
@@ -1157,7 +1274,7 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1289,10 +1406,13 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
 ]
 `;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Account > deleteAccount > Deletes currently logged in account > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > Deletes currently logged in account > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {},
 }
@@ -1328,9 +1448,12 @@ exports[`Account > deleteAccount > Deletes currently logged in account > noteSta
 }
 `;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > openedPopup 1`] = `undefined`;
+exports[`Account > deleteAccount > Deletes currently logged in account > openedPopup 1`] =
+  `undefined`;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > selectedTheme 1`] = `"System"`;
+exports[
+  `Account > deleteAccount > Deletes currently logged in account > selectedTheme 1`
+] = `"System"`;
 
 exports[`Account > deleteAccount > Deletes currently logged in account > syncState 1`] = `
 {
@@ -1347,10 +1470,11 @@ exports[`Account > deleteAccount > Deletes currently logged in account > syncSta
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [MockFunction clear] {
       "calls": [
-        [],
+        [
+          true,
+        ],
       ],
       "results": [
         {
@@ -1362,13 +1486,16 @@ exports[`Account > deleteAccount > Deletes currently logged in account > syncSta
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
 `;
 
-exports[`Account > deleteAccount > Deletes currently logged in account > updateState 1`] = `
+exports[`Account > deleteAccount > Deletes currently logged in account > updateState 1`] =
+  `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1376,17 +1503,29 @@ exports[`Account > deleteAccount > Deletes currently logged in account > updateS
 }
 `;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > KeyStore.getKey() 1`] = `undefined`;
+exports[
+  `Account > deleteAccount > Returns if ask dialog returns false > KeyStore.getKey() 1`
+] = `undefined`;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('THEME') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Returns if ask dialog returns false > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > allCalls 1`] = `
 [
@@ -1404,10 +1543,13 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > allCall
 ]
 `;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Account > deleteAccount > Returns if ask dialog returns false > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1433,9 +1575,12 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > noteSta
 }
 `;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > openedPopup 1`] = `undefined`;
+exports[`Account > deleteAccount > Returns if ask dialog returns false > openedPopup 1`] =
+  `undefined`;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > selectedTheme 1`] = `"System"`;
+exports[
+  `Account > deleteAccount > Returns if ask dialog returns false > selectedTheme 1`
+] = `"System"`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > syncState 1`] = `
 {
@@ -1452,18 +1597,20 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > syncSta
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
 `;
 
-exports[`Account > deleteAccount > Returns if ask dialog returns false > updateState 1`] = `
+exports[`Account > deleteAccount > Returns if ask dialog returns false > updateState 1`] =
+  `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1471,17 +1618,28 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > updateS
 }
 `;
 
-exports[`Account > deleteAccount > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Account > deleteAccount > Sets and resets loading state > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Sets and resets loading state > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `Account > deleteAccount > Sets and resets loading state > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] = `
 [
@@ -1489,7 +1647,7 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1621,10 +1779,13 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
 ]
 `;
 
-exports[`Account > deleteAccount > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Account > deleteAccount > Sets and resets loading state > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > Sets and resets loading state > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {},
 }
@@ -1660,9 +1821,11 @@ exports[`Account > deleteAccount > Sets and resets loading state > noteState 1`]
 }
 `;
 
-exports[`Account > deleteAccount > Sets and resets loading state > openedPopup 1`] = `undefined`;
+exports[`Account > deleteAccount > Sets and resets loading state > openedPopup 1`] =
+  `undefined`;
 
-exports[`Account > deleteAccount > Sets and resets loading state > selectedTheme 1`] = `"System"`;
+exports[`Account > deleteAccount > Sets and resets loading state > selectedTheme 1`] =
+  `"System"`;
 
 exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`] = `
 {
@@ -1679,12 +1842,13 @@ exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`]
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -1706,7 +1870,8 @@ exports[`Account > deleteAccount > Unauthorized > Storage.get('THEME') 1`] = `nu
 
 exports[`Account > deleteAccount > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Account > deleteAccount > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Account > deleteAccount > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`Account > deleteAccount > Unauthorized > Storage.get('USERNAME') 1`] = `"d"`;
 
@@ -1716,7 +1881,7 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1827,10 +1992,12 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > deleteAccount > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > Unauthorized > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > Unauthorized > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1891,12 +2058,13 @@ exports[`Account > deleteAccount > Unauthorized > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [MockFunction clear],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }
@@ -1910,15 +2078,19 @@ exports[`Account > deleteAccount > Unauthorized > updateState 1`] = `
 }
 `;
 
-exports[`Account > deleteAccount > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Account > deleteAccount > User not found > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Account > deleteAccount > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Account > deleteAccount > User not found > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`Account > deleteAccount > User not found > Storage.get('THEME') 1`] = `null`;
 
-exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Account > deleteAccount > User not found > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`Account > deleteAccount > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
@@ -1999,10 +2171,12 @@ exports[`Account > deleteAccount > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > deleteAccount > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > User not found > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > User not found > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2051,12 +2225,13 @@ exports[`Account > deleteAccount > User not found > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [MockFunction clear],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "k",
 }
@@ -2070,17 +2245,23 @@ exports[`Account > deleteAccount > User not found > updateState 1`] = `
 }
 `;
 
-exports[`Account > deleteAccount > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Account > deleteAccount > With server error > KeyStore.getKey() 1`] =
+  `CryptoKey {}`;
 
-exports[`Account > deleteAccount > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Account > deleteAccount > With server error > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`Account > deleteAccount > With server error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Account > deleteAccount > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Account > deleteAccount > With server error > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Account > deleteAccount > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Account > deleteAccount > With server error > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Account > deleteAccount > With server error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Account > deleteAccount > With server error > Storage.get('USERNAME') 1`] =
+  `"d"`;
 
 exports[`Account > deleteAccount > With server error > allCalls 1`] = `
 [
@@ -2088,7 +2269,7 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1"}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2199,10 +2380,12 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Account > deleteAccount > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Account > deleteAccount > With server error > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Account > deleteAccount > With server error > mockDb 1`] = `
 {
+  "deletedNoteIds": [],
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2263,12 +2446,13 @@ exports[`Account > deleteAccount > With server error > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [MockFunction clear],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "d",
 }

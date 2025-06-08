@@ -14,7 +14,8 @@ exports[`Storage > clear > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Storage > clear > allCalls 1`] = `[]`;
 
-exports[`Storage > clear > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Storage > clear > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Storage > clear > mockDb 1`] = `
 {
@@ -62,12 +63,13 @@ exports[`Storage > clear > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -95,7 +97,8 @@ exports[`Storage > get/set > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Storage > get/set > allCalls 1`] = `[]`;
 
-exports[`Storage > get/set > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Storage > get/set > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Storage > get/set > mockDb 1`] = `
 {
@@ -143,12 +146,13 @@ exports[`Storage > get/set > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -176,7 +180,8 @@ exports[`Storage > remove > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Storage > remove > allCalls 1`] = `[]`;
 
-exports[`Storage > remove > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Storage > remove > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Storage > remove > mockDb 1`] = `
 {
@@ -224,12 +229,13 @@ exports[`Storage > remove > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -257,7 +263,8 @@ exports[`Storage > setJson/getJson > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Storage > setJson/getJson > allCalls 1`] = `[]`;
 
-exports[`Storage > setJson/getJson > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Storage > setJson/getJson > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Storage > setJson/getJson > mockDb 1`] = `
 {
@@ -305,12 +312,13 @@ exports[`Storage > setJson/getJson > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }

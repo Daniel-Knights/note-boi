@@ -1,20 +1,24 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Encryptor > decryptNotes > Decrypts notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Encryptor > decryptNotes > Decrypts notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('THEME') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > allCalls 1`] = `[]`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Encryptor > decryptNotes > Decrypts notes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > mockDb 1`] = `
 {
@@ -62,12 +66,13 @@ exports[`Encryptor > decryptNotes > Decrypts notes > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -81,102 +86,33 @@ exports[`Encryptor > decryptNotes > Decrypts notes > updateState 1`] = `
 }
 `;
 
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > KeyStore.getKey() 1`] = `undefined`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > KeyStore.getKey() 1`] =
+  `undefined`;
 
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > Storage.get('THEME') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('THEME') 1`] =
+  `null`;
 
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > allCalls 1`] = `[]`;
-
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > mockDb 1`] = `
-{
-  "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > noteState 1`] = `
-{
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "id": "id",
-    "timestamp": 0,
-  },
-}
-`;
-
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > openedPopup 1`] = `undefined`;
-
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > selectedTheme 1`] = `"System"`;
-
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNoteIds": {
-    "add": [Function],
-    "clear": [Function],
-    "deleted": Set {},
-    "edited": Set {},
-    "new": "",
-    "size": 0,
-  },
-  "username": "",
-}
-`;
-
-exports[`Encryptor > decryptNotes > Doesn't set password key if no password is given > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('THEME') 1`] = `null`;
-
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > allCalls 1`] = `[]`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Encryptor > decryptNotes > Handles unencrypted notes > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > mockDb 1`] = `
 {
@@ -205,9 +141,11 @@ exports[`Encryptor > decryptNotes > Handles unencrypted notes > noteState 1`] = 
 }
 `;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > openedPopup 1`] = `undefined`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > openedPopup 1`] =
+  `undefined`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > selectedTheme 1`] = `"System"`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > selectedTheme 1`] =
+  `"System"`;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > syncState 1`] = `
 {
@@ -224,12 +162,13 @@ exports[`Encryptor > decryptNotes > Handles unencrypted notes > syncState 1`] = 
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
@@ -243,23 +182,24 @@ exports[`Encryptor > decryptNotes > Handles unencrypted notes > updateState 1`] 
 }
 `;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Encryptor > encryptNotes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Encryptor > encryptNotes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > Storage.get('THEME') 1`] = `null`;
+exports[`Encryptor > encryptNotes > Storage.get('THEME') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Encryptor > encryptNotes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Encryptor > encryptNotes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > Storage.get('USERNAME') 1`] = `null`;
+exports[`Encryptor > encryptNotes > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > allCalls 1`] = `[]`;
+exports[`Encryptor > encryptNotes > allCalls 1`] = `[]`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Encryptor > encryptNotes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > mockDb 1`] = `
+exports[`Encryptor > encryptNotes > mockDb 1`] = `
 {
   "encryptedNotes": 10,
   "users": {
@@ -268,7 +208,7 @@ exports[`Encryptor > decryptNotes > Sets password key if password is given > moc
 }
 `;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > noteState 1`] = `
+exports[`Encryptor > encryptNotes > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -286,11 +226,11 @@ exports[`Encryptor > decryptNotes > Sets password key if password is given > not
 }
 `;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > openedPopup 1`] = `undefined`;
+exports[`Encryptor > encryptNotes > openedPopup 1`] = `undefined`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > selectedTheme 1`] = `"System"`;
+exports[`Encryptor > encryptNotes > selectedTheme 1`] = `"System"`;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > syncState 1`] = `
+exports[`Encryptor > encryptNotes > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -305,342 +245,19 @@ exports[`Encryptor > decryptNotes > Sets password key if password is given > syn
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
 `;
 
-exports[`Encryptor > decryptNotes > Sets password key if password is given > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > Storage.get('THEME') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > allCalls 1`] = `[]`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > mockDb 1`] = `
-{
-  "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > noteState 1`] = `
-{
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "id": "id",
-    "timestamp": 0,
-  },
-}
-`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > openedPopup 1`] = `undefined`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > selectedTheme 1`] = `"System"`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNoteIds": {
-    "add": [Function],
-    "clear": [Function],
-    "deleted": Set {},
-    "edited": Set {},
-    "new": "",
-    "size": 0,
-  },
-  "username": "",
-}
-`;
-
-exports[`Encryptor > encryptNotes > Doesn't set password key if no password is given > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > Storage.get('THEME') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > allCalls 1`] = `[]`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > mockDb 1`] = `
-{
-  "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > noteState 1`] = `
-{
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "id": "id",
-    "timestamp": 0,
-  },
-}
-`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > openedPopup 1`] = `undefined`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > selectedTheme 1`] = `"System"`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNoteIds": {
-    "add": [Function],
-    "clear": [Function],
-    "deleted": Set {},
-    "edited": Set {},
-    "new": "",
-    "size": 0,
-  },
-  "username": "",
-}
-`;
-
-exports[`Encryptor > encryptNotes > Encrypts notes > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > KeyStore.getKey() 1`] = `CryptoKey {}`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > Storage.get('THEME') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > allCalls 1`] = `[]`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > mockDb 1`] = `
-{
-  "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > noteState 1`] = `
-{
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "id": "id",
-    "timestamp": 0,
-  },
-}
-`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > openedPopup 1`] = `undefined`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > selectedTheme 1`] = `"System"`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNoteIds": {
-    "add": [Function],
-    "clear": [Function],
-    "deleted": Set {},
-    "edited": Set {},
-    "new": "",
-    "size": 0,
-  },
-  "username": "",
-}
-`;
-
-exports[`Encryptor > encryptNotes > Sets password key if password is given > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > KeyStore.getKey() 1`] = `CryptoKey {}`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > Storage.get('THEME') 1`] = `null`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > allCalls 1`] = `[]`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > mockDb 1`] = `
-{
-  "encryptedNotes": 10,
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > noteState 1`] = `
-{
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "id": "id",
-    "timestamp": 0,
-  },
-}
-`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > openedPopup 1`] = `undefined`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > selectedTheme 1`] = `"System"`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNoteIds": {
-    "add": [Function],
-    "clear": [Function],
-    "deleted": Set {},
-    "edited": Set {},
-    "new": "",
-    "size": 0,
-  },
-  "username": "",
-}
-`;
-
-exports[`Encryptor > setPasswordKey > Generates and stores a CryptoKey from the given password > updateState 1`] = `
+exports[`Encryptor > encryptNotes > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
