@@ -4,7 +4,7 @@ import { nextTick } from 'vue';
 import * as n from '../../../store/note';
 import { Storage } from '../../../classes';
 import { isEmptyNote } from '../../../utils';
-import { mockApi } from '../../api';
+import { mockApi } from '../../mock';
 import localNotes from '../../notes.json';
 import { getByTestId, resetNoteStore } from '../../utils';
 

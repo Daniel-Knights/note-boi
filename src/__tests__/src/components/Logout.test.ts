@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 
 import * as s from '../../../store/sync';
-import { clearMockApiResults, mockApi, mockDb } from '../../api';
+import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import { assertRequest, waitUntil } from '../../utils';
 
 import Logout from '../../../components/Logout.vue';

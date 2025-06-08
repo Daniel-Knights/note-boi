@@ -2,7 +2,7 @@ import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { ERROR_CODE, Storage } from '../../../../classes';
 import { isEmptyNote } from '../../../../utils';
-import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../api';
+import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../mock';
 import localNotes from '../../../notes.json';
 import { assertAppError, assertLoadingState, assertRequest } from '../../../utils';
 

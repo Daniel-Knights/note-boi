@@ -2,8 +2,8 @@ import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import { NOTE_EVENTS } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
-import { clearMockApiResults, mockApi } from '../../api';
 import { UUID_REGEX } from '../../constant';
+import { clearMockApiResults, mockApi } from '../../mock';
 import localNotes from '../../notes.json';
 import { wait, waitForAutoSync, waitUntil } from '../../utils';
 

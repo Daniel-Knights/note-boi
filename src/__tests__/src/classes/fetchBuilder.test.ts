@@ -1,6 +1,6 @@
 import * as s from '../../../store/sync';
 import { FetchBuilder } from '../../../classes';
-import { mockApi, mockKeyring } from '../../api';
+import { mockApi, mockKeyring } from '../../mock';
 
 describe('FetchBuilder', () => {
   const testHeaders = {

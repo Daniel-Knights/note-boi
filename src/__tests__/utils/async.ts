@@ -1,5 +1,5 @@
 import * as s from '../../store/sync';
-import { mockApi } from '../api';
+import { mockApi } from '../mock';
 
 /** Returns a promise that resolves after `setImmediate`. */
 export function resolveImmediate<T>(val?: T): Promise<T | void> {

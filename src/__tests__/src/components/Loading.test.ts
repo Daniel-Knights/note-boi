@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 
-import { mockApi } from '../../api';
+import { mockApi } from '../../mock';
 
 import Loading from '../../../components/Loading.vue';
 

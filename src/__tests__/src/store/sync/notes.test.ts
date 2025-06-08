@@ -5,8 +5,8 @@ import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../../classes';
 import { isEmptyNote } from '../../../../utils';
-import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../api';
 import { UUID_REGEX } from '../../../constant';
+import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../mock';
 import localNotes from '../../../notes.json';
 import {
   assertAppError,

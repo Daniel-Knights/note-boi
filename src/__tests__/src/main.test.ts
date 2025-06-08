@@ -3,7 +3,7 @@ import * as s from '../../store/sync';
 import * as u from '../../store/update';
 import { AppError, ERROR_CODE } from '../../classes';
 import { openedPopup, POPUP_TYPE } from '../../store/popup';
-import { clearMockApiResults, mockApi } from '../api';
+import { clearMockApiResults, mockApi } from '../mock';
 import { assertRequest, getAppDiv, resolveImmediate, waitUntil } from '../utils';
 
 let main: typeof import('../../main');

@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import * as n from '../../../store/note';
 import { unixToDateTime } from '../../../utils';
-import { mockApi } from '../../api';
+import { mockApi } from '../../mock';
 import localNotes from '../../notes.json';
 import { getByTestId } from '../../utils';
 

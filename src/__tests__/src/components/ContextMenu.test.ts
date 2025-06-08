@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
 import { isEmptyNote } from '../../../utils';
-import { clearMockApiResults, mockApi } from '../../api';
+import { clearMockApiResults, mockApi } from '../../mock';
 import localNotes from '../../notes.json';
 import { getByTestId } from '../../utils';
 

@@ -10,7 +10,7 @@ import {
   tauriListen,
   unixToDateTime,
 } from '../../utils';
-import { clearMockApiResults, mockApi } from '../api';
+import { clearMockApiResults, mockApi } from '../mock';
 
 describe('Utils', () => {
   it('isDev', () => {

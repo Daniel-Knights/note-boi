@@ -11,8 +11,8 @@ import {
 import { openedPopup } from '../store/popup';
 import { selectedTheme } from '../store/theme';
 
-import { allCalls, mockDb } from './api';
 import { UUID_REGEX } from './constant';
+import { allCalls, mockDb } from './mock';
 import { isObj } from './utils';
 
 /** Snapshots app state. Replaces variable values with placeholders. */

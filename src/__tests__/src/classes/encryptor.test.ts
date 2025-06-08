@@ -1,5 +1,5 @@
 import { Encryptor } from '../../../classes';
-import { mockDb } from '../../api';
+import { mockDb } from '../../mock';
 import localNotes from '../../notes.json';
 import { isNote } from '../../utils';
 
