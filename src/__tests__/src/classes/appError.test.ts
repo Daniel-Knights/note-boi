@@ -50,7 +50,7 @@ describe('AppError', () => {
     it('With no arguments', () => {
       const retryFn = vi.fn();
       const config: ErrorConfig<typeof retryFn> = {
-        code: ERROR_CODE.PULL,
+        code: ERROR_CODE.SYNC,
         retry: { fn: retryFn },
       };
       const error = new AppError(config);
@@ -64,7 +64,7 @@ describe('AppError', () => {
     it('With provided arguments', () => {
       const retryFn = vi.fn();
       const config: ErrorConfig<typeof retryFn> = {
-        code: ERROR_CODE.PULL,
+        code: ERROR_CODE.SYNC,
         retry: { fn: retryFn, args: [1, 2, 3] },
       };
       const error = new AppError(config);

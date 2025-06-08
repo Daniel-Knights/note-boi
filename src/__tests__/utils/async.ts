@@ -21,10 +21,10 @@ export function waitUntil<T>(condFn: () => T): Promise<T> {
 }
 
 /**
- * Uses fake timers and waits for `autoPush` to run.
+ * Uses fake timers and waits for `autoSync` to run.
  * Specifically intended for `n.editNote` and `n.deleteNote`.
  */
-export async function waitForAutoPush(
+export async function waitForAutoSync(
   cb: () => void | Promise<void>,
   calls: ReturnType<typeof mockApi>['calls']
 ) {
@@ -33,7 +33,7 @@ export async function waitForAutoPush(
   await cb();
 
   await waitUntil(() => calls.invoke.has('edit_note') || calls.invoke.has('delete_note'));
-  await resolveImmediate(); // Defer to `.then` and `autoPush`
+  await resolveImmediate(); // Defer to `.then` and `autoSync`
 
   vi.runAllTimers();
 

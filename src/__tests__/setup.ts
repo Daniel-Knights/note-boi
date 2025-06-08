@@ -1,7 +1,6 @@
 import { clearMocks, mockWindows } from '@tauri-apps/api/mocks';
 import { enableAutoUnmount } from '@vue/test-utils';
 import { indexedDB } from 'fake-indexeddb';
-import crypto from 'node:crypto';
 
 import { Encryptor, KeyStore, Storage } from '../classes';
 
@@ -11,19 +10,17 @@ import { snapshotState } from './snapshot';
 import { resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
 
 const assertFailSpy = vi.spyOn(assert, 'fail');
-
 const initialMockDb = structuredClone(mockDb);
 
 beforeAll(async () => {
-  // jsdom doesn't come with WebCrypto or IndexedDB implementations
-  Object.defineProperty(window, 'crypto', {
-    value: crypto,
-  });
+  // jsdom doesn't come with IndexedDB implementations
   Object.defineProperty(window, 'indexedDB', {
     value: indexedDB,
   });
 
-  mockDb.encryptedNotes = await Encryptor.encryptNotes(localNotes, '1');
+  const passwordKey = await Encryptor.generatePasswordKey('1');
+
+  mockDb.encryptedNotes = await Encryptor.encryptNotes(localNotes, passwordKey);
 
   await KeyStore.reset();
 

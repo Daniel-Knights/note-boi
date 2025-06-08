@@ -30,7 +30,7 @@ describe('PopupSyncError', () => {
     const errorMessage = 'I am a sync error';
 
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
       message: errorMessage,
     });
 
@@ -57,7 +57,7 @@ describe('PopupSyncError', () => {
     const resetErrorSpy = vi.spyOn(s, 'resetAppError');
 
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
       retry: { fn: retryMock },
     });
 
@@ -78,7 +78,7 @@ describe('PopupSyncError', () => {
     mockApi();
 
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
     });
 
     const wrapper = mountPopupSyncError();
@@ -115,7 +115,7 @@ describe('PopupSyncError', () => {
     const wrapper = mountPopupSyncError();
 
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
     });
 
     await Promise.all(promises);

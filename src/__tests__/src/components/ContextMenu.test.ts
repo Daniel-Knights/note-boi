@@ -86,13 +86,9 @@ describe('ContextMenu', () => {
   it.each(['Export', 'Delete'])(
     '%s button disabled with no notes',
     async (buttonType) => {
-      const { calls } = mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [[]],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
+
+      setResValues.invoke({ get_all_notes: [[]] });
 
       await n.getAllNotes();
 

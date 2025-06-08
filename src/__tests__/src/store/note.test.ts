@@ -5,7 +5,7 @@ import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../api';
 import { UUID_REGEX } from '../../constant';
 import localNotes from '../../notes.json';
-import { wait, waitForAutoPush, waitUntil } from '../../utils';
+import { wait, waitForAutoSync, waitUntil } from '../../utils';
 
 const existingNoteIndexSorted = 2;
 const existingNote = localNotes[8]!;
@@ -137,13 +137,9 @@ describe('Note store', () => {
 
   describe('getAllNotes', () => {
     it('With undefined notes', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
+
+      setResValues.invoke({ get_all_notes: [] });
 
       await n.getAllNotes();
 
@@ -158,13 +154,9 @@ describe('Note store', () => {
     });
 
     it('With empty note array', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [[]],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
+
+      setResValues.invoke({ get_all_notes: [[]] });
 
       await n.getAllNotes();
 
@@ -179,13 +171,9 @@ describe('Note store', () => {
     });
 
     it('With single empty note', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [[new n.Note()]],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
+
+      setResValues.invoke({ get_all_notes: [[new n.Note()]] });
 
       await n.getAllNotes();
 
@@ -214,12 +202,10 @@ describe('Note store', () => {
     });
 
     it('Catches error', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          error: 'get_all_notes',
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
       const consoleErrorSpy = vi.spyOn(console, 'error');
+
+      setErrorValue.invoke('get_all_notes');
 
       await n.getAllNotes();
 
@@ -298,13 +284,9 @@ describe('Note store', () => {
     });
 
     it('With no notes', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [[existingNote]],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
+
+      setResValues.invoke({ get_all_notes: [[existingNote]] });
 
       await n.getAllNotes();
 
@@ -333,26 +315,26 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      s.syncState.unsyncedNoteIds.add({ new: existingNote.id });
+      s.syncState.unsyncedNoteIds.set({ new: existingNote.id });
 
       n.deleteNote(existingNote.id);
 
       assert.strictEqual(s.syncState.unsyncedNoteIds.new, '');
     });
 
-    it('Calls autoPush', async () => {
+    it('Calls autoSync', async () => {
       const { calls, promises } = mockApi();
       const otherExistingNote = { ...localNotes[1]! };
-      const autoPushSpy = vi.spyOn(s, 'autoPush');
+      const autoSyncSpy = vi.spyOn(s, 'autoSync');
 
       await n.getAllNotes();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
 
-      await waitForAutoPush(() => n.deleteNote(otherExistingNote.id), calls);
+      await waitForAutoSync(() => n.deleteNote(otherExistingNote.id), calls);
 
-      expect(autoPushSpy).toHaveBeenCalledOnce();
+      expect(autoSyncSpy).toHaveBeenCalledOnce();
 
       assert.isUndefined(n.findNote(otherExistingNote.id));
       assert.strictEqual(calls.size, 1);
@@ -360,17 +342,14 @@ describe('Note store', () => {
     });
 
     it('Catches error', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          error: 'delete_note',
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
       const consoleErrorSpy = vi.spyOn(console, 'error');
 
       await n.getAllNotes();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
+      setErrorValue.invoke('delete_note');
 
       n.deleteNote(existingNote.id);
 
@@ -420,17 +399,14 @@ describe('Note store', () => {
     });
 
     it('Catches error', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          error: 'delete_note',
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
       const consoleErrorSpy = vi.spyOn(console, 'error');
 
       await n.getAllNotes();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
+      setErrorValue.invoke('delete_note');
 
       n.deleteSelectedNotes();
 
@@ -503,17 +479,14 @@ describe('Note store', () => {
     });
 
     it('Catches error', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          error: 'new_note',
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
       const consoleErrorSpy = vi.spyOn(console, 'error');
 
       await n.getAllNotes();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
+      setErrorValue.invoke('new_note');
 
       n.newNote();
 
@@ -547,7 +520,7 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls });
 
-      await waitForAutoPush(
+      await waitForAutoSync(
         () => n.editNote({ ops: [{ insert: 'Title\nBody' }] }, 'Title', 'Body'),
         calls
       );
@@ -571,17 +544,14 @@ describe('Note store', () => {
     });
 
     it('Catches error', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          error: 'edit_note',
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
       const consoleErrorSpy = vi.spyOn(console, 'error');
 
       await n.getAllNotes();
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
+      setErrorValue.invoke('edit_note');
 
       n.editNote({ ops: [{ insert: 'Title\nBody' }] }, 'Title', 'Body');
 
@@ -625,17 +595,12 @@ describe('Note store', () => {
     });
 
     it('Returns when no location chosen', async () => {
-      const { calls } = mockApi({
-        tauriApi: {
-          resValue: {
-            openDialog: [''],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
 
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
+      setResValues.tauriApi({ openDialog: [''] });
 
       await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 
@@ -658,16 +623,13 @@ describe('Note store', () => {
     });
 
     it('Catches error', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          error: 'export_notes',
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
       const consoleErrorSpy = vi.spyOn(console, 'error');
 
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
+      setErrorValue.invoke('export_notes');
 
       await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
 

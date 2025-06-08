@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
-import { AppError, ERROR_CODE } from '../../../classes';
+import { AppError, Encryptor, ERROR_CODE, KeyStore } from '../../../classes';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { tauriInvoke } from '../../../utils';
 import { mockApi } from '../../api';
@@ -57,15 +57,18 @@ describe('SyncStatus', () => {
     mockApi();
 
     const wrapper = mount(SyncStatus);
+    // Simulate having previously been logged in
+    const passwordKey = await Encryptor.generatePasswordKey('1');
 
     s.syncState.username = 'd';
 
+    await KeyStore.storeKey(passwordKey);
     await tauriInvoke('set_access_token', {
       username: 'd',
       accessToken: 'test-token',
     });
 
-    s.pull();
+    s.sync();
 
     await nextTick();
 
@@ -86,7 +89,7 @@ describe('SyncStatus', () => {
   it('Displays error icon and opens popup on click', async () => {
     mockApi();
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
       display: { sync: true },
       retry: {
         fn: () => {
@@ -114,12 +117,7 @@ describe('SyncStatus', () => {
 
   describe('Handles popups', () => {
     it('PopupSyncError', async () => {
-      mockApi({
-        request: {
-          error: { endpoint: '/auth/login' },
-        },
-      });
-
+      const { setErrorValue } = mockApi();
       const appDiv = getAppDiv();
 
       document.body.appendChild(appDiv);
@@ -131,6 +129,8 @@ describe('SyncStatus', () => {
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
+
+      setErrorValue.request({ endpoint: '/auth/login' });
 
       await s.login();
       await nextTick();
