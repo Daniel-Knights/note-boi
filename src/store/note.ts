@@ -2,7 +2,7 @@ import * as dialog from '@tauri-apps/plugin-dialog';
 import type Delta from 'quill-delta';
 import { reactive } from 'vue';
 
-import { autoSync } from '../api';
+import { debounceSync } from '../api';
 import { UnsyncedNotesManager } from '../classes';
 import { NOTE_EVENTS } from '../constant';
 import { isEmptyNote, tauriInvoke } from '../utils';
@@ -172,7 +172,7 @@ export function deleteNote(id: string): void {
     document.dispatchEvent(getUnsyncedEvent(id, 'deleted'));
 
     tauriInvoke('delete_note', { id })
-      .then(() => autoSync())
+      .then(() => debounceSync())
       .catch(catchNoteInvokeError);
   }
 }
@@ -244,7 +244,7 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
   document.dispatchEvent(getUnsyncedEvent(foundNote.id, 'edited'));
 
   tauriInvoke('edit_note', { note: { ...foundNote } })
-    .then(() => autoSync())
+    .then(() => debounceSync())
     .catch(catchNoteInvokeError);
 }
 

@@ -113,7 +113,7 @@ export function syncLocalStateWithRemoteNotes(remoteNotes: Note[]) {
 }
 
 // Auto-syncing
-export function autoSync(): void {
+export function debounceSync(): void {
   if (!syncState.isLoggedIn) return;
 
   const timeoutId = syncQueue.add(() => {
