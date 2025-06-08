@@ -44,12 +44,11 @@ exports[`FetchBuilder > With auth > allCalls 1`] = `
 ]
 `;
 
-exports[`FetchBuilder > With auth > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`FetchBuilder > With auth > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`FetchBuilder > With auth > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -156,12 +155,11 @@ exports[`FetchBuilder > Without auth > allCalls 1`] = `
 ]
 `;
 
-exports[`FetchBuilder > Without auth > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`FetchBuilder > Without auth > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`FetchBuilder > Without auth > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",

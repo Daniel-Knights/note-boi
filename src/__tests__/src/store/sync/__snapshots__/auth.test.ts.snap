@@ -114,12 +114,11 @@ exports[`Auth > clientSideLogout > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > clientSideLogout > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > clientSideLogout > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > clientSideLogout > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -196,23 +195,17 @@ exports[`Auth > clientSideLogout > updateState 1`] = `
 }
 `;
 
-exports[`Auth > login > Sets and resets loading state > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Auth > login > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Auth > login > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > login > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Auth > login > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('USERNAME') 1`] =
-  `"d"`;
+exports[`Auth > login > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
 [
@@ -295,12 +288,11 @@ exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > Sets and resets loading state > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > login > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -408,12 +400,11 @@ exports[`Auth > login > Unauthorized > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > Unauthorized > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > login > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > Unauthorized > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -514,12 +505,11 @@ exports[`Auth > login > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > User not found > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > login > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -597,8 +587,7 @@ exports[`Auth > login > With decryption error > Storage.get('THEME') 1`] = `null
 
 exports[`Auth > login > With decryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > With decryption error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Auth > login > With decryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Auth > login > With decryption error > Storage.get('USERNAME') 1`] = `"d"`;
 
@@ -643,12 +632,11 @@ exports[`Auth > login > With decryption error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > With decryption error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With decryption error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > With decryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -726,8 +714,7 @@ exports[`Auth > login > With encryption error > Storage.get('THEME') 1`] = `null
 
 exports[`Auth > login > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Auth > login > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Auth > login > With encryption error > Storage.get('USERNAME') 1`] = `null`;
 
@@ -743,12 +730,11 @@ exports[`Auth > login > With encryption error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > With encryption error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With encryption error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > With encryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1270,12 +1256,11 @@ Sugar
 ]
 `;
 
-exports[`Auth > login > With no notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > With no notes > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1803,12 +1788,11 @@ Sugar
 ]
 `;
 
-exports[`Auth > login > With notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > With notes > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2147,12 +2131,11 @@ exports[`Auth > login > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > login > With server error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > login > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > login > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2222,29 +2205,17 @@ exports[`Auth > login > With server error > updateState 1`] = `
 }
 `;
 
-exports[
-  `Auth > logout > Logs a user out and clears user-based state > KeyStore.getKey() 1`
-] = `CryptoKey {}`;
+exports[`Auth > logout > Logs a user out and clears user-based state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Auth > logout > Logs a user out and clears user-based state > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Auth > logout > Logs a user out and clears user-based state > Storage.get('THEME') 1`
-] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Auth > logout > Logs a user out and clears user-based state > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 1`] = `
 [
@@ -2373,13 +2344,11 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
 ]
 `;
 
-exports[
-  `Auth > logout > Logs a user out and clears user-based state > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > Logs a user out and clears user-based state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2417,11 +2386,9 @@ exports[`Auth > logout > Logs a user out and clears user-based state > noteState
 }
 `;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > openedPopup 1`] =
-  `undefined`;
+exports[`Auth > logout > Logs a user out and clears user-based state > openedPopup 1`] = `undefined`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > selectedTheme 1`] =
-  `"System"`;
+exports[`Auth > logout > Logs a user out and clears user-based state > selectedTheme 1`] = `"System"`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > syncState 1`] = `
 {
@@ -2458,24 +2425,17 @@ exports[`Auth > logout > Logs a user out and clears user-based state > updateSta
 }
 `;
 
-exports[`Auth > logout > Sets and resets loading state > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Auth > logout > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Auth > logout > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`Auth > logout > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
 [
@@ -2604,12 +2564,11 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > logout > Sets and resets loading state > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2825,12 +2784,11 @@ exports[`Auth > logout > Unauthorized > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > logout > Unauthorized > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > Unauthorized > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3046,12 +3004,11 @@ exports[`Auth > logout > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > logout > User not found > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {},
 }
@@ -3265,12 +3222,11 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > logout > With server error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > logout > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > logout > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3347,24 +3303,17 @@ exports[`Auth > logout > With server error > updateState 1`] = `
 }
 `;
 
-exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Auth > signup > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`Auth > signup > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > signup > Sets and resets loading state > allCalls 1`] = `
 [
@@ -3385,12 +3334,11 @@ exports[`Auth > signup > Sets and resets loading state > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > Sets and resets loading state > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3468,8 +3416,7 @@ exports[`Auth > signup > With encryption error > Storage.get('THEME') 1`] = `nul
 
 exports[`Auth > signup > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > signup > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Auth > signup > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Auth > signup > With encryption error > Storage.get('USERNAME') 1`] = `null`;
 
@@ -3485,12 +3432,11 @@ exports[`Auth > signup > With encryption error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > With encryption error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > With encryption error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > With encryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3808,12 +3754,11 @@ exports[`Auth > signup > With no notes > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > With no notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > With no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > With no notes > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3939,12 +3884,11 @@ exports[`Auth > signup > With notes > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > With notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > With notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > With notes > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -4294,12 +4238,11 @@ exports[`Auth > signup > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Auth > signup > With server error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Auth > signup > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Auth > signup > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": [],
+  "deletedNoteIds": Set {},
   "encryptedNotes": 10,
   "users": {
     "d": "1",

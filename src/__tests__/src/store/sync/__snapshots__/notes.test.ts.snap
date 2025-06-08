@@ -1,25 +1,18 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Note (sync) > Edge cases > No local, no remote > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Notes (sync) > Edge cases > No local, no remote > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note (sync) > Edge cases > No local, no remote > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > Storage.get('USERNAME') 1`] =
-  `"d"`;
+exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > allCalls 1`] = `
+exports[`Notes (sync) > Edge cases > No local, no remote > allCalls 1`] = `
 [
   [
     "invoke",
@@ -144,17 +137,16 @@ exports[`Note (sync) > Edge cases > No local, no remote > allCalls 1`] = `
 ]
 `;
 
-exports[`Note (sync) > Edge cases > No local, no remote > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > Edge cases > No local, no remote > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > mockDb 1`] = `
+exports[`Notes (sync) > Edge cases > No local, no remote > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    "c78f1cda-9f46-4e29-af61-3339ce3ec7ab",
+    "86d4b327-be94-415f-ad4c-40e96992f023",
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -162,7 +154,7 @@ exports[`Note (sync) > Edge cases > No local, no remote > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No local, no remote > noteState 1`] = `
+exports[`Notes (sync) > Edge cases > No local, no remote > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -192,11 +184,11 @@ exports[`Note (sync) > Edge cases > No local, no remote > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No local, no remote > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > Edge cases > No local, no remote > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > Edge cases > No local, no remote > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > Edge cases > No local, no remote > syncState 1`] = `
+exports[`Notes (sync) > Edge cases > No local, no remote > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -223,7 +215,7 @@ exports[`Note (sync) > Edge cases > No local, no remote > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No local, no remote > updateState 1`] = `
+exports[`Notes (sync) > Edge cases > No local, no remote > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -231,28 +223,19 @@ exports[`Note (sync) > Edge cases > No local, no remote > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No local, some remote > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Notes (sync) > Edge cases > No local, some remote > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Note (sync) > Edge cases > No local, some remote > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > Edge cases > No local, some remote > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note (sync) > Edge cases > No local, some remote > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note (sync) > Edge cases > No local, some remote > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > Edge cases > No local, some remote > Storage.get('USERNAME') 1`] =
-  `"d"`;
+exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > Edge cases > No local, some remote > allCalls 1`] = `
+exports[`Notes (sync) > Edge cases > No local, some remote > allCalls 1`] = `
 [
   [
     "invoke",
@@ -541,17 +524,16 @@ Sugar
 ]
 `;
 
-exports[`Note (sync) > Edge cases > No local, some remote > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > Edge cases > No local, some remote > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > Edge cases > No local, some remote > mockDb 1`] = `
+exports[`Notes (sync) > Edge cases > No local, some remote > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    "c78f1cda-9f46-4e29-af61-3339ce3ec7ab",
+    "86d4b327-be94-415f-ad4c-40e96992f023",
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -559,7 +541,7 @@ exports[`Note (sync) > Edge cases > No local, some remote > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No local, some remote > noteState 1`] = `
+exports[`Notes (sync) > Edge cases > No local, some remote > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -776,12 +758,11 @@ Sugar
 }
 `;
 
-exports[`Note (sync) > Edge cases > No local, some remote > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > Edge cases > No local, some remote > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > Edge cases > No local, some remote > selectedTheme 1`] =
-  `"System"`;
+exports[`Notes (sync) > Edge cases > No local, some remote > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > Edge cases > No local, some remote > syncState 1`] = `
+exports[`Notes (sync) > Edge cases > No local, some remote > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -808,7 +789,7 @@ exports[`Note (sync) > Edge cases > No local, some remote > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No local, some remote > updateState 1`] = `
+exports[`Notes (sync) > Edge cases > No local, some remote > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -816,28 +797,19 @@ exports[`Note (sync) > Edge cases > No local, some remote > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No remote, some local > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Notes (sync) > Edge cases > No remote, some local > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Note (sync) > Edge cases > No remote, some local > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > Edge cases > No remote, some local > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note (sync) > Edge cases > No remote, some local > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note (sync) > Edge cases > No remote, some local > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > Edge cases > No remote, some local > Storage.get('USERNAME') 1`] =
-  `"d"`;
+exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > Edge cases > No remote, some local > allCalls 1`] = `
+exports[`Notes (sync) > Edge cases > No remote, some local > allCalls 1`] = `
 [
   [
     "invoke",
@@ -1107,17 +1079,16 @@ Sugar
 ]
 `;
 
-exports[`Note (sync) > Edge cases > No remote, some local > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > Edge cases > No remote, some local > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > Edge cases > No remote, some local > mockDb 1`] = `
+exports[`Notes (sync) > Edge cases > No remote, some local > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    "c78f1cda-9f46-4e29-af61-3339ce3ec7ab",
+    "86d4b327-be94-415f-ad4c-40e96992f023",
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1125,7 +1096,7 @@ exports[`Note (sync) > Edge cases > No remote, some local > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No remote, some local > noteState 1`] = `
+exports[`Notes (sync) > Edge cases > No remote, some local > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -1386,12 +1357,11 @@ Sugar
 }
 `;
 
-exports[`Note (sync) > Edge cases > No remote, some local > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > Edge cases > No remote, some local > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > Edge cases > No remote, some local > selectedTheme 1`] =
-  `"System"`;
+exports[`Notes (sync) > Edge cases > No remote, some local > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > Edge cases > No remote, some local > syncState 1`] = `
+exports[`Notes (sync) > Edge cases > No remote, some local > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1418,7 +1388,7 @@ exports[`Note (sync) > Edge cases > No remote, some local > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > Edge cases > No remote, some local > updateState 1`] = `
+exports[`Notes (sync) > Edge cases > No remote, some local > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1426,35 +1396,27 @@ exports[`Note (sync) > Edge cases > No remote, some local > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Returns if not logged in > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Notes (sync) > sync > Returns if not logged in > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note (sync) > sync > Returns if not logged in > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > Returns if not logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > Returns if not logged in > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > Returns if not logged in > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > sync > Returns if not logged in > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > Returns if not logged in > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Returns if not logged in > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Returns if not logged in > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > sync > Returns if not logged in > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > Returns if not logged in > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Note (sync) > sync > Returns if not logged in > allCalls 1`] = `[]`;
+exports[`Notes (sync) > sync > Returns if not logged in > allCalls 1`] = `[]`;
 
-exports[`Note (sync) > sync > Returns if not logged in > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > Returns if not logged in > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > Returns if not logged in > mockDb 1`] = `
+exports[`Notes (sync) > sync > Returns if not logged in > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "deleted",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1462,7 +1424,7 @@ exports[`Note (sync) > sync > Returns if not logged in > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Returns if not logged in > noteState 1`] = `
+exports[`Notes (sync) > sync > Returns if not logged in > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -1480,11 +1442,11 @@ exports[`Note (sync) > sync > Returns if not logged in > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Returns if not logged in > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > sync > Returns if not logged in > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > Returns if not logged in > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > sync > Returns if not logged in > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > Returns if not logged in > syncState 1`] = `
+exports[`Notes (sync) > sync > Returns if not logged in > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1511,7 +1473,7 @@ exports[`Note (sync) > sync > Returns if not logged in > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Returns if not logged in > updateState 1`] = `
+exports[`Notes (sync) > sync > Returns if not logged in > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1519,29 +1481,19 @@ exports[`Note (sync) > sync > Returns if not logged in > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Sets and resets loading state > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Notes (sync) > sync > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Note (sync) > sync > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > Sets and resets loading state > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Sets and resets loading state > Storage.get('USERNAME') 1`
-] = `"d"`;
+exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > sync > Sets and resets loading state > allCalls 1`] = `
+exports[`Notes (sync) > sync > Sets and resets loading state > allCalls 1`] = `
 [
   [
     "request",
@@ -1709,16 +1661,14 @@ exports[`Note (sync) > sync > Sets and resets loading state > allCalls 1`] = `
 ]
 `;
 
-exports[
-  `Note (sync) > sync > Sets and resets loading state > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > Sets and resets loading state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > Sets and resets loading state > mockDb 1`] = `
+exports[`Notes (sync) > sync > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -1726,7 +1676,7 @@ exports[`Note (sync) > sync > Sets and resets loading state > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Sets and resets loading state > noteState 1`] = `
+exports[`Notes (sync) > sync > Sets and resets loading state > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -1756,13 +1706,11 @@ exports[`Note (sync) > sync > Sets and resets loading state > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Sets and resets loading state > openedPopup 1`] =
-  `undefined`;
+exports[`Notes (sync) > sync > Sets and resets loading state > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > Sets and resets loading state > selectedTheme 1`] =
-  `"System"`;
+exports[`Notes (sync) > sync > Sets and resets loading state > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > Sets and resets loading state > syncState 1`] = `
+exports[`Notes (sync) > sync > Sets and resets loading state > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1789,7 +1737,7 @@ exports[`Note (sync) > sync > Sets and resets loading state > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Sets and resets loading state > updateState 1`] = `
+exports[`Notes (sync) > sync > Sets and resets loading state > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1797,28 +1745,19 @@ exports[`Note (sync) > sync > Sets and resets loading state > updateState 1`] = 
 }
 `;
 
-exports[`Note (sync) > sync > Syncs notes with the server > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Notes (sync) > sync > Syncs notes with the server > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Note (sync) > sync > Syncs notes with the server > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > Syncs notes with the server > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Syncs notes with the server > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Syncs notes with the server > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > sync > Syncs notes with the server > Storage.get('USERNAME') 1`] =
-  `"d"`;
+exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > sync > Syncs notes with the server > allCalls 1`] = `
+exports[`Notes (sync) > sync > Syncs notes with the server > allCalls 1`] = `
 [
   [
     "invoke",
@@ -2187,14 +2126,13 @@ Sugar
 ]
 `;
 
-exports[`Note (sync) > sync > Syncs notes with the server > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > Syncs notes with the server > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > Syncs notes with the server > mockDb 1`] = `
+exports[`Notes (sync) > sync > Syncs notes with the server > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "deleted",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2202,7 +2140,7 @@ exports[`Note (sync) > sync > Syncs notes with the server > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Syncs notes with the server > noteState 1`] = `
+exports[`Notes (sync) > sync > Syncs notes with the server > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -2426,12 +2364,11 @@ Sugar
 }
 `;
 
-exports[`Note (sync) > sync > Syncs notes with the server > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > sync > Syncs notes with the server > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > Syncs notes with the server > selectedTheme 1`] =
-  `"System"`;
+exports[`Notes (sync) > sync > Syncs notes with the server > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > Syncs notes with the server > syncState 1`] = `
+exports[`Notes (sync) > sync > Syncs notes with the server > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -2458,7 +2395,7 @@ exports[`Note (sync) > sync > Syncs notes with the server > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Syncs notes with the server > updateState 1`] = `
+exports[`Notes (sync) > sync > Syncs notes with the server > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -2466,19 +2403,19 @@ exports[`Note (sync) > sync > Syncs notes with the server > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Notes (sync) > sync > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > sync > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > Unauthorized > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > sync > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > sync > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > sync > Unauthorized > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Unauthorized > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > sync > Unauthorized > allCalls 1`] = `
+exports[`Notes (sync) > sync > Unauthorized > allCalls 1`] = `
 [
   [
     "request",
@@ -2584,14 +2521,13 @@ exports[`Note (sync) > sync > Unauthorized > allCalls 1`] = `
 ]
 `;
 
-exports[`Note (sync) > sync > Unauthorized > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > Unauthorized > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > Unauthorized > mockDb 1`] = `
+exports[`Notes (sync) > sync > Unauthorized > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "deleted",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -2599,7 +2535,7 @@ exports[`Note (sync) > sync > Unauthorized > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Unauthorized > noteState 1`] = `
+exports[`Notes (sync) > sync > Unauthorized > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -2629,11 +2565,11 @@ exports[`Note (sync) > sync > Unauthorized > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Unauthorized > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > sync > Unauthorized > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > Unauthorized > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > sync > Unauthorized > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > Unauthorized > syncState 1`] = `
+exports[`Notes (sync) > sync > Unauthorized > syncState 1`] = `
 {
   "appError": AppError {
     "code": 11,
@@ -2664,7 +2600,7 @@ exports[`Note (sync) > sync > Unauthorized > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Unauthorized > updateState 1`] = `
+exports[`Notes (sync) > sync > Unauthorized > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -2672,32 +2608,19 @@ exports[`Note (sync) > sync > Unauthorized > updateState 1`] = `
 }
 `;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > KeyStore.getKey() 1`
-] = `CryptoKey {}`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > Storage.get('THEME') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > Storage.get('USERNAME') 1`
-] = `"d"`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > sync > Updates editor if selected note is unedited > allCalls 1`] =
-  `
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > allCalls 1`] = `
 [
   [
     "request",
@@ -2992,15 +2915,13 @@ exports[`Note (sync) > sync > Updates editor if selected note is unedited > allC
 ]
 `;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > Updates editor if selected note is unedited > mockDb 1`] = `
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "deleted",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3008,9 +2929,7 @@ exports[`Note (sync) > sync > Updates editor if selected note is unedited > mock
 }
 `;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > noteState 1`
-] = `
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -3183,17 +3102,11 @@ exports[
 }
 `;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > openedPopup 1`
-] = `undefined`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > openedPopup 1`] = `undefined`;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > selectedTheme 1`
-] = `"System"`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > selectedTheme 1`] = `"System"`;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > syncState 1`
-] = `
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -3220,9 +3133,7 @@ exports[
 }
 `;
 
-exports[
-  `Note (sync) > sync > Updates editor if selected note is unedited > updateState 1`
-] = `
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -3230,20 +3141,19 @@ exports[
 }
 `;
 
-exports[`Note (sync) > sync > Updates note menu > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Notes (sync) > sync > Updates note menu > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > sync > Updates note menu > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates note menu > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > Updates note menu > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates note menu > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > sync > Updates note menu > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates note menu > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > sync > Updates note menu > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > Updates note menu > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > sync > Updates note menu > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Updates note menu > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > sync > Updates note menu > allCalls 1`] = `
+exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
 [
   [
     "request",
@@ -3529,15 +3439,14 @@ exports[`Note (sync) > sync > Updates note menu > allCalls 1`] = `
 ]
 `;
 
-exports[`Note (sync) > sync > Updates note menu > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > Updates note menu > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > Updates note menu > mockDb 1`] = `
+exports[`Notes (sync) > sync > Updates note menu > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3545,7 +3454,7 @@ exports[`Note (sync) > sync > Updates note menu > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Updates note menu > noteState 1`] = `
+exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -3712,11 +3621,11 @@ exports[`Note (sync) > sync > Updates note menu > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Updates note menu > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > sync > Updates note menu > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > Updates note menu > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > sync > Updates note menu > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > Updates note menu > syncState 1`] = `
+exports[`Notes (sync) > sync > Updates note menu > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -3743,7 +3652,7 @@ exports[`Note (sync) > sync > Updates note menu > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > Updates note menu > updateState 1`] = `
+exports[`Notes (sync) > sync > Updates note menu > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -3751,20 +3660,19 @@ exports[`Note (sync) > sync > Updates note menu > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Notes (sync) > sync > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > sync > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > User not found > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > User not found > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > sync > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > sync > User not found > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > sync > User not found > Storage.get('USERNAME') 1`] = `"k"`;
+exports[`Notes (sync) > sync > User not found > Storage.get('USERNAME') 1`] = `"k"`;
 
-exports[`Note (sync) > sync > User not found > allCalls 1`] = `
+exports[`Notes (sync) > sync > User not found > allCalls 1`] = `
 [
   [
     "invoke",
@@ -3837,14 +3745,13 @@ exports[`Note (sync) > sync > User not found > allCalls 1`] = `
 ]
 `;
 
-exports[`Note (sync) > sync > User not found > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > User not found > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > User not found > mockDb 1`] = `
+exports[`Notes (sync) > sync > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "deleted",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -3852,7 +3759,7 @@ exports[`Note (sync) > sync > User not found > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > User not found > noteState 1`] = `
+exports[`Notes (sync) > sync > User not found > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -4113,11 +4020,11 @@ Sugar
 }
 `;
 
-exports[`Note (sync) > sync > User not found > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > sync > User not found > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > User not found > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > sync > User not found > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > User not found > syncState 1`] = `
+exports[`Notes (sync) > sync > User not found > syncState 1`] = `
 {
   "appError": AppError {
     "code": 11,
@@ -4148,7 +4055,7 @@ exports[`Note (sync) > sync > User not found > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > User not found > updateState 1`] = `
+exports[`Notes (sync) > sync > User not found > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -4156,23 +4063,19 @@ exports[`Note (sync) > sync > User not found > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With decryption error > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Notes (sync) > sync > With decryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > sync > With decryption error > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > With decryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > With decryption error > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > With decryption error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > sync > With decryption error > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > With decryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > sync > With decryption error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > With decryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > sync > With decryption error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > With decryption error > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > sync > With decryption error > allCalls 1`] = `
+exports[`Notes (sync) > sync > With decryption error > allCalls 1`] = `
 [
   [
     "request",
@@ -4300,14 +4203,13 @@ exports[`Note (sync) > sync > With decryption error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note (sync) > sync > With decryption error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > With decryption error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > With decryption error > mockDb 1`] = `
+exports[`Notes (sync) > sync > With decryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "deleted",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -4315,7 +4217,7 @@ exports[`Note (sync) > sync > With decryption error > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With decryption error > noteState 1`] = `
+exports[`Notes (sync) > sync > With decryption error > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -4345,11 +4247,11 @@ exports[`Note (sync) > sync > With decryption error > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With decryption error > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > sync > With decryption error > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > With decryption error > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > sync > With decryption error > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > With decryption error > syncState 1`] = `
+exports[`Notes (sync) > sync > With decryption error > syncState 1`] = `
 {
   "appError": AppError {
     "code": 9,
@@ -4380,7 +4282,7 @@ exports[`Note (sync) > sync > With decryption error > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With decryption error > updateState 1`] = `
+exports[`Notes (sync) > sync > With decryption error > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -4388,23 +4290,19 @@ exports[`Note (sync) > sync > With decryption error > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With encryption error > KeyStore.getKey() 1`] =
-  `CryptoKey {}`;
+exports[`Notes (sync) > sync > With encryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > sync > With encryption error > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > With encryption error > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > With encryption error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > sync > With encryption error > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > sync > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > sync > With encryption error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > With encryption error > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > sync > With encryption error > allCalls 1`] = `
+exports[`Notes (sync) > sync > With encryption error > allCalls 1`] = `
 [
   [
     "request",
@@ -4469,8 +4367,8 @@ exports[`Note (sync) > sync > With encryption error > allCalls 1`] = `
           {
             "content": Note {
               "content": [Circular],
-              "id": "ae934d00-9989-4ae1-bf90-8ab76ab31d8f",
-              "timestamp": 1748985273126,
+              "id": "1983967e-c440-4188-b943-e37b9b9fe920",
+              "timestamp": 1749391501288,
             },
             "id": "id",
             "timestamp": 0,
@@ -4492,14 +4390,13 @@ exports[`Note (sync) > sync > With encryption error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note (sync) > sync > With encryption error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > With encryption error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > With encryption error > mockDb 1`] = `
+exports[`Notes (sync) > sync > With encryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "deleted",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -4507,15 +4404,15 @@ exports[`Note (sync) > sync > With encryption error > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With encryption error > noteState 1`] = `
+exports[`Notes (sync) > sync > With encryption error > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
     {
       "content": Note {
         "content": [Circular],
-        "id": "ae934d00-9989-4ae1-bf90-8ab76ab31d8f",
-        "timestamp": 1748985273126,
+        "id": "1983967e-c440-4188-b943-e37b9b9fe920",
+        "timestamp": 1749391501288,
       },
       "id": "id",
       "timestamp": 0,
@@ -4535,11 +4432,11 @@ exports[`Note (sync) > sync > With encryption error > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With encryption error > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > sync > With encryption error > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > With encryption error > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > sync > With encryption error > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > With encryption error > syncState 1`] = `
+exports[`Notes (sync) > sync > With encryption error > syncState 1`] = `
 {
   "appError": AppError {
     "code": 9,
@@ -4572,7 +4469,7 @@ exports[`Note (sync) > sync > With encryption error > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With encryption error > updateState 1`] = `
+exports[`Notes (sync) > sync > With encryption error > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -4580,20 +4477,19 @@ exports[`Note (sync) > sync > With encryption error > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Notes (sync) > sync > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > sync > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > sync > With server error > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > With server error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > sync > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > sync > With server error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Notes (sync) > sync > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > sync > With server error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > With server error > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > sync > With server error > allCalls 1`] = `
+exports[`Notes (sync) > sync > With server error > allCalls 1`] = `
 [
   [
     "request",
@@ -4699,14 +4595,13 @@ exports[`Note (sync) > sync > With server error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note (sync) > sync > With server error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > sync > With server error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > sync > With server error > mockDb 1`] = `
+exports[`Notes (sync) > sync > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "deleted",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -4714,7 +4609,7 @@ exports[`Note (sync) > sync > With server error > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With server error > noteState 1`] = `
+exports[`Notes (sync) > sync > With server error > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -4744,11 +4639,11 @@ exports[`Note (sync) > sync > With server error > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With server error > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > sync > With server error > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > sync > With server error > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > sync > With server error > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > sync > With server error > syncState 1`] = `
+exports[`Notes (sync) > sync > With server error > syncState 1`] = `
 {
   "appError": AppError {
     "code": 11,
@@ -4779,7 +4674,7 @@ exports[`Note (sync) > sync > With server error > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > sync > With server error > updateState 1`] = `
+exports[`Notes (sync) > sync > With server error > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -4787,33 +4682,19 @@ exports[`Note (sync) > sync > With server error > updateState 1`] = `
 }
 `;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('THEME') 1`
-] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > Storage.get('USERNAME') 1`] = `null`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > allCalls 1`
-] = `
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > allCalls 1`] = `
 [
   [
     "invoke",
@@ -4870,20 +4751,16 @@ exports[
 ]
 `;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > mockDb 1`
-] = `
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    "c78f1cda-9f46-4e29-af61-3339ce3ec7ab",
+    "86d4b327-be94-415f-ad4c-40e96992f023",
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -4891,9 +4768,7 @@ exports[
 }
 `;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > noteState 1`
-] = `
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -5154,17 +5029,11 @@ Sugar
 }
 `;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > openedPopup 1`
-] = `undefined`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > openedPopup 1`] = `undefined`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > selectedTheme 1`
-] = `"System"`;
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > selectedTheme 1`] = `"System"`;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > syncState 1`
-] = `
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -5193,9 +5062,7 @@ exports[
 }
 `;
 
-exports[
-  `Note (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > updateState 1`
-] = `
+exports[`Notes (sync) > unsyncedNoteIds > Registers unsynced notes if not logged in > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -5203,21 +5070,19 @@ exports[
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
 [
   [
     "request",
@@ -5354,7 +5219,7 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[],"deleted_note_ids":["c78f1cda-9f46-4e29-af61-3339ce3ec7ab"]}",
+        "body": "{"notes":[],"deleted_note_ids":["86d4b327-be94-415f-ad4c-40e96992f023"]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -5825,17 +5690,16 @@ Sugar
 ]
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > mockDb 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > deleted > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    "c78f1cda-9f46-4e29-af61-3339ce3ec7ab",
+    "86d4b327-be94-415f-ad4c-40e96992f023",
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -5843,7 +5707,7 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > noteState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > deleted > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -6089,11 +5953,11 @@ Sugar
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > unsyncedNoteIds > deleted > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > syncState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > deleted > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -6120,7 +5984,7 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > deleted > updateState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > deleted > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -6128,20 +5992,19 @@ exports[`Note (sync) > unsyncedNoteIds > deleted > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
 [
   [
     "request",
@@ -6632,15 +6495,14 @@ exports[`Note (sync) > unsyncedNoteIds > edited > allCalls 1`] = `
 ]
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > mockDb 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > edited > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -6648,7 +6510,7 @@ exports[`Note (sync) > unsyncedNoteIds > edited > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > noteState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > edited > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -6788,11 +6650,11 @@ exports[`Note (sync) > unsyncedNoteIds > edited > noteState 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > unsyncedNoteIds > edited > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > syncState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > edited > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -6819,7 +6681,7 @@ exports[`Note (sync) > unsyncedNoteIds > edited > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > edited > updateState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > edited > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -6827,20 +6689,19 @@ exports[`Note (sync) > unsyncedNoteIds > edited > updateState 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > new > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Notes (sync) > unsyncedNoteIds > new > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > new > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > new > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNoteIds > new > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Notes (sync) > unsyncedNoteIds > new > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > unsyncedNoteIds > new > Storage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > allCalls 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > new > allCalls 1`] = `
 [
   [
     "invoke",
@@ -7903,15 +7764,14 @@ Sugar
 ]
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > new > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Notes (sync) > unsyncedNoteIds > new > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > mockDb 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > new > mockDb 1`] = `
 {
-  "deletedNoteIds": [
+  "deletedNoteIds": Set {
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-  ],
+  },
   "encryptedNotes": 10,
   "users": {
     "d": "1",
@@ -7919,7 +7779,7 @@ exports[`Note (sync) > unsyncedNoteIds > new > mockDb 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > new > noteState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > new > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -8109,11 +7969,11 @@ Sugar
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > new > openedPopup 1`] = `undefined`;
+exports[`Notes (sync) > unsyncedNoteIds > new > openedPopup 1`] = `undefined`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > selectedTheme 1`] = `"System"`;
+exports[`Notes (sync) > unsyncedNoteIds > new > selectedTheme 1`] = `"System"`;
 
-exports[`Note (sync) > unsyncedNoteIds > new > syncState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > new > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -8140,7 +8000,7 @@ exports[`Note (sync) > unsyncedNoteIds > new > syncState 1`] = `
 }
 `;
 
-exports[`Note (sync) > unsyncedNoteIds > new > updateState 1`] = `
+exports[`Notes (sync) > unsyncedNoteIds > new > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

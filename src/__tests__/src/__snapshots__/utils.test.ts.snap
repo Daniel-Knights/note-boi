@@ -8,8 +8,7 @@ exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('THEME') 1`] = `nu
 
 exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('USERNAME') 1`] = `null`;
 
@@ -30,8 +29,7 @@ exports[`Utils > Tauri API wrappers > tauriEmit > allCalls 1`] = `
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > Tauri API wrappers > tauriEmit > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > Tauri API wrappers > tauriEmit > mockDb 1`] = `
 {
@@ -101,16 +99,13 @@ exports[`Utils > Tauri API wrappers > tauriEmit > updateState 1`] = `
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('USERNAME') 1`] = `null`;
 
@@ -135,8 +130,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > allCalls 1`] = `
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > mockDb 1`] = `
 {
@@ -206,16 +200,13 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > updateState 1`] = `
 
 exports[`Utils > Tauri API wrappers > tauriListen > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('USERNAME') 1`] = `null`;
 
@@ -230,8 +221,7 @@ exports[`Utils > Tauri API wrappers > tauriListen > allCalls 1`] = `
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriListen > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > Tauri API wrappers > tauriListen > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > mockDb 1`] = `
 {
@@ -313,8 +303,7 @@ exports[`Utils > capitalise > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > capitalise > allCalls 1`] = `[]`;
 
-exports[`Utils > capitalise > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > capitalise > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > capitalise > mockDb 1`] = `
 {
@@ -396,8 +385,7 @@ exports[`Utils > hasKeys > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > hasKeys > allCalls 1`] = `[]`;
 
-exports[`Utils > hasKeys > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > hasKeys > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > hasKeys > mockDb 1`] = `
 {
@@ -479,8 +467,7 @@ exports[`Utils > isDev > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isDev > allCalls 1`] = `[]`;
 
-exports[`Utils > isDev > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > isDev > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > isDev > mockDb 1`] = `
 {
@@ -562,8 +549,7 @@ exports[`Utils > isEmptyNote > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isEmptyNote > allCalls 1`] = `[]`;
 
-exports[`Utils > isEmptyNote > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > isEmptyNote > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > isEmptyNote > mockDb 1`] = `
 {
@@ -645,8 +631,7 @@ exports[`Utils > isWhitespaceOnly > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isWhitespaceOnly > allCalls 1`] = `[]`;
 
-exports[`Utils > isWhitespaceOnly > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > isWhitespaceOnly > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > isWhitespaceOnly > mockDb 1`] = `
 {
@@ -728,8 +713,7 @@ exports[`Utils > unixToDateTime > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > unixToDateTime > allCalls 1`] = `[]`;
 
-exports[`Utils > unixToDateTime > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Utils > unixToDateTime > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > unixToDateTime > mockDb 1`] = `
 {

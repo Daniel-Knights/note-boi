@@ -14,8 +14,7 @@ exports[`DebounceQueue > add > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`DebounceQueue > add > allCalls 1`] = `[]`;
 
-exports[`DebounceQueue > add > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`DebounceQueue > add > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`DebounceQueue > add > mockDb 1`] = `
 {
@@ -97,8 +96,7 @@ exports[`DebounceQueue > clear > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`DebounceQueue > clear > allCalls 1`] = `[]`;
 
-exports[`DebounceQueue > clear > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`DebounceQueue > clear > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`DebounceQueue > clear > mockDb 1`] = `
 {
@@ -180,8 +178,7 @@ exports[`DebounceQueue > isCancelled > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`DebounceQueue > isCancelled > allCalls 1`] = `[]`;
 
-exports[`DebounceQueue > isCancelled > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`DebounceQueue > isCancelled > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`DebounceQueue > isCancelled > mockDb 1`] = `
 {

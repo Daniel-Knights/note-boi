@@ -29,8 +29,7 @@ exports[`Note store > catchNoteInvokeError > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > catchNoteInvokeError > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > catchNoteInvokeError > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > catchNoteInvokeError > mockDb 1`] = `
 {
@@ -100,16 +99,13 @@ exports[`Note store > catchNoteInvokeError > updateState 1`] = `
 
 exports[`Note store > deleteNote > Calls autoSync > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note store > deleteNote > Calls autoSync > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Note store > deleteNote > Calls autoSync > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Note store > deleteNote > Calls autoSync > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note store > deleteNote > Calls autoSync > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Note store > deleteNote > Calls autoSync > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > deleteNote > Calls autoSync > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > deleteNote > Calls autoSync > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > deleteNote > Calls autoSync > Storage.get('USERNAME') 1`] = `null`;
 
@@ -134,8 +130,7 @@ exports[`Note store > deleteNote > Calls autoSync > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > deleteNote > Calls autoSync > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteNote > Calls autoSync > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > deleteNote > Calls autoSync > mockDb 1`] = `
 {
@@ -439,11 +434,9 @@ exports[`Note store > deleteNote > Catches error > Storage.get('MENU_WIDTH') 1`]
 
 exports[`Note store > deleteNote > Catches error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note store > deleteNote > Catches error > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Note store > deleteNote > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > deleteNote > Catches error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > deleteNote > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > deleteNote > Catches error > Storage.get('USERNAME') 1`] = `null`;
 
@@ -471,8 +464,7 @@ exports[`Note store > deleteNote > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > deleteNote > Catches error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteNote > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > deleteNote > Catches error > mockDb 1`] = `
 {
@@ -770,32 +762,19 @@ exports[`Note store > deleteNote > Catches error > updateState 1`] = `
 }
 `;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > Storage.get('THEME') 1`
-] = `null`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Note store > deleteNote > Deletes selected note and selects next > allCalls 1`] =
-  `
+exports[`Note store > deleteNote > Deletes selected note and selects next > allCalls 1`] = `
 [
   [
     "invoke",
@@ -816,9 +795,7 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > allC
 ]
 `;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > deleteNote > Deletes selected note and selects next > mockDb 1`] = `
 {
@@ -829,9 +806,7 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > mock
 }
 `;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > noteState 1`
-] = `
+exports[`Note store > deleteNote > Deletes selected note and selects next > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -1077,17 +1052,11 @@ Sugar
 }
 `;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > openedPopup 1`
-] = `undefined`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > openedPopup 1`] = `undefined`;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > selectedTheme 1`
-] = `"System"`;
+exports[`Note store > deleteNote > Deletes selected note and selects next > selectedTheme 1`] = `"System"`;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > syncState 1`
-] = `
+exports[`Note store > deleteNote > Deletes selected note and selects next > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1116,9 +1085,7 @@ exports[
 }
 `;
 
-exports[
-  `Note store > deleteNote > Deletes selected note and selects next > updateState 1`
-] = `
+exports[`Note store > deleteNote > Deletes selected note and selects next > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1126,27 +1093,17 @@ exports[
 }
 `;
 
-exports[`Note store > deleteNote > Resets unsynced new note > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Note store > deleteNote > Resets unsynced new note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > deleteNote > Resets unsynced new note > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Resets unsynced new note > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Resets unsynced new note > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Resets unsynced new note > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Note store > deleteNote > Resets unsynced new note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteNote > Resets unsynced new note > allCalls 1`] = `
 [
@@ -1160,9 +1117,7 @@ exports[`Note store > deleteNote > Resets unsynced new note > allCalls 1`] = `
 ]
 `;
 
-exports[
-  `Note store > deleteNote > Resets unsynced new note > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteNote > Resets unsynced new note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > deleteNote > Resets unsynced new note > mockDb 1`] = `
 {
@@ -1419,11 +1374,9 @@ Sugar
 }
 `;
 
-exports[`Note store > deleteNote > Resets unsynced new note > openedPopup 1`] =
-  `undefined`;
+exports[`Note store > deleteNote > Resets unsynced new note > openedPopup 1`] = `undefined`;
 
-exports[`Note store > deleteNote > Resets unsynced new note > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > deleteNote > Resets unsynced new note > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > deleteNote > Resets unsynced new note > syncState 1`] = `
 {
@@ -1466,11 +1419,9 @@ exports[`Note store > deleteNote > With no notes > Storage.get('MENU_WIDTH') 1`]
 
 exports[`Note store > deleteNote > With no notes > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note store > deleteNote > With no notes > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Note store > deleteNote > With no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > deleteNote > With no notes > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > deleteNote > With no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > deleteNote > With no notes > Storage.get('USERNAME') 1`] = `null`;
 
@@ -1514,8 +1465,7 @@ exports[`Note store > deleteNote > With no notes > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > deleteNote > With no notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteNote > With no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > deleteNote > With no notes > mockDb 1`] = `
 {
@@ -1597,28 +1547,17 @@ exports[`Note store > deleteNote > With no notes > updateState 1`] = `
 }
 `;
 
-exports[`Note store > deleteNote > Without selecting next note > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Note store > deleteNote > Without selecting next note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > deleteNote > Without selecting next note > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Without selecting next note > Storage.get('THEME') 1`
-] = `null`;
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Without selecting next note > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Without selecting next note > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note store > deleteNote > Without selecting next note > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Note store > deleteNote > Without selecting next note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteNote > Without selecting next note > allCalls 1`] = `
 [
@@ -1641,9 +1580,7 @@ exports[`Note store > deleteNote > Without selecting next note > allCalls 1`] = 
 ]
 `;
 
-exports[
-  `Note store > deleteNote > Without selecting next note > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteNote > Without selecting next note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > deleteNote > Without selecting next note > mockDb 1`] = `
 {
@@ -1856,11 +1793,9 @@ Sugar
 }
 `;
 
-exports[`Note store > deleteNote > Without selecting next note > openedPopup 1`] =
-  `undefined`;
+exports[`Note store > deleteNote > Without selecting next note > openedPopup 1`] = `undefined`;
 
-exports[`Note store > deleteNote > Without selecting next note > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > deleteNote > Without selecting next note > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > deleteNote > Without selecting next note > syncState 1`] = `
 {
@@ -1899,26 +1834,17 @@ exports[`Note store > deleteNote > Without selecting next note > updateState 1`]
 }
 `;
 
-exports[`Note store > deleteSelectedNotes > Catches error > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Note store > deleteSelectedNotes > Catches error > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > deleteSelectedNotes > Catches error > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > deleteSelectedNotes > Catches error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note store > deleteSelectedNotes > Catches error > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Note store > deleteSelectedNotes > Catches error > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > deleteSelectedNotes > Catches error > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > deleteSelectedNotes > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > deleteSelectedNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > deleteSelectedNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note store > deleteSelectedNotes > Catches error > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`Note store > deleteSelectedNotes > Catches error > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteSelectedNotes > Catches error > allCalls 1`] = `
 [
@@ -1944,8 +1870,7 @@ exports[`Note store > deleteSelectedNotes > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > deleteSelectedNotes > Catches error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteSelectedNotes > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > deleteSelectedNotes > Catches error > mockDb 1`] = `
 {
@@ -2116,8 +2041,7 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
 
 exports[`Note store > deleteSelectedNotes > Catches error > openedPopup 1`] = `undefined`;
 
-exports[`Note store > deleteSelectedNotes > Catches error > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > deleteSelectedNotes > Catches error > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > deleteSelectedNotes > Catches error > syncState 1`] = `
 {
@@ -2156,29 +2080,17 @@ exports[`Note store > deleteSelectedNotes > Catches error > updateState 1`] = `
 }
 `;
 
-exports[
-  `Note store > deleteSelectedNotes > Deletes selected notes > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('THEME') 1`
-] = `null`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > deleteSelectedNotes > Deletes selected notes > allCalls 1`] = `
 [
@@ -2228,9 +2140,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > allCalls 1`
 ]
 `;
 
-exports[
-  `Note store > deleteSelectedNotes > Deletes selected notes > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > deleteSelectedNotes > Deletes selected notes > mockDb 1`] = `
 {
@@ -2354,11 +2264,9 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > noteState 1
 }
 `;
 
-exports[`Note store > deleteSelectedNotes > Deletes selected notes > openedPopup 1`] =
-  `undefined`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > openedPopup 1`] = `undefined`;
 
-exports[`Note store > deleteSelectedNotes > Deletes selected notes > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > deleteSelectedNotes > Deletes selected notes > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > deleteSelectedNotes > Deletes selected notes > syncState 1`] = `
 {
@@ -2405,8 +2313,7 @@ exports[`Note store > editNote > Catches error > Storage.get('THEME') 1`] = `nul
 
 exports[`Note store > editNote > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > editNote > Catches error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > editNote > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > editNote > Catches error > Storage.get('USERNAME') 1`] = `null`;
 
@@ -2434,8 +2341,7 @@ exports[`Note store > editNote > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > editNote > Catches error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > editNote > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > editNote > Catches error > mockDb 1`] = `
 {
@@ -2713,8 +2619,7 @@ exports[`Note store > editNote > Edits notes > Storage.get('THEME') 1`] = `null`
 
 exports[`Note store > editNote > Edits notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > editNote > Edits notes > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > editNote > Edits notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > editNote > Edits notes > Storage.get('USERNAME') 1`] = `null`;
 
@@ -2754,8 +2659,7 @@ Body",
 ]
 `;
 
-exports[`Note store > editNote > Edits notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > editNote > Edits notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > editNote > Edits notes > mockDb 1`] = `
 {
@@ -3033,8 +2937,7 @@ exports[`Note store > exportNotes > All notes > Storage.get('THEME') 1`] = `null
 
 exports[`Note store > exportNotes > All notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > exportNotes > All notes > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > exportNotes > All notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > exportNotes > All notes > Storage.get('USERNAME') 1`] = `null`;
 
@@ -3267,8 +3170,7 @@ Sugar
 ]
 `;
 
-exports[`Note store > exportNotes > All notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > exportNotes > All notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > exportNotes > All notes > mockDb 1`] = `
 {
@@ -3581,16 +3483,13 @@ exports[`Note store > exportNotes > All notes > updateState 1`] = `
 
 exports[`Note store > exportNotes > Catches error > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note store > exportNotes > Catches error > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Note store > exportNotes > Catches error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Note store > exportNotes > Catches error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note store > exportNotes > Catches error > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Note store > exportNotes > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > exportNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > exportNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > exportNotes > Catches error > Storage.get('USERNAME') 1`] = `null`;
 
@@ -3630,8 +3529,7 @@ exports[`Note store > exportNotes > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > exportNotes > Catches error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > exportNotes > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > exportNotes > Catches error > mockDb 1`] = `
 {
@@ -3942,27 +3840,17 @@ exports[`Note store > exportNotes > Catches error > updateState 1`] = `
 }
 `;
 
-exports[`Note store > exportNotes > Passed selection of notes > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Note store > exportNotes > Passed selection of notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > exportNotes > Passed selection of notes > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note store > exportNotes > Passed selection of notes > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > exportNotes > Passed selection of notes > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > exportNotes > Passed selection of notes > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note store > exportNotes > Passed selection of notes > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Note store > exportNotes > Passed selection of notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > exportNotes > Passed selection of notes > allCalls 1`] = `
 [
@@ -4058,9 +3946,7 @@ Sugar
 ]
 `;
 
-exports[
-  `Note store > exportNotes > Passed selection of notes > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Note store > exportNotes > Passed selection of notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > exportNotes > Passed selection of notes > mockDb 1`] = `
 {
@@ -4332,11 +4218,9 @@ Sugar
 }
 `;
 
-exports[`Note store > exportNotes > Passed selection of notes > openedPopup 1`] =
-  `undefined`;
+exports[`Note store > exportNotes > Passed selection of notes > openedPopup 1`] = `undefined`;
 
-exports[`Note store > exportNotes > Passed selection of notes > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > exportNotes > Passed selection of notes > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > exportNotes > Passed selection of notes > syncState 1`] = `
 {
@@ -4373,29 +4257,17 @@ exports[`Note store > exportNotes > Passed selection of notes > updateState 1`] 
 }
 `;
 
-exports[
-  `Note store > exportNotes > Returns when no location chosen > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`Note store > exportNotes > Returns when no location chosen > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > exportNotes > Returns when no location chosen > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Note store > exportNotes > Returns when no location chosen > Storage.get('THEME') 1`
-] = `null`;
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > exportNotes > Returns when no location chosen > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > exportNotes > Returns when no location chosen > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note store > exportNotes > Returns when no location chosen > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Note store > exportNotes > Returns when no location chosen > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > exportNotes > Returns when no location chosen > allCalls 1`] = `
 [
@@ -4421,9 +4293,7 @@ exports[`Note store > exportNotes > Returns when no location chosen > allCalls 1
 ]
 `;
 
-exports[
-  `Note store > exportNotes > Returns when no location chosen > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Note store > exportNotes > Returns when no location chosen > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > exportNotes > Returns when no location chosen > mockDb 1`] = `
 {
@@ -4695,11 +4565,9 @@ Sugar
 }
 `;
 
-exports[`Note store > exportNotes > Returns when no location chosen > openedPopup 1`] =
-  `undefined`;
+exports[`Note store > exportNotes > Returns when no location chosen > openedPopup 1`] = `undefined`;
 
-exports[`Note store > exportNotes > Returns when no location chosen > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > exportNotes > Returns when no location chosen > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > exportNotes > Returns when no location chosen > syncState 1`] = `
 {
@@ -4760,8 +4628,7 @@ exports[`Note store > findNote > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > findNote > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > findNote > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > findNote > mockDb 1`] = `
 {
@@ -5096,8 +4963,7 @@ exports[`Note store > findNoteIndex > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > findNoteIndex > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > findNoteIndex > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > findNoteIndex > mockDb 1`] = `
 {
@@ -5410,16 +5276,13 @@ exports[`Note store > findNoteIndex > updateState 1`] = `
 
 exports[`Note store > getAllNotes > Catches error > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note store > getAllNotes > Catches error > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > Catches error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Note store > getAllNotes > Catches error > Storage.get('THEME') 1`] = `null`;
 
-exports[`Note store > getAllNotes > Catches error > Storage.get('UPDATE_SEEN') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > getAllNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > getAllNotes > Catches error > Storage.get('USERNAME') 1`] = `null`;
 
@@ -5459,8 +5322,7 @@ exports[`Note store > getAllNotes > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > getAllNotes > Catches error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > getAllNotes > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > getAllNotes > Catches error > mockDb 1`] = `
 {
@@ -5540,26 +5402,17 @@ exports[`Note store > getAllNotes > Catches error > updateState 1`] = `
 }
 `;
 
-exports[`Note store > getAllNotes > With empty note array > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Note store > getAllNotes > With empty note array > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > getAllNotes > With empty note array > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > getAllNotes > With empty note array > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note store > getAllNotes > With empty note array > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > With empty note array > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > getAllNotes > With empty note array > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > getAllNotes > With empty note array > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > getAllNotes > With empty note array > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > getAllNotes > With empty note array > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note store > getAllNotes > With empty note array > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > With empty note array > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > getAllNotes > With empty note array > allCalls 1`] = `
 [
@@ -5592,8 +5445,7 @@ exports[`Note store > getAllNotes > With empty note array > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > getAllNotes > With empty note array > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > getAllNotes > With empty note array > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > getAllNotes > With empty note array > mockDb 1`] = `
 {
@@ -5636,8 +5488,7 @@ exports[`Note store > getAllNotes > With empty note array > noteState 1`] = `
 
 exports[`Note store > getAllNotes > With empty note array > openedPopup 1`] = `undefined`;
 
-exports[`Note store > getAllNotes > With empty note array > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > getAllNotes > With empty note array > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > getAllNotes > With empty note array > syncState 1`] = `
 {
@@ -5682,8 +5533,7 @@ exports[`Note store > getAllNotes > With notes > Storage.get('THEME') 1`] = `nul
 
 exports[`Note store > getAllNotes > With notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > getAllNotes > With notes > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > With notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > getAllNotes > With notes > Storage.get('USERNAME') 1`] = `null`;
 
@@ -5699,8 +5549,7 @@ exports[`Note store > getAllNotes > With notes > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > getAllNotes > With notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > getAllNotes > With notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > getAllNotes > With notes > mockDb 1`] = `
 {
@@ -6011,26 +5860,17 @@ exports[`Note store > getAllNotes > With notes > updateState 1`] = `
 }
 `;
 
-exports[`Note store > getAllNotes > With single empty note > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Note store > getAllNotes > With single empty note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > getAllNotes > With single empty note > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > getAllNotes > With single empty note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note store > getAllNotes > With single empty note > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > With single empty note > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > getAllNotes > With single empty note > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > getAllNotes > With single empty note > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > getAllNotes > With single empty note > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > getAllNotes > With single empty note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note store > getAllNotes > With single empty note > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > With single empty note > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > getAllNotes > With single empty note > allCalls 1`] = `
 [
@@ -6044,8 +5884,7 @@ exports[`Note store > getAllNotes > With single empty note > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > getAllNotes > With single empty note > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > getAllNotes > With single empty note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > getAllNotes > With single empty note > mockDb 1`] = `
 {
@@ -6082,11 +5921,9 @@ exports[`Note store > getAllNotes > With single empty note > noteState 1`] = `
 }
 `;
 
-exports[`Note store > getAllNotes > With single empty note > openedPopup 1`] =
-  `undefined`;
+exports[`Note store > getAllNotes > With single empty note > openedPopup 1`] = `undefined`;
 
-exports[`Note store > getAllNotes > With single empty note > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > getAllNotes > With single empty note > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > getAllNotes > With single empty note > syncState 1`] = `
 {
@@ -6123,25 +5960,17 @@ exports[`Note store > getAllNotes > With single empty note > updateState 1`] = `
 }
 `;
 
-exports[`Note store > getAllNotes > With undefined notes > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Note store > getAllNotes > With undefined notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note store > getAllNotes > With undefined notes > Storage.get('MENU_WIDTH') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note store > getAllNotes > With undefined notes > Storage.get('THEME') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > getAllNotes > With undefined notes > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > getAllNotes > With undefined notes > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note store > getAllNotes > With undefined notes > Storage.get('USERNAME') 1`] =
-  `null`;
+exports[`Note store > getAllNotes > With undefined notes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > getAllNotes > With undefined notes > allCalls 1`] = `
 [
@@ -6174,8 +6003,7 @@ exports[`Note store > getAllNotes > With undefined notes > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > getAllNotes > With undefined notes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > getAllNotes > With undefined notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > getAllNotes > With undefined notes > mockDb 1`] = `
 {
@@ -6279,8 +6107,7 @@ exports[`Note store > isSelectedNote > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > isSelectedNote > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > isSelectedNote > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > isSelectedNote > mockDb 1`] = `
 {
@@ -6568,8 +6395,7 @@ exports[`Note store > new Note() > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > new Note() > allCalls 1`] = `[]`;
 
-exports[`Note store > new Note() > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > new Note() > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > new Note() > mockDb 1`] = `
 {
@@ -6645,8 +6471,7 @@ exports[`Note store > newNote > Catches error > Storage.get('THEME') 1`] = `null
 
 exports[`Note store > newNote > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note store > newNote > Catches error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Note store > newNote > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Note store > newNote > Catches error > Storage.get('USERNAME') 1`] = `null`;
 
@@ -6674,8 +6499,7 @@ exports[`Note store > newNote > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > newNote > Catches error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > newNote > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > newNote > Catches error > mockDb 1`] = `
 {
@@ -6949,33 +6773,19 @@ exports[`Note store > newNote > Catches error > updateState 1`] = `
 }
 `;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > Storage.get('THEME') 1`
-] = `null`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > Storage.get('USERNAME') 1`] = `null`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > allCalls 1`
-] = `
+exports[`Note store > newNote > Only updates timestamp when empty note selected > allCalls 1`] = `
 [
   [
     "invoke",
@@ -6987,13 +6797,9 @@ exports[
 ]
 `;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > mockDb 1`
-] = `
+exports[`Note store > newNote > Only updates timestamp when empty note selected > mockDb 1`] = `
 {
   "encryptedNotes": 10,
   "users": {
@@ -7002,9 +6808,7 @@ exports[
 }
 `;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > noteState 1`
-] = `
+exports[`Note store > newNote > Only updates timestamp when empty note selected > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -7228,17 +7032,11 @@ Sugar
 }
 `;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > openedPopup 1`
-] = `undefined`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > openedPopup 1`] = `undefined`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > selectedTheme 1`
-] = `"System"`;
+exports[`Note store > newNote > Only updates timestamp when empty note selected > selectedTheme 1`] = `"System"`;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > syncState 1`
-] = `
+exports[`Note store > newNote > Only updates timestamp when empty note selected > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -7265,9 +7063,7 @@ exports[
 }
 `;
 
-exports[
-  `Note store > newNote > Only updates timestamp when empty note selected > updateState 1`
-] = `
+exports[`Note store > newNote > Only updates timestamp when empty note selected > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -7275,28 +7071,17 @@ exports[
 }
 `;
 
-exports[`Note store > newNote > When selected note isn't empty > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`Note store > newNote > When selected note isn't empty > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `Note store > newNote > When selected note isn't empty > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `Note store > newNote > When selected note isn't empty > Storage.get('THEME') 1`
-] = `null`;
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `Note store > newNote > When selected note isn't empty > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `Note store > newNote > When selected note isn't empty > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `Note store > newNote > When selected note isn't empty > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`Note store > newNote > When selected note isn't empty > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Note store > newNote > When selected note isn't empty > allCalls 1`] = `
 [
@@ -7329,9 +7114,7 @@ exports[`Note store > newNote > When selected note isn't empty > allCalls 1`] = 
 ]
 `;
 
-exports[
-  `Note store > newNote > When selected note isn't empty > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`Note store > newNote > When selected note isn't empty > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > newNote > When selected note isn't empty > mockDb 1`] = `
 {
@@ -7566,11 +7349,9 @@ Sugar
 }
 `;
 
-exports[`Note store > newNote > When selected note isn't empty > openedPopup 1`] =
-  `undefined`;
+exports[`Note store > newNote > When selected note isn't empty > openedPopup 1`] = `undefined`;
 
-exports[`Note store > newNote > When selected note isn't empty > selectedTheme 1`] =
-  `"System"`;
+exports[`Note store > newNote > When selected note isn't empty > selectedTheme 1`] = `"System"`;
 
 exports[`Note store > newNote > When selected note isn't empty > syncState 1`] = `
 {
@@ -7640,8 +7421,7 @@ exports[`Note store > selectNote > allCalls 1`] = `
 ]
 `;
 
-exports[`Note store > selectNote > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Note store > selectNote > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Note store > selectNote > mockDb 1`] = `
 {

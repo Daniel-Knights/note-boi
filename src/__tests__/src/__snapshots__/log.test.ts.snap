@@ -8,15 +8,13 @@ exports[`Log > forwardConsole > console.debug > Storage.get('THEME') 1`] = `null
 
 exports[`Log > forwardConsole > console.debug > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.debug > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Log > forwardConsole > console.debug > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.debug > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.debug > allCalls 1`] = `[]`;
 
-exports[`Log > forwardConsole > console.debug > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Log > forwardConsole > console.debug > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Log > forwardConsole > console.debug > mockDb 1`] = `
 {
@@ -92,15 +90,13 @@ exports[`Log > forwardConsole > console.error > Storage.get('THEME') 1`] = `null
 
 exports[`Log > forwardConsole > console.error > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.error > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Log > forwardConsole > console.error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.error > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.error > allCalls 1`] = `[]`;
 
-exports[`Log > forwardConsole > console.error > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Log > forwardConsole > console.error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Log > forwardConsole > console.error > mockDb 1`] = `
 {
@@ -176,15 +172,13 @@ exports[`Log > forwardConsole > console.info > Storage.get('THEME') 1`] = `null`
 
 exports[`Log > forwardConsole > console.info > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.info > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Log > forwardConsole > console.info > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.info > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.info > allCalls 1`] = `[]`;
 
-exports[`Log > forwardConsole > console.info > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Log > forwardConsole > console.info > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Log > forwardConsole > console.info > mockDb 1`] = `
 {
@@ -266,8 +260,7 @@ exports[`Log > forwardConsole > console.log > Storage.get('USERNAME') 1`] = `nul
 
 exports[`Log > forwardConsole > console.log > allCalls 1`] = `[]`;
 
-exports[`Log > forwardConsole > console.log > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Log > forwardConsole > console.log > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Log > forwardConsole > console.log > mockDb 1`] = `
 {
@@ -343,15 +336,13 @@ exports[`Log > forwardConsole > console.warn > Storage.get('THEME') 1`] = `null`
 
 exports[`Log > forwardConsole > console.warn > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.warn > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`Log > forwardConsole > console.warn > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.warn > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.warn > allCalls 1`] = `[]`;
 
-exports[`Log > forwardConsole > console.warn > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Log > forwardConsole > console.warn > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Log > forwardConsole > console.warn > mockDb 1`] = `
 {
@@ -433,8 +424,7 @@ exports[`Log > initLogger > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > initLogger > allCalls 1`] = `[]`;
 
-exports[`Log > initLogger > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Log > initLogger > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Log > initLogger > mockDb 1`] = `
 {

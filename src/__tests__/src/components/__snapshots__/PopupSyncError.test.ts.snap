@@ -14,8 +14,7 @@ exports[`PopupSyncError > Emits close > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > Emits close > allCalls 1`] = `[]`;
 
-exports[`PopupSyncError > Emits close > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`PopupSyncError > Emits close > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`PopupSyncError > Emits close > mockDb 1`] = `
 {
@@ -121,8 +120,7 @@ exports[`PopupSyncError > Ignores > allCalls 1`] = `
 ]
 `;
 
-exports[`PopupSyncError > Ignores > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`PopupSyncError > Ignores > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`PopupSyncError > Ignores > mockDb 1`] = `
 {
@@ -204,8 +202,7 @@ exports[`PopupSyncError > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > Mounts > allCalls 1`] = `[]`;
 
-exports[`PopupSyncError > Mounts > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`PopupSyncError > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`PopupSyncError > Mounts > mockDb 1`] = `
 {
@@ -273,36 +270,21 @@ exports[`PopupSyncError > Mounts > updateState 1`] = `
 }
 `;
 
-exports[
-  `PopupSyncError > No try again button when no retry function > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`PopupSyncError > No try again button when no retry function > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `PopupSyncError > No try again button when no retry function > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `PopupSyncError > No try again button when no retry function > Storage.get('THEME') 1`
-] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `PopupSyncError > No try again button when no retry function > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `PopupSyncError > No try again button when no retry function > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `PopupSyncError > No try again button when no retry function > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`PopupSyncError > No try again button when no retry function > allCalls 1`] =
-  `[]`;
+exports[`PopupSyncError > No try again button when no retry function > allCalls 1`] = `[]`;
 
-exports[
-  `PopupSyncError > No try again button when no retry function > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`PopupSyncError > No try again button when no retry function > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`PopupSyncError > No try again button when no retry function > mockDb 1`] = `
 {
@@ -331,11 +313,9 @@ exports[`PopupSyncError > No try again button when no retry function > noteState
 }
 `;
 
-exports[`PopupSyncError > No try again button when no retry function > openedPopup 1`] =
-  `undefined`;
+exports[`PopupSyncError > No try again button when no retry function > openedPopup 1`] = `undefined`;
 
-exports[`PopupSyncError > No try again button when no retry function > selectedTheme 1`] =
-  `"System"`;
+exports[`PopupSyncError > No try again button when no retry function > selectedTheme 1`] = `"System"`;
 
 exports[`PopupSyncError > No try again button when no retry function > syncState 1`] = `
 {
@@ -386,8 +366,7 @@ exports[`PopupSyncError > Retries > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > Retries > allCalls 1`] = `[]`;
 
-exports[`PopupSyncError > Retries > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`PopupSyncError > Retries > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`PopupSyncError > Retries > mockDb 1`] = `
 {
@@ -455,36 +434,21 @@ exports[`PopupSyncError > Retries > updateState 1`] = `
 }
 `;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > KeyStore.getKey() 1`
-] = `undefined`;
+exports[`PopupSyncError > Shows default error message when none provided > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > Storage.get('THEME') 1`
-] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`PopupSyncError > Shows default error message when none provided > allCalls 1`] =
-  `[]`;
+exports[`PopupSyncError > Shows default error message when none provided > allCalls 1`] = `[]`;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`PopupSyncError > Shows default error message when none provided > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`PopupSyncError > Shows default error message when none provided > mockDb 1`] = `
 {
@@ -495,8 +459,7 @@ exports[`PopupSyncError > Shows default error message when none provided > mockD
 }
 `;
 
-exports[`PopupSyncError > Shows default error message when none provided > noteState 1`] =
-  `
+exports[`PopupSyncError > Shows default error message when none provided > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -514,16 +477,11 @@ exports[`PopupSyncError > Shows default error message when none provided > noteS
 }
 `;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > openedPopup 1`
-] = `undefined`;
+exports[`PopupSyncError > Shows default error message when none provided > openedPopup 1`] = `undefined`;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > selectedTheme 1`
-] = `"System"`;
+exports[`PopupSyncError > Shows default error message when none provided > selectedTheme 1`] = `"System"`;
 
-exports[`PopupSyncError > Shows default error message when none provided > syncState 1`] =
-  `
+exports[`PopupSyncError > Shows default error message when none provided > syncState 1`] = `
 {
   "appError": AppError {
     "code": 11,
@@ -550,9 +508,7 @@ exports[`PopupSyncError > Shows default error message when none provided > syncS
 }
 `;
 
-exports[
-  `PopupSyncError > Shows default error message when none provided > updateState 1`
-] = `
+exports[`PopupSyncError > Shows default error message when none provided > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

@@ -14,8 +14,7 @@ exports[`Popup > Sets opened popup > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Sets opened popup > allCalls 1`] = `[]`;
 
-exports[`Popup > Sets opened popup > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`Popup > Sets opened popup > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`Popup > Sets opened popup > mockDb 1`] = `
 {
