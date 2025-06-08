@@ -3,14 +3,15 @@ import type Delta from 'quill-delta';
 import { reactive } from 'vue';
 
 import { autoSync } from '../api';
+import { UnsyncedNotesManager } from '../classes';
 import { NOTE_EVENTS } from '../constant';
 import { isEmptyNote, tauriInvoke } from '../utils';
 
-import { syncState, UnsyncedNoteIds } from './sync';
+import { syncState } from './sync';
 
 export type UnsyncedEventDetail = {
   noteId: string;
-  kind: keyof Pick<UnsyncedNoteIds, 'edited' | 'deleted'>;
+  kind: keyof Pick<UnsyncedNotesManager, 'edited' | 'deleted'>;
 };
 
 export class Note {
