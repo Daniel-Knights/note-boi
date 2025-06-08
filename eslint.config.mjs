@@ -31,6 +31,9 @@ export default defineConfigWithVueTs(
       sourceType: 'module',
       parserOptions: {
         parser: '@typescript-eslint/parser',
+        projectService: {
+          allowDefaultProject: ['eslint.config.mjs', 'vite.config.ts', 'scripts/*.ts'],
+        },
       },
       globals: {
         ...globals.browser,
@@ -56,6 +59,7 @@ export default defineConfigWithVueTs(
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
       'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 
+      '@typescript-eslint/await-thenable': 'error',
       '@typescript-eslint/no-shadow': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
@@ -263,7 +267,7 @@ export default defineConfigWithVueTs(
       'operator-linebreak': 'off',
       'prefer-arrow-callback': 'error',
       'prefer-const': 'error',
-      'prefer-destructuring': 'error',
+      'prefer-destructuring': 'off',
       'prefer-exponentiation-operator': 'error',
       'prefer-numeric-literals': 'error',
       'prefer-object-spread': 'error',
