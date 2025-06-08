@@ -774,14 +774,10 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "d",
 }
@@ -930,16 +926,12 @@ exports[`main > exitApp > Triggers ask dialog on sync error, and answers "No" > 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {
       "id",
     },
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1088,16 +1080,12 @@ exports[`main > exitApp > Triggers ask dialog on sync error, and answers "Yes" >
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {
       "id",
     },
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1234,14 +1222,10 @@ exports[`main > exitApp > With no unsynced notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1378,16 +1362,12 @@ exports[`main > exitApp > With unsynced notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {
       "id",
     },
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
