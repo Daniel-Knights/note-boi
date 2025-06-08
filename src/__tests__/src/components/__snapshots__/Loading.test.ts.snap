@@ -14,7 +14,8 @@ exports[`Loading > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Loading > Mounts > allCalls 1`] = `[]`;
 
-exports[`Loading > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Loading > Mounts > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Loading > Mounts > mockDb 1`] = `
 {
@@ -62,12 +63,13 @@ exports[`Loading > Mounts > syncState 1`] = `
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": {
-    "add": [Function],
     "clear": [Function],
     "deleted": Set {},
     "edited": Set {},
     "new": "",
+    "set": [Function],
     "size": 0,
+    "store": [Function],
   },
   "username": "",
 }
