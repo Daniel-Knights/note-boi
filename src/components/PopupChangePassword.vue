@@ -47,9 +47,10 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 
+import { changePassword } from '../api';
 import { AppError, ERROR_CODE } from '../classes';
 import { MIN_PASSWORD_LENGTH } from '../constant';
-import { changePassword, syncState } from '../store/sync';
+import { syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 

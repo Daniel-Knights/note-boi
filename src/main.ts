@@ -4,6 +4,7 @@ import { exit, relaunch } from '@tauri-apps/plugin-process';
 import 'quill/dist/quill.snow.css';
 import { createApp } from 'vue';
 
+import { deleteAccount, sync } from './api';
 import { ERROR_CODE } from './classes';
 import { initLogger } from './log';
 import './sass/style.scss';
@@ -15,7 +16,7 @@ import {
   noteState,
 } from './store/note';
 import { openedPopup, POPUP_TYPE } from './store/popup';
-import { deleteAccount, sync, syncState } from './store/sync';
+import { syncState } from './store/sync';
 import { handleUpdate } from './store/update';
 import { isDev, tauriListen } from './utils';
 
@@ -26,7 +27,6 @@ initLogger();
 handleUpdate();
 
 getAllNotes().then(() => {
-  // TODO: no timeout id results in this completing regardless of whether the sync was cancelled
   sync();
 });
 

@@ -1,5 +1,5 @@
+import { ParsedResponse } from '../api';
 import { Endpoint, EndpointPayloads } from '../constant';
-import { ParsedResponse } from '../store/sync';
 import { isDev, tauriInvoke } from '../utils';
 
 export class FetchBuilder<

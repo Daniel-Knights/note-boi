@@ -6,9 +6,8 @@ import {
   ErrorConfig,
   FetchBuilder,
   KeyStore,
-} from '../../classes';
-import { NOTE_EVENTS } from '../../constant';
-import { isEmptyNote, tauriEmit, tauriInvoke } from '../../utils';
+} from '../classes';
+import { NOTE_EVENTS } from '../constant';
 import {
   findNote,
   newNote,
@@ -16,12 +15,12 @@ import {
   noteState,
   sortStateNotes,
   UnsyncedEventDetail,
-} from '../note';
+} from '../store/note';
+import { resetAppError, syncState } from '../store/sync';
+import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
 
-import { syncState } from './state';
 import {
   parseErrorRes,
-  resetAppError,
   resIsOk,
   route,
   throwEncryptorError,

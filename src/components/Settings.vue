@@ -16,10 +16,11 @@
 import { check } from '@tauri-apps/plugin-updater';
 import { computed, ref } from 'vue';
 
+import { deleteAccount } from '../api';
 import { COLOUR_THEMES, UPDATE_STRATEGIES } from '../constant';
 import { exportNotes, noteState } from '../store/note';
 import { openedPopup, POPUP_TYPE } from '../store/popup';
-import { deleteAccount, syncState } from '../store/sync';
+import { syncState } from '../store/sync';
 import { selectedTheme, setTheme } from '../store/theme';
 import { setUpdateStrategy, updateAndRelaunch, updateState } from '../store/update';
 import { capitalise } from '../utils';
