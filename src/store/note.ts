@@ -2,10 +2,11 @@ import * as dialog from '@tauri-apps/plugin-dialog';
 import type Delta from 'quill-delta';
 import { reactive } from 'vue';
 
+import { autoSync } from '../api';
 import { NOTE_EVENTS } from '../constant';
 import { isEmptyNote, tauriInvoke } from '../utils';
 
-import { autoSync, syncState, UnsyncedNoteIds } from './sync';
+import { syncState, UnsyncedNoteIds } from './sync';
 
 export type UnsyncedEventDetail = {
   noteId: string;

@@ -11,7 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import { logout, syncState } from '../store/sync';
+import { logout } from '../api';
+import { syncState } from '../store/sync';
 
 import LogoutIcon from './svg/LogoutIcon.vue';
 </script>

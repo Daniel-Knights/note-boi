@@ -55,9 +55,10 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 
+import { login, signup } from '../api';
 import { AppError, ERROR_CODE } from '../classes';
 import { MIN_PASSWORD_LENGTH } from '../constant';
-import { login, resetAppError, signup, syncState } from '../store/sync';
+import { resetAppError, syncState } from '../store/sync';
 import { capitalise, tauriListen } from '../utils';
 
 import Popup from './Popup.vue';

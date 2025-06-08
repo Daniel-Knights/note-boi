@@ -40,8 +40,9 @@
 </template>
 
 <script lang="ts" setup>
+import { logout } from '../api';
 import { openedPopup, POPUP_TYPE } from '../store/popup';
-import { logout, syncState } from '../store/sync';
+import { syncState } from '../store/sync';
 import { tauriListen } from '../utils';
 
 import PopupSyncAuth from './PopupSyncAuth.vue';

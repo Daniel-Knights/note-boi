@@ -6,15 +6,14 @@ import {
   FetchBuilder,
   KeyStore,
   Storage,
-} from '../../classes';
-import { isEmptyNote, tauriEmit, tauriInvoke } from '../../utils';
-import { noteState } from '../note';
+} from '../classes';
+import { noteState } from '../store/note';
+import { resetAppError, syncState } from '../store/sync';
+import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
 
-import { syncState } from './index';
 import { syncLocalStateWithRemoteNotes } from './notes';
 import {
   parseErrorRes,
-  resetAppError,
   resIsOk,
   route,
   throwEncryptorError,

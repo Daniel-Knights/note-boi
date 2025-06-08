@@ -7,15 +7,14 @@ import {
   ErrorConfig,
   FetchBuilder,
   KeyStore,
-} from '../../classes';
-import { tauriInvoke } from '../../utils';
-import { noteState } from '../note';
+} from '../classes';
+import { noteState } from '../store/note';
+import { resetAppError, syncState } from '../store/sync';
+import { tauriInvoke } from '../utils';
 
-import { clientSideLogout, syncState } from '.';
-
+import { clientSideLogout } from './auth';
 import {
   parseErrorRes,
-  resetAppError,
   resIsOk,
   route,
   throwEncryptorError,

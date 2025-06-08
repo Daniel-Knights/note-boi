@@ -1,4 +1,4 @@
-import { Endpoint, EndpointPayloads } from '../../../constant';
+import { Endpoint, EndpointPayloads } from '../../constant';
 
 export type ParsedResponse<T> = {
   status: number;

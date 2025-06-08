@@ -1,6 +1,6 @@
 import { reactive } from 'vue';
 
-import { AppError, Storage } from '../../classes';
+import { AppError, Storage } from '../classes';
 
 const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
@@ -62,6 +62,11 @@ export const syncState = reactive({
     },
   } satisfies UnsyncedNoteIds,
 });
+
+/** Resets {@link syncState.appError}. */
+export function resetAppError(): void {
+  syncState.appError = new AppError();
+}
 
 export type UnsyncedNoteIds = {
   new: string;
