@@ -53,15 +53,10 @@ describe('NoteMenu', () => {
 
   it('Renders a single empty note', async () => {
     resetNoteStore();
-    mockApi({
-      invoke: {
-        resValue: {
-          get_all_notes: [[]],
-        },
-      },
-    });
-
+    const { setResValues } = mockApi();
     const wrapper = shallowMount(NoteMenu);
+
+    setResValues.invoke({ get_all_notes: [[]] });
 
     await n.getAllNotes();
 

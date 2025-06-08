@@ -18,19 +18,15 @@ describe('Logout', () => {
   });
 
   it('Logs out on click', async () => {
-    const { calls } = mockApi({
-      request: {
-        resValue: {
-          '/auth/login': [{ notes: mockDb.encryptedNotes }],
-        },
-      },
-    });
-
+    const { calls, setResValues } = mockApi();
     const wrapper = mount(Logout);
+
     assert.isFalse(wrapper.isVisible());
 
     s.syncState.username = 'd';
     s.syncState.password = '1';
+
+    setResValues.request({ '/auth/login': [{ notes: mockDb.encryptedNotes }] });
 
     await s.login();
 

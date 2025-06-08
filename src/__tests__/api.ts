@@ -16,11 +16,18 @@ import {
 import { hasKeys } from '../utils';
 
 import localNotes from './notes.json';
-import { copyObjArr, isEncryptedNote, isNote, resolveImmediate } from './utils';
+import {
+  copyObjArr,
+  isEncryptedNote,
+  isNote,
+  NoteCollection,
+  resolveImmediate,
+} from './utils';
 
 export const mockDb: {
   users: Record<string, string>;
   encryptedNotes: EncryptedNote[];
+  deletedNoteIds?: Set<string>;
 } = {
   users: {
     d: '1',
@@ -32,61 +39,54 @@ export const mockKeyring: Record<string, string> = {};
 export const allCalls: [ApiCallType, Call][] = [];
 
 /**
- * Mocks the full API and returns results for each call made, along with
- * an array of all created promises.
+ * Mocks the full API and returns results for each call made, along with an array of all created promises.
  *
  * To clear results, use {@link clearMockApiResults}.
  *
- * Values can be passed to mock specific res values for `request`,
- * `invoke`, and `tauriApi`. Array order corresponds to the res value
- * for each call from left to right.
+ * Values can be passed to mock specific res values. Array order corresponds to the res value for each call from left to right.
  *
  * @example
  * ```ts
- * const { calls, promises } = mockApi({
- *   tauriApi: {
- *     resValue: {
- *       // First call will answer true, second will answer false
- *       askDialog: [true, false],
- *     },
- *   },
+ * const { calls, promises, setResValues } = mockApi();
+ *
+ * setResValues.tauriApi({
+ *   // First call will answer true, second will answer false
+ *   askDialog: [true, false],
  * });
  * ```
  *
- * Errors can also be mocked for `request` and `invoke`:
+ * Errors can also be mocked.
  *
  * @example
  * ```ts
- * const { calls } = mockApi({
- *   request: {
- *     error: {
- *       endpoint: '/auth/login'
- *     },
- *   },
- * });
+ * const { calls, setErrorValue } = mockApi();
+ *
+ * setErrorValue.request({ endpoint: '/auth/login' });
  * ```
  */
-export function mockApi(
-  options: {
-    request?: {
-      resValue?: RequestResValue;
-      error?: {
-        endpoint: Endpoint;
-        status?: number;
-      };
-    };
-    invoke?: {
-      resValue?: InvokeResValue;
-      error?: TauriCommand;
-    };
-    tauriApi?: {
-      resValue?: TauriApiResValue;
-      error?: string;
-    };
-  } = {}
-): {
+export function mockApi(): {
   calls: ApiCalls;
   promises: Promise<unknown>[];
+  /**
+   * Sets res values for mocked APIs.
+   * Values are resolved in the order they're defined and then removed from the queue.
+   * Calling multiple times for the same call type will add to the queue.
+   */
+  setResValues: {
+    request: (values: RequestResValue) => void;
+    invoke: (values: InvokeResValue) => void;
+    tauriApi: (values: TauriApiResValue) => void;
+  };
+  /**
+   * Sets an error value for mocked APIs.
+   * The error will be thrown when the API is called.
+   * Calling multiple times for the same call type will overwrite the previous error.
+   */
+  setErrorValue: {
+    request: (error: { endpoint: Endpoint; status?: number }) => void;
+    invoke: (error: TauriCommand) => void;
+    tauriApi: (error: string) => void;
+  };
 } {
   const calls = {
     request: new Calls(),
@@ -98,6 +98,24 @@ export function mockApi(
   } satisfies ApiCalls;
 
   const promises: Promise<unknown>[] = [];
+
+  // Populated by tests via `setResValues`
+  const resValues: {
+    request?: RequestResValue;
+    invoke?: InvokeResValue;
+    tauriApi?: TauriApiResValue;
+  } = {
+    request: {},
+    invoke: {},
+    tauriApi: {},
+  };
+
+  // Populated by tests via `setErrorValues`
+  const errorValues: {
+    request?: { endpoint: Endpoint; status?: number };
+    invoke?: TauriCommand;
+    tauriApi?: string;
+  } = {};
 
   function parseCallResult(callType: ApiCallType, call: Call | void) {
     if (!call) return;
@@ -116,7 +134,10 @@ export function mockApi(
 
   // Request
   global.fetch = (url, fetchOptions) => {
-    const reqCall = mockRequest(url.toString(), fetchOptions!, options.request);
+    const reqCall = mockRequest(url.toString(), fetchOptions!, {
+      error: errorValues.request,
+      resValue: resValues.request,
+    });
 
     return parseCallResult('request', reqCall) as Promise<Response>;
   };
@@ -138,30 +159,60 @@ export function mockApi(
 
     // Invoke
     if (TAURI_COMMANDS.includes(callId as TauriCommand)) {
-      const invokeCall = mockTauriInvoke(
-        callId,
-        args as Record<string, unknown>,
-        options.invoke
-      );
+      const invokeCall = mockTauriInvoke(callId, args as Record<string, unknown>, {
+        error: errorValues.invoke,
+        resValue: resValues.invoke,
+      });
 
       return parseCallResult('invoke', invokeCall);
     }
 
     // Tauri API
-    const tauriApiCall = mockTauriApi(
-      callId,
-      args as AskDialogArgs | OpenDialogArgs,
-      options.tauriApi
-    );
+    const tauriApiCall = mockTauriApi(callId, args as AskDialogArgs | OpenDialogArgs, {
+      error: errorValues.tauriApi,
+      resValue: resValues.tauriApi,
+    });
 
     if (tauriApiCall) {
       return parseCallResult('tauriApi', tauriApiCall);
     }
   });
 
+  function setResValues(
+    callType: 'request' | 'invoke' | 'tauriApi',
+    values: Record<string, unknown[]>
+  ) {
+    Object.entries(values).forEach(([callName, resValue]) => {
+      const resValuesForType = resValues[callType] as Record<string, unknown[]>;
+      const existingResValues = resValuesForType[callName];
+
+      if (existingResValues) {
+        existingResValues.push(...resValue);
+      } else {
+        resValuesForType[callName] = resValue;
+      }
+    });
+  }
+
   return {
     calls,
     promises,
+    setResValues: {
+      request: setResValues.bind(null, 'request'),
+      invoke: setResValues.bind(null, 'invoke'),
+      tauriApi: setResValues.bind(null, 'tauriApi'),
+    },
+    setErrorValue: {
+      request: (error) => {
+        errorValues.request = error;
+      },
+      invoke: (error) => {
+        errorValues.invoke = error;
+      },
+      tauriApi: (error) => {
+        errorValues.tauriApi = error;
+      },
+    },
   };
 }
 
@@ -229,7 +280,10 @@ function mockRequest(
     assert.fail(`Invalid endpoint: ${endpoint}`);
   }
 
-  const reqPayload: { notes?: n.Note[] } = JSON.parse(req.body?.toString() ?? '{}');
+  const reqPayload: EndpointPayloads[Endpoint]['payload'] = JSON.parse(
+    req.body?.toString() ?? '{}'
+  );
+
   const calledWith = {
     body: req.body,
     method: req.method,
@@ -299,7 +353,7 @@ function mockRequest(
 
       break;
     case '/auth/login':
-      if (!hasKeys(reqPayload, ['username', 'password'])) {
+      if (!hasKeys(reqPayload, ['username', 'password', 'notes', 'deleted_note_ids'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -316,8 +370,9 @@ function mockRequest(
         httpStatus = 401;
       } else {
         const resValue = options.resValue?.['/auth/login']?.shift();
+        const syncedNotes = syncLocalAndRemoteNotes(reqPayload, resValue);
 
-        resData.notes = resValue?.notes ?? [];
+        resData.notes = syncedNotes;
         resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
@@ -334,27 +389,11 @@ function mockRequest(
       }
 
       break;
-    case '/notes/pull':
-      // Pull
+    case '/notes/sync':
       if (!hasValidAuthHeaders(req.headers)) {
         resData.error = 'Unauthorized';
         httpStatus = 401;
-      } else if (!mockDb.users[username]) {
-        resData.error = 'User not found';
-        httpStatus = 404;
-      } else {
-        const resValue = options.resValue?.['/notes/pull']?.shift();
-
-        resData.notes = resValue?.notes ?? [];
-        resData.access_token = resValue?.access_token ?? 'test-token';
-      }
-
-      break;
-    case '/notes/push':
-      if (!hasValidAuthHeaders(req.headers)) {
-        resData.error = 'Unauthorized';
-        httpStatus = 401;
-      } else if (!hasKeys(reqPayload, ['notes'])) {
+      } else if (!hasKeys(reqPayload, ['notes', 'deleted_note_ids'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (reqPayload.notes?.some((nt) => !isEncryptedNote(nt))) {
@@ -364,7 +403,11 @@ function mockRequest(
         resData.error = 'User not found';
         httpStatus = 404;
       } else {
-        httpStatus = 204;
+        const resValue = options.resValue?.['/notes/sync']?.shift();
+        const syncedNotes = syncLocalAndRemoteNotes(reqPayload, resValue);
+
+        resData.notes = syncedNotes;
+        resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
       break;
@@ -388,7 +431,7 @@ function mockRequest(
         resData.error = 'Unauthorized';
         httpStatus = 401;
       } else {
-        const resValue = options.resValue?.['/notes/pull']?.shift();
+        const resValue = options.resValue?.['/account/change-password']?.shift();
 
         resData.access_token = resValue?.access_token ?? 'test-token';
       }
@@ -631,6 +674,22 @@ function mockTauriListener(args: ListenArgs) {
   return {
     name: args.event,
   };
+}
+
+/** Syncs local and remote notes. */
+function syncLocalAndRemoteNotes(
+  reqPayload: EndpointPayloads['/notes/sync' | '/auth/login']['payload'],
+  resValue?: { notes?: EncryptedNote[] }
+) {
+  const dbNotes = new NoteCollection(resValue?.notes ?? []);
+  const payloadNotes = new NoteCollection(reqPayload.notes ?? []);
+  const deletedNoteIds = new Set(reqPayload.deleted_note_ids).union(
+    new Set(mockDb.deletedNoteIds)
+  );
+
+  mockDb.deletedNoteIds = deletedNoteIds;
+
+  return dbNotes.merge(payloadNotes, deletedNoteIds).notes;
 }
 
 // Types

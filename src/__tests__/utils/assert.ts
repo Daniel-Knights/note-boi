@@ -3,8 +3,6 @@ import { AppError, ErrorConfig, FetchBuilder } from '../../classes';
 import { Endpoint } from '../../constant';
 import { mockApi } from '../api';
 
-import { isObj } from './object';
-
 /**
  * Asserts current `appError` against expected.
  * No `expectedErrorConfig` asserts a `NONE` error.
@@ -63,21 +61,6 @@ export async function assertLoadingState(
   assert.strictEqual(s.syncState.loadingCount, 0);
 }
 
-export function assertHasAllKeys<T extends string>(
-  obj: unknown,
-  keys: T[] | Record<T, unknown>
-): asserts obj is { [key in T]: unknown } {
-  assert.hasAllKeys(obj, keys);
-}
-
-export function assertIsString(obj: unknown): asserts obj is string {
-  assert.isString(obj);
-}
-
-export function assertIsArray(obj: unknown): asserts obj is unknown[] {
-  assert.isArray(obj);
-}
-
 /**
  * Asserts that `req` matches the expected request for `endpoint`.
  * `req` should typically be `calls.request[<n>]!.calledWith!`.
@@ -86,6 +69,7 @@ export function assertRequest(endpoint: Endpoint, req: RequestInit) {
   assert.strictEqual(req.method, expectedRequests[endpoint].method);
   assert.deepInclude(req.headers, FetchBuilder.defaultHeaders);
 
+  // Assert auth headers
   if ('withAuth' in expectedRequests[endpoint] && expectedRequests[endpoint].withAuth) {
     assertHasAllKeys(req.headers, [
       ...Object.keys(FetchBuilder.defaultHeaders),
@@ -99,78 +83,203 @@ export function assertRequest(endpoint: Endpoint, req: RequestInit) {
     assert.isTrue(req.headers['X-Username'].length > 0);
   }
 
-  if ('body' in expectedRequests[endpoint] && isObj(expectedRequests[endpoint].body)) {
+  // Assert body
+  if (expectedRequests[endpoint].body) {
     const parsedBody = JSON.parse(req.body as string) as Record<string, unknown>;
 
-    assertHasAllKeys(parsedBody, expectedRequests[endpoint].body);
-
-    for (const [key, value] of Object.entries(expectedRequests[endpoint].body)) {
-      if (isObj(value)) {
-        if (value.isArray) {
-          assertIsArray(parsedBody[key]);
-
-          const expectedKeys = value.expectedKeys as Record<string, string>;
-
-          for (const obj of parsedBody[key]) {
-            assertHasAllKeys(obj, expectedKeys);
-          }
-        } else {
-          assertHasAllKeys(
-            parsedBody[key],
-            value.expectedKeys as Record<string, unknown>
-          );
-        }
-      } else {
-        assert.strictEqual(typeof parsedBody[key], value);
-      }
-    }
+    assertType(parsedBody, expectedRequests[endpoint].body);
   }
 }
 
-const expectedRequests = {
+/** Asserts `actualValue` has the type defined by `expectedType`. */
+export function assertType(value: unknown, expectedType: ExpectedType) {
+  let resolvedValue = value;
+
+  // If the expected value has a key, assert `actualValue` is an object with that key
+  // and resolve the `actualValue` to the value of that property
+  if ('key' in expectedType && expectedType.key) {
+    assertIsObject(value);
+    assert.isTrue(expectedType.key in value);
+
+    resolvedValue = value[expectedType.key];
+  }
+
+  switch (expectedType.type) {
+    case 'string':
+      assertIsString(resolvedValue);
+
+      break;
+    case 'number':
+      assertIsNumber(resolvedValue);
+
+      break;
+    case 'object':
+      assertIsObject(resolvedValue);
+
+      // Ensure value doesn't have any extra properties
+      assert.strictEqual(Object.keys(resolvedValue).length, expectedType.values.length);
+
+      // Loop over each expected property type and assert the value has them all
+      expectedType.values.forEach((expectedProperty) => {
+        assertType(resolvedValue, expectedProperty);
+      });
+
+      break;
+    case 'array':
+      assertIsArray(resolvedValue);
+
+      // Loop over each item and assert it has the expected type
+      resolvedValue.forEach((actualItem) => {
+        assertType(actualItem, expectedType.values);
+      });
+
+      break;
+  }
+}
+
+export function assertHasAllKeys<T extends string>(
+  val: unknown,
+  keys: T[] | Record<T, unknown>
+): asserts val is { [key in T]: unknown } {
+  assert.hasAllKeys(val, keys);
+}
+
+export function assertIsString(val: unknown): asserts val is string {
+  assert.isString(val);
+}
+
+export function assertIsNumber(val: unknown): asserts val is number {
+  assert.isNumber(val);
+}
+
+export function assertIsObject(val: unknown): asserts val is Record<string, unknown> {
+  assert.isObject(val);
+}
+
+export function assertIsArray(val: unknown): asserts val is unknown[] {
+  assert.isArray(val);
+}
+
+//// Expected
+
+/** Recursive type that describes expected structure of a given value. */
+type ExpectedType =
+  | {
+      key?: string; // Only used for object properties, not array items
+      type: 'string' | 'number';
+    }
+  | {
+      type: 'object';
+      /** Expected types for each property */
+      values: ExpectedType[];
+    }
+  | {
+      key: string;
+      type: 'array';
+      /** Expected type of every array item */
+      values: ExpectedType;
+    };
+
+const expectedNoteType: ExpectedType = {
+  type: 'object',
+  values: [
+    {
+      key: 'id',
+      type: 'string',
+    },
+    {
+      key: 'timestamp',
+      type: 'number',
+    },
+    {
+      key: 'content',
+      type: 'string',
+    },
+  ],
+};
+
+const expectedRequests: Record<
+  Endpoint,
+  {
+    method: string;
+    /** If true, assert auth headers */
+    withAuth?: boolean;
+    body?: ExpectedType;
+  }
+> = {
   '/auth/signup': {
     method: 'POST',
     body: {
-      username: 'string',
-      password: 'string',
-      notes: {
-        isArray: true,
-        expectedKeys: {
-          id: 'string',
-          timestamp: 'number',
-          content: 'string',
+      type: 'object',
+      values: [
+        {
+          key: 'username',
+          type: 'string',
         },
-      },
+        {
+          key: 'password',
+          type: 'string',
+        },
+        {
+          key: 'notes',
+          type: 'array',
+          values: expectedNoteType,
+        },
+      ],
     },
   },
   '/auth/login': {
     method: 'POST',
     body: {
-      username: 'string',
-      password: 'string',
+      type: 'object',
+      values: [
+        {
+          key: 'username',
+          type: 'string',
+        },
+        {
+          key: 'password',
+          type: 'string',
+        },
+        {
+          key: 'notes',
+          type: 'array',
+          values: expectedNoteType,
+        },
+        {
+          key: 'deleted_note_ids',
+          type: 'array',
+          values: {
+            type: 'string',
+          },
+        },
+      ],
     },
   },
   '/auth/logout': {
     method: 'POST',
     withAuth: true,
   },
-  '/notes/push': {
+  '/notes/sync': {
     method: 'PUT',
     withAuth: true,
     body: {
-      notes: {
-        isArray: true,
-        expectedKeys: {
-          id: 'string',
-          timestamp: 'number',
-          content: 'string',
+      type: 'object',
+      values: [
+        {
+          key: 'notes',
+          type: 'array',
+          values: expectedNoteType,
         },
-      },
+        {
+          key: 'deleted_note_ids',
+          type: 'array',
+          values: {
+            type: 'string',
+          },
+        },
+      ],
     },
-  },
-  '/notes/pull': {
-    method: 'GET',
-    withAuth: true,
   },
   '/account/delete': {
     method: 'DELETE',
@@ -180,26 +289,22 @@ const expectedRequests = {
     method: 'PUT',
     withAuth: true,
     body: {
-      current_password: 'string',
-      new_password: 'string',
-      notes: {
-        isArray: true,
-        expectedKeys: {
-          id: 'string',
-          timestamp: 'number',
-          content: 'string',
+      type: 'object',
+      values: [
+        {
+          key: 'current_password',
+          type: 'string',
         },
-      },
+        {
+          key: 'new_password',
+          type: 'string',
+        },
+        {
+          key: 'notes',
+          type: 'array',
+          values: expectedNoteType,
+        },
+      ],
     },
   },
-} satisfies Record<
-  Endpoint,
-  {
-    method: string;
-    withAuth?: boolean;
-    body?: Record<
-      string,
-      string | { isArray?: boolean; expectedKeys: Record<string, string> }
-    >;
-  }
->;
+};

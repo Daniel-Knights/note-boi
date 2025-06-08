@@ -69,12 +69,25 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.loadingCount, 0);
     });
 
-    it('With encryptor error', async () => {
+    it('With encryption error', async () => {
       const { calls } = mockApi();
 
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
+
+      s.syncState.password = '1';
+      s.syncState.newPassword = '2';
+
+      // @ts-expect-error - hack to trigger encryption error. A circular reference that
+      // causes `JSON.stringify` to throw when stringifying note content for encryption.
+      // Tried every which way to mock reject on `crypto.subtle.encrypt`, but it
+      // doesn't work.
+      n.noteState.notes[0]!.content = n.noteState.notes[0];
 
       await s.changePassword();
 
@@ -88,17 +101,11 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: '' });
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it('With server error', async () => {
-      const { calls } = mockApi({
-        request: {
-          error: {
-            endpoint: '/account/change-password',
-          },
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -107,6 +114,10 @@ describe('Account', () => {
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
+      setErrorValue.request({
+        endpoint: '/account/change-password',
+        status: 500,
+      });
 
       s.syncState.password = '1';
       s.syncState.newPassword = '2';
@@ -224,13 +235,9 @@ describe('Account', () => {
     });
 
     it('Returns if ask dialog returns false', async () => {
-      const { calls } = mockApi({
-        tauriApi: {
-          resValue: {
-            askDialog: [false],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
+
+      setResValues.tauriApi({ askDialog: [false] });
 
       await s.deleteAccount();
 
@@ -240,13 +247,7 @@ describe('Account', () => {
     });
 
     it('With server error', async () => {
-      const { calls, promises } = mockApi({
-        request: {
-          error: {
-            endpoint: '/account/delete',
-          },
-        },
-      });
+      const { calls, promises, setErrorValue } = mockApi();
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
 
       s.syncState.username = 'd';
@@ -256,10 +257,7 @@ describe('Account', () => {
 
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
-
-      assert.strictEqual(s.syncState.username, 'd');
-      assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(Storage.get('USERNAME'), 'd');
+      setErrorValue.request({ endpoint: '/account/delete' });
 
       await s.deleteAccount();
 
@@ -285,14 +283,7 @@ describe('Account', () => {
     });
 
     it('Unauthorized', async () => {
-      const { calls, promises } = mockApi({
-        request: {
-          error: {
-            endpoint: '/account/delete',
-            status: 401,
-          },
-        },
-      });
+      const { calls, promises, setErrorValue } = mockApi();
       const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
 
       s.syncState.username = 'd';
@@ -302,6 +293,7 @@ describe('Account', () => {
 
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
+      setErrorValue.request({ endpoint: '/account/delete', status: 401 });
 
       await s.deleteAccount();
 

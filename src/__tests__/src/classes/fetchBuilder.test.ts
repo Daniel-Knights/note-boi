@@ -14,6 +14,8 @@ describe('FetchBuilder', () => {
     const body = {
       username: 'd',
       password: '1',
+      notes: [],
+      deleted_note_ids: [],
     };
 
     s.syncState.loadingCount = 1; // Mock request expects this
@@ -60,16 +62,19 @@ describe('FetchBuilder', () => {
     s.syncState.loadingCount = 1;
     mockKeyring.d = 'test-token';
 
-    const res = await new FetchBuilder('/notes/pull')
+    const body = { notes: [], deleted_note_ids: [] };
+    const res = await new FetchBuilder('/notes/sync')
       .method('POST')
       .headers(testHeaders)
+      .body(body)
       .withAuth('d', 'test-token')
       .fetch('d');
 
     expect(fetchSpy).toHaveBeenCalledOnce();
-    expect(fetchSpy).toHaveBeenCalledWith(`${FetchBuilder.serverUrl}/api/notes/pull`, {
+    expect(fetchSpy).toHaveBeenCalledWith(`${FetchBuilder.serverUrl}/api/notes/sync`, {
       method: 'POST',
       credentials: 'same-origin',
+      body: JSON.stringify(body),
       headers: {
         ...FetchBuilder.defaultHeaders,
         ...testHeaders,
@@ -84,7 +89,7 @@ describe('FetchBuilder', () => {
       username: 'd',
       accessToken: 'test-token',
     });
-    assert.isTrue(calls.request.has('/notes/pull'));
+    assert.isTrue(calls.request.has('/notes/sync'));
     assert.deepEqual(res, {
       ok: true,
       data: {

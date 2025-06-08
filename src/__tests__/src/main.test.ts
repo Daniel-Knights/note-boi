@@ -3,7 +3,6 @@ import * as s from '../../store/sync';
 import * as u from '../../store/update';
 import { AppError, ERROR_CODE } from '../../classes';
 import { openedPopup, POPUP_TYPE } from '../../store/popup';
-import { tauriInvoke } from '../../utils';
 import { clearMockApiResults, mockApi } from '../api';
 import { assertRequest, getAppDiv, resolveImmediate, waitUntil } from '../utils';
 
@@ -16,18 +15,16 @@ beforeEach(() => {
 });
 
 describe('main', () => {
-  it('Gets all notes, checks for update, pulls notes, and adds listeners', async () => {
+  it('Gets all notes, checks for update, syncs notes, and adds listeners', async () => {
     const { calls } = mockApi();
     const getAllNotesSpy = vi.spyOn(n, 'getAllNotes');
     const handleUpdateSpy = vi.spyOn(u, 'handleUpdate');
-    const pullSpy = vi.spyOn(s, 'pull');
+    const syncSpy = vi.spyOn(s, 'sync');
 
     s.syncState.username = 'd';
+    s.syncState.password = '1';
 
-    await tauriInvoke('set_access_token', {
-      username: 'd',
-      accessToken: 'test-token',
-    });
+    await s.login();
 
     clearMockApiResults({ calls });
 
@@ -38,11 +35,11 @@ describe('main', () => {
 
     expect(getAllNotesSpy).toHaveBeenCalledOnce();
     expect(handleUpdateSpy).toHaveBeenCalledOnce();
-    expect(pullSpy).toHaveBeenCalledOnce();
+    expect(syncSpy).toHaveBeenCalledOnce();
 
     assert.strictEqual(calls.size, 18);
-    assert.isTrue(calls.request.has('/notes/pull'));
-    assertRequest('/notes/pull', calls.request[0]!.calledWith!);
+    assert.isTrue(calls.request.has('/notes/sync'));
+    assertRequest('/notes/sync', calls.request[0]!.calledWith!);
     assert.isTrue(calls.invoke.has('get_all_notes'));
     assert.isTrue(calls.invoke.has('get_access_token'));
     assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
@@ -77,12 +74,12 @@ describe('main', () => {
     it('With no unsynced notes', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const pushSpy = vi.spyOn(s, 'push');
+      const syncSpy = vi.spyOn(s, 'sync');
 
       await main.exitApp(mockCb);
 
       expect(mockCb).toHaveBeenCalledOnce();
-      expect(pushSpy).not.toHaveBeenCalled();
+      expect(syncSpy).not.toHaveBeenCalled();
 
       assert.strictEqual(calls.size, 0);
     });
@@ -90,54 +87,50 @@ describe('main', () => {
     it('With unsynced notes', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const pushSpy = vi.spyOn(s, 'push');
+      const syncSpy = vi.spyOn(s, 'sync');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
 
       await main.exitApp(mockCb);
 
       expect(mockCb).toHaveBeenCalledOnce();
-      expect(pushSpy).toHaveBeenCalledOnce();
+      expect(syncSpy).toHaveBeenCalledOnce();
 
       assert.strictEqual(calls.size, 0);
     });
 
-    it('Triggers ask dialog on push error, and answers "No"', async () => {
-      const { calls } = mockApi({
-        tauriApi: {
-          resValue: {
-            askDialog: [false],
-          },
-        },
-      });
+    it('Triggers ask dialog on sync error, and answers "No"', async () => {
+      const { calls, setResValues } = mockApi();
       const mockCb = vi.fn();
-      const pushSpy = vi.spyOn(s, 'push');
+      const syncSpy = vi.spyOn(s, 'sync');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
-      s.syncState.appError = new AppError({ code: ERROR_CODE.PUSH });
+      s.syncState.appError = new AppError({ code: ERROR_CODE.SYNC });
+
+      setResValues.tauriApi({ askDialog: [false] });
 
       await main.exitApp(mockCb);
 
       expect(mockCb).not.toHaveBeenCalledOnce();
-      expect(pushSpy).toHaveBeenCalledOnce();
+      expect(syncSpy).toHaveBeenCalledOnce();
 
       assert.strictEqual(openedPopup.value, POPUP_TYPE.ERROR);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-        message: 'ERROR: Failed to push unsynced notes.\nClose anyway?',
+        message: 'ERROR: Failed to sync notes.\nClose anyway?',
         title: 'NoteBoi',
         kind: 'error',
       });
     });
 
-    it('Triggers ask dialog on push error, and answers "Yes"', async () => {
+    it('Triggers ask dialog on sync error, and answers "Yes"', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const pushSpy = vi.spyOn(s, 'push');
+      const syncSpy = vi.spyOn(s, 'sync');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
-      s.syncState.appError = new AppError({ code: ERROR_CODE.PUSH });
+      s.syncState.appError = new AppError({ code: ERROR_CODE.SYNC });
 
       // Setting openedPopup to undefined emits this component's close event
       // and resets syncState.error, so we mock it to prevent that
@@ -148,13 +141,13 @@ describe('main', () => {
       await main.exitApp(mockCb);
 
       expect(mockCb).toHaveBeenCalledOnce();
-      expect(pushSpy).toHaveBeenCalledOnce();
+      expect(syncSpy).toHaveBeenCalledOnce();
 
       assert.isUndefined(openedPopup.value);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-        message: 'ERROR: Failed to push unsynced notes.\nClose anyway?',
+        message: 'ERROR: Failed to sync notes.\nClose anyway?',
         title: 'NoteBoi',
         kind: 'error',
       });

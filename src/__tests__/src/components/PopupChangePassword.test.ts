@@ -40,7 +40,7 @@ describe('PopupChangePassword', () => {
     const wrapper = mountPopupChangePassword();
 
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
       message: 'Mock error',
       display: { form: true },
     });
@@ -59,7 +59,7 @@ describe('PopupChangePassword', () => {
     const wrapper = mountPopupChangePassword();
 
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
       display: { form: true },
     });
 

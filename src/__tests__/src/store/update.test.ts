@@ -21,13 +21,9 @@ describe('Update', () => {
     });
 
     it('Returns if update unavailable', async () => {
-      const { calls } = mockApi({
-        tauriApi: {
-          resValue: {
-            checkUpdate: [{ available: false }],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
+
+      setResValues.tauriApi({ checkUpdate: [{ available: false }] });
 
       await u.handleUpdate();
 
@@ -66,13 +62,9 @@ describe('Update', () => {
     });
 
     it("Asks if user wants to update and sets seen version if they don't", async () => {
-      const { calls } = mockApi({
-        tauriApi: {
-          resValue: {
-            askDialog: [false],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
+
+      setResValues.tauriApi({ askDialog: [false] });
 
       await u.handleUpdate();
 
@@ -107,19 +99,12 @@ describe('Update', () => {
     });
 
     it("Catches error and doesn't retry", async () => {
-      const { calls } = mockApi({
-        tauriApi: {
-          error: 'plugin:updater|download_and_install',
-          resValue: {
-            askDialog: [false],
-            downloadAndInstallUpdate: [],
-          },
-        },
-      });
-
+      const { calls, setErrorValue, setResValues } = mockApi();
       const mockUpdate = (await check())!;
 
       clearMockApiResults({ calls });
+      setErrorValue.tauriApi('plugin:updater|download_and_install');
+      setResValues.tauriApi({ askDialog: [false], downloadAndInstallUpdate: [] });
 
       await u.updateAndRelaunch(mockUpdate);
 
@@ -135,18 +120,12 @@ describe('Update', () => {
     });
 
     it('Catches error and retries', async () => {
-      const { calls } = mockApi({
-        tauriApi: {
-          error: 'plugin:updater|download_and_install',
-          resValue: {
-            askDialog: [true, false],
-          },
-        },
-      });
-
+      const { calls, setErrorValue, setResValues } = mockApi();
       const mockUpdate = (await check())!;
 
       clearMockApiResults({ calls });
+      setErrorValue.tauriApi('plugin:updater|download_and_install');
+      setResValues.tauriApi({ askDialog: [true, false] });
 
       await u.updateAndRelaunch(mockUpdate);
 

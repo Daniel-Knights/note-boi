@@ -50,7 +50,7 @@ describe('PopupSyncAuth', () => {
     const wrapper = mountPopupSyncAuth();
 
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
       message: 'Mock error',
       display: { form: true },
     });
@@ -71,7 +71,7 @@ describe('PopupSyncAuth', () => {
     const wrapper = mountPopupSyncAuth();
 
     s.syncState.appError = new AppError({
-      code: ERROR_CODE.PULL,
+      code: ERROR_CODE.SYNC,
       display: { form: true },
     });
 
@@ -137,7 +137,7 @@ describe('PopupSyncAuth', () => {
       mockApi();
 
       s.syncState.appError = new AppError({
-        code: ERROR_CODE.PULL,
+        code: ERROR_CODE.SYNC,
         message: 'Mock error',
         display: { form: true, sync: true },
       });
