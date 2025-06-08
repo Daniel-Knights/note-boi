@@ -1,10 +1,4 @@
-import { AppError, ERROR_CODE, ErrorConfig } from '../../../classes';
-import { syncState } from '../index';
-
-/** Resets {@link syncState.appError}. */
-export function resetAppError(): void {
-  syncState.appError = new AppError();
-}
+import { AppError, ERROR_CODE, ErrorConfig } from '../../classes';
 
 /** Catches hanging requests (e.g. due to server error). */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

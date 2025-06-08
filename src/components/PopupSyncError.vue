@@ -24,7 +24,8 @@
 </template>
 
 <script lang="ts" setup>
-import { clientSideLogout, resetAppError, syncState } from '../store/sync';
+import { clientSideLogout } from '../api';
+import { resetAppError, syncState } from '../store/sync';
 
 import Popup from './Popup.vue';
 

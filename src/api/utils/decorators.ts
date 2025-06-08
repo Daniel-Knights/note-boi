@@ -1,7 +1,7 @@
 import { nextTick } from 'vue';
 
-import { AppError, ERROR_CODE } from '../../../classes';
-import { syncState } from '../index';
+import { AppError, ERROR_CODE } from '../../classes';
+import { syncState } from '../../store/sync';
 
 /** Decorator for request calls that handles load state setting, and errors. */
 export function route<T extends (...args: never[]) => Promise<Awaited<ReturnType<T>>>>(
