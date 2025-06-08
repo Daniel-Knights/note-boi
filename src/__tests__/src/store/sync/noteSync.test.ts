@@ -1,11 +1,10 @@
-import { clearMocks } from '@tauri-apps/api/mocks';
 import { mount, shallowMount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../../classes';
-import { isEmptyNote, tauriInvoke } from '../../../../utils';
+import { isEmptyNote } from '../../../../utils';
 import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../../api';
 import { UUID_REGEX } from '../../../constant';
 import localNotes from '../../../notes.json';
@@ -15,7 +14,7 @@ import {
   assertRequest,
   copyObjArr,
   getByTestId,
-  waitForAutoPush,
+  waitForAutoSync,
   waitUntil,
 } from '../../../utils';
 
@@ -24,43 +23,56 @@ import NoteMenu from '../../../../components/NoteMenu.vue';
 import SyncStatus from '../../../../components/SyncStatus.vue';
 
 describe('Note (sync)', () => {
-  describe('pull', () => {
-    it('Pulls notes from the server', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [[]],
-          },
-        },
-        request: {
-          resValue: {
-            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
-          },
-        },
-      });
+  describe('sync', () => {
+    it('Syncs notes with the server', async () => {
+      const { calls, setResValues } = mockApi();
+
+      setResValues.invoke({ get_all_notes: [[]] });
+
+      await n.getAllNotes();
+
+      const unsynced = { new: 'new', edited: ['edited'], deleted: ['deleted'] };
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
       await s.login();
 
+      s.syncState.unsyncedNoteIds.set(unsynced);
+
+      const existingNewNote = n.noteState.notes[0]!;
+
       assert.lengthOf(n.noteState.notes, 1);
-      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+      assert.isTrue(isEmptyNote(existingNewNote));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(n.noteState.notes[0]!.id, n.noteState.selectedNote.id);
+      assert.strictEqual(existingNewNote!.id, n.noteState.selectedNote.id);
+      assert.deepEqual(Storage.getJson('UNSYNCED'), unsynced);
 
       clearMockApiResults({ calls });
+      setResValues.request({
+        '/notes/sync': [{ notes: mockDb.encryptedNotes }],
+      });
 
-      await s.pull();
+      await s.sync();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.isFalse(isEmptyNote(n.noteState.notes[0]));
-      assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-      assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
+      assert.deepEqual(
+        n.noteState.notes,
+        [existingNewNote, ...localNotes].sort(n.sortNotesFn)
+      );
+      assert.strictEqual(s.syncState.unsyncedNoteIds.new, unsynced.new);
+      assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
+      assert.deepEqual(Storage.getJson('UNSYNCED'), {
+        new: unsynced.new,
+        edited: [],
+        deleted: [],
+      });
+      assert.strictEqual(s.syncState.username, 'd');
+      assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(calls.size, 5);
-      assert.isTrue(calls.request.has('/notes/pull'));
-      assertRequest('/notes/pull', calls.request[0]!.calledWith!);
+      assert.isTrue(calls.request.has('/notes/sync'));
+      assertRequest('/notes/sync', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('set_access_token'));
@@ -78,37 +90,69 @@ describe('Note (sync)', () => {
       });
     });
 
-    it('With encryptor error', async () => {
-      const { calls } = mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [[]],
-          },
-        },
-        request: {
-          resValue: {
-            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
-          },
-        },
-      });
+    it('Returns if not logged in', async () => {
+      const { calls } = mockApi();
+
+      await s.sync();
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.strictEqual(n.noteState.notes.length, 0);
+      assert.strictEqual(calls.size, 0);
+    });
+
+    it('With encryption error', async () => {
+      const { calls } = mockApi();
 
       s.syncState.username = 'd';
+      s.syncState.password = '1';
 
-      await tauriInvoke('set_access_token', {
-        username: 'd',
-        accessToken: 'test-token',
-      });
-
-      await n.getAllNotes();
+      await s.login();
 
       clearMockApiResults({ calls });
 
-      await s.pull();
+      // @ts-expect-error - hack to trigger encryption error. A circular reference that
+      // causes `JSON.stringify` to throw when stringifying note content for encryption.
+      // Tried every which way to mock reject on `crypto.subtle.encrypt`, but it
+      // doesn't work.
+      n.noteState.notes[0]!.content = n.noteState.notes[0];
+
+      await s.sync();
 
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: s.pull },
+        retry: { fn: s.sync, args: [] },
+        display: { sync: true },
+      });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+    });
+
+    it('With decryption error', async () => {
+      const { calls, setResValues } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await s.login();
+
+      clearMockApiResults({ calls });
+      setResValues.request({
+        '/notes/sync': [
+          { notes: [{ id: '', timestamp: 0, content: 'Un-deserialisable' }] },
+        ],
+      });
+
+      await s.sync();
+
+      assertAppError({
+        code: ERROR_CODE.ENCRYPTOR,
+        message: 'Note encryption/decryption failed',
+        retry: { fn: s.sync },
         display: { sync: true },
       });
 
@@ -117,8 +161,8 @@ describe('Note (sync)', () => {
       assert.isTrue(isEmptyNote(n.noteState.notes[0]));
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       assert.strictEqual(calls.size, 4);
-      assert.isTrue(calls.request.has('/notes/pull'));
-      assertRequest('/notes/pull', calls.request[0]!.calledWith!);
+      assert.isTrue(calls.request.has('/notes/sync'));
+      assertRequest('/notes/sync', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('set_access_token'));
@@ -136,13 +180,7 @@ describe('Note (sync)', () => {
     });
 
     it('With server error', async () => {
-      const { calls } = mockApi({
-        request: {
-          error: {
-            endpoint: '/notes/pull',
-          },
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -150,13 +188,14 @@ describe('Note (sync)', () => {
       await s.login();
 
       clearMockApiResults({ calls });
+      setErrorValue.request({ endpoint: '/notes/sync' });
 
-      await s.pull();
+      await s.sync();
 
       assertAppError({
-        code: ERROR_CODE.PULL,
+        code: ERROR_CODE.SYNC,
         message: 'Server error',
-        retry: { fn: s.pull },
+        retry: { fn: s.sync, args: [] },
         display: { sync: true },
       });
 
@@ -168,39 +207,37 @@ describe('Note (sync)', () => {
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.request.has('/notes/pull'));
-      assertRequest('/notes/pull', calls.request[0]!.calledWith!);
+      assert.isTrue(calls.request.has('/notes/sync'));
+      assertRequest('/notes/sync', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
 
     it('Unauthorized', async () => {
-      const { calls } = mockApi({
-        request: {
-          error: {
-            endpoint: '/notes/pull',
-            status: 401,
-          },
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
       Storage.set('USERNAME', 'd');
 
-      await s.pull();
+      await s.login();
+
+      clearMockApiResults({ calls });
+      setErrorValue.request({ endpoint: '/notes/sync', status: 401 });
+
+      await s.sync();
 
       assertAppError({
-        code: ERROR_CODE.PULL,
+        code: ERROR_CODE.SYNC,
         message: 'Unauthorized',
-        retry: { fn: s.pull },
+        retry: { fn: s.sync, args: [] },
         display: { sync: true },
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.request.has('/notes/pull'));
-      assertRequest('/notes/pull', calls.request[0]!.calledWith!);
+      assert.isTrue(calls.request.has('/notes/sync'));
+      assertRequest('/notes/sync', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });
@@ -209,29 +246,36 @@ describe('Note (sync)', () => {
       const { calls } = mockApi();
 
       s.syncState.username = 'k';
-      s.syncState.isLoggedIn = true;
+      s.syncState.password = '2';
       mockKeyring.k = 'test-token';
       Storage.set('USERNAME', 'k');
 
-      await s.pull();
+      await n.getAllNotes();
+      await s.signup();
+
+      clearMockApiResults({ calls });
+
+      delete mockDb.users.k; // Deleted from different device, for example
+
+      await s.sync();
 
       assertAppError({
-        code: ERROR_CODE.PULL,
+        code: ERROR_CODE.SYNC,
         message: 'User not found',
-        retry: { fn: s.pull },
+        retry: { fn: s.sync, args: [] },
         display: { sync: true },
       });
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.request.has('/notes/pull'));
-      assertRequest('/notes/pull', calls.request[0]!.calledWith!);
+      assert.isTrue(calls.request.has('/notes/sync'));
+      assertRequest('/notes/sync', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
     });
 
     it('Updates editor if selected note is unedited', async () => {
-      mockApi();
+      const { setResValues } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -252,31 +296,31 @@ describe('Note (sync)', () => {
         (nt) => nt.id === n.noteState.selectedNote.id
       );
 
+      // If note exists locally and remotely, timestamps are compared
+      unencryptedRemoteSelectedNote!.timestamp += 1;
       unencryptedRemoteSelectedNote!.content = {
         delta: { ops: [{ insert: 'Remote update' }] },
         title: 'Remote update',
         body: '',
       };
 
-      const encryptedRemoteNotes = await Encryptor.encryptNotes(unencryptedRemoteNotes);
+      const passwordKey = await KeyStore.getKey();
+      const encryptedRemoteNotes = await Encryptor.encryptNotes(
+        unencryptedRemoteNotes,
+        passwordKey
+      );
 
-      clearMocks();
-
-      mockApi({
-        request: {
-          resValue: {
-            '/notes/pull': [{ notes: encryptedRemoteNotes }],
-          },
-        },
+      setResValues.request({
+        '/notes/sync': [{ notes: encryptedRemoteNotes }],
       });
 
-      await s.pull();
+      await s.sync();
 
       assert.include(editorBody.text(), 'Remote update');
     });
 
     it('Updates note menu', async () => {
-      mockApi();
+      const { setResValues } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -301,6 +345,8 @@ describe('Note (sync)', () => {
         (nt) => nt.id === n.noteState.selectedNote.id
       );
 
+      // If note exists locally and remotely, timestamps are compared
+      unencryptedRemoteSelectedNote!.timestamp += 1;
       unencryptedRemoteSelectedNote!.content = {
         delta: { ops: [{ insert: 'Remote update' }, { insert: '-body' }] },
         title: 'Remote update',
@@ -315,21 +361,23 @@ describe('Note (sync)', () => {
       };
 
       unencryptedRemoteNotes.push(newRemoteNote);
-      unencryptedRemoteNotes.splice(5, 2); // Deleted remote notes
 
-      const encryptedRemoteNotes = await Encryptor.encryptNotes(unencryptedRemoteNotes);
+      // Deleted remote notes
+      mockDb.deletedNoteIds = new Set(
+        unencryptedRemoteNotes.splice(5, 2).map((nt) => nt.id)
+      );
 
-      clearMocks();
+      const passwordKey = await KeyStore.getKey();
+      const encryptedRemoteNotes = await Encryptor.encryptNotes(
+        unencryptedRemoteNotes,
+        passwordKey
+      );
 
-      mockApi({
-        request: {
-          resValue: {
-            '/notes/pull': [{ notes: encryptedRemoteNotes }],
-          },
-        },
+      setResValues.request({
+        '/notes/sync': [{ notes: encryptedRemoteNotes }],
       });
 
-      await s.pull();
+      await s.sync();
 
       assert.lengthOf(wrapper.findAll('li'), 9);
       assertNoteItemText(n.noteState.selectedNote.id, 'Remote update-body');
@@ -337,207 +385,12 @@ describe('Note (sync)', () => {
     });
 
     it('Sets and resets loading state', () => {
-      return assertLoadingState(() => {
-        return s.pull();
-      });
-    });
-  });
-
-  describe('push', () => {
-    it('Pushes notes to the server', async () => {
-      const { calls } = mockApi();
-
-      await n.getAllNotes();
-
-      const unsynced = { new: 'new', edited: ['edited'], deleted: ['deleted'] };
-
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
-      await s.login();
-
-      s.syncState.unsyncedNoteIds.add(unsynced);
-
-      assert.deepEqual(Storage.getJson('UNSYNCED'), unsynced);
-
-      clearMockApiResults({ calls });
-
-      await s.push();
-
-      assertAppError();
-      assert.isNull(Storage.getJson('UNSYNCED'));
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
-      assert.isEmpty(s.syncState.unsyncedNoteIds.new);
-      assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
-      assert.strictEqual(s.syncState.username, 'd');
-      assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.request.has('/notes/push'));
-      assertRequest('/notes/push', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-    });
-
-    it("Doesn't push empty notes", async () => {
-      const { calls } = mockApi();
-
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
-      await s.login();
-
-      n.newNote();
-
-      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
-      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-
-      clearMockApiResults({ calls });
-
-      await s.push();
-
-      assertAppError();
-      assert.strictEqual(s.syncState.username, 'd');
-      assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 0);
-    });
-
-    it('With encryptor error', async () => {
-      const { calls } = mockApi();
-
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
-      await s.login();
-      await KeyStore.reset();
-
-      clearMockApiResults({ calls });
-
-      await waitForAutoPush(() => n.editNote({}, 'title', 'body'), calls);
-
-      assertAppError({
-        code: ERROR_CODE.ENCRYPTOR,
-        message: 'Note encryption/decryption failed',
-        retry: { fn: s.push, args: [] },
-        display: { sync: true },
-      });
-
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(n.noteState.notes.length, 1);
-      assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.invoke.has('edit_note'));
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-    });
-
-    it('With server error', async () => {
-      const { calls } = mockApi({
-        request: {
-          error: {
-            endpoint: '/notes/push',
-          },
-        },
-      });
-
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
-      await s.login();
-
-      clearMockApiResults({ calls });
-
-      await waitForAutoPush(() => n.editNote({}, 'title', 'body'), calls);
-
-      assertAppError({
-        code: ERROR_CODE.PUSH,
-        message: 'Server error',
-        retry: { fn: s.push, args: [] },
-        display: { sync: true },
-      });
-
-      assert.strictEqual(s.syncState.username, 'd');
-      assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/notes/push'));
-      assertRequest('/notes/push', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('edit_note'));
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-    });
-
-    it('Unauthorized', async () => {
-      const { calls } = mockApi({
-        request: {
-          error: {
-            endpoint: '/notes/push',
-            status: 401,
-          },
-        },
-      });
-
-      s.syncState.username = 'd';
-      s.syncState.password = '1';
-
-      await s.login();
-
-      clearMockApiResults({ calls });
-
-      await waitForAutoPush(() => n.editNote({}, 'title', 'body'), calls);
-
-      assertAppError({
-        code: ERROR_CODE.PUSH,
-        message: 'Unauthorized',
-        retry: { fn: s.push, args: [] },
-        display: { sync: true },
-      });
-
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/notes/push'));
-      assertRequest('/notes/push', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('edit_note'));
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-    });
-
-    it('User not found', async () => {
-      const { calls } = mockApi();
-
-      s.syncState.username = 'k';
-      s.syncState.password = '2';
-
-      await n.getAllNotes();
-      await s.signup();
-
-      clearMockApiResults({ calls });
-
-      delete mockDb.users.k; // Deleted from different device, for example
-
-      await waitForAutoPush(() => n.editNote({}, 'title', 'body'), calls);
-
-      assertAppError({
-        code: ERROR_CODE.PUSH,
-        message: 'User not found',
-        retry: { fn: s.push, args: [] },
-        display: { sync: true },
-      });
-
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/notes/push'));
-      assertRequest('/notes/push', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('edit_note'));
-      assert.isTrue(calls.invoke.has('get_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'k' });
-    });
-
-    it('Sets and resets loading state', () => {
-      return assertLoadingState(async (calls) => {
+      return assertLoadingState(async () => {
         s.syncState.username = 'd';
         s.syncState.password = '1';
 
         await s.login();
-        await waitForAutoPush(() => n.editNote({}, 'title', 'body'), calls);
+        await s.sync();
       });
     });
   });
@@ -556,13 +409,7 @@ describe('Note (sync)', () => {
         assert.isTrue(isEmptyNote(n.noteState.selectedNote));
       }
 
-      const { calls } = mockApi({
-        request: {
-          resValue: {
-            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
 
       await n.getAllNotes();
 
@@ -577,7 +424,11 @@ describe('Note (sync)', () => {
 
       const statusWrapper = mount(SyncStatus);
 
-      s.pull();
+      setResValues.request({
+        '/notes/sync': [{ notes: mockDb.encryptedNotes }],
+      });
+
+      s.sync();
 
       await nextTick();
 
@@ -586,7 +437,7 @@ describe('Note (sync)', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.isNull(Storage.getJson('UNSYNCED'));
 
-      // New note mid-pull
+      // New note mid-sync
       const newButton = getByTestId(wrapper, 'new');
       await newButton.trigger('click');
       await waitUntil(() => !s.syncState.loadingCount);
@@ -618,15 +469,14 @@ describe('Note (sync)', () => {
 
       assert.isTrue(getByTestId(statusWrapper, 'success').isVisible());
 
-      await waitForAutoPush(() => n.editNote({}, 'title', 'body'), calls);
+      await waitForAutoSync(() => n.editNote({}, 'title', 'body'), calls);
 
       assert.isTrue(getByTestId(statusWrapper, 'success').isVisible());
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(Storage.getJson('UNSYNCED'));
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
-      // See `editNote` for why we expect selectedNote to be empty
-      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
+      assert.deepEqual(n.noteState.notes[0], n.noteState.selectedNote);
 
       await newButton.trigger('click');
 
@@ -637,23 +487,15 @@ describe('Note (sync)', () => {
       storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
       assert.isTrue(getByTestId(statusWrapper, 'success').isVisible());
+      assert.isNull(storedUnsyncedNoteIds);
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
-      assert.isEmpty(storedUnsyncedNoteIds?.new);
-      assert.isEmpty(storedUnsyncedNoteIds?.edited);
-      assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
-      assert.isEmpty(storedUnsyncedNoteIds?.deleted);
+      assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
     });
 
     it('edited', async () => {
-      const { calls, promises } = mockApi({
-        request: {
-          resValue: {
-            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
-          },
-        },
-      });
+      const { calls, promises, setResValues } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -668,14 +510,19 @@ describe('Note (sync)', () => {
 
       clearMockApiResults({ calls, promises });
 
-      s.pull();
+      // We don't set a res value for this call, because it shouldn't complete
+      s.sync();
 
       await nextTick();
 
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(getByTestId(statusWrapper, 'loading').isVisible());
 
-      await waitForAutoPush(async () => {
+      await waitForAutoSync(async () => {
+        setResValues.request({
+          '/notes/sync': [{ notes: mockDb.encryptedNotes }],
+        });
+
         n.editNote({}, 'title', 'body');
 
         const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
@@ -683,7 +530,7 @@ describe('Note (sync)', () => {
         assert.isTrue(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
         assert.strictEqual(storedUnsyncedNoteIds?.edited[0], firstCachedNote.id);
 
-        await waitUntil(() => calls.request.has('/notes/pull'));
+        await waitUntil(() => calls.request.has('/notes/sync'));
         await nextTick();
 
         assert.isTrue(getByTestId(statusWrapper, 'loading').isVisible());
@@ -694,11 +541,7 @@ describe('Note (sync)', () => {
         assert.isDefined(n.findNote(firstCachedNote.id));
       }, calls);
 
-      // Can be flaky and only have one call
-      await waitUntil(() => getByTestId(statusWrapper, 'success').isVisible());
-
-      assert.isTrue(calls.request.has('/notes/pull'));
-      assert.isTrue(calls.request.has('/notes/push')); // `syncNotes` and `autoPush`
+      assert.isTrue(calls.request.has('/notes/sync'));
       assert.isTrue(getByTestId(statusWrapper, 'success').isVisible());
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.isNull(Storage.getJson('UNSYNCED'));
@@ -716,7 +559,7 @@ describe('Note (sync)', () => {
 
       const secondCachedNote = { ...n.noteState.selectedNote };
 
-      await waitForAutoPush(async () => {
+      await waitForAutoSync(async () => {
         n.editNote({}, 'title2', 'body2');
 
         const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
@@ -730,7 +573,7 @@ describe('Note (sync)', () => {
         assert.strictEqual(storedUnsyncedNoteIds?.edited[0], secondCachedNote.id);
       }, calls);
 
-      assert.isTrue(calls.request.has('/notes/push'));
+      assert.isTrue(calls.request.has('/notes/sync'));
       assert.isTrue(getByTestId(statusWrapper, 'success').isVisible());
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(firstCachedNote.id));
       assert.isFalse(s.syncState.unsyncedNoteIds.edited.has(secondCachedNote.id));
@@ -745,13 +588,7 @@ describe('Note (sync)', () => {
     });
 
     it('deleted', async () => {
-      const { calls, promises } = mockApi({
-        request: {
-          resValue: {
-            '/notes/pull': [{ notes: mockDb.encryptedNotes }],
-          },
-        },
-      });
+      const { calls, promises, setResValues } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -766,14 +603,19 @@ describe('Note (sync)', () => {
 
       clearMockApiResults({ calls, promises });
 
-      s.pull();
+      // We don't set a res value for this call, because it shouldn't complete
+      s.sync();
 
       await nextTick();
 
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(getByTestId(statusWrapper, 'loading').isVisible());
 
-      await waitForAutoPush(async () => {
+      await waitForAutoSync(async () => {
+        setResValues.request({
+          '/notes/sync': [{ notes: mockDb.encryptedNotes }],
+        });
+
         n.deleteNote(n.noteState.selectedNote.id);
 
         const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
@@ -781,7 +623,7 @@ describe('Note (sync)', () => {
         assert.isTrue(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
         assert.strictEqual(storedUnsyncedNoteIds?.deleted[0], firstCachedNote.id);
 
-        await waitUntil(() => calls.request.has('/notes/pull'));
+        await waitUntil(() => calls.request.has('/notes/sync'));
         await nextTick();
 
         assert.isTrue(getByTestId(statusWrapper, 'loading').isVisible());
@@ -793,8 +635,7 @@ describe('Note (sync)', () => {
         assert.isUndefined(n.findNote(firstCachedNote.id));
       }, calls);
 
-      assert.isTrue(calls.request.has('/notes/pull'));
-      assert.isTrue(calls.request.has('/notes/push')); // This one is just `autoPush`, `syncNotes` push should return early
+      assert.isTrue(calls.request.has('/notes/sync'));
       assert.isTrue(getByTestId(statusWrapper, 'success').isVisible());
       assert.isFalse(s.syncState.unsyncedNoteIds.deleted.has(firstCachedNote.id));
       assert.isNull(Storage.getJson('UNSYNCED'));
@@ -805,7 +646,7 @@ describe('Note (sync)', () => {
 
       const secondCachedNote = { ...n.noteState.selectedNote };
 
-      await waitForAutoPush(async () => {
+      await waitForAutoSync(async () => {
         n.deleteNote(n.noteState.selectedNote.id);
 
         const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
@@ -848,13 +689,13 @@ describe('Note (sync)', () => {
       assert.isEmpty(s.syncState.unsyncedNoteIds.edited);
       assert.isEmpty(s.syncState.unsyncedNoteIds.deleted);
 
-      await waitForAutoPush(() => {
+      await waitForAutoSync(() => {
         n.editNote({}, 'title', 'body');
 
         storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
 
         assert.isFalse(isEmptyNote(n.noteState.notes[0]));
-        // See `editNote` for why selectedNote should be empty
+        // See `editNote` for why `selectedNote` should be empty
         assert.isTrue(isEmptyNote(n.noteState.selectedNote));
         assert.isEmpty(storedUnsyncedNoteIds?.new);
         assert.strictEqual(storedUnsyncedNoteIds?.edited[0], n.noteState.selectedNote.id);
@@ -867,7 +708,7 @@ describe('Note (sync)', () => {
 
       const cachedId = n.noteState.selectedNote.id;
 
-      await waitForAutoPush(() => {
+      await waitForAutoSync(() => {
         n.deleteNote(n.noteState.selectedNote.id);
 
         storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
@@ -885,18 +726,9 @@ describe('Note (sync)', () => {
 
   describe('Edge cases', () => {
     it('No local, some remote', async () => {
-      mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [[]],
-          },
-        },
-        request: {
-          resValue: {
-            '/auth/login': [{ notes: mockDb.encryptedNotes }],
-          },
-        },
-      });
+      const { setResValues } = mockApi();
+
+      setResValues.invoke({ get_all_notes: [[]] });
 
       await n.getAllNotes();
 
@@ -910,6 +742,10 @@ describe('Note (sync)', () => {
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
+
+      setResValues.request({
+        '/auth/login': [{ notes: mockDb.encryptedNotes }],
+      });
 
       await s.login();
 
@@ -948,20 +784,16 @@ describe('Note (sync)', () => {
       assert.isTrue(getByTestId(wrapper, 'success').isVisible());
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
-      assert.deepEqual(n.noteState.notes, localNotes);
+      assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
       assert.isEmpty(s.syncState.unsyncedNoteIds.new);
       assert.strictEqual(s.syncState.unsyncedNoteIds.size, 0);
       assert.isNull(Storage.getJson('UNSYNCED'));
     });
 
     it('No local, no remote', async () => {
-      mockApi({
-        invoke: {
-          resValue: {
-            get_all_notes: [[]],
-          },
-        },
-      });
+      const { setResValues } = mockApi();
+
+      setResValues.invoke({ get_all_notes: [[]] });
 
       await n.getAllNotes();
 

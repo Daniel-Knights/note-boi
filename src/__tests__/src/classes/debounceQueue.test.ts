@@ -43,7 +43,7 @@ describe('DebounceQueue', () => {
     const dq = new DebounceQueue();
     const cb = vi.fn(() => wait(1000));
 
-    assert.isUndefined(dq.isCancelled(undefined));
+    assert.isFalse(dq.isCancelled(undefined));
 
     vi.useFakeTimers();
 

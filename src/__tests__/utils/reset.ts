@@ -14,7 +14,7 @@ export function resetSyncStore(): void {
   s.syncState.newPassword = '';
   s.syncState.loadingCount = 0;
   s.syncState.isLoggedIn = false;
-  s.syncState.unsyncedNoteIds.clear();
+  s.syncState.unsyncedNoteIds.clear(true);
 
   s.resetAppError();
 }

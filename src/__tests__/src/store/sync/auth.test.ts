@@ -35,18 +35,13 @@ describe('Auth', () => {
 
   describe('login', () => {
     it('With no notes', async () => {
-      const { calls } = mockApi({
-        request: {
-          resValue: {
-            '/auth/login': [{ notes: mockDb.encryptedNotes }],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
       assert.lengthOf(n.noteState.notes, 0);
+      setResValues.request({ '/auth/login': [{ notes: mockDb.encryptedNotes }] });
 
       await s.login();
 
@@ -78,13 +73,7 @@ describe('Auth', () => {
     });
 
     it('With notes', async () => {
-      const { calls } = mockApi({
-        request: {
-          resValue: {
-            '/auth/login': [{ notes: mockDb.encryptedNotes }],
-          },
-        },
-      });
+      const { calls, setResValues } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -96,6 +85,7 @@ describe('Auth', () => {
       assert.isTrue(calls.invoke.has('get_all_notes'));
 
       clearMockApiResults({ calls });
+      setResValues.request({ '/auth/login': [{ notes: mockDb.encryptedNotes }] });
 
       await s.login();
 
@@ -124,19 +114,48 @@ describe('Auth', () => {
       });
     });
 
-    it('With encryptor error', async () => {
-      const { calls } = mockApi({
-        request: {
-          resValue: {
-            '/auth/login': [
-              { notes: [{ id: '0', timestamp: 0, content: 'Unencrypted content' }] },
-            ],
-          },
-        },
-      });
+    it('With encryption error', async () => {
+      const { calls } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
+
+      await n.getAllNotes();
+
+      clearMockApiResults({ calls });
+
+      // @ts-expect-error - hack to trigger encryption error. A circular reference that
+      // causes `JSON.stringify` to throw when stringifying note content for encryption.
+      // Tried every which way to mock reject on `crypto.subtle.encrypt`, but it
+      // doesn't work.
+      n.noteState.notes[0]!.content = n.noteState.notes[0];
+
+      await s.login();
+
+      assertAppError({
+        code: ERROR_CODE.ENCRYPTOR,
+        message: 'Note encryption/decryption failed',
+        retry: { fn: s.login },
+        display: { form: true, sync: true },
+      });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.strictEqual(calls.size, 0);
+    });
+
+    it('With decryption error', async () => {
+      const { calls, setResValues } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      clearMockApiResults({ calls });
+
+      setResValues.request({
+        '/auth/login': [
+          { notes: [{ id: '', timestamp: 0, content: 'Un-deserialisable' }] },
+        ],
+      });
 
       await s.login();
 
@@ -166,16 +185,12 @@ describe('Auth', () => {
     });
 
     it('With server error', async () => {
-      const { calls } = mockApi({
-        request: {
-          error: {
-            endpoint: '/auth/login',
-          },
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
+
+      setErrorValue.request({ endpoint: '/auth/login' });
 
       await s.login();
 
@@ -332,52 +347,21 @@ describe('Auth', () => {
       });
     });
 
-    it("Doesn't push empty notes", async () => {
-      const { calls } = mockApi();
-
-      s.syncState.username = 'k';
-      s.syncState.password = '2';
-
-      n.newNote();
-
-      assert.isNotEmpty(n.noteState.notes);
-      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
-      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-
-      clearMockApiResults({ calls });
-
-      await s.signup();
-
-      assertAppError();
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
-      assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.strictEqual(s.syncState.username, 'k');
-      assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(Storage.get('USERNAME'), 'k');
-      assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.request.has('/auth/signup'));
-      assertRequest('/auth/signup', calls.request[0]!.calledWith!);
-      assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        username: 'k',
-        accessToken: 'test-token',
-      });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: true,
-        },
-      });
-    });
-
-    it('With encryptor error', async () => {
+    it('With encryption error', async () => {
       const { calls } = mockApi();
 
       await n.getAllNotes();
 
       clearMockApiResults({ calls });
+
+      s.syncState.username = 'k';
+      s.syncState.password = '2';
+
+      // @ts-expect-error - hack to trigger encryption error. A circular reference that
+      // causes `JSON.stringify` to throw when stringifying note content for encryption.
+      // Tried every which way to mock reject on `crypto.subtle.encrypt`, but it
+      // doesn't work.
+      n.noteState.notes[0]!.content = n.noteState.notes[0];
 
       await s.signup();
 
@@ -393,16 +377,12 @@ describe('Auth', () => {
     });
 
     it('With server error', async () => {
-      const { calls } = mockApi({
-        request: {
-          error: {
-            endpoint: '/auth/signup',
-          },
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
 
       s.syncState.username = 'k';
       s.syncState.password = '2';
+
+      setErrorValue.request({ endpoint: '/auth/signup' });
 
       await s.signup();
 
@@ -470,13 +450,7 @@ describe('Auth', () => {
     });
 
     it('With server error', async () => {
-      const { calls } = mockApi({
-        request: {
-          error: {
-            endpoint: '/auth/logout',
-          },
-        },
-      });
+      const { calls, setErrorValue } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -484,6 +458,7 @@ describe('Auth', () => {
       await s.login();
 
       clearMockApiResults({ calls });
+      setErrorValue.request({ endpoint: '/auth/logout' });
 
       await s.logout();
 
