@@ -128,14 +128,10 @@ exports[`Utils > Tauri API wrappers > tauriEmit > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -281,14 +277,10 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -424,14 +416,10 @@ exports[`Utils > Tauri API wrappers > tauriListen > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -558,14 +546,10 @@ exports[`Utils > capitalise > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -692,14 +676,10 @@ exports[`Utils > hasKeys > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -826,14 +806,10 @@ exports[`Utils > isDev > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -960,14 +936,10 @@ exports[`Utils > isEmptyNote > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1094,14 +1066,10 @@ exports[`Utils > isWhitespaceOnly > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1228,14 +1196,10 @@ exports[`Utils > unixToDateTime > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }

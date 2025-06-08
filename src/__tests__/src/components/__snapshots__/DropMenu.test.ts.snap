@@ -113,14 +113,10 @@ exports[`DropMenu > Adds classes to items > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -247,14 +243,10 @@ exports[`DropMenu > Adds click handlers to items > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -381,14 +373,10 @@ exports[`DropMenu > Emits close on click > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -515,14 +503,10 @@ exports[`DropMenu > Handles sub-menus > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -649,14 +633,10 @@ exports[`DropMenu > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -783,14 +763,10 @@ exports[`DropMenu > Renders each item > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }

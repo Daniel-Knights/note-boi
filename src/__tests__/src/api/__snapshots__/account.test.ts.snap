@@ -264,14 +264,10 @@ exports[`Account > changePassword > Changes password for currently logged in acc
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "d",
 }
@@ -524,14 +520,10 @@ exports[`Account > changePassword > Sets and resets loading state > syncState 1`
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "d",
 }
@@ -727,14 +719,10 @@ exports[`Account > changePassword > User not found > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "1",
   "password": "2",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "k",
 }
@@ -1156,14 +1144,10 @@ exports[`Account > changePassword > With encryption error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "2",
   "password": "1",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "d",
 }
@@ -1411,14 +1395,10 @@ exports[`Account > changePassword > With server error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "2",
   "password": "1",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "d",
 }
@@ -1691,26 +1671,10 @@ exports[`Account > deleteAccount > Deletes currently logged in account > syncSta
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [MockFunction clear] {
-      "calls": [
-        [
-          true,
-        ],
-      ],
-      "results": [
-        {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    },
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1851,14 +1815,10 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > syncSta
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -2131,14 +2091,10 @@ exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`]
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -2396,14 +2352,10 @@ exports[`Account > deleteAccount > Unauthorized > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [MockFunction clear],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "d",
 }
@@ -2609,14 +2561,10 @@ exports[`Account > deleteAccount > User not found > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [MockFunction clear],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "k",
 }
@@ -2874,14 +2822,10 @@ exports[`Account > deleteAccount > With server error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [MockFunction clear],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "d",
 }

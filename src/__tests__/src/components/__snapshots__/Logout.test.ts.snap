@@ -601,14 +601,10 @@ exports[`Logout > Logs out on click > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -735,14 +731,10 @@ exports[`Logout > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }

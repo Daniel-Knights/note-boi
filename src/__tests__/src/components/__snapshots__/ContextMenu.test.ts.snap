@@ -113,14 +113,10 @@ exports[`ContextMenu > Closes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -482,14 +478,10 @@ exports[`ContextMenu > Creates a new note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "id",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -657,14 +649,10 @@ exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1038,16 +1026,12 @@ exports[`ContextMenu > Deletes a note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1397,8 +1381,7 @@ exports[`ContextMenu > Deletes all selected notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "b8ff4ac5-6541-49d2-9c79-4444d872481e",
@@ -1408,9 +1391,6 @@ exports[`ContextMenu > Deletes all selected notes > syncState 1`] = `
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 5,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1578,14 +1558,10 @@ exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1933,14 +1909,10 @@ exports[`ContextMenu > Exports a note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -2349,14 +2321,10 @@ exports[`ContextMenu > Exports all selected notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -2483,14 +2451,10 @@ exports[`ContextMenu > Mounts with ev > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -2617,14 +2581,10 @@ exports[`ContextMenu > Mounts without passed ev > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }

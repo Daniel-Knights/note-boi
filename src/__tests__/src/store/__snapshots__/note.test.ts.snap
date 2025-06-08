@@ -128,14 +128,10 @@ exports[`Note store > catchNoteInvokeError > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -509,16 +505,12 @@ exports[`Note store > deleteNote > Calls autoSync > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -895,16 +887,12 @@ exports[`Note store > deleteNote > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1278,16 +1266,12 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > sync
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1652,14 +1636,10 @@ exports[`Note store > deleteNote > Resets unsynced new note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -1836,16 +1816,12 @@ exports[`Note store > deleteNote > With no notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -2175,16 +2151,12 @@ exports[`Note store > deleteNote > Without selecting next note > syncState 1`] =
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -2473,16 +2445,12 @@ exports[`Note store > deleteSelectedNotes > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -2750,8 +2718,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > syncState 1
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "b9754a63-843c-4f59-9aea-9a374aa1603d",
@@ -2760,9 +2727,6 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > syncState 1
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 4,
-    "store": [Function],
   },
   "username": "",
 }
@@ -3111,16 +3075,12 @@ exports[`Note store > editNote > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {
       "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -3481,16 +3441,12 @@ exports[`Note store > editNote > Edits notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {
       "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
@@ -4087,14 +4043,10 @@ exports[`Note store > exportNotes > All notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -4498,14 +4450,10 @@ exports[`Note store > exportNotes > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -4967,14 +4915,10 @@ exports[`Note store > exportNotes > Passed selection of notes > syncState 1`] = 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -5366,14 +5310,10 @@ exports[`Note store > exportNotes > Returns when no location chosen > syncState 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -5753,14 +5693,10 @@ exports[`Note store > findNote > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -6140,14 +6076,10 @@ exports[`Note store > findNoteIndex > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -6320,14 +6252,10 @@ exports[`Note store > getAllNotes > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -6495,14 +6423,10 @@ exports[`Note store > getAllNotes > With empty note array > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -6882,14 +6806,10 @@ exports[`Note store > getAllNotes > With notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -7034,14 +6954,10 @@ exports[`Note store > getAllNotes > With single empty note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -7209,14 +7125,10 @@ exports[`Note store > getAllNotes > With undefined notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -7559,14 +7471,10 @@ exports[`Note store > isSelectedNote > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -7693,14 +7601,10 @@ exports[`Note store > new Note() > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -8055,14 +7959,10 @@ exports[`Note store > newNote > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -8405,14 +8305,10 @@ exports[`Note store > newNote > Only updates timestamp when empty note selected 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -8774,14 +8670,10 @@ exports[`Note store > newNote > When selected note isn't empty > syncState 1`] =
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {},
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 0,
-    "store": [Function],
   },
   "username": "",
 }
@@ -9126,16 +9018,12 @@ exports[`Note store > selectNote > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": {
-    "clear": [Function],
+  "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
       "id",
     },
     "edited": Set {},
     "new": "",
-    "set": [Function],
-    "size": 1,
-    "store": [Function],
   },
   "username": "",
 }
