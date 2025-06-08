@@ -1,3 +1,4 @@
+import * as a from '../../api';
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import * as u from '../../store/update';
@@ -19,12 +20,12 @@ describe('main', () => {
     const { calls } = mockApi();
     const getAllNotesSpy = vi.spyOn(n, 'getAllNotes');
     const handleUpdateSpy = vi.spyOn(u, 'handleUpdate');
-    const syncSpy = vi.spyOn(s, 'sync');
+    const syncSpy = vi.spyOn(a, 'sync');
 
     s.syncState.username = 'd';
     s.syncState.password = '1';
 
-    await s.login();
+    await a.login();
 
     clearMockApiResults({ calls });
 
@@ -74,7 +75,7 @@ describe('main', () => {
     it('With no unsynced notes', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const syncSpy = vi.spyOn(s, 'sync');
+      const syncSpy = vi.spyOn(a, 'sync');
 
       await main.exitApp(mockCb);
 
@@ -87,7 +88,7 @@ describe('main', () => {
     it('With unsynced notes', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const syncSpy = vi.spyOn(s, 'sync');
+      const syncSpy = vi.spyOn(a, 'sync');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
 
@@ -102,7 +103,7 @@ describe('main', () => {
     it('Triggers ask dialog on sync error, and answers "No"', async () => {
       const { calls, setResValues } = mockApi();
       const mockCb = vi.fn();
-      const syncSpy = vi.spyOn(s, 'sync');
+      const syncSpy = vi.spyOn(a, 'sync');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
       s.syncState.appError = new AppError({ code: ERROR_CODE.SYNC });
@@ -127,7 +128,7 @@ describe('main', () => {
     it('Triggers ask dialog on sync error, and answers "Yes"', async () => {
       const { calls } = mockApi();
       const mockCb = vi.fn();
-      const syncSpy = vi.spyOn(s, 'sync');
+      const syncSpy = vi.spyOn(a, 'sync');
 
       s.syncState.unsyncedNoteIds.edited.add('1');
       s.syncState.appError = new AppError({ code: ERROR_CODE.SYNC });

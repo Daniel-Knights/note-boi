@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 
+import * as a from '../../../api';
 import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
@@ -78,7 +79,7 @@ describe('PopupChangePassword', () => {
     s.syncState.username = 'd';
     s.syncState.password = '1';
 
-    await s.login();
+    await a.login();
 
     const wrapper = mountPopupChangePassword();
     const wrapperVm = wrapper.vm as unknown as {
@@ -112,7 +113,7 @@ describe('PopupChangePassword', () => {
     assert.isTrue(wrapperVm.validation.newPassword);
     assert.isTrue(wrapperVm.validation.confirmNewPassword);
 
-    const changePasswordSpy = vi.spyOn(s, 'changePassword');
+    const changePasswordSpy = vi.spyOn(a, 'changePassword');
 
     const formWrapper = getByTestId(wrapper, 'form');
     await formWrapper.trigger('submit');

@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 
+import * as a from '../../../api';
 import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
 import { MIN_PASSWORD_LENGTH } from '../../../constant';
@@ -189,8 +190,8 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      const loginSpy = vi.spyOn(s, 'login');
-      const signupSpy = vi.spyOn(s, 'signup');
+      const loginSpy = vi.spyOn(a, 'login');
+      const signupSpy = vi.spyOn(a, 'signup');
 
       const formWrapper = getByTestId(wrapper, 'form');
       await formWrapper.trigger('submit');
@@ -279,8 +280,8 @@ describe('PopupSyncAuth', () => {
       assert.isTrue(wrapperVm.validation.password);
       assert.isTrue(wrapperVm.validation.confirmPassword);
 
-      const loginSpy = vi.spyOn(s, 'login');
-      const signupSpy = vi.spyOn(s, 'signup');
+      const loginSpy = vi.spyOn(a, 'login');
+      const signupSpy = vi.spyOn(a, 'signup');
 
       const formWrapper = getByTestId(wrapper, 'form');
       await formWrapper.trigger('submit');
