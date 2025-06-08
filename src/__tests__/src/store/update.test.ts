@@ -2,7 +2,7 @@ import { check } from '@tauri-apps/plugin-updater';
 
 import * as u from '../../../store/update';
 import { Storage } from '../../../classes';
-import { clearMockApiResults, mockApi } from '../../api';
+import { clearMockApiResults, mockApi } from '../../mock';
 
 describe('Update', () => {
   describe('handleUpdate', () => {

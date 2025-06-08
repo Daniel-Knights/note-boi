@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import { updateState } from '../../../store/update';
-import { mockApi } from '../../api';
+import { mockApi } from '../../mock';
 
 import App from '../../../App.vue';
 import Editor from '../../../components/Editor.vue';

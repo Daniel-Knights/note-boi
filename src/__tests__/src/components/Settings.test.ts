@@ -9,7 +9,7 @@ import { COLOUR_THEMES } from '../../../constant';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { selectedTheme } from '../../../store/theme';
 import { tauriInvoke } from '../../../utils';
-import { clearMockApiResults, mockApi } from '../../api';
+import { clearMockApiResults, mockApi } from '../../mock';
 import {
   assertRequest,
   findByTestId,

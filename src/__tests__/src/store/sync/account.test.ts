@@ -1,7 +1,7 @@
 import * as n from '../../../../store/note';
 import * as s from '../../../../store/sync';
 import { ERROR_CODE, Storage } from '../../../../classes';
-import { clearMockApiResults, mockApi, mockDb } from '../../../api';
+import { clearMockApiResults, mockApi, mockDb } from '../../../mock';
 import { assertAppError, assertLoadingState, assertRequest } from '../../../utils';
 
 describe('Account', () => {

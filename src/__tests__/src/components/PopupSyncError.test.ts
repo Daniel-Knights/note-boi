@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 
 import * as s from '../../../store/sync';
 import { AppError, ERROR_CODE } from '../../../classes';
-import { mockApi } from '../../api';
+import { mockApi } from '../../mock';
 import {
   assertAppError,
   findByTestId,
