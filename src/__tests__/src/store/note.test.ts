@@ -323,10 +323,10 @@ describe('Note store', () => {
       assert.strictEqual(s.syncState.unsyncedNoteIds.new, '');
     });
 
-    it('Calls autoSync', async () => {
+    it('Calls debounceSync', async () => {
       const { calls, promises } = mockApi();
       const otherExistingNote = { ...localNotes[1]! };
-      const autoSyncSpy = vi.spyOn(a, 'autoSync');
+      const debounceSyncSpy = vi.spyOn(a, 'debounceSync');
 
       await n.getAllNotes();
 
@@ -335,7 +335,7 @@ describe('Note store', () => {
 
       await waitForAutoSync(() => n.deleteNote(otherExistingNote.id), calls);
 
-      expect(autoSyncSpy).toHaveBeenCalledOnce();
+      expect(debounceSyncSpy).toHaveBeenCalledOnce();
 
       assert.isUndefined(n.findNote(otherExistingNote.id));
       assert.strictEqual(calls.size, 1);
