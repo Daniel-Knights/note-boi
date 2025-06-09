@@ -2,7 +2,7 @@ import { AppError, ERROR_CODE, ErrorConfig } from '../../classes';
 
 /** Catches hanging requests (e.g. due to server error). */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function throwFetchError<T extends (...args: any) => void>(
+export function throwFetchError<T extends (...args: any) => Promise<void>>(
   errorConfig: Omit<ErrorConfig<T>, 'message'>,
   originalError: unknown
 ): void {
@@ -15,7 +15,7 @@ export function throwFetchError<T extends (...args: any) => void>(
 
 /** Catches note encryption errors. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function throwEncryptorError<T extends (...args: any) => void>(
+export function throwEncryptorError<T extends (...args: any) => Promise<void>>(
   errorConfig: Omit<ErrorConfig<T>, 'code' | 'message'>,
   originalError: unknown
 ): void {

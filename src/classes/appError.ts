@@ -19,7 +19,7 @@ type ErrorCode = ErrorCodes[ErrorKey];
 
 // Using `unknown` here breaks inference
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ErrorConfig<T extends (...args: any) => void> = {
+export type ErrorConfig<T extends (...args: any[]) => Promise<void>> = {
   code: ErrorCode;
   message?: string;
   originalError?: unknown;
@@ -35,8 +35,10 @@ export type ErrorConfig<T extends (...args: any) => void> = {
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class AppError<T extends (...args: any) => void = (...args: any) => void> {
+export class AppError<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  T extends (...args: any[]) => Promise<void> = (...args: any[]) => Promise<void>,
+> {
   readonly code;
   readonly message;
   readonly display;
@@ -62,6 +64,6 @@ export class AppError<T extends (...args: any) => void = (...args: any) => void>
 
     const { fn, args } = this.retryConfig;
 
-    return args ? fn(args) : fn();
+    return args ? fn(...args) : fn();
   }
 }

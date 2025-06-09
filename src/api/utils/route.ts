@@ -29,6 +29,7 @@ export function route<T extends (...args: never[]) => Promise<Awaited<ReturnType
           code: ERROR_CODE.UNKNOWN,
           message: 'An unknown error occurred',
           originalError: err,
+          retry: { fn: route(cb), args },
           display: { form: true, sync: true },
         });
 

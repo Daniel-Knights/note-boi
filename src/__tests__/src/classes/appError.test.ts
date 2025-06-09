@@ -16,11 +16,11 @@ describe('AppError', () => {
       message: 'Login error',
       display: { form: true },
       retry: {
-        fn: () => {
+        fn: async () => {
           //
         },
       },
-    } satisfies ErrorConfig<() => void>;
+    } satisfies ErrorConfig<() => Promise<void>>;
 
     const error = new AppError(config);
 
