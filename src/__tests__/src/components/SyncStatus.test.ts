@@ -93,7 +93,7 @@ describe('SyncStatus', () => {
       code: ERROR_CODE.SYNC,
       display: { sync: true },
       retry: {
-        fn: () => {
+        fn: async () => {
           //
         },
       },
