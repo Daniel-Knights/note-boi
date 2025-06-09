@@ -1,3 +1,3 @@
-export * from './decorators';
+export * from './route';
 export * from './error';
 export * from './http';
