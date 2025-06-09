@@ -8,8 +8,10 @@ import { mockApi } from '../mock';
  * No `expectedErrorConfig` asserts a `NONE` error.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function assertAppError<T extends (...args: any[]) => void>(
-  expectedErrorConfig?: ErrorConfig<T>
+export function assertAppError<T extends (...args: any[]) => Promise<void>>(
+  expectedErrorConfig?: Omit<ErrorConfig<T>, 'retry'> & {
+    retry?: ErrorConfig<T>['retry'] | { args: Parameters<T> };
+  }
 ) {
   const { appError } = s.syncState;
 
@@ -29,12 +31,22 @@ export function assertAppError<T extends (...args: any[]) => void>(
     assert.isNotEmpty(appError.message, expectedErrorConfig.message);
   }
 
+  if (expectedErrorConfig.retry) {
+    // In some cases strict equality can't be checked, because the function isn't a bound
+    // reference. In that case we just assert that it's a function.
+    if ('fn' in expectedErrorConfig.retry) {
+      assert.strictEqual(appError.retryConfig?.fn, expectedErrorConfig.retry.fn);
+    } else {
+      assert.isFunction(appError.retryConfig?.fn);
+    }
+
+    assert.sameOrderedMembers(
+      appError.retryConfig?.args || [],
+      expectedErrorConfig.retry.args || []
+    );
+  }
+
   assert.strictEqual(appError.code, expectedErrorConfig.code);
-  assert.strictEqual(appError.retryConfig?.fn, expectedErrorConfig.retry?.fn);
-  assert.sameOrderedMembers(
-    appError.retryConfig?.args || [],
-    expectedErrorConfig.retry?.args || []
-  );
   assert.deepEqual(appError.display, expectedErrorConfig.display);
 }
 
