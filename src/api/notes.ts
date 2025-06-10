@@ -30,15 +30,15 @@ import {
 const syncQueue = new DebounceQueue();
 
 // Sync
-export const sync = route(async (timeoutId?: number) => {
+export const sync = route(async (isCancelled?: () => boolean) => {
   const errorConfig = {
     code: ERROR_CODE.SYNC,
-    retry: { fn: sync, args: [timeoutId] },
+    retry: { fn: sync, args: [isCancelled] },
     display: { sync: true },
   } satisfies Omit<ErrorConfig<typeof sync>, 'message'>;
 
   const passwordKey = await KeyStore.getKey();
-  if (!passwordKey || syncQueue.isCancelled(timeoutId)) return;
+  if (!passwordKey || isCancelled?.()) return;
 
   const [accessToken, encryptedNotes] = await Promise.all([
     tauriInvoke('get_access_token', {
@@ -49,7 +49,7 @@ export const sync = route(async (timeoutId?: number) => {
       passwordKey
     ).catch((err) => throwEncryptorError(errorConfig, err)),
   ]);
-  if (!accessToken || !encryptedNotes || syncQueue.isCancelled(timeoutId)) return;
+  if (!accessToken || !encryptedNotes || isCancelled?.()) return;
 
   const res = await new FetchBuilder('/notes/sync')
     .method('PUT')
@@ -60,7 +60,7 @@ export const sync = route(async (timeoutId?: number) => {
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
-  if (!res || syncQueue.isCancelled(timeoutId)) return;
+  if (!res || isCancelled?.()) return;
 
   if (resIsOk(res)) {
     resetAppError();
@@ -73,7 +73,7 @@ export const sync = route(async (timeoutId?: number) => {
       res.data.notes ?? [],
       passwordKey
     ).catch((err) => throwEncryptorError(errorConfig, err));
-    if (!decryptedNotes || syncQueue.isCancelled(timeoutId)) return;
+    if (!decryptedNotes || isCancelled?.()) return;
 
     await syncLocalStateWithRemoteNotes(decryptedNotes);
   } else {
@@ -116,8 +116,8 @@ export function syncLocalStateWithRemoteNotes(remoteNotes: Note[]) {
 export function debounceSync(): void {
   if (!syncState.isLoggedIn) return;
 
-  const timeoutId = syncQueue.add(() => {
-    return sync(timeoutId);
+  syncQueue.add((isCancelled) => {
+    return sync(isCancelled);
   }, 500);
 }
 

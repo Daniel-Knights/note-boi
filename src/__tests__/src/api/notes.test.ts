@@ -507,9 +507,13 @@ describe('Notes (sync)', () => {
       const statusWrapper = mount(SyncStatus);
 
       clearMockApiResults({ calls, promises });
+      vi.useFakeTimers();
 
       // We don't set a res value for this call, because it shouldn't complete
-      a.sync();
+      a.debounceSync();
+
+      vi.advanceTimersByTime(1000);
+      vi.useRealTimers();
 
       await nextTick();
 
