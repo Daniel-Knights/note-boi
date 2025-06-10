@@ -4,6 +4,23 @@ import localNotes from '../../notes.json';
 import { isNote } from '../../utils';
 
 describe('Encryptor', () => {
+  describe('generatePasswordKey', () => {
+    it('Generates a password key', async () => {
+      const passwordKey = await Encryptor.generatePasswordKey('1');
+
+      assert.instanceOf(passwordKey, CryptoKey);
+    });
+
+    it('Throws an error for empty password', async () => {
+      try {
+        await Encryptor.generatePasswordKey('');
+      } catch (err) {
+        assert.instanceOf(err, Error);
+        assert.equal(err.message, 'Password cannot be empty');
+      }
+    });
+  });
+
   it('encryptNotes', async () => {
     const passwordKey = await Encryptor.generatePasswordKey('1');
     const encryptedNotes = await Encryptor.encryptNotes(localNotes, passwordKey);
