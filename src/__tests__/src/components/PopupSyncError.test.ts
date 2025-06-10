@@ -59,7 +59,7 @@ describe('PopupSyncError', () => {
 
     s.syncState.appError = new AppError({
       code: ERROR_CODE.SYNC,
-      retry: { fn: retryMock },
+      retry: { fn: retryMock, args: [1, 2, 3] },
     });
 
     const wrapper = mountPopupSyncError();
@@ -70,6 +70,7 @@ describe('PopupSyncError', () => {
 
     expect(resetErrorSpy).toHaveBeenCalledOnce();
     expect(retryMock).toHaveBeenCalledOnce();
+    expect(retryMock).toHaveBeenCalledWith(1, 2, 3);
 
     assertAppError();
     assert.lengthOf(wrapper.emitted('close')!, 1);
