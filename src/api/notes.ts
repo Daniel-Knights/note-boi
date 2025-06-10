@@ -113,12 +113,15 @@ export function syncLocalStateWithRemoteNotes(remoteNotes: Note[]) {
 }
 
 // Auto-syncing
-export function debounceSync(): void {
+export function debounceSync(instant = false): void {
   if (!syncState.isLoggedIn) return;
 
-  syncQueue.add((isCancelled) => {
-    return sync(isCancelled);
-  }, 500);
+  syncQueue.add(
+    (isCancelled) => {
+      return sync(isCancelled);
+    },
+    instant ? undefined : 500
+  );
 }
 
 // Keep track of notes with unsynced changes
