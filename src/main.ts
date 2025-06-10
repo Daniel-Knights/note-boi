@@ -4,7 +4,7 @@ import { exit, relaunch } from '@tauri-apps/plugin-process';
 import 'quill/dist/quill.snow.css';
 import { createApp } from 'vue';
 
-import { deleteAccount, sync } from './api';
+import { debounceSync, deleteAccount, sync } from './api';
 import { ERROR_CODE } from './classes';
 import { initLogger } from './log';
 import './sass/style.scss';
@@ -27,7 +27,7 @@ initLogger();
 handleUpdate();
 
 getAllNotes().then(() => {
-  sync();
+  debounceSync(true);
 });
 
 webview.getCurrentWebview().listen('tauri://close-requested', () => {
