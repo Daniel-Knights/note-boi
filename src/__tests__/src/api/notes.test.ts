@@ -83,6 +83,7 @@ describe('Notes (sync)', () => {
         accessToken: 'test-token',
       });
       assert.isTrue(calls.invoke.has('sync_local_notes'));
+      assert.deepEqual(calls.invoke[2]!.calledWith, { notes: n.noteState.notes });
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,
