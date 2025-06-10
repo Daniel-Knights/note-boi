@@ -1,24 +1,50 @@
 import { DebounceQueue } from '../../../classes';
-import { wait } from '../../utils';
 
 describe('DebounceQueue', () => {
   it('add', () => {
     const dq = new DebounceQueue();
-    const cb = vi.fn(() => Promise.resolve());
+    const isCancelledReturnValues: boolean[] = [];
+    const cb = vi.fn((isCancelled) => {
+      isCancelledReturnValues.push(isCancelled());
+
+      setTimeout(() => {
+        isCancelledReturnValues.push(isCancelled());
+      }, 500);
+
+      return Promise.resolve();
+    });
 
     vi.useFakeTimers();
 
-    dq.add(cb, 1000);
+    // Shouldn't be called at all
     dq.add(cb, 1000);
 
-    const timeoutId = dq.add(cb, 1000);
+    vi.advanceTimersByTime(500);
+
+    // Should be called, but cancelled partway through
+    dq.add(cb, 1000);
+
+    expect(cb).not.toHaveBeenCalled(); // For the first add
 
     vi.advanceTimersByTime(1000);
+
+    expect(cb).toHaveBeenCalled(); // For the second add
+
+    // Should be called, cancelling the previous call, and not get cancelled
+    dq.add(cb, 10);
+
+    vi.advanceTimersByTime(10);
+    vi.advanceTimersByTime(500);
     vi.useRealTimers();
 
-    expect(cb).toHaveBeenCalledTimes(1);
+    expect(cb).toHaveBeenCalledTimes(2);
 
-    assert.isDefined(timeoutId);
+    assert.deepEqual(isCancelledReturnValues, [
+      false, // First call, not cancelled
+      false, // Second call, not cancelled
+      true, // First call after wait, cancelled
+      false, // Second call after wait, not cancelled
+    ]);
   });
 
   it('clear', () => {
@@ -37,41 +63,5 @@ describe('DebounceQueue', () => {
     vi.useRealTimers();
 
     expect(cb).not.toHaveBeenCalled();
-  });
-
-  it('isCancelled', () => {
-    const dq = new DebounceQueue();
-    const cb = vi.fn(() => wait(1000));
-
-    assert.isFalse(dq.isCancelled(undefined));
-
-    vi.useFakeTimers();
-
-    let timeoutId = dq.add(cb, 1000);
-
-    assert.isFalse(dq.isCancelled(timeoutId));
-
-    dq.clear();
-
-    assert.isFalse(dq.isCancelled(timeoutId));
-
-    vi.advanceTimersByTime(1000);
-
-    expect(cb).not.toHaveBeenCalled();
-
-    vi.useFakeTimers();
-
-    dq.add(cb, 1000);
-
-    timeoutId = dq.add(cb, 1000);
-
-    vi.advanceTimersByTime(1000);
-
-    dq.clear();
-
-    assert.isTrue(dq.isCancelled(timeoutId));
-
-    vi.advanceTimersByTime(1000);
-    vi.useRealTimers();
   });
 });
