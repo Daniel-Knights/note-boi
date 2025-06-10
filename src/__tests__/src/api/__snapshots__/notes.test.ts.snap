@@ -2913,6 +2913,9 @@ exports[`Notes (sync) > sync > Unauthorized > syncState 1`] = `
     "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
+      "args": [
+        undefined,
+      ],
       "fn": [Function],
     },
   },
@@ -4509,6 +4512,9 @@ exports[`Notes (sync) > sync > User not found > syncState 1`] = `
     "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
+      "args": [
+        undefined,
+      ],
       "fn": [Function],
     },
   },
@@ -4783,6 +4789,9 @@ exports[`Notes (sync) > sync > With decryption error > syncState 1`] = `
     "originalError": [InvalidCharacterError: Invalid character],
     "retry": [Function],
     "retryConfig": {
+      "args": [
+        undefined,
+      ],
       "fn": [Function],
     },
   },
@@ -5017,6 +5026,9 @@ exports[`Notes (sync) > sync > With encryption error > syncState 1`] = `
     --- property 'content' closes the circle],
     "retry": [Function],
     "retryConfig": {
+      "args": [
+        undefined,
+      ],
       "fn": [Function],
     },
   },
@@ -5269,6 +5281,9 @@ exports[`Notes (sync) > sync > With server error > syncState 1`] = `
     "originalError": undefined,
     "retry": [Function],
     "retryConfig": {
+      "args": [
+        undefined,
+      ],
       "fn": [Function],
     },
   },

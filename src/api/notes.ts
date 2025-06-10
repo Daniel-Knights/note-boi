@@ -33,7 +33,7 @@ const syncQueue = new DebounceQueue();
 export const sync = route(async (timeoutId?: number) => {
   const errorConfig = {
     code: ERROR_CODE.SYNC,
-    retry: { fn: sync },
+    retry: { fn: sync, args: [timeoutId] },
     display: { sync: true },
   } satisfies Omit<ErrorConfig<typeof sync>, 'message'>;
 

@@ -72,7 +72,7 @@ describe('AppError', () => {
       error.retry();
 
       expect(retryFn).toHaveBeenCalledOnce();
-      expect(retryFn).toHaveBeenCalledWith([1, 2, 3]);
+      expect(retryFn).toHaveBeenCalledWith(1, 2, 3);
     });
 
     it('Without retryConfig', () => {
