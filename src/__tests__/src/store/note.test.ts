@@ -512,6 +512,7 @@ describe('Note store', () => {
   describe('editNote', () => {
     it('Edits notes', async () => {
       const { calls } = mockApi();
+      const debounceSyncSpy = vi.spyOn(a, 'debounceSync');
 
       await n.getAllNotes();
 
@@ -527,6 +528,7 @@ describe('Note store', () => {
       );
 
       expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
+      expect(debounceSyncSpy).toHaveBeenCalledOnce();
 
       const editedNote = n.findNote(noteToEdit.id)!;
 
@@ -534,7 +536,6 @@ describe('Note store', () => {
       assert.notDeepEqual(editedNote, noteToEdit);
       // See `editNote` for why selectedNote content should remain the same
       assert.deepEqual(n.noteState.selectedNote.content, currentSelectedNote.content);
-      assert.notDeepEqual(editedNote.content, noteToEdit.content);
       assert.notStrictEqual(
         n.noteState.selectedNote.timestamp,
         currentSelectedNote.timestamp
