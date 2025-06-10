@@ -165,19 +165,19 @@ Do you want to update now?",
     },
   ],
   [
+    "tauriApi",
+    {
+      "calledWith": undefined,
+      "name": "plugin:updater|download_and_install",
+    },
+  ],
+  [
     "invoke",
     {
       "calledWith": {
         "username": "d",
       },
       "name": "get_access_token",
-    },
-  ],
-  [
-    "tauriApi",
-    {
-      "calledWith": undefined,
-      "name": "plugin:updater|download_and_install",
     },
   ],
   [

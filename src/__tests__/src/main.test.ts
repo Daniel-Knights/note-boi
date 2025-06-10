@@ -20,7 +20,7 @@ describe('main', () => {
     const { calls } = mockApi();
     const getAllNotesSpy = vi.spyOn(n, 'getAllNotes');
     const handleUpdateSpy = vi.spyOn(u, 'handleUpdate');
-    const syncSpy = vi.spyOn(a, 'sync');
+    const syncSpy = vi.spyOn(a, 'debounceSync');
 
     s.syncState.username = 'd';
     s.syncState.password = '1';
