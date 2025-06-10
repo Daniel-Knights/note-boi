@@ -118,7 +118,7 @@ describe('Notes (sync)', () => {
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: a.sync, args: [] },
+        retry: { fn: a.sync, args: [undefined] },
         display: { sync: true },
       });
 
@@ -149,7 +149,7 @@ describe('Notes (sync)', () => {
       assertAppError({
         code: ERROR_CODE.ENCRYPTOR,
         message: 'Note encryption/decryption failed',
-        retry: { fn: a.sync },
+        retry: { fn: a.sync, args: [undefined] },
         display: { sync: true },
       });
 
@@ -192,7 +192,7 @@ describe('Notes (sync)', () => {
       assertAppError({
         code: ERROR_CODE.SYNC,
         message: 'Server error',
-        retry: { fn: a.sync, args: [] },
+        retry: { fn: a.sync, args: [undefined] },
         display: { sync: true },
       });
 
@@ -227,7 +227,7 @@ describe('Notes (sync)', () => {
       assertAppError({
         code: ERROR_CODE.SYNC,
         message: 'Unauthorized',
-        retry: { fn: a.sync, args: [] },
+        retry: { fn: a.sync, args: [undefined] },
         display: { sync: true },
       });
 
@@ -259,7 +259,7 @@ describe('Notes (sync)', () => {
       assertAppError({
         code: ERROR_CODE.SYNC,
         message: 'User not found',
-        retry: { fn: a.sync, args: [] },
+        retry: { fn: a.sync, args: [undefined] },
         display: { sync: true },
       });
 
