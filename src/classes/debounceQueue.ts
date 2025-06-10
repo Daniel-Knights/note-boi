@@ -13,9 +13,8 @@ export class DebounceQueue {
   /**
    * Adds new task to the debounce queue.
    * If there is an existing task, it will be cleared.
-   * @returns Timeout ID of the scheduled task.
    */
-  add(cb: (...args: never[]) => Promise<void>, delay: number) {
+  add(cb: (isCancelled: () => boolean) => Promise<void>, delay?: number) {
     this.clear();
 
     const timeoutId = window.setTimeout(() => {
@@ -23,15 +22,13 @@ export class DebounceQueue {
 
       this.#current.isRunning = true;
 
-      cb().finally(() => {
+      cb(() => this.#isCancelled(timeoutId)).finally(() => {
         this.#cancelled.set(timeoutId, { isRunning: false });
       });
     }, delay);
 
     this.#current.id = timeoutId;
     this.#current.isRunning = false;
-
-    return timeoutId;
   }
 
   /**
@@ -53,9 +50,11 @@ export class DebounceQueue {
   /**
    * Checks if task with the given timeout ID has been cancelled.
    */
-  isCancelled(timeoutId: number | undefined) {
-    if (!timeoutId) return this.#current.isRunning;
+  #isCancelled(timeoutId: number) {
+    const cancelled = !!this.#cancelled.get(timeoutId);
 
-    return !!this.#cancelled.get(timeoutId);
+    this.#cancelled.delete(timeoutId);
+
+    return cancelled;
   }
 }
