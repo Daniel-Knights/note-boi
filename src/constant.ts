@@ -32,7 +32,7 @@ export type EndpointPayloads = {
       deleted_note_ids: string[];
     };
     response: {
-      notes: EncryptedNote[];
+      note_diff: NoteDiff;
       access_token: string;
     };
   };
@@ -46,7 +46,7 @@ export type EndpointPayloads = {
       deleted_note_ids: string[];
     };
     response: {
-      notes: EncryptedNote[];
+      note_diff: NoteDiff;
       access_token: string;
     };
   };
@@ -64,6 +64,18 @@ export type EndpointPayloads = {
       access_token: string;
     };
   };
+};
+
+export type NoteDiff = {
+  added: EncryptedNote[];
+  edited: EncryptedNote[];
+  deleted_ids: string[];
+};
+
+export type DecryptedNoteDiff = {
+  added: Note[];
+  edited: Note[];
+  deleted_ids: string[];
 };
 
 export type Endpoint = keyof EndpointPayloads;
