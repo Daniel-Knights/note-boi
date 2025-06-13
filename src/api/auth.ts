@@ -11,7 +11,7 @@ import { noteState } from '../store/note';
 import { resetAppError, syncState } from '../store/sync';
 import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
 
-import { syncLocalStateWithRemoteNotes } from './notes';
+import { updateLocalNoteStateFromDiff } from './notes';
 import {
   parseErrorRes,
   resIsOk,
@@ -51,6 +51,10 @@ export const login = route(async () => {
   ).catch((err) => throwEncryptorError(errorConfig, err));
   if (!encryptedNotes) return;
 
+  encryptedNotes.forEach((nt) => {
+    syncState.encryptedNotesCache.set(nt.id, nt);
+  });
+
   const res = await new FetchBuilder('/auth/login')
     .method('POST')
     .body({
@@ -74,15 +78,17 @@ export const login = route(async () => {
 
     await KeyStore.storeKey(passwordKey);
 
-    const decryptedNotes = await Encryptor.decryptNotes(
-      res.data.notes ?? [],
-      passwordKey
-    ).catch((err) => throwEncryptorError(errorConfig, err));
+    const decryptedNotes = await Promise.all([
+      Encryptor.decryptNotes(res.data.note_diff.added, passwordKey),
+      Encryptor.decryptNotes(res.data.note_diff.edited, passwordKey),
+    ]).catch((err) => throwEncryptorError(errorConfig, err));
     if (!decryptedNotes) return;
 
-    await syncLocalStateWithRemoteNotes(decryptedNotes);
-
-    syncState.unsyncedNoteIds.clear();
+    await updateLocalNoteStateFromDiff({
+      added: decryptedNotes[0],
+      edited: decryptedNotes[1],
+      deleted_ids: res.data.note_diff.deleted_ids,
+    });
   } else {
     throw new AppError({
       ...errorConfig,
