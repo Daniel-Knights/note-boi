@@ -28,7 +28,7 @@ export function capitalise(text: string): string {
 }
 
 /** Returns true if note content is empty or note is `undefined`. */
-export function isEmptyNote(note?: Note): boolean {
+export function isEmptyNote(note?: { content: Note['content'] }): boolean {
   if (!note) return false;
 
   return isWhitespaceOnly(note.content.title) && isWhitespaceOnly(note.content.body);

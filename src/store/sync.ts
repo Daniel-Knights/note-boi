@@ -1,6 +1,6 @@
 import { reactive } from 'vue';
 
-import { AppError, Storage, UnsyncedNotesManager } from '../classes';
+import { AppError, EncryptedNote, Storage, UnsyncedNotesManager } from '../classes';
 
 export const syncState = reactive({
   username: Storage.get('USERNAME') || '',
@@ -10,6 +10,7 @@ export const syncState = reactive({
   isLoggedIn: false,
   appError: new AppError(),
   unsyncedNoteIds: new UnsyncedNotesManager(),
+  encryptedNotesCache: new Map<string, EncryptedNote>(),
 });
 
 /** Resets {@link syncState.appError}. */
