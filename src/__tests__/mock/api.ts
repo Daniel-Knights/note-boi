@@ -1,6 +1,7 @@
 import { mockIPC } from '@tauri-apps/api/mocks';
 
 import { Endpoint, TAURI_COMMANDS, TauriCommand } from '../../constant';
+import { normaliseCall } from '../utils';
 
 import { mockRequest, RequestResValue } from './request';
 import {
@@ -108,7 +109,9 @@ export function mockApi(): {
       promises.push(call.promise);
     }
 
-    allCalls.push([callType, call]);
+    // We normalise the call here, because it can contain references to objects that
+    // are mutated later in the test, which would affect the snapshots.
+    allCalls.push([callType, normaliseCall(call)]);
 
     return call.promise;
   }
@@ -239,7 +242,7 @@ class Calls extends Array<Call> {
 type ApiCallType = 'request' | 'invoke' | 'tauriApi' | 'emits' | 'listeners';
 type ApiCalls = { [T in ApiCallType]: Calls } & { size: number };
 
-type Call<T = unknown> = {
+export type Call<T = unknown> = {
   name: string;
   calledWith?: Record<string, unknown>;
   promise?: Promise<T>;
