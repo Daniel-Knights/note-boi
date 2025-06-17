@@ -7,24 +7,14 @@ export class NoteCollection {
     this.notes = notes;
   }
 
-  sortByTimestamp() {
-    this.notes.sort((a, b) => a.timestamp - b.timestamp);
-
-    return this;
-  }
-
   merge(notesRight: NoteCollection, deletedIds: Set<string>) {
-    // Handle if either side is empty
-    if (notesRight.notes.length === 0) {
-      return this;
-    }
-
-    if (this.notes.length === 0) {
-      return notesRight.sortByTimestamp();
-    }
-
-    // Merge notes
     const mergedNotes = new Set<EncryptedNote>();
+
+    const diff = {
+      added: [] as EncryptedNote[],
+      edited: [] as EncryptedNote[],
+      deleted_ids: [] as string[],
+    };
 
     // Left
     for (const nl of this.notes) {
@@ -35,21 +25,41 @@ export class NoteCollection {
       const nr = notesRight.notes.find((n) => n.id === nl.id);
 
       if (nr) {
-        mergedNotes.add(nl.timestamp > nr.timestamp ? nl : nr);
+        if (nl.timestamp > nr.timestamp) {
+          mergedNotes.add(nl);
+          diff.edited.push(nl);
+        } else {
+          mergedNotes.add(nr);
+        }
       } else {
         mergedNotes.add(nl);
+        diff.added.push(nl);
       }
     }
 
     // Right
     for (const nr of notesRight.notes) {
-      if (deletedIds.has(nr.id) || this.notes.some((nl) => nl.id === nr.id)) {
+      if ([...mergedNotes].some((nl) => nl.id === nr.id)) {
+        continue;
+      }
+
+      if (deletedIds.has(nr.id)) {
+        diff.deleted_ids.push(nr.id);
+
         continue;
       }
 
       mergedNotes.add(nr);
     }
 
-    return new NoteCollection([...mergedNotes]).sortByTimestamp();
+    this.notes = new NoteCollection([...mergedNotes]).sortByTimestamp().notes;
+
+    return diff;
+  }
+
+  sortByTimestamp() {
+    this.notes.sort((a, b) => a.timestamp - b.timestamp);
+
+    return this;
   }
 }

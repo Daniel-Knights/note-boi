@@ -4,11 +4,12 @@ import * as s from '../../../store/sync';
 import { ERROR_CODE, Storage } from '../../../classes';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
-import localNotes from '../../notes.json';
 import {
   assertAppError,
   assertLoadingState,
   assertRequest,
+  getDummyNotes,
+  getEncryptedNotes,
   hackEncryptionError,
 } from '../../utils';
 
@@ -41,19 +42,20 @@ describe('Auth', () => {
 
   describe('login', () => {
     it('With no notes', async () => {
-      const { calls, setResValues } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
       assert.lengthOf(n.noteState.notes, 0);
-      setResValues.request({ '/auth/login': [{ notes: mockDb.encryptedNotes }] });
+
+      mockDb.encryptedNotes = getEncryptedNotes();
 
       await a.login();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.lengthOf(n.noteState.notes, localNotes.length);
+      assert.lengthOf(n.noteState.notes, getDummyNotes().length);
       assert.isFalse(isEmptyNote(n.noteState.notes[0]));
       assert.isFalse(isEmptyNote(n.noteState.selectedNote));
       assert.isTrue(s.syncState.isLoggedIn);
@@ -79,7 +81,7 @@ describe('Auth', () => {
     });
 
     it('With notes', async () => {
-      const { calls, setResValues } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -91,13 +93,12 @@ describe('Auth', () => {
       assert.isTrue(calls.invoke.has('get_all_notes'));
 
       clearMockApiResults({ calls });
-      setResValues.request({ '/auth/login': [{ notes: mockDb.encryptedNotes }] });
 
       await a.login();
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
+      assert.deepEqual(n.noteState.notes, getDummyNotes().sort(n.sortNotesFn));
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
@@ -145,18 +146,14 @@ describe('Auth', () => {
     });
 
     it('With decryption error', async () => {
-      const { calls, setResValues } = mockApi();
+      const { calls } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
 
       clearMockApiResults({ calls });
 
-      setResValues.request({
-        '/auth/login': [
-          { notes: [{ id: '', timestamp: 0, content: 'Un-deserialisable' }] },
-        ],
-      });
+      mockDb.encryptedNotes = [{ id: '', timestamp: 0, content: 'Un-deserialisable' }];
 
       await a.login();
 
@@ -326,7 +323,7 @@ describe('Auth', () => {
 
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.deepEqual(n.noteState.notes, localNotes.sort(n.sortNotesFn));
+      assert.deepEqual(n.noteState.notes, getDummyNotes().sort(n.sortNotesFn));
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);

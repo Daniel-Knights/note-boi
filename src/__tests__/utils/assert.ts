@@ -22,7 +22,7 @@ export function assertAppError<T extends (...args: any[]) => Promise<void>>(
   }
 
   if (!expectedErrorConfig) {
-    assert.fail('Missing expectedErrorConfig');
+    assert.fail('Expected appError to be NONE');
   }
 
   if (expectedErrorConfig.message) {

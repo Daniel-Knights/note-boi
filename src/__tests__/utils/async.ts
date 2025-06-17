@@ -1,3 +1,4 @@
+import * as a from '../../api';
 import * as s from '../../store/sync';
 import { mockApi } from '../mock';
 
@@ -39,5 +40,15 @@ export async function waitForAutoSync(
 
   await waitUntil(() => !s.syncState.loadingCount);
 
+  vi.useRealTimers();
+}
+
+/** Uses fake timers to run `debounceSync` immediately. */
+export function immediateDebounceSync() {
+  vi.useFakeTimers();
+
+  a.debounceSync(true);
+
+  vi.advanceTimersByTime(0);
   vi.useRealTimers();
 }

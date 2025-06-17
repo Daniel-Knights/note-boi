@@ -1,3 +1,3 @@
 export * from './api';
-export { mockDb } from './request';
+export { mockDb, initialMockDb } from './request';
 export { mockKeyring } from './tauri';
