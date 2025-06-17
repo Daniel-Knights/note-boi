@@ -3,6 +3,7 @@ export * from './async';
 export * from './dom';
 export * from './encrypt';
 export * from './dummyNotes';
+export * from './normalise';
 export * from './noteCollection';
 export * from './object';
 export * from './reset';
