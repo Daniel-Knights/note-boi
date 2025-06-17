@@ -5,8 +5,7 @@ import * as n from '../../../store/note';
 import { Storage } from '../../../classes';
 import { isEmptyNote } from '../../../utils';
 import { mockApi } from '../../mock';
-import localNotes from '../../notes.json';
-import { getByTestId, resetNoteStore } from '../../utils';
+import { getByTestId, getDummyNotes, resetNoteStore } from '../../utils';
 
 import NoteMenu from '../../../components/NoteMenu.vue';
 
@@ -39,7 +38,7 @@ describe('NoteMenu', () => {
   it('Renders a list item for every note', () => {
     const wrapper = shallowMount(NoteMenu);
 
-    assert.lengthOf(wrapper.findAll('li'), localNotes.length);
+    assert.lengthOf(wrapper.findAll('li'), getDummyNotes().length);
 
     n.noteState.notes.forEach((note) => {
       const noteItem = wrapper.find(getDataNoteId(note.id));
@@ -93,7 +92,7 @@ describe('NoteMenu', () => {
   it('Selects a clicked note', async () => {
     const wrapper = shallowMount(NoteMenu);
 
-    const noteToSelect = localNotes[2]!;
+    const noteToSelect = getDummyNotes()[2]!;
     const noteItem = wrapper.get(getDataNoteId(noteToSelect.id));
 
     assert.isTrue(noteItem.isVisible());
@@ -367,7 +366,11 @@ describe('NoteMenu', () => {
 
     it('With cmd/ctrl', async () => {
       const wrapper = shallowMount(NoteMenu);
-      const notesToSelect = [localNotes[2]!, localNotes[4]!, localNotes[7]!];
+      const notesToSelect = [
+        getDummyNotes()[2]!,
+        getDummyNotes()[4]!,
+        getDummyNotes()[7]!,
+      ];
 
       await testMetaKeySelects(wrapper, notesToSelect);
       await testMetaKeyDeselects(wrapper);

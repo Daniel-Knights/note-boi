@@ -1,7 +1,7 @@
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import { EncryptedNote } from '../../classes';
-import { Endpoint, EndpointPayloads, ENDPOINTS } from '../../constant';
+import { Endpoint, EndpointPayloads, ENDPOINTS, NoteDiff } from '../../constant';
 import { hasKeys } from '../../utils';
 import { isEncryptedNote, NoteCollection, resolveImmediate } from '../utils';
 
@@ -15,8 +15,10 @@ export const mockDb: {
   users: {
     d: '1',
   },
-  encryptedNotes: undefined as unknown as EncryptedNote[],
+  encryptedNotes: [],
 };
+
+export const initialMockDb = Object.freeze(structuredClone(mockDb));
 
 /** Mocks requests to the server. */
 export function mockRequest(
@@ -81,6 +83,7 @@ export function mockRequest(
 
   const resData: {
     notes?: n.Note[] | EncryptedNote[];
+    note_diff?: NoteDiff;
     access_token?: string;
     error?: string;
   } = {};
@@ -130,9 +133,9 @@ export function mockRequest(
         httpStatus = 401;
       } else {
         const resValue = options.resValue?.['/auth/login']?.shift();
-        const syncedNotes = syncLocalAndRemoteNotes(reqPayload, resValue);
+        const noteDiff = syncDbNotesFromRequest(reqPayload);
 
-        resData.notes = syncedNotes;
+        resData.note_diff = noteDiff;
         resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
@@ -164,9 +167,9 @@ export function mockRequest(
         httpStatus = 404;
       } else {
         const resValue = options.resValue?.['/notes/sync']?.shift();
-        const syncedNotes = syncLocalAndRemoteNotes(reqPayload, resValue);
+        const noteDiff = syncDbNotesFromRequest(reqPayload);
 
-        resData.notes = syncedNotes;
+        resData.note_diff = noteDiff;
         resData.access_token = resValue?.access_token ?? 'test-token';
       }
 
@@ -235,20 +238,21 @@ function hasValidAuthHeaders(headers?: HeadersInit) {
   );
 }
 
-/** Syncs local and remote notes. */
-function syncLocalAndRemoteNotes(
-  reqPayload: EndpointPayloads['/notes/sync' | '/auth/login']['payload'],
-  resValue?: { notes?: EncryptedNote[] }
+/** Syncs notes from the request payload with those in the mock database. */
+function syncDbNotesFromRequest(
+  reqPayload: EndpointPayloads['/notes/sync' | '/auth/login']['payload']
 ) {
-  const dbNotes = new NoteCollection(resValue?.notes ?? []);
+  const dbNotes = new NoteCollection(mockDb.encryptedNotes);
   const payloadNotes = new NoteCollection(reqPayload.notes ?? []);
   const deletedNoteIds = new Set(reqPayload.deleted_note_ids).union(
     new Set(mockDb.deletedNoteIds)
   );
+  const diff = dbNotes.merge(payloadNotes, deletedNoteIds);
 
+  mockDb.encryptedNotes = dbNotes.notes;
   mockDb.deletedNoteIds = deletedNoteIds;
 
-  return dbNotes.merge(payloadNotes, deletedNoteIds).notes;
+  return diff;
 }
 
 //// Types

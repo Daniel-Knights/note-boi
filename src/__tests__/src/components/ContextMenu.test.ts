@@ -4,8 +4,7 @@ import { nextTick } from 'vue';
 import * as n from '../../../store/note';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../mock';
-import localNotes from '../../notes.json';
-import { getByTestId } from '../../utils';
+import { getByTestId, getDummyNotes } from '../../utils';
 
 import ContextMenu from '../../../components/ContextMenu.vue';
 import DropMenu from '../../../components/DropMenu.vue';
@@ -110,7 +109,7 @@ describe('ContextMenu', () => {
 
     await n.getAllNotes();
 
-    const noteToExport = { ...localNotes[0]! };
+    const noteToExport = { ...getDummyNotes()[0]! };
     const div = document.createElement('div');
     div.dataset.noteId = noteToExport.id;
 
@@ -136,8 +135,8 @@ describe('ContextMenu', () => {
 
     await n.getAllNotes();
 
-    const noteToExport = { ...localNotes[0] };
-    const noteSlice = localNotes.slice(2, 6);
+    const noteToExport = { ...getDummyNotes()[0] };
+    const noteSlice = getDummyNotes().slice(2, 6);
     const div = document.createElement('div');
     div.dataset.noteId = noteToExport.id;
 
@@ -162,7 +161,7 @@ describe('ContextMenu', () => {
 
     await n.getAllNotes();
 
-    const noteToDelete = { ...localNotes[0] };
+    const noteToDelete = { ...getDummyNotes()[0] };
     const div = document.createElement('div');
     div.dataset.noteId = noteToDelete.id;
 
@@ -183,8 +182,8 @@ describe('ContextMenu', () => {
 
     await n.getAllNotes();
 
-    const noteToDelete = { ...localNotes[0] };
-    const noteSlice = localNotes.slice(2, 6);
+    const noteToDelete = { ...getDummyNotes()[0] };
+    const noteSlice = getDummyNotes().slice(2, 6);
     const div = document.createElement('div');
     div.dataset.noteId = noteToDelete.id;
 

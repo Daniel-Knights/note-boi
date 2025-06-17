@@ -1,6 +1,6 @@
 import * as s from '../../../store/sync';
 import { FetchBuilder } from '../../../classes';
-import { mockApi, mockKeyring } from '../../mock';
+import { mockApi, mockDb, mockKeyring } from '../../mock';
 
 describe('FetchBuilder', () => {
   const testHeaders = {
@@ -46,7 +46,11 @@ describe('FetchBuilder', () => {
     assert.deepEqual(res, {
       ok: true,
       data: {
-        notes: [],
+        note_diff: {
+          added: mockDb.encryptedNotes,
+          edited: [],
+          deleted_ids: [],
+        },
         access_token: 'test-token',
       },
       status: 200,
@@ -93,7 +97,11 @@ describe('FetchBuilder', () => {
     assert.deepEqual(res, {
       ok: true,
       data: {
-        notes: [],
+        note_diff: {
+          added: mockDb.encryptedNotes,
+          edited: [],
+          deleted_ids: [],
+        },
         access_token: 'test-token',
       },
       status: 200,
