@@ -9,6 +9,7 @@ import {
 } from '../classes';
 import { DecryptedNoteDiff, NOTE_EVENTS } from '../constant';
 import {
+  findNote,
   newNote,
   noteState,
   selectNote,
@@ -101,11 +102,8 @@ export const sync = route(async (isCancelled?: () => boolean) => {
  * Updates local note state based on the given diff.
  */
 export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
-  const selectedNoteIsEdited = syncState.unsyncedNoteIds.edited.has(
-    noteState.selectedNote.id
-  );
-
   let selectedNoteIsDeleted = false;
+  let remoteSelectedNote;
 
   // Resolve edited and deleted note conflicts
   for (let i = noteState.notes.length - 1; i >= 0; i -= 1) {
@@ -113,10 +111,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
     const isSelectedNote = ln.id === noteState.selectedNote.id;
 
     // Remove notes that were deleted on the server
-    if (
-      noteDiff.deleted_ids.includes(ln.id) &&
-      (!isSelectedNote || !selectedNoteIsEdited)
-    ) {
+    if (noteDiff.deleted_ids.includes(ln.id)) {
       noteState.notes.splice(i, 1);
 
       if (isSelectedNote) {
@@ -129,10 +124,14 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
     // Update existing notes
     const foundRemoteNoteIndex = noteDiff.edited.findIndex((rn) => rn.id === ln.id);
 
-    if (foundRemoteNoteIndex > -1 && (!isSelectedNote || !selectedNoteIsEdited)) {
+    if (foundRemoteNoteIndex > -1) {
       noteState.notes[i] = noteDiff.edited[foundRemoteNoteIndex]!;
 
       noteDiff.edited.splice(foundRemoteNoteIndex, 1);
+
+      if (isSelectedNote) {
+        remoteSelectedNote = noteState.notes[i];
+      }
     }
   }
 
@@ -141,18 +140,33 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
     noteState.notes.push(rn);
   });
 
+  sortStateNotes();
+
   // New note if no notes exist
   if (noteState.notes.length === 0) {
     newNote();
   }
-
-  syncState.unsyncedNoteIds.clear(true);
-  sortStateNotes();
-
-  // Select next note if the current selected note was deleted
-  if (selectedNoteIsDeleted) {
+  // Select next note if current selected note was deleted
+  else if (selectedNoteIsDeleted) {
     selectNote(noteState.notes[0]!.id);
   }
+  // Update selected note if edited and ensure editor updates
+  else if (remoteSelectedNote) {
+    noteState.selectedNote.content = remoteSelectedNote.content;
+    noteState.selectedNote.timestamp = remoteSelectedNote.timestamp;
+
+    document.dispatchEvent(new Event(NOTE_EVENTS.change));
+  }
+  // Select next note if current selected note is empty and not deliberately created
+  else if (noteState.notes.length > 1 && !syncState.unsyncedNoteIds.new) {
+    const foundNote = findNote(noteState.selectedNote.id);
+
+    if (!foundNote || isEmptyNote(foundNote)) {
+      selectNote(noteState.notes[1]!.id);
+    }
+  }
+
+  syncState.unsyncedNoteIds.clear();
 
   return tauriInvoke('sync_local_notes', { notes: noteState.notes });
 }
