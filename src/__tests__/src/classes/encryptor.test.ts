@@ -1,14 +1,12 @@
 import { Encryptor } from '../../../classes';
-import { mockDb } from '../../mock';
-import localNotes from '../../notes.json';
-import { isNote } from '../../utils';
+import { getDummyNotes, getEncryptedNotes, isNote, passwordKey } from '../../utils';
 
 describe('Encryptor', () => {
   describe('generatePasswordKey', () => {
     it('Generates a password key', async () => {
-      const passwordKey = await Encryptor.generatePasswordKey('1');
+      const key = await Encryptor.generatePasswordKey('1');
 
-      assert.instanceOf(passwordKey, CryptoKey);
+      assert.instanceOf(key, CryptoKey);
     });
 
     it('Throws an error for empty password', async () => {
@@ -22,10 +20,9 @@ describe('Encryptor', () => {
   });
 
   it('encryptNotes', async () => {
-    const passwordKey = await Encryptor.generatePasswordKey('1');
-    const encryptedNotes = await Encryptor.encryptNotes(localNotes, passwordKey);
+    const encryptedNotes = await Encryptor.encryptNotes(getDummyNotes(), passwordKey);
 
-    assert.lengthOf(encryptedNotes, localNotes.length);
+    assert.lengthOf(encryptedNotes, getDummyNotes().length);
 
     encryptedNotes.forEach((note) => {
       assert.isString(note.content);
@@ -34,13 +31,10 @@ describe('Encryptor', () => {
 
   describe('decryptNotes', () => {
     it('Decrypts notes', async () => {
-      const passwordKey = await Encryptor.generatePasswordKey('1');
-      const decryptedNotes = await Encryptor.decryptNotes(
-        mockDb.encryptedNotes,
-        passwordKey
-      );
+      const encryptedNotes = getEncryptedNotes();
+      const decryptedNotes = await Encryptor.decryptNotes(encryptedNotes, passwordKey);
 
-      assert.lengthOf(decryptedNotes, mockDb.encryptedNotes.length);
+      assert.lengthOf(decryptedNotes, encryptedNotes.length);
 
       decryptedNotes.forEach((nt) => {
         assert.isTrue(isNote(nt));
@@ -48,10 +42,9 @@ describe('Encryptor', () => {
     });
 
     it('Handles unencrypted notes', async () => {
-      const passwordKey = await Encryptor.generatePasswordKey('1');
-      const decryptedNotes = await Encryptor.decryptNotes(localNotes, passwordKey);
+      const decryptedNotes = await Encryptor.decryptNotes(getDummyNotes(), passwordKey);
 
-      assert.lengthOf(decryptedNotes, localNotes.length);
+      assert.lengthOf(decryptedNotes, getDummyNotes().length);
 
       decryptedNotes.forEach((nt) => {
         assert.isTrue(isNote(nt));

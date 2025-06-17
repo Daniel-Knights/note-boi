@@ -6,11 +6,6 @@ export function isObj(obj: unknown): obj is Record<string, unknown> {
   return typeof obj === 'object' && obj !== null;
 }
 
-/** Returns `arr` with all objects that're one level deep copied. */
-export function copyObjArr<T extends Record<string, unknown> | n.Note>(arr: T[]): T[] {
-  return arr.map((obj) => ({ ...obj }));
-}
-
 export function isNote(note: unknown): note is n.Note {
   const nt = note as n.Note;
 

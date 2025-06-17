@@ -5,11 +5,10 @@ import { NOTE_EVENTS } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
 import { UUID_REGEX } from '../../constant';
 import { clearMockApiResults, mockApi } from '../../mock';
-import localNotes from '../../notes.json';
-import { wait, waitForAutoSync, waitUntil } from '../../utils';
+import { getDummyNotes, wait, waitForAutoSync, waitUntil } from '../../utils';
 
 const existingNoteIndexSorted = 2;
-const existingNote = localNotes[8]!;
+const existingNote = getDummyNotes()[8]!;
 
 const mockChangeEventCb = vi.fn();
 const mockNewEventCb = vi.fn();
@@ -196,7 +195,7 @@ describe('Note store', () => {
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
 
       assert.lengthOf(n.noteState.notes, 10);
-      assert.deepEqual(n.noteState.notes[0], localNotes.sort(n.sortNotesFn)[0]);
+      assert.deepEqual(n.noteState.notes[0], getDummyNotes().sort(n.sortNotesFn)[0]);
       assert.deepEqual(n.noteState.notes[0], n.noteState.selectedNote);
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('get_all_notes'));
@@ -256,7 +255,7 @@ describe('Note store', () => {
 
     it('Without selecting next note', async () => {
       const { calls, promises } = mockApi();
-      const otherExistingNote = { ...localNotes[1]! };
+      const otherExistingNote = { ...getDummyNotes()[1]! };
 
       s.syncState.isLoggedIn = true;
 
@@ -325,7 +324,7 @@ describe('Note store', () => {
 
     it('Calls debounceSync', async () => {
       const { calls, promises } = mockApi();
-      const otherExistingNote = { ...localNotes[1]! };
+      const otherExistingNote = { ...getDummyNotes()[1]! };
       const debounceSyncSpy = vi.spyOn(a, 'debounceSync');
 
       await n.getAllNotes();

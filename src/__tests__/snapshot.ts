@@ -13,10 +13,9 @@ import { selectedTheme } from '../store/theme';
 
 import { UUID_REGEX } from './constant';
 import { allCalls, mockDb } from './mock';
-import localNotes from './notes.json';
-import { isNote, isObj } from './utils';
+import { getDummyNotes, isNote, isObj } from './utils';
 
-const staticNoteIds = new Set(localNotes.map((nt) => nt.id));
+const staticNoteIds = new Set(getDummyNotes().map((nt) => nt.id));
 
 /** Snapshots app state. Replaces variable values with placeholders. */
 export async function snapshotState() {

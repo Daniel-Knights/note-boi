@@ -3,8 +3,7 @@ import { mount } from '@vue/test-utils';
 import * as n from '../../../store/note';
 import { unixToDateTime } from '../../../utils';
 import { mockApi } from '../../mock';
-import localNotes from '../../notes.json';
-import { getByTestId } from '../../utils';
+import { getByTestId, getDummyNotes } from '../../utils';
 
 import Editor from '../../../components/Editor.vue';
 
@@ -40,8 +39,8 @@ describe('Editor', () => {
     assert.isTrue(calls.invoke.has('get_all_notes'));
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
 
-    n.selectNote(localNotes[1]!.id);
+    n.selectNote(getDummyNotes()[1]!.id);
 
-    assert.include(editorBody.text(), localNotes[1]!.content.body);
+    assert.include(editorBody.text(), getDummyNotes()[1]!.content.body);
   });
 });

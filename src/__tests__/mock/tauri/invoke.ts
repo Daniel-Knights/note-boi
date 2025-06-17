@@ -1,8 +1,7 @@
 import * as n from '../../../store/note';
 import { TauriCommand, TauriCommandPayloads } from '../../../constant';
 import { hasKeys } from '../../../utils';
-import localNotes from '../../notes.json';
-import { copyObjArr, isNote, resolveImmediate } from '../../utils';
+import { getDummyNotes, isNote, resolveImmediate } from '../../utils';
 
 export const mockKeyring: Record<string, string> = {};
 
@@ -23,7 +22,7 @@ export function mockTauriInvoke(
       resData =
         // Allow undefined res values for returning no notes
         !options.resValue || !('get_all_notes' in options.resValue)
-          ? copyObjArr(localNotes)
+          ? getDummyNotes()
           : options.resValue.get_all_notes!.shift();
 
       break;

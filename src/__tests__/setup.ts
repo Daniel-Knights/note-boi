@@ -2,25 +2,19 @@ import { clearMocks, mockWindows } from '@tauri-apps/api/mocks';
 import { enableAutoUnmount } from '@vue/test-utils';
 import { indexedDB } from 'fake-indexeddb';
 
-import { Encryptor, KeyStore, Storage } from '../classes';
+import { KeyStore, Storage } from '../classes';
 
-import { allCalls, mockDb, mockKeyring } from './mock';
-import localNotes from './notes.json';
+import { allCalls, mockKeyring } from './mock';
 import { snapshotState } from './snapshot';
-import { resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
+import { resetMockDb, resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
 
 const assertFailSpy = vi.spyOn(assert, 'fail');
-const initialMockDb = structuredClone(mockDb);
 
 beforeAll(async () => {
   // jsdom doesn't come with IndexedDB implementations
   Object.defineProperty(window, 'indexedDB', {
     value: indexedDB,
   });
-
-  const passwordKey = await Encryptor.generatePasswordKey('1');
-
-  mockDb.encryptedNotes = await Encryptor.encryptNotes(localNotes, passwordKey);
 
   await KeyStore.reset();
 
@@ -35,10 +29,9 @@ afterEach(async () => {
   resetSyncStore();
   resetNoteStore();
   resetUpdateStore();
+  resetMockDb();
 
   await KeyStore.reset();
-
-  mockDb.users = structuredClone(initialMockDb.users);
 
   Object.keys(mockKeyring).forEach((key) => {
     delete mockKeyring[key];

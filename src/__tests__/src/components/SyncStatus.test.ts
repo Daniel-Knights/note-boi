@@ -3,7 +3,7 @@ import { nextTick } from 'vue';
 
 import * as a from '../../../api';
 import * as s from '../../../store/sync';
-import { AppError, Encryptor, ERROR_CODE, KeyStore } from '../../../classes';
+import { AppError, ERROR_CODE, KeyStore } from '../../../classes';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { tauriInvoke } from '../../../utils';
 import { mockApi } from '../../mock';
@@ -13,6 +13,7 @@ import {
   getAppDiv,
   getByTestId,
   getTeleportMountOptions,
+  passwordKey,
   waitUntil,
 } from '../../utils';
 
@@ -58,9 +59,8 @@ describe('SyncStatus', () => {
     mockApi();
 
     const wrapper = mount(SyncStatus);
-    // Simulate having previously been logged in
-    const passwordKey = await Encryptor.generatePasswordKey('1');
 
+    // Simulate having previously been logged in
     s.syncState.username = 'd';
 
     await KeyStore.storeKey(passwordKey);
