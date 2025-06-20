@@ -93,5 +93,6 @@ export function normaliseEncryptedNote(nt: EncryptedNote): EncryptedNote {
     ...nt,
     content: 'content',
     id: normaliseNoteId(nt.id),
+    timestamp: 0,
   };
 }
