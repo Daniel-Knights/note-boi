@@ -89,58 +89,7 @@ exports[`Settings > Account menu item > Delete account menu item > document.body
 exports[`Settings > Account menu item > Delete account menu item > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {},
 }
 `;
@@ -177,6 +126,7 @@ exports[`Settings > Account menu item > Delete account menu item > syncState 1`]
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -217,58 +167,7 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
 exports[`Settings > Account menu item > Opens and closes change password popup > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -307,6 +206,7 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": true,
   "loadingCount": 0,
   "newPassword": "",
@@ -372,58 +272,7 @@ exports[`Settings > Exports all notes > document.body.outerHTML 1`] = `"<body cl
 exports[`Settings > Exports all notes > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -462,6 +311,7 @@ exports[`Settings > Exports all notes > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -502,58 +352,7 @@ exports[`Settings > Mounts > document.body.outerHTML 1`] = `"<body class="theme-
 exports[`Settings > Mounts > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -592,6 +391,7 @@ exports[`Settings > Mounts > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -632,58 +432,7 @@ exports[`Settings > Opens and closes drop menu > document.body.outerHTML 1`] = `
 exports[`Settings > Opens and closes drop menu > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -722,6 +471,7 @@ exports[`Settings > Opens and closes drop menu > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -772,58 +522,7 @@ exports[`Settings > Opens info popup > document.body.outerHTML 1`] = `"<body cla
 exports[`Settings > Opens info popup > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -862,6 +561,7 @@ exports[`Settings > Opens info popup > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -902,58 +602,7 @@ exports[`Settings > Sets theme preference > document.body.outerHTML 1`] = `"<bod
 exports[`Settings > Sets theme preference > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -992,6 +641,7 @@ exports[`Settings > Sets theme preference > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -1032,58 +682,7 @@ exports[`Settings > Sets update strategy > document.body.outerHTML 1`] = `"<body
 exports[`Settings > Sets update strategy > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -1122,6 +721,7 @@ exports[`Settings > Sets update strategy > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -1219,58 +819,7 @@ exports[`Settings > Update and restart menu item > document.body.outerHTML 1`] =
 exports[`Settings > Update and restart menu item > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -1309,6 +858,7 @@ exports[`Settings > Update and restart menu item > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",

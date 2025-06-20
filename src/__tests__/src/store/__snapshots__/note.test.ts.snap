@@ -34,58 +34,7 @@ exports[`Note store > catchNoteInvokeError > document.body.outerHTML 1`] = `"<bo
 exports[`Note store > catchNoteInvokeError > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -124,6 +73,7 @@ exports[`Note store > catchNoteInvokeError > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -170,7 +120,7 @@ exports[`Note store > deleteNote > Calls debounceSync > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+        "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       },
       "name": "delete_note",
     },
@@ -183,58 +133,7 @@ exports[`Note store > deleteNote > Calls debounceSync > document.body.outerHTML 
 exports[`Note store > deleteNote > Calls debounceSync > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -316,6 +215,21 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
+      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
       "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
     },
@@ -347,21 +261,6 @@ Sugar
         "title": "Amet consectetur adipisicing",
       },
       "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 0,
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
     },
     {
@@ -501,13 +400,14 @@ exports[`Note store > deleteNote > Calls debounceSync > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
-      "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "edited": Set {},
     "new": "",
@@ -565,58 +465,7 @@ exports[`Note store > deleteNote > Catches error > document.body.outerHTML 1`] =
 exports[`Note store > deleteNote > Catches error > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -883,6 +732,7 @@ exports[`Note store > deleteNote > Catches error > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -944,58 +794,7 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > docu
 exports[`Note store > deleteNote > Deletes selected note and selects next > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -1262,6 +1061,7 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > sync
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -1314,58 +1114,7 @@ exports[`Note store > deleteNote > Resets unsynced new note > document.body.oute
 exports[`Note store > deleteNote > Resets unsynced new note > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -1632,6 +1381,7 @@ exports[`Note store > deleteNote > Resets unsynced new note > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -1710,58 +1460,7 @@ exports[`Note store > deleteNote > With no notes > document.body.outerHTML 1`] =
 exports[`Note store > deleteNote > With no notes > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -1812,6 +1511,7 @@ exports[`Note store > deleteNote > With no notes > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -1860,7 +1560,7 @@ exports[`Note store > deleteNote > Without selecting next note > allCalls 1`] = 
     "invoke",
     {
       "calledWith": {
-        "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+        "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       },
       "name": "delete_note",
     },
@@ -1873,58 +1573,7 @@ exports[`Note store > deleteNote > Without selecting next note > document.body.o
 exports[`Note store > deleteNote > Without selecting next note > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -2006,6 +1655,21 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
+      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+      "timestamp": 0,
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
       "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
     },
@@ -2037,21 +1701,6 @@ Sugar
         "title": "Amet consectetur adipisicing",
       },
       "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 0,
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
     },
     {
@@ -2147,13 +1796,14 @@ exports[`Note store > deleteNote > Without selecting next note > syncState 1`] =
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": true,
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
   "unsyncedNoteIds": UnsyncedNotesManager {
     "deleted": Set {
-      "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "edited": Set {},
     "new": "",
@@ -2211,58 +1861,7 @@ exports[`Note store > deleteSelectedNotes > Catches error > document.body.outerH
 exports[`Note store > deleteSelectedNotes > Catches error > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -2441,6 +2040,7 @@ exports[`Note store > deleteSelectedNotes > Catches error > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -2529,58 +2129,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > document.bo
 exports[`Note store > deleteSelectedNotes > Deletes selected notes > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -2714,6 +2263,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > syncState 1
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -2781,58 +2331,7 @@ exports[`Note store > editNote > Catches error > document.body.outerHTML 1`] = `
 exports[`Note store > editNote > Catches error > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -3071,6 +2570,7 @@ exports[`Note store > editNote > Catches error > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -3147,58 +2647,7 @@ exports[`Note store > editNote > Edits notes > document.body.outerHTML 1`] = `"<
 exports[`Note store > editNote > Edits notes > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -3437,6 +2886,7 @@ exports[`Note store > editNote > Edits notes > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -3706,58 +3156,7 @@ exports[`Note store > exportNotes > All notes > document.body.outerHTML 1`] = `"
 exports[`Note store > exportNotes > All notes > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -4039,6 +3438,7 @@ exports[`Note store > exportNotes > All notes > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -4113,58 +3513,7 @@ exports[`Note store > exportNotes > Catches error > document.body.outerHTML 1`] 
 exports[`Note store > exportNotes > Catches error > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -4446,6 +3795,7 @@ exports[`Note store > exportNotes > Catches error > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -4578,58 +3928,7 @@ exports[`Note store > exportNotes > Passed selection of notes > document.body.ou
 exports[`Note store > exportNotes > Passed selection of notes > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -4911,6 +4210,7 @@ exports[`Note store > exportNotes > Passed selection of notes > syncState 1`] = 
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -4973,58 +4273,7 @@ exports[`Note store > exportNotes > Returns when no location chosen > document.b
 exports[`Note store > exportNotes > Returns when no location chosen > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -5306,6 +4555,7 @@ exports[`Note store > exportNotes > Returns when no location chosen > syncState 
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -5356,58 +4606,7 @@ exports[`Note store > findNote > document.body.outerHTML 1`] = `"<body class="th
 exports[`Note store > findNote > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -5689,6 +4888,7 @@ exports[`Note store > findNote > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -5739,58 +4939,7 @@ exports[`Note store > findNoteIndex > document.body.outerHTML 1`] = `"<body clas
 exports[`Note store > findNoteIndex > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -6072,6 +5221,7 @@ exports[`Note store > findNoteIndex > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -6146,58 +5296,7 @@ exports[`Note store > getAllNotes > Catches error > document.body.outerHTML 1`] 
 exports[`Note store > getAllNotes > Catches error > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -6248,6 +5347,7 @@ exports[`Note store > getAllNotes > Catches error > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -6317,58 +5417,7 @@ exports[`Note store > getAllNotes > With empty note array > document.body.outerH
 exports[`Note store > getAllNotes > With empty note array > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -6419,6 +5468,7 @@ exports[`Note store > getAllNotes > With empty note array > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -6469,58 +5519,7 @@ exports[`Note store > getAllNotes > With notes > document.body.outerHTML 1`] = `
 exports[`Note store > getAllNotes > With notes > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -6802,6 +5801,7 @@ exports[`Note store > getAllNotes > With notes > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -6852,58 +5852,7 @@ exports[`Note store > getAllNotes > With single empty note > document.body.outer
 exports[`Note store > getAllNotes > With single empty note > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -6950,6 +5899,7 @@ exports[`Note store > getAllNotes > With single empty note > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -7019,58 +5969,7 @@ exports[`Note store > getAllNotes > With undefined notes > document.body.outerHT
 exports[`Note store > getAllNotes > With undefined notes > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -7121,6 +6020,7 @@ exports[`Note store > getAllNotes > With undefined notes > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -7171,58 +6071,7 @@ exports[`Note store > isSelectedNote > document.body.outerHTML 1`] = `"<body cla
 exports[`Note store > isSelectedNote > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -7467,6 +6316,7 @@ exports[`Note store > isSelectedNote > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -7507,58 +6357,7 @@ exports[`Note store > new Note() > document.body.outerHTML 1`] = `"<body class="
 exports[`Note store > new Note() > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -7597,6 +6396,7 @@ exports[`Note store > new Note() > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -7659,58 +6459,7 @@ exports[`Note store > newNote > Catches error > document.body.outerHTML 1`] = `"
 exports[`Note store > newNote > Catches error > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -7955,6 +6704,7 @@ exports[`Note store > newNote > Catches error > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -8005,58 +6755,7 @@ exports[`Note store > newNote > Only updates timestamp when empty note selected 
 exports[`Note store > newNote > Only updates timestamp when empty note selected > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -8301,6 +7000,7 @@ exports[`Note store > newNote > Only updates timestamp when empty note selected 
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -8370,58 +7070,7 @@ exports[`Note store > newNote > When selected note isn't empty > document.body.o
 exports[`Note store > newNote > When selected note isn't empty > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -8666,6 +7315,7 @@ exports[`Note store > newNote > When selected note isn't empty > syncState 1`] =
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -8725,58 +7375,7 @@ exports[`Note store > selectNote > document.body.outerHTML 1`] = `"<body class="
 exports[`Note store > selectNote > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -9014,6 +7613,7 @@ exports[`Note store > selectNote > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
