@@ -19,58 +19,7 @@ exports[`DropMenu > Adds classes to items > document.body.outerHTML 1`] = `"<bod
 exports[`DropMenu > Adds classes to items > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -109,6 +58,7 @@ exports[`DropMenu > Adds classes to items > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -149,58 +99,7 @@ exports[`DropMenu > Adds click handlers to items > document.body.outerHTML 1`] =
 exports[`DropMenu > Adds click handlers to items > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -239,6 +138,7 @@ exports[`DropMenu > Adds click handlers to items > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -279,58 +179,7 @@ exports[`DropMenu > Emits close on click > document.body.outerHTML 1`] = `"<body
 exports[`DropMenu > Emits close on click > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -369,6 +218,7 @@ exports[`DropMenu > Emits close on click > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -409,58 +259,7 @@ exports[`DropMenu > Handles sub-menus > document.body.outerHTML 1`] = `"<body cl
 exports[`DropMenu > Handles sub-menus > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -499,6 +298,7 @@ exports[`DropMenu > Handles sub-menus > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -539,58 +339,7 @@ exports[`DropMenu > Mounts > document.body.outerHTML 1`] = `"<body class="theme-
 exports[`DropMenu > Mounts > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -629,6 +378,7 @@ exports[`DropMenu > Mounts > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
@@ -669,58 +419,7 @@ exports[`DropMenu > Renders each item > document.body.outerHTML 1`] = `"<body cl
 exports[`DropMenu > Renders each item > mockDb 1`] = `
 {
   "deletedNoteIds": Set {},
-  "encryptedNotes": [
-    {
-      "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "timestamp": 958201892455,
-    },
-    {
-      "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-      "timestamp": 811831863971,
-    },
-    {
-      "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "timestamp": 739056902017,
-    },
-    {
-      "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "timestamp": 157836992432,
-    },
-    {
-      "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "timestamp": 1066734006578,
-    },
-    {
-      "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      "timestamp": 1642640862249,
-    },
-    {
-      "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-      "timestamp": 242282290063,
-    },
-    {
-      "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-      "timestamp": 550235579146,
-    },
-    {
-      "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "timestamp": 1533441892487,
-    },
-    {
-      "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "timestamp": 1650008403223,
-    },
-  ],
+  "encryptedNotes": [],
   "users": {
     "d": "1",
   },
@@ -759,6 +458,7 @@ exports[`DropMenu > Renders each item > syncState 1`] = `
     "retry": [Function],
     "retryConfig": undefined,
   },
+  "encryptedNotesCache": Map {},
   "isLoggedIn": false,
   "loadingCount": 0,
   "newPassword": "",
