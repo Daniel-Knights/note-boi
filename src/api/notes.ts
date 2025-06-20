@@ -33,9 +33,15 @@ const syncQueue = new DebounceQueue();
 export const sync = route(async (isCancelled?: () => boolean) => {
   const errorConfig = {
     code: ERROR_CODE.SYNC,
-    retry: { fn: sync, args: [isCancelled] },
+    retry: {
+      fn: () => {
+        // Add back to the queue, so `isCancelled` can be checked again.
+        // Outer `isCancelled` will always be `true` from this point.
+        syncQueue.add((ic) => sync(ic));
+      },
+    },
     display: { sync: true },
-  } satisfies Omit<ErrorConfig<typeof sync>, 'message'>;
+  } satisfies Omit<ErrorConfig<typeof sync | (() => void)>, 'message'>;
 
   const passwordKey = await KeyStore.getKey();
   if (!passwordKey || isCancelled?.()) return;
