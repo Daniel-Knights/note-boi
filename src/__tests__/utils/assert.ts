@@ -1,5 +1,5 @@
 import * as s from '../../store/sync';
-import { AppError, ErrorConfig, FetchBuilder } from '../../classes';
+import { AppError, ErrorConfig, FetchBuilder, RetryFn } from '../../classes';
 import { Endpoint } from '../../constant';
 import { mockApi } from '../mock';
 
@@ -7,8 +7,7 @@ import { mockApi } from '../mock';
  * Asserts current `appError` against expected.
  * No `expectedErrorConfig` asserts a `NONE` error.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function assertAppError<T extends (...args: any[]) => Promise<void>>(
+export function assertAppError<T extends RetryFn>(
   expectedErrorConfig?: Omit<ErrorConfig<T>, 'retry'> & {
     retry?: ErrorConfig<T>['retry'] | { args: Parameters<T> };
   }
