@@ -31,6 +31,7 @@ export async function handleUpdate(): Promise<void> {
     'A new version of NoteBoi is available.\nDo you want to update now?',
     `Update available: v${newVersion}`
   );
+
   if (!shouldInstall) {
     Storage.set('UPDATE_SEEN', newVersion);
 
