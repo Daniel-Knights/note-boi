@@ -16,7 +16,7 @@ export class FetchBuilder<
   static serverUrl =
     isDev() || process.env.NODE_ENV === 'test'
       ? 'http://localhost:8000'
-      : 'https://note-boi-server-v202-1098279308841.europe-west2.run.app';
+      : 'https://note-boi-server-v3-1098279308841.europe-west2.run.app';
 
   static defaultHeaders = {
     'Content-Type': 'application/json',
