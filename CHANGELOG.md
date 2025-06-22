@@ -1,3 +1,9 @@
+## [v3.0.0](https://github.com/Daniel-Knights/note-boi/compare/v2.1.0...v3.0.0) (22/06/2025)
+
+- feat(sync): note diffs, encrypted notes cache, only encrypt notes that have been edited, and only decrypt notes that have changed remotely ([6bb55ac](https://github.com/Daniel-Knights/note-boi/commit/6bb55ac33b1299a41058b123182ada6e97e2337c))
+- feat(api): retry on unknown errors ([8c8a53f](https://github.com/Daniel-Knights/note-boi/commit/8c8a53f34a8377d1c90af94a01238c7470f4d154))
+- feat(sync): merge push and pull routes into sync route ([3a98afd](https://github.com/Daniel-Knights/note-boi/commit/3a98afdd417778325614055e388c8f94d71ee9c8))
+
 ## [2.1.0](https://github.com/Daniel-Knights/note-boi/compare/v2.0.4...v2.1.0) (19/01/2025)
 
 - feat(menu): add maximise item ([37920af](https://github.com/Daniel-Knights/note-boi/commit/37920af176d19e0f6e33cca0f22eefc3d7f01732))
