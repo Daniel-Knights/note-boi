@@ -18,8 +18,8 @@ run('pnpm', ['build']);
 run('pnpm', ['version', args[0]]);
 run('npx', [
   'changenog',
-  '--filter-preset=angular',
-  '--filter-preset=angular-readme-only-docs',
+  '--commit-filter-preset=angular',
+  '--commit-filter-preset=angular-readme-only-docs',
 ]);
 
 // Confirm changes
