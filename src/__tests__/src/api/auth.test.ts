@@ -313,7 +313,7 @@ describe('Auth', () => {
 
       await n.getAllNotes();
 
-      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
+      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNotes, 'clear');
 
       clearMockApiResults({ calls });
 

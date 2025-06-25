@@ -90,7 +90,7 @@ describe('main', () => {
       const mockCb = vi.fn();
       const syncSpy = vi.spyOn(a, 'sync');
 
-      s.syncState.unsyncedNoteIds.edited.add('1');
+      s.syncState.unsyncedNotes.edited.add('1');
 
       await main.exitApp(mockCb);
 
@@ -105,7 +105,7 @@ describe('main', () => {
       const mockCb = vi.fn();
       const syncSpy = vi.spyOn(a, 'sync');
 
-      s.syncState.unsyncedNoteIds.edited.add('1');
+      s.syncState.unsyncedNotes.edited.add('1');
       s.syncState.appError = new AppError({ code: ERROR_CODE.SYNC });
 
       setResValues.tauriApi({ askDialog: [false] });
@@ -130,7 +130,7 @@ describe('main', () => {
       const mockCb = vi.fn();
       const syncSpy = vi.spyOn(a, 'sync');
 
-      s.syncState.unsyncedNoteIds.edited.add('1');
+      s.syncState.unsyncedNotes.edited.add('1');
       s.syncState.appError = new AppError({ code: ERROR_CODE.SYNC });
 
       // Setting openedPopup to undefined emits this component's close event

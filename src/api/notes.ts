@@ -1,16 +1,18 @@
 import {
   AppError,
   DebounceQueue,
+  EncryptedNote,
   Encryptor,
   ERROR_CODE,
   ErrorConfig,
   FetchBuilder,
   KeyStore,
 } from '../classes';
-import { DecryptedNoteDiff, NOTE_EVENTS } from '../constant';
+import { NOTE_EVENTS } from '../constant';
 import {
   findNote,
   newNote,
+  Note,
   noteState,
   selectNote,
   sortStateNotes,
@@ -47,7 +49,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
   if (!passwordKey || isCancelled?.()) return;
 
   const notesToEncrypt = noteState.notes.filter((nt) => {
-    const noteIsEdited = syncState.unsyncedNoteIds.edited.has(nt.id);
+    const noteIsEdited = syncState.unsyncedNotes.edited.has(nt.id);
     const noteIsCached = syncState.encryptedNotesCache.has(nt.id);
 
     return (noteIsEdited || !noteIsCached) && !isEmptyNote(nt);
@@ -72,7 +74,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
     .withAuth(syncState.username, accessToken)
     .body({
       notes: [...syncState.encryptedNotesCache.values()],
-      deleted_note_ids: [...syncState.unsyncedNoteIds.deleted],
+      deleted_notes: syncState.unsyncedNotes.deleted,
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
@@ -94,7 +96,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
     await updateLocalNoteStateFromDiff({
       added: decryptedNotes[0],
       edited: decryptedNotes[1],
-      deleted_ids: res.data.note_diff.deleted_ids,
+      deleted: res.data.note_diff.deleted,
     });
   } else {
     throw new AppError({
@@ -117,7 +119,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
     const isSelectedNote = ln.id === noteState.selectedNote.id;
 
     // Remove notes that were deleted on the server
-    if (noteDiff.deleted_ids.includes(ln.id)) {
+    if (noteDiff.deleted.some((dn) => dn.id === ln.id)) {
       noteState.notes.splice(i, 1);
 
       if (isSelectedNote) {
@@ -164,7 +166,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
     document.dispatchEvent(new Event(NOTE_EVENTS.change));
   }
   // Select next note if current selected note is empty and not deliberately created
-  else if (noteState.notes.length > 1 && !syncState.unsyncedNoteIds.new) {
+  else if (noteState.notes.length > 1 && !syncState.unsyncedNotes.new) {
     const foundNote = findNote(noteState.selectedNote.id);
 
     if (!foundNote || isEmptyNote(foundNote)) {
@@ -172,7 +174,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
     }
   }
 
-  syncState.unsyncedNoteIds.clear();
+  syncState.unsyncedNotes.clear();
 
   return tauriInvoke('sync_local_notes', { notes: noteState.notes });
 }
@@ -198,6 +200,25 @@ document.addEventListener(
   (ev: CustomEventInit<UnsyncedEventDetail>) => {
     if (!ev.detail) return;
 
-    syncState.unsyncedNoteIds.set({ [ev.detail.kind]: [ev.detail.noteId] });
+    syncState.unsyncedNotes.set({ [ev.detail.kind]: [ev.detail.note] });
   }
 );
+
+//// Types
+
+export type NoteDiff = {
+  added: EncryptedNote[];
+  edited: EncryptedNote[];
+  deleted: DeletedNote[];
+};
+
+export type DecryptedNoteDiff = {
+  added: Note[];
+  edited: Note[];
+  deleted: DeletedNote[];
+};
+
+export type DeletedNote = {
+  id: string;
+  deleted_at: number;
+};

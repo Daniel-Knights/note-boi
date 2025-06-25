@@ -1,3 +1,4 @@
+import { DeletedNote, NoteDiff } from './api';
 import { EncryptedNote } from './classes';
 import { Note } from './store/note';
 
@@ -29,7 +30,7 @@ export type EndpointPayloads = {
       username: string;
       password: string;
       notes: EncryptedNote[];
-      deleted_note_ids: string[];
+      deleted_notes: DeletedNote[];
     };
     response: {
       note_diff: NoteDiff;
@@ -43,7 +44,7 @@ export type EndpointPayloads = {
   '/notes/sync': {
     payload: {
       notes: EncryptedNote[];
-      deleted_note_ids: string[];
+      deleted_notes: DeletedNote[];
     };
     response: {
       note_diff: NoteDiff;
@@ -64,18 +65,6 @@ export type EndpointPayloads = {
       access_token: string;
     };
   };
-};
-
-export type NoteDiff = {
-  added: EncryptedNote[];
-  edited: EncryptedNote[];
-  deleted_ids: string[];
-};
-
-export type DecryptedNoteDiff = {
-  added: Note[];
-  edited: Note[];
-  deleted_ids: string[];
 };
 
 export type Endpoint = keyof EndpointPayloads;

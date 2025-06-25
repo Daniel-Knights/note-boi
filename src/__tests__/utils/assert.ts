@@ -209,6 +209,20 @@ const expectedNoteType: ExpectedType = {
   ],
 };
 
+const expectedDeletedNoteType: ExpectedType = {
+  type: 'object',
+  values: [
+    {
+      key: 'id',
+      type: 'string',
+    },
+    {
+      key: 'deleted_at',
+      type: 'number',
+    },
+  ],
+};
+
 const expectedRequests: Record<
   Endpoint,
   {
@@ -258,11 +272,9 @@ const expectedRequests: Record<
           values: expectedNoteType,
         },
         {
-          key: 'deleted_note_ids',
+          key: 'deleted_notes',
           type: 'array',
-          values: {
-            type: 'string',
-          },
+          values: expectedDeletedNoteType,
         },
       ],
     },
@@ -283,11 +295,9 @@ const expectedRequests: Record<
           values: expectedNoteType,
         },
         {
-          key: 'deleted_note_ids',
+          key: 'deleted_notes',
           type: 'array',
-          values: {
-            type: 'string',
-          },
+          values: expectedDeletedNoteType,
         },
       ],
     },

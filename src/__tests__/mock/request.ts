@@ -1,7 +1,8 @@
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
+import { DeletedNote, NoteDiff } from '../../api';
 import { EncryptedNote } from '../../classes';
-import { Endpoint, EndpointPayloads, ENDPOINTS, NoteDiff } from '../../constant';
+import { Endpoint, EndpointPayloads, ENDPOINTS } from '../../constant';
 import { hasKeys } from '../../utils';
 import { isEncryptedNote, NoteCollection, resolveImmediate } from '../utils';
 
@@ -10,7 +11,7 @@ import { mockKeyring } from './tauri';
 export const mockDb: {
   users: Record<string, string>;
   encryptedNotes: EncryptedNote[];
-  deletedNoteIds?: Set<string>;
+  deletedNotes?: DeletedNote[];
 } = {
   users: {
     d: '1',
@@ -116,7 +117,7 @@ export function mockRequest(
 
       break;
     case '/auth/login':
-      if (!hasKeys(reqPayload, ['username', 'password', 'notes', 'deleted_note_ids'])) {
+      if (!hasKeys(reqPayload, ['username', 'password', 'notes', 'deleted_notes'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (
@@ -156,7 +157,7 @@ export function mockRequest(
       if (!hasValidAuthHeaders(req.headers)) {
         resData.error = 'Unauthorized';
         httpStatus = 401;
-      } else if (!hasKeys(reqPayload, ['notes', 'deleted_note_ids'])) {
+      } else if (!hasKeys(reqPayload, ['notes', 'deleted_notes'])) {
         resData.error = 'Missing required fields';
         httpStatus = 400;
       } else if (reqPayload.notes?.some((nt) => !isEncryptedNote(nt))) {
@@ -244,13 +245,11 @@ function syncDbNotesFromRequest(
 ) {
   const dbNotes = new NoteCollection(mockDb.encryptedNotes);
   const payloadNotes = new NoteCollection(reqPayload.notes ?? []);
-  const deletedNoteIds = new Set(reqPayload.deleted_note_ids).union(
-    new Set(mockDb.deletedNoteIds)
-  );
-  const diff = dbNotes.merge(payloadNotes, deletedNoteIds);
+  const deletedNotes = reqPayload.deleted_notes.concat(mockDb.deletedNotes ?? []);
+  const diff = dbNotes.merge(payloadNotes, deletedNotes);
 
   mockDb.encryptedNotes = dbNotes.notes;
-  mockDb.deletedNoteIds = deletedNoteIds;
+  mockDb.deletedNotes = deletedNotes;
 
   return diff;
 }

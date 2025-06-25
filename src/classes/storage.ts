@@ -1,30 +1,5 @@
+import { DeletedNote } from '../api';
 import { ColourTheme, UpdateStrategy } from '../constant';
-
-type StorageValues = {
-  MENU_WIDTH: string;
-  THEME: ColourTheme;
-  UNSYNCED: {
-    new: string;
-    edited: string[];
-    deleted: string[];
-  };
-  UPDATE_SEEN: string;
-  UPDATE_STRATEGY: UpdateStrategy;
-  USERNAME: string;
-};
-
-export type StorageKey = keyof StorageValues;
-
-type StorageValuesString = {
-  [K in StorageKey as StorageValues[K] extends string ? K : never]: StorageValues[K];
-};
-
-type StorageValuesJson = {
-  [K in StorageKey as StorageValues[K] extends object ? K : never]: StorageValues[K];
-};
-
-export type StorageKeyString = keyof StorageValuesString;
-export type StorageKeyJson = keyof StorageValuesJson;
 
 export const STORAGE_KEYS_STRING = {
   MENU_WIDTH: 'note-menu-width',
@@ -68,3 +43,31 @@ export class Storage {
     return localStorage.setItem(STORAGE_KEYS[key], JSON.stringify(value));
   }
 }
+
+//// Types
+
+type StorageValues = {
+  MENU_WIDTH: string;
+  THEME: ColourTheme;
+  UNSYNCED: {
+    new: string;
+    edited: string[];
+    deleted: DeletedNote[];
+  };
+  UPDATE_SEEN: string;
+  UPDATE_STRATEGY: UpdateStrategy;
+  USERNAME: string;
+};
+
+export type StorageKey = keyof StorageValues;
+
+type StorageValuesString = {
+  [K in StorageKey as StorageValues[K] extends string ? K : never]: StorageValues[K];
+};
+
+type StorageValuesJson = {
+  [K in StorageKey as StorageValues[K] extends object ? K : never]: StorageValues[K];
+};
+
+export type StorageKeyString = keyof StorageValuesString;
+export type StorageKeyJson = keyof StorageValuesJson;
