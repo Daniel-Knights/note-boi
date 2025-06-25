@@ -40,7 +40,7 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
 
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -85,8 +85,8 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -156,7 +156,7 @@ exports[`Update > handleUpdate > Handles update > document.body.outerHTML 1`] = 
 
 exports[`Update > handleUpdate > Handles update > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -201,8 +201,8 @@ exports[`Update > handleUpdate > Handles update > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -246,7 +246,7 @@ exports[`Update > handleUpdate > Returns if update unavailable > document.body.o
 
 exports[`Update > handleUpdate > Returns if update unavailable > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -291,8 +291,8 @@ exports[`Update > handleUpdate > Returns if update unavailable > syncState 1`] =
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -336,7 +336,7 @@ exports[`Update > handleUpdate > Returns if version has been seen > document.bod
 
 exports[`Update > handleUpdate > Returns if version has been seen > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -381,8 +381,8 @@ exports[`Update > handleUpdate > Returns if version has been seen > syncState 1`
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -440,7 +440,7 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -485,8 +485,8 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -520,7 +520,7 @@ exports[`Update > setUpdateStrategy > document.body.outerHTML 1`] = `"<body clas
 
 exports[`Update > setUpdateStrategy > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -565,8 +565,8 @@ exports[`Update > setUpdateStrategy > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -621,7 +621,7 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > document
 
 exports[`Update > updateAndRelaunch > Catches error and doesn't retry > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -666,8 +666,8 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > syncStat
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -733,7 +733,7 @@ exports[`Update > updateAndRelaunch > Catches error and retries > document.body.
 
 exports[`Update > updateAndRelaunch > Catches error and retries > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -778,8 +778,8 @@ exports[`Update > updateAndRelaunch > Catches error and retries > syncState 1`] 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -837,7 +837,7 @@ exports[`Update > updateAndRelaunch > Updates and relaunches > document.body.out
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -882,8 +882,8 @@ exports[`Update > updateAndRelaunch > Updates and relaunches > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

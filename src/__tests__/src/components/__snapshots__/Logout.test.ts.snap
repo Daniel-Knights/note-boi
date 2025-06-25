@@ -18,7 +18,7 @@ exports[`Logout > Logs out on click > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -143,7 +143,7 @@ exports[`Logout > Logs out on click > document.body.outerHTML 1`] = `"<body clas
 
 exports[`Logout > Logs out on click > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -200,8 +200,8 @@ exports[`Logout > Logs out on click > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -235,7 +235,7 @@ exports[`Logout > Mounts > document.body.outerHTML 1`] = `"<body class="theme--s
 
 exports[`Logout > Mounts > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -280,8 +280,8 @@ exports[`Logout > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

@@ -18,7 +18,7 @@ exports[`Auth > clientSideLogout > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -118,7 +118,7 @@ exports[`Auth > clientSideLogout > document.body.outerHTML 1`] = `"<body class="
 
 exports[`Auth > clientSideLogout > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -175,8 +175,8 @@ exports[`Auth > clientSideLogout > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -210,7 +210,7 @@ exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -289,7 +289,7 @@ exports[`Auth > login > Sets and resets loading state > document.body.outerHTML 
 
 exports[`Auth > login > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -346,8 +346,8 @@ exports[`Auth > login > Sets and resets loading state > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -381,7 +381,7 @@ exports[`Auth > login > Unauthorized > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"2","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"2","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -398,7 +398,7 @@ exports[`Auth > login > Unauthorized > document.body.outerHTML 1`] = `"<body cla
 
 exports[`Auth > login > Unauthorized > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -448,8 +448,8 @@ exports[`Auth > login > Unauthorized > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "2",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -483,7 +483,7 @@ exports[`Auth > login > User not found > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"k","password":"2","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"k","password":"2","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -500,7 +500,7 @@ exports[`Auth > login > User not found > document.body.outerHTML 1`] = `"<body c
 
 exports[`Auth > login > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -550,8 +550,8 @@ exports[`Auth > login > User not found > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "2",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -585,7 +585,7 @@ exports[`Auth > login > With decryption error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -624,7 +624,7 @@ exports[`Auth > login > With decryption error > document.body.outerHTML 1`] = `"
 
 exports[`Auth > login > With decryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [
     {
       "content": "content",
@@ -680,8 +680,8 @@ exports[`Auth > login > With decryption error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -725,7 +725,7 @@ exports[`Auth > login > With encryption error > document.body.outerHTML 1`] = `"
 
 exports[`Auth > login > With encryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -977,8 +977,8 @@ exports[`Auth > login > With encryption error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "1",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1012,7 +1012,7 @@ exports[`Auth > login > With no notes > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1255,7 +1255,7 @@ exports[`Auth > login > With no notes > document.body.outerHTML 1`] = `"<body cl
 
 exports[`Auth > login > With no notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [
     {
       "content": "content",
@@ -1550,8 +1550,8 @@ exports[`Auth > login > With no notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1592,7 +1592,7 @@ exports[`Auth > login > With notes > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1835,7 +1835,7 @@ exports[`Auth > login > With notes > document.body.outerHTML 1`] = `"<body class
 
 exports[`Auth > login > With notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [
     {
       "content": "content",
@@ -2225,8 +2225,8 @@ exports[`Auth > login > With notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2260,7 +2260,7 @@ exports[`Auth > login > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2277,7 +2277,7 @@ exports[`Auth > login > With server error > document.body.outerHTML 1`] = `"<bod
 
 exports[`Auth > login > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2327,8 +2327,8 @@ exports[`Auth > login > With server error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "1",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2362,7 +2362,7 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2487,7 +2487,7 @@ exports[`Auth > logout > Logs a user out and clears user-based state > document.
 
 exports[`Auth > logout > Logs a user out and clears user-based state > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2544,8 +2544,8 @@ exports[`Auth > logout > Logs a user out and clears user-based state > syncState
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2579,7 +2579,7 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2704,7 +2704,7 @@ exports[`Auth > logout > Sets and resets loading state > document.body.outerHTML
 
 exports[`Auth > logout > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2761,8 +2761,8 @@ exports[`Auth > logout > Sets and resets loading state > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2796,7 +2796,7 @@ exports[`Auth > logout > Unauthorized > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2921,7 +2921,7 @@ exports[`Auth > logout > Unauthorized > document.body.outerHTML 1`] = `"<body cl
 
 exports[`Auth > logout > Unauthorized > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2978,8 +2978,8 @@ exports[`Auth > logout > Unauthorized > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3013,7 +3013,7 @@ exports[`Auth > logout > User not found > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -3138,7 +3138,7 @@ exports[`Auth > logout > User not found > document.body.outerHTML 1`] = `"<body 
 
 exports[`Auth > logout > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {},
 }
@@ -3193,8 +3193,8 @@ exports[`Auth > logout > User not found > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3228,7 +3228,7 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -3353,7 +3353,7 @@ exports[`Auth > logout > With server error > document.body.outerHTML 1`] = `"<bo
 
 exports[`Auth > logout > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3410,8 +3410,8 @@ exports[`Auth > logout > With server error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3462,7 +3462,7 @@ exports[`Auth > signup > Sets and resets loading state > document.body.outerHTML
 
 exports[`Auth > signup > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3512,8 +3512,8 @@ exports[`Auth > signup > Sets and resets loading state > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "1",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3557,7 +3557,7 @@ exports[`Auth > signup > With encryption error > document.body.outerHTML 1`] = `
 
 exports[`Auth > signup > With encryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3809,8 +3809,8 @@ exports[`Auth > signup > With encryption error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "2",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3883,7 +3883,7 @@ exports[`Auth > signup > With no notes > document.body.outerHTML 1`] = `"<body c
 
 exports[`Auth > signup > With no notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3929,8 +3929,8 @@ exports[`Auth > signup > With no notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -4010,7 +4010,7 @@ exports[`Auth > signup > With notes > document.body.outerHTML 1`] = `"<body clas
 
 exports[`Auth > signup > With notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -4299,8 +4299,8 @@ exports[`Auth > signup > With notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -4351,7 +4351,7 @@ exports[`Auth > signup > With server error > document.body.outerHTML 1`] = `"<bo
 
 exports[`Auth > signup > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -4401,8 +4401,8 @@ exports[`Auth > signup > With server error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "2",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

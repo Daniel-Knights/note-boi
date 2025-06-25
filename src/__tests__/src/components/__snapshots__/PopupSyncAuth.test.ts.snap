@@ -33,7 +33,7 @@ exports[`PopupSyncAuth > Emits close > document.body.outerHTML 1`] = `"<body cla
 
 exports[`PopupSyncAuth > Emits close > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -78,8 +78,8 @@ exports[`PopupSyncAuth > Emits close > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -128,7 +128,7 @@ exports[`PopupSyncAuth > Mounts > document.body.outerHTML 1`] = `"<body class="t
 
 exports[`PopupSyncAuth > Mounts > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -173,8 +173,8 @@ exports[`PopupSyncAuth > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -223,7 +223,7 @@ exports[`PopupSyncAuth > Shows default error message when none provided > docume
 
 exports[`PopupSyncAuth > Shows default error message when none provided > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -270,8 +270,8 @@ exports[`PopupSyncAuth > Shows default error message when none provided > syncSt
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -320,7 +320,7 @@ exports[`PopupSyncAuth > Shows error message > document.body.outerHTML 1`] = `"<
 
 exports[`PopupSyncAuth > Shows error message > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -367,8 +367,8 @@ exports[`PopupSyncAuth > Shows error message > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -417,7 +417,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Clears form validation 
 
 exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -462,8 +462,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Clears form validation 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -512,7 +512,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > d
 
 exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -560,8 +560,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > s
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -610,7 +610,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Switches > document.bod
 
 exports[`PopupSyncAuth > Switches between login/signup > Switches > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -655,8 +655,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Switches > syncState 1`
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -702,7 +702,7 @@ exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -781,7 +781,7 @@ exports[`PopupSyncAuth > Validates fields > On login > document.body.outerHTML 1
 
 exports[`PopupSyncAuth > Validates fields > On login > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -838,8 +838,8 @@ exports[`PopupSyncAuth > Validates fields > On login > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -924,7 +924,7 @@ exports[`PopupSyncAuth > Validates fields > On signup > document.body.outerHTML 
 
 exports[`PopupSyncAuth > Validates fields > On signup > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -970,8 +970,8 @@ exports[`PopupSyncAuth > Validates fields > On signup > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

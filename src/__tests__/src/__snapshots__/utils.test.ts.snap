@@ -33,7 +33,7 @@ exports[`Utils > Tauri API wrappers > tauriEmit > document.body.outerHTML 1`] = 
 
 exports[`Utils > Tauri API wrappers > tauriEmit > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -78,8 +78,8 @@ exports[`Utils > Tauri API wrappers > tauriEmit > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -132,7 +132,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > document.body.outerHTML 1`] 
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -177,8 +177,8 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -221,7 +221,7 @@ exports[`Utils > Tauri API wrappers > tauriListen > document.body.outerHTML 1`] 
 
 exports[`Utils > Tauri API wrappers > tauriListen > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -266,8 +266,8 @@ exports[`Utils > Tauri API wrappers > tauriListen > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -301,7 +301,7 @@ exports[`Utils > capitalise > document.body.outerHTML 1`] = `"<body class="theme
 
 exports[`Utils > capitalise > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -346,8 +346,8 @@ exports[`Utils > capitalise > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -381,7 +381,7 @@ exports[`Utils > hasKeys > document.body.outerHTML 1`] = `"<body class="theme--s
 
 exports[`Utils > hasKeys > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -426,8 +426,8 @@ exports[`Utils > hasKeys > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -461,7 +461,7 @@ exports[`Utils > isDev > document.body.outerHTML 1`] = `"<body class="theme--sys
 
 exports[`Utils > isDev > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -506,8 +506,8 @@ exports[`Utils > isDev > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -541,7 +541,7 @@ exports[`Utils > isEmptyNote > document.body.outerHTML 1`] = `"<body class="them
 
 exports[`Utils > isEmptyNote > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -586,8 +586,8 @@ exports[`Utils > isEmptyNote > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -621,7 +621,7 @@ exports[`Utils > isWhitespaceOnly > document.body.outerHTML 1`] = `"<body class=
 
 exports[`Utils > isWhitespaceOnly > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -666,8 +666,8 @@ exports[`Utils > isWhitespaceOnly > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -701,7 +701,7 @@ exports[`Utils > unixToDateTime > document.body.outerHTML 1`] = `"<body class="t
 
 exports[`Utils > unixToDateTime > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -746,8 +746,8 @@ exports[`Utils > unixToDateTime > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
