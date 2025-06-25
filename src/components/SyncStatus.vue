@@ -18,7 +18,7 @@
     </button>
     <!-- Sync successful -->
     <div
-      v-else-if="syncState.isLoggedIn && syncState.unsyncedNoteIds.size === 0"
+      v-else-if="syncState.isLoggedIn && syncState.unsyncedNotes.size === 0"
       title="Changes synced"
       data-test-id="success"
     >

@@ -5,7 +5,13 @@ import { NOTE_EVENTS } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
 import { UUID_REGEX } from '../../constant';
 import { clearMockApiResults, mockApi } from '../../mock';
-import { getDummyNotes, wait, waitForAutoSync, waitUntil } from '../../utils';
+import {
+  floorToThousand,
+  getDummyNotes,
+  wait,
+  waitForAutoSync,
+  waitUntil,
+} from '../../utils';
 
 const existingNoteIndexSorted = 2;
 const existingNote = getDummyNotes()[8]!;
@@ -19,7 +25,18 @@ beforeAll(() => {
   document.addEventListener(NOTE_EVENTS.change, mockChangeEventCb);
   document.addEventListener(NOTE_EVENTS.new, mockNewEventCb);
   document.addEventListener(NOTE_EVENTS.select, mockSelectEventCb);
-  document.addEventListener(NOTE_EVENTS.unsynced, mockUnsyncedEventCb);
+
+  document.addEventListener(
+    NOTE_EVENTS.unsynced,
+    (ev: CustomEventInit<n.UnsyncedEventDetail>) => {
+      // Ensure `deleted_at` is floored to the nearest thousand so we can confidently assert
+      if (ev.detail?.kind === 'deleted') {
+        ev.detail.note.deleted_at = floorToThousand(ev.detail.note.deleted_at);
+      }
+
+      mockUnsyncedEventCb(ev.detail);
+    }
+  );
 });
 
 describe('Note store', () => {
@@ -30,11 +47,7 @@ describe('Note store', () => {
     assert.strictEqual(typeof emptyNote.id, 'string');
     assert.lengthOf(emptyNote.id, 36);
     assert.isTrue(UUID_REGEX.test(emptyNote.id));
-    // Math.floor to account for tiny discrepancies in Date.now
-    assert.strictEqual(
-      Math.floor(emptyNote.timestamp / 1000),
-      Math.floor(timestamp / 1000)
-    );
+    assert.strictEqual(floorToThousand(emptyNote.timestamp), floorToThousand(timestamp));
     assert.deepEqual(emptyNote.content.delta, {
       ops: [],
     });
@@ -240,11 +253,20 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls });
 
+      const deletedAt = Date.now();
+
       n.deleteNote(existingNote.id);
 
       expect(mockSelectEventCb).toHaveBeenCalledOnce();
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
       expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
+      expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
+        kind: 'deleted',
+        note: {
+          id: existingNote.id,
+          deleted_at: floorToThousand(deletedAt),
+        },
+      });
 
       assert.notDeepEqual(n.noteState.selectedNote, existingNote);
       assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
@@ -268,6 +290,8 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
 
+      const deletedAt = Date.now();
+
       n.deleteNote(otherExistingNote.id);
 
       await Promise.all(promises);
@@ -275,6 +299,13 @@ describe('Note store', () => {
       expect(mockSelectEventCb).not.toHaveBeenCalled();
       expect(mockChangeEventCb).not.toHaveBeenCalled();
       expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
+      expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
+        kind: 'deleted',
+        note: {
+          id: otherExistingNote.id,
+          deleted_at: floorToThousand(deletedAt),
+        },
+      });
 
       assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
       assert.notDeepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
@@ -296,11 +327,20 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls });
 
+      const deletedAt = Date.now();
+
       n.deleteNote(existingNote.id);
 
       expect(mockSelectEventCb).toHaveBeenCalledOnce();
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
       expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
+      expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
+        kind: 'deleted',
+        note: {
+          id: existingNote.id,
+          deleted_at: floorToThousand(deletedAt),
+        },
+      });
 
       assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
@@ -315,11 +355,11 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      s.syncState.unsyncedNoteIds.set({ new: existingNote.id });
+      s.syncState.unsyncedNotes.set({ new: existingNote.id });
 
       n.deleteNote(existingNote.id);
 
-      assert.strictEqual(s.syncState.unsyncedNoteIds.new, '');
+      assert.strictEqual(s.syncState.unsyncedNotes.new, '');
     });
 
     it('Calls debounceSync', async () => {
@@ -379,23 +419,38 @@ describe('Note store', () => {
 
       const currentSelectedNote = n.noteState.selectedNote;
       const notesSlice = n.noteState.notes.slice(2, 5);
+      const allNotesToDelete = [currentSelectedNote, ...notesSlice];
 
       n.noteState.extraSelectedNotes = notesSlice;
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
 
+      const deletedAt = Date.now();
+
       n.deleteSelectedNotes();
 
       expect(mockSelectEventCb).toHaveBeenCalledOnce();
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
-      expect(mockUnsyncedEventCb).toHaveBeenCalledTimes(notesSlice.length + 1);
+      expect(mockUnsyncedEventCb).toHaveBeenCalledTimes(allNotesToDelete.length);
+
+      for (let i = 0; i < allNotesToDelete.length; i += 1) {
+        const note = allNotesToDelete[i]!;
+
+        expect(mockUnsyncedEventCb).nthCalledWith(i + 1, {
+          kind: 'deleted',
+          note: {
+            id: note.id,
+            deleted_at: floorToThousand(deletedAt),
+          },
+        });
+      }
 
       assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
       assert.isUndefined(n.findNote(currentSelectedNote.id));
       assert.isEmpty(n.noteState.extraSelectedNotes);
-      assert.strictEqual(calls.size, notesSlice.length + 1);
-      assert.isTrue(calls.invoke.has('delete_note', notesSlice.length + 1));
+      assert.strictEqual(calls.size, allNotesToDelete.length);
+      assert.isTrue(calls.invoke.has('delete_note', allNotesToDelete.length));
     });
 
     it('Catches error', async () => {
@@ -526,8 +581,12 @@ describe('Note store', () => {
         calls
       );
 
-      expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
       expect(debounceSyncSpy).toHaveBeenCalledOnce();
+      expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
+      expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
+        kind: 'edited',
+        note: noteToEdit.id,
+      });
 
       const editedNote = n.findNote(noteToEdit.id)!;
 

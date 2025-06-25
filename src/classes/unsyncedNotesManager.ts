@@ -1,3 +1,5 @@
+import { DeletedNote } from '../api';
+
 import { Storage } from './storage';
 
 /**
@@ -9,22 +11,22 @@ export class UnsyncedNotesManager {
   new: string;
   /** Set of IDs for edited unsynced notes. */
   edited: Set<string>;
-  /** Set of IDs for deleted unsynced notes. */
-  deleted: Set<string>;
+  /** Array of deleted unsynced notes. */
+  deleted: DeletedNote[];
 
   constructor() {
-    const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
+    const storedUnsyncedNotes = Storage.getJson('UNSYNCED');
 
-    this.new = storedUnsyncedNoteIds?.new || '';
-    this.edited = new Set<string>(storedUnsyncedNoteIds?.edited);
-    this.deleted = new Set<string>(storedUnsyncedNoteIds?.deleted);
+    this.new = storedUnsyncedNotes?.new || '';
+    this.edited = new Set<string>(storedUnsyncedNotes?.edited);
+    this.deleted = storedUnsyncedNotes?.deleted ?? [];
   }
 
   /**
    * Returns the total number of unsynced notes (excluding new note).
    */
   get size() {
-    return this.edited.size + this.deleted.size;
+    return this.edited.size + this.deleted.length;
   }
 
   /** Clears all unsynced notes. */
@@ -34,7 +36,7 @@ export class UnsyncedNotesManager {
     }
 
     this.edited.clear();
-    this.deleted.clear();
+    this.deleted.splice(0, this.deleted.length);
     this.store();
   }
 
@@ -45,20 +47,20 @@ export class UnsyncedNotesManager {
    * If `deleted` is provided, it adds to the current set and removes them from `edited` if they exist.
    * If the new note ID is in either edited or deleted, it is reset to an empty string.
    */
-  set(ids: { new?: string; edited?: string[]; deleted?: string[] }) {
-    if (ids.new !== undefined) this.new = ids.new;
+  set(notes: { new?: string; edited?: string[]; deleted?: DeletedNote[] }) {
+    if (notes.new !== undefined) this.new = notes.new;
 
-    ids.edited?.forEach((id) => this.edited.add(id));
+    notes.edited?.forEach((id) => this.edited.add(id));
 
-    ids.deleted?.forEach((id) => {
-      this.deleted.add(id);
+    notes.deleted?.forEach((nt) => {
+      this.deleted.push(nt);
 
-      if (this.edited.has(id)) {
-        this.edited.delete(id);
+      if (this.edited.has(nt.id)) {
+        this.edited.delete(nt.id);
       }
     });
 
-    if (this.edited.has(this.new) || this.deleted.has(this.new)) {
+    if (this.edited.has(this.new) || this.deleted.some((nt) => nt.id === this.new)) {
       this.new = '';
     }
 

@@ -30,7 +30,11 @@ describe('Storage', () => {
   it('setJson/getJson', () => {
     assert.isNull(Storage.getJson('UNSYNCED'));
 
-    const unsynced = { new: 'note1', edited: ['note2'], deleted: ['note3'] };
+    const unsynced = {
+      new: 'note1',
+      edited: ['note2'],
+      deleted: [{ id: 'note3', deleted_at: 0 }],
+    };
 
     Storage.setJson('UNSYNCED', unsynced);
 

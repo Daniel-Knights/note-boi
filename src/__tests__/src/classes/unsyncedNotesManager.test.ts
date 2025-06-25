@@ -7,21 +7,21 @@ describe('UnsyncedNotesManager', () => {
 
     assert.strictEqual(manager.new, '');
     assert.strictEqual(manager.edited.size, 0);
-    assert.strictEqual(manager.deleted.size, 0);
+    assert.strictEqual(manager.deleted.length, 0);
   });
 
   it('Initializes with contents from storage', () => {
     Storage.setJson('UNSYNCED', {
       new: 'n1',
       edited: ['e1', 'e2'],
-      deleted: ['d1'],
+      deleted: [{ id: 'd1', deleted_at: 0 }],
     });
 
     const manager = new UnsyncedNotesManager();
 
     assert.strictEqual(manager.new, 'n1');
     assert.deepEqual(manager.edited, new Set(['e1', 'e2']));
-    assert.deepEqual(manager.deleted, new Set(['d1']));
+    assert.deepEqual(manager.deleted, [{ id: 'd1', deleted_at: 0 }]);
   });
 
   it('size', () => {
@@ -29,7 +29,7 @@ describe('UnsyncedNotesManager', () => {
 
     manager.new = 'n';
     manager.edited.add('e');
-    manager.deleted.add('d');
+    manager.deleted.push({ id: 'd', deleted_at: 0 });
 
     assert.strictEqual(manager.size, 2);
   });
@@ -41,13 +41,13 @@ describe('UnsyncedNotesManager', () => {
 
       manager.new = 'n';
       manager.edited.add('e');
-      manager.deleted.add('d');
+      manager.deleted.push({ id: 'd', deleted_at: 0 });
       manager.clear();
       manager.clear(false);
 
       assert.strictEqual(manager.new, 'n');
       assert.strictEqual(manager.edited.size, 0);
-      assert.strictEqual(manager.deleted.size, 0);
+      assert.strictEqual(manager.deleted.length, 0);
       expect(setJsonSpy).toHaveBeenCalled();
     });
 
@@ -57,12 +57,12 @@ describe('UnsyncedNotesManager', () => {
 
       manager.new = 'n';
       manager.edited.add('e');
-      manager.deleted.add('d');
+      manager.deleted.push({ id: 'd', deleted_at: 0 });
       manager.clear(true);
 
       assert.strictEqual(manager.new, '');
       assert.strictEqual(manager.edited.size, 0);
-      assert.strictEqual(manager.deleted.size, 0);
+      assert.strictEqual(manager.deleted.length, 0);
       expect(removeSpy).toHaveBeenCalled();
     });
   });
@@ -72,12 +72,24 @@ describe('UnsyncedNotesManager', () => {
       const manager = new UnsyncedNotesManager();
       const setJsonSpy = vi.spyOn(Storage, 'setJson');
 
-      manager.set({ new: 'n1', edited: ['e1'], deleted: ['d1'] });
-      manager.set({ new: 'n2', edited: ['e2'], deleted: ['d2'] });
+      manager.set({
+        new: 'n1',
+        edited: ['e1'],
+        deleted: [{ id: 'd1', deleted_at: 0 }],
+      });
+
+      manager.set({
+        new: 'n2',
+        edited: ['e2'],
+        deleted: [{ id: 'd2', deleted_at: 0 }],
+      });
 
       assert.strictEqual(manager.new, 'n2');
       assert.deepEqual(manager.edited, new Set(['e1', 'e2']));
-      assert.deepEqual(manager.deleted, new Set(['d1', 'd2']));
+      assert.deepEqual(manager.deleted, [
+        { id: 'd1', deleted_at: 0 },
+        { id: 'd2', deleted_at: 0 },
+      ]);
       expect(setJsonSpy).toHaveBeenCalled();
     });
 
@@ -85,10 +97,10 @@ describe('UnsyncedNotesManager', () => {
       const manager = new UnsyncedNotesManager();
 
       manager.set({ edited: ['e1', 'e2'] });
-      manager.set({ deleted: ['e1'] });
+      manager.set({ deleted: [{ id: 'e1', deleted_at: 0 }] });
 
       assert.deepEqual(manager.edited, new Set(['e2']));
-      assert.deepEqual(manager.deleted, new Set(['e1']));
+      assert.deepEqual(manager.deleted, [{ id: 'e1', deleted_at: 0 }]);
     });
 
     it('Resets new if in edited or deleted', () => {
@@ -100,7 +112,7 @@ describe('UnsyncedNotesManager', () => {
       assert.strictEqual(manager.new, '');
 
       manager.set({ new: 'n2' });
-      manager.set({ deleted: ['n2'] });
+      manager.set({ deleted: [{ id: 'n2', deleted_at: 0 }] });
 
       assert.strictEqual(manager.new, '');
     });
@@ -124,13 +136,13 @@ describe('UnsyncedNotesManager', () => {
 
       manager.new = 'n';
       manager.edited.add('e');
-      manager.deleted.add('d');
+      manager.deleted.push({ id: 'd', deleted_at: 0 });
       manager.store();
 
       expect(setJsonSpy).toHaveBeenCalledWith('UNSYNCED', {
         new: 'n',
         edited: ['e'],
-        deleted: ['d'],
+        deleted: [{ id: 'd', deleted_at: 0 }],
       });
     });
   });

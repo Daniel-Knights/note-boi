@@ -58,7 +58,7 @@ tauriListen('change-password', () => {
 });
 
 export async function exitApp(cb: () => void): Promise<void> {
-  if (syncState.unsyncedNoteIds.size > 0) {
+  if (syncState.unsyncedNotes.size > 0) {
     await sync();
 
     if (syncState.appError.code === ERROR_CODE.SYNC) {

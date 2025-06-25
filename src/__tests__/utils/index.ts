@@ -5,5 +5,6 @@ export * from './encrypt';
 export * from './dummyNotes';
 export * from './normalise';
 export * from './noteCollection';
+export * from './number';
 export * from './object';
 export * from './reset';
