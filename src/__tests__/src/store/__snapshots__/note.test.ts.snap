@@ -33,7 +33,7 @@ exports[`Note store > catchNoteInvokeError > document.body.outerHTML 1`] = `"<bo
 
 exports[`Note store > catchNoteInvokeError > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -78,8 +78,8 @@ exports[`Note store > catchNoteInvokeError > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -132,7 +132,7 @@ exports[`Note store > deleteNote > Calls debounceSync > document.body.outerHTML 
 
 exports[`Note store > deleteNote > Calls debounceSync > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -405,10 +405,13 @@ exports[`Note store > deleteNote > Calls debounceSync > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -464,7 +467,7 @@ exports[`Note store > deleteNote > Catches error > document.body.outerHTML 1`] =
 
 exports[`Note store > deleteNote > Catches error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -737,10 +740,13 @@ exports[`Note store > deleteNote > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "b9754a63-843c-4f59-9aea-9a374aa1603d",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -793,7 +799,7 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > docu
 
 exports[`Note store > deleteNote > Deletes selected note and selects next > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1066,10 +1072,13 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > sync
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "b9754a63-843c-4f59-9aea-9a374aa1603d",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -1113,7 +1122,7 @@ exports[`Note store > deleteNote > Resets unsynced new note > document.body.oute
 
 exports[`Note store > deleteNote > Resets unsynced new note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1386,8 +1395,8 @@ exports[`Note store > deleteNote > Resets unsynced new note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1459,7 +1468,7 @@ exports[`Note store > deleteNote > With no notes > document.body.outerHTML 1`] =
 
 exports[`Note store > deleteNote > With no notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1516,10 +1525,13 @@ exports[`Note store > deleteNote > With no notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "b9754a63-843c-4f59-9aea-9a374aa1603d",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -1572,7 +1584,7 @@ exports[`Note store > deleteNote > Without selecting next note > document.body.o
 
 exports[`Note store > deleteNote > Without selecting next note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1801,10 +1813,13 @@ exports[`Note store > deleteNote > Without selecting next note > syncState 1`] =
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -1860,7 +1875,7 @@ exports[`Note store > deleteSelectedNotes > Catches error > document.body.outerH
 
 exports[`Note store > deleteSelectedNotes > Catches error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2045,10 +2060,13 @@ exports[`Note store > deleteSelectedNotes > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -2128,7 +2146,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > document.bo
 
 exports[`Note store > deleteSelectedNotes > Deletes selected notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2268,13 +2286,25 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > syncState 1
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-      "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+      },
+      {
+        "deleted_at": 0,
+        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+      },
+      {
+        "deleted_at": 0,
+        "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+      },
+      {
+        "deleted_at": 0,
+        "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -2330,7 +2360,7 @@ exports[`Note store > editNote > Catches error > document.body.outerHTML 1`] = `
 
 exports[`Note store > editNote > Catches error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2575,8 +2605,8 @@ exports[`Note store > editNote > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {
       "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
@@ -2646,7 +2676,7 @@ exports[`Note store > editNote > Edits notes > document.body.outerHTML 1`] = `"<
 
 exports[`Note store > editNote > Edits notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2891,8 +2921,8 @@ exports[`Note store > editNote > Edits notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {
       "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
@@ -3155,7 +3185,7 @@ exports[`Note store > exportNotes > All notes > document.body.outerHTML 1`] = `"
 
 exports[`Note store > exportNotes > All notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3443,8 +3473,8 @@ exports[`Note store > exportNotes > All notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3512,7 +3542,7 @@ exports[`Note store > exportNotes > Catches error > document.body.outerHTML 1`] 
 
 exports[`Note store > exportNotes > Catches error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3800,8 +3830,8 @@ exports[`Note store > exportNotes > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3927,7 +3957,7 @@ exports[`Note store > exportNotes > Passed selection of notes > document.body.ou
 
 exports[`Note store > exportNotes > Passed selection of notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -4215,8 +4245,8 @@ exports[`Note store > exportNotes > Passed selection of notes > syncState 1`] = 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -4272,7 +4302,7 @@ exports[`Note store > exportNotes > Returns when no location chosen > document.b
 
 exports[`Note store > exportNotes > Returns when no location chosen > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -4560,8 +4590,8 @@ exports[`Note store > exportNotes > Returns when no location chosen > syncState 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -4605,7 +4635,7 @@ exports[`Note store > findNote > document.body.outerHTML 1`] = `"<body class="th
 
 exports[`Note store > findNote > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -4893,8 +4923,8 @@ exports[`Note store > findNote > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -4938,7 +4968,7 @@ exports[`Note store > findNoteIndex > document.body.outerHTML 1`] = `"<body clas
 
 exports[`Note store > findNoteIndex > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -5226,8 +5256,8 @@ exports[`Note store > findNoteIndex > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -5295,7 +5325,7 @@ exports[`Note store > getAllNotes > Catches error > document.body.outerHTML 1`] 
 
 exports[`Note store > getAllNotes > Catches error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -5352,8 +5382,8 @@ exports[`Note store > getAllNotes > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -5416,7 +5446,7 @@ exports[`Note store > getAllNotes > With empty note array > document.body.outerH
 
 exports[`Note store > getAllNotes > With empty note array > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -5473,8 +5503,8 @@ exports[`Note store > getAllNotes > With empty note array > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -5518,7 +5548,7 @@ exports[`Note store > getAllNotes > With notes > document.body.outerHTML 1`] = `
 
 exports[`Note store > getAllNotes > With notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -5806,8 +5836,8 @@ exports[`Note store > getAllNotes > With notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -5851,7 +5881,7 @@ exports[`Note store > getAllNotes > With single empty note > document.body.outer
 
 exports[`Note store > getAllNotes > With single empty note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -5904,8 +5934,8 @@ exports[`Note store > getAllNotes > With single empty note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -5968,7 +5998,7 @@ exports[`Note store > getAllNotes > With undefined notes > document.body.outerHT
 
 exports[`Note store > getAllNotes > With undefined notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -6025,8 +6055,8 @@ exports[`Note store > getAllNotes > With undefined notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -6070,7 +6100,7 @@ exports[`Note store > isSelectedNote > document.body.outerHTML 1`] = `"<body cla
 
 exports[`Note store > isSelectedNote > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -6321,8 +6351,8 @@ exports[`Note store > isSelectedNote > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -6356,7 +6386,7 @@ exports[`Note store > new Note() > document.body.outerHTML 1`] = `"<body class="
 
 exports[`Note store > new Note() > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -6401,8 +6431,8 @@ exports[`Note store > new Note() > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -6458,7 +6488,7 @@ exports[`Note store > newNote > Catches error > document.body.outerHTML 1`] = `"
 
 exports[`Note store > newNote > Catches error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -6709,8 +6739,8 @@ exports[`Note store > newNote > Catches error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -6754,7 +6784,7 @@ exports[`Note store > newNote > Only updates timestamp when empty note selected 
 
 exports[`Note store > newNote > Only updates timestamp when empty note selected > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -7005,8 +7035,8 @@ exports[`Note store > newNote > Only updates timestamp when empty note selected 
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -7069,7 +7099,7 @@ exports[`Note store > newNote > When selected note isn't empty > document.body.o
 
 exports[`Note store > newNote > When selected note isn't empty > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -7320,8 +7350,8 @@ exports[`Note store > newNote > When selected note isn't empty > syncState 1`] =
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -7374,7 +7404,7 @@ exports[`Note store > selectNote > document.body.outerHTML 1`] = `"<body class="
 
 exports[`Note store > selectNote > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -7618,10 +7648,13 @@ exports[`Note store > selectNote > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "id",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "id",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },

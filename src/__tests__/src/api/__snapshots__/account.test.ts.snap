@@ -18,7 +18,7 @@ exports[`Account > changePassword > Changes password for currently logged in acc
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -157,7 +157,7 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 
 exports[`Account > changePassword > Changes password for currently logged in account > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -214,8 +214,8 @@ exports[`Account > changePassword > Changes password for currently logged in acc
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -249,7 +249,7 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -363,7 +363,7 @@ exports[`Account > changePassword > Sets and resets loading state > document.bod
 
 exports[`Account > changePassword > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -420,8 +420,8 @@ exports[`Account > changePassword > Sets and resets loading state > syncState 1`
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -519,7 +519,7 @@ exports[`Account > changePassword > User not found > document.body.outerHTML 1`]
 
 exports[`Account > changePassword > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -569,8 +569,8 @@ exports[`Account > changePassword > User not found > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "1",
   "password": "2",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -604,7 +604,7 @@ exports[`Account > changePassword > With encryption error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -699,7 +699,7 @@ exports[`Account > changePassword > With encryption error > document.body.outerH
 
 exports[`Account > changePassword > With encryption error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -951,8 +951,8 @@ exports[`Account > changePassword > With encryption error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "2",
   "password": "1",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -986,7 +986,7 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1090,7 +1090,7 @@ exports[`Account > changePassword > With server error > document.body.outerHTML 
 
 exports[`Account > changePassword > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1152,8 +1152,8 @@ exports[`Account > changePassword > With server error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "2",
   "password": "1",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1187,7 +1187,7 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1323,7 +1323,7 @@ exports[`Account > deleteAccount > Deletes currently logged in account > documen
 
 exports[`Account > deleteAccount > Deletes currently logged in account > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {},
 }
@@ -1378,8 +1378,8 @@ exports[`Account > deleteAccount > Deletes currently logged in account > syncSta
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1427,7 +1427,7 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > documen
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1472,8 +1472,8 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > syncSta
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1507,7 +1507,7 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1643,7 +1643,7 @@ exports[`Account > deleteAccount > Sets and resets loading state > document.body
 
 exports[`Account > deleteAccount > Sets and resets loading state > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {},
 }
@@ -1698,8 +1698,8 @@ exports[`Account > deleteAccount > Sets and resets loading state > syncState 1`]
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1733,7 +1733,7 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1848,7 +1848,7 @@ exports[`Account > deleteAccount > Unauthorized > document.body.outerHTML 1`] = 
 
 exports[`Account > deleteAccount > Unauthorized > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1909,8 +1909,8 @@ exports[`Account > deleteAccount > Unauthorized > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2019,7 +2019,7 @@ exports[`Account > deleteAccount > User not found > document.body.outerHTML 1`] 
 
 exports[`Account > deleteAccount > User not found > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2068,8 +2068,8 @@ exports[`Account > deleteAccount > User not found > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2103,7 +2103,7 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -2218,7 +2218,7 @@ exports[`Account > deleteAccount > With server error > document.body.outerHTML 1
 
 exports[`Account > deleteAccount > With server error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2279,8 +2279,8 @@ exports[`Account > deleteAccount > With server error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

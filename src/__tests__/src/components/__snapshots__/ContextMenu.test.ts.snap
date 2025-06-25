@@ -18,7 +18,7 @@ exports[`ContextMenu > Closes > document.body.outerHTML 1`] = `"<body class="the
 
 exports[`ContextMenu > Closes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -63,8 +63,8 @@ exports[`ContextMenu > Closes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -127,7 +127,7 @@ exports[`ContextMenu > Creates a new note > document.body.outerHTML 1`] = `"<bod
 
 exports[`ContextMenu > Creates a new note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -378,8 +378,8 @@ exports[`ContextMenu > Creates a new note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "id",
   },
@@ -442,7 +442,7 @@ exports[`ContextMenu > Delete button disabled with no notes > document.body.oute
 
 exports[`ContextMenu > Delete button disabled with no notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -499,8 +499,8 @@ exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -553,7 +553,7 @@ exports[`ContextMenu > Deletes a note > document.body.outerHTML 1`] = `"<body cl
 
 exports[`ContextMenu > Deletes a note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -826,10 +826,13 @@ exports[`ContextMenu > Deletes a note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -918,7 +921,7 @@ exports[`ContextMenu > Deletes all selected notes > document.body.outerHTML 1`] 
 
 exports[`ContextMenu > Deletes all selected notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1131,14 +1134,29 @@ exports[`ContextMenu > Deletes all selected notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {
-      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-    },
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      },
+      {
+        "deleted_at": 0,
+        "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+      },
+      {
+        "deleted_at": 0,
+        "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+      },
+      {
+        "deleted_at": 0,
+        "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+      },
+      {
+        "deleted_at": 0,
+        "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+      },
+    ],
     "edited": Set {},
     "new": "",
   },
@@ -1201,7 +1219,7 @@ exports[`ContextMenu > Export button disabled with no notes > document.body.oute
 
 exports[`ContextMenu > Export button disabled with no notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1258,8 +1276,8 @@ exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1341,7 +1359,7 @@ exports[`ContextMenu > Exports a note > document.body.outerHTML 1`] = `"<body cl
 
 exports[`ContextMenu > Exports a note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1585,8 +1603,8 @@ exports[`ContextMenu > Exports a note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1728,7 +1746,7 @@ exports[`ContextMenu > Exports all selected notes > document.body.outerHTML 1`] 
 
 exports[`ContextMenu > Exports all selected notes > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2033,8 +2051,8 @@ exports[`ContextMenu > Exports all selected notes > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2068,7 +2086,7 @@ exports[`ContextMenu > Mounts with ev > document.body.outerHTML 1`] = `"<body cl
 
 exports[`ContextMenu > Mounts with ev > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2113,8 +2131,8 @@ exports[`ContextMenu > Mounts with ev > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2148,7 +2166,7 @@ exports[`ContextMenu > Mounts without passed ev > document.body.outerHTML 1`] = 
 
 exports[`ContextMenu > Mounts without passed ev > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2193,8 +2211,8 @@ exports[`ContextMenu > Mounts without passed ev > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

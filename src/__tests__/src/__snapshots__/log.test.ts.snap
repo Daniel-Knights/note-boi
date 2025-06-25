@@ -18,7 +18,7 @@ exports[`Log > forwardConsole > console.debug > document.body.outerHTML 1`] = `"
 
 exports[`Log > forwardConsole > console.debug > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -63,8 +63,8 @@ exports[`Log > forwardConsole > console.debug > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -98,7 +98,7 @@ exports[`Log > forwardConsole > console.error > document.body.outerHTML 1`] = `"
 
 exports[`Log > forwardConsole > console.error > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -143,8 +143,8 @@ exports[`Log > forwardConsole > console.error > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -178,7 +178,7 @@ exports[`Log > forwardConsole > console.info > document.body.outerHTML 1`] = `"<
 
 exports[`Log > forwardConsole > console.info > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -223,8 +223,8 @@ exports[`Log > forwardConsole > console.info > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -258,7 +258,7 @@ exports[`Log > forwardConsole > console.log > document.body.outerHTML 1`] = `"<b
 
 exports[`Log > forwardConsole > console.log > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -303,8 +303,8 @@ exports[`Log > forwardConsole > console.log > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -338,7 +338,7 @@ exports[`Log > forwardConsole > console.warn > document.body.outerHTML 1`] = `"<
 
 exports[`Log > forwardConsole > console.warn > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -383,8 +383,8 @@ exports[`Log > forwardConsole > console.warn > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -418,7 +418,7 @@ exports[`Log > initLogger > document.body.outerHTML 1`] = `"<body class="theme--
 
 exports[`Log > initLogger > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -463,8 +463,8 @@ exports[`Log > initLogger > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

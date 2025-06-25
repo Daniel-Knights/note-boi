@@ -18,7 +18,7 @@ exports[`FetchBuilder > With auth > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[],"deleted_note_ids":[]}",
+        "body": "{"notes":[],"deleted_notes":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -48,7 +48,7 @@ exports[`FetchBuilder > With auth > document.body.outerHTML 1`] = `"<body class=
 
 exports[`FetchBuilder > With auth > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -93,8 +93,8 @@ exports[`FetchBuilder > With auth > syncState 1`] = `
   "loadingCount": 1,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -128,7 +128,7 @@ exports[`FetchBuilder > Without auth > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -156,7 +156,7 @@ exports[`FetchBuilder > Without auth > document.body.outerHTML 1`] = `"<body cla
 
 exports[`FetchBuilder > Without auth > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -201,8 +201,8 @@ exports[`FetchBuilder > Without auth > syncState 1`] = `
   "loadingCount": 1,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
