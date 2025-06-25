@@ -1,3 +1,4 @@
+import { DeletedNote } from '../../api';
 import { EncryptedNote } from '../../classes';
 import { Note } from '../../store/note';
 import { UUID_REGEX } from '../constant';
@@ -43,9 +44,9 @@ export function normaliseCall(call: Call): Call {
       }));
     }
 
-    if ('deleted_note_ids' in parsedBody) {
-      parsedBody.deleted_note_ids = (parsedBody.deleted_note_ids as string[]).map(
-        normaliseNoteId
+    if ('deleted_notes' in parsedBody) {
+      parsedBody.deleted_notes = (parsedBody.deleted_notes as DeletedNote[]).map(
+        (dn) => ({ ...dn, id: normaliseNoteId(dn.id), deleted_at: 0 })
       );
     }
 

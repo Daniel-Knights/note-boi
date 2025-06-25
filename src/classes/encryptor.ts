@@ -1,9 +1,5 @@
 import { Note } from '../store/note';
 
-export type EncryptedNote = Omit<Note, 'content'> & {
-  content: string;
-};
-
 const SALT_LENGTH = 16;
 const IV_LENGTH = 12;
 
@@ -132,3 +128,9 @@ export class Encryptor {
     return Promise.all(decryptedNotePromises);
   }
 }
+
+//// Types
+
+export type EncryptedNote = Omit<Note, 'content'> & {
+  content: string;
+};

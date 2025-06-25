@@ -9,7 +9,7 @@ export const syncState = reactive({
   loadingCount: 0,
   isLoggedIn: false,
   appError: new AppError(),
-  unsyncedNoteIds: new UnsyncedNotesManager(),
+  unsyncedNotes: new UnsyncedNotesManager(),
   encryptedNotesCache: new Map<string, EncryptedNote>(),
 });
 

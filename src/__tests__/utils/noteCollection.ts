@@ -1,3 +1,4 @@
+import { DeletedNote, NoteDiff } from '../../api';
 import { EncryptedNote } from '../../classes';
 
 export class NoteCollection {
@@ -7,59 +8,54 @@ export class NoteCollection {
     this.notes = notes;
   }
 
-  merge(notesRight: NoteCollection, deletedIds: Set<string>) {
-    const mergedNotes = new Set<EncryptedNote>();
-
-    const diff = {
-      added: [] as EncryptedNote[],
-      edited: [] as EncryptedNote[],
-      deleted_ids: [] as string[],
-    };
+  merge(notesRight: NoteCollection, deletedNotes: DeletedNote[]) {
+    const mergedNotesMap = new Map<string, EncryptedNote>();
+    const diff: NoteDiff = { added: [], edited: [], deleted: [] };
+    const deletedNotesMap = new Map(deletedNotes.map((dn) => [dn.id, dn]));
+    const notesRightMap = new Map(notesRight.notes.map((n) => [n.id, n]));
 
     // Left
     for (const nl of this.notes) {
-      if (deletedIds.has(nl.id)) {
+      const deletedAt = deletedNotesMap.get(nl.id)?.deleted_at ?? -1;
+
+      if (deletedAt >= nl.timestamp) {
         continue;
       }
 
-      const nr = notesRight.notes.find((n) => n.id === nl.id);
+      const nr = notesRightMap.get(nl.id);
 
       if (nr) {
         if (nl.timestamp > nr.timestamp) {
-          mergedNotes.add(nl);
+          mergedNotesMap.set(nl.id, nl);
           diff.edited.push(nl);
         } else {
-          mergedNotes.add(nr);
+          mergedNotesMap.set(nr.id, nr);
         }
       } else {
-        mergedNotes.add(nl);
+        mergedNotesMap.set(nl.id, nl);
         diff.added.push(nl);
       }
     }
 
     // Right
     for (const nr of notesRight.notes) {
-      if ([...mergedNotes].some((nl) => nl.id === nr.id)) {
+      if (mergedNotesMap.has(nr.id)) {
         continue;
       }
 
-      if (deletedIds.has(nr.id)) {
-        diff.deleted_ids.push(nr.id);
+      const deletedNote = deletedNotesMap.get(nr.id);
+
+      if (deletedNote && deletedNote.deleted_at >= nr.timestamp) {
+        diff.deleted.push(deletedNote);
 
         continue;
       }
 
-      mergedNotes.add(nr);
+      mergedNotesMap.set(nr.id, nr);
     }
 
-    this.notes = new NoteCollection([...mergedNotes]).sortByTimestamp().notes;
+    this.notes = [...mergedNotesMap.values()].sort((a, b) => a.timestamp - b.timestamp);
 
     return diff;
-  }
-
-  sortByTimestamp() {
-    this.notes.sort((a, b) => a.timestamp - b.timestamp);
-
-    return this;
   }
 }

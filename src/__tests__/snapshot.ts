@@ -11,15 +11,17 @@ import { normaliseEncryptedNote, normaliseNote, normaliseNoteId } from './utils'
 /** Snapshots app state. Replaces variable values with placeholders. */
 export async function snapshotState() {
   // syncState
-  s.syncState.unsyncedNoteIds.edited = new Set(
-    [...s.syncState.unsyncedNoteIds.edited].map(normaliseNoteId)
+  s.syncState.unsyncedNotes.edited = new Set(
+    [...s.syncState.unsyncedNotes.edited].map(normaliseNoteId)
   );
-  s.syncState.unsyncedNoteIds.deleted = new Set(
-    [...s.syncState.unsyncedNoteIds.deleted].map(normaliseNoteId)
-  );
+  s.syncState.unsyncedNotes.deleted = s.syncState.unsyncedNotes.deleted.map((dn) => ({
+    ...dn,
+    id: normaliseNoteId(dn.id),
+    deleted_at: 0,
+  }));
 
-  if (s.syncState.unsyncedNoteIds.new) {
-    s.syncState.unsyncedNoteIds.new = normaliseNoteId(s.syncState.unsyncedNoteIds.new);
+  if (s.syncState.unsyncedNotes.new) {
+    s.syncState.unsyncedNotes.new = normaliseNoteId(s.syncState.unsyncedNotes.new);
   }
 
   s.syncState.encryptedNotesCache = new Map(
@@ -30,16 +32,18 @@ export async function snapshotState() {
   );
 
   // storage
-  const storedUnsyncedNoteIds = Storage.getJson('UNSYNCED');
+  const storedUnsyncedNotes = Storage.getJson('UNSYNCED');
 
-  if (storedUnsyncedNoteIds) {
-    storedUnsyncedNoteIds.edited = [...storedUnsyncedNoteIds.edited].map(normaliseNoteId);
-    storedUnsyncedNoteIds.deleted = [...storedUnsyncedNoteIds.deleted].map(
-      normaliseNoteId
-    );
+  if (storedUnsyncedNotes) {
+    storedUnsyncedNotes.edited = [...storedUnsyncedNotes.edited].map(normaliseNoteId);
+    storedUnsyncedNotes.deleted = storedUnsyncedNotes.deleted.map((dn) => ({
+      ...dn,
+      id: normaliseNoteId(dn.id),
+      deleted_at: 0,
+    }));
 
-    if (storedUnsyncedNoteIds.new) {
-      storedUnsyncedNoteIds.new = normaliseNoteId(storedUnsyncedNoteIds.new);
+    if (storedUnsyncedNotes.new) {
+      storedUnsyncedNotes.new = normaliseNoteId(storedUnsyncedNotes.new);
     }
   }
 
@@ -50,7 +54,11 @@ export async function snapshotState() {
   // mockDb
   const mockDbNormalised: typeof mockDb = {
     ...mockDb,
-    deletedNoteIds: new Set([...(mockDb.deletedNoteIds ?? [])].map(normaliseNoteId)),
+    deletedNotes: mockDb.deletedNotes?.map((dn) => ({
+      ...dn,
+      id: normaliseNoteId(dn.id),
+      deleted_at: 0,
+    })),
     encryptedNotes: mockDb.encryptedNotes.map(normaliseEncryptedNote),
   };
 

@@ -15,7 +15,7 @@ describe('FetchBuilder', () => {
       username: 'd',
       password: '1',
       notes: [],
-      deleted_note_ids: [],
+      deleted_notes: [],
     };
 
     s.syncState.loadingCount = 1; // Mock request expects this
@@ -49,7 +49,7 @@ describe('FetchBuilder', () => {
         note_diff: {
           added: mockDb.encryptedNotes,
           edited: [],
-          deleted_ids: [],
+          deleted: [],
         },
         access_token: 'test-token',
       },
@@ -66,7 +66,7 @@ describe('FetchBuilder', () => {
     s.syncState.loadingCount = 1;
     mockKeyring.d = 'test-token';
 
-    const body = { notes: [], deleted_note_ids: [] };
+    const body = { notes: [], deleted_notes: [] };
     const res = await new FetchBuilder('/notes/sync')
       .method('POST')
       .headers(testHeaders)
@@ -100,7 +100,7 @@ describe('FetchBuilder', () => {
         note_diff: {
           added: mockDb.encryptedNotes,
           edited: [],
-          deleted_ids: [],
+          deleted: [],
         },
         access_token: 'test-token',
       },

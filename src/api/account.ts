@@ -99,7 +99,7 @@ export const deleteAccount = route(async (): Promise<void> => {
   if (resIsOk(res)) {
     await clientSideLogout();
     resetAppError();
-    syncState.unsyncedNoteIds.clear(true);
+    syncState.unsyncedNotes.clear(true);
   } else {
     throw new AppError({
       ...errorConfig,

@@ -2,17 +2,21 @@ import * as dialog from '@tauri-apps/plugin-dialog';
 import type Delta from 'quill-delta';
 import { reactive } from 'vue';
 
-import { debounceSync } from '../api';
-import { UnsyncedNotesManager } from '../classes';
+import { debounceSync, DeletedNote } from '../api';
 import { NOTE_EVENTS } from '../constant';
 import { isEmptyNote, tauriInvoke } from '../utils';
 
 import { syncState } from './sync';
 
-export type UnsyncedEventDetail = {
-  noteId: string;
-  kind: keyof Pick<UnsyncedNotesManager, 'edited' | 'deleted'>;
-};
+export type UnsyncedEventDetail =
+  | {
+      note: string;
+      kind: 'edited';
+    }
+  | {
+      note: DeletedNote;
+      kind: 'deleted';
+    };
 
 export class Note {
   readonly id: string = crypto.randomUUID();
@@ -46,11 +50,8 @@ const newNoteEvent = new CustomEvent(NOTE_EVENTS.new);
 export const selectNoteEvent = new CustomEvent(NOTE_EVENTS.select);
 export const changeNoteEvent = new CustomEvent(NOTE_EVENTS.change);
 
-function getUnsyncedEvent(
-  noteId: UnsyncedEventDetail['noteId'],
-  kind: UnsyncedEventDetail['kind']
-) {
-  return new CustomEvent(NOTE_EVENTS.unsynced, { detail: { noteId, kind } });
+function getUnsyncedEvent(detail: UnsyncedEventDetail) {
+  return new CustomEvent(NOTE_EVENTS.unsynced, { detail });
 }
 
 /** Sorts notes in descending order by timestamp. */
@@ -166,10 +167,15 @@ export function deleteNote(id: string): void {
     document.dispatchEvent(changeNoteEvent);
   }
 
-  if (syncState.unsyncedNoteIds.new === id) {
-    syncState.unsyncedNoteIds.set({ new: '' });
+  if (syncState.unsyncedNotes.new === id) {
+    syncState.unsyncedNotes.set({ new: '' });
   } else {
-    document.dispatchEvent(getUnsyncedEvent(id, 'deleted'));
+    document.dispatchEvent(
+      getUnsyncedEvent({
+        kind: 'deleted',
+        note: { id, deleted_at: Date.now() },
+      })
+    );
 
     tauriInvoke('delete_note', { id })
       .then(() => debounceSync())
@@ -198,7 +204,7 @@ export function newNote(isButtonClick?: boolean): void {
 
     // Ensure found note isn't overwritten on sync
     if (isButtonClick) {
-      syncState.unsyncedNoteIds.set({ new: foundNote.id });
+      syncState.unsyncedNotes.set({ new: foundNote.id });
     }
 
     return;
@@ -211,7 +217,7 @@ export function newNote(isButtonClick?: boolean): void {
 
   // Ensure new note isn't overwritten on sync
   if (isButtonClick) {
-    syncState.unsyncedNoteIds.set({ new: freshNote.id });
+    syncState.unsyncedNotes.set({ new: freshNote.id });
   }
 
   document.dispatchEvent(selectNoteEvent);
@@ -241,7 +247,12 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
 
   sortStateNotes();
 
-  document.dispatchEvent(getUnsyncedEvent(foundNote.id, 'edited'));
+  document.dispatchEvent(
+    getUnsyncedEvent({
+      kind: 'edited',
+      note: foundNote.id,
+    })
+  );
 
   tauriInvoke('edit_note', { note: { ...foundNote } })
     .then(() => debounceSync())

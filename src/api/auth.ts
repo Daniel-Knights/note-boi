@@ -61,7 +61,7 @@ export const login = route(async () => {
       username: syncState.username,
       password: syncState.password,
       notes: encryptedNotes,
-      deleted_note_ids: [...syncState.unsyncedNoteIds.deleted],
+      deleted_notes: syncState.unsyncedNotes.deleted,
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
@@ -87,7 +87,7 @@ export const login = route(async () => {
     await updateLocalNoteStateFromDiff({
       added: decryptedNotes[0],
       edited: decryptedNotes[1],
-      deleted_ids: res.data.note_diff.deleted_ids,
+      deleted: res.data.note_diff.deleted,
     });
   } else {
     throw new AppError({
@@ -135,7 +135,7 @@ export const signup = route(async () => {
 
     syncState.password = '';
     syncState.isLoggedIn = true;
-    syncState.unsyncedNoteIds.clear();
+    syncState.unsyncedNotes.clear();
 
     Storage.set('USERNAME', syncState.username);
   } else {

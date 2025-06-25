@@ -196,7 +196,7 @@ describe('Account', () => {
   describe('deleteAccount', () => {
     it('Deletes currently logged in account', async () => {
       const { calls, promises } = mockApi();
-      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
+      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNotes, 'clear');
       // `clientSideLogout` is imported directly in `account.ts`, so spying on the re-export
       // doesn't work. Need to spy on it directly from `auth.ts`
       const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
@@ -251,7 +251,7 @@ describe('Account', () => {
 
     it('With server error', async () => {
       const { calls, promises, setErrorValue } = mockApi();
-      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
+      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNotes, 'clear');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -287,7 +287,7 @@ describe('Account', () => {
 
     it('Unauthorized', async () => {
       const { calls, promises, setErrorValue } = mockApi();
-      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
+      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNotes, 'clear');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -320,7 +320,7 @@ describe('Account', () => {
 
     it('User not found', async () => {
       const { calls, promises } = mockApi();
-      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNoteIds, 'clear');
+      const unsyncedClearSpy = vi.spyOn(s.syncState.unsyncedNotes, 'clear');
 
       s.syncState.username = 'k';
       s.syncState.password = '2';

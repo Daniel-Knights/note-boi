@@ -15,7 +15,7 @@ export function resetSyncStore() {
   s.syncState.newPassword = '';
   s.syncState.loadingCount = 0;
   s.syncState.isLoggedIn = false;
-  s.syncState.unsyncedNoteIds.clear(true);
+  s.syncState.unsyncedNotes.clear(true);
   s.syncState.encryptedNotesCache.clear();
 
   s.resetAppError();
@@ -30,5 +30,5 @@ export function resetUpdateStore() {
 export function resetMockDb() {
   mockDb.users = structuredClone(initialMockDb.users);
   mockDb.encryptedNotes = structuredClone(initialMockDb.encryptedNotes);
-  mockDb.deletedNoteIds = new Set(initialMockDb.deletedNoteIds);
+  mockDb.deletedNotes = structuredClone(initialMockDb.deletedNotes);
 }
