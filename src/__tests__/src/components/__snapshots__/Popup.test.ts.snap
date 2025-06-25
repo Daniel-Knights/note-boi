@@ -18,7 +18,7 @@ exports[`Popup > Closes on click outside > document.body.outerHTML 1`] = `"<body
 
 exports[`Popup > Closes on click outside > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -63,8 +63,8 @@ exports[`Popup > Closes on click outside > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -98,7 +98,7 @@ exports[`Popup > Closes on escape key > document.body.outerHTML 1`] = `"<body cl
 
 exports[`Popup > Closes on escape key > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -143,8 +143,8 @@ exports[`Popup > Closes on escape key > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -178,7 +178,7 @@ exports[`Popup > Mounts > document.body.outerHTML 1`] = `"<body class="theme--sy
 
 exports[`Popup > Mounts > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -223,8 +223,8 @@ exports[`Popup > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -258,7 +258,7 @@ exports[`Popup > Unmounts > document.body.outerHTML 1`] = `"<body class="theme--
 
 exports[`Popup > Unmounts > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -303,8 +303,8 @@ exports[`Popup > Unmounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

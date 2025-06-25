@@ -18,7 +18,7 @@ exports[`Loading > Mounts > document.body.outerHTML 1`] = `"<body class="theme--
 
 exports[`Loading > Mounts > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -63,8 +63,8 @@ exports[`Loading > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

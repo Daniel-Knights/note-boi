@@ -18,7 +18,7 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > document.bod
 
 exports[`UnsyncedNotesManager > Initializes empty when no storage > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -63,8 +63,8 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > syncState 1`
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -98,7 +98,7 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > documen
 
 exports[`UnsyncedNotesManager > Initializes with contents from storage > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -143,8 +143,8 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > syncSta
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -178,7 +178,7 @@ exports[`UnsyncedNotesManager > clear > Clears edited and deleted > document.bod
 
 exports[`UnsyncedNotesManager > clear > Clears edited and deleted > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -223,8 +223,8 @@ exports[`UnsyncedNotesManager > clear > Clears edited and deleted > syncState 1`
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -258,7 +258,7 @@ exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > docume
 
 exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -303,8 +303,8 @@ exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > syncSt
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -338,7 +338,7 @@ exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > docu
 
 exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -383,8 +383,8 @@ exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > sync
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -418,7 +418,7 @@ exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > docum
 
 exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -463,8 +463,8 @@ exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > syncS
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -498,7 +498,7 @@ exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > documen
 
 exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -543,8 +543,8 @@ exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > syncSta
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -578,7 +578,7 @@ exports[`UnsyncedNotesManager > size > document.body.outerHTML 1`] = `"<body cla
 
 exports[`UnsyncedNotesManager > size > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -623,8 +623,8 @@ exports[`UnsyncedNotesManager > size > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -658,7 +658,7 @@ exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > document.bod
 
 exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -703,8 +703,8 @@ exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > syncState 1`
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -738,7 +738,7 @@ exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > document.bo
 
 exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -783,8 +783,8 @@ exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > syncState 1
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

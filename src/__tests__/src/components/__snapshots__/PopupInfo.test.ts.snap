@@ -28,7 +28,7 @@ exports[`PopupInfo > Emits close > document.body.outerHTML 1`] = `"<body class="
 
 exports[`PopupInfo > Emits close > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -73,8 +73,8 @@ exports[`PopupInfo > Emits close > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -118,7 +118,7 @@ exports[`PopupInfo > Mounts > document.body.outerHTML 1`] = `"<body class="theme
 
 exports[`PopupInfo > Mounts > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -163,8 +163,8 @@ exports[`PopupInfo > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -205,7 +205,7 @@ exports[`PopupInfo > Renders correct description list items > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_note_ids":[]}",
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -284,7 +284,7 @@ exports[`PopupInfo > Renders correct description list items > document.body.oute
 
 exports[`PopupInfo > Renders correct description list items > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": [],
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -341,8 +341,8 @@ exports[`PopupInfo > Renders correct description list items > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

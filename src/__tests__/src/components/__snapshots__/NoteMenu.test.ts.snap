@@ -47,7 +47,7 @@ exports[`NoteMenu > Creates a new note > document.body.outerHTML 1`] = `"<body c
 
 exports[`NoteMenu > Creates a new note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -298,8 +298,8 @@ exports[`NoteMenu > Creates a new note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "id",
   },
@@ -343,7 +343,7 @@ exports[`NoteMenu > Mounts > document.body.outerHTML 1`] = `"<body class="theme-
 
 exports[`NoteMenu > Mounts > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -631,8 +631,8 @@ exports[`NoteMenu > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -676,7 +676,7 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > document.body.oute
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -920,8 +920,8 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -965,7 +965,7 @@ exports[`NoteMenu > Renders a list item for every note > document.body.outerHTML
 
 exports[`NoteMenu > Renders a list item for every note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1253,8 +1253,8 @@ exports[`NoteMenu > Renders a list item for every note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1324,7 +1324,7 @@ exports[`NoteMenu > Renders a single empty note > document.body.outerHTML 1`] = 
 
 exports[`NoteMenu > Renders a single empty note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1381,8 +1381,8 @@ exports[`NoteMenu > Renders a single empty note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1426,7 +1426,7 @@ exports[`NoteMenu > Selects a clicked note > document.body.outerHTML 1`] = `"<bo
 
 exports[`NoteMenu > Selects a clicked note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -1670,8 +1670,8 @@ exports[`NoteMenu > Selects a clicked note > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -1715,7 +1715,7 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > d
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2003,8 +2003,8 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > s
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2048,7 +2048,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > document.bod
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2292,8 +2292,8 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > syncState 1`
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2337,7 +2337,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2581,8 +2581,8 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2626,7 +2626,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -2870,8 +2870,8 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -2915,7 +2915,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > document.body.o
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3159,8 +3159,8 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > syncState 1`] =
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3204,7 +3204,7 @@ exports[`NoteMenu > Sets contextmenu ev > document.body.outerHTML 1`] = `"<body 
 
 exports[`NoteMenu > Sets contextmenu ev > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3492,8 +3492,8 @@ exports[`NoteMenu > Sets contextmenu ev > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3537,7 +3537,7 @@ exports[`NoteMenu > Sets menu width with drag-bar > document.body.outerHTML 1`] 
 
 exports[`NoteMenu > Sets menu width with drag-bar > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -3825,8 +3825,8 @@ exports[`NoteMenu > Sets menu width with drag-bar > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -3870,7 +3870,7 @@ exports[`NoteMenu > Toggles menu visibility > document.body.outerHTML 1`] = `"<b
 
 exports[`NoteMenu > Toggles menu visibility > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -4158,8 +4158,8 @@ exports[`NoteMenu > Toggles menu visibility > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },

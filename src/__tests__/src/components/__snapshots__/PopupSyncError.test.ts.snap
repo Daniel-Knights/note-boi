@@ -18,7 +18,7 @@ exports[`PopupSyncError > Emits close > document.body.outerHTML 1`] = `"<body cl
 
 exports[`PopupSyncError > Emits close > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -63,8 +63,8 @@ exports[`PopupSyncError > Emits close > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -122,7 +122,7 @@ exports[`PopupSyncError > Ignores > document.body.outerHTML 1`] = `"<body class=
 
 exports[`PopupSyncError > Ignores > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -167,8 +167,8 @@ exports[`PopupSyncError > Ignores > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -202,7 +202,7 @@ exports[`PopupSyncError > Mounts > document.body.outerHTML 1`] = `"<body class="
 
 exports[`PopupSyncError > Mounts > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -247,8 +247,8 @@ exports[`PopupSyncError > Mounts > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -282,7 +282,7 @@ exports[`PopupSyncError > No try again button when no retry function > document.
 
 exports[`PopupSyncError > No try again button when no retry function > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -327,8 +327,8 @@ exports[`PopupSyncError > No try again button when no retry function > syncState
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -362,7 +362,7 @@ exports[`PopupSyncError > Retries > document.body.outerHTML 1`] = `"<body class=
 
 exports[`PopupSyncError > Retries > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -407,8 +407,8 @@ exports[`PopupSyncError > Retries > syncState 1`] = `
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
@@ -442,7 +442,7 @@ exports[`PopupSyncError > Shows default error message when none provided > docum
 
 exports[`PopupSyncError > Shows default error message when none provided > mockDb 1`] = `
 {
-  "deletedNoteIds": Set {},
+  "deletedNotes": undefined,
   "encryptedNotes": [],
   "users": {
     "d": "1",
@@ -487,8 +487,8 @@ exports[`PopupSyncError > Shows default error message when none provided > syncS
   "loadingCount": 0,
   "newPassword": "",
   "password": "",
-  "unsyncedNoteIds": UnsyncedNotesManager {
-    "deleted": Set {},
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
     "edited": Set {},
     "new": "",
   },
