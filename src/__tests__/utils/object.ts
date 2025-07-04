@@ -10,8 +10,8 @@ export function isNote(note: unknown): note is n.Note {
   const nt = note as n.Note;
 
   return (
-    hasKeys(nt, ['id', 'timestamp', 'content']) &&
-    typeof nt.id === 'string' &&
+    hasKeys(nt, ['uuid', 'timestamp', 'content']) &&
+    typeof nt.uuid === 'string' &&
     typeof nt.timestamp === 'number' &&
     isObj(nt.content) &&
     hasKeys(nt.content, ['delta', 'title', 'body']) &&
@@ -38,7 +38,7 @@ export function isEncryptedNote(note: unknown): note is EncryptedNote {
  */
 export function hackEncryptionError(nt: n.Note) {
   // @ts-expect-error - see function comment
-  nt.id = 'id'; // Normalise for snapshot
+  nt.uuid = 'uuid'; // Normalise for snapshot
   nt.timestamp = 0;
   // @ts-expect-error - see function comment
   nt.content = nt;

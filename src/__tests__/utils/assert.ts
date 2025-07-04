@@ -195,7 +195,7 @@ const expectedNoteType: ExpectedType = {
   type: 'object',
   values: [
     {
-      key: 'id',
+      key: 'uuid',
       type: 'string',
     },
     {
@@ -213,7 +213,7 @@ const expectedDeletedNoteType: ExpectedType = {
   type: 'object',
   values: [
     {
-      key: 'id',
+      key: 'uuid',
       type: 'string',
     },
     {

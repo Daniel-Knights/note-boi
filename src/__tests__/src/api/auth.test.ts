@@ -153,7 +153,7 @@ describe('Auth', () => {
 
       clearMockApiResults({ calls });
 
-      mockDb.encryptedNotes = [{ id: '', timestamp: 0, content: 'Un-deserialisable' }];
+      mockDb.encryptedNotes = [{ uuid: '', timestamp: 0, content: 'Un-deserialisable' }];
 
       await a.login();
 

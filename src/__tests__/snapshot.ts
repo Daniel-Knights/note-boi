@@ -6,27 +6,27 @@ import { openedPopup } from '../store/popup';
 import { selectedTheme } from '../store/theme';
 
 import { allCalls, mockDb } from './mock';
-import { normaliseEncryptedNote, normaliseNote, normaliseNoteId } from './utils';
+import { normaliseEncryptedNote, normaliseNote, normaliseNoteUuid } from './utils';
 
 /** Snapshots app state. Replaces variable values with placeholders. */
 export async function snapshotState() {
   // syncState
   s.syncState.unsyncedNotes.edited = new Set(
-    [...s.syncState.unsyncedNotes.edited].map(normaliseNoteId)
+    [...s.syncState.unsyncedNotes.edited].map(normaliseNoteUuid)
   );
   s.syncState.unsyncedNotes.deleted = s.syncState.unsyncedNotes.deleted.map((dn) => ({
     ...dn,
-    id: normaliseNoteId(dn.id),
+    uuid: normaliseNoteUuid(dn.uuid),
     deleted_at: 0,
   }));
 
   if (s.syncState.unsyncedNotes.new) {
-    s.syncState.unsyncedNotes.new = normaliseNoteId(s.syncState.unsyncedNotes.new);
+    s.syncState.unsyncedNotes.new = normaliseNoteUuid(s.syncState.unsyncedNotes.new);
   }
 
   s.syncState.encryptedNotesCache = new Map(
-    [...s.syncState.encryptedNotesCache.entries()].map(([id, nt]) => [
-      normaliseNoteId(id),
+    [...s.syncState.encryptedNotesCache.entries()].map(([uuid, nt]) => [
+      normaliseNoteUuid(uuid),
       normaliseEncryptedNote(nt),
     ])
   );
@@ -35,15 +35,15 @@ export async function snapshotState() {
   const storedUnsyncedNotes = Storage.getJson('UNSYNCED');
 
   if (storedUnsyncedNotes) {
-    storedUnsyncedNotes.edited = [...storedUnsyncedNotes.edited].map(normaliseNoteId);
+    storedUnsyncedNotes.edited = [...storedUnsyncedNotes.edited].map(normaliseNoteUuid);
     storedUnsyncedNotes.deleted = storedUnsyncedNotes.deleted.map((dn) => ({
       ...dn,
-      id: normaliseNoteId(dn.id),
+      uuid: normaliseNoteUuid(dn.uuid),
       deleted_at: 0,
     }));
 
     if (storedUnsyncedNotes.new) {
-      storedUnsyncedNotes.new = normaliseNoteId(storedUnsyncedNotes.new);
+      storedUnsyncedNotes.new = normaliseNoteUuid(storedUnsyncedNotes.new);
     }
   }
 
@@ -56,7 +56,7 @@ export async function snapshotState() {
     ...mockDb,
     deletedNotes: mockDb.deletedNotes?.map((dn) => ({
       ...dn,
-      id: normaliseNoteId(dn.id),
+      uuid: normaliseNoteUuid(dn.uuid),
       deleted_at: 0,
     })),
     encryptedNotes: mockDb.encryptedNotes.map(normaliseEncryptedNote),

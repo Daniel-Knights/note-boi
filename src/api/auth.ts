@@ -52,7 +52,7 @@ export const login = route(async () => {
   if (!encryptedNotes) return;
 
   encryptedNotes.forEach((nt) => {
-    syncState.encryptedNotesCache.set(nt.id, nt);
+    syncState.encryptedNotesCache.set(nt.uuid, nt);
   });
 
   const res = await new FetchBuilder('/auth/login')
