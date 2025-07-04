@@ -105,12 +105,12 @@ describe('Utils', () => {
     it('tauriInvoke', async () => {
       const { calls } = mockApi();
 
-      await tauriInvoke('delete_note', { id: 'id' });
+      await tauriInvoke('delete_note', { uuid: 'uuid' });
 
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('delete_note'));
       assert.deepEqual(calls.invoke[0]!.calledWith, {
-        id: 'id',
+        uuid: 'uuid',
       });
 
       clearMockApiResults({ calls });

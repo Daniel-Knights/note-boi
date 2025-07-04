@@ -33,7 +33,7 @@ describe('Storage', () => {
     const unsynced = {
       new: 'note1',
       edited: ['note2'],
-      deleted: [{ id: 'note3', deleted_at: 0 }],
+      deleted: [{ uuid: 'note3', deleted_at: 0 }],
     };
 
     Storage.setJson('UNSYNCED', unsynced);

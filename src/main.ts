@@ -47,11 +47,11 @@ tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteSelectedNotes);
 tauriListen('export-note', () => {
   exportNotes([
-    noteState.selectedNote.id,
-    ...noteState.extraSelectedNotes.map((nt) => nt.id),
+    noteState.selectedNote.uuid,
+    ...noteState.extraSelectedNotes.map((nt) => nt.uuid),
   ]);
 });
-tauriListen('export-all-notes', () => exportNotes(noteState.notes.map((nt) => nt.id)));
+tauriListen('export-all-notes', () => exportNotes(noteState.notes.map((nt) => nt.uuid)));
 tauriListen('delete-account', deleteAccount);
 tauriListen('change-password', () => {
   openedPopup.value = POPUP_TYPE.CHANGE_PASSWORD;

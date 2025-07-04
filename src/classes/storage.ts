@@ -10,7 +10,7 @@ export const STORAGE_KEYS_STRING = {
 } satisfies Record<StorageKeyString, string>;
 
 export const STORAGE_KEYS_JSON = {
-  UNSYNCED: 'unsynced-note-ids',
+  UNSYNCED: 'unsynced-note-uuids',
 } satisfies Record<StorageKeyJson, string>;
 
 export const STORAGE_KEYS = { ...STORAGE_KEYS_STRING, ...STORAGE_KEYS_JSON };

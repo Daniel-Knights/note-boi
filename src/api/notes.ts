@@ -49,8 +49,8 @@ export const sync = route(async (isCancelled?: () => boolean) => {
   if (!passwordKey || isCancelled?.()) return;
 
   const notesToEncrypt = noteState.notes.filter((nt) => {
-    const noteIsEdited = syncState.unsyncedNotes.edited.has(nt.id);
-    const noteIsCached = syncState.encryptedNotesCache.has(nt.id);
+    const noteIsEdited = syncState.unsyncedNotes.edited.has(nt.uuid);
+    const noteIsCached = syncState.encryptedNotesCache.has(nt.uuid);
 
     return (noteIsEdited || !noteIsCached) && !isEmptyNote(nt);
   });
@@ -66,7 +66,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
   if (!accessToken || !encryptedNotes || isCancelled?.()) return;
 
   encryptedNotes.forEach((nt) => {
-    syncState.encryptedNotesCache.set(nt.id, nt);
+    syncState.encryptedNotesCache.set(nt.uuid, nt);
   });
 
   const res = await new FetchBuilder('/notes/sync')
@@ -116,10 +116,10 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
   // Resolve edited and deleted note conflicts
   for (let i = noteState.notes.length - 1; i >= 0; i -= 1) {
     const ln = noteState.notes[i]!;
-    const isSelectedNote = ln.id === noteState.selectedNote.id;
+    const isSelectedNote = ln.uuid === noteState.selectedNote.uuid;
 
     // Remove notes that were deleted on the server
-    if (noteDiff.deleted.some((dn) => dn.id === ln.id)) {
+    if (noteDiff.deleted.some((dn) => dn.uuid === ln.uuid)) {
       noteState.notes.splice(i, 1);
 
       if (isSelectedNote) {
@@ -130,7 +130,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
     }
 
     // Update existing notes
-    const foundRemoteNoteIndex = noteDiff.edited.findIndex((rn) => rn.id === ln.id);
+    const foundRemoteNoteIndex = noteDiff.edited.findIndex((rn) => rn.uuid === ln.uuid);
 
     if (foundRemoteNoteIndex > -1) {
       noteState.notes[i] = noteDiff.edited[foundRemoteNoteIndex]!;
@@ -156,7 +156,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
   }
   // Select next note if current selected note was deleted
   else if (selectedNoteIsDeleted) {
-    selectNote(noteState.notes[0]!.id);
+    selectNote(noteState.notes[0]!.uuid);
   }
   // Update selected note if edited and ensure editor updates
   else if (remoteSelectedNote) {
@@ -167,10 +167,10 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
   }
   // Select next note if current selected note is empty and not deliberately created
   else if (noteState.notes.length > 1 && !syncState.unsyncedNotes.new) {
-    const foundNote = findNote(noteState.selectedNote.id);
+    const foundNote = findNote(noteState.selectedNote.uuid);
 
     if (!foundNote || isEmptyNote(foundNote)) {
-      selectNote(noteState.notes[1]!.id);
+      selectNote(noteState.notes[1]!.uuid);
     }
   }
 
@@ -219,6 +219,6 @@ export type DecryptedNoteDiff = {
 };
 
 export type DeletedNote = {
-  id: string;
+  uuid: string;
   deleted_at: number;
 };

@@ -8,7 +8,7 @@
 export function getDummyNotes() {
   return [
     {
-      id: '2cbe0086-4b6f-466f-9ec0-9a302480da6a',
+      uuid: '2cbe0086-4b6f-466f-9ec0-9a302480da6a',
       timestamp: 958201892455,
       content: {
         delta: {
@@ -24,7 +24,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: '2e36d871-0de2-43e6-9cbc-3c77e5d154cb',
+      uuid: '2e36d871-0de2-43e6-9cbc-3c77e5d154cb',
       timestamp: 811831863971,
       content: {
         delta: {
@@ -40,7 +40,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: 'b8ff4ac5-6541-49d2-9c79-4444d872481e',
+      uuid: 'b8ff4ac5-6541-49d2-9c79-4444d872481e',
       timestamp: 739056902017,
       content: {
         delta: {
@@ -56,7 +56,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: '6b24cde1-6118-4277-9791-8eab3c71cabb',
+      uuid: '6b24cde1-6118-4277-9791-8eab3c71cabb',
       timestamp: 157836992432,
       content: {
         delta: {
@@ -72,7 +72,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: 'ac4e006d-38d4-4373-af31-4a5f46fc5184',
+      uuid: 'ac4e006d-38d4-4373-af31-4a5f46fc5184',
       timestamp: 1066734006578,
       content: {
         delta: {
@@ -88,7 +88,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: '6fb3ce26-82e0-408f-84bf-bd8cd64c35b2',
+      uuid: '6fb3ce26-82e0-408f-84bf-bd8cd64c35b2',
       timestamp: 1642640862249,
       content: {
         delta: {
@@ -104,7 +104,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: '81648517-86ff-4ed9-8bf7-941c32dd0fad',
+      uuid: '81648517-86ff-4ed9-8bf7-941c32dd0fad',
       timestamp: 242282290063,
       content: {
         delta: {
@@ -120,7 +120,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: '9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3',
+      uuid: '9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3',
       timestamp: 550235579146,
       content: {
         delta: {
@@ -136,7 +136,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: 'b9754a63-843c-4f59-9aea-9a374aa1603d',
+      uuid: 'b9754a63-843c-4f59-9aea-9a374aa1603d',
       timestamp: 1533441892487,
       content: {
         delta: {
@@ -152,7 +152,7 @@ export function getDummyNotes() {
       },
     },
     {
-      id: '7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf',
+      uuid: '7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf',
       timestamp: 1650008403223,
       content: {
         delta: {

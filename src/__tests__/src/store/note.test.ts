@@ -44,9 +44,9 @@ describe('Note store', () => {
     const emptyNote = new n.Note();
     const timestamp = Date.now();
 
-    assert.strictEqual(typeof emptyNote.id, 'string');
-    assert.lengthOf(emptyNote.id, 36);
-    assert.isTrue(UUID_REGEX.test(emptyNote.id));
+    assert.strictEqual(typeof emptyNote.uuid, 'string');
+    assert.lengthOf(emptyNote.uuid, 36);
+    assert.isTrue(UUID_REGEX.test(emptyNote.uuid));
     assert.strictEqual(floorToThousand(emptyNote.timestamp), floorToThousand(timestamp));
     assert.deepEqual(emptyNote.content.delta, {
       ops: [],
@@ -60,7 +60,7 @@ describe('Note store', () => {
 
     await n.getAllNotes();
 
-    const index = n.findNoteIndex(existingNote.id);
+    const index = n.findNoteIndex(existingNote.uuid);
 
     assert.strictEqual(index, existingNoteIndexSorted);
     assert.strictEqual(n.findNoteIndex(), -1);
@@ -71,11 +71,11 @@ describe('Note store', () => {
 
     await n.getAllNotes();
 
-    const foundNote = n.findNote(existingNote.id);
+    const foundNote = n.findNote(existingNote.uuid);
 
     assert.isDefined(foundNote);
-    assert.strictEqual(foundNote!.id, existingNote.id);
-    assert.isUndefined(n.findNote(new n.Note().id));
+    assert.strictEqual(foundNote!.uuid, existingNote.uuid);
+    assert.isUndefined(n.findNote(new n.Note().uuid));
   });
 
   it('catchNoteInvokeError', async () => {
@@ -106,7 +106,7 @@ describe('Note store', () => {
 
     vi.clearAllMocks();
 
-    n.selectNote(existingNote.id);
+    n.selectNote(existingNote.uuid);
 
     expect(mockSelectEventCb).toHaveBeenCalledOnce();
     expect(mockChangeEventCb).toHaveBeenCalledOnce();
@@ -120,8 +120,8 @@ describe('Note store', () => {
 
     // Ensure clearNote works
     n.noteState.notes.push(new n.Note());
-    n.selectNote(n.noteState.notes[10]!.id);
-    n.selectNote(n.noteState.notes[9]!.id);
+    n.selectNote(n.noteState.notes[10]!.uuid);
+    n.selectNote(n.noteState.notes[9]!.uuid);
 
     // 3 = 2 (selectNote) + 1 (clearNote)
     expect(mockSelectEventCb).toHaveBeenCalledTimes(3);
@@ -135,14 +135,14 @@ describe('Note store', () => {
 
     await n.getAllNotes();
 
-    n.selectNote(existingNote.id);
+    n.selectNote(existingNote.uuid);
 
     assert.isTrue(n.isSelectedNote(existingNote));
 
     const emptyNote = new n.Note();
 
     n.noteState.notes.push(emptyNote);
-    n.selectNote(emptyNote.id);
+    n.selectNote(emptyNote.uuid);
 
     assert.isTrue(n.isSelectedNote(emptyNote));
     assert.isFalse(n.isSelectedNote(existingNote));
@@ -245,9 +245,9 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      n.selectNote(existingNote.id);
+      n.selectNote(existingNote.uuid);
 
-      assert.isDefined(n.findNote(existingNote.id));
+      assert.isDefined(n.findNote(existingNote.uuid));
       assert.deepEqual(n.noteState.selectedNote, existingNote);
 
       vi.clearAllMocks();
@@ -255,7 +255,7 @@ describe('Note store', () => {
 
       const deletedAt = Date.now();
 
-      n.deleteNote(existingNote.id);
+      n.deleteNote(existingNote.uuid);
 
       expect(mockSelectEventCb).toHaveBeenCalledOnce();
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
@@ -263,14 +263,14 @@ describe('Note store', () => {
       expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
         kind: 'deleted',
         note: {
-          id: existingNote.id,
+          uuid: existingNote.uuid,
           deleted_at: floorToThousand(deletedAt),
         },
       });
 
       assert.notDeepEqual(n.noteState.selectedNote, existingNote);
       assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
-      assert.isUndefined(n.findNote(existingNote.id));
+      assert.isUndefined(n.findNote(existingNote.uuid));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('delete_note'));
     });
@@ -283,7 +283,7 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      n.selectNote(n.noteState.notes[2]!.id);
+      n.selectNote(n.noteState.notes[2]!.uuid);
 
       assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
 
@@ -292,7 +292,7 @@ describe('Note store', () => {
 
       const deletedAt = Date.now();
 
-      n.deleteNote(otherExistingNote.id);
+      n.deleteNote(otherExistingNote.uuid);
 
       await Promise.all(promises);
 
@@ -302,14 +302,14 @@ describe('Note store', () => {
       expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
         kind: 'deleted',
         note: {
-          id: otherExistingNote.id,
+          uuid: otherExistingNote.uuid,
           deleted_at: floorToThousand(deletedAt),
         },
       });
 
       assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
       assert.notDeepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
-      assert.isUndefined(n.findNote(otherExistingNote.id));
+      assert.isUndefined(n.findNote(otherExistingNote.uuid));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('delete_note'));
     });
@@ -329,7 +329,7 @@ describe('Note store', () => {
 
       const deletedAt = Date.now();
 
-      n.deleteNote(existingNote.id);
+      n.deleteNote(existingNote.uuid);
 
       expect(mockSelectEventCb).toHaveBeenCalledOnce();
       expect(mockChangeEventCb).toHaveBeenCalledOnce();
@@ -337,14 +337,14 @@ describe('Note store', () => {
       expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
         kind: 'deleted',
         note: {
-          id: existingNote.id,
+          uuid: existingNote.uuid,
           deleted_at: floorToThousand(deletedAt),
         },
       });
 
       assert.lengthOf(n.noteState.notes, 1);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-      assert.isUndefined(n.findNote(existingNote.id));
+      assert.isUndefined(n.findNote(existingNote.uuid));
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.invoke.has('delete_note'));
       assert.isTrue(calls.invoke.has('new_note'));
@@ -355,9 +355,9 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      s.syncState.unsyncedNotes.set({ new: existingNote.id });
+      s.syncState.unsyncedNotes.set({ new: existingNote.uuid });
 
-      n.deleteNote(existingNote.id);
+      n.deleteNote(existingNote.uuid);
 
       assert.strictEqual(s.syncState.unsyncedNotes.new, '');
     });
@@ -372,11 +372,11 @@ describe('Note store', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls, promises });
 
-      await waitForAutoSync(() => n.deleteNote(otherExistingNote.id), calls);
+      await waitForAutoSync(() => n.deleteNote(otherExistingNote.uuid), calls);
 
       expect(debounceSyncSpy).toHaveBeenCalledOnce();
 
-      assert.isUndefined(n.findNote(otherExistingNote.id));
+      assert.isUndefined(n.findNote(otherExistingNote.uuid));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('delete_note'));
     });
@@ -391,7 +391,7 @@ describe('Note store', () => {
       clearMockApiResults({ calls });
       setErrorValue.invoke('delete_note');
 
-      n.deleteNote(existingNote.id);
+      n.deleteNote(existingNote.uuid);
 
       await waitUntil(() => calls.tauriApi.has('plugin:dialog|message'));
 
@@ -440,14 +440,14 @@ describe('Note store', () => {
         expect(mockUnsyncedEventCb).nthCalledWith(i + 1, {
           kind: 'deleted',
           note: {
-            id: note.id,
+            uuid: note.uuid,
             deleted_at: floorToThousand(deletedAt),
           },
         });
       }
 
       assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
-      assert.isUndefined(n.findNote(currentSelectedNote.id));
+      assert.isUndefined(n.findNote(currentSelectedNote.uuid));
       assert.isEmpty(n.noteState.extraSelectedNotes);
       assert.strictEqual(calls.size, allNotesToDelete.length);
       assert.isTrue(calls.invoke.has('delete_note', allNotesToDelete.length));
@@ -489,7 +489,7 @@ describe('Note store', () => {
 
       await n.getAllNotes();
 
-      n.selectNote(existingNote.id);
+      n.selectNote(existingNote.uuid);
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
@@ -515,7 +515,7 @@ describe('Note store', () => {
       await n.getAllNotes();
 
       n.noteState.notes.push(emptyNote);
-      n.selectNote(emptyNote.id);
+      n.selectNote(emptyNote.uuid);
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
@@ -526,7 +526,7 @@ describe('Note store', () => {
       expect(mockChangeEventCb).not.toHaveBeenCalled();
       expect(mockNewEventCb).not.toHaveBeenCalled();
 
-      assert.strictEqual(n.noteState.selectedNote.id, emptyNote.id);
+      assert.strictEqual(n.noteState.selectedNote.uuid, emptyNote.uuid);
       assert.deepEqual(n.noteState.selectedNote.content, emptyNote.content);
       assert.notStrictEqual(n.noteState.selectedNote.timestamp, emptyNote.timestamp);
       assert.isTrue(isEmptyNote(n.noteState.selectedNote));
@@ -571,7 +571,7 @@ describe('Note store', () => {
       await n.getAllNotes();
 
       const currentSelectedNote = { ...n.noteState.selectedNote };
-      const noteToEdit = { ...n.findNote(n.noteState.selectedNote.id) };
+      const noteToEdit = { ...n.findNote(n.noteState.selectedNote.uuid) };
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });
@@ -585,10 +585,10 @@ describe('Note store', () => {
       expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
       expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
         kind: 'edited',
-        note: noteToEdit.id,
+        note: noteToEdit.uuid,
       });
 
-      const editedNote = n.findNote(noteToEdit.id)!;
+      const editedNote = n.findNote(noteToEdit.uuid)!;
 
       assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
       assert.notDeepEqual(editedNote, noteToEdit);
@@ -641,7 +641,7 @@ describe('Note store', () => {
 
       clearMockApiResults({ calls });
 
-      await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
+      await n.exportNotes(n.noteState.notes.map((nt) => nt.uuid));
 
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
@@ -662,7 +662,7 @@ describe('Note store', () => {
       clearMockApiResults({ calls });
       setResValues.tauriApi({ openDialog: [''] });
 
-      await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
+      await n.exportNotes(n.noteState.notes.map((nt) => nt.uuid));
 
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
@@ -675,7 +675,7 @@ describe('Note store', () => {
 
       clearMockApiResults({ calls });
 
-      await n.exportNotes([n.noteState.notes[0]!.id]);
+      await n.exportNotes([n.noteState.notes[0]!.uuid]);
 
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
@@ -691,7 +691,7 @@ describe('Note store', () => {
       clearMockApiResults({ calls });
       setErrorValue.invoke('export_notes');
 
-      await n.exportNotes(n.noteState.notes.map((nt) => nt.id));
+      await n.exportNotes(n.noteState.notes.map((nt) => nt.uuid));
 
       await waitUntil(() => calls.tauriApi.has('plugin:dialog|message'));
 
