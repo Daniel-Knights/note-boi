@@ -23,7 +23,7 @@ describe('Update', () => {
     it('Returns if update unavailable', async () => {
       const { calls, setResValues } = mockApi();
 
-      setResValues.tauriApi({ checkUpdate: [{ available: false }] });
+      setResValues.tauriApi({ checkUpdate: [null] });
 
       await u.handleUpdate();
 
