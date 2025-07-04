@@ -48,8 +48,8 @@ exports[`PopupInfo > Emits close > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -138,8 +138,8 @@ exports[`PopupInfo > Mounts > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -249,8 +249,8 @@ exports[`PopupInfo > Renders correct description list items > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -269,8 +269,8 @@ exports[`PopupInfo > Renders correct description list items > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -304,8 +304,8 @@ exports[`PopupInfo > Renders correct description list items > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -316,8 +316,8 @@ exports[`PopupInfo > Renders correct description list items > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

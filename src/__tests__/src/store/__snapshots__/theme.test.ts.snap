@@ -38,8 +38,8 @@ exports[`Theme > Uses system as default > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -118,8 +118,8 @@ exports[`Theme > setTheme > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

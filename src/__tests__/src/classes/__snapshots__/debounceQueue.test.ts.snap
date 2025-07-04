@@ -38,8 +38,8 @@ exports[`DebounceQueue > add > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -118,8 +118,8 @@ exports[`DebounceQueue > clear > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

@@ -38,8 +38,8 @@ exports[`Log > forwardConsole > console.debug > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -118,8 +118,8 @@ exports[`Log > forwardConsole > console.error > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -198,8 +198,8 @@ exports[`Log > forwardConsole > console.info > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -278,8 +278,8 @@ exports[`Log > forwardConsole > console.log > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -358,8 +358,8 @@ exports[`Log > forwardConsole > console.warn > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -438,8 +438,8 @@ exports[`Log > initLogger > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

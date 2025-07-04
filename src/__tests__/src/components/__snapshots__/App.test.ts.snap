@@ -59,8 +59,8 @@ exports[`App > Mounts > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -160,8 +160,8 @@ exports[`App > Shows loading spinner when update is downloading > noteState 1`] 
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

@@ -38,8 +38,8 @@ exports[`AppError > With default values > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -118,8 +118,8 @@ exports[`AppError > With provided values > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -198,8 +198,8 @@ exports[`AppError > isNone > Returns false when code is not NONE > noteState 1`]
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -278,8 +278,8 @@ exports[`AppError > isNone > Returns true when code is NONE > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -358,8 +358,8 @@ exports[`AppError > retry > With no arguments > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -438,8 +438,8 @@ exports[`AppError > retry > With provided arguments > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -518,8 +518,8 @@ exports[`AppError > retry > Without retryConfig > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

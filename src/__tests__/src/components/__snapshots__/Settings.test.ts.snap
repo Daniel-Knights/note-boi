@@ -106,8 +106,8 @@ exports[`Settings > Account menu item > Delete account menu item > noteState 1`]
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -186,8 +186,8 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -291,8 +291,8 @@ exports[`Settings > Exports all notes > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -371,8 +371,8 @@ exports[`Settings > Mounts > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -451,8 +451,8 @@ exports[`Settings > Opens and closes drop menu > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -541,8 +541,8 @@ exports[`Settings > Opens info popup > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -621,8 +621,8 @@ exports[`Settings > Sets theme preference > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -701,8 +701,8 @@ exports[`Settings > Sets update strategy > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -838,8 +838,8 @@ exports[`Settings > Update and restart menu item > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
