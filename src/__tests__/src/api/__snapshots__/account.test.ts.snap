@@ -62,8 +62,8 @@ exports[`Account > changePassword > Changes password for currently logged in acc
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -82,8 +82,8 @@ exports[`Account > changePassword > Changes password for currently logged in acc
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -103,7 +103,7 @@ exports[`Account > changePassword > Changes password for currently logged in acc
     "request",
     {
       "calledWith": {
-        "body": "{"current_password":"2","new_password":"1","notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "body": "{"current_password":"2","new_password":"1","notes":[{"uuid":"uuid","timestamp":0,"content":"content"}]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -128,7 +128,7 @@ exports[`Account > changePassword > Changes password for currently logged in acc
     "request",
     {
       "calledWith": {
-        "body": "{"current_password":"1","new_password":"2","notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "body": "{"current_password":"1","new_password":"2","notes":[{"uuid":"uuid","timestamp":0,"content":"content"}]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -177,8 +177,8 @@ exports[`Account > changePassword > Changes password for currently logged in acc
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -189,8 +189,8 @@ exports[`Account > changePassword > Changes password for currently logged in acc
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -293,8 +293,8 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -313,8 +313,8 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -334,7 +334,7 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
     "request",
     {
       "calledWith": {
-        "body": "{"current_password":"1","new_password":"2","notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "body": "{"current_password":"1","new_password":"2","notes":[{"uuid":"uuid","timestamp":0,"content":"content"}]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -383,8 +383,8 @@ exports[`Account > changePassword > Sets and resets loading state > noteState 1`
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -395,8 +395,8 @@ exports[`Account > changePassword > Sets and resets loading state > noteState 1`
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -539,8 +539,8 @@ exports[`Account > changePassword > User not found > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -648,8 +648,8 @@ exports[`Account > changePassword > With encryption error > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -668,8 +668,8 @@ exports[`Account > changePassword > With encryption error > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -716,16 +716,16 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         "body": undefined,
         "content": {
           "content": [Circular],
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
         "delta": {},
-        "id": "id",
         "timestamp": 0,
         "title": undefined,
+        "uuid": "uuid",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     {
       "content": {
@@ -739,8 +739,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -754,8 +754,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -769,8 +769,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -784,8 +784,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -799,8 +799,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -814,8 +814,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -829,8 +829,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -844,8 +844,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -859,8 +859,8 @@ exports[`Account > changePassword > With encryption error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -919,8 +919,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -1030,8 +1030,8 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -1050,8 +1050,8 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -1071,7 +1071,7 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"current_password":"1","new_password":"2","notes":[{"id":"id","timestamp":0,"content":"content"}]}",
+        "body": "{"current_password":"1","new_password":"2","notes":[{"uuid":"uuid","timestamp":0,"content":"content"}]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -1110,8 +1110,8 @@ exports[`Account > changePassword > With server error > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -1122,8 +1122,8 @@ exports[`Account > changePassword > With server error > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -1231,8 +1231,8 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -1251,8 +1251,8 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -1341,8 +1341,8 @@ exports[`Account > deleteAccount > Deletes currently logged in account > noteSta
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -1353,8 +1353,8 @@ exports[`Account > deleteAccount > Deletes currently logged in account > noteSta
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -1447,8 +1447,8 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > noteSta
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -1551,8 +1551,8 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -1571,8 +1571,8 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -1661,8 +1661,8 @@ exports[`Account > deleteAccount > Sets and resets loading state > noteState 1`]
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -1673,8 +1673,8 @@ exports[`Account > deleteAccount > Sets and resets loading state > noteState 1`]
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -1777,8 +1777,8 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -1797,8 +1797,8 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -1868,8 +1868,8 @@ exports[`Account > deleteAccount > Unauthorized > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -1880,8 +1880,8 @@ exports[`Account > deleteAccount > Unauthorized > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -2039,8 +2039,8 @@ exports[`Account > deleteAccount > User not found > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -2147,8 +2147,8 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -2167,8 +2167,8 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -2238,8 +2238,8 @@ exports[`Account > deleteAccount > With server error > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -2250,8 +2250,8 @@ exports[`Account > deleteAccount > With server error > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

@@ -33,8 +33,8 @@ exports[`Notes (sync) > Edge cases > No local, no remote > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -107,8 +107,8 @@ exports[`Notes (sync) > Edge cases > No local, no remote > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -142,8 +142,8 @@ exports[`Notes (sync) > Edge cases > No local, no remote > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -154,8 +154,8 @@ exports[`Notes (sync) > Edge cases > No local, no remote > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -229,8 +229,8 @@ exports[`Notes (sync) > Edge cases > No local, some remote > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -294,7 +294,7 @@ exports[`Notes (sync) > Edge cases > No local, some remote > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "id": "id",
+        "uuid": "uuid",
       },
       "name": "delete_note",
     },
@@ -360,8 +360,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -375,8 +375,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -390,8 +390,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -405,8 +405,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -420,8 +420,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -435,8 +435,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -450,8 +450,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -465,8 +465,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -480,8 +480,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -495,8 +495,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -514,53 +514,53 @@ exports[`Notes (sync) > Edge cases > No local, some remote > mockDb 1`] = `
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
   ],
   "users": {
@@ -629,8 +629,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -644,8 +644,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -659,8 +659,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -674,8 +674,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -689,8 +689,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -704,8 +704,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -719,8 +719,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -734,8 +734,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -749,8 +749,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -764,8 +764,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -824,8 +824,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -909,7 +909,7 @@ exports[`Notes (sync) > Edge cases > No remote, some local > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"username":"d","password":"1","notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -1002,8 +1002,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -1017,8 +1017,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -1032,8 +1032,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -1047,8 +1047,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -1062,8 +1062,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -1077,8 +1077,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -1092,8 +1092,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -1107,8 +1107,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -1122,8 +1122,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -1137,8 +1137,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -1156,53 +1156,53 @@ exports[`Notes (sync) > Edge cases > No remote, some local > mockDb 1`] = `
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
   ],
   "users": {
@@ -1271,8 +1271,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -1286,8 +1286,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -1301,8 +1301,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -1316,8 +1316,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -1331,8 +1331,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -1346,8 +1346,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -1361,8 +1361,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -1376,8 +1376,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -1391,8 +1391,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -1406,8 +1406,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -1466,8 +1466,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -1489,53 +1489,53 @@ exports[`Notes (sync) > Edge cases > No remote, some local > syncState 1`] = `
   "encryptedNotesCache": Map {
     "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf" => {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2" => {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "b9754a63-843c-4f59-9aea-9a374aa1603d" => {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "ac4e006d-38d4-4373-af31-4a5f46fc5184" => {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "b8ff4ac5-6541-49d2-9c79-4444d872481e" => {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3" => {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     "81648517-86ff-4ed9-8bf7-941c32dd0fad" => {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     "6b24cde1-6118-4277-9791-8eab3c71cabb" => {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   },
   "isLoggedIn": true,
@@ -1597,8 +1597,8 @@ exports[`Notes (sync) > sync > Returns if not logged in > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -1701,8 +1701,8 @@ exports[`Notes (sync) > sync > Sets and resets loading state > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -1721,8 +1721,8 @@ exports[`Notes (sync) > sync > Sets and resets loading state > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -1789,8 +1789,8 @@ exports[`Notes (sync) > sync > Sets and resets loading state > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -1824,8 +1824,8 @@ exports[`Notes (sync) > sync > Sets and resets loading state > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -1836,8 +1836,8 @@ exports[`Notes (sync) > sync > Sets and resets loading state > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -1911,8 +1911,8 @@ exports[`Notes (sync) > sync > Syncs notes with the server > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -1967,8 +1967,8 @@ exports[`Notes (sync) > sync > Syncs notes with the server > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -1988,7 +1988,7 @@ exports[`Notes (sync) > sync > Syncs notes with the server > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[],"deleted_notes":[{"id":"id","deleted_at":0}]}",
+        "body": "{"notes":[],"deleted_notes":[{"uuid":"uuid","deleted_at":0}]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -2035,8 +2035,8 @@ exports[`Notes (sync) > sync > Syncs notes with the server > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
           {
             "content": {
@@ -2094,8 +2094,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -2109,8 +2109,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -2124,8 +2124,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -2139,8 +2139,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -2154,8 +2154,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -2169,8 +2169,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -2184,8 +2184,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -2199,8 +2199,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -2214,8 +2214,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -2229,8 +2229,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -2247,59 +2247,59 @@ exports[`Notes (sync) > sync > Syncs notes with the server > mockDb 1`] = `
   "deletedNotes": [
     {
       "deleted_at": 0,
-      "id": "id",
+      "uuid": "uuid",
     },
   ],
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
   ],
   "users": {
@@ -2320,8 +2320,8 @@ exports[`Notes (sync) > sync > Syncs notes with the server > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     {
       "content": {
@@ -2379,8 +2379,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -2394,8 +2394,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -2409,8 +2409,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -2424,8 +2424,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -2439,8 +2439,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -2454,8 +2454,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -2469,8 +2469,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -2484,8 +2484,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -2499,8 +2499,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -2514,8 +2514,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -2526,8 +2526,8 @@ Sugar
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -2554,7 +2554,7 @@ exports[`Notes (sync) > sync > Syncs notes with the server > syncState 1`] = `
   "unsyncedNotes": UnsyncedNotesManager {
     "deleted": [],
     "edited": Set {},
-    "new": "id",
+    "new": "uuid",
   },
   "username": "d",
 }
@@ -2630,8 +2630,8 @@ exports[`Notes (sync) > sync > Unauthorized > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -2650,8 +2650,8 @@ exports[`Notes (sync) > sync > Unauthorized > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -2710,8 +2710,8 @@ exports[`Notes (sync) > sync > Unauthorized > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -2722,8 +2722,8 @@ exports[`Notes (sync) > sync > Unauthorized > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -2830,8 +2830,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -2850,8 +2850,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -2878,7 +2878,7 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -2929,8 +2929,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Remote update",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -2944,8 +2944,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -2959,8 +2959,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -2974,8 +2974,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -2989,8 +2989,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -3004,8 +3004,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -3019,8 +3019,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -3034,8 +3034,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -3049,8 +3049,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -3064,8 +3064,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -3083,53 +3083,53 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > moc
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
   ],
   "users": {
@@ -3154,8 +3154,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Remote update",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -3169,8 +3169,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -3184,8 +3184,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -3199,8 +3199,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -3214,8 +3214,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -3229,8 +3229,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -3244,8 +3244,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -3259,8 +3259,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -3274,8 +3274,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -3289,8 +3289,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -3305,8 +3305,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > not
       },
       "title": "Remote update",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -3328,53 +3328,53 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > syn
   "encryptedNotesCache": Map {
     "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf" => {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2" => {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "b9754a63-843c-4f59-9aea-9a374aa1603d" => {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "ac4e006d-38d4-4373-af31-4a5f46fc5184" => {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "b8ff4ac5-6541-49d2-9c79-4444d872481e" => {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3" => {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     "81648517-86ff-4ed9-8bf7-941c32dd0fad" => {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     "6b24cde1-6118-4277-9791-8eab3c71cabb" => {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   },
   "isLoggedIn": true,
@@ -3460,8 +3460,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -3480,8 +3480,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -3508,7 +3508,7 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -3562,8 +3562,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "New note",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
           {
             "content": {
@@ -3580,8 +3580,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "Remote update",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -3595,8 +3595,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -3610,8 +3610,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -3625,8 +3625,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -3640,8 +3640,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -3655,8 +3655,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -3670,8 +3670,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -3685,8 +3685,8 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -3703,58 +3703,58 @@ exports[`Notes (sync) > sync > Updates note menu > mockDb 1`] = `
   "deletedNotes": [
     {
       "deleted_at": 0,
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "deleted_at": 0,
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
   ],
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": "content",
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "users": {
@@ -3782,8 +3782,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "New note",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     {
       "content": {
@@ -3800,8 +3800,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "Remote update",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -3815,8 +3815,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -3830,8 +3830,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -3845,8 +3845,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -3860,8 +3860,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -3875,8 +3875,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -3890,8 +3890,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -3905,8 +3905,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -3924,8 +3924,8 @@ exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
       },
       "title": "Remote update",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -3947,53 +3947,53 @@ exports[`Notes (sync) > sync > Updates note menu > syncState 1`] = `
   "encryptedNotesCache": Map {
     "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf" => {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2" => {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "b9754a63-843c-4f59-9aea-9a374aa1603d" => {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "ac4e006d-38d4-4373-af31-4a5f46fc5184" => {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "b8ff4ac5-6541-49d2-9c79-4444d872481e" => {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3" => {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     "81648517-86ff-4ed9-8bf7-941c32dd0fad" => {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     "6b24cde1-6118-4277-9791-8eab3c71cabb" => {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   },
   "isLoggedIn": true,
@@ -4042,7 +4042,7 @@ exports[`Notes (sync) > sync > User not found > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"k","password":"2","notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}]}",
+        "body": "{"username":"k","password":"2","notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -4087,7 +4087,7 @@ exports[`Notes (sync) > sync > User not found > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -4174,8 +4174,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -4189,8 +4189,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -4204,8 +4204,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -4219,8 +4219,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -4234,8 +4234,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -4249,8 +4249,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -4264,8 +4264,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -4279,8 +4279,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -4294,8 +4294,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -4309,8 +4309,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -4369,8 +4369,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -4396,53 +4396,53 @@ exports[`Notes (sync) > sync > User not found > syncState 1`] = `
   "encryptedNotesCache": Map {
     "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf" => {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2" => {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "b9754a63-843c-4f59-9aea-9a374aa1603d" => {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "ac4e006d-38d4-4373-af31-4a5f46fc5184" => {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "b8ff4ac5-6541-49d2-9c79-4444d872481e" => {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3" => {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     "81648517-86ff-4ed9-8bf7-941c32dd0fad" => {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     "6b24cde1-6118-4277-9791-8eab3c71cabb" => {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   },
   "isLoggedIn": true,
@@ -4528,8 +4528,8 @@ exports[`Notes (sync) > sync > With decryption error > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -4548,8 +4548,8 @@ exports[`Notes (sync) > sync > With decryption error > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -4614,8 +4614,8 @@ exports[`Notes (sync) > sync > With decryption error > mockDb 1`] = `
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "users": {
@@ -4636,8 +4636,8 @@ exports[`Notes (sync) > sync > With decryption error > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -4648,8 +4648,8 @@ exports[`Notes (sync) > sync > With decryption error > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -4756,8 +4756,8 @@ exports[`Notes (sync) > sync > With encryption error > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -4776,8 +4776,8 @@ exports[`Notes (sync) > sync > With encryption error > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -4817,16 +4817,16 @@ exports[`Notes (sync) > sync > With encryption error > noteState 1`] = `
         "body": undefined,
         "content": Note {
           "content": [Circular],
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
         "delta": {},
-        "id": "id",
         "timestamp": 0,
         "title": undefined,
+        "uuid": "uuid",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -4837,8 +4837,8 @@ exports[`Notes (sync) > sync > With encryption error > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -4947,8 +4947,8 @@ exports[`Notes (sync) > sync > With server error > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -4967,8 +4967,8 @@ exports[`Notes (sync) > sync > With server error > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -5027,8 +5027,8 @@ exports[`Notes (sync) > sync > With server error > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -5039,8 +5039,8 @@ exports[`Notes (sync) > sync > With server error > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -5118,8 +5118,8 @@ exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged i
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -5135,8 +5135,8 @@ exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged i
             "delta": {},
             "title": "title",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "edit_note",
@@ -5146,7 +5146,7 @@ exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged i
     "invoke",
     {
       "calledWith": {
-        "id": "id",
+        "uuid": "uuid",
       },
       "name": "delete_note",
     },
@@ -5226,8 +5226,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -5241,8 +5241,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -5256,8 +5256,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -5271,8 +5271,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -5286,8 +5286,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -5301,8 +5301,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -5316,8 +5316,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -5331,8 +5331,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -5346,8 +5346,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -5361,8 +5361,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -5421,8 +5421,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -5450,7 +5450,7 @@ exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged i
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "id",
+        "uuid": "uuid",
       },
     ],
     "edited": Set {},
@@ -5530,8 +5530,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -5550,8 +5550,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -5588,8 +5588,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -5599,7 +5599,7 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "id": "id",
+        "uuid": "uuid",
       },
       "name": "delete_note",
     },
@@ -5626,7 +5626,7 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[],"deleted_notes":[{"id":"id","deleted_at":0}]}",
+        "body": "{"notes":[],"deleted_notes":[{"uuid":"uuid","deleted_at":0}]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -5664,7 +5664,7 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "id": "id",
+        "uuid": "uuid",
       },
       "name": "delete_note",
     },
@@ -5730,8 +5730,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -5745,8 +5745,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -5760,8 +5760,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -5775,8 +5775,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -5790,8 +5790,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -5805,8 +5805,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -5820,8 +5820,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -5835,8 +5835,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -5850,8 +5850,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -5865,8 +5865,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -5877,7 +5877,7 @@ Sugar
     "invoke",
     {
       "calledWith": {
-        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       },
       "name": "delete_note",
     },
@@ -5895,7 +5895,7 @@ Sugar
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","deleted_at":0}]}",
+        "body": "{"notes":[{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","deleted_at":0}]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -5946,8 +5946,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -5961,8 +5961,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -5976,8 +5976,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -5991,8 +5991,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -6006,8 +6006,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -6021,8 +6021,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -6036,8 +6036,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -6051,8 +6051,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -6066,8 +6066,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -6084,58 +6084,58 @@ exports[`Notes (sync) > unsyncedNotes > deleted > mockDb 1`] = `
   "deletedNotes": [
     {
       "deleted_at": 0,
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "deleted_at": 0,
-      "id": "id",
+      "uuid": "uuid",
     },
   ],
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
   ],
   "users": {
@@ -6160,8 +6160,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -6175,8 +6175,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -6190,8 +6190,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -6205,8 +6205,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -6220,8 +6220,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -6235,8 +6235,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -6250,8 +6250,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -6265,8 +6265,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -6280,8 +6280,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -6296,8 +6296,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
       },
       "title": "Amet consectetur adipisicing",
     },
-    "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "timestamp": 0,
+    "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
   },
 }
 `;
@@ -6319,48 +6319,48 @@ exports[`Notes (sync) > unsyncedNotes > deleted > syncState 1`] = `
   "encryptedNotesCache": Map {
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2" => {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "b9754a63-843c-4f59-9aea-9a374aa1603d" => {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "ac4e006d-38d4-4373-af31-4a5f46fc5184" => {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "b8ff4ac5-6541-49d2-9c79-4444d872481e" => {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3" => {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     "81648517-86ff-4ed9-8bf7-941c32dd0fad" => {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     "6b24cde1-6118-4277-9791-8eab3c71cabb" => {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   },
   "isLoggedIn": true,
@@ -6446,8 +6446,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -6466,8 +6466,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -6502,8 +6502,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
             "delta": {},
             "title": "title",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "edit_note",
@@ -6531,7 +6531,7 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"notes":[{"uuid":"uuid","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -6576,8 +6576,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
               "delta": {},
               "title": "title",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
           {
             "content": {
@@ -6635,8 +6635,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -6650,8 +6650,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -6665,8 +6665,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -6680,8 +6680,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -6695,8 +6695,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -6710,8 +6710,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -6725,8 +6725,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -6740,8 +6740,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -6755,8 +6755,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -6770,8 +6770,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -6788,8 +6788,8 @@ Sugar
             "delta": {},
             "title": "title2",
           },
-          "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           "timestamp": 0,
+          "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
         },
       },
       "name": "edit_note",
@@ -6808,7 +6808,7 @@ Sugar
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[{"id":"id","timestamp":0,"content":"content"},{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"notes":[{"uuid":"uuid","timestamp":0,"content":"content"},{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -6853,8 +6853,8 @@ Sugar
               "delta": {},
               "title": "title2",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -6862,8 +6862,8 @@ Sugar
               "delta": {},
               "title": "title",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
           {
             "content": {
@@ -6877,8 +6877,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -6892,8 +6892,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -6907,8 +6907,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -6922,8 +6922,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -6937,8 +6937,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -6952,8 +6952,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -6967,8 +6967,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -6982,8 +6982,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -6997,8 +6997,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -7016,58 +7016,58 @@ exports[`Notes (sync) > unsyncedNotes > edited > mockDb 1`] = `
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": "content",
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
   ],
   "users": {
@@ -7086,8 +7086,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         "delta": {},
         "title": "title2",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -7095,8 +7095,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         "delta": {},
         "title": "title",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     {
       "content": {
@@ -7110,8 +7110,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -7125,8 +7125,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -7140,8 +7140,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -7155,8 +7155,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -7170,8 +7170,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -7185,8 +7185,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -7200,8 +7200,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -7215,8 +7215,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -7230,8 +7230,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -7290,8 +7290,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -7311,60 +7311,60 @@ exports[`Notes (sync) > unsyncedNotes > edited > syncState 1`] = `
     "retryConfig": undefined,
   },
   "encryptedNotesCache": Map {
-    "id" => {
+    "uuid" => {
       "content": "content",
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf" => {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2" => {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "b9754a63-843c-4f59-9aea-9a374aa1603d" => {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "ac4e006d-38d4-4373-af31-4a5f46fc5184" => {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "b8ff4ac5-6541-49d2-9c79-4444d872481e" => {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3" => {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     "81648517-86ff-4ed9-8bf7-941c32dd0fad" => {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     "6b24cde1-6118-4277-9791-8eab3c71cabb" => {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   },
   "isLoggedIn": true,
@@ -7413,7 +7413,7 @@ exports[`Notes (sync) > unsyncedNotes > new > allCalls 1`] = `
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"username":"d","password":"1","notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -7506,8 +7506,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -7521,8 +7521,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -7536,8 +7536,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -7551,8 +7551,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -7566,8 +7566,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -7581,8 +7581,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -7596,8 +7596,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -7611,8 +7611,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -7626,8 +7626,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -7641,8 +7641,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -7679,8 +7679,8 @@ Sugar
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -7699,7 +7699,7 @@ Sugar
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -7746,8 +7746,8 @@ Sugar
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
           {
             "content": {
@@ -7805,8 +7805,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -7820,8 +7820,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -7835,8 +7835,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -7850,8 +7850,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -7865,8 +7865,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -7880,8 +7880,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -7895,8 +7895,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -7910,8 +7910,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -7925,8 +7925,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -7940,8 +7940,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -7998,7 +7998,7 @@ Sugar
     "request",
     {
       "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"username":"d","password":"1","notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
           "Content-Type": "application/json",
@@ -8043,8 +8043,8 @@ Sugar
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
           {
             "content": {
@@ -8102,8 +8102,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -8117,8 +8117,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -8132,8 +8132,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -8147,8 +8147,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -8162,8 +8162,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -8177,8 +8177,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -8192,8 +8192,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -8207,8 +8207,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -8222,8 +8222,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -8237,8 +8237,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -8255,8 +8255,8 @@ Sugar
             "delta": {},
             "title": "title",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "edit_note",
@@ -8275,7 +8275,7 @@ Sugar
     "request",
     {
       "calledWith": {
-        "body": "{"notes":[{"id":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"id":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"id":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"id":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"id":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"id":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"id":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"id":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"id":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"id":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"},{"id":"id","timestamp":0,"content":"content"}],"deleted_notes":[]}",
+        "body": "{"notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","timestamp":0,"content":"content"},{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"},{"uuid":"uuid","timestamp":0,"content":"content"}],"deleted_notes":[]}",
         "headers": {
           "Authorization": "Bearer test-token",
           "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
@@ -8320,8 +8320,8 @@ Sugar
               "delta": {},
               "title": "title",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
           {
             "content": {
@@ -8379,8 +8379,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -8394,8 +8394,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -8409,8 +8409,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -8424,8 +8424,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -8439,8 +8439,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -8454,8 +8454,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -8469,8 +8469,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -8484,8 +8484,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -8499,8 +8499,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -8514,8 +8514,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
       },
@@ -8534,8 +8534,8 @@ Sugar
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -8552,58 +8552,58 @@ exports[`Notes (sync) > unsyncedNotes > new > mockDb 1`] = `
   "encryptedNotes": [
     {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": "content",
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "users": {
@@ -8622,8 +8622,8 @@ exports[`Notes (sync) > unsyncedNotes > new > noteState 1`] = `
         "delta": {},
         "title": "title",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     {
       "content": {
@@ -8681,8 +8681,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -8696,8 +8696,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -8711,8 +8711,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -8726,8 +8726,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -8741,8 +8741,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -8756,8 +8756,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -8771,8 +8771,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -8786,8 +8786,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -8801,8 +8801,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -8816,8 +8816,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -8826,8 +8826,8 @@ Sugar
       "delta": {},
       "title": "title",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -8849,58 +8849,58 @@ exports[`Notes (sync) > unsyncedNotes > new > syncState 1`] = `
   "encryptedNotesCache": Map {
     "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf" => {
       "content": "content",
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2" => {
       "content": "content",
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     "b9754a63-843c-4f59-9aea-9a374aa1603d" => {
       "content": "content",
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     "ac4e006d-38d4-4373-af31-4a5f46fc5184" => {
       "content": "content",
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
       "content": "content",
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
       "content": "content",
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     "b8ff4ac5-6541-49d2-9c79-4444d872481e" => {
       "content": "content",
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3" => {
       "content": "content",
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     "81648517-86ff-4ed9-8bf7-941c32dd0fad" => {
       "content": "content",
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     "6b24cde1-6118-4277-9791-8eab3c71cabb" => {
       "content": "content",
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
-    "id" => {
+    "uuid" => {
       "content": "content",
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   },
   "isLoggedIn": true,
