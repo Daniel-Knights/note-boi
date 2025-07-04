@@ -25,7 +25,6 @@ pub struct Note {
 
 #[derive(Serialize, Debug)]
 pub enum NoteError {
-  DirNotFound,
   UnableToCreateFile(String),
   UnableToEditFile(String),
   UnableToDeleteFile(String),
@@ -52,7 +51,9 @@ impl Note {
 
       Ok(notes)
     } else {
-      Err(NoteError::DirNotFound)
+      fs::create_dir_all(&notes_path).expect("unable to create dir");
+
+      Ok(vec![])
     }
   }
 
