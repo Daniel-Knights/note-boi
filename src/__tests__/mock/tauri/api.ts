@@ -65,15 +65,11 @@ export function mockTauriApi(
 
       const defaultResValue = {
         rid: 1,
-        available: true,
         version: '1.0.0',
         currentVersion: '0.9.0',
       } satisfies NonNullable<typeof resValue>;
 
-      resData = {
-        ...defaultResValue,
-        ...resValue,
-      };
+      resData = resValue !== undefined ? resValue : defaultResValue;
 
       break;
     }
@@ -98,7 +94,7 @@ export function mockTauriApi(
 export type TauriApiResValue = Record<string, unknown[]> & {
   askDialog?: boolean[];
   openDialog?: string[];
-  checkUpdate?: Partial<ConstructorParameters<typeof Update>[0]>[];
+  checkUpdate?: (Partial<ConstructorParameters<typeof Update>[0]> | null)[];
   downloadAndInstallUpdate?: ReturnType<Update['downloadAndInstall']>[];
 };
 
