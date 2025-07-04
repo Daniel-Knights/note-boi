@@ -2,6 +2,10 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::{collections::HashMap, fs, io::Write, path::PathBuf};
 
+#[cfg(debug_assertions)]
+const NOTE_DIR: &str = ".notes-dev";
+
+#[cfg(not(debug_assertions))]
 const NOTE_DIR: &str = ".notes";
 
 #[derive(Serialize, Deserialize, Debug)]
