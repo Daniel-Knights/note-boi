@@ -8,7 +8,14 @@ use std::{
   time::{SystemTime, UNIX_EPOCH},
 };
 
+#[cfg(debug_assertions)]
+const NOTES_DIR: &str = ".notes-dev";
+#[cfg(debug_assertions)]
+const BACKUP_DIR: &str = ".backup-dev";
+
+#[cfg(not(debug_assertions))]
 const NOTES_DIR: &str = ".notes";
+#[cfg(not(debug_assertions))]
 const BACKUP_DIR: &str = ".backup";
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -272,10 +279,6 @@ impl Note {
         content: deserialized_note.content,
       }
     }
-  }
-
-  fn is_empty(&self) -> bool {
-    self.content.title.is_empty() && self.content.body.is_empty()
   }
 
   fn is_empty(&self) -> bool {
