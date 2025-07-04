@@ -44,10 +44,10 @@ export function mockTauriInvoke(
 
       break;
     case 'delete_note':
-      if (!hasKeys(args, ['id'])) {
-        assert.fail('Missing id');
-      } else if (typeof args.id !== 'string') {
-        assert.fail('Invalid id');
+      if (!hasKeys(args, ['uuid'])) {
+        assert.fail('Missing uuid');
+      } else if (typeof args.uuid !== 'string') {
+        assert.fail('Invalid uuid');
       }
 
       break;

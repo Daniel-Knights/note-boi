@@ -86,7 +86,7 @@ export type TauriCommandPayloads = {
   };
   delete_note: {
     payload: {
-      id: string;
+      uuid: string;
     };
     response: never;
   };

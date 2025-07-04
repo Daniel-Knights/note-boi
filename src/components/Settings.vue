@@ -48,7 +48,7 @@ const menuItems = computed(() => {
     {
       label: 'Export',
       testId: 'export',
-      clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.id)),
+      clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.uuid)),
     },
     {
       label: 'Updates',

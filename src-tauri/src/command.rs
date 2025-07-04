@@ -19,8 +19,8 @@ pub fn get_all_notes(state: tauri::State<AppState>) -> Result<Vec<Note>, NoteErr
 }
 
 #[tauri::command]
-pub fn delete_note(state: tauri::State<AppState>, id: String) -> Result<(), NoteError> {
-  Note::delete(&state.app_dir, id)
+pub fn delete_note(state: tauri::State<AppState>, uuid: String) -> Result<(), NoteError> {
+  Note::delete(&state.app_dir, uuid)
 }
 
 #[tauri::command]

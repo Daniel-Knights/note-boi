@@ -47,7 +47,7 @@ const props = defineProps({
   },
 });
 
-const clickedNoteId = ref<string>();
+const clickedNoteUuid = ref<string>();
 const show = ref(false);
 const top = ref(0);
 const left = ref(0);
@@ -55,19 +55,19 @@ const left = ref(0);
 function handleExportNotes() {
   if (noteState.extraSelectedNotes.length > 0) {
     exportNotes([
-      noteState.selectedNote.id,
-      ...noteState.extraSelectedNotes.map((nt) => nt.id),
+      noteState.selectedNote.uuid,
+      ...noteState.extraSelectedNotes.map((nt) => nt.uuid),
     ]);
-  } else if (clickedNoteId.value) {
-    exportNotes([clickedNoteId.value]);
+  } else if (clickedNoteUuid.value) {
+    exportNotes([clickedNoteUuid.value]);
   }
 }
 
 function handleDeleteNote() {
   if (noteState.extraSelectedNotes.length > 0) {
     deleteSelectedNotes();
-  } else if (clickedNoteId.value) {
-    deleteNote(clickedNoteId.value);
+  } else if (clickedNoteUuid.value) {
+    deleteNote(clickedNoteUuid.value);
   }
 }
 
@@ -75,12 +75,12 @@ watch(props, () => {
   if (!props.ev) return;
 
   const target = props.ev.target as HTMLElement | null;
-  const closestNote = target?.closest<HTMLElement>('[data-note-id]');
+  const closestNote = target?.closest<HTMLElement>('[data-note-uuid]');
 
   show.value = true;
   top.value = props.ev.clientY;
   left.value = props.ev.clientX;
-  clickedNoteId.value = closestNote?.dataset.noteId;
+  clickedNoteUuid.value = closestNote?.dataset.noteUuid;
 });
 </script>
 

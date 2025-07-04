@@ -7,10 +7,12 @@ import { Call } from '../mock';
 import { getDummyNotes } from './dummyNotes';
 import { isNote, isObj } from './object';
 
-const staticNoteIds = new Set(getDummyNotes().map((nt) => nt.id));
+const staticNoteUuids = new Set(getDummyNotes().map((nt) => nt.uuid));
 
-/** Returns id unchanged if static, otherwise returns `'id'` */
-export const normaliseNoteId = (id: string) => (staticNoteIds.has(id) ? id : 'id');
+/** Returns uuid unchanged if static, otherwise returns `'uuid'` */
+export function normaliseNoteUuid(uuid: string) {
+  return staticNoteUuids.has(uuid) ? uuid : 'uuid';
+}
 
 /**
  * Normalises a `Call` by replacing dynamic values and copying object properties to avoid mutation.
@@ -38,7 +40,7 @@ export function normaliseCall(call: Call): Call {
     if ('notes' in parsedBody) {
       parsedBody.notes = (parsedBody.notes as EncryptedNote[]).map((nt) => ({
         ...nt,
-        id: normaliseNoteId(nt.id),
+        uuid: normaliseNoteUuid(nt.uuid),
         timestamp: 0,
         content: 'content',
       }));
@@ -46,7 +48,7 @@ export function normaliseCall(call: Call): Call {
 
     if ('deleted_notes' in parsedBody) {
       parsedBody.deleted_notes = (parsedBody.deleted_notes as DeletedNote[]).map(
-        (dn) => ({ ...dn, id: normaliseNoteId(dn.id), deleted_at: 0 })
+        (dn) => ({ ...dn, uuid: normaliseNoteUuid(dn.uuid), deleted_at: 0 })
       );
     }
 
@@ -54,10 +56,10 @@ export function normaliseCall(call: Call): Call {
   }
 
   if (
-    typeof normalised.calledWith.id === 'string' &&
-    UUID_REGEX.test(normalised.calledWith.id)
+    typeof normalised.calledWith.uuid === 'string' &&
+    UUID_REGEX.test(normalised.calledWith.uuid)
   ) {
-    normalised.calledWith.id = normaliseNoteId(normalised.calledWith.id);
+    normalised.calledWith.uuid = normaliseNoteUuid(normalised.calledWith.uuid);
   }
 
   return normalised;
@@ -66,7 +68,7 @@ export function normaliseCall(call: Call): Call {
 /**
  * Normalises a `Note` by:
  * - Spreading object properties to avoid mutation
- * - Normalising the `id` using `normaliseNoteId`
+ * - Normalising the `uuid` using `normaliseNoteUuid`
  * - Setting the `timestamp` to `0`
  */
 export function normaliseNote(nt: Note): Note {
@@ -78,7 +80,7 @@ export function normaliseNote(nt: Note): Note {
       title: nt.content.title,
       body: nt.content.body,
     },
-    id: normaliseNoteId(nt.id),
+    uuid: normaliseNoteUuid(nt.uuid),
     timestamp: 0,
   };
 }
@@ -86,14 +88,14 @@ export function normaliseNote(nt: Note): Note {
 /**
  * Normalises an `EncryptedNote` by:
  * - Spreading object properties to avoid mutation
- * - Normalising the `id` using `normaliseNoteId`
+ * - Normalising the `uuid` using `normaliseNoteUuid`
  * - Replacing encrypted content with `'content'`
  */
 export function normaliseEncryptedNote(nt: EncryptedNote): EncryptedNote {
   return {
     ...nt,
     content: 'content',
-    id: normaliseNoteId(nt.id),
+    uuid: normaliseNoteUuid(nt.uuid),
     timestamp: 0,
   };
 }

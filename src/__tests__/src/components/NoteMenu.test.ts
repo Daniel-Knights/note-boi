@@ -9,7 +9,7 @@ import { getByTestId, getDummyNotes, resetNoteStore } from '../../utils';
 
 import NoteMenu from '../../../components/NoteMenu.vue';
 
-const getDataNoteId = (id: string) => `li[data-note-id="${id}"]`;
+const getDataNoteUuid = (uuid: string) => `li[data-note-uuid="${uuid}"]`;
 
 // Hooks
 beforeEach(async () => {
@@ -41,7 +41,7 @@ describe('NoteMenu', () => {
     assert.lengthOf(wrapper.findAll('li'), getDummyNotes().length);
 
     n.noteState.notes.forEach((note) => {
-      const noteItem = wrapper.find(getDataNoteId(note.id));
+      const noteItem = wrapper.find(getDataNoteUuid(note.uuid));
 
       assert.isTrue(noteItem.exists());
       assert.isTrue(noteItem.isVisible());
@@ -93,14 +93,14 @@ describe('NoteMenu', () => {
     const wrapper = shallowMount(NoteMenu);
 
     const noteToSelect = getDummyNotes()[2]!;
-    const noteItem = wrapper.get(getDataNoteId(noteToSelect.id));
+    const noteItem = wrapper.get(getDataNoteUuid(noteToSelect.uuid));
 
     assert.isTrue(noteItem.isVisible());
-    assert.notStrictEqual(n.noteState.selectedNote.id, noteToSelect.id);
+    assert.notStrictEqual(n.noteState.selectedNote.uuid, noteToSelect.uuid);
 
     await noteItem.trigger('click');
 
-    assert.strictEqual(n.noteState.selectedNote.id, noteToSelect.id);
+    assert.strictEqual(n.noteState.selectedNote.uuid, noteToSelect.uuid);
     assert.isTrue(noteItem.classes().join(' ').includes('--selected'));
   });
 
@@ -114,12 +114,12 @@ describe('NoteMenu', () => {
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
     keyNav('Down');
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[1]);
-    n.selectNote(n.noteState.notes[6]!.id);
+    n.selectNote(n.noteState.notes[6]!.uuid);
     keyNav('Down');
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[7]);
     keyNav('Up');
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[6]);
-    n.selectNote(n.noteState.notes[6]!.id);
+    n.selectNote(n.noteState.notes[6]!.uuid);
     keyNav('Up');
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[5]);
 
@@ -243,17 +243,17 @@ describe('NoteMenu', () => {
       isDeselect?: boolean
     ) {
       const assertPromises = notesToSelect.map(async (note) => {
-        const noteItem = wrapper.get(getDataNoteId(note.id));
+        const noteItem = wrapper.get(getDataNoteUuid(note.uuid));
 
-        if (!noteItem.isVisible() || n.noteState.selectedNote.id === note.id) {
+        if (!noteItem.isVisible() || n.noteState.selectedNote.uuid === note.uuid) {
           assert.fail();
         }
 
         await noteItem.trigger('click', { metaKey: true });
 
         const isExtraSelectedNote =
-          n.noteState.extraSelectedNotes.map((nt) => nt.id).includes(note.id) &&
-          n.noteState.selectedNote.id !== note.id &&
+          n.noteState.extraSelectedNotes.map((nt) => nt.uuid).includes(note.uuid) &&
+          n.noteState.selectedNote.uuid !== note.uuid &&
           noteItem.classes().join(' ').includes('--selected');
 
         if (isDeselect && isExtraSelectedNote) {
@@ -270,13 +270,13 @@ describe('NoteMenu', () => {
     async function testMetaKeyDeselects(wrapper: VueWrapper) {
       const currentSelectedNote = n.noteState.selectedNote;
       const nextSelectedNote = n.noteState.extraSelectedNotes[0]!;
-      const selectedNoteItem = wrapper.get(getDataNoteId(currentSelectedNote.id));
+      const selectedNoteItem = wrapper.get(getDataNoteUuid(currentSelectedNote.uuid));
       await selectedNoteItem.trigger('click', { metaKey: true });
 
       const isNotExtraSelectedNote =
-        n.noteState.selectedNote.id !== currentSelectedNote.id &&
+        n.noteState.selectedNote.uuid !== currentSelectedNote.uuid &&
         !n.noteState.extraSelectedNotes.includes(currentSelectedNote) &&
-        n.noteState.selectedNote.id === nextSelectedNote.id &&
+        n.noteState.selectedNote.uuid === nextSelectedNote.uuid &&
         !n.noteState.extraSelectedNotes.includes(nextSelectedNote);
 
       if (!isNotExtraSelectedNote) return false;
@@ -335,7 +335,9 @@ describe('NoteMenu', () => {
         await testMetaKeySelects(wrapper, notesToSelect);
 
         // Select with shift
-        const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[noteItemIndex]!.id));
+        const noteItem = wrapper.get(
+          getDataNoteUuid(n.noteState.notes[noteItemIndex]!.uuid)
+        );
         await noteItem.trigger('click', { shiftKey: true });
 
         if (n.noteState.extraSelectedNotes.length !== expectedLength) {
@@ -344,7 +346,7 @@ describe('NoteMenu', () => {
 
         // Ensure correct order
         const isCorrectOrder = n.noteState.extraSelectedNotes.every(
-          (note, i) => note.id === expectedNoteOrder[i]!.id
+          (note, i) => note.uuid === expectedNoteOrder[i]!.uuid
         );
 
         if (!isCorrectOrder) assert.fail();
@@ -357,7 +359,9 @@ describe('NoteMenu', () => {
 
     it('Not single selected note', async () => {
       const wrapper = shallowMount(NoteMenu);
-      const selectedNoteItem = wrapper.get(getDataNoteId(n.noteState.selectedNote.id));
+      const selectedNoteItem = wrapper.get(
+        getDataNoteUuid(n.noteState.selectedNote.uuid)
+      );
 
       await selectedNoteItem.trigger('click', { metaKey: true });
 
@@ -378,14 +382,14 @@ describe('NoteMenu', () => {
 
     it('With shift', async () => {
       const wrapper = shallowMount(NoteMenu);
-      const noteItem = wrapper.get(getDataNoteId(n.noteState.notes[6]!.id));
+      const noteItem = wrapper.get(getDataNoteUuid(n.noteState.notes[6]!.uuid));
 
       await noteItem.trigger('click', { shiftKey: true });
 
       assert.lengthOf(n.noteState.extraSelectedNotes, 6);
 
       n.noteState.extraSelectedNotes.forEach((note, i) => {
-        assert.strictEqual(note.id, n.noteState.notes[i + 1]!.id);
+        assert.strictEqual(note.uuid, n.noteState.notes[i + 1]!.uuid);
       });
 
       await testMetaKeyDeselects(wrapper);

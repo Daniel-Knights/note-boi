@@ -39,7 +39,7 @@ describe('Editor', () => {
     assert.isTrue(calls.invoke.has('get_all_notes'));
     assert.include(editorBody.text(), '¯\\_(ツ)_/¯');
 
-    n.selectNote(getDummyNotes()[1]!.id);
+    n.selectNote(getDummyNotes()[1]!.uuid);
 
     assert.include(editorBody.text(), getDummyNotes()[1]!.content.body);
   });

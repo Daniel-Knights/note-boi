@@ -92,7 +92,7 @@ describe('ContextMenu', () => {
       await n.getAllNotes();
 
       const div = document.createElement('div');
-      div.dataset.noteId = n.noteState.notes[0]!.id;
+      div.dataset.noteUuid = n.noteState.notes[0]!.uuid;
 
       const wrapper = await mountContextMenu(div);
       const button = getByTestId<HTMLButtonElement>(wrapper, buttonType.toLowerCase());
@@ -111,13 +111,13 @@ describe('ContextMenu', () => {
 
     const noteToExport = { ...getDummyNotes()[0]! };
     const div = document.createElement('div');
-    div.dataset.noteId = noteToExport.id;
+    div.dataset.noteUuid = noteToExport.uuid;
 
     const wrapper = await mountContextMenu(div);
 
-    n.selectNote(noteToExport.id);
+    n.selectNote(noteToExport.uuid);
 
-    const noteToExportIndex = n.findNoteIndex(noteToExport.id);
+    const noteToExportIndex = n.findNoteIndex(noteToExport.uuid);
 
     assert.deepEqual(n.noteState.selectedNote, noteToExport);
     assert.deepEqual(n.noteState.notes[noteToExportIndex], noteToExport);
@@ -127,7 +127,7 @@ describe('ContextMenu', () => {
     await getByTestId(wrapper, 'export').trigger('click');
 
     expect(exportNotesSpy).toHaveBeenCalledOnce();
-    expect(exportNotesSpy).toHaveBeenCalledWith([noteToExport.id]);
+    expect(exportNotesSpy).toHaveBeenCalledWith([noteToExport.uuid]);
   });
 
   it('Exports all selected notes', async () => {
@@ -138,11 +138,11 @@ describe('ContextMenu', () => {
     const noteToExport = { ...getDummyNotes()[0] };
     const noteSlice = getDummyNotes().slice(2, 6);
     const div = document.createElement('div');
-    div.dataset.noteId = noteToExport.id;
+    div.dataset.noteUuid = noteToExport.uuid;
 
     const wrapper = await mountContextMenu(div);
 
-    n.selectNote(noteToExport.id);
+    n.selectNote(noteToExport.uuid);
     n.noteState.extraSelectedNotes.push(...noteSlice);
 
     const exportNotesSpy = vi.spyOn(n, 'exportNotes');
@@ -151,8 +151,8 @@ describe('ContextMenu', () => {
 
     expect(exportNotesSpy).toHaveBeenCalledOnce();
     expect(exportNotesSpy).toHaveBeenCalledWith([
-      noteToExport.id,
-      ...noteSlice.map((nt) => nt.id),
+      noteToExport.uuid,
+      ...noteSlice.map((nt) => nt.uuid),
     ]);
   });
 
@@ -163,18 +163,18 @@ describe('ContextMenu', () => {
 
     const noteToDelete = { ...getDummyNotes()[0] };
     const div = document.createElement('div');
-    div.dataset.noteId = noteToDelete.id;
+    div.dataset.noteUuid = noteToDelete.uuid;
 
     const wrapper = await mountContextMenu(div);
 
-    n.selectNote(noteToDelete.id);
+    n.selectNote(noteToDelete.uuid);
 
     const deleteSpy = vi.spyOn(n, 'deleteNote');
 
     await getByTestId(wrapper, 'delete').trigger('click');
 
     expect(deleteSpy).toHaveBeenCalledOnce();
-    expect(deleteSpy).toHaveBeenCalledWith(noteToDelete.id);
+    expect(deleteSpy).toHaveBeenCalledWith(noteToDelete.uuid);
   });
 
   it('Deletes all selected notes', async () => {
@@ -185,11 +185,11 @@ describe('ContextMenu', () => {
     const noteToDelete = { ...getDummyNotes()[0] };
     const noteSlice = getDummyNotes().slice(2, 6);
     const div = document.createElement('div');
-    div.dataset.noteId = noteToDelete.id;
+    div.dataset.noteUuid = noteToDelete.uuid;
 
     const wrapper = await mountContextMenu(div);
 
-    n.selectNote(noteToDelete.id);
+    n.selectNote(noteToDelete.uuid);
     n.noteState.extraSelectedNotes.push(...noteSlice);
 
     const deleteSelectedSpy = vi.spyOn(n, 'deleteSelectedNotes');

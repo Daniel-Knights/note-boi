@@ -19,7 +19,7 @@ export type UnsyncedEventDetail =
     };
 
 export class Note {
-  readonly id: string = crypto.randomUUID();
+  readonly uuid: string = crypto.randomUUID();
   timestamp = Date.now();
   content: NoteContent = {
     title: '',
@@ -61,13 +61,13 @@ export const sortNotesFn = (a: Note, b: Note): number => b.timestamp - a.timesta
 export const sortStateNotes = (): Note[] => noteState.notes.sort(sortNotesFn);
 
 /** Finds note index within {@link noteState.notes}. */
-export function findNoteIndex(id?: string): number {
-  return noteState.notes.findIndex((nt) => nt.id === id);
+export function findNoteIndex(uuid?: string): number {
+  return noteState.notes.findIndex((nt) => nt.uuid === uuid);
 }
 
 /** Finds note within {@link noteState.notes}. */
-export function findNote(id?: string): Note | undefined {
-  return noteState.notes.find((nt) => nt.id === id);
+export function findNote(uuid?: string): Note | undefined {
+  return noteState.notes.find((nt) => nt.uuid === uuid);
 }
 
 export function catchNoteInvokeError(err: unknown) {
@@ -85,24 +85,24 @@ function clearEmptyNote(): void {
   const isValidClear = noteState.notes.length > 1;
   if (!isValidClear) return;
 
-  const foundNote = findNote(noteState.selectedNote.id);
+  const foundNote = findNote(noteState.selectedNote.uuid);
   if (!foundNote) return;
 
   if (isEmptyNote(foundNote)) {
-    deleteNote(noteState.selectedNote.id);
+    deleteNote(noteState.selectedNote.uuid);
   }
 }
 
 /**
- * Looks for note with given `id` in {@link noteState.notes},
+ * Looks for note with given `uuid` in {@link noteState.notes},
  * and sets it to {@link noteState.selectedNote}.
  */
-export function selectNote(id?: string): boolean {
-  if (noteState.selectedNote.id === id) return false;
+export function selectNote(uuid?: string): boolean {
+  if (noteState.selectedNote.uuid === uuid) return false;
 
   clearEmptyNote();
 
-  const foundNote = findNote(id);
+  const foundNote = findNote(uuid);
   if (!foundNote) return false;
 
   noteState.selectedNote = { ...foundNote };
@@ -119,8 +119,8 @@ export function selectNote(id?: string): boolean {
  */
 export function isSelectedNote(note: Note): boolean {
   return (
-    note.id === noteState.selectedNote.id ||
-    noteState.extraSelectedNotes.some((nt) => nt?.id === note.id)
+    note.uuid === noteState.selectedNote.uuid ||
+    noteState.extraSelectedNotes.some((nt) => nt?.uuid === note.uuid)
   );
 }
 
@@ -154,30 +154,30 @@ export async function getAllNotes(): Promise<void> {
   }
 }
 
-/** Deletes note with the given `id`. */
-export function deleteNote(id: string): void {
-  noteState.notes.splice(findNoteIndex(id), 1);
+/** Deletes note with the given `uuid`. */
+export function deleteNote(uuid: string): void {
+  noteState.notes.splice(findNoteIndex(uuid), 1);
 
   if (noteState.notes.length === 0) {
     newNote();
-  } else if (noteState.selectedNote.id === id) {
+  } else if (noteState.selectedNote.uuid === uuid) {
     noteState.selectedNote = { ...noteState.notes[0]! };
 
     document.dispatchEvent(selectNoteEvent);
     document.dispatchEvent(changeNoteEvent);
   }
 
-  if (syncState.unsyncedNotes.new === id) {
+  if (syncState.unsyncedNotes.new === uuid) {
     syncState.unsyncedNotes.set({ new: '' });
   } else {
     document.dispatchEvent(
       getUnsyncedEvent({
         kind: 'deleted',
-        note: { id, deleted_at: Date.now() },
+        note: { uuid, deleted_at: Date.now() },
       })
     );
 
-    tauriInvoke('delete_note', { id })
+    tauriInvoke('delete_note', { uuid })
       .then(() => debounceSync())
       .catch(catchNoteInvokeError);
   }
@@ -185,10 +185,10 @@ export function deleteNote(id: string): void {
 
 /** Deletes {@link noteState.selectedNote} and all notes in {@link noteState.extraSelectedNotes}. */
 export function deleteSelectedNotes(): void {
-  deleteNote(noteState.selectedNote.id);
+  deleteNote(noteState.selectedNote.uuid);
 
   noteState.extraSelectedNotes.forEach((nt) => {
-    deleteNote(nt.id);
+    deleteNote(nt.uuid);
   });
 
   noteState.extraSelectedNotes = [];
@@ -196,7 +196,7 @@ export function deleteSelectedNotes(): void {
 
 /** Creates an empty note. */
 export function newNote(isButtonClick?: boolean): void {
-  const foundNote = findNote(noteState.selectedNote.id);
+  const foundNote = findNote(noteState.selectedNote.uuid);
 
   // Only update timestamp if selected note is empty
   if (foundNote && isEmptyNote(foundNote)) {
@@ -204,7 +204,7 @@ export function newNote(isButtonClick?: boolean): void {
 
     // Ensure found note isn't overwritten on sync
     if (isButtonClick) {
-      syncState.unsyncedNotes.set({ new: foundNote.id });
+      syncState.unsyncedNotes.set({ new: foundNote.uuid });
     }
 
     return;
@@ -217,7 +217,7 @@ export function newNote(isButtonClick?: boolean): void {
 
   // Ensure new note isn't overwritten on sync
   if (isButtonClick) {
-    syncState.unsyncedNotes.set({ new: freshNote.id });
+    syncState.unsyncedNotes.set({ new: freshNote.uuid });
   }
 
   document.dispatchEvent(selectNoteEvent);
@@ -235,7 +235,7 @@ export function newNote(isButtonClick?: boolean): void {
  * editor. The timestamp, however, should be updated for both.
  */
 export function editNote(delta: Partial<Delta>, title: string, body?: string): void {
-  const foundNote = findNote(noteState.selectedNote.id);
+  const foundNote = findNote(noteState.selectedNote.uuid);
   if (!foundNote || delta === foundNote.content.delta) return;
 
   const timestamp = Date.now();
@@ -250,7 +250,7 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
   document.dispatchEvent(
     getUnsyncedEvent({
       kind: 'edited',
-      note: foundNote.id,
+      note: foundNote.uuid,
     })
   );
 
@@ -260,7 +260,7 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
 }
 
 /** Exports all notes, or a given selection. */
-export async function exportNotes(noteIds: string[]): Promise<void> {
+export async function exportNotes(noteUuids: string[]): Promise<void> {
   const saveDir = await dialog.open({
     title: 'Choose a location',
     directory: true,
@@ -269,7 +269,7 @@ export async function exportNotes(noteIds: string[]): Promise<void> {
   });
   if (!saveDir) return;
 
-  const notes = noteState.notes.filter((nt) => noteIds?.includes(nt.id));
+  const notes = noteState.notes.filter((nt) => noteUuids?.includes(nt.uuid));
 
   tauriInvoke('export_notes', { saveDir, notes }).catch(catchNoteInvokeError);
 }
