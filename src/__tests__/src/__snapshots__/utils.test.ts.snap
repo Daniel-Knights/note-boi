@@ -53,8 +53,8 @@ exports[`Utils > Tauri API wrappers > tauriEmit > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -113,7 +113,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "id": "id",
+        "uuid": "uuid",
       },
       "name": "delete_note",
     },
@@ -152,8 +152,8 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -241,8 +241,8 @@ exports[`Utils > Tauri API wrappers > tauriListen > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -321,8 +321,8 @@ exports[`Utils > capitalise > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -401,8 +401,8 @@ exports[`Utils > hasKeys > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -481,8 +481,8 @@ exports[`Utils > isDev > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -561,8 +561,8 @@ exports[`Utils > isEmptyNote > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -641,8 +641,8 @@ exports[`Utils > isWhitespaceOnly > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -721,8 +721,8 @@ exports[`Utils > unixToDateTime > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

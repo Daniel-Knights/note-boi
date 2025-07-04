@@ -62,8 +62,8 @@ exports[`Logout > Logs out on click > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -82,8 +82,8 @@ exports[`Logout > Logs out on click > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -163,8 +163,8 @@ exports[`Logout > Logs out on click > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -175,8 +175,8 @@ exports[`Logout > Logs out on click > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -255,8 +255,8 @@ exports[`Logout > Mounts > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

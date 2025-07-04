@@ -38,8 +38,8 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > noteState 1`
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -118,8 +118,8 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > noteSta
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -198,8 +198,8 @@ exports[`UnsyncedNotesManager > clear > Clears edited and deleted > noteState 1`
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -278,8 +278,8 @@ exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > noteSt
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -358,8 +358,8 @@ exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > note
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -438,8 +438,8 @@ exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > noteS
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -518,8 +518,8 @@ exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > noteSta
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -598,8 +598,8 @@ exports[`UnsyncedNotesManager > size > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -678,8 +678,8 @@ exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > noteState 1`
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -758,8 +758,8 @@ exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > noteState 1
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

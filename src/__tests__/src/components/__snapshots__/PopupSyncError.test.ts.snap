@@ -38,8 +38,8 @@ exports[`PopupSyncError > Emits close > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -142,8 +142,8 @@ exports[`PopupSyncError > Ignores > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -222,8 +222,8 @@ exports[`PopupSyncError > Mounts > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -302,8 +302,8 @@ exports[`PopupSyncError > No try again button when no retry function > noteState
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -382,8 +382,8 @@ exports[`PopupSyncError > Retries > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -462,8 +462,8 @@ exports[`PopupSyncError > Shows default error message when none provided > noteS
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

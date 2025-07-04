@@ -38,8 +38,8 @@ exports[`route > Handles unknown errors > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

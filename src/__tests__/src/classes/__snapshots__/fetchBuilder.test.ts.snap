@@ -68,8 +68,8 @@ exports[`FetchBuilder > With auth > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -176,8 +176,8 @@ exports[`FetchBuilder > Without auth > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

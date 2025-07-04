@@ -38,8 +38,8 @@ exports[`UtilityMenu > Mounts with correct components > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;

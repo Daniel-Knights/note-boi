@@ -53,8 +53,8 @@ exports[`Note store > catchNoteInvokeError > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -120,7 +120,7 @@ exports[`Note store > deleteNote > Calls debounceSync > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+        "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       },
       "name": "delete_note",
     },
@@ -200,8 +200,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -215,8 +215,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -230,8 +230,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -245,8 +245,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -260,8 +260,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -275,8 +275,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -290,8 +290,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -305,8 +305,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -320,8 +320,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -380,8 +380,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -409,7 +409,7 @@ exports[`Note store > deleteNote > Calls debounceSync > syncState 1`] = `
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+        "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       },
     ],
     "edited": Set {},
@@ -535,8 +535,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -550,8 +550,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -565,8 +565,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -580,8 +580,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -595,8 +595,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -610,8 +610,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -625,8 +625,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -640,8 +640,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -655,8 +655,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -715,8 +715,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -744,7 +744,7 @@ exports[`Note store > deleteNote > Catches error > syncState 1`] = `
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       },
     ],
     "edited": Set {},
@@ -787,7 +787,7 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > allC
     "invoke",
     {
       "calledWith": {
-        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       },
       "name": "delete_note",
     },
@@ -867,8 +867,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -882,8 +882,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -897,8 +897,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -912,8 +912,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -927,8 +927,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -942,8 +942,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -957,8 +957,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -972,8 +972,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -987,8 +987,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -1047,8 +1047,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -1076,7 +1076,7 @@ exports[`Note store > deleteNote > Deletes selected note and selects next > sync
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       },
     ],
     "edited": Set {},
@@ -1190,8 +1190,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -1205,8 +1205,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -1220,8 +1220,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -1235,8 +1235,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -1250,8 +1250,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -1265,8 +1265,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -1280,8 +1280,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -1295,8 +1295,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -1310,8 +1310,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -1370,8 +1370,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -1445,8 +1445,8 @@ exports[`Note store > deleteNote > With no notes > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -1456,7 +1456,7 @@ exports[`Note store > deleteNote > With no notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       },
       "name": "delete_note",
     },
@@ -1488,8 +1488,8 @@ exports[`Note store > deleteNote > With no notes > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -1500,8 +1500,8 @@ exports[`Note store > deleteNote > With no notes > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -1529,7 +1529,7 @@ exports[`Note store > deleteNote > With no notes > syncState 1`] = `
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       },
     ],
     "edited": Set {},
@@ -1572,7 +1572,7 @@ exports[`Note store > deleteNote > Without selecting next note > allCalls 1`] = 
     "invoke",
     {
       "calledWith": {
-        "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+        "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       },
       "name": "delete_note",
     },
@@ -1652,8 +1652,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -1667,8 +1667,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -1682,8 +1682,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -1697,8 +1697,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -1712,8 +1712,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -1727,8 +1727,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -1742,8 +1742,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -1757,8 +1757,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -1772,8 +1772,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -1788,8 +1788,8 @@ Sugar
       },
       "title": "Amet consectetur adipisicing",
     },
-    "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     "timestamp": 0,
+    "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
   },
 }
 `;
@@ -1817,7 +1817,7 @@ exports[`Note store > deleteNote > Without selecting next note > syncState 1`] =
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+        "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       },
     ],
     "edited": Set {},
@@ -1899,8 +1899,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -1914,8 +1914,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -1929,8 +1929,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -1944,8 +1944,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -1959,8 +1959,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -1974,8 +1974,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -1989,8 +1989,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -2004,8 +2004,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -2019,8 +2019,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -2035,8 +2035,8 @@ exports[`Note store > deleteSelectedNotes > Catches error > noteState 1`] = `
       },
       "title": "Amet consectetur adipisicing",
     },
-    "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "timestamp": 0,
+    "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
   },
 }
 `;
@@ -2064,7 +2064,7 @@ exports[`Note store > deleteSelectedNotes > Catches error > syncState 1`] = `
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       },
     ],
     "edited": Set {},
@@ -2107,7 +2107,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > allCalls 1`
     "invoke",
     {
       "calledWith": {
-        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       },
       "name": "delete_note",
     },
@@ -2116,7 +2116,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > allCalls 1`
     "invoke",
     {
       "calledWith": {
-        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       },
       "name": "delete_note",
     },
@@ -2125,7 +2125,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > allCalls 1`
     "invoke",
     {
       "calledWith": {
-        "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+        "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       },
       "name": "delete_note",
     },
@@ -2134,7 +2134,7 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > allCalls 1`
     "invoke",
     {
       "calledWith": {
-        "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+        "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       },
       "name": "delete_note",
     },
@@ -2170,8 +2170,8 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > noteState 1
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -2185,8 +2185,8 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > noteState 1
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -2200,8 +2200,8 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > noteState 1
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -2215,8 +2215,8 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > noteState 1
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -2230,8 +2230,8 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > noteState 1
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -2245,8 +2245,8 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > noteState 1
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -2261,8 +2261,8 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > noteState 1
       },
       "title": "Amet consectetur adipisicing",
     },
-    "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     "timestamp": 0,
+    "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
   },
 }
 `;
@@ -2290,19 +2290,19 @@ exports[`Note store > deleteSelectedNotes > Deletes selected notes > syncState 1
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       },
       {
         "deleted_at": 0,
-        "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       },
       {
         "deleted_at": 0,
-        "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+        "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       },
       {
         "deleted_at": 0,
-        "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+        "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       },
     ],
     "edited": Set {},
@@ -2385,8 +2385,8 @@ Body",
         },
         "title": "Title",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -2400,8 +2400,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -2415,8 +2415,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -2430,8 +2430,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -2445,8 +2445,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -2460,8 +2460,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -2475,8 +2475,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -2490,8 +2490,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -2505,8 +2505,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -2520,8 +2520,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -2580,8 +2580,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -2662,8 +2662,8 @@ Body",
             },
             "title": "Title",
           },
-          "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           "timestamp": 0,
+          "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
         },
       },
       "name": "edit_note",
@@ -2701,8 +2701,8 @@ Body",
         },
         "title": "Title",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -2716,8 +2716,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -2731,8 +2731,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -2746,8 +2746,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -2761,8 +2761,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -2776,8 +2776,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -2791,8 +2791,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -2806,8 +2806,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -2821,8 +2821,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -2836,8 +2836,8 @@ Body",
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -2896,8 +2896,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -3034,8 +3034,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
           {
             "content": {
@@ -3049,8 +3049,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
             "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
           {
             "content": {
@@ -3064,8 +3064,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
             "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
           {
             "content": {
@@ -3079,8 +3079,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
             "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
           {
             "content": {
@@ -3094,8 +3094,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
             "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           {
             "content": {
@@ -3109,8 +3109,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
             "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           {
             "content": {
@@ -3124,8 +3124,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
             "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
           {
             "content": {
@@ -3139,8 +3139,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
             "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
           {
             "content": {
@@ -3154,8 +3154,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
             "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
           {
             "content": {
@@ -3169,8 +3169,8 @@ Sugar
               },
               "title": "Amet consectetur adipisicing",
             },
-            "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
             "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
           },
         ],
         "saveDir": "C:\\path",
@@ -3253,8 +3253,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -3268,8 +3268,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -3283,8 +3283,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -3298,8 +3298,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -3313,8 +3313,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -3328,8 +3328,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -3343,8 +3343,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -3358,8 +3358,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -3373,8 +3373,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -3388,8 +3388,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -3448,8 +3448,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -3610,8 +3610,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -3625,8 +3625,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -3640,8 +3640,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -3655,8 +3655,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -3670,8 +3670,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -3685,8 +3685,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -3700,8 +3700,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -3715,8 +3715,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -3730,8 +3730,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -3745,8 +3745,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -3805,8 +3805,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -3941,8 +3941,8 @@ Sugar
               },
               "title": "Note with special characters",
             },
-            "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
             "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
         ],
         "saveDir": "C:\\path",
@@ -4025,8 +4025,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -4040,8 +4040,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -4055,8 +4055,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -4070,8 +4070,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -4085,8 +4085,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -4100,8 +4100,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -4115,8 +4115,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -4130,8 +4130,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -4145,8 +4145,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -4160,8 +4160,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -4220,8 +4220,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -4370,8 +4370,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -4385,8 +4385,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -4400,8 +4400,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -4415,8 +4415,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -4430,8 +4430,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -4445,8 +4445,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -4460,8 +4460,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -4475,8 +4475,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -4490,8 +4490,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -4505,8 +4505,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -4565,8 +4565,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -4703,8 +4703,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -4718,8 +4718,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -4733,8 +4733,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -4748,8 +4748,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -4763,8 +4763,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -4778,8 +4778,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -4793,8 +4793,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -4808,8 +4808,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -4823,8 +4823,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -4838,8 +4838,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -4898,8 +4898,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -5036,8 +5036,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -5051,8 +5051,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -5066,8 +5066,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -5081,8 +5081,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -5096,8 +5096,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -5111,8 +5111,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -5126,8 +5126,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -5141,8 +5141,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -5156,8 +5156,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -5171,8 +5171,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -5231,8 +5231,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -5311,8 +5311,8 @@ exports[`Note store > getAllNotes > Catches error > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -5345,8 +5345,8 @@ exports[`Note store > getAllNotes > Catches error > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -5357,8 +5357,8 @@ exports[`Note store > getAllNotes > Catches error > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -5432,8 +5432,8 @@ exports[`Note store > getAllNotes > With empty note array > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -5466,8 +5466,8 @@ exports[`Note store > getAllNotes > With empty note array > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -5478,8 +5478,8 @@ exports[`Note store > getAllNotes > With empty note array > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -5616,8 +5616,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -5631,8 +5631,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -5646,8 +5646,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -5661,8 +5661,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -5676,8 +5676,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -5691,8 +5691,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -5706,8 +5706,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -5721,8 +5721,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -5736,8 +5736,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -5751,8 +5751,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -5811,8 +5811,8 @@ Sugar
       },
       "title": "Note with special characters",
     },
-    "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -5899,8 +5899,8 @@ exports[`Note store > getAllNotes > With single empty note > noteState 1`] = `
         "delta": {},
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -5909,8 +5909,8 @@ exports[`Note store > getAllNotes > With single empty note > noteState 1`] = `
       "delta": {},
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -5984,8 +5984,8 @@ exports[`Note store > getAllNotes > With undefined notes > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -6018,8 +6018,8 @@ exports[`Note store > getAllNotes > With undefined notes > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -6030,8 +6030,8 @@ exports[`Note store > getAllNotes > With undefined notes > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -6168,8 +6168,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -6183,8 +6183,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -6198,8 +6198,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -6213,8 +6213,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -6228,8 +6228,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -6243,8 +6243,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -6258,8 +6258,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -6273,8 +6273,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -6288,8 +6288,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -6303,8 +6303,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": {
@@ -6314,8 +6314,8 @@ Sugar
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -6326,8 +6326,8 @@ Sugar
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -6406,8 +6406,8 @@ exports[`Note store > new Note() > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -6508,8 +6508,8 @@ exports[`Note store > newNote > Catches error > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     {
       "content": {
@@ -6567,8 +6567,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -6582,8 +6582,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -6597,8 +6597,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -6612,8 +6612,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -6627,8 +6627,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -6642,8 +6642,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -6657,8 +6657,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -6672,8 +6672,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -6687,8 +6687,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -6702,8 +6702,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -6714,8 +6714,8 @@ Sugar
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -6852,8 +6852,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -6867,8 +6867,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -6882,8 +6882,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -6897,8 +6897,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -6912,8 +6912,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -6927,8 +6927,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -6942,8 +6942,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -6957,8 +6957,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -6972,8 +6972,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -6987,8 +6987,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
     {
       "content": {
@@ -6998,8 +6998,8 @@ Sugar
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -7010,8 +7010,8 @@ Sugar
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -7085,8 +7085,8 @@ exports[`Note store > newNote > When selected note isn't empty > allCalls 1`] = 
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -7119,8 +7119,8 @@ exports[`Note store > newNote > When selected note isn't empty > noteState 1`] =
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
     {
       "content": {
@@ -7178,8 +7178,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -7193,8 +7193,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -7208,8 +7208,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -7223,8 +7223,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -7238,8 +7238,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -7253,8 +7253,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -7268,8 +7268,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -7283,8 +7283,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -7298,8 +7298,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -7313,8 +7313,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -7325,8 +7325,8 @@ Sugar
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -7392,7 +7392,7 @@ exports[`Note store > selectNote > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "id": "id",
+        "uuid": "uuid",
       },
       "name": "delete_note",
     },
@@ -7472,8 +7472,8 @@ Sugar
         },
         "title": "Note with special characters",
       },
-      "id": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
       "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
     {
       "content": {
@@ -7487,8 +7487,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
       "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
     {
       "content": {
@@ -7502,8 +7502,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
     {
       "content": {
@@ -7517,8 +7517,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
       "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
     {
       "content": {
@@ -7532,8 +7532,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
       "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     {
       "content": {
@@ -7547,8 +7547,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
       "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     {
       "content": {
@@ -7562,8 +7562,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
       "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
     {
       "content": {
@@ -7577,8 +7577,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
       "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
     {
       "content": {
@@ -7592,8 +7592,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
       "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
     {
       "content": {
@@ -7607,8 +7607,8 @@ Sugar
         },
         "title": "Amet consectetur adipisicing",
       },
-      "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
       "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
   "selectedNote": {
@@ -7623,8 +7623,8 @@ Sugar
       },
       "title": "Amet consectetur adipisicing",
     },
-    "id": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     "timestamp": 0,
+    "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
   },
 }
 `;
@@ -7652,7 +7652,7 @@ exports[`Note store > selectNote > syncState 1`] = `
     "deleted": [
       {
         "deleted_at": 0,
-        "id": "id",
+        "uuid": "uuid",
       },
     ],
     "edited": Set {},

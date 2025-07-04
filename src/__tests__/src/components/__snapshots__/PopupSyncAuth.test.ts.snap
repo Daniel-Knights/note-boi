@@ -53,8 +53,8 @@ exports[`PopupSyncAuth > Emits close > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -148,8 +148,8 @@ exports[`PopupSyncAuth > Mounts > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -243,8 +243,8 @@ exports[`PopupSyncAuth > Shows default error message when none provided > noteSt
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -340,8 +340,8 @@ exports[`PopupSyncAuth > Shows error message > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -437,8 +437,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Clears form validation 
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -532,8 +532,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > n
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -630,8 +630,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Switches > noteState 1`
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -746,8 +746,8 @@ exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
             },
             "title": "",
           },
-          "id": "id",
           "timestamp": 0,
+          "uuid": "uuid",
         },
       },
       "name": "new_note",
@@ -766,8 +766,8 @@ exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
               },
               "title": "",
             },
-            "id": "id",
             "timestamp": 0,
+            "uuid": "uuid",
           },
         ],
       },
@@ -801,8 +801,8 @@ exports[`PopupSyncAuth > Validates fields > On login > noteState 1`] = `
         },
         "title": "",
       },
-      "id": "id",
       "timestamp": 0,
+      "uuid": "uuid",
     },
   ],
   "selectedNote": {
@@ -813,8 +813,8 @@ exports[`PopupSyncAuth > Validates fields > On login > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
@@ -945,8 +945,8 @@ exports[`PopupSyncAuth > Validates fields > On signup > noteState 1`] = `
       },
       "title": "",
     },
-    "id": "id",
     "timestamp": 0,
+    "uuid": "uuid",
   },
 }
 `;
