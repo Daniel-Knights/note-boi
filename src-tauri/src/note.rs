@@ -8,15 +8,15 @@ use std::{
   time::{SystemTime, UNIX_EPOCH},
 };
 
-#[cfg(debug_assertions)]
-const NOTES_DIR: &str = ".notes-dev";
-#[cfg(debug_assertions)]
-const BACKUP_DIR: &str = ".backup-dev";
-
 #[cfg(not(debug_assertions))]
 const NOTES_DIR: &str = ".notes";
 #[cfg(not(debug_assertions))]
 const BACKUP_DIR: &str = ".backup";
+
+#[cfg(debug_assertions)]
+const NOTES_DIR: &str = ".notes-dev";
+#[cfg(debug_assertions)]
+const BACKUP_DIR: &str = ".backup-dev";
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Delta {
