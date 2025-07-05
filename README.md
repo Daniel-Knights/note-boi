@@ -12,6 +12,7 @@
 - [x] E2E encryption
 - [x] WYSIWYG editor
 - [x] Light/dark themes
+- [x] Note backups
 - [ ] Web version (planned)
 - [ ] Mobile support (planned)
 
@@ -23,9 +24,9 @@
 
 Go to the [releases page](https://github.com/Daniel-Knights/note-boi/releases) and download the appropriate installer.
 
-- MacOS: `.dmg`, `.app`
+- MacOS: `.dmg`, `.app.tar.gz`
 - Windows: `.msi`, `-setup.exe`
-- Linux: `.deb`, `.AppImage`
+- Linux: `.deb`, `.AppImage`, `.rpm`
 
 ## V1
 
