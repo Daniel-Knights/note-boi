@@ -1,3 +1,8 @@
+## [v3.1.0](https://github.com/Daniel-Knights/note-boi/compare/v3.0.0...v3.1.0) (06/07/2025)
+
+- feat(notes): backup notes on app exit ([f0b3ea4](https://github.com/Daniel-Knights/note-boi/commit/f0b3ea4720019435b7eec138db396862c9802a78))
+- fix(io): create notes dir if not exists instead of erroring ([497b126](https://github.com/Daniel-Knights/note-boi/commit/497b126fd4b25402e4441941b88b05f1446a5575))
+
 ## [v3.0.0](https://github.com/Daniel-Knights/note-boi/compare/v2.1.0...v3.0.0) (22/06/2025)
 
 - feat(sync): note diffs, encrypted notes cache, only encrypt notes that have been edited, and only decrypt notes that have changed remotely ([6bb55ac](https://github.com/Daniel-Knights/note-boi/commit/6bb55ac33b1299a41058b123182ada6e97e2337c))
