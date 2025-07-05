@@ -38,6 +38,11 @@ pub fn export_notes(save_dir: PathBuf, notes: Vec<Note>) -> Result<(), NoteError
   Note::export(&save_dir, notes)
 }
 
+#[tauri::command]
+pub fn backup_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(), NoteError> {
+  Note::backup(&state.app_dir, &notes)
+}
+
 // Access token commands
 #[tauri::command]
 pub fn set_access_token(username: String, access_token: String) -> Result<(), String> {

@@ -1,8 +1,15 @@
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::{collections::HashMap, fs, io::Write, path::PathBuf};
+use std::{
+  collections::HashMap,
+  fs,
+  io::Write,
+  path::PathBuf,
+  time::{SystemTime, UNIX_EPOCH},
+};
 
-const NOTE_DIR: &str = ".notes";
+const NOTES_DIR: &str = ".notes";
+const BACKUP_DIR: &str = ".backup";
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Delta {
@@ -33,7 +40,7 @@ pub enum NoteError {
 
 impl Note {
   pub fn get_all(app_dir: &PathBuf) -> Result<Vec<Note>, NoteError> {
-    let notes_path = app_dir.join(NOTE_DIR);
+    let notes_path = app_dir.join(NOTES_DIR);
 
     if notes_path.is_dir() {
       let dir_contents = fs::read_dir(notes_path).expect("unable to read dir");
@@ -58,7 +65,7 @@ impl Note {
   }
 
   pub fn new(app_dir: &PathBuf, note: &Note) -> Result<(), NoteError> {
-    let notes_path = app_dir.join(NOTE_DIR);
+    let notes_path = app_dir.join(NOTES_DIR);
     if !notes_path.is_dir() {
       fs::create_dir_all(&notes_path).expect("unable to create dir");
     }
@@ -94,7 +101,7 @@ impl Note {
   }
 
   pub fn sync_local(app_dir: &PathBuf, notes: Vec<Note>) -> Result<(), NoteError> {
-    let notes_dir = app_dir.join(NOTE_DIR);
+    let notes_dir = app_dir.join(NOTES_DIR);
 
     let rm_res = fs::remove_dir_all(&notes_dir);
 
@@ -144,20 +151,107 @@ impl Note {
     Ok(())
   }
 
-  /// Returns `{app_dir}/{NOTE_DIR}/{id}.json`
+  //// Backup
+
+  pub fn backup(app_dir: &PathBuf, notes: &[Note]) -> Result<(), NoteError> {
+    // Do nothing if no notes or only empty notes
+    if notes.is_empty() || notes.iter().all(|nt| nt.is_empty()) {
+      return Ok(());
+    }
+
+    // Backup directory names are the timestamp they were created
+    let timestamp = SystemTime::now()
+      .duration_since(UNIX_EPOCH)
+      .unwrap()
+      .as_secs();
+
+    let backup_dir = app_dir.join(BACKUP_DIR);
+    let backup_instance_dir = backup_dir.join(timestamp.to_string());
+
+    // Ensure the backup directory exists
+    if !backup_dir.exists() {
+      if let Err(e) = fs::create_dir_all(&backup_dir) {
+        eprintln!("Unable to create backup directory: {}", e);
+      }
+    }
+
+    // Write backup files
+    for nt in notes.iter() {
+      let write_res = Note::new(&backup_instance_dir, nt);
+
+      if write_res.is_err() {
+        return Err(write_res.unwrap_err());
+      }
+    }
+
+    Self::remove_old_backups(&backup_dir);
+
+    Ok(())
+  }
+
+  fn remove_old_backups(backup_dir: &PathBuf) {
+    let entries = match backup_dir.read_dir() {
+      Ok(entries) => entries,
+      Err(_) => return,
+    };
+
+    // Filter out non-directories and collect into tuples of `(timestamp, path)`
+    let mut backup_dirs: Vec<_> = entries
+      .filter_map(|entry_result| {
+        let entry = entry_result.ok()?;
+
+        if !entry.path().is_dir() {
+          return None;
+        }
+
+        // Directory names are the timestamp they were created
+        let dir_name = entry.file_name();
+        let timestamp = dir_name.to_str()?.parse::<u64>().ok()?;
+
+        Some((timestamp, entry.path()))
+      })
+      .collect();
+
+    const MAX_BACKUPS_COUNT: usize = 3;
+
+    if backup_dirs.len() <= MAX_BACKUPS_COUNT {
+      return;
+    }
+
+    // Sort by timestamp (oldest first)
+    backup_dirs.sort_by_key(|(timestamp, _)| *timestamp);
+
+    // Remove oldest directories to keep only 3 most recent
+    for (_, path) in backup_dirs
+      .iter()
+      .take(backup_dirs.len() - MAX_BACKUPS_COUNT)
+    {
+      let _ = fs::remove_dir_all(path);
+    }
+  }
+
+  //// Helpers
+
+  /// Returns `{app_dir}/{NOTES_DIR}/{id}.json`
   fn get_path(app_dir: &PathBuf, id: &String) -> PathBuf {
     let mut filename = id.clone();
     filename.push_str(".json");
 
-    app_dir.join(NOTE_DIR).join(filename)
+    app_dir.join(NOTES_DIR).join(filename)
   }
+
   /// Serialize `Note` to a JSON string
   fn serialize(&self) -> String {
     serde_json::to_string(self).expect("unable to serialize note struct")
   }
+
   /// Deserialize `Note` from a JSON string
   fn deserialize(note_json: &String) -> Note {
     serde_json::from_str::<Note>(note_json).expect("unable to deserialize note json")
+  }
+
+  fn is_empty(&self) -> bool {
+    self.content.title.is_empty() && self.content.body.is_empty()
   }
 }
 

@@ -1,5 +1,5 @@
 import * as dialog from '@tauri-apps/plugin-dialog';
-import { webview } from '@tauri-apps/api';
+import { WebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { exit, relaunch } from '@tauri-apps/plugin-process';
 import 'quill/dist/quill.snow.css';
 import { createApp } from 'vue';
@@ -18,7 +18,7 @@ import {
 import { openedPopup, POPUP_TYPE } from './store/popup';
 import { syncState } from './store/sync';
 import { handleUpdate } from './store/update';
-import { isDev, tauriListen } from './utils';
+import { isDev, tauriInvoke, tauriListen } from './utils';
 
 import App from './App.vue';
 
@@ -30,8 +30,14 @@ getAllNotes().then(() => {
   debounceSync(true);
 });
 
-webview.getCurrentWebview().listen('tauri://close-requested', () => {
-  exitApp(exit);
+WebviewWindow.getCurrent().listen('tauri://close-requested', () => {
+  exitApp(async () => {
+    await tauriInvoke('backup_notes', { notes: noteState.notes }).catch((err) => {
+      console.error('Failed to backup notes:', err);
+    });
+
+    exit();
+  });
 });
 tauriListen('reload', () => {
   // Relaunch acts up in dev, but is fine in production

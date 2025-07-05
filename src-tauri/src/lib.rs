@@ -3,8 +3,8 @@ mod menu;
 mod note;
 
 use crate::command::{
-  delete_access_token, delete_note, edit_note, export_notes, get_access_token, get_all_notes,
-  new_note, set_access_token, sync_local_notes,
+  backup_notes, delete_access_token, delete_note, edit_note, export_notes, get_access_token,
+  get_all_notes, new_note, set_access_token, sync_local_notes,
 };
 use std::path::PathBuf;
 use tauri::Manager;
@@ -32,6 +32,7 @@ pub fn run() {
     .plugin(tauri_plugin_shell::init())
     .plugin(tauri_plugin_dialog::init())
     .invoke_handler(tauri::generate_handler![
+      backup_notes,
       delete_note,
       edit_note,
       export_notes,

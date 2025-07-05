@@ -145,6 +145,12 @@ export type TauriCommandPayloads = {
     };
     response: never;
   };
+  backup_notes: {
+    payload: {
+      notes: Note[];
+    };
+    response: never;
+  };
 };
 
 export type TauriCommand = keyof TauriCommandPayloads;
@@ -159,6 +165,7 @@ export const TAURI_COMMANDS = [
   'set_access_token',
   'get_access_token',
   'delete_access_token',
+  'backup_notes',
 ] satisfies TauriCommand[];
 
 // Tauri emits
