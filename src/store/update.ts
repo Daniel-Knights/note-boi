@@ -12,8 +12,16 @@ export const updateState = reactive({
 });
 
 export async function handleUpdate(): Promise<void> {
+  console.log('Checking for updates...');
+
   const update = await check();
-  if (!update) return;
+  if (!update) {
+    console.log('No updates available');
+
+    return;
+  }
+
+  console.log('Update available:', update.version);
 
   updateState.isAvailable = true;
 
@@ -25,7 +33,11 @@ export async function handleUpdate(): Promise<void> {
 
   // Check if the user has already been notified
   const seenVersion = Storage.get('UPDATE_SEEN');
-  if (seenVersion === newVersion) return;
+  if (seenVersion === newVersion) {
+    console.log('Update already seen');
+
+    return;
+  }
 
   const shouldInstall = await dialog.ask(
     'A new version of NoteBoi is available.\nDo you want to update now?',
@@ -33,6 +45,8 @@ export async function handleUpdate(): Promise<void> {
   );
 
   if (!shouldInstall) {
+    console.log('User chose not to update');
+
     Storage.set('UPDATE_SEEN', newVersion);
 
     return;
@@ -44,11 +58,13 @@ export async function handleUpdate(): Promise<void> {
 export async function updateAndRelaunch(update: Update): Promise<void> {
   updateState.isDownloading = true;
 
+  console.log('Downloading and installing update');
+
   try {
     await update.downloadAndInstall();
     await relaunch();
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error('Failed to install update:', err);
 
     const shouldRetry = await dialog.ask('Try again?', {
       title: 'Unable to install update',
