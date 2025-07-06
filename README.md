@@ -31,3 +31,11 @@ Go to the [releases page](https://github.com/Daniel-Knights/note-boi/releases) a
 ## V1
 
 NoteBoi v1 is no longer supported. It can still be used without sync functionality, but the server is no longer running.
+
+## Troubleshooting
+
+### NoteBoi Is Damaged and Can’t Be Opened. You Should Move It To The Trash
+
+Open your terminal and run `xattr -c /Applications/NoteBoi.app`.
+
+https://discussions.apple.com/thread/253714860?sortBy=best
