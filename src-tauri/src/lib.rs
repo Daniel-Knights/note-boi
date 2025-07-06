@@ -44,9 +44,18 @@ pub fn run() {
       delete_access_token
     ])
     .setup(|app| {
-      let state = AppState {
-        app_dir: app.path().app_data_dir().unwrap(),
-      };
+      let mut app_dir = app.path().app_data_dir().unwrap();
+
+      // If dev env, append `-dev` to app directory
+      #[cfg(debug_assertions)]
+      {
+        let mut dir_name = app_dir.file_name().unwrap().to_string_lossy().to_string();
+
+        dir_name.push_str("-dev");
+        app_dir.set_file_name(dir_name);
+      }
+
+      let state = AppState { app_dir };
 
       app.manage(state);
 
