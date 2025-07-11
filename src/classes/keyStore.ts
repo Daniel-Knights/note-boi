@@ -1,29 +1,11 @@
-function promisifyRequest<T>(request: IDBRequest<T>): Promise<T> {
-  return new Promise((res, rej) => {
-    request.onsuccess = () => {
-      res(request.result);
-    };
-
-    request.onerror = () => {
-      console.error(request.error);
-
-      rej(request.error);
-    };
-
-    setTimeout(() => {
-      rej(new Error('Request timed out'));
-    }, 10000);
-  });
-}
-
 export class KeyStore {
   static readonly #dbName = 'NoteBoi';
   static readonly #storeName = 'crypto-key';
 
-  static #db: IDBDatabase | undefined;
-  static #key: CryptoKey | undefined;
+  static #db?: IDBDatabase;
+  static #key?: CryptoKey;
 
-  static async #getDb(): Promise<IDBDatabase> {
+  static async #getDb(): Promise<IDBDatabase | void> {
     if (this.#db) return this.#db;
 
     const openRequest = window.indexedDB.open(this.#dbName);
@@ -40,7 +22,7 @@ export class KeyStore {
 
     this.#db = await promisifyRequest(openRequest);
 
-    return this.#db;
+    return this.#db ?? console.error('Failed to open IndexedDB');
   }
 
   static async reset(): Promise<void> {
@@ -65,6 +47,7 @@ export class KeyStore {
 
   static async storeKey(key: CryptoKey): Promise<void> {
     const db = await this.#getDb();
+    if (!db) return;
 
     const transaction = db.transaction([this.#storeName], 'readwrite', {
       durability: 'strict',
@@ -80,10 +63,11 @@ export class KeyStore {
     console.log('Stored key');
   }
 
-  static async getKey(): Promise<CryptoKey> {
+  static async getKey(): Promise<CryptoKey | void> {
     if (this.#key) return this.#key;
 
     const db = await this.#getDb();
+    if (!db) return;
 
     const transaction = db.transaction([this.#storeName], 'readonly', {
       durability: 'strict',
@@ -94,4 +78,22 @@ export class KeyStore {
 
     return promisifyRequest<CryptoKey>(request);
   }
+}
+
+function promisifyRequest<T>(request: IDBRequest<T>): Promise<T> {
+  return new Promise((res, rej) => {
+    request.onsuccess = () => {
+      res(request.result);
+    };
+
+    request.onerror = () => {
+      console.error(request.error);
+
+      rej(request.error);
+    };
+
+    setTimeout(() => {
+      rej(new Error('Request timed out'));
+    }, 10000);
+  });
 }
