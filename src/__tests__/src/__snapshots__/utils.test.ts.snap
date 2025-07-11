@@ -95,19 +95,19 @@ exports[`Utils > Tauri API wrappers > tauriEmit > updateState 1`] = `
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > KeyStore.getKey() 1`] = `undefined`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > allCalls 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > allCalls 1`] = `
 [
   [
     "invoke",
@@ -128,9 +128,9 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > allCalls 1`] = `
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > mockDb 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -140,7 +140,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > mockDb 1`] = `
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > noteState 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -158,11 +158,11 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > noteState 1`] = `
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > openedPopup 1`] = `undefined`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > openedPopup 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > selectedTheme 1`] = `"System"`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > syncState 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -186,7 +186,102 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > syncState 1`] = `
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > updateState 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Something went wrong. Please try again or open an issue in the GitHub repo.",
+        "okLabel": undefined,
+        "title": undefined,
+      },
+      "name": "plugin:dialog|message",
+    },
+  ],
+]
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > openedPopup 1`] = `undefined`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > selectedTheme 1`] = `"System"`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

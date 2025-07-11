@@ -1559,6 +1559,415 @@ exports[`Notes (sync) > Edge cases > No remote, some local > updateState 1`] = `
 }
 `;
 
+exports[`Notes (sync) > sync > Logs out client-side if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > Storage.get('THEME') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > mockDb 1`] = `
+{
+  "deletedNotes": [],
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > openedPopup 1`] = `undefined`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > selectedTheme 1`] = `"System"`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no access token > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > Storage.get('THEME') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > openedPopup 1`] = `undefined`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > selectedTheme 1`] = `"System"`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no password key > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > Storage.get('THEME') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > allCalls 1`] = `
+[
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > openedPopup 1`] = `undefined`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > selectedTheme 1`] = `"System"`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Notes (sync) > sync > Logs out client-side if no username > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Notes (sync) > sync > Returns if not logged in > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Notes (sync) > sync > Returns if not logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -1571,7 +1980,22 @@ exports[`Notes (sync) > sync > Returns if not logged in > Storage.get('UPDATE_ST
 
 exports[`Notes (sync) > sync > Returns if not logged in > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Returns if not logged in > allCalls 1`] = `[]`;
+exports[`Notes (sync) > sync > Returns if not logged in > allCalls 1`] = `
+[
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
 
 exports[`Notes (sync) > sync > Returns if not logged in > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
