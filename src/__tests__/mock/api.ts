@@ -152,6 +152,8 @@ export function mockApi(): {
     }
 
     // Tauri API
+    if (callId === 'plugin:log|log') return;
+
     const tauriApiCall = mockTauriApi(
       callId,
       args as AskDialogArgs | OpenDialogArgs | MessageDialogArgs,

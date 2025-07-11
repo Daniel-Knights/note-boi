@@ -3,6 +3,7 @@ import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import { ERROR_CODE, Storage } from '../../../classes';
+import { tauriInvoke } from '../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
   assertAppError,
@@ -178,6 +179,67 @@ describe('Account', () => {
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
     });
 
+    it('Logs out client-side if no username', async () => {
+      const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
+
+      clearMockApiResults({ calls });
+
+      await a.changePassword();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('Logs out client-side if no access token', async () => {
+      const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+      s.syncState.newPassword = '2';
+
+      await a.login();
+      await tauriInvoke('delete_access_token', { username: 'd' });
+
+      clearMockApiResults({ calls });
+
+      await a.changePassword();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
     it('Sets and resets loading state', () => {
       return assertLoadingState(async () => {
         s.syncState.username = 'd';
@@ -222,6 +284,11 @@ describe('Account', () => {
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.deepEqual(calls.tauriApi[0]!.calledWith, {
+        title: 'Delete account',
+        kind: 'warning',
+        message: 'Are you sure?',
+      });
       assert.isTrue(calls.request.has('/account/delete'));
       assertRequest('/account/delete', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
@@ -241,6 +308,8 @@ describe('Account', () => {
       const { calls, setResValues } = mockApi();
 
       setResValues.tauriApi({ askDialog: [false] });
+
+      s.syncState.username = 'd';
 
       await a.deleteAccount();
 
@@ -350,6 +419,61 @@ describe('Account', () => {
       assertRequest('/account/delete', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'k' });
+    });
+
+    it('Logs out client-side if no username', async () => {
+      const { calls } = mockApi();
+
+      clearMockApiResults({ calls });
+
+      await a.deleteAccount();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('Logs out client-side if no access token', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await a.login();
+      await tauriInvoke('delete_access_token', { username: 'd' });
+
+      clearMockApiResults({ calls });
+
+      await a.deleteAccount();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 4);
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('Sets and resets loading state', () => {

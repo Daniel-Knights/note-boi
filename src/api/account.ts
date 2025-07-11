@@ -22,6 +22,10 @@ import {
 } from './utils';
 
 export const changePassword = route(async (): Promise<void> => {
+  if (!syncState.username) {
+    return clientSideLogout();
+  }
+
   const errorConfig = {
     code: ERROR_CODE.CHANGE_PASSWORD,
     retry: { fn: changePassword },
@@ -43,7 +47,11 @@ export const changePassword = route(async (): Promise<void> => {
       throwEncryptorError(errorConfig, err)
     ),
   ]);
-  if (!accessToken || !encryptedNotes) return;
+  if (!encryptedNotes) return;
+
+  if (!accessToken) {
+    return clientSideLogout();
+  }
 
   const res = await new FetchBuilder('/account/change-password')
     .method('PUT')
@@ -71,6 +79,10 @@ export const changePassword = route(async (): Promise<void> => {
 });
 
 export const deleteAccount = route(async (): Promise<void> => {
+  if (!syncState.username) {
+    return clientSideLogout();
+  }
+
   const askRes = await dialog.ask('Are you sure?', {
     title: 'Delete account',
     kind: 'warning',
@@ -88,6 +100,10 @@ export const deleteAccount = route(async (): Promise<void> => {
   const accessToken = await tauriInvoke('get_access_token', {
     username: syncState.username,
   });
+
+  if (!accessToken) {
+    return clientSideLogout();
+  }
 
   const res = await new FetchBuilder('/account/delete')
     .method('DELETE')

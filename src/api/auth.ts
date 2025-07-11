@@ -21,7 +21,9 @@ import {
 } from './utils';
 
 export function clientSideLogout(): Promise<void> {
-  tauriInvoke('delete_access_token', { username: syncState.username });
+  if (syncState.username) {
+    tauriInvoke('delete_access_token', { username: syncState.username });
+  }
 
   syncState.username = '';
   syncState.isLoggedIn = false;
@@ -148,6 +150,10 @@ export const signup = route(async () => {
 
 // Logout
 export const logout = route(async () => {
+  if (!syncState.username) {
+    return clientSideLogout();
+  }
+
   const errorConfig = {
     code: ERROR_CODE.LOGOUT,
     retry: { fn: logout },
@@ -157,6 +163,10 @@ export const logout = route(async () => {
   const accessToken = await tauriInvoke('get_access_token', {
     username: syncState.username,
   });
+
+  if (!accessToken) {
+    return clientSideLogout();
+  }
 
   const fetchPromise = new FetchBuilder('/auth/logout')
     .method('POST')

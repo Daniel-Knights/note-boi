@@ -21,6 +21,7 @@ import {
 import { resetAppError, syncState } from '../store/sync';
 import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
 
+import { clientSideLogout } from './auth';
 import {
   parseErrorRes,
   resIsOk,
@@ -33,6 +34,10 @@ const syncQueue = new DebounceQueue();
 
 // Sync
 export const sync = route(async (isCancelled?: () => boolean) => {
+  if (!syncState.username) {
+    return clientSideLogout();
+  }
+
   const errorConfig = {
     code: ERROR_CODE.SYNC,
     retry: {
@@ -46,7 +51,11 @@ export const sync = route(async (isCancelled?: () => boolean) => {
   } satisfies Omit<ErrorConfig<typeof sync | (() => void)>, 'message'>;
 
   const passwordKey = await KeyStore.getKey();
-  if (!passwordKey || isCancelled?.()) return;
+  if (isCancelled?.()) return;
+
+  if (!passwordKey) {
+    return clientSideLogout();
+  }
 
   const notesToEncrypt = noteState.notes.filter((nt) => {
     const noteIsEdited = syncState.unsyncedNotes.edited.has(nt.uuid);
@@ -63,7 +72,11 @@ export const sync = route(async (isCancelled?: () => boolean) => {
       throwEncryptorError(errorConfig, err)
     ),
   ]);
-  if (!accessToken || !encryptedNotes || isCancelled?.()) return;
+  if (!encryptedNotes || isCancelled?.()) return;
+
+  if (!accessToken) {
+    return clientSideLogout();
+  }
 
   encryptedNotes.forEach((nt) => {
     syncState.encryptedNotesCache.set(nt.uuid, nt);

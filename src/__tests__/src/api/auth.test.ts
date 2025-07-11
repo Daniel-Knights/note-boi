@@ -2,8 +2,8 @@ import * as a from '../../../api';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import { ERROR_CODE, Storage } from '../../../classes';
-import { isEmptyNote } from '../../../utils';
-import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
+import { isEmptyNote, tauriInvoke } from '../../../utils';
+import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
   assertAppError,
   assertLoadingState,
@@ -14,29 +14,49 @@ import {
 } from '../../utils';
 
 describe('Auth', () => {
-  it('clientSideLogout', async () => {
-    const { calls } = mockApi();
-    s.syncState.username = 'd';
-    s.syncState.password = '1';
+  describe('clientSideLogout', () => {
+    it('Sets all state to logged out', async () => {
+      const { calls } = mockApi();
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
 
-    await a.login();
+      await a.login();
 
-    clearMockApiResults({ calls });
+      clearMockApiResults({ calls });
 
-    a.clientSideLogout();
+      await a.clientSideLogout();
 
-    assert.isEmpty(s.syncState.username);
-    assert.isFalse(s.syncState.isLoggedIn);
-    assert.isNull(Storage.get('USERNAME'));
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.invoke.has('delete_access_token'));
-    assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-    assert.isTrue(calls.emits.has('auth'));
-    assert.deepEqual(calls.emits[0]!.calledWith, {
-      isFrontendEmit: true,
-      data: {
-        is_logged_in: false,
-      },
+      assert.isEmpty(s.syncState.username);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('Does not delete access token if no username', async () => {
+      const { calls } = mockApi();
+
+      await a.clientSideLogout();
+
+      assert.isEmpty(s.syncState.username);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
   });
 
@@ -481,7 +501,7 @@ describe('Auth', () => {
     });
 
     it('Unauthorized', async () => {
-      const { calls } = mockApi();
+      const { calls, setErrorValue } = mockApi();
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -489,8 +509,7 @@ describe('Auth', () => {
       await a.login();
 
       clearMockApiResults({ calls });
-
-      delete mockKeyring.d;
+      setErrorValue.request({ endpoint: '/auth/logout', status: 401 });
 
       await a.logout();
 
@@ -545,6 +564,66 @@ describe('Auth', () => {
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('Only logs out client-side if no username', async () => {
+      const { calls } = mockApi();
+
+      clearMockApiResults({ calls });
+
+      await a.logout();
+
+      // Can't spy on `clientSideLogout` because it's called from the same file
+      // expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('Only logs out client-side if no access token', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await a.login();
+      await tauriInvoke('delete_access_token', { username: 'd' });
+
+      clearMockApiResults({ calls });
+
+      await a.logout();
+
+      // Can't spy on `clientSideLogout` because it's called from the same file
+      // expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('delete_access_token'));
