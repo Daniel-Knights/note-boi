@@ -4,6 +4,7 @@ import { hasKeys } from '../../../utils';
 import { getDummyNotes, isNote, resolveImmediate } from '../../utils';
 
 export const mockKeyring: Record<string, string> = {};
+export const mockError = new Error('Mock Tauri Invoke error');
 
 /** Mocks Tauri `invoke` calls. */
 export function mockTauriInvoke(
@@ -12,7 +13,7 @@ export function mockTauriInvoke(
   options: { resValue?: InvokeResValue; error?: TauriCommand } = {}
 ) {
   if (options.error === cmd) {
-    throw new Error('Mock Tauri Invoke error');
+    throw mockError;
   }
 
   let resData: n.Note[] | string | undefined = [];
