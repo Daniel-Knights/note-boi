@@ -36,26 +36,7 @@
       "preLaunchTask": "build"
     },
     {
-      "name": "test",
-      "type": "node",
-      "request": "launch",
-      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "test", "--test-timeout=10000000"],
-      "console": "integratedTerminal"
-    },
-    {
       "name": "test:current-file",
-      "type": "node",
-      "request": "launch",
-      "autoAttachChildProcesses": true,
-      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
-      "program": "${workspaceRoot}/node_modules/vitest/vitest.mjs",
-      "args": ["run", "${relativeFile}", "--test-timeout=10000000"],
-      "console": "integratedTerminal"
-    },
-    {
-      "name": "test:current-file:update",
       "type": "node",
       "request": "launch",
       "autoAttachChildProcesses": true,
