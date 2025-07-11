@@ -43,27 +43,36 @@ pub fn backup_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(
   Note::backup(&state.app_dir, &notes)
 }
 
-// Access token commands
+//// Access token commands
+
+const SERVICE_NAME: &str = "note-boi";
+
 #[tauri::command]
 pub fn set_access_token(username: String, access_token: String) -> Result<(), String> {
-  Entry::new("note-boi", &username)
-    .unwrap()
+  let err_msg_prefix = "Unable to set access token:";
+
+  Entry::new(SERVICE_NAME, &username)
+    .map_err(|e| format!("{err_msg_prefix} {e}"))?
     .set_password(&access_token)
-    .map_err(|e| e.to_string())
+    .map_err(|e| format!("{err_msg_prefix} {e}"))
 }
 
 #[tauri::command]
 pub fn get_access_token(username: String) -> Result<String, String> {
-  Entry::new("note-boi", &username)
-    .unwrap()
+  let err_msg_prefix = "Unable to get access token:";
+
+  Entry::new(SERVICE_NAME, &username)
+    .map_err(|e| format!("{err_msg_prefix} {e}"))?
     .get_password()
-    .map_err(|e| e.to_string())
+    .map_err(|e| format!("{err_msg_prefix} {e}"))
 }
 
 #[tauri::command]
 pub fn delete_access_token(username: String) -> Result<(), String> {
-  Entry::new("note-boi", &username)
-    .unwrap()
+  let err_msg_prefix = "Unable to delete access token:";
+
+  Entry::new(SERVICE_NAME, &username)
+    .map_err(|e| format!("{err_msg_prefix} {e}"))?
     .delete_credential()
-    .map_err(|e| e.to_string())
+    .map_err(|e| format!("{err_msg_prefix} {e}"))
 }

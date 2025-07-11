@@ -126,7 +126,7 @@ export type TauriCommandPayloads = {
     payload: {
       username: string;
     };
-    response: string;
+    response?: string;
   };
   delete_access_token: {
     payload: {
