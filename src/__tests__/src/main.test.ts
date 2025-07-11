@@ -97,7 +97,15 @@ describe('main', () => {
       expect(mockCb).toHaveBeenCalledOnce();
       expect(syncSpy).toHaveBeenCalledOnce();
 
-      assert.strictEqual(calls.size, 0);
+      // `clientSideLogout` is called in `sync` if user isn't logged in
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('Triggers ask dialog on sync error, and answers "No"', async () => {
@@ -116,7 +124,14 @@ describe('main', () => {
       expect(syncSpy).toHaveBeenCalledOnce();
 
       assert.strictEqual(openedPopup.value, POPUP_TYPE.ERROR);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.deepEqual(calls.tauriApi[0]!.calledWith, {
         message: 'ERROR: Failed to sync notes.\nClose anyway?',
@@ -145,7 +160,14 @@ describe('main', () => {
       expect(syncSpy).toHaveBeenCalledOnce();
 
       assert.isUndefined(openedPopup.value);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.deepEqual(calls.tauriApi[0]!.calledWith, {
         message: 'ERROR: Failed to sync notes.\nClose anyway?',

@@ -2,10 +2,11 @@ import { mount, shallowMount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as a from '../../../api';
+import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../classes';
-import { isEmptyNote } from '../../../utils';
+import { isEmptyNote, tauriInvoke } from '../../../utils';
 import { UUID_REGEX } from '../../constant';
 import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
 import {
@@ -104,7 +105,14 @@ describe('Notes (sync)', () => {
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(n.noteState.notes.length, 0);
-      assert.strictEqual(calls.size, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('With encryption error', async () => {
@@ -302,7 +310,7 @@ describe('Notes (sync)', () => {
 
       mockDb.encryptedNotes = await Encryptor.encryptNotes(
         unencryptedRemoteNotes,
-        passwordKey
+        passwordKey!
       );
 
       await a.sync();
@@ -365,7 +373,7 @@ describe('Notes (sync)', () => {
 
       mockDb.encryptedNotes = await Encryptor.encryptNotes(
         unencryptedRemoteNotes,
-        passwordKey
+        passwordKey!
       );
 
       await a.sync();
@@ -373,6 +381,95 @@ describe('Notes (sync)', () => {
       assert.lengthOf(wrapper.findAll('li'), 9);
       assertNoteItemText(n.noteState.selectedNote.uuid, 'Remote update-body');
       assertNoteItemText(newRemoteNote.uuid, 'New note-body');
+    });
+
+    it('Logs out client-side if no username', async () => {
+      const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
+
+      clearMockApiResults({ calls });
+
+      await a.sync();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('Logs out client-side if no password key', async () => {
+      const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
+
+      s.syncState.username = 'd';
+
+      clearMockApiResults({ calls });
+
+      await a.sync();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+
+    it('Logs out client-side if no access token', async () => {
+      const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await a.login();
+      await tauriInvoke('delete_access_token', { username: 'd' });
+
+      clearMockApiResults({ calls });
+
+      await a.sync();
+
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+
+      assertAppError();
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isEmpty(s.syncState.username);
+      assert.isNull(Storage.get('USERNAME'));
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('Sets and resets loading state', () => {

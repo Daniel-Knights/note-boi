@@ -96,6 +96,9 @@ describe('PopupSyncError', () => {
     const resetErrorSpy = vi.spyOn(s, 'resetAppError');
     const clientSideLogoutSpy = vi.spyOn(a, 'clientSideLogout');
 
+    // Needed for `clientSideLogout` to invoke `delete_access_token`
+    s.syncState.username = 'd';
+
     await ignoreButton.trigger('click');
     await nextTick();
     await resolveImmediate();
@@ -108,8 +111,14 @@ describe('PopupSyncError', () => {
     assert.lengthOf(wrapper.emitted('close')!, 1);
     assert.strictEqual(calls.size, 2);
     assert.isTrue(calls.invoke.has('delete_access_token'));
-    assert.deepEqual(calls.invoke[0]!.calledWith, { username: '' });
+    assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     assert.isTrue(calls.emits.has('auth'));
+    assert.deepEqual(calls.emits[0]!.calledWith, {
+      isFrontendEmit: true,
+      data: {
+        is_logged_in: false,
+      },
+    });
   });
 
   it('Shows default error message when none provided', async () => {
