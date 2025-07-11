@@ -98,7 +98,7 @@ exports[`PopupSyncError > Ignores > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "username": "",
+        "username": "d",
       },
       "name": "delete_access_token",
     },

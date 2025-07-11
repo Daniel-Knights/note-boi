@@ -231,6 +231,311 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 }
 `;
 
+exports[`Account > changePassword > Logs out client-side if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > mockDb 1`] = `
+{
+  "deletedNotes": [],
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > openedPopup 1`] = `undefined`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > selectedTheme 1`] = `"System"`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "2",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > changePassword > Logs out client-side if no access token > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > changePassword > Logs out client-side if no username > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Account > changePassword > Logs out client-side if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no username > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no username > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no username > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no username > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > changePassword > Logs out client-side if no username > allCalls 1`] = `
+[
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > changePassword > Logs out client-side if no username > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > changePassword > Logs out client-side if no username > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > changePassword > Logs out client-side if no username > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Account > changePassword > Logs out client-side if no username > openedPopup 1`] = `undefined`;
+
+exports[`Account > changePassword > Logs out client-side if no username > selectedTheme 1`] = `"System"`;
+
+exports[`Account > changePassword > Logs out client-side if no username > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > changePassword > Logs out client-side if no username > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
 exports[`Account > changePassword > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -1395,6 +1700,322 @@ exports[`Account > deleteAccount > Deletes currently logged in account > updateS
 }
 `;
 
+exports[`Account > deleteAccount > Logs out client-side if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "warning",
+        "message": "Are you sure?",
+        "title": "Delete account",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > mockDb 1`] = `
+{
+  "deletedNotes": [],
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > openedPopup 1`] = `undefined`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > selectedTheme 1`] = `"System"`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no access token > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > allCalls 1`] = `
+[
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > openedPopup 1`] = `undefined`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > selectedTheme 1`] = `"System"`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > deleteAccount > Logs out client-side if no username > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Account > deleteAccount > Returns if ask dialog returns false > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -1477,7 +2098,7 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > syncSta
     "edited": Set {},
     "new": "",
   },
-  "username": "",
+  "username": "d",
 }
 `;
 

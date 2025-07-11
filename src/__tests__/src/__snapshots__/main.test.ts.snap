@@ -858,10 +858,15 @@ exports[`main > exitApp > Triggers ask dialog on sync error, and answers "No" > 
 exports[`main > exitApp > Triggers ask dialog on sync error, and answers "No" > allCalls 1`] = `
 [
   [
-    "tauriApi",
+    "emits",
     {
-      "calledWith": undefined,
-      "name": "plugin:log|log",
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
     },
   ],
   [
@@ -962,10 +967,15 @@ exports[`main > exitApp > Triggers ask dialog on sync error, and answers "Yes" >
 exports[`main > exitApp > Triggers ask dialog on sync error, and answers "Yes" > allCalls 1`] = `
 [
   [
-    "tauriApi",
+    "emits",
     {
-      "calledWith": undefined,
-      "name": "plugin:log|log",
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
     },
   ],
   [
@@ -1063,17 +1073,7 @@ exports[`main > exitApp > With no unsynced notes > Storage.get('UPDATE_STRATEGY'
 
 exports[`main > exitApp > With no unsynced notes > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`main > exitApp > With no unsynced notes > allCalls 1`] = `
-[
-  [
-    "tauriApi",
-    {
-      "calledWith": undefined,
-      "name": "plugin:log|log",
-    },
-  ],
-]
-`;
+exports[`main > exitApp > With no unsynced notes > allCalls 1`] = `[]`;
 
 exports[`main > exitApp > With no unsynced notes > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"></div></body>"`;
 
@@ -1156,10 +1156,15 @@ exports[`main > exitApp > With unsynced notes > Storage.get('USERNAME') 1`] = `n
 exports[`main > exitApp > With unsynced notes > allCalls 1`] = `
 [
   [
-    "tauriApi",
+    "emits",
     {
-      "calledWith": undefined,
-      "name": "plugin:log|log",
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
     },
   ],
 ]
