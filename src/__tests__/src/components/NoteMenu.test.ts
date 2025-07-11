@@ -104,6 +104,7 @@ describe('NoteMenu', () => {
     assert.isTrue(noteItem.classes().join(' ').includes('--selected'));
   });
 
+  // ENH: Test selected note visibility on arrow key navigation
   it('Navigates notes with up/down arrow keys', async () => {
     const wrapper = shallowMount(NoteMenu);
 
