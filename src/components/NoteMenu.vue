@@ -60,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onUnmounted, ref, watchEffect } from 'vue';
+import { onUnmounted, ref, watch } from 'vue';
 
 import { Storage } from '../classes';
 import {
@@ -229,15 +229,27 @@ function navigateWithArrowKeys(ev: KeyboardEvent) {
   }
 }
 
-// Scroll to top when selected note moves to top
-watchEffect(() => {
-  if (noteState.selectedNote.uuid !== noteState.notes[0]?.uuid) return;
+// Ensure selected note is scrolled into view
+watch(
+  [() => noteState.selectedNote],
+  () => {
+    // Selected note edited instead of different note selected
+    if (noteState.selectedNote.uuid === noteState.notes[0]?.uuid) {
+      // `scrollTo` is undefined in tests
+      noteList.value?.scrollTo?.({ top: 0 });
 
-  // scrollTo is undefined in tests
-  if (noteList.value?.scrollTo) {
-    noteList.value.scrollTo({ top: 0 });
-  }
-});
+      return;
+    }
+
+    const selectedNoteEl = noteList.value?.querySelector(
+      `[data-note-uuid="${noteState.selectedNote.uuid}"]`
+    );
+
+    // `scrollIntoView` is undefined in tests
+    selectedNoteEl?.scrollIntoView?.({ block: 'center' });
+  },
+  { deep: true }
+);
 
 // Register list blur
 window.addEventListener('click', (ev) => {
