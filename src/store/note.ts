@@ -70,16 +70,6 @@ export function findNote(uuid?: string): Note | undefined {
   return noteState.notes.find((nt) => nt.uuid === uuid);
 }
 
-export function catchNoteInvokeError(err: unknown) {
-  console.error('Note invoke error:');
-  console.error(err);
-
-  return dialog.message(
-    'Something went wrong. Please try again or open an issue in the GitHub repo.',
-    { kind: 'error' }
-  );
-}
-
 /** Deletes {@link noteState.selectedNote} when note is empty. */
 function clearEmptyNote(): void {
   const isValidClear = noteState.notes.length > 1;
@@ -126,8 +116,7 @@ export function isSelectedNote(note: Note): boolean {
 
 /** Fetches all notes and updates {@link noteState}. */
 export async function getAllNotes(): Promise<void> {
-  const fetchedNotes = await tauriInvoke('get_all_notes').catch(catchNoteInvokeError);
-
+  const fetchedNotes = await tauriInvoke('get_all_notes');
   const hasNotes = fetchedNotes && fetchedNotes.length > 0;
   if (!hasNotes) return newNote();
 
@@ -177,9 +166,7 @@ export function deleteNote(uuid: string): void {
       })
     );
 
-    tauriInvoke('delete_note', { uuid })
-      .then(() => debounceSync())
-      .catch(catchNoteInvokeError);
+    tauriInvoke('delete_note', { uuid }).then(() => debounceSync());
   }
 }
 
@@ -224,7 +211,7 @@ export function newNote(isButtonClick?: boolean): void {
   document.dispatchEvent(changeNoteEvent);
   document.dispatchEvent(newNoteEvent);
 
-  tauriInvoke('new_note', { note: { ...freshNote } }).catch(catchNoteInvokeError);
+  tauriInvoke('new_note', { note: { ...freshNote } });
 }
 
 /**
@@ -254,9 +241,7 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
     })
   );
 
-  tauriInvoke('edit_note', { note: { ...foundNote } })
-    .then(() => debounceSync())
-    .catch(catchNoteInvokeError);
+  tauriInvoke('edit_note', { note: { ...foundNote } }).then(() => debounceSync());
 }
 
 /** Exports all notes, or a given selection. */
@@ -271,5 +256,5 @@ export async function exportNotes(noteUuids: string[]): Promise<void> {
 
   const notes = noteState.notes.filter((nt) => noteUuids?.includes(nt.uuid));
 
-  tauriInvoke('export_notes', { saveDir, notes }).catch(catchNoteInvokeError);
+  tauriInvoke('export_notes', { saveDir, notes });
 }

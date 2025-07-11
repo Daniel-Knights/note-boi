@@ -78,27 +78,6 @@ describe('Note store', () => {
     assert.isUndefined(n.findNote(new n.Note().uuid));
   });
 
-  it('catchNoteInvokeError', async () => {
-    const { calls } = mockApi();
-    const consoleErrorSpy = vi.spyOn(console, 'error');
-    const error = new Error('Test error');
-
-    await n.catchNoteInvokeError(error);
-
-    expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Note invoke error:');
-    expect(consoleErrorSpy).toHaveBeenCalledWith(error);
-
-    assert.strictEqual(calls.size, 1);
-    assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-      message:
-        'Something went wrong. Please try again or open an issue in the GitHub repo.',
-      kind: 'error',
-      okLabel: undefined,
-      title: undefined,
-    });
-  });
-
   it('selectNote', async () => {
     mockApi();
 

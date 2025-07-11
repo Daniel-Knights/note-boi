@@ -1,3 +1,4 @@
+import * as dialog from '@tauri-apps/plugin-dialog';
 import { event } from '@tauri-apps/api';
 import { invoke } from '@tauri-apps/api/core';
 import { EventCallback, UnlistenFn } from '@tauri-apps/api/event';
@@ -65,6 +66,14 @@ export function tauriListen<T>(
 export function tauriInvoke<T extends TauriCommand>(
   cmd: T,
   args?: TauriCommandPayloads[T]['payload']
-): Promise<TauriCommandPayloads[T]['response']> {
-  return invoke(cmd, args);
+): Promise<TauriCommandPayloads[T]['response'] | void> {
+  return invoke<T>(cmd, args).catch((err) => {
+    console.error('Note invoke error:');
+    console.error(err);
+
+    return dialog.message(
+      'Something went wrong. Please try again or open an issue in the GitHub repo.',
+      { kind: 'error' }
+    );
+  });
 }

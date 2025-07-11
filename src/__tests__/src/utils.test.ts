@@ -11,6 +11,7 @@ import {
   unixToDateTime,
 } from '../../utils';
 import { clearMockApiResults, mockApi } from '../mock';
+import { mockError } from '../mock/tauri';
 
 describe('Utils', () => {
   it('isDev', () => {
@@ -102,24 +103,48 @@ describe('Utils', () => {
       assert.isTrue(calls.listeners.has('login'));
     });
 
-    it('tauriInvoke', async () => {
-      const { calls } = mockApi();
+    describe('tauriInvoke', () => {
+      it('Calls invoke with correct command and args', async () => {
+        const { calls } = mockApi();
 
-      await tauriInvoke('delete_note', { uuid: 'uuid' });
+        await tauriInvoke('delete_note', { uuid: 'uuid' });
 
-      assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.invoke.has('delete_note'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {
-        uuid: 'uuid',
+        assert.strictEqual(calls.size, 1);
+        assert.isTrue(calls.invoke.has('delete_note'));
+        assert.deepEqual(calls.invoke[0]!.calledWith, {
+          uuid: 'uuid',
+        });
+
+        clearMockApiResults({ calls });
+
+        await tauriInvoke('get_all_notes');
+
+        assert.strictEqual(calls.size, 1);
+        assert.isTrue(calls.invoke.has('get_all_notes'));
+        assert.deepEqual(calls.invoke[0]!.calledWith, {});
       });
 
-      clearMockApiResults({ calls });
+      it('Catches errors', async () => {
+        const { calls, setErrorValue } = mockApi();
+        const consoleErrorSpy = vi.spyOn(console, 'error');
 
-      await tauriInvoke('get_all_notes');
+        setErrorValue.invoke('new_note');
 
-      assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.invoke.has('get_all_notes'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, {});
+        await tauriInvoke('new_note', { note: new Note() });
+
+        expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
+        expect(consoleErrorSpy).toHaveBeenCalledWith('Note invoke error:');
+        expect(consoleErrorSpy).toHaveBeenCalledWith(mockError);
+
+        assert.strictEqual(calls.size, 1);
+        assert.deepEqual(calls.tauriApi[0]!.calledWith, {
+          message:
+            'Something went wrong. Please try again or open an issue in the GitHub repo.',
+          kind: 'error',
+          okLabel: undefined,
+          title: undefined,
+        });
+      });
     });
   });
 });
