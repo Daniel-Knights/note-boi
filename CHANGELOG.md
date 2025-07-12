@@ -1,3 +1,11 @@
+## [v4.0.0](https://github.com/Daniel-Knights/note-boi/compare/v3.1.0...v4.0.0) (12/07/2025)
+
+- feat(auth): stricter access checks, client side log out at any point username, token, or password key is unavailable ([af8d30b](https://github.com/Daniel-Knights/note-boi/commit/af8d30be72ba4c2f878e71822d1011554f6ae0f6))
+- feat(keyStore): better handling of undefined db ([22e8f01](https://github.com/Daniel-Knights/note-boi/commit/22e8f01bcf85da209a4dfee3540fbed3450d39b6))
+- fix(note): ensure selected note remains visible on arrow key navigation ([fe88881](https://github.com/Daniel-Knights/note-boi/commit/fe888817cf8ff0db84f8dbdc59b3396b3f298d64))
+- feat(note)!: id to uuid notes and deleted notes ([a810627](https://github.com/Daniel-Knights/note-boi/commit/a810627740fd7659652a9789d4495bad1bf0d4bc))
+- feat(sync): track unsynced notes deleted_at timestamps to compare against edited when merging ([eb7f9e8](https://github.com/Daniel-Knights/note-boi/commit/eb7f9e8ab3896b8482f67c6a54bf02c94948a3fd))
+
 ## [v3.1.0](https://github.com/Daniel-Knights/note-boi/compare/v3.0.0...v3.1.0) (06/07/2025)
 
 - feat(notes): backup notes on app exit ([f0b3ea4](https://github.com/Daniel-Knights/note-boi/commit/f0b3ea4720019435b7eec138db396862c9802a78))
