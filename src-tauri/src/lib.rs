@@ -44,6 +44,8 @@ pub fn run() {
       delete_access_token
     ])
     .setup(|app| {
+      // Needs to be mutable in dev, but will warn on build
+      #[allow(unused_mut)]
       let mut app_dir = app.path().app_data_dir().unwrap();
 
       // If dev env, append `-dev` to app directory
