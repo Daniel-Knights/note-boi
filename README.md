@@ -28,9 +28,14 @@ Go to the [releases page](https://github.com/Daniel-Knights/note-boi/releases) a
 - Windows: `.msi`, `-setup.exe`
 - Linux: `.deb`, `.AppImage`, `.rpm`
 
-## V1
+## Server status
 
-NoteBoi v1 is no longer supported. It can still be used without sync functionality, but the server is no longer running.
+| Server | Status     |
+| ------ | ---------- |
+| v1     | 🔴 Offline |
+| v2     | 🔴 Offline |
+| v3     | 🔴 Offline |
+| v4     | 🟢 Online  |
 
 ## Troubleshooting
 
