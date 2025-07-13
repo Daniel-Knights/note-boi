@@ -47,31 +47,7 @@ impl Note {
 
   /// Deserialize `Note` from a JSON string
   pub fn deserialize(note_json: &String) -> Note {
-    // TBR: Remove this backwards compat id -> uuid conversion
-    #[derive(Deserialize)]
-    struct OldNoteWithId {
-      id: Option<String>,
-      uuid: Option<String>,
-      timestamp: i64,
-      content: NoteContent,
-    }
-
-    let deserialized_note =
-      serde_json::from_str::<OldNoteWithId>(note_json).expect("unable to deserialize note json");
-
-    if let Some(old_id) = deserialized_note.id {
-      Note {
-        uuid: old_id,
-        timestamp: deserialized_note.timestamp,
-        content: deserialized_note.content,
-      }
-    } else {
-      Note {
-        uuid: deserialized_note.uuid.unwrap(),
-        timestamp: deserialized_note.timestamp,
-        content: deserialized_note.content,
-      }
-    }
+    serde_json::from_str::<Note>(note_json).expect("unable to deserialize note json")
   }
 
   pub fn is_empty(&self) -> bool {
