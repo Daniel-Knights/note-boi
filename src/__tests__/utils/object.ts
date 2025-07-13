@@ -1,13 +1,12 @@
-import * as n from '../../store/note';
-import { EncryptedNote } from '../../classes';
+import { EncryptedNote, Note } from '../../classes';
 import { hasKeys } from '../../utils';
 
 export function isObj(obj: unknown): obj is Record<string, unknown> {
   return typeof obj === 'object' && obj !== null;
 }
 
-export function isNote(note: unknown): note is n.Note {
-  const nt = note as n.Note;
+export function isNote(note: unknown): note is Note {
+  const nt = note as Note;
 
   return (
     hasKeys(nt, ['uuid', 'timestamp', 'content']) &&
@@ -36,7 +35,7 @@ export function isEncryptedNote(note: unknown): note is EncryptedNote {
  * to throw when stringifying note content for encryption.
  * Tried every which way to mock reject on `crypto.subtle.encrypt`, but it doesn't work.
  */
-export function hackEncryptionError(nt: n.Note) {
+export function hackEncryptionError(nt: Note) {
   // @ts-expect-error - see function comment
   nt.uuid = 'uuid'; // Normalise for snapshot
   nt.timestamp = 0;

@@ -1,4 +1,4 @@
-import { Note } from '../../store/note';
+import { Note } from '../../classes';
 import {
   capitalise,
   hasKeys,

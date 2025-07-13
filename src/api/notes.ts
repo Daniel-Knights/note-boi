@@ -7,12 +7,12 @@ import {
   ErrorConfig,
   FetchBuilder,
   KeyStore,
+  Note,
 } from '../classes';
 import { NOTE_EVENTS } from '../constant';
 import {
   findNote,
   newNote,
-  Note,
   noteState,
   selectNote,
   sortStateNotes,

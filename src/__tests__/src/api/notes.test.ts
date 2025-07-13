@@ -5,7 +5,7 @@ import * as a from '../../../api';
 import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import { Encryptor, ERROR_CODE, KeyStore, Storage } from '../../../classes';
+import { Encryptor, ERROR_CODE, KeyStore, Note, Storage } from '../../../classes';
 import { isEmptyNote, tauriInvoke } from '../../../utils';
 import { UUID_REGEX } from '../../constant';
 import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
@@ -342,7 +342,7 @@ describe('Notes (sync)', () => {
         'Note with special characters😬ö'
       );
 
-      const unencryptedRemoteNotes: n.Note[] = getDummyNotes();
+      const unencryptedRemoteNotes: Note[] = getDummyNotes();
       const unencryptedRemoteSelectedNote = unencryptedRemoteNotes.find(
         (nt) => nt.uuid === n.noteState.selectedNote.uuid
       )!;
@@ -355,7 +355,7 @@ describe('Notes (sync)', () => {
         body: '-body',
       };
 
-      const newRemoteNote = new n.Note();
+      const newRemoteNote = new Note();
       newRemoteNote.content = {
         delta: { ops: [{ insert: 'New note' }, { insert: '-body' }] },
         title: 'New note',

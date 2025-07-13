@@ -62,13 +62,12 @@
 <script lang="ts" setup>
 import { onUnmounted, ref, watch } from 'vue';
 
-import { Storage } from '../classes';
+import { Note, Storage } from '../classes';
 import {
   findNote,
   findNoteIndex,
   isSelectedNote,
   newNote,
-  Note,
   noteState,
   selectNote,
 } from '../store/note';

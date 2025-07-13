@@ -1,14 +1,23 @@
-mod command;
+mod commands;
 mod menu;
 mod note;
 
-use crate::command::{
-  backup_notes, delete_access_token, delete_note, edit_note, export_notes, get_access_token,
-  get_all_notes, new_note, set_access_token, sync_local_notes,
+use crate::commands::{
+  access_token::{delete_access_token, get_access_token, set_access_token},
+  backup_notes::backup_notes,
+  delete_note::delete_note,
+  edit_note::edit_note,
+  export_notes::export_notes,
+  get_all_notes::get_all_notes,
+  new_note::new_note,
+  sync_local_notes::sync_local_notes,
 };
 use std::path::PathBuf;
 use tauri::Manager;
 use tauri_plugin_log::{Target, TargetKind};
+
+pub const NOTES_DIR: &str = ".notes";
+pub const BACKUP_DIR: &str = ".backup";
 
 #[derive(Debug)]
 pub struct AppState {

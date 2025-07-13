@@ -1,11 +1,12 @@
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import * as u from '../../store/update';
+import { Note } from '../../classes';
 import { initialMockDb, mockDb } from '../mock';
 
 export function resetNoteStore() {
   n.noteState.notes = [];
-  n.noteState.selectedNote = new n.Note();
+  n.noteState.selectedNote = new Note();
   n.noteState.extraSelectedNotes = [];
 }
 

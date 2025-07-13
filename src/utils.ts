@@ -3,8 +3,8 @@ import { event } from '@tauri-apps/api';
 import { invoke } from '@tauri-apps/api/core';
 import { EventCallback, UnlistenFn } from '@tauri-apps/api/event';
 
+import type { Note } from './classes';
 import { TauriCommand, TauriCommandPayloads, TauriEmit, TauriListener } from './constant';
-import type { Note } from './store/note';
 
 /** `process.env.NODE_ENV === 'development'`. */
 export function isDev(): boolean {
