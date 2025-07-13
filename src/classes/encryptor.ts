@@ -1,4 +1,4 @@
-import { Note } from '../store/note';
+import { Note } from './note';
 
 const SALT_LENGTH = 16;
 const IV_LENGTH = 12;

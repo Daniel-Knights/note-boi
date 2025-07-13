@@ -2,7 +2,7 @@ import { shallowMount, VueWrapper } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
-import { Storage } from '../../../classes';
+import { Note, Storage } from '../../../classes';
 import { isEmptyNote } from '../../../utils';
 import { mockApi } from '../../mock';
 import { getByTestId, getDummyNotes, resetNoteStore } from '../../utils';
@@ -240,7 +240,7 @@ describe('NoteMenu', () => {
     /** Triggers clicks with cmd/ctrl key. */
     async function testMetaKeySelects(
       wrapper: VueWrapper,
-      notesToSelect: n.Note[],
+      notesToSelect: Note[],
       isDeselect?: boolean
     ) {
       const assertPromises = notesToSelect.map(async (note) => {

@@ -1,6 +1,5 @@
 import { DeletedNote, NoteDiff } from './api';
-import { EncryptedNote } from './classes';
-import { Note } from './store/note';
+import { EncryptedNote, Note } from './classes';
 
 export const MIN_PASSWORD_LENGTH = 6;
 
