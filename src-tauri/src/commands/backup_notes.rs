@@ -1,6 +1,6 @@
 use std::{
   fs,
-  path::PathBuf,
+  path::Path,
   time::{SystemTime, UNIX_EPOCH},
 };
 
@@ -15,7 +15,7 @@ pub fn backup_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(
   backup_notes_fn(&state.app_dir, &notes)
 }
 
-pub fn backup_notes_fn(dir: &PathBuf, notes: &Vec<Note>) -> Result<(), NoteError> {
+pub fn backup_notes_fn(dir: &Path, notes: &[Note]) -> Result<(), NoteError> {
   // Do nothing if no notes or only empty notes
   if notes.is_empty() || notes.iter().all(|nt| nt.is_empty()) {
     return Ok(());
@@ -51,7 +51,7 @@ pub fn backup_notes_fn(dir: &PathBuf, notes: &Vec<Note>) -> Result<(), NoteError
   Ok(())
 }
 
-fn remove_old_backups(backup_dir: &PathBuf) {
+fn remove_old_backups(backup_dir: &Path) {
   let entries = match backup_dir.read_dir() {
     Ok(entries) => entries,
     Err(_) => return,

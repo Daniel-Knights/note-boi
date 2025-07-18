@@ -1,4 +1,4 @@
-use std::{fs, io::Write, path::PathBuf};
+use std::{fs, io::Write, path::Path};
 
 use crate::{
   note::{Note, NoteError},
@@ -10,7 +10,7 @@ pub fn new_note(state: tauri::State<AppState>, note: Note) -> Result<(), NoteErr
   new_note_fn(&state.app_dir, &note)
 }
 
-pub fn new_note_fn(dir: &PathBuf, note: &Note) -> Result<(), NoteError> {
+pub fn new_note_fn(dir: &Path, note: &Note) -> Result<(), NoteError> {
   let notes_path = dir.join(NOTES_DIR);
   if !notes_path.is_dir() {
     fs::create_dir_all(&notes_path).expect("unable to create dir");

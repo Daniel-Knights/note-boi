@@ -1,6 +1,10 @@
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::{collections::HashMap, fs, path::PathBuf};
+use std::{
+  collections::HashMap,
+  fs,
+  path::{Path, PathBuf},
+};
 
 use crate::NOTES_DIR;
 
@@ -33,7 +37,7 @@ pub enum NoteError {
 
 impl Note {
   /// Returns `{dir}/{NOTES_DIR}/{uuid}.json`
-  pub fn get_path(dir: &PathBuf, uuid: &String) -> PathBuf {
+  pub fn get_path(dir: &Path, uuid: &String) -> PathBuf {
     let mut filename = uuid.clone();
     filename.push_str(".json");
 

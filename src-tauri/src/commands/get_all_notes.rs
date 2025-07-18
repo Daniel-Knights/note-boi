@@ -1,4 +1,4 @@
-use std::{fs, path::PathBuf};
+use std::{fs, path::Path};
 
 use crate::{
   note::{Note, NoteError},
@@ -10,7 +10,7 @@ pub fn get_all_notes(state: tauri::State<AppState>) -> Result<Vec<Note>, NoteErr
   get_all_notes_fn(&state.app_dir)
 }
 
-pub fn get_all_notes_fn(dir: &PathBuf) -> Result<Vec<Note>, NoteError> {
+pub fn get_all_notes_fn(dir: &Path) -> Result<Vec<Note>, NoteError> {
   let notes_path = dir.join(NOTES_DIR);
 
   if notes_path.is_dir() {
