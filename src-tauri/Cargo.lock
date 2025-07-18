@@ -2275,6 +2275,7 @@ dependencies = [
  "tauri-plugin-process",
  "tauri-plugin-shell",
  "tauri-plugin-updater",
+ "uuid",
 ]
 
 [[package]]

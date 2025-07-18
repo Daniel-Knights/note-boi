@@ -12,6 +12,8 @@ import {
   deleteSelectedNotes,
   exportNotes,
   getAllNotes,
+  handleImportNotesDragDrop,
+  importNotesFromFileChooser,
   newNote,
   noteState,
 } from './store/note';
@@ -22,6 +24,8 @@ import { isDev, tauriInvoke, tauriListen } from './utils';
 
 import App from './App.vue';
 
+const webview = WebviewWindow.getCurrent();
+
 createApp(App).mount('#app');
 initLogger();
 handleUpdate();
@@ -30,7 +34,7 @@ getAllNotes().then(() => {
   debounceSync(true);
 });
 
-WebviewWindow.getCurrent().listen('tauri://close-requested', () => {
+webview.onCloseRequested(() => {
   exitApp(async () => {
     await tauriInvoke('backup_notes', { notes: noteState.notes }).catch((err) => {
       console.error('Failed to backup notes:', err);
@@ -39,12 +43,21 @@ WebviewWindow.getCurrent().listen('tauri://close-requested', () => {
     exit();
   });
 });
+
+webview.onDragDropEvent((ev) => {
+  handleImportNotesDragDrop(ev);
+});
+
 tauriListen('reload', () => {
   // Relaunch acts up in dev, but is fine in production
   exitApp(isDev() ? window.location.reload.bind(window.location) : relaunch);
 });
+
 tauriListen('new-note', () => newNote(false));
 tauriListen('delete-note', deleteSelectedNotes);
+tauriListen('import-notes', () => {
+  importNotesFromFileChooser();
+});
 tauriListen('export-note', () => {
   exportNotes([
     noteState.selectedNote.uuid,

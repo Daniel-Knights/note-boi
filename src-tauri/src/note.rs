@@ -2,27 +2,27 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::{
   collections::HashMap,
-  fs,
   path::{Path, PathBuf},
 };
+use uuid::Uuid;
 
-use crate::NOTES_DIR;
+use crate::{utils::time::now_millis, NOTES_DIR};
 
 //// Structs
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Delta {
   pub ops: Option<Vec<HashMap<String, Value>>>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct NoteContent {
   pub delta: Delta,
   pub title: String,
   pub body: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Note {
   pub uuid: String,
   pub timestamp: i64,
@@ -45,13 +45,26 @@ impl Note {
   }
 }
 
-impl TryFrom<PathBuf> for Note {
-  type Error = Box<dyn std::error::Error>;
+impl From<String> for Note {
+  /// Creates a new note using the given string as the content
+  fn from(content_str: String) -> Note {
+    let mut content_lines = content_str.lines();
+    let title = content_lines.next().unwrap_or("").to_string();
+    let body = content_lines.next().unwrap_or("").to_string();
 
-  fn try_from(path: PathBuf) -> Result<Self, Self::Error> {
-    let note_json = fs::read_to_string(&path)?;
-    let note = serde_json::from_str::<Note>(&note_json)?;
-
-    Ok(note)
+    Note {
+      uuid: Uuid::new_v4().to_string(),
+      timestamp: now_millis() as i64,
+      content: NoteContent {
+        title,
+        body,
+        delta: Delta {
+          ops: Some(vec![HashMap::from([(
+            "insert".to_string(),
+            serde_json::to_value(content_str).unwrap(),
+          )])]),
+        },
+      },
+    }
   }
 }

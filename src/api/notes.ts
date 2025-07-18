@@ -15,7 +15,6 @@ import {
   newNote,
   noteState,
   selectNote,
-  sortStateNotes,
   UnsyncedEventDetail,
 } from '../store/note';
 import { resetAppError, syncState } from '../store/sync';
@@ -157,11 +156,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
   }
 
   // Add new notes from the server
-  noteDiff.added.forEach((rn) => {
-    noteState.notes.push(rn);
-  });
-
-  sortStateNotes();
+  noteState.addNotes(noteDiff.added);
 
   // New note if no notes exist
   if (noteState.notes.length === 0) {
