@@ -8,6 +8,8 @@ use std::{
 
 use crate::NOTES_DIR;
 
+//// Structs
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Delta {
   pub ops: Option<Vec<HashMap<String, Value>>>,
@@ -27,13 +29,7 @@ pub struct Note {
   pub content: NoteContent,
 }
 
-#[derive(Serialize, Debug)]
-pub enum NoteError {
-  UnableToCreateFile(String),
-  UnableToEditFile(String),
-  UnableToDeleteFile(String),
-  UnableToSyncLocalFiles(String),
-}
+//// Implementations
 
 impl Note {
   /// Returns `{dir}/{NOTES_DIR}/{uuid}.json`
@@ -44,25 +40,18 @@ impl Note {
     dir.join(NOTES_DIR).join(filename)
   }
 
-  /// Serialize `Note` to a JSON string
-  pub fn serialize(&self) -> String {
-    serde_json::to_string(self).expect("unable to serialize note struct")
-  }
-
-  /// Deserialize `Note` from a JSON string
-  pub fn deserialize(note_json: &String) -> Note {
-    serde_json::from_str::<Note>(note_json).expect("unable to deserialize note json")
-  }
-
   pub fn is_empty(&self) -> bool {
     self.content.title.is_empty() && self.content.body.is_empty()
   }
 }
 
-impl From<fs::DirEntry> for Note {
-  fn from(entry: fs::DirEntry) -> Note {
-    let note_json = fs::read_to_string(entry.path()).expect("unable to read file");
+impl TryFrom<PathBuf> for Note {
+  type Error = Box<dyn std::error::Error>;
 
-    Note::deserialize(&note_json)
+  fn try_from(path: PathBuf) -> Result<Self, Self::Error> {
+    let note_json = fs::read_to_string(&path)?;
+    let note = serde_json::from_str::<Note>(&note_json)?;
+
+    Ok(note)
   }
 }

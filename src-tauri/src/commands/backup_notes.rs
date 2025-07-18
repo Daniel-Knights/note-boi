@@ -4,28 +4,21 @@ use std::{
   time::{SystemTime, UNIX_EPOCH},
 };
 
-use crate::{
-  commands::new_note::new_note_fn,
-  note::{Note, NoteError},
-  AppState, BACKUP_DIR,
-};
+use crate::{commands::new_note::new_note_fn, note::Note, AppState, BACKUP_DIR};
 
 #[tauri::command]
-pub fn backup_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(), NoteError> {
-  backup_notes_fn(&state.app_dir, &notes)
+pub fn backup_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(), String> {
+  backup_notes_fn(&state.app_dir, &notes).map_err(|err| err.to_string())
 }
 
-pub fn backup_notes_fn(dir: &Path, notes: &[Note]) -> Result<(), NoteError> {
+pub fn backup_notes_fn(dir: &Path, notes: &[Note]) -> Result<(), Box<dyn std::error::Error>> {
   // Do nothing if no notes or only empty notes
   if notes.is_empty() || notes.iter().all(|nt| nt.is_empty()) {
     return Ok(());
   }
 
   // Backup directory names are the timestamp they were created
-  let timestamp = SystemTime::now()
-    .duration_since(UNIX_EPOCH)
-    .unwrap()
-    .as_secs();
+  let timestamp = SystemTime::now().duration_since(UNIX_EPOCH)?.as_secs();
 
   let backup_dir = dir.join(BACKUP_DIR);
   let backup_instance_dir = backup_dir.join(timestamp.to_string());
@@ -38,12 +31,8 @@ pub fn backup_notes_fn(dir: &Path, notes: &[Note]) -> Result<(), NoteError> {
   }
 
   // Write backup files
-  for nt in notes.iter() {
-    let write_res = new_note_fn(&backup_instance_dir, nt);
-
-    if write_res.is_err() {
-      return Err(write_res.unwrap_err());
-    }
+  for nt in notes {
+    new_note_fn(&backup_instance_dir, nt)?;
   }
 
   remove_old_backups(&backup_dir);
