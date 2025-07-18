@@ -23,7 +23,9 @@ pub fn get_all_notes_fn(dir: &Path) -> Result<Vec<Note>, Box<dyn std::error::Err
     let entry_is_json = entry_path.extension().is_some_and(|ext| ext == "json");
 
     if entry_is_json {
-      notes.push(Note::try_from(entry_path)?);
+      let raw_note = fs::read_to_string(entry_path)?;
+
+      notes.push(serde_json::from_str::<Note>(&raw_note)?);
     }
   }
 
