@@ -1,36 +1,31 @@
 use std::{fs, path::Path};
 
-use crate::{
-  note::{Note, NoteError},
-  AppState, NOTES_DIR,
-};
+use crate::{note::Note, AppState, NOTES_DIR};
 
 #[tauri::command]
-pub fn get_all_notes(state: tauri::State<AppState>) -> Result<Vec<Note>, NoteError> {
-  get_all_notes_fn(&state.app_dir)
+pub fn get_all_notes(state: tauri::State<AppState>) -> Result<Vec<Note>, String> {
+  get_all_notes_fn(&state.app_dir).map_err(|err| err.to_string())
 }
 
-pub fn get_all_notes_fn(dir: &Path) -> Result<Vec<Note>, NoteError> {
+pub fn get_all_notes_fn(dir: &Path) -> Result<Vec<Note>, Box<dyn std::error::Error>> {
   let notes_path = dir.join(NOTES_DIR);
 
-  if notes_path.is_dir() {
-    let dir_contents = fs::read_dir(notes_path).expect("unable to read dir");
-    let notes = dir_contents
-      // Unwrap
-      .map(|entry| entry.expect("unable to read dir entry"))
-      // Filter JSON files
-      .filter(|entry| match entry.path().extension() {
-        Some(ext) => ext.to_str().unwrap() == "json",
-        _ => false,
-      })
-      // Convert
-      .map(|entry| Note::from(entry))
-      .collect();
+  if !notes_path.is_dir() {
+    fs::create_dir_all(&notes_path)?;
 
-    Ok(notes)
-  } else {
-    fs::create_dir_all(&notes_path).expect("unable to create dir");
-
-    Ok(vec![])
+    return Ok(vec![]);
   }
+
+  let mut notes = vec![];
+
+  for entry in fs::read_dir(notes_path)? {
+    let entry_path = entry?.path();
+    let entry_is_json = entry_path.extension().is_some_and(|ext| ext == "json");
+
+    if entry_is_json {
+      notes.push(Note::try_from(entry_path)?);
+    }
+  }
+
+  Ok(notes)
 }
