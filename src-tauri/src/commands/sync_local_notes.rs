@@ -1,4 +1,4 @@
-use std::{fs, path::PathBuf};
+use std::{fs, path::Path};
 
 use crate::{
   commands::new_note::new_note_fn,
@@ -11,7 +11,7 @@ pub fn sync_local_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Resu
   sync_local_notes_fn(&state.app_dir, &notes)
 }
 
-pub fn sync_local_notes_fn(dir: &PathBuf, notes: &Vec<Note>) -> Result<(), NoteError> {
+pub fn sync_local_notes_fn(dir: &Path, notes: &[Note]) -> Result<(), NoteError> {
   let notes_dir = dir.join(NOTES_DIR);
 
   let rm_res = fs::remove_dir_all(&notes_dir);

@@ -1,4 +1,8 @@
-use std::{fs, io::Write, path::PathBuf};
+use std::{
+  fs,
+  io::Write,
+  path::{Path, PathBuf},
+};
 
 use serde_json::Value;
 
@@ -9,7 +13,7 @@ pub fn export_notes(save_dir: PathBuf, notes: Vec<Note>) -> Result<(), NoteError
   export_notes_fn(&save_dir, &notes)
 }
 
-pub fn export_notes_fn(save_dir: &PathBuf, notes: &Vec<Note>) -> Result<(), NoteError> {
+pub fn export_notes_fn(save_dir: &Path, notes: &[Note]) -> Result<(), NoteError> {
   notes.iter().for_each(|note| {
     let filename = format!("{}.txt", note.uuid);
     let mut file = fs::File::create(save_dir.join(filename)).expect("unable to create file");

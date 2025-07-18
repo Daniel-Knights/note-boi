@@ -1,4 +1,4 @@
-use std::{fs, path::PathBuf};
+use std::{fs, path::Path};
 
 use crate::{
   note::{Note, NoteError},
@@ -10,7 +10,7 @@ pub fn delete_note(state: tauri::State<AppState>, uuid: String) -> Result<(), No
   delete_note_fn(&state.app_dir, &uuid)
 }
 
-pub fn delete_note_fn(dir: &PathBuf, uuid: &String) -> Result<(), NoteError> {
+pub fn delete_note_fn(dir: &Path, uuid: &String) -> Result<(), NoteError> {
   let path = Note::get_path(dir, uuid);
   let delete_res = fs::remove_file(path);
 
