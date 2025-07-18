@@ -13,7 +13,7 @@ export async function exportNotes(noteUuids: string[]): Promise<void> {
   });
   if (!saveDir) return;
 
-  const notes = noteState.notes.filter((nt) => noteUuids?.includes(nt.uuid));
+  const notes = noteState.notes.filter((nt) => noteUuids.includes(nt.uuid));
 
   tauriInvoke('export_notes', { saveDir, notes });
 }

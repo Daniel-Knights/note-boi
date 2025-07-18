@@ -107,6 +107,12 @@ export type TauriCommandPayloads = {
     };
     response: never;
   };
+  import_notes: {
+    payload: {
+      paths: string[];
+    };
+    response: Note[];
+  };
   export_notes: {
     payload: {
       notes: Note[];
@@ -149,6 +155,7 @@ export const TAURI_COMMANDS = [
   'new_note',
   'edit_note',
   'sync_local_notes',
+  'import_notes',
   'export_notes',
   'set_access_token',
   'get_access_token',
@@ -166,6 +173,7 @@ export const TAURI_LISTENERS = [
   'reload',
   'new-note',
   'delete-note',
+  'import-notes',
   'export-note',
   'export-all-notes',
   'login',

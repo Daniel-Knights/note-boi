@@ -19,6 +19,7 @@ import { computed, ref } from 'vue';
 import { deleteAccount } from '../api';
 import { COLOUR_THEMES, UPDATE_STRATEGIES } from '../constant';
 import { exportNotes, noteState } from '../store/note';
+import { importNotesFromFileChooser } from '../store/note/operations/importNotes';
 import { openedPopup, POPUP_TYPE } from '../store/popup';
 import { syncState } from '../store/sync';
 import { selectedTheme, setTheme } from '../store/theme';
@@ -49,6 +50,11 @@ const menuItems = computed(() => {
       label: 'Export',
       testId: 'export',
       clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.uuid)),
+    },
+    {
+      label: 'Import',
+      testId: 'import',
+      clickHandler: () => importNotesFromFileChooser(),
     },
     {
       label: 'Updates',

@@ -9,6 +9,7 @@ use crate::commands::{
   edit_note::edit_note,
   export_notes::export_notes,
   get_all_notes::get_all_notes,
+  import_notes::import_notes,
   new_note::new_note,
   sync_local_notes::sync_local_notes,
 };
@@ -46,6 +47,7 @@ pub fn run() {
       edit_note,
       export_notes,
       get_all_notes,
+      import_notes,
       new_note,
       sync_local_notes,
       set_access_token,

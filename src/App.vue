@@ -31,6 +31,18 @@ body {
   background-color: var(--colour__primary);
 }
 
+.dragging-file::before {
+  content: '+';
+  cursor: copy;
+  @include v.flex-x(center, center);
+  position: fixed;
+  inset: 0;
+  font-size: 200px;
+  line-height: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10000;
+}
+
 #app {
   display: flex;
   margin: 0;
