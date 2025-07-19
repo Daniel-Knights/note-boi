@@ -1,6 +1,7 @@
 mod commands;
 mod menu;
 mod note;
+mod utils;
 
 use crate::commands::{
   access_token::{delete_access_token, get_access_token, set_access_token},

@@ -6,12 +6,15 @@ import { tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { noteState } from '../state';
 
+const ACCEPTED_EXTENSIONS = ['json', 'txt'];
+
 export async function importNotes(paths: string[]) {
   const importedNotes = await tauriInvoke('import_notes', { paths }).catch((errors) => {
     console.error(...errors);
   });
   if (!importedNotes) return;
 
+  // TODO: notes aren't syncing in some cases
   // Ensure imported notes are synced and aren't overwritten if deleted remotely
   syncState.unsyncedNotes.set({ edited: importedNotes.map((nt) => nt.uuid) });
   noteState.addNotes(importedNotes, true);
@@ -23,7 +26,7 @@ export async function importNotesFromFileChooser() {
     filters: [
       {
         name: 'notes-json',
-        extensions: ['json'],
+        extensions: ACCEPTED_EXTENSIONS,
       },
     ],
   });
@@ -42,8 +45,14 @@ export function handleImportNotesDragDrop(ev: Event<DragDropEvent>) {
       document.body.classList.remove('dragging-file');
 
       break;
-    case 'drop':
+    case 'drop': {
       document.body.classList.remove('dragging-file');
-      importNotes(ev.payload.paths);
+
+      const filteredNotes = ev.payload.paths.filter((p) => {
+        return ACCEPTED_EXTENSIONS.some((ext) => p.endsWith(`.${ext}`));
+      });
+
+      importNotes(filteredNotes);
+    }
   }
 }

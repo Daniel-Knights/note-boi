@@ -1,52 +1,52 @@
 use std::{
+  fs,
   path::{Path, PathBuf},
-  time::{SystemTime, UNIX_EPOCH},
 };
 
-use crate::{commands::new_note::new_note_fn, note::Note, AppState};
+use uuid::Uuid;
+
+use crate::{commands::new_note::new_note_fn, note::Note, utils::time::now_millis, AppState};
 
 #[tauri::command]
 pub fn import_notes(
   state: tauri::State<AppState>,
   paths: Vec<PathBuf>,
-) -> Result<Vec<Note>, Vec<String>> {
-  import_notes_fn(&state.app_dir, &paths)
-    .map_err(|errors| errors.iter().map(|err| err.to_string()).collect())
+) -> Result<Vec<Note>, String> {
+  import_notes_fn(&state.app_dir, &paths).map_err(|err| err.to_string())
 }
 
 pub fn import_notes_fn(
   dir: &Path,
   paths: &[PathBuf],
-) -> Result<Vec<Note>, Vec<Box<dyn std::error::Error>>> {
+) -> Result<Vec<Note>, Box<dyn std::error::Error>> {
   let mut notes = vec![];
-  let mut errors = vec![];
 
   for path in paths {
-    let note_parse_result = Note::try_from(path.clone());
-    let now = SystemTime::now()
-      .duration_since(UNIX_EPOCH)
-      .unwrap()
-      .as_millis() as i64;
+    let path_ext = path.extension();
+    let raw_note = fs::read_to_string(path)?;
 
-    match note_parse_result {
-      Ok(mut note) => {
-        note.timestamp = now;
+    let mut note = {
+      if path_ext.unwrap() == "json" {
+        serde_json::from_str::<Note>(&raw_note)?
+      } else {
+        Note::from(raw_note)
+      }
+    };
 
-        if let Err(note_write_err) = new_note_fn(dir, &note) {
-          errors.push(note_write_err);
-        } else {
-          notes.push(note);
-        }
-      }
-      Err(note_read_err) => {
-        errors.push(note_read_err);
-      }
+    // Use file stem as uuid if valid
+    let file_stem = path
+      .file_stem()
+      .and_then(|stem| Some(stem.to_str().unwrap_or("")))
+      .unwrap_or("");
+
+    if let Ok(_) = Uuid::try_parse(file_stem) {
+      note.uuid = file_stem.to_string();
     }
+
+    note.timestamp = now_millis() as i64;
+    new_note_fn(dir, &note)?;
+    notes.push(note);
   }
 
-  if errors.is_empty() {
-    return Ok(notes);
-  }
-
-  Err(errors)
+  return Ok(notes);
 }
