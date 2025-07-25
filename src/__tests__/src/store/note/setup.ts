@@ -5,15 +5,15 @@ import { floorToThousand, getDummyNotes } from '../../../utils';
 export const existingNoteIndexSorted = 2;
 export const existingNote = getDummyNotes()[8]!;
 
-export const mockChangeEventCb = vi.fn();
-export const mockNewEventCb = vi.fn();
-export const mockSelectEventCb = vi.fn();
-export const mockUnsyncedEventCb = vi.fn();
+export const mockChangeEventCB = vi.fn();
+export const mockNewEventCB = vi.fn();
+export const mockSelectEventCB = vi.fn();
+export const mockUnsyncedEventCB = vi.fn();
 
 export function setupMockNoteEventListeners() {
-  document.addEventListener(NOTE_EVENTS.change, mockChangeEventCb);
-  document.addEventListener(NOTE_EVENTS.new, mockNewEventCb);
-  document.addEventListener(NOTE_EVENTS.select, mockSelectEventCb);
+  document.addEventListener(NOTE_EVENTS.change, mockChangeEventCB);
+  document.addEventListener(NOTE_EVENTS.new, mockNewEventCB);
+  document.addEventListener(NOTE_EVENTS.select, mockSelectEventCB);
 
   document.addEventListener(
     NOTE_EVENTS.unsynced,
@@ -23,7 +23,7 @@ export function setupMockNoteEventListeners() {
         ev.detail.note.deleted_at = floorToThousand(ev.detail.note.deleted_at);
       }
 
-      mockUnsyncedEventCb(ev.detail);
+      mockUnsyncedEventCB(ev.detail);
     }
   );
 }
