@@ -53,7 +53,7 @@ tauriListen('reload', () => {
   exitApp(isDev() ? window.location.reload.bind(window.location) : relaunch);
 });
 
-tauriListen('new-note', () => newNote(false));
+tauriListen('new-note', () => newNote(true));
 tauriListen('delete-note', deleteSelectedNotes);
 tauriListen('import-notes', () => {
   importNotesFromFileChooser();
