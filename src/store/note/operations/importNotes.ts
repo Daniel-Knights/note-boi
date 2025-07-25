@@ -17,7 +17,7 @@ export async function importNotes(paths: string[]) {
 
   // Ensure imported notes are synced and aren't overwritten if deleted remotely
   syncState.unsyncedNotes.set({ edited: importedNotes.map((nt) => nt.uuid) });
-  noteState.addNotes(importedNotes, true);
+  noteState.addNotes(importedNotes, { selectLatest: true });
   debounceSync();
 }
 

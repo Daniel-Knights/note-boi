@@ -3,7 +3,7 @@ import { reactive } from 'vue';
 import { Note } from '../../classes';
 
 import { selectNote } from './operations';
-import { clearEmptyNote, sortStateNotes } from './utils';
+import { sortStateNotes } from './utils';
 
 export const noteState = reactive<{
   notes: Note[];
@@ -17,7 +17,7 @@ export const noteState = reactive<{
   addNotes,
 });
 
-function addNotes(notes: Note[], selectLatest = false) {
+function addNotes(notes: Note[], options = { selectLatest: false }) {
   // Filter out duplicates
   noteState.notes = noteState.notes.filter((stateNote) => {
     return notes.every((nt) => nt.uuid !== stateNote.uuid);
@@ -26,8 +26,7 @@ function addNotes(notes: Note[], selectLatest = false) {
   noteState.notes.push(...notes);
   sortStateNotes();
 
-  if (selectLatest) {
-    clearEmptyNote();
+  if (options.selectLatest) {
     selectNote(noteState.notes[0]?.uuid);
   }
 }
