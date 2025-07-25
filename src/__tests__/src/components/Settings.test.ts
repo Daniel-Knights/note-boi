@@ -18,6 +18,7 @@ import {
   getByTestId,
   getTeleportMountOptions,
   resolveImmediate,
+  waitForAutoSync,
   waitUntil,
 } from '../../utils';
 
@@ -107,6 +108,18 @@ describe('Settings', () => {
     assert.isTrue(calls.invoke.has('export_notes'));
   });
 
+  it('Import notes', async () => {
+    const { calls } = mockApi();
+
+    const wrapper = await mountSettingsAndOpen();
+    const importNotesSpy = vi.spyOn(n, 'importNotesFromFileChooser');
+    const importWrapper = findByTestId(wrapper, 'import');
+
+    await waitForAutoSync(() => importWrapper.trigger('click'), calls);
+
+    expect(importNotesSpy).toHaveBeenCalledOnce();
+  });
+
   it('Sets update strategy', async () => {
     const { calls, promises } = mockApi();
     const wrapper = await mountSettingsAndOpen();
@@ -167,14 +180,14 @@ describe('Settings', () => {
     const wrapper = await mountSettingsAndOpen();
     const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'update-restart').exists());
-    assert.lengthOf(wrapperVm.menuItems, 4);
+    assert.lengthOf(wrapperVm.menuItems, 5);
 
     await u.handleUpdate();
     await nextTick();
 
     const updateWrapper = findByTestId(wrapper, 'update-restart');
     assert.isTrue(updateWrapper.isVisible());
-    assert.lengthOf(wrapperVm.menuItems, 5);
+    assert.lengthOf(wrapperVm.menuItems, 6);
 
     clearMockApiResults({ calls, promises });
 
@@ -217,7 +230,7 @@ describe('Settings', () => {
       const wrapper = await mountSettingsAndOpen();
       const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-      assert.lengthOf(wrapperVm.menuItems, 4);
+      assert.lengthOf(wrapperVm.menuItems, 5);
 
       s.syncState.username = 'd';
       s.syncState.isLoggedIn = true;
@@ -232,7 +245,7 @@ describe('Settings', () => {
 
       const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
       assert.isTrue(deleteAccountWrapper.isVisible());
-      assert.lengthOf(wrapperVm.menuItems, 5);
+      assert.lengthOf(wrapperVm.menuItems, 6);
 
       const deleteAccountSpy = vi.spyOn(a, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
@@ -240,7 +253,7 @@ describe('Settings', () => {
       await waitUntil(() => !findByTestId(wrapper, 'delete-account').exists());
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-      assert.lengthOf(wrapperVm.menuItems, 4);
+      assert.lengthOf(wrapperVm.menuItems, 5);
       assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));
