@@ -93,7 +93,7 @@ export function mockTauriApi(
 
 export type TauriApiResValue = Record<string, unknown[]> & {
   askDialog?: boolean[];
-  openDialog?: string[];
+  openDialog?: string[] | string[][];
   checkUpdate?: (Partial<ConstructorParameters<typeof Update>[0]> | null)[];
   downloadAndInstallUpdate?: ReturnType<Update['downloadAndInstall']>[];
 };

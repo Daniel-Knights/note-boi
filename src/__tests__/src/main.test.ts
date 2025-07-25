@@ -31,14 +31,14 @@ describe('main', () => {
 
     main = await import('../../main');
 
-    await waitUntil(() => calls.size >= 18);
+    await waitUntil(() => calls.size >= 23);
     await resolveImmediate(); // Just in case
 
     expect(getAllNotesSpy).toHaveBeenCalledOnce();
     expect(handleUpdateSpy).toHaveBeenCalledOnce();
     expect(syncSpy).toHaveBeenCalledOnce();
 
-    assert.strictEqual(calls.size, 18);
+    assert.strictEqual(calls.size, 23);
     assert.isTrue(calls.request.has('/notes/sync'));
     assertRequest('/notes/sync', calls.request[0]!.calledWith!);
     assert.isTrue(calls.invoke.has('get_all_notes'));
@@ -55,9 +55,14 @@ describe('main', () => {
     assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
     assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
     assert.isTrue(calls.listeners.has('tauri://close-requested'));
+    assert.isTrue(calls.listeners.has('tauri://drag-drop'));
+    assert.isTrue(calls.listeners.has('tauri://drag-enter'));
+    assert.isTrue(calls.listeners.has('tauri://drag-over'));
+    assert.isTrue(calls.listeners.has('tauri://drag-leave'));
     assert.isTrue(calls.listeners.has('reload'));
     assert.isTrue(calls.listeners.has('new-note'));
     assert.isTrue(calls.listeners.has('delete-note'));
+    assert.isTrue(calls.listeners.has('import-notes'));
     assert.isTrue(calls.listeners.has('export-note'));
     assert.isTrue(calls.listeners.has('export-all-notes'));
     assert.isTrue(calls.listeners.has('delete-account'));

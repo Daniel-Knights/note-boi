@@ -23,7 +23,7 @@ export function waitUntil<T>(condFn: () => T): Promise<T> {
 
 /**
  * Uses fake timers and waits for `debounceSync` to run.
- * Specifically intended for `n.editNote` and `n.deleteNote`.
+ * Specifically intended for `n.editNote`, `n.deleteNote`, and `n.importNotes`.
  */
 export async function waitForAutoSync(
   cb: () => void | Promise<void>,
@@ -33,7 +33,14 @@ export async function waitForAutoSync(
 
   await cb();
 
-  await waitUntil(() => calls.invoke.has('edit_note') || calls.invoke.has('delete_note'));
+  await waitUntil(() => {
+    return (
+      calls.invoke.has('edit_note') ||
+      calls.invoke.has('delete_note') ||
+      calls.invoke.has('import_notes')
+    );
+  });
+
   await resolveImmediate(); // Defer to `.then` and `debounceSync`
 
   vi.runAllTimers();

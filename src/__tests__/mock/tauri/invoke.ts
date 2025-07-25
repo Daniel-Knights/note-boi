@@ -72,6 +72,20 @@ export function mockTauriInvoke(
       }
 
       break;
+    case 'import_notes':
+      if (!hasKeys(args, ['paths'])) {
+        assert.fail('Missing paths');
+      } else if (
+        !Array.isArray(args.paths) ||
+        args.paths.some((p) => typeof p !== 'string')
+      ) {
+        assert.fail('Invalid paths');
+      }
+
+      resData = getDummyNotes().slice(0, args.paths.length);
+      resData.forEach((nt) => (nt.timestamp = Date.now()));
+
+      break;
     case 'set_access_token':
       if (!hasKeys(args, ['username', 'accessToken'])) {
         assert.fail('Missing username or accessToken');
