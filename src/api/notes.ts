@@ -11,6 +11,7 @@ import {
 } from '../classes';
 import { NOTE_EVENTS } from '../constant';
 import {
+  changeNoteEvent,
   findNote,
   newNote,
   noteState,
@@ -171,7 +172,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
     noteState.selectedNote.content = remoteSelectedNote.content;
     noteState.selectedNote.timestamp = remoteSelectedNote.timestamp;
 
-    document.dispatchEvent(new Event(NOTE_EVENTS.change));
+    document.dispatchEvent(changeNoteEvent);
   }
   // Select next note if current selected note is empty and not deliberately created
   else if (noteState.notes.length > 1 && !syncState.unsyncedNotes.new) {
