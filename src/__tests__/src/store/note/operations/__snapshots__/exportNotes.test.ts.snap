@@ -255,6 +255,7 @@ exports[`exportNotes > All notes > mockDb 1`] = `
 
 exports[`exportNotes > All notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -612,6 +613,7 @@ exports[`exportNotes > Catches error > mockDb 1`] = `
 
 exports[`exportNotes > Catches error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1027,6 +1029,7 @@ exports[`exportNotes > Passed selection of notes > mockDb 1`] = `
 
 exports[`exportNotes > Passed selection of notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1372,6 +1375,7 @@ exports[`exportNotes > Returns when no location chosen > mockDb 1`] = `
 
 exports[`exportNotes > Returns when no location chosen > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {

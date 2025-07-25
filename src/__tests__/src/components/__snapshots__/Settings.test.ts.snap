@@ -96,6 +96,7 @@ exports[`Settings > Account menu item > Delete account menu item > mockDb 1`] = 
 
 exports[`Settings > Account menu item > Delete account menu item > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -176,6 +177,7 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
 
 exports[`Settings > Account menu item > Opens and closes change password popup > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -281,6 +283,7 @@ exports[`Settings > Exports all notes > mockDb 1`] = `
 
 exports[`Settings > Exports all notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -333,6 +336,135 @@ exports[`Settings > Exports all notes > updateState 1`] = `
 }
 `;
 
+exports[`Settings > Import notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Import notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Import notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Import notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Import notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Import notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Import notes > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": undefined,
+        "multiple": true,
+        "recursive": undefined,
+        "title": undefined,
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "C:\\path",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+]
+`;
+
+exports[`Settings > Import notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Import notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Import notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+  },
+}
+`;
+
+exports[`Settings > Import notes > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Import notes > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Import notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {
+      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Import notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Settings > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Settings > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -361,6 +493,7 @@ exports[`Settings > Mounts > mockDb 1`] = `
 
 exports[`Settings > Mounts > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -441,6 +574,7 @@ exports[`Settings > Opens and closes drop menu > mockDb 1`] = `
 
 exports[`Settings > Opens and closes drop menu > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -531,6 +665,7 @@ exports[`Settings > Opens info popup > mockDb 1`] = `
 
 exports[`Settings > Opens info popup > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -611,6 +746,7 @@ exports[`Settings > Sets theme preference > mockDb 1`] = `
 
 exports[`Settings > Sets theme preference > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -691,6 +827,7 @@ exports[`Settings > Sets update strategy > mockDb 1`] = `
 
 exports[`Settings > Sets update strategy > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -828,6 +965,7 @@ exports[`Settings > Update and restart menu item > mockDb 1`] = `
 
 exports[`Settings > Update and restart menu item > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

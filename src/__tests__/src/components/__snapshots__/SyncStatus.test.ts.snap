@@ -49,6 +49,7 @@ exports[`SyncStatus > Displays error icon and opens popup on click > mockDb 1`] 
 
 exports[`SyncStatus > Displays error icon and opens popup on click > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -251,6 +252,7 @@ exports[`SyncStatus > Displays loading spinner > mockDb 1`] = `
 
 exports[`SyncStatus > Displays loading spinner > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -376,6 +378,7 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > mockDb 1`] = `
 
 exports[`SyncStatus > Handles popups > PopupSyncAuth > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -491,6 +494,7 @@ exports[`SyncStatus > Handles popups > PopupSyncError > mockDb 1`] = `
 
 exports[`SyncStatus > Handles popups > PopupSyncError > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -597,6 +601,7 @@ exports[`SyncStatus > Mounts when logged in > mockDb 1`] = `
 
 exports[`SyncStatus > Mounts when logged in > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -698,6 +703,7 @@ exports[`SyncStatus > Mounts when logged out > mockDb 1`] = `
 
 exports[`SyncStatus > Mounts when logged out > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

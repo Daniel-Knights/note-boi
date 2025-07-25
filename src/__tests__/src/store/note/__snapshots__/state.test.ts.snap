@@ -1,0 +1,869 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`state > addNotes > Adds new notes to empty state > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Adds new notes to empty state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`state > addNotes > Adds new notes to empty state > Storage.get('THEME') 1`] = `null`;
+
+exports[`state > addNotes > Adds new notes to empty state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`state > addNotes > Adds new notes to empty state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`state > addNotes > Adds new notes to empty state > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`state > addNotes > Adds new notes to empty state > allCalls 1`] = `[]`;
+
+exports[`state > addNotes > Adds new notes to empty state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`state > addNotes > Adds new notes to empty state > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`state > addNotes > Adds new notes to empty state > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`state > addNotes > Adds new notes to empty state > openedPopup 1`] = `undefined`;
+
+exports[`state > addNotes > Adds new notes to empty state > selectedTheme 1`] = `"System"`;
+
+exports[`state > addNotes > Adds new notes to empty state > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`state > addNotes > Adds new notes to empty state > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`state > addNotes > Adds notes to existing state > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Adds notes to existing state > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`state > addNotes > Adds notes to existing state > Storage.get('THEME') 1`] = `null`;
+
+exports[`state > addNotes > Adds notes to existing state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`state > addNotes > Adds notes to existing state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`state > addNotes > Adds notes to existing state > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`state > addNotes > Adds notes to existing state > allCalls 1`] = `[]`;
+
+exports[`state > addNotes > Adds notes to existing state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`state > addNotes > Adds notes to existing state > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`state > addNotes > Adds notes to existing state > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`state > addNotes > Adds notes to existing state > openedPopup 1`] = `undefined`;
+
+exports[`state > addNotes > Adds notes to existing state > selectedTheme 1`] = `"System"`;
+
+exports[`state > addNotes > Adds notes to existing state > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`state > addNotes > Adds notes to existing state > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`state > addNotes > Does not select latest note by default > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Does not select latest note by default > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`state > addNotes > Does not select latest note by default > Storage.get('THEME') 1`] = `null`;
+
+exports[`state > addNotes > Does not select latest note by default > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`state > addNotes > Does not select latest note by default > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`state > addNotes > Does not select latest note by default > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`state > addNotes > Does not select latest note by default > allCalls 1`] = `[]`;
+
+exports[`state > addNotes > Does not select latest note by default > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`state > addNotes > Does not select latest note by default > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`state > addNotes > Does not select latest note by default > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`state > addNotes > Does not select latest note by default > openedPopup 1`] = `undefined`;
+
+exports[`state > addNotes > Does not select latest note by default > selectedTheme 1`] = `"System"`;
+
+exports[`state > addNotes > Does not select latest note by default > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`state > addNotes > Does not select latest note by default > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > Storage.get('THEME') 1`] = `null`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > allCalls 1`] = `[]`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Modified Title",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > openedPopup 1`] = `undefined`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > selectedTheme 1`] = `"System"`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`state > addNotes > Filters out duplicate notes by uuid > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`state > addNotes > Handles empty array gracefully > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Handles empty array gracefully > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`state > addNotes > Handles empty array gracefully > Storage.get('THEME') 1`] = `null`;
+
+exports[`state > addNotes > Handles empty array gracefully > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`state > addNotes > Handles empty array gracefully > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`state > addNotes > Handles empty array gracefully > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`state > addNotes > Handles empty array gracefully > allCalls 1`] = `[]`;
+
+exports[`state > addNotes > Handles empty array gracefully > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`state > addNotes > Handles empty array gracefully > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`state > addNotes > Handles empty array gracefully > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`state > addNotes > Handles empty array gracefully > openedPopup 1`] = `undefined`;
+
+exports[`state > addNotes > Handles empty array gracefully > selectedTheme 1`] = `"System"`;
+
+exports[`state > addNotes > Handles empty array gracefully > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`state > addNotes > Handles empty array gracefully > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > allCalls 1`] = `[]`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Updated",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > openedPopup 1`] = `undefined`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > selectedTheme 1`] = `"System"`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > Storage.get('THEME') 1`] = `null`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > allCalls 1`] = `[]`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > openedPopup 1`] = `undefined`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > selectedTheme 1`] = `"System"`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`state > addNotes > Handles selectLatest option with empty array > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > Storage.get('THEME') 1`] = `null`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > allCalls 1`] = `[]`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+  },
+}
+`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > openedPopup 1`] = `undefined`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > selectedTheme 1`] = `"System"`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

@@ -1,0 +1,1781 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > allCalls 1`] = `[]`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "/test.json",
+          "/test.txt",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+  },
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {
+      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "/test.json",
+          "/test.txt",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+  },
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {
+      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > allCalls 1`] = `[]`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > importNotes > Handles import errors > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Handles import errors > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > importNotes > Handles import errors > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Handles import errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > importNotes > Handles import errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > importNotes > Handles import errors > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Handles import errors > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Something went wrong. Please try again or open an issue in the GitHub repo.",
+        "okLabel": undefined,
+        "title": undefined,
+      },
+      "name": "plugin:dialog|message",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > importNotes > Handles import errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > importNotes > Handles import errors > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Handles import errors > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Handles import errors > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Handles import errors > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > importNotes > Handles import errors > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > importNotes > Handles import errors > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Imports notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "/foo.json",
+          "/bar.txt",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > importNotes > Imports notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > importNotes > Imports notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    {
+      "content": {
+        "body": "😬ö",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+            },
+          ],
+        },
+        "title": "Note with special characters",
+      },
+      "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Imports notes > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > importNotes > Imports notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {
+      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > Storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "/foo.json",
+          "/bar.txt",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "uuid": "uuid",
+      },
+      "name": "delete_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"notes":[{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"}],"deleted_notes":[{"uuid":"uuid","deleted_at":0}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
+      "name": "/notes/sync",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > mockDb 1`] = `
+{
+  "deletedNotes": [
+    {
+      "deleted_at": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "encryptedNotes": [
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {
+    "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  },
+  "isLoggedIn": true,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "d",
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes and syncs them > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "/foo.json",
+          "/bar.txt",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "uuid": "uuid",
+      },
+      "name": "delete_note",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [
+      {
+        "deleted_at": 0,
+        "uuid": "uuid",
+      },
+    ],
+    "edited": Set {
+      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > importNotes > Imports notes with no local notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > allCalls 1`] = `[]`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > importNotes > Returns when passed no paths > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": undefined,
+        "multiple": true,
+        "recursive": undefined,
+        "title": undefined,
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "/test1.json",
+          "/test2.txt",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+  },
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {
+      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": undefined,
+        "multiple": true,
+        "recursive": undefined,
+        "title": undefined,
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "/test.json",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+  ],
+  "selectedNote": {
+    "content": {
+      "body": "amet consectetur adipisicing",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+          },
+        ],
+      },
+      "title": "Amet consectetur adipisicing",
+    },
+    "timestamp": 0,
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+  },
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {
+      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > Storage.get('THEME') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": undefined,
+        "multiple": true,
+        "recursive": undefined,
+        "title": undefined,
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+]
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > openedPopup 1`] = `undefined`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > selectedTheme 1`] = `"System"`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

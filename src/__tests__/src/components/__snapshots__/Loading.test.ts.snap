@@ -28,6 +28,7 @@ exports[`Loading > Mounts > mockDb 1`] = `
 
 exports[`Loading > Mounts > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

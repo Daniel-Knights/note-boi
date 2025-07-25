@@ -43,6 +43,7 @@ exports[`Utils > Tauri API wrappers > tauriEmit > mockDb 1`] = `
 
 exports[`Utils > Tauri API wrappers > tauriEmit > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -142,6 +143,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -237,6 +239,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > mockDb 1`] 
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -326,6 +329,7 @@ exports[`Utils > Tauri API wrappers > tauriListen > mockDb 1`] = `
 
 exports[`Utils > Tauri API wrappers > tauriListen > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -406,6 +410,7 @@ exports[`Utils > capitalise > mockDb 1`] = `
 
 exports[`Utils > capitalise > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -486,6 +491,7 @@ exports[`Utils > hasKeys > mockDb 1`] = `
 
 exports[`Utils > hasKeys > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -566,6 +572,7 @@ exports[`Utils > isDev > mockDb 1`] = `
 
 exports[`Utils > isDev > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -646,6 +653,7 @@ exports[`Utils > isEmptyNote > mockDb 1`] = `
 
 exports[`Utils > isEmptyNote > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -726,6 +734,7 @@ exports[`Utils > isWhitespaceOnly > mockDb 1`] = `
 
 exports[`Utils > isWhitespaceOnly > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -806,6 +815,7 @@ exports[`Utils > unixToDateTime > mockDb 1`] = `
 
 exports[`Utils > unixToDateTime > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

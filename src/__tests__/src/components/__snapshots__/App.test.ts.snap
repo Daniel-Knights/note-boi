@@ -49,6 +49,7 @@ exports[`App > Mounts > mockDb 1`] = `
 
 exports[`App > Mounts > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -150,6 +151,7 @@ exports[`App > Shows loading spinner when update is downloading > mockDb 1`] = `
 
 exports[`App > Shows loading spinner when update is downloading > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

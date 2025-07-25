@@ -28,6 +28,7 @@ exports[`Log > forwardConsole > console.debug > mockDb 1`] = `
 
 exports[`Log > forwardConsole > console.debug > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -108,6 +109,7 @@ exports[`Log > forwardConsole > console.error > mockDb 1`] = `
 
 exports[`Log > forwardConsole > console.error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -188,6 +190,7 @@ exports[`Log > forwardConsole > console.info > mockDb 1`] = `
 
 exports[`Log > forwardConsole > console.info > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -268,6 +271,7 @@ exports[`Log > forwardConsole > console.log > mockDb 1`] = `
 
 exports[`Log > forwardConsole > console.log > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -348,6 +352,7 @@ exports[`Log > forwardConsole > console.warn > mockDb 1`] = `
 
 exports[`Log > forwardConsole > console.warn > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -428,6 +433,7 @@ exports[`Log > initLogger > mockDb 1`] = `
 
 exports[`Log > initLogger > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

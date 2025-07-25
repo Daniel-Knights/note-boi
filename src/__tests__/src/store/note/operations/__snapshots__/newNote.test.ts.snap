@@ -50,6 +50,7 @@ exports[`newNote > Catches error > mockDb 1`] = `
 
 exports[`newNote > Catches error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -346,6 +347,7 @@ exports[`newNote > Only updates timestamp when empty note selected > mockDb 1`] 
 
 exports[`newNote > Only updates timestamp when empty note selected > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -661,6 +663,7 @@ exports[`newNote > When selected note isn't empty > mockDb 1`] = `
 
 exports[`newNote > When selected note isn't empty > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {

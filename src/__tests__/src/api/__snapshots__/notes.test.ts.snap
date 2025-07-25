@@ -132,6 +132,7 @@ exports[`Notes (sync) > Edge cases > No local, no remote > mockDb 1`] = `
 
 exports[`Notes (sync) > Edge cases > No local, no remote > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -571,6 +572,7 @@ exports[`Notes (sync) > Edge cases > No local, some remote > mockDb 1`] = `
 
 exports[`Notes (sync) > Edge cases > No local, some remote > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1213,6 +1215,7 @@ exports[`Notes (sync) > Edge cases > No remote, some local > mockDb 1`] = `
 
 exports[`Notes (sync) > Edge cases > No remote, some local > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1705,6 +1708,7 @@ exports[`Notes (sync) > sync > Logs out client-side if no access token > mockDb 
 
 exports[`Notes (sync) > sync > Logs out client-side if no access token > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1821,6 +1825,7 @@ exports[`Notes (sync) > sync > Logs out client-side if no password key > mockDb 
 
 exports[`Notes (sync) > sync > Logs out client-side if no password key > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -1916,6 +1921,7 @@ exports[`Notes (sync) > sync > Logs out client-side if no username > mockDb 1`] 
 
 exports[`Notes (sync) > sync > Logs out client-side if no username > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -2011,6 +2017,7 @@ exports[`Notes (sync) > sync > Returns if not logged in > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > Returns if not logged in > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -2238,6 +2245,7 @@ exports[`Notes (sync) > sync > Sets and resets loading state > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > Sets and resets loading state > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -2734,6 +2742,7 @@ exports[`Notes (sync) > sync > Syncs notes with the server > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > Syncs notes with the server > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -3124,6 +3133,7 @@ exports[`Notes (sync) > sync > Unauthorized > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > Unauthorized > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -3564,6 +3574,7 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > moc
 
 exports[`Notes (sync) > sync > Updates editor if selected note is unedited > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -4189,6 +4200,7 @@ exports[`Notes (sync) > sync > Updates note menu > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > Updates note menu > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -4540,6 +4552,7 @@ exports[`Notes (sync) > sync > User not found > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > User not found > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -5050,6 +5063,7 @@ exports[`Notes (sync) > sync > With decryption error > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > With decryption error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -5234,6 +5248,7 @@ exports[`Notes (sync) > sync > With encryption error > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > With encryption error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -5441,6 +5456,7 @@ exports[`Notes (sync) > sync > With server error > mockDb 1`] = `
 
 exports[`Notes (sync) > sync > With server error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -5592,6 +5608,7 @@ exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged i
 
 exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -6570,6 +6587,7 @@ exports[`Notes (sync) > unsyncedNotes > deleted > mockDb 1`] = `
 
 exports[`Notes (sync) > unsyncedNotes > deleted > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -7502,6 +7520,7 @@ exports[`Notes (sync) > unsyncedNotes > edited > mockDb 1`] = `
 
 exports[`Notes (sync) > unsyncedNotes > edited > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -9038,6 +9057,7 @@ exports[`Notes (sync) > unsyncedNotes > new > mockDb 1`] = `
 
 exports[`Notes (sync) > unsyncedNotes > new > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {

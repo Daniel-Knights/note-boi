@@ -28,6 +28,7 @@ exports[`ContextMenu > Closes > mockDb 1`] = `
 
 exports[`ContextMenu > Closes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -137,6 +138,7 @@ exports[`ContextMenu > Creates a new note > mockDb 1`] = `
 
 exports[`ContextMenu > Creates a new note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -452,6 +454,7 @@ exports[`ContextMenu > Delete button disabled with no notes > mockDb 1`] = `
 
 exports[`ContextMenu > Delete button disabled with no notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -563,6 +566,7 @@ exports[`ContextMenu > Deletes a note > mockDb 1`] = `
 
 exports[`ContextMenu > Deletes a note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -931,6 +935,7 @@ exports[`ContextMenu > Deletes all selected notes > mockDb 1`] = `
 
 exports[`ContextMenu > Deletes all selected notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1229,6 +1234,7 @@ exports[`ContextMenu > Export button disabled with no notes > mockDb 1`] = `
 
 exports[`ContextMenu > Export button disabled with no notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1369,6 +1375,7 @@ exports[`ContextMenu > Exports a note > mockDb 1`] = `
 
 exports[`ContextMenu > Exports a note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1756,6 +1763,7 @@ exports[`ContextMenu > Exports all selected notes > mockDb 1`] = `
 
 exports[`ContextMenu > Exports all selected notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [
     {
       "content": {
@@ -2096,6 +2104,7 @@ exports[`ContextMenu > Mounts with ev > mockDb 1`] = `
 
 exports[`ContextMenu > Mounts with ev > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -2176,6 +2185,7 @@ exports[`ContextMenu > Mounts without passed ev > mockDb 1`] = `
 
 exports[`ContextMenu > Mounts without passed ev > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
