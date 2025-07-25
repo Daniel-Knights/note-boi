@@ -28,6 +28,7 @@ exports[`UtilityMenu > Mounts with correct components > mockDb 1`] = `
 
 exports[`UtilityMenu > Mounts with correct components > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

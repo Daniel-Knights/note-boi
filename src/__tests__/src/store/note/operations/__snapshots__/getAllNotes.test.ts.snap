@@ -62,6 +62,7 @@ exports[`getAllNotes > Catches error > mockDb 1`] = `
 
 exports[`getAllNotes > Catches error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -183,6 +184,7 @@ exports[`getAllNotes > With empty note array > mockDb 1`] = `
 
 exports[`getAllNotes > With empty note array > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -285,6 +287,7 @@ exports[`getAllNotes > With notes > mockDb 1`] = `
 
 exports[`getAllNotes > With notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -618,6 +621,7 @@ exports[`getAllNotes > With single empty note > mockDb 1`] = `
 
 exports[`getAllNotes > With single empty note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -735,6 +739,7 @@ exports[`getAllNotes > With undefined notes > mockDb 1`] = `
 
 exports[`getAllNotes > With undefined notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {

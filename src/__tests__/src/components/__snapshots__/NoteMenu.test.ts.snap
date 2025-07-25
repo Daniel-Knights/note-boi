@@ -57,6 +57,7 @@ exports[`NoteMenu > Creates a new note > mockDb 1`] = `
 
 exports[`NoteMenu > Creates a new note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -353,6 +354,7 @@ exports[`NoteMenu > Mounts > mockDb 1`] = `
 
 exports[`NoteMenu > Mounts > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -686,6 +688,7 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > mockDb 1`] = `
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -975,6 +978,7 @@ exports[`NoteMenu > Renders a list item for every note > mockDb 1`] = `
 
 exports[`NoteMenu > Renders a list item for every note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1334,6 +1338,7 @@ exports[`NoteMenu > Renders a single empty note > mockDb 1`] = `
 
 exports[`NoteMenu > Renders a single empty note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1436,6 +1441,7 @@ exports[`NoteMenu > Selects a clicked note > mockDb 1`] = `
 
 exports[`NoteMenu > Selects a clicked note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1725,6 +1731,7 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > m
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -2058,6 +2065,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > mockDb 1`] =
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -2347,6 +2355,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -2636,6 +2645,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -2925,6 +2935,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > mockDb 1`] = `
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -3214,6 +3225,7 @@ exports[`NoteMenu > Sets contextmenu ev > mockDb 1`] = `
 
 exports[`NoteMenu > Sets contextmenu ev > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -3547,6 +3559,7 @@ exports[`NoteMenu > Sets menu width with drag-bar > mockDb 1`] = `
 
 exports[`NoteMenu > Sets menu width with drag-bar > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -3880,6 +3893,7 @@ exports[`NoteMenu > Toggles menu visibility > mockDb 1`] = `
 
 exports[`NoteMenu > Toggles menu visibility > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {

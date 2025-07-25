@@ -153,6 +153,7 @@ exports[`Logout > Logs out on click > mockDb 1`] = `
 
 exports[`Logout > Logs out on click > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -245,6 +246,7 @@ exports[`Logout > Mounts > mockDb 1`] = `
 
 exports[`Logout > Mounts > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

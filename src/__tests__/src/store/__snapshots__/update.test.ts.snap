@@ -50,6 +50,7 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
 
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -166,6 +167,7 @@ exports[`Update > handleUpdate > Handles update > mockDb 1`] = `
 
 exports[`Update > handleUpdate > Handles update > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -256,6 +258,7 @@ exports[`Update > handleUpdate > Returns if update unavailable > mockDb 1`] = `
 
 exports[`Update > handleUpdate > Returns if update unavailable > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -346,6 +349,7 @@ exports[`Update > handleUpdate > Returns if version has been seen > mockDb 1`] =
 
 exports[`Update > handleUpdate > Returns if version has been seen > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -450,6 +454,7 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -530,6 +535,7 @@ exports[`Update > setUpdateStrategy > mockDb 1`] = `
 
 exports[`Update > setUpdateStrategy > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -631,6 +637,7 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > mockDb 1
 
 exports[`Update > updateAndRelaunch > Catches error and doesn't retry > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -743,6 +750,7 @@ exports[`Update > updateAndRelaunch > Catches error and retries > mockDb 1`] = `
 
 exports[`Update > updateAndRelaunch > Catches error and retries > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -847,6 +855,7 @@ exports[`Update > updateAndRelaunch > Updates and relaunches > mockDb 1`] = `
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

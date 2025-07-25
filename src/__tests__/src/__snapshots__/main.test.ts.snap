@@ -113,6 +113,12 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
   [
     "listeners",
     {
+      "name": "tauri://drag-enter",
+    },
+  ],
+  [
+    "listeners",
+    {
       "name": "reload",
     },
   ],
@@ -126,6 +132,12 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
     "listeners",
     {
       "name": "delete-note",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "import-notes",
     },
   ],
   [
@@ -150,6 +162,24 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
     "listeners",
     {
       "name": "change-password",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "tauri://drag-over",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "tauri://drag-drop",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "tauri://drag-leave",
     },
   ],
   [
@@ -497,6 +527,7 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
 
 exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -898,6 +929,7 @@ exports[`main > exitApp > Triggers ask dialog on sync error, and answers "No" > 
 
 exports[`main > exitApp > Triggers ask dialog on sync error, and answers "No" > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -1007,6 +1039,7 @@ exports[`main > exitApp > Triggers ask dialog on sync error, and answers "Yes" >
 
 exports[`main > exitApp > Triggers ask dialog on sync error, and answers "Yes" > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -1089,6 +1122,7 @@ exports[`main > exitApp > With no unsynced notes > mockDb 1`] = `
 
 exports[`main > exitApp > With no unsynced notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -1184,6 +1218,7 @@ exports[`main > exitApp > With unsynced notes > mockDb 1`] = `
 
 exports[`main > exitApp > With unsynced notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

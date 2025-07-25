@@ -47,6 +47,7 @@ exports[`deleteNote > Calls debounceSync > mockDb 1`] = `
 
 exports[`deleteNote > Calls debounceSync > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -382,6 +383,7 @@ exports[`deleteNote > Catches error > mockDb 1`] = `
 
 exports[`deleteNote > Catches error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -714,6 +716,7 @@ exports[`deleteNote > Deletes selected note and selects next > mockDb 1`] = `
 
 exports[`deleteNote > Deletes selected note and selects next > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1037,6 +1040,7 @@ exports[`deleteNote > Resets unsynced new note > mockDb 1`] = `
 
 exports[`deleteNote > Resets unsynced new note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1383,6 +1387,7 @@ exports[`deleteNote > With no notes > mockDb 1`] = `
 
 exports[`deleteNote > With no notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1499,6 +1504,7 @@ exports[`deleteNote > Without selecting next note > mockDb 1`] = `
 
 exports[`deleteNote > Without selecting next note > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -1790,6 +1796,7 @@ exports[`deleteSelectedNotes > Catches error > mockDb 1`] = `
 
 exports[`deleteSelectedNotes > Catches error > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -2061,6 +2068,7 @@ exports[`deleteSelectedNotes > Deletes selected notes > mockDb 1`] = `
 
 exports[`deleteSelectedNotes > Deletes selected notes > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {

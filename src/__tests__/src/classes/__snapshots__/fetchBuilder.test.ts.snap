@@ -58,6 +58,7 @@ exports[`FetchBuilder > With auth > mockDb 1`] = `
 
 exports[`FetchBuilder > With auth > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -166,6 +167,7 @@ exports[`FetchBuilder > Without auth > mockDb 1`] = `
 
 exports[`FetchBuilder > Without auth > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {

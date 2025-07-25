@@ -43,6 +43,7 @@ exports[`PopupSyncAuth > Emits close > mockDb 1`] = `
 
 exports[`PopupSyncAuth > Emits close > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -138,6 +139,7 @@ exports[`PopupSyncAuth > Mounts > mockDb 1`] = `
 
 exports[`PopupSyncAuth > Mounts > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -233,6 +235,7 @@ exports[`PopupSyncAuth > Shows default error message when none provided > mockDb
 
 exports[`PopupSyncAuth > Shows default error message when none provided > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -330,6 +333,7 @@ exports[`PopupSyncAuth > Shows error message > mockDb 1`] = `
 
 exports[`PopupSyncAuth > Shows error message > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -427,6 +431,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Clears form validation 
 
 exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -522,6 +527,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > m
 
 exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -620,6 +626,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Switches > mockDb 1`] =
 
 exports[`PopupSyncAuth > Switches between login/signup > Switches > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
@@ -791,6 +798,7 @@ exports[`PopupSyncAuth > Validates fields > On login > mockDb 1`] = `
 
 exports[`PopupSyncAuth > Validates fields > On login > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     {
@@ -935,6 +943,7 @@ exports[`PopupSyncAuth > Validates fields > On signup > mockDb 1`] = `
 
 exports[`PopupSyncAuth > Validates fields > On signup > noteState 1`] = `
 {
+  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": {
