@@ -2,7 +2,7 @@ import * as a from '../../../../../api';
 import * as n from '../../../../../store/note';
 import { clearMockApiResults, mockApi } from '../../../../mock';
 import { waitForAutoSync, waitUntil } from '../../../../utils';
-import { mockUnsyncedEventCb, setupMockNoteEventListeners } from '../setup';
+import { mockUnsyncedEventCB, setupMockNoteEventListeners } from '../setup';
 
 beforeAll(() => {
   setupMockNoteEventListeners();
@@ -27,8 +27,8 @@ describe('editNote', () => {
     );
 
     expect(debounceSyncSpy).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
+    expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
+    expect(mockUnsyncedEventCB).toHaveBeenCalledWith({
       kind: 'edited',
       note: noteToEdit.uuid,
     });

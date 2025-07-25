@@ -5,9 +5,9 @@ import { clearMockApiResults, mockApi } from '../../../../mock';
 import { wait, waitUntil } from '../../../../utils';
 import {
   existingNote,
-  mockChangeEventCb,
-  mockNewEventCb,
-  mockSelectEventCb,
+  mockChangeEventCB,
+  mockNewEventCB,
+  mockSelectEventCB,
   setupMockNoteEventListeners,
 } from '../setup';
 
@@ -28,9 +28,9 @@ describe('newNote', () => {
 
     n.newNote();
 
-    expect(mockSelectEventCb).toHaveBeenCalledOnce();
-    expect(mockChangeEventCb).toHaveBeenCalledOnce();
-    expect(mockNewEventCb).toHaveBeenCalledOnce();
+    expect(mockSelectEventCB).toHaveBeenCalledOnce();
+    expect(mockChangeEventCB).toHaveBeenCalledOnce();
+    expect(mockNewEventCB).toHaveBeenCalledOnce();
 
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
@@ -54,9 +54,9 @@ describe('newNote', () => {
 
     n.newNote();
 
-    expect(mockSelectEventCb).not.toHaveBeenCalled();
-    expect(mockChangeEventCb).not.toHaveBeenCalled();
-    expect(mockNewEventCb).not.toHaveBeenCalled();
+    expect(mockSelectEventCB).not.toHaveBeenCalled();
+    expect(mockChangeEventCB).not.toHaveBeenCalled();
+    expect(mockNewEventCB).not.toHaveBeenCalled();
 
     assert.strictEqual(n.noteState.selectedNote.uuid, emptyNote.uuid);
     assert.deepEqual(n.noteState.selectedNote.content, emptyNote.content);

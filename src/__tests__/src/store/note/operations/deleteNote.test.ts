@@ -11,9 +11,9 @@ import {
 } from '../../../../utils';
 import {
   existingNote,
-  mockChangeEventCb,
-  mockSelectEventCb,
-  mockUnsyncedEventCb,
+  mockChangeEventCB,
+  mockSelectEventCB,
+  mockUnsyncedEventCB,
   setupMockNoteEventListeners,
 } from '../setup';
 
@@ -39,10 +39,10 @@ describe('deleteNote', () => {
 
     n.deleteNote(existingNote.uuid);
 
-    expect(mockSelectEventCb).toHaveBeenCalledOnce();
-    expect(mockChangeEventCb).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
+    expect(mockSelectEventCB).toHaveBeenCalledOnce();
+    expect(mockChangeEventCB).toHaveBeenCalledOnce();
+    expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
+    expect(mockUnsyncedEventCB).toHaveBeenCalledWith({
       kind: 'deleted',
       note: {
         uuid: existingNote.uuid,
@@ -78,10 +78,10 @@ describe('deleteNote', () => {
 
     await Promise.all(promises);
 
-    expect(mockSelectEventCb).not.toHaveBeenCalled();
-    expect(mockChangeEventCb).not.toHaveBeenCalled();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
+    expect(mockSelectEventCB).not.toHaveBeenCalled();
+    expect(mockChangeEventCB).not.toHaveBeenCalled();
+    expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
+    expect(mockUnsyncedEventCB).toHaveBeenCalledWith({
       kind: 'deleted',
       note: {
         uuid: otherExistingNote.uuid,
@@ -113,10 +113,10 @@ describe('deleteNote', () => {
 
     n.deleteNote(existingNote.uuid);
 
-    expect(mockSelectEventCb).toHaveBeenCalledOnce();
-    expect(mockChangeEventCb).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledWith({
+    expect(mockSelectEventCB).toHaveBeenCalledOnce();
+    expect(mockChangeEventCB).toHaveBeenCalledOnce();
+    expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
+    expect(mockUnsyncedEventCB).toHaveBeenCalledWith({
       kind: 'deleted',
       note: {
         uuid: existingNote.uuid,
@@ -212,14 +212,14 @@ describe('deleteSelectedNotes', () => {
 
     n.deleteSelectedNotes();
 
-    expect(mockSelectEventCb).toHaveBeenCalledOnce();
-    expect(mockChangeEventCb).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCb).toHaveBeenCalledTimes(allNotesToDelete.length);
+    expect(mockSelectEventCB).toHaveBeenCalledOnce();
+    expect(mockChangeEventCB).toHaveBeenCalledOnce();
+    expect(mockUnsyncedEventCB).toHaveBeenCalledTimes(allNotesToDelete.length);
 
     for (let i = 0; i < allNotesToDelete.length; i += 1) {
       const note = allNotesToDelete[i]!;
 
-      expect(mockUnsyncedEventCb).nthCalledWith(i + 1, {
+      expect(mockUnsyncedEventCB).nthCalledWith(i + 1, {
         kind: 'deleted',
         note: {
           uuid: note.uuid,

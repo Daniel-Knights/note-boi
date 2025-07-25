@@ -4,8 +4,8 @@ import { mockApi } from '../../../../mock';
 import {
   existingNote,
   existingNoteIndexSorted,
-  mockChangeEventCb,
-  mockSelectEventCb,
+  mockChangeEventCB,
+  mockSelectEventCB,
   setupMockNoteEventListeners,
 } from '../setup';
 
@@ -22,8 +22,8 @@ it('selectNote', async () => {
 
   n.selectNote(existingNote.uuid);
 
-  expect(mockSelectEventCb).toHaveBeenCalledOnce();
-  expect(mockChangeEventCb).toHaveBeenCalledOnce();
+  expect(mockSelectEventCB).toHaveBeenCalledOnce();
+  expect(mockChangeEventCB).toHaveBeenCalledOnce();
 
   assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[existingNoteIndexSorted]);
 
@@ -35,8 +35,8 @@ it('selectNote', async () => {
   n.selectNote(n.noteState.notes[9]!.uuid);
 
   // 3 = 2 (selectNote) + 1 (clearNote)
-  expect(mockSelectEventCb).toHaveBeenCalledTimes(3);
-  expect(mockChangeEventCb).toHaveBeenCalledTimes(3);
+  expect(mockSelectEventCB).toHaveBeenCalledTimes(3);
+  expect(mockChangeEventCB).toHaveBeenCalledTimes(3);
 
   assert.isUndefined(n.noteState.notes[10]);
 });

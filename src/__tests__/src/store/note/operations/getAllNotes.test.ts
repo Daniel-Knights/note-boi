@@ -3,7 +3,7 @@ import { Note } from '../../../../../classes';
 import { isEmptyNote } from '../../../../../utils';
 import { mockApi } from '../../../../mock';
 import { getDummyNotes } from '../../../../utils';
-import { mockChangeEventCb, mockNewEventCb, setupMockNoteEventListeners } from '../setup';
+import { mockChangeEventCB, mockNewEventCB, setupMockNoteEventListeners } from '../setup';
 
 beforeAll(() => {
   setupMockNoteEventListeners();
@@ -17,7 +17,7 @@ describe('getAllNotes', () => {
 
     await n.getAllNotes();
 
-    expect(mockNewEventCb).toHaveBeenCalledOnce();
+    expect(mockNewEventCB).toHaveBeenCalledOnce();
 
     assert.lengthOf(n.noteState.notes, 1);
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
@@ -34,7 +34,7 @@ describe('getAllNotes', () => {
 
     await n.getAllNotes();
 
-    expect(mockNewEventCb).toHaveBeenCalledOnce();
+    expect(mockNewEventCB).toHaveBeenCalledOnce();
 
     assert.lengthOf(n.noteState.notes, 1);
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
@@ -51,8 +51,8 @@ describe('getAllNotes', () => {
 
     await n.getAllNotes();
 
-    expect(mockNewEventCb).not.toHaveBeenCalledOnce();
-    expect(mockChangeEventCb).not.toHaveBeenCalledOnce();
+    expect(mockNewEventCB).not.toHaveBeenCalledOnce();
+    expect(mockChangeEventCB).not.toHaveBeenCalledOnce();
 
     assert.lengthOf(n.noteState.notes, 1);
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
@@ -66,7 +66,7 @@ describe('getAllNotes', () => {
 
     await n.getAllNotes();
 
-    expect(mockChangeEventCb).toHaveBeenCalledOnce();
+    expect(mockChangeEventCB).toHaveBeenCalledOnce();
 
     assert.lengthOf(n.noteState.notes, 10);
     assert.deepEqual(n.noteState.notes[0], getDummyNotes().sort(n.sortNotesFn)[0]);
