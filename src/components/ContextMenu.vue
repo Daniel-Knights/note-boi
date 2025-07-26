@@ -3,32 +3,14 @@
     v-if="show"
     @close="show = false"
     :style="{ top: top + 'px', left: left + 'px' }"
-    :items="[
-      {
-        label: 'New Note',
-        clickHandler: () => newNote(true),
-        testId: 'new',
-      },
-      {
-        label: 'Export Note',
-        clickHandler: handleExportNotes,
-        disabled: noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]),
-        testId: 'export',
-      },
-      {
-        label: 'Delete Note',
-        clickHandler: handleDeleteNote,
-        disabled: noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]),
-        testId: 'delete',
-      },
-    ]"
+    :items="items"
     ref="drop-menu"
   >
   </DropMenu>
 </template>
 
 <script lang="ts" setup>
-import { nextTick, ref, useTemplateRef, watch } from 'vue';
+import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
 import {
   deleteNote,
@@ -54,6 +36,30 @@ const clickedNoteUuid = ref<string>();
 const show = ref(false);
 const top = ref(0);
 const left = ref(0);
+
+const items = computed(() => {
+  const hasNoNotes = noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]);
+
+  return [
+    {
+      label: 'New Note',
+      clickHandler: () => newNote(true),
+      testId: 'new',
+    },
+    {
+      label: 'Export Note',
+      clickHandler: handleExportNotes,
+      disabled: !clickedNoteUuid.value || hasNoNotes,
+      testId: 'export',
+    },
+    {
+      label: 'Delete Note',
+      clickHandler: handleDeleteNote,
+      disabled: !clickedNoteUuid.value || hasNoNotes,
+      testId: 'delete',
+    },
+  ];
+});
 
 function handleExportNotes() {
   if (noteState.extraSelectedNotes.length > 0) {
