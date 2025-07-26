@@ -11,7 +11,7 @@
       @click="handleNoteSelect"
       @contextmenu.prevent="contextMenuEv = $event"
       class="note-menu__note-list"
-      ref="noteList"
+      ref="note-list"
       data-test-id="note-list"
     >
       <li
@@ -60,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onUnmounted, ref, watch } from 'vue';
+import { onUnmounted, ref, useTemplateRef, watch } from 'vue';
 
 import { Note, Storage } from '../classes';
 import {
@@ -75,7 +75,8 @@ import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
 
-const noteList = ref<HTMLElement>();
+const noteList = useTemplateRef('note-list');
+
 const contextMenuEv = ref<MouseEvent>();
 const isDragging = ref(false);
 const isHidden = ref(false);

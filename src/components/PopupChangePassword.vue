@@ -10,7 +10,7 @@
           :class="{ 'form__input--invalid': !validation.currentPassword }"
           type="password"
           placeholder="Current Password"
-          ref="currentPassword"
+          ref="current-password"
           data-test-id="current-password"
         />
         <input
@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, useTemplateRef } from 'vue';
 
 import { changePassword } from '../api';
 import { AppError, ERROR_CODE } from '../classes';
@@ -56,7 +56,8 @@ import Popup from './Popup.vue';
 
 const emit = defineEmits(['close']);
 
-const currentPassword = ref<HTMLInputElement>();
+const currentPassword = useTemplateRef('current-password');
+
 const confirmNewPassword = ref('');
 
 const validation = reactive({
