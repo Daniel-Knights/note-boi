@@ -22,12 +22,13 @@
         testId: 'delete',
       },
     ]"
+    ref="drop-menu"
   >
   </DropMenu>
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue';
+import { nextTick, ref, useTemplateRef, watch } from 'vue';
 
 import {
   deleteNote,
@@ -46,6 +47,8 @@ const props = defineProps({
     default: undefined,
   },
 });
+
+const dropMenu = useTemplateRef('drop-menu');
 
 const clickedNoteUuid = ref<string>();
 const show = ref(false);
@@ -71,16 +74,23 @@ function handleDeleteNote() {
   }
 }
 
-watch(props, () => {
+watch(props, async () => {
   if (!props.ev) return;
 
   const target = props.ev.target as HTMLElement | null;
   const closestNote = target?.closest<HTMLElement>('[data-note-uuid]');
 
   show.value = true;
-  top.value = props.ev.clientY;
-  left.value = props.ev.clientX;
   clickedNoteUuid.value = closestNote?.dataset.noteUuid;
+
+  // Wait for `DropMenu` to mount, so we can read height
+  await nextTick();
+
+  const dropMenuHeight = dropMenu.value?.$el.clientHeight ?? 120; // Fallback for tests
+  const maxY = window.innerHeight - dropMenuHeight - 10; // 10 = a bit of padding
+
+  top.value = Math.min(props.ev.y, maxY);
+  left.value = props.ev.x;
 });
 </script>
 

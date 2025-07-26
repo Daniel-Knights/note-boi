@@ -2237,3 +2237,84 @@ exports[`ContextMenu > Mounts without passed ev > updateState 1`] = `
   "strategy": "manual",
 }
 `;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > allCalls 1`] = `[]`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
