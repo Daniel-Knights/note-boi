@@ -2,7 +2,7 @@ import type Delta from 'quill-delta';
 
 import { debounceSync } from '../../../api';
 import { tauriInvoke } from '../../../utils';
-import { getUnsyncedEvent } from '../event';
+import { syncState } from '../../sync';
 import { noteState } from '../state';
 import { findNote, sortStateNotes } from '../utils';
 
@@ -26,12 +26,9 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
 
   sortStateNotes();
 
-  document.dispatchEvent(
-    getUnsyncedEvent({
-      kind: 'edited',
-      note: foundNote.uuid,
-    })
-  );
+  syncState.unsyncedNotes.set({
+    edited: [foundNote.uuid],
+  });
 
   tauriInvoke('edit_note', { note: { ...foundNote } }).then(() => debounceSync());
 }

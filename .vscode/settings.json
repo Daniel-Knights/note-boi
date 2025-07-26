@@ -15,5 +15,5 @@
     "**/Cargo.lock": true,
     "**/pnpm-lock.yaml": true
   },
-  "cSpell.words": ["chrono", "esbuild", "punycode", "tauri", "unsynced", "vitest"]
+  "cSpell.words": ["chrono", "esbuild", "tauri", "unsynced", "vitest"]
 }
