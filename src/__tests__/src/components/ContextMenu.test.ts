@@ -74,6 +74,19 @@ describe('ContextMenu', () => {
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
   });
 
+  it('Disables export and delete note if no clicked note', async () => {
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev);
+
+    assertMounted(wrapper, ev);
+
+    const exportNoteItem = getByTestId(wrapper, 'export');
+    const deleteNoteItem = getByTestId(wrapper, 'delete');
+
+    assert.isTrue(exportNoteItem.classes('drop-menu__item--disabled'));
+    assert.isTrue(deleteNoteItem.classes('drop-menu__item--disabled'));
+  });
+
   it.each(['Export', 'Delete'])(
     '%s button disabled with no notes',
     async (buttonType) => {
