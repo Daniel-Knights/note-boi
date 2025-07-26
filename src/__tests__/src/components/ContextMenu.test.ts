@@ -9,32 +9,6 @@ import { getByTestId, getDummyNotes } from '../../utils';
 import ContextMenu from '../../../components/ContextMenu.vue';
 import DropMenu from '../../../components/DropMenu.vue';
 
-async function mountContextMenu(attachTo?: HTMLElement) {
-  const ev = new MouseEvent('contextmenu', {
-    clientX: 100,
-    clientY: 200,
-  });
-
-  if (attachTo) attachTo.dispatchEvent(ev);
-
-  const wrapper = mount(ContextMenu, { attachTo });
-  const wrapperVm = wrapper.vm as unknown as { show: boolean };
-  await wrapper.setProps({ ev });
-
-  const element = wrapper.element as HTMLElement;
-
-  if (
-    !wrapper.isVisible() ||
-    !wrapperVm.show ||
-    element.style.top !== `${ev.clientY}px` ||
-    element.style.left !== `${ev.clientX}px`
-  ) {
-    assert.fail();
-  }
-
-  return wrapper;
-}
-
 describe('ContextMenu', () => {
   it('Mounts without passed ev', async () => {
     const { calls, promises } = mockApi();
@@ -47,11 +21,26 @@ describe('ContextMenu', () => {
   });
 
   it('Mounts with ev', async () => {
-    await mountContextMenu();
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev);
+
+    assertMounted(wrapper, ev);
+  });
+
+  it('Remains onscreen if opened at bottom of page', async () => {
+    const ev = getContextMenuEv({ y: window.innerHeight });
+    const wrapper = await mountContextMenu(ev);
+
+    // 10 = a bit of padding
+    assertMounted(wrapper, { x: ev.clientX, y: window.innerHeight - 10 });
   });
 
   it('Closes', async () => {
-    const wrapper = await mountContextMenu();
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev);
+
+    assertMounted(wrapper, ev);
+
     const wrapperVm = wrapper.vm as unknown as { show: boolean };
 
     wrapper.getComponent(DropMenu).vm.$emit('close');
@@ -64,7 +53,10 @@ describe('ContextMenu', () => {
   it('Creates a new note', async () => {
     const { calls, promises } = mockApi();
 
-    const wrapper = await mountContextMenu();
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev);
+
+    assertMounted(wrapper, ev);
 
     await n.getAllNotes();
 
@@ -94,12 +86,17 @@ describe('ContextMenu', () => {
       const div = document.createElement('div');
       div.dataset.noteUuid = n.noteState.notes[0]!.uuid;
 
-      const wrapper = await mountContextMenu(div);
-      const button = getByTestId<HTMLButtonElement>(wrapper, buttonType.toLowerCase());
+      const ev = getContextMenuEv();
+      const wrapper = await mountContextMenu(ev, { attachTo: div });
+
+      assertMounted(wrapper, ev);
 
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.invoke.has('get_all_notes'));
       assert.isTrue(calls.invoke.has('new_note'));
+
+      const button = getByTestId<HTMLButtonElement>(wrapper, buttonType.toLowerCase());
+
       assert.isTrue(button.element.classList.contains('drop-menu__item--disabled'));
     }
   );
@@ -113,7 +110,10 @@ describe('ContextMenu', () => {
     const div = document.createElement('div');
     div.dataset.noteUuid = noteToExport.uuid;
 
-    const wrapper = await mountContextMenu(div);
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev, { attachTo: div });
+
+    assertMounted(wrapper, ev);
 
     n.selectNote(noteToExport.uuid);
 
@@ -140,7 +140,10 @@ describe('ContextMenu', () => {
     const div = document.createElement('div');
     div.dataset.noteUuid = noteToExport.uuid;
 
-    const wrapper = await mountContextMenu(div);
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev, { attachTo: div });
+
+    assertMounted(wrapper, ev);
 
     n.selectNote(noteToExport.uuid);
     n.noteState.extraSelectedNotes.push(...noteSlice);
@@ -165,7 +168,10 @@ describe('ContextMenu', () => {
     const div = document.createElement('div');
     div.dataset.noteUuid = noteToDelete.uuid;
 
-    const wrapper = await mountContextMenu(div);
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev, { attachTo: div });
+
+    assertMounted(wrapper, ev);
 
     n.selectNote(noteToDelete.uuid);
 
@@ -187,7 +193,10 @@ describe('ContextMenu', () => {
     const div = document.createElement('div');
     div.dataset.noteUuid = noteToDelete.uuid;
 
-    const wrapper = await mountContextMenu(div);
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev, { attachTo: div });
+
+    assertMounted(wrapper, ev);
 
     n.selectNote(noteToDelete.uuid);
     n.noteState.extraSelectedNotes.push(...noteSlice);
@@ -199,3 +208,47 @@ describe('ContextMenu', () => {
     expect(deleteSelectedSpy).toHaveBeenCalledOnce();
   });
 });
+
+//// Utils
+
+async function mountContextMenu(
+  ev: MouseEvent,
+  options: {
+    attachTo?: HTMLElement;
+  } = {}
+) {
+  options.attachTo?.dispatchEvent(ev);
+
+  const wrapper = mount(ContextMenu, { attachTo: options.attachTo });
+  await wrapper.setProps({ ev });
+
+  // First time to wait for component to mount, second time to wait for `nextTick`
+  // inside component's `watch` hook
+  await nextTick();
+  await nextTick();
+
+  return wrapper;
+}
+
+/**
+ * Asserts that `wrapper` is visible and mounted at the correct position
+ */
+function assertMounted(
+  wrapper: Awaited<ReturnType<typeof mountContextMenu>>,
+  pos: { x: number; y: number }
+) {
+  const wrapperVm = wrapper.vm as unknown as { show: boolean };
+  const element = wrapper.element as HTMLElement;
+
+  assert.isTrue(wrapper.isVisible());
+  assert.isTrue(wrapperVm.show);
+  assert.strictEqual(element.style.top, `${pos.y}px`);
+  assert.strictEqual(element.style.left, `${pos.x}px`);
+}
+
+function getContextMenuEv(options?: { x?: number; y?: number }) {
+  return new MouseEvent('contextmenu', {
+    clientX: options?.x ?? 100,
+    clientY: options?.y ?? 200,
+  });
+}
