@@ -10,7 +10,7 @@
           :class="{ 'form__input--invalid': !validation.username }"
           type="text"
           placeholder="Username"
-          ref="usernameInput"
+          ref="username-input"
           data-test-id="username"
         />
         <input
@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, useTemplateRef } from 'vue';
 
 import { login, signup } from '../api';
 import { AppError, ERROR_CODE } from '../classes';
@@ -65,8 +65,9 @@ import Popup from './Popup.vue';
 
 const emit = defineEmits(['close']);
 
+const usernameInput = useTemplateRef('username-input');
+
 const mode = ref<'login' | 'signup'>('login');
-const usernameInput = ref<HTMLInputElement>();
 const confirmPassword = ref('');
 
 const validation = reactive({

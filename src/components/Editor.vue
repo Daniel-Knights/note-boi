@@ -3,19 +3,19 @@
     <small class="editor__date" data-test-id="timestamp">{{
       unixToDateTime(noteState.selectedNote.timestamp || 0)
     }}</small>
-    <div class="editor__body" ref="editorBody" data-test-id="body"></div>
+    <div class="editor__body" ref="editor-body" data-test-id="body"></div>
   </section>
 </template>
 
 <script lang="ts" setup>
 import Quill from 'quill';
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, useTemplateRef } from 'vue';
 
 import { NOTE_EVENTS } from '../constant';
 import { editNote, noteState } from '../store/note';
 import { unixToDateTime } from '../utils';
 
-const editorBody = ref<HTMLDivElement>();
+const editorBody = useTemplateRef('editor-body');
 
 let quillEditor: Quill | undefined;
 let ignoreTextChange = false;
