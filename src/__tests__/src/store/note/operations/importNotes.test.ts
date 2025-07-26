@@ -6,7 +6,6 @@ import { waitForAutoSync, waitUntil } from '../../../../utils';
 import {
   mockChangeEventCB,
   mockSelectEventCB,
-  mockUnsyncedEventCB,
   setupMockNoteEventListeners,
 } from '../setup';
 
@@ -29,7 +28,6 @@ describe('importNotes', () => {
 
       expect(mockChangeEventCB).toHaveBeenCalledOnce();
       expect(mockSelectEventCB).toHaveBeenCalledOnce();
-      expect(mockUnsyncedEventCB).not.toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 2);
       assert.strictEqual(calls.size, 1);
@@ -53,8 +51,6 @@ describe('importNotes', () => {
       // Once when clearing empty note, once when selecting latest
       expect(mockChangeEventCB).toHaveBeenCalledTimes(2);
       expect(mockSelectEventCB).toHaveBeenCalledTimes(2);
-      // Called when clearing empty note
-      expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
 
       // One of these is the cleared new note (marked as deleted),
       // other two are imported (marked as edited)
@@ -82,7 +78,6 @@ describe('importNotes', () => {
       // Once when clearing empty note, once when selecting latest
       expect(mockChangeEventCB).toHaveBeenCalledTimes(2);
       expect(mockSelectEventCB).toHaveBeenCalledTimes(2);
-      expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 0);
       assert.strictEqual(calls.size, 7);
@@ -109,7 +104,6 @@ describe('importNotes', () => {
 
       expect(mockChangeEventCB).not.toHaveBeenCalled();
       expect(mockSelectEventCB).not.toHaveBeenCalled();
-      expect(mockUnsyncedEventCB).not.toHaveBeenCalled();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 0);
       assert.strictEqual(calls.size, 0);
@@ -125,7 +119,6 @@ describe('importNotes', () => {
 
       expect(mockChangeEventCB).not.toHaveBeenCalled();
       expect(mockSelectEventCB).not.toHaveBeenCalled();
-      expect(mockUnsyncedEventCB).not.toHaveBeenCalled();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 0);
       assert.strictEqual(calls.size, 1);
@@ -145,7 +138,6 @@ describe('importNotes', () => {
 
       expect(mockChangeEventCB).toHaveBeenCalledOnce();
       expect(mockSelectEventCB).toHaveBeenCalledOnce();
-      expect(mockUnsyncedEventCB).not.toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 1);
       assert.strictEqual(calls.size, 2);
@@ -162,7 +154,6 @@ describe('importNotes', () => {
 
       expect(mockChangeEventCB).toHaveBeenCalledOnce();
       expect(mockSelectEventCB).toHaveBeenCalledOnce();
-      expect(mockUnsyncedEventCB).not.toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 2);
       assert.strictEqual(calls.size, 2);
@@ -182,7 +173,6 @@ describe('importNotes', () => {
 
       expect(mockChangeEventCB).not.toHaveBeenCalled();
       expect(mockSelectEventCB).not.toHaveBeenCalled();
-      expect(mockUnsyncedEventCB).not.toHaveBeenCalled();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 0);
       assert.strictEqual(calls.size, 1);
@@ -231,7 +221,6 @@ describe('importNotes', () => {
 
       expect(mockChangeEventCB).toHaveBeenCalledOnce();
       expect(mockSelectEventCB).toHaveBeenCalledOnce();
-      expect(mockUnsyncedEventCB).not.toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 2);
       assert.strictEqual(calls.size, 1);
@@ -276,7 +265,6 @@ describe('importNotes', () => {
 
       expect(mockChangeEventCB).not.toHaveBeenCalled();
       expect(mockSelectEventCB).not.toHaveBeenCalled();
-      expect(mockUnsyncedEventCB).not.toHaveBeenCalled();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 0);
       assert.strictEqual(calls.size, 0);

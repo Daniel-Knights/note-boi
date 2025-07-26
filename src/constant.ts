@@ -9,7 +9,6 @@ export const NOTE_EVENTS = {
   select: 'note-select',
   /** For whenever the content of a note is changed. */
   change: 'note-change',
-  unsynced: 'note-unsynced',
 } as const;
 
 // Endpoints

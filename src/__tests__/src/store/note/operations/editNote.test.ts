@@ -1,8 +1,9 @@
 import * as a from '../../../../../api';
 import * as n from '../../../../../store/note';
+import * as s from '../../../../../store/sync';
 import { clearMockApiResults, mockApi } from '../../../../mock';
 import { waitForAutoSync, waitUntil } from '../../../../utils';
-import { mockUnsyncedEventCB, setupMockNoteEventListeners } from '../setup';
+import { setupMockNoteEventListeners } from '../setup';
 
 beforeAll(() => {
   setupMockNoteEventListeners();
@@ -16,7 +17,7 @@ describe('editNote', () => {
     await n.getAllNotes();
 
     const currentSelectedNote = { ...n.noteState.selectedNote };
-    const noteToEdit = { ...n.findNote(n.noteState.selectedNote.uuid) };
+    const noteToEdit = { ...n.findNote(n.noteState.selectedNote.uuid)! };
 
     vi.clearAllMocks();
     clearMockApiResults({ calls });
@@ -27,14 +28,11 @@ describe('editNote', () => {
     );
 
     expect(debounceSyncSpy).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledWith({
-      kind: 'edited',
-      note: noteToEdit.uuid,
-    });
 
     const editedNote = n.findNote(noteToEdit.uuid)!;
 
+    assert.strictEqual(s.syncState.unsyncedNotes.size, 1);
+    assert.isTrue(s.syncState.unsyncedNotes.edited.has(noteToEdit.uuid));
     assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
     assert.notDeepEqual(editedNote, noteToEdit);
     // See `editNote` for why selectedNote content should remain the same

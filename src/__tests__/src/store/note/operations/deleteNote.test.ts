@@ -13,7 +13,6 @@ import {
   existingNote,
   mockChangeEventCB,
   mockSelectEventCB,
-  mockUnsyncedEventCB,
   setupMockNoteEventListeners,
 } from '../setup';
 
@@ -41,15 +40,14 @@ describe('deleteNote', () => {
 
     expect(mockSelectEventCB).toHaveBeenCalledOnce();
     expect(mockChangeEventCB).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledWith({
-      kind: 'deleted',
-      note: {
-        uuid: existingNote.uuid,
-        deleted_at: floorToThousand(deletedAt),
-      },
-    });
 
+    const unsyncedDeletedNote = normaliseDeletedAt(s.syncState.unsyncedNotes.deleted[0]!);
+
+    assert.strictEqual(s.syncState.unsyncedNotes.size, 1);
+    assert.deepEqual(unsyncedDeletedNote, {
+      uuid: existingNote.uuid,
+      deleted_at: floorToThousand(deletedAt),
+    });
     assert.notDeepEqual(n.noteState.selectedNote, existingNote);
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
     assert.isUndefined(n.findNote(existingNote.uuid));
@@ -80,15 +78,14 @@ describe('deleteNote', () => {
 
     expect(mockSelectEventCB).not.toHaveBeenCalled();
     expect(mockChangeEventCB).not.toHaveBeenCalled();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledWith({
-      kind: 'deleted',
-      note: {
-        uuid: otherExistingNote.uuid,
-        deleted_at: floorToThousand(deletedAt),
-      },
-    });
 
+    const unsyncedDeletedNote = normaliseDeletedAt(s.syncState.unsyncedNotes.deleted[0]!);
+
+    assert.strictEqual(s.syncState.unsyncedNotes.size, 1);
+    assert.deepEqual(unsyncedDeletedNote, {
+      uuid: otherExistingNote.uuid,
+      deleted_at: floorToThousand(deletedAt),
+    });
     assert.notDeepEqual(n.noteState.selectedNote, otherExistingNote);
     assert.notDeepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
     assert.isUndefined(n.findNote(otherExistingNote.uuid));
@@ -115,15 +112,14 @@ describe('deleteNote', () => {
 
     expect(mockSelectEventCB).toHaveBeenCalledOnce();
     expect(mockChangeEventCB).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledWith({
-      kind: 'deleted',
-      note: {
-        uuid: existingNote.uuid,
-        deleted_at: floorToThousand(deletedAt),
-      },
-    });
 
+    const unsyncedDeletedNote = normaliseDeletedAt(s.syncState.unsyncedNotes.deleted[0]!);
+
+    assert.strictEqual(s.syncState.unsyncedNotes.size, 1);
+    assert.deepEqual(unsyncedDeletedNote, {
+      uuid: existingNote.uuid,
+      deleted_at: floorToThousand(deletedAt),
+    });
     assert.lengthOf(n.noteState.notes, 1);
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
     assert.isUndefined(n.findNote(existingNote.uuid));
@@ -214,17 +210,16 @@ describe('deleteSelectedNotes', () => {
 
     expect(mockSelectEventCB).toHaveBeenCalledOnce();
     expect(mockChangeEventCB).toHaveBeenCalledOnce();
-    expect(mockUnsyncedEventCB).toHaveBeenCalledTimes(allNotesToDelete.length);
 
     for (let i = 0; i < allNotesToDelete.length; i += 1) {
       const note = allNotesToDelete[i]!;
+      const unsyncedDeletedNote = normaliseDeletedAt(
+        s.syncState.unsyncedNotes.deleted[i]!
+      );
 
-      expect(mockUnsyncedEventCB).nthCalledWith(i + 1, {
-        kind: 'deleted',
-        note: {
-          uuid: note.uuid,
-          deleted_at: floorToThousand(deletedAt),
-        },
+      assert.deepEqual(unsyncedDeletedNote, {
+        uuid: note.uuid,
+        deleted_at: floorToThousand(deletedAt),
       });
     }
 
@@ -264,3 +259,15 @@ describe('deleteSelectedNotes', () => {
     });
   });
 });
+
+//// Utils
+
+/**
+ * Ensures `deleted_at` is floored to the nearest thousand for consistent assertions.
+ */
+function normaliseDeletedAt(nt: a.DeletedNote) {
+  return {
+    ...nt,
+    deleted_at: floorToThousand(nt.deleted_at),
+  };
+}

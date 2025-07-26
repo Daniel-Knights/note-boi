@@ -1,7 +1,7 @@
 import { debounceSync } from '../../../api';
 import { tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
-import { changeNoteEvent, getUnsyncedEvent, selectNoteEvent } from '../event';
+import { changeNoteEvent, selectNoteEvent } from '../event';
 import { noteState } from '../state';
 import { findNoteIndex } from '../utils';
 
@@ -23,12 +23,9 @@ export function deleteNote(uuid: string): void {
   if (syncState.unsyncedNotes.new === uuid) {
     syncState.unsyncedNotes.set({ new: '' });
   } else {
-    document.dispatchEvent(
-      getUnsyncedEvent({
-        kind: 'deleted',
-        note: { uuid, deleted_at: Date.now() },
-      })
-    );
+    syncState.unsyncedNotes.set({
+      deleted: [{ uuid, deleted_at: Date.now() }],
+    });
 
     tauriInvoke('delete_note', { uuid }).then(() => debounceSync());
   }

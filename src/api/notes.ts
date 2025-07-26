@@ -9,15 +9,7 @@ import {
   KeyStore,
   Note,
 } from '../classes';
-import { NOTE_EVENTS } from '../constant';
-import {
-  changeNoteEvent,
-  findNote,
-  newNote,
-  noteState,
-  selectNote,
-  UnsyncedEventDetail,
-} from '../store/note';
+import { changeNoteEvent, findNote, newNote, noteState, selectNote } from '../store/note';
 import { resetAppError, syncState } from '../store/sync';
 import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
 
@@ -202,16 +194,6 @@ export function debounceSync(isInitial = false): void {
     isInitial ? undefined : 500
   );
 }
-
-// Keep track of notes with unsynced changes
-document.addEventListener(
-  NOTE_EVENTS.unsynced,
-  (ev: CustomEventInit<UnsyncedEventDetail>) => {
-    if (!ev.detail) return;
-
-    syncState.unsyncedNotes.set({ [ev.detail.kind]: [ev.detail.note] });
-  }
-);
 
 //// Types
 
