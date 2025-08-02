@@ -98,7 +98,7 @@ describe('Update', () => {
       assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
     });
 
-    it("Catches error and doesn't retry", async () => {
+    it("Catches errors and doesn't retry", async () => {
       const { calls, setErrorValue, setResValues } = mockApi();
       const mockUpdate = (await check())!;
 
@@ -119,7 +119,7 @@ describe('Update', () => {
       });
     });
 
-    it('Catches error and retries', async () => {
+    it('Catches errors and retries', async () => {
       const { calls, setErrorValue, setResValues } = mockApi();
       const mockUpdate = (await check())!;
 

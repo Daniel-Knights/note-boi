@@ -1,18 +1,18 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getAllNotes > Catches error > KeyStore.getKey() 1`] = `undefined`;
+exports[`getAllNotes > Catches errors > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`getAllNotes > Catches error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`getAllNotes > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`getAllNotes > Catches error > Storage.get('THEME') 1`] = `null`;
+exports[`getAllNotes > Catches errors > Storage.get('THEME') 1`] = `null`;
 
-exports[`getAllNotes > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`getAllNotes > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`getAllNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`getAllNotes > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`getAllNotes > Catches error > Storage.get('USERNAME') 1`] = `null`;
+exports[`getAllNotes > Catches errors > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`getAllNotes > Catches error > allCalls 1`] = `
+exports[`getAllNotes > Catches errors > allCalls 1`] = `
 [
   [
     "tauriApi",
@@ -48,9 +48,9 @@ exports[`getAllNotes > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`getAllNotes > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`getAllNotes > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`getAllNotes > Catches error > mockDb 1`] = `
+exports[`getAllNotes > Catches errors > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -60,7 +60,7 @@ exports[`getAllNotes > Catches error > mockDb 1`] = `
 }
 `;
 
-exports[`getAllNotes > Catches error > noteState 1`] = `
+exports[`getAllNotes > Catches errors > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -91,11 +91,11 @@ exports[`getAllNotes > Catches error > noteState 1`] = `
 }
 `;
 
-exports[`getAllNotes > Catches error > openedPopup 1`] = `undefined`;
+exports[`getAllNotes > Catches errors > openedPopup 1`] = `undefined`;
 
-exports[`getAllNotes > Catches error > selectedTheme 1`] = `"System"`;
+exports[`getAllNotes > Catches errors > selectedTheme 1`] = `"System"`;
 
-exports[`getAllNotes > Catches error > syncState 1`] = `
+exports[`getAllNotes > Catches errors > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -119,7 +119,7 @@ exports[`getAllNotes > Catches error > syncState 1`] = `
 }
 `;
 
-exports[`getAllNotes > Catches error > updateState 1`] = `
+exports[`getAllNotes > Catches errors > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

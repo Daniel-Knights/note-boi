@@ -588,19 +588,19 @@ exports[`Update > setUpdateStrategy > updateState 1`] = `
 }
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > KeyStore.getKey() 1`] = `undefined`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('THEME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('THEME') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > allCalls 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > allCalls 1`] = `
 [
   [
     "tauriApi",
@@ -623,9 +623,9 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > allCalls
 ]
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > mockDb 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -635,7 +635,7 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > mockDb 1
 }
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > noteState 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -654,11 +654,11 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > noteStat
 }
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > openedPopup 1`] = `undefined`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > openedPopup 1`] = `undefined`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > selectedTheme 1`] = `"System"`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > selectedTheme 1`] = `"System"`;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > syncState 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -682,7 +682,7 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > syncStat
 }
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and doesn't retry > updateState 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -690,19 +690,19 @@ exports[`Update > updateAndRelaunch > Catches error and doesn't retry > updateSt
 }
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > KeyStore.getKey() 1`] = `undefined`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('THEME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('THEME') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > allCalls 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and retries > allCalls 1`] = `
 [
   [
     "tauriApi",
@@ -736,9 +736,9 @@ exports[`Update > updateAndRelaunch > Catches error and retries > allCalls 1`] =
 ]
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > mockDb 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and retries > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -748,7 +748,7 @@ exports[`Update > updateAndRelaunch > Catches error and retries > mockDb 1`] = `
 }
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > noteState 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and retries > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -767,11 +767,11 @@ exports[`Update > updateAndRelaunch > Catches error and retries > noteState 1`] 
 }
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > openedPopup 1`] = `undefined`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > openedPopup 1`] = `undefined`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > selectedTheme 1`] = `"System"`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > selectedTheme 1`] = `"System"`;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > syncState 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and retries > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -795,7 +795,7 @@ exports[`Update > updateAndRelaunch > Catches error and retries > syncState 1`] 
 }
 `;
 
-exports[`Update > updateAndRelaunch > Catches error and retries > updateState 1`] = `
+exports[`Update > updateAndRelaunch > Catches errors and retries > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

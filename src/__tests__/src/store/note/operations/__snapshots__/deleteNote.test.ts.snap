@@ -333,19 +333,19 @@ exports[`deleteNote > Calls debounceSync > updateState 1`] = `
 }
 `;
 
-exports[`deleteNote > Catches error > KeyStore.getKey() 1`] = `undefined`;
+exports[`deleteNote > Catches errors > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Catches error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNote > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Catches error > Storage.get('THEME') 1`] = `null`;
+exports[`deleteNote > Catches errors > Storage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNote > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNote > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Catches error > Storage.get('USERNAME') 1`] = `null`;
+exports[`deleteNote > Catches errors > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`deleteNote > Catches error > allCalls 1`] = `
+exports[`deleteNote > Catches errors > allCalls 1`] = `
 [
   [
     "invoke",
@@ -369,9 +369,9 @@ exports[`deleteNote > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`deleteNote > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`deleteNote > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`deleteNote > Catches error > mockDb 1`] = `
+exports[`deleteNote > Catches errors > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -381,7 +381,7 @@ exports[`deleteNote > Catches error > mockDb 1`] = `
 }
 `;
 
-exports[`deleteNote > Catches error > noteState 1`] = `
+exports[`deleteNote > Catches errors > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -628,11 +628,11 @@ Sugar
 }
 `;
 
-exports[`deleteNote > Catches error > openedPopup 1`] = `undefined`;
+exports[`deleteNote > Catches errors > openedPopup 1`] = `undefined`;
 
-exports[`deleteNote > Catches error > selectedTheme 1`] = `"System"`;
+exports[`deleteNote > Catches errors > selectedTheme 1`] = `"System"`;
 
-exports[`deleteNote > Catches error > syncState 1`] = `
+exports[`deleteNote > Catches errors > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -661,7 +661,7 @@ exports[`deleteNote > Catches error > syncState 1`] = `
 }
 `;
 
-exports[`deleteNote > Catches error > updateState 1`] = `
+exports[`deleteNote > Catches errors > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1746,19 +1746,19 @@ exports[`deleteNote > Without selecting next note > updateState 1`] = `
 }
 `;
 
-exports[`deleteSelectedNotes > Catches error > KeyStore.getKey() 1`] = `undefined`;
+exports[`deleteSelectedNotes > Catches errors > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteSelectedNotes > Catches error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteSelectedNotes > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Catches error > Storage.get('THEME') 1`] = `null`;
+exports[`deleteSelectedNotes > Catches errors > Storage.get('THEME') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteSelectedNotes > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteSelectedNotes > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Catches error > Storage.get('USERNAME') 1`] = `null`;
+exports[`deleteSelectedNotes > Catches errors > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Catches error > allCalls 1`] = `
+exports[`deleteSelectedNotes > Catches errors > allCalls 1`] = `
 [
   [
     "invoke",
@@ -1782,9 +1782,9 @@ exports[`deleteSelectedNotes > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`deleteSelectedNotes > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`deleteSelectedNotes > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`deleteSelectedNotes > Catches error > mockDb 1`] = `
+exports[`deleteSelectedNotes > Catches errors > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -1794,7 +1794,7 @@ exports[`deleteSelectedNotes > Catches error > mockDb 1`] = `
 }
 `;
 
-exports[`deleteSelectedNotes > Catches error > noteState 1`] = `
+exports[`deleteSelectedNotes > Catches errors > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -1953,11 +1953,11 @@ exports[`deleteSelectedNotes > Catches error > noteState 1`] = `
 }
 `;
 
-exports[`deleteSelectedNotes > Catches error > openedPopup 1`] = `undefined`;
+exports[`deleteSelectedNotes > Catches errors > openedPopup 1`] = `undefined`;
 
-exports[`deleteSelectedNotes > Catches error > selectedTheme 1`] = `"System"`;
+exports[`deleteSelectedNotes > Catches errors > selectedTheme 1`] = `"System"`;
 
-exports[`deleteSelectedNotes > Catches error > syncState 1`] = `
+exports[`deleteSelectedNotes > Catches errors > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1986,7 +1986,7 @@ exports[`deleteSelectedNotes > Catches error > syncState 1`] = `
 }
 `;
 
-exports[`deleteSelectedNotes > Catches error > updateState 1`] = `
+exports[`deleteSelectedNotes > Catches errors > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

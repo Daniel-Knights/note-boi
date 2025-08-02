@@ -159,7 +159,7 @@ describe('deleteNote', () => {
     assert.isTrue(calls.invoke.has('delete_note'));
   });
 
-  it('Catches error', async () => {
+  it('Catches errors', async () => {
     const { calls, setErrorValue } = mockApi();
     const consoleErrorSpy = vi.spyOn(console, 'error');
 
@@ -230,7 +230,7 @@ describe('deleteSelectedNotes', () => {
     assert.isTrue(calls.invoke.has('delete_note', allNotesToDelete.length));
   });
 
-  it('Catches error', async () => {
+  it('Catches errors', async () => {
     const { calls, setErrorValue } = mockApi();
     const consoleErrorSpy = vi.spyOn(console, 'error');
 

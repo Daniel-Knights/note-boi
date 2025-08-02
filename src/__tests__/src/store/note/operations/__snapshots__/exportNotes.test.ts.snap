@@ -551,19 +551,19 @@ exports[`exportNotes > All notes > updateState 1`] = `
 }
 `;
 
-exports[`exportNotes > Catches error > KeyStore.getKey() 1`] = `undefined`;
+exports[`exportNotes > Catches errors > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`exportNotes > Catches error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`exportNotes > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`exportNotes > Catches error > Storage.get('THEME') 1`] = `null`;
+exports[`exportNotes > Catches errors > Storage.get('THEME') 1`] = `null`;
 
-exports[`exportNotes > Catches error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`exportNotes > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`exportNotes > Catches error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`exportNotes > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`exportNotes > Catches error > Storage.get('USERNAME') 1`] = `null`;
+exports[`exportNotes > Catches errors > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`exportNotes > Catches error > allCalls 1`] = `
+exports[`exportNotes > Catches errors > allCalls 1`] = `
 [
   [
     "invoke",
@@ -599,9 +599,9 @@ exports[`exportNotes > Catches error > allCalls 1`] = `
 ]
 `;
 
-exports[`exportNotes > Catches error > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`exportNotes > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`exportNotes > Catches error > mockDb 1`] = `
+exports[`exportNotes > Catches errors > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -611,7 +611,7 @@ exports[`exportNotes > Catches error > mockDb 1`] = `
 }
 `;
 
-exports[`exportNotes > Catches error > noteState 1`] = `
+exports[`exportNotes > Catches errors > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -873,11 +873,11 @@ Sugar
 }
 `;
 
-exports[`exportNotes > Catches error > openedPopup 1`] = `undefined`;
+exports[`exportNotes > Catches errors > openedPopup 1`] = `undefined`;
 
-exports[`exportNotes > Catches error > selectedTheme 1`] = `"System"`;
+exports[`exportNotes > Catches errors > selectedTheme 1`] = `"System"`;
 
-exports[`exportNotes > Catches error > syncState 1`] = `
+exports[`exportNotes > Catches errors > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -901,7 +901,7 @@ exports[`exportNotes > Catches error > syncState 1`] = `
 }
 `;
 
-exports[`exportNotes > Catches error > updateState 1`] = `
+exports[`exportNotes > Catches errors > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

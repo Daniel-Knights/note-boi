@@ -46,7 +46,7 @@ describe('editNote', () => {
     assert.isTrue(calls.invoke.has('edit_note'));
   });
 
-  it('Catches error', async () => {
+  it('Catches errors', async () => {
     const { calls, setErrorValue } = mockApi();
     const consoleErrorSpy = vi.spyOn(console, 'error');
 
