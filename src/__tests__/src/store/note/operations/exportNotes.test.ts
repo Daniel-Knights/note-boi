@@ -51,7 +51,7 @@ describe('exportNotes', () => {
     assert.isTrue(calls.invoke.has('export_notes'));
   });
 
-  it('Catches error', async () => {
+  it('Catches errors', async () => {
     const { calls, setErrorValue } = mockApi();
     const consoleErrorSpy = vi.spyOn(console, 'error');
 

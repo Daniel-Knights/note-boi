@@ -65,7 +65,7 @@ describe('newNote', () => {
     assert.strictEqual(calls.size, 0);
   });
 
-  it('Catches error', async () => {
+  it('Catches errors', async () => {
     const { calls, setErrorValue } = mockApi();
     const consoleErrorSpy = vi.spyOn(console, 'error');
 
