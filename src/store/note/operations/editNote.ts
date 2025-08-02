@@ -1,7 +1,7 @@
 import type Delta from 'quill-delta';
 
 import { debounceSync } from '../../../api';
-import { tauriInvoke } from '../../../utils';
+import { isEmptyNote, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { noteState } from '../state';
 import { findNote, sortStateNotes } from '../utils';
@@ -26,9 +26,16 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
 
   sortStateNotes();
 
-  syncState.unsyncedNotes.set({
-    edited: [foundNote.uuid],
-  });
+  if (isEmptyNote(foundNote)) {
+    // Ensure note isn't overwritten on sync after deleting all content
+    syncState.unsyncedNotes.set({
+      new: foundNote.uuid,
+    });
+  } else {
+    syncState.unsyncedNotes.set({
+      edited: [foundNote.uuid],
+    });
+  }
 
   tauriInvoke('edit_note', { note: { ...foundNote } }).then(() => debounceSync());
 }
