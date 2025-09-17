@@ -11,10 +11,27 @@ import { resetMockDb, resetNoteStore, resetSyncStore, resetUpdateStore } from '.
 const assertFailSpy = vi.spyOn(assert, 'fail');
 
 beforeAll(async () => {
-  // jsdom doesn't come with IndexedDB implementations
+  // jsdom doesn't come with `ResizeObserver` or IndexedDB implementations
+  // https://github.com/jsdom/jsdom/issues/3368 - Implement `ResizeObserver`
+  // https://github.com/jsdom/jsdom/issues/1748 - Implement IndexedDB
+  const MockResizeObserver = vi.fn(() => ({
+    observe() {
+      // noop
+    },
+    disconnect() {
+      // noop
+    },
+  }));
+
+  Object.defineProperty(window, 'ResizeObserver', {
+    value: MockResizeObserver,
+  });
   Object.defineProperty(window, 'indexedDB', {
     value: indexedDB,
   });
+
+  // JSDom has no `scrollIntoView` implementation: https://github.com/jsdom/jsdom/issues/1695
+  Element.prototype.scrollIntoView = vi.fn();
 
   await KeyStore.reset();
 

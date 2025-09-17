@@ -1,0 +1,344 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FindInPage > Closes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`FindInPage > Closes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`FindInPage > Closes > Storage.get('THEME') 1`] = `null`;
+
+exports[`FindInPage > Closes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`FindInPage > Closes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`FindInPage > Closes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`FindInPage > Closes > allCalls 1`] = `[]`;
+
+exports[`FindInPage > Closes > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
+
+exports[`FindInPage > Closes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`FindInPage > Closes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`FindInPage > Closes > openedPopup 1`] = `undefined`;
+
+exports[`FindInPage > Closes > selectedTheme 1`] = `"System"`;
+
+exports[`FindInPage > Closes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`FindInPage > Closes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`FindInPage > Highlights searched text > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`FindInPage > Highlights searched text > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`FindInPage > Highlights searched text > Storage.get('THEME') 1`] = `null`;
+
+exports[`FindInPage > Highlights searched text > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`FindInPage > Highlights searched text > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
+
+exports[`FindInPage > Highlights searched text > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`FindInPage > Highlights searched text > allCalls 1`] = `[]`;
+
+exports[`FindInPage > Highlights searched text > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
+
+exports[`FindInPage > Highlights searched text > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`FindInPage > Highlights searched text > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`FindInPage > Highlights searched text > openedPopup 1`] = `undefined`;
+
+exports[`FindInPage > Highlights searched text > selectedTheme 1`] = `"System"`;
+
+exports[`FindInPage > Highlights searched text > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`FindInPage > Highlights searched text > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`FindInPage > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`FindInPage > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`FindInPage > Mounts > Storage.get('THEME') 1`] = `null`;
+
+exports[`FindInPage > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`FindInPage > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`FindInPage > Mounts > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`FindInPage > Mounts > allCalls 1`] = `[]`;
+
+exports[`FindInPage > Mounts > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
+
+exports[`FindInPage > Mounts > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`FindInPage > Mounts > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`FindInPage > Mounts > openedPopup 1`] = `undefined`;
+
+exports[`FindInPage > Mounts > selectedTheme 1`] = `"System"`;
+
+exports[`FindInPage > Mounts > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`FindInPage > Mounts > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > KeyStore.getKey() 1`] =
+  `undefined`;
+
+exports[
+  `FindInPage > Navigates highlights with up/down buttons > Storage.get('MENU_WIDTH') 1`
+] = `null`;
+
+exports[
+  `FindInPage > Navigates highlights with up/down buttons > Storage.get('THEME') 1`
+] = `null`;
+
+exports[
+  `FindInPage > Navigates highlights with up/down buttons > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
+
+exports[
+  `FindInPage > Navigates highlights with up/down buttons > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
+
+exports[
+  `FindInPage > Navigates highlights with up/down buttons > Storage.get('USERNAME') 1`
+] = `null`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > allCalls 1`] = `[]`;
+
+exports[
+  `FindInPage > Navigates highlights with up/down buttons > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > openedPopup 1`] =
+  `undefined`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > selectedTheme 1`] =
+  `"System"`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

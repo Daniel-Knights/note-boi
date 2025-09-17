@@ -8,7 +8,8 @@ exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('THEME') 1`] = `nu
 
 exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('USERNAME') 1`] = `null`;
 
@@ -29,7 +30,8 @@ exports[`Utils > Tauri API wrappers > tauriEmit > allCalls 1`] = `
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > Tauri API wrappers > tauriEmit > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Utils > Tauri API wrappers > tauriEmit > mockDb 1`] = `
 {
@@ -96,19 +98,33 @@ exports[`Utils > Tauri API wrappers > tauriEmit > updateState 1`] = `
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > KeyStore.getKey() 1`] = `undefined`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > KeyStore.getKey() 1`
+] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('THEME') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('USERNAME') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > allCalls 1`] = `
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > allCalls 1`
+] = `
 [
   [
     "invoke",
@@ -129,9 +145,13 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > mockDb 1`] = `
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > mockDb 1`
+] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -141,7 +161,9 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > noteState 1`] = `
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > noteState 1`
+] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -160,11 +182,17 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > openedPopup 1`] = `undefined`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > openedPopup 1`
+] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > selectedTheme 1`] = `"System"`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > selectedTheme 1`
+] = `"System"`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > syncState 1`] = `
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > syncState 1`
+] = `
 {
   "appError": AppError {
     "code": 0,
@@ -188,7 +216,9 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > updateState 1`] = `
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > updateState 1`
+] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -196,17 +226,29 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > KeyStore.getKey() 1`] = `undefined`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Catches errors > KeyStore.getKey() 1`
+] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('MENU_WIDTH') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('THEME') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('THEME') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('UPDATE_SEEN') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('UPDATE_STRATEGY') 1`
+] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('USERNAME') 1`] = `null`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('USERNAME') 1`
+] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > allCalls 1`] = `
 [
@@ -225,7 +267,9 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > allCalls 1`
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[
+  `Utils > Tauri API wrappers > tauriInvoke > Catches errors > document.body.outerHTML 1`
+] = `"<body class="theme--system"></body>"`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > mockDb 1`] = `
 {
@@ -256,9 +300,11 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > noteState 1
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > openedPopup 1`] = `undefined`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > openedPopup 1`] =
+  `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > selectedTheme 1`] = `"System"`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > selectedTheme 1`] =
+  `"System"`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > syncState 1`] = `
 {
@@ -294,13 +340,16 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > updateState
 
 exports[`Utils > Tauri API wrappers > tauriListen > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('MENU_WIDTH') 1`] =
+  `null`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_SEEN') 1`] =
+  `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('USERNAME') 1`] = `null`;
 
@@ -315,7 +364,8 @@ exports[`Utils > Tauri API wrappers > tauriListen > allCalls 1`] = `
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriListen > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > Tauri API wrappers > tauriListen > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > mockDb 1`] = `
 {
@@ -396,7 +446,8 @@ exports[`Utils > capitalise > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > capitalise > allCalls 1`] = `[]`;
 
-exports[`Utils > capitalise > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > capitalise > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Utils > capitalise > mockDb 1`] = `
 {
@@ -463,6 +514,88 @@ exports[`Utils > capitalise > updateState 1`] = `
 }
 `;
 
+exports[`Utils > escapeRegex > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > escapeRegex > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > escapeRegex > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > escapeRegex > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > escapeRegex > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > escapeRegex > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Utils > escapeRegex > allCalls 1`] = `[]`;
+
+exports[`Utils > escapeRegex > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
+
+exports[`Utils > escapeRegex > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Utils > escapeRegex > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Utils > escapeRegex > openedPopup 1`] = `undefined`;
+
+exports[`Utils > escapeRegex > selectedTheme 1`] = `"System"`;
+
+exports[`Utils > escapeRegex > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Utils > escapeRegex > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Utils > hasKeys > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Utils > hasKeys > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -477,7 +610,8 @@ exports[`Utils > hasKeys > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > hasKeys > allCalls 1`] = `[]`;
 
-exports[`Utils > hasKeys > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > hasKeys > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Utils > hasKeys > mockDb 1`] = `
 {
@@ -558,7 +692,8 @@ exports[`Utils > isDev > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isDev > allCalls 1`] = `[]`;
 
-exports[`Utils > isDev > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > isDev > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Utils > isDev > mockDb 1`] = `
 {
@@ -639,7 +774,8 @@ exports[`Utils > isEmptyNote > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isEmptyNote > allCalls 1`] = `[]`;
 
-exports[`Utils > isEmptyNote > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > isEmptyNote > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Utils > isEmptyNote > mockDb 1`] = `
 {
@@ -720,7 +856,8 @@ exports[`Utils > isWhitespaceOnly > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isWhitespaceOnly > allCalls 1`] = `[]`;
 
-exports[`Utils > isWhitespaceOnly > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > isWhitespaceOnly > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Utils > isWhitespaceOnly > mockDb 1`] = `
 {
@@ -801,7 +938,8 @@ exports[`Utils > unixToDateTime > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > unixToDateTime > allCalls 1`] = `[]`;
 
-exports[`Utils > unixToDateTime > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > unixToDateTime > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Utils > unixToDateTime > mockDb 1`] = `
 {
