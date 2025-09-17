@@ -3,67 +3,99 @@
     <small class="editor__date" data-test-id="timestamp">{{
       unixToDateTime(noteState.selectedNote.timestamp || 0)
     }}</small>
-    <div class="editor__body" ref="editor-body" data-test-id="body"></div>
+    <!-- Toolbar has to be defined manually like this, so scrolling works correctly -->
+    <div class="editor__toolbar">
+      <select class="ql-header">
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option selected></option>
+      </select>
+      <div class="ql-formats">
+        <button class="ql-bold"></button>
+        <button class="ql-italic"></button>
+        <button class="ql-underline"></button>
+        <button class="ql-strike"></button>
+      </div>
+      <div class="ql-formats">
+        <button class="ql-list" value="ordered"></button>
+        <button class="ql-list" value="bullet"></button>
+        <button class="ql-code"></button>
+      </div>
+      <div class="ql-formats">
+        <button class="ql-indent" value="-1"></button>
+        <button class="ql-indent" value="+1"></button>
+      </div>
+      <button class="ql-clean"></button>
+    </div>
+    <div class="editor__scroll-container">
+      <div class="editor__body" ref="editor-body" data-test-id="body"></div>
+    </div>
+    <FindInPage
+      v-if="quillEditor && editorBody && openFindInPage"
+      :text="quillEditor.getText()"
+      :root-el="editorBody!"
+      :get-bounds-at-index="(i, len) => quillEditor!.getBounds(i, len)"
+      @close="openFindInPage = false"
+    />
   </section>
 </template>
 
 <script lang="ts" setup>
 import Quill from 'quill';
-import { onBeforeUnmount, onMounted, useTemplateRef } from 'vue';
+import { onMounted, ref, useTemplateRef } from 'vue';
 
 import { NOTE_EVENTS } from '../constant';
 import { editNote, noteState } from '../store/note';
 import { unixToDateTime } from '../utils';
 
+import FindInPage from './FindInPage.vue';
+
 const editorBody = useTemplateRef('editor-body');
 
-let quillEditor: Quill | undefined;
+const openFindInPage = ref(false);
+const quillEditor = ref<Quill | undefined>();
+
 let ignoreTextChange = false;
 
 function newNoteEventHandler() {
   // Timeout to wait for note to be created/selected
   setTimeout(() => {
-    quillEditor?.setSelection(0, 0);
-    quillEditor?.root.click(); // Needed for MacOS
+    quillEditor.value?.setSelection(0, 0);
+    quillEditor.value?.root.click(); // Needed for MacOS
   });
 }
 function changeNoteEventHandler() {
   ignoreTextChange = true;
 
   // @ts-expect-error - TS won't accept the Delta type here
-  quillEditor?.setContents(noteState.selectedNote.content.delta);
+  quillEditor.value?.setContents(noteState.selectedNote.content.delta);
 }
 function selectNoteEventHandler() {
   ignoreTextChange = true;
-
-  quillEditor?.blur(); // Prevent focus bug after new note
+  openFindInPage.value = false;
+  quillEditor.value?.blur(); // Prevent focus bug after new note
 }
 
 onMounted(() => {
-  quillEditor = new Quill(editorBody.value!, {
+  quillEditor.value = new Quill(editorBody.value!, {
     modules: {
-      toolbar: [
-        [{ header: [1, 2, 3, false] }],
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ list: 'ordered' }, { list: 'bullet' }, 'code'],
-        [{ indent: '-1' }, { indent: '+1' }],
-        ['clean'],
-      ],
+      toolbar: '.editor__toolbar',
     },
     placeholder: 'New note...',
     theme: 'snow',
   });
 
-  quillEditor.on('text-change', (delta, oldDelta) => {
+  quillEditor.value.on('text-change', (delta, oldDelta) => {
     if (ignoreTextChange) {
       ignoreTextChange = false;
 
       return;
     }
 
-    if (!quillEditor) return;
+    if (!quillEditor.value) return;
 
-    const [title, body] = quillEditor.getText().split(/\n+/);
+    const [title, body] = quillEditor.value.getText().split(/\n+/);
 
     editNote(oldDelta.compose(delta), title!, body);
   });
@@ -74,10 +106,13 @@ document.addEventListener(NOTE_EVENTS.new, newNoteEventHandler);
 document.addEventListener(NOTE_EVENTS.change, changeNoteEventHandler);
 document.addEventListener(NOTE_EVENTS.select, selectNoteEventHandler);
 
-onBeforeUnmount(() => {
-  document.removeEventListener(NOTE_EVENTS.new, newNoteEventHandler);
-  document.removeEventListener(NOTE_EVENTS.change, changeNoteEventHandler);
-  document.removeEventListener(NOTE_EVENTS.select, selectNoteEventHandler);
+// Open/close find in page
+window.addEventListener('keydown', (ev) => {
+  if (ev.key === 'f' && (ev.metaKey || ev.ctrlKey)) {
+    openFindInPage.value = true;
+  } else if (ev.key === 'Escape') {
+    openFindInPage.value = false;
+  }
 });
 </script>
 
@@ -93,14 +128,9 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
 
 #editor {
   flex-grow: 1;
+  position: relative;
   height: 100%;
   overflow: hidden;
-
-  .editor__body {
-    position: relative;
-    height: calc(100% - #{v.$editor-date-height + $toolbar-height});
-    overflow: hidden;
-  }
 
   .editor__date {
     user-select: none;
@@ -114,17 +144,32 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
     border-bottom: 1px solid var(--colour__tertiary);
   }
 
-  .ql-editor {
-    display: inline-block; // Fixes Safari Webview bug where caret duplicates on new line with text-indent set
-    margin: 12px $spacing-x 0;
-    padding: 0 $padding-right 12px $text-indent;
-    width: calc(100% - #{$spacing-x * 2});
-    text-indent: -$text-indent;
-    overflow: scroll;
+  .editor__scroll-container {
+    position: relative;
+    height: calc(100% - v.$editor-date-height - $toolbar-height);
+    overflow: auto;
 
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  .ql-editor {
+    display: inline-block; // Fixes Safari Webview bug where caret duplicates on new line with text-indent set
+    position: relative;
+    margin: 12px $spacing-x 0;
+    padding: 0 $padding-right v.$find-in-page-height $text-indent;
+    height: fit-content;
+    width: calc(100% - #{$spacing-x * 2});
+    text-indent: -$text-indent;
+
+    // TBR: The default Quill values for these cause the highlight boxes for the
+    // first letter on a wrapped line to be huge, because `getBounds` returns
+    // the top right position as being the point at which the line wraps.
+    white-space: unset;
+    line-break: unset;
+
+    z-index: 5;
 
     .ql-code-block-container {
       padding: 5px 20px;
@@ -157,7 +202,9 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
     padding-right: $padding-right;
 
     // Heading dropdown
-    .ql-picker {
+    .ql-header {
+      margin-right: 16px;
+
       * {
         border: none;
       }
