@@ -9,3 +9,10 @@ export type DropMenuItemData = {
   danger?: boolean;
   subMenu?: DropMenuItemData[];
 };
+
+export type Bounds = {
+  top: number;
+  left: number;
+  height: number;
+  width: number;
+};
