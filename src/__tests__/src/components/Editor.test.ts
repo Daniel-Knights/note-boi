@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
 import { unixToDateTime } from '../../../utils';
@@ -6,6 +7,7 @@ import { mockApi } from '../../mock';
 import { getByTestId, getDummyNotes } from '../../utils';
 
 import Editor from '../../../components/Editor.vue';
+import FindInPage from '../../../components/FindInPage.vue';
 
 describe('Editor', () => {
   it('Mounts', async () => {
@@ -42,5 +44,25 @@ describe('Editor', () => {
     n.selectNote(getDummyNotes()[1]!.uuid);
 
     assert.include(editorBody.text(), getDummyNotes()[1]!.content.body);
+  });
+
+  it('Opens find-in-page', async () => {
+    const wrapper = mount(Editor);
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { metaKey: true, key: 'f' }));
+
+    await nextTick();
+
+    assert.isTrue(wrapper.getComponent(FindInPage).isVisible());
+  });
+
+  it('Closes find-in-page', async () => {
+    const wrapper = mount(Editor);
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+
+    await nextTick();
+
+    assert.isFalse(wrapper.findComponent(FindInPage).exists());
   });
 });

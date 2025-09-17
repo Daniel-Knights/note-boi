@@ -1,5 +1,87 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Editor > Closes find-in-page > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Closes find-in-page > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Closes find-in-page > Storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Closes find-in-page > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Closes find-in-page > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Closes find-in-page > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Editor > Closes find-in-page > allCalls 1`] = `[]`;
+
+exports[`Editor > Closes find-in-page > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
+
+exports[`Editor > Closes find-in-page > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Editor > Closes find-in-page > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Editor > Closes find-in-page > openedPopup 1`] = `undefined`;
+
+exports[`Editor > Closes find-in-page > selectedTheme 1`] = `"System"`;
+
+exports[`Editor > Closes find-in-page > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Editor > Closes find-in-page > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Editor > Has the correct timestamp > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Editor > Has the correct timestamp > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -14,7 +96,8 @@ exports[`Editor > Has the correct timestamp > Storage.get('USERNAME') 1`] = `nul
 
 exports[`Editor > Has the correct timestamp > allCalls 1`] = `[]`;
 
-exports[`Editor > Has the correct timestamp > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Editor > Has the correct timestamp > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Editor > Has the correct timestamp > mockDb 1`] = `
 {
@@ -95,7 +178,8 @@ exports[`Editor > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Mounts > allCalls 1`] = `[]`;
 
-exports[`Editor > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Editor > Mounts > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Editor > Mounts > mockDb 1`] = `
 {
@@ -162,6 +246,88 @@ exports[`Editor > Mounts > updateState 1`] = `
 }
 `;
 
+exports[`Editor > Opens find-in-page > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Opens find-in-page > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Opens find-in-page > Storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Opens find-in-page > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Opens find-in-page > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Opens find-in-page > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Editor > Opens find-in-page > allCalls 1`] = `[]`;
+
+exports[`Editor > Opens find-in-page > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
+
+exports[`Editor > Opens find-in-page > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Editor > Opens find-in-page > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Editor > Opens find-in-page > openedPopup 1`] = `undefined`;
+
+exports[`Editor > Opens find-in-page > selectedTheme 1`] = `"System"`;
+
+exports[`Editor > Opens find-in-page > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Editor > Opens find-in-page > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Editor > Sets the correct note text > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Editor > Sets the correct note text > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -170,7 +336,8 @@ exports[`Editor > Sets the correct note text > Storage.get('THEME') 1`] = `null`
 
 exports[`Editor > Sets the correct note text > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Sets the correct note text > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Editor > Sets the correct note text > Storage.get('UPDATE_STRATEGY') 1`] =
+  `null`;
 
 exports[`Editor > Sets the correct note text > Storage.get('USERNAME') 1`] = `null`;
 
@@ -186,7 +353,8 @@ exports[`Editor > Sets the correct note text > allCalls 1`] = `
 ]
 `;
 
-exports[`Editor > Sets the correct note text > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Editor > Sets the correct note text > document.body.outerHTML 1`] =
+  `"<body class="theme--system"></body>"`;
 
 exports[`Editor > Sets the correct note text > mockDb 1`] = `
 {

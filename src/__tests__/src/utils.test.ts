@@ -1,6 +1,7 @@
 import { Note } from '../../classes';
 import {
   capitalise,
+  escapeRegex,
   hasKeys,
   isDev,
   isEmptyNote,
@@ -41,6 +42,13 @@ describe('Utils', () => {
     assert.strictEqual(capitalise('text text'), 'Text text');
     assert.strictEqual(capitalise('text-text'), 'Text-text');
     assert.strictEqual(capitalise('tExT-TexT'), 'TExT-TexT');
+  });
+
+  it('escapeRegex', () => {
+    const input = 'foo-/\\^$*+?bar.()|[]{}baz';
+    const expected = 'foo\\-\\/\\\\\\^\\$\\*\\+\\?bar\\.\\(\\)\\|\\[\\]\\{\\}baz';
+
+    assert.strictEqual(escapeRegex(input), expected);
   });
 
   it('isEmptyNote', () => {
