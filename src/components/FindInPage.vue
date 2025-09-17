@@ -85,8 +85,18 @@ const searchText = defineModel<string>();
 const currentIndex = ref(-1);
 const currentMatchBounds = ref<Bounds[]>([]);
 
+let currentMatches: RegExpMatchArray[] = [];
+let resizeTimeout: number;
+
 const rootElResizeObserver = new ResizeObserver(() => {
-  handleResize();
+  // Debounce to improve performance
+  if (resizeTimeout) {
+    window.clearTimeout(resizeTimeout);
+  }
+
+  resizeTimeout = window.setTimeout(() => {
+    handleResize();
+  }, 100);
 });
 
 onMounted(() => {
@@ -140,20 +150,27 @@ function handleClose() {
 }
 
 function handleResize() {
-  findAndHighlight();
+  findAndHighlight(true);
 }
 
-function findAndHighlight() {
+/**
+ * @param useExistingMatches If neither the source text nor the search text have changed, this should be true.
+ */
+function findAndHighlight(useExistingMatches = false) {
   clearHighlights();
 
   if (!searchText.value) return;
 
-  const searchRegex = new RegExp(escapeRegex(searchText.value), 'g');
-  const allMatches = [...props.text.matchAll(searchRegex)];
-  if (allMatches.length === 0) return;
+  if (!useExistingMatches) {
+    const searchRegex = new RegExp(escapeRegex(searchText.value), 'g');
+
+    currentMatches = [...props.text.matchAll(searchRegex)];
+  }
+
+  if (currentMatches.length === 0) return;
 
   currentIndex.value = 0;
-  currentMatchBounds.value = matchesToBounds(allMatches);
+  currentMatchBounds.value = matchesToBounds(currentMatches);
 }
 
 function scrollToHighlight() {
@@ -168,13 +185,18 @@ function scrollToHighlight() {
 
 /** Converts `RegExp` matches to `Bounds`. */
 function matchesToBounds(matches: RegExpMatchArray[]) {
-  return matches
-    .map((match) => {
-      if (match.index === undefined) return;
+  const matchBounds = [];
 
-      return props.getBoundsAtIndex(match.index, match[0].length);
-    })
-    .filter(Boolean) as Bounds[];
+  for (const match of matches) {
+    if (match.index === undefined) continue;
+
+    const bounds = props.getBoundsAtIndex(match.index, match[0].length);
+    if (!bounds) continue;
+
+    matchBounds.push(bounds);
+  }
+
+  return matchBounds;
 }
 
 function clearHighlights() {
