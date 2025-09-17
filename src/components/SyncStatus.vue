@@ -80,6 +80,7 @@ tauriListen('signup', () => {
   position: absolute;
   right: v.$utility-menu-right;
   bottom: 12px;
+  z-index: 10;
 
   > * {
     @include v.equal-dimensions(v.$utility-menu-width);
