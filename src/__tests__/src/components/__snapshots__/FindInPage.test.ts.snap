@@ -14,8 +14,7 @@ exports[`FindInPage > Closes > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`FindInPage > Closes > allCalls 1`] = `[]`;
 
-exports[`FindInPage > Closes > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`FindInPage > Closes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`FindInPage > Closes > mockDb 1`] = `
 {
@@ -90,15 +89,13 @@ exports[`FindInPage > Highlights searched text > Storage.get('THEME') 1`] = `nul
 
 exports[`FindInPage > Highlights searched text > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`FindInPage > Highlights searched text > Storage.get('UPDATE_STRATEGY') 1`] =
-  `null`;
+exports[`FindInPage > Highlights searched text > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
 exports[`FindInPage > Highlights searched text > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`FindInPage > Highlights searched text > allCalls 1`] = `[]`;
 
-exports[`FindInPage > Highlights searched text > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`FindInPage > Highlights searched text > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`FindInPage > Highlights searched text > mockDb 1`] = `
 {
@@ -179,8 +176,7 @@ exports[`FindInPage > Mounts > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`FindInPage > Mounts > allCalls 1`] = `[]`;
 
-exports[`FindInPage > Mounts > document.body.outerHTML 1`] =
-  `"<body class="theme--system"></body>"`;
+exports[`FindInPage > Mounts > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`FindInPage > Mounts > mockDb 1`] = `
 {
@@ -247,34 +243,21 @@ exports[`FindInPage > Mounts > updateState 1`] = `
 }
 `;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > KeyStore.getKey() 1`] =
-  `undefined`;
+exports[`FindInPage > Navigates highlights with up/down buttons > KeyStore.getKey() 1`] = `undefined`;
 
-exports[
-  `FindInPage > Navigates highlights with up/down buttons > Storage.get('MENU_WIDTH') 1`
-] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[
-  `FindInPage > Navigates highlights with up/down buttons > Storage.get('THEME') 1`
-] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('THEME') 1`] = `null`;
 
-exports[
-  `FindInPage > Navigates highlights with up/down buttons > Storage.get('UPDATE_SEEN') 1`
-] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[
-  `FindInPage > Navigates highlights with up/down buttons > Storage.get('UPDATE_STRATEGY') 1`
-] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[
-  `FindInPage > Navigates highlights with up/down buttons > Storage.get('USERNAME') 1`
-] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('USERNAME') 1`] = `null`;
 
 exports[`FindInPage > Navigates highlights with up/down buttons > allCalls 1`] = `[]`;
 
-exports[
-  `FindInPage > Navigates highlights with up/down buttons > document.body.outerHTML 1`
-] = `"<body class="theme--system"></body>"`;
+exports[`FindInPage > Navigates highlights with up/down buttons > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
 exports[`FindInPage > Navigates highlights with up/down buttons > mockDb 1`] = `
 {
@@ -305,11 +288,9 @@ exports[`FindInPage > Navigates highlights with up/down buttons > noteState 1`] 
 }
 `;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > openedPopup 1`] =
-  `undefined`;
+exports[`FindInPage > Navigates highlights with up/down buttons > openedPopup 1`] = `undefined`;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > selectedTheme 1`] =
-  `"System"`;
+exports[`FindInPage > Navigates highlights with up/down buttons > selectedTheme 1`] = `"System"`;
 
 exports[`FindInPage > Navigates highlights with up/down buttons > syncState 1`] = `
 {
