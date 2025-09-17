@@ -1,3 +1,15 @@
+## [v4.1.0](https://github.com/Daniel-Knights/note-boi/compare/v4.0.0...v4.1.0) (17/09/2025)
+
+- perf(find-in-page): small perf improvements to search and resize handler ([8205e0b](https://github.com/Daniel-Knights/note-boi/commit/8205e0b27c9bf5e9606df693fc39019001df4538))
+- feat(editor): add find-in-page functionality ([8dc8c13](https://github.com/Daniel-Knights/note-boi/commit/8dc8c1398172c66a34dab31b25ed03db7c64f2d3))
+- fix(sync): ensure note isn't overwritten on sync after deleting all content ([d5ee27b](https://github.com/Daniel-Knights/note-boi/commit/d5ee27ba5c09e681179c0f1e78e111f9ee438874))
+- fix(context menu): disable export and delete note items when no clicked note ([fbe6bb8](https://github.com/Daniel-Knights/note-boi/commit/fbe6bb8ea101edb3fe9009ecd8c715378f2ab631))
+- fix(context menu): ensure context menu remains onscreen when opened at the bottom ([1a1b304](https://github.com/Daniel-Knights/note-boi/commit/1a1b3043c591fac419dcfb3ede66a412de5b1574))
+- fix(menu): register native menu new note as button click ([d0a61cf](https://github.com/Daniel-Knights/note-boi/commit/d0a61cf034dc5e84336ae63e73ebeec8faa8512f))
+- feat: import notes ([7dd1a6d](https://github.com/Daniel-Knights/note-boi/commit/7dd1a6d67e8d745984353f727ca798adddbc7b41))
+- feat(rust): simplify error handling with propagation ([a2e9e95](https://github.com/Daniel-Knights/note-boi/commit/a2e9e951d121e14fe50c43ab6dc78023d1a0adc3))
+- feat(note): remove backwards compat id handling ([3d44420](https://github.com/Daniel-Knights/note-boi/commit/3d44420997a9f0b5d25dd0017c0d6f174543dee9))
+
 ## [v4.0.0](https://github.com/Daniel-Knights/note-boi/compare/v3.1.0...v4.0.0) (12/07/2025)
 
 - feat(auth): stricter access checks, client side log out at any point username, token, or password key is unavailable ([af8d30b](https://github.com/Daniel-Knights/note-boi/commit/af8d30be72ba4c2f878e71822d1011554f6ae0f6))
