@@ -27,7 +27,7 @@ export class Encryptor {
 
   static #deriveKey(
     passwordKey: CryptoKey,
-    salt: Uint8Array,
+    salt: BufferSource,
     keyUsage: Array<'encrypt' | 'decrypt'>
   ): Promise<CryptoKey> {
     return crypto.subtle.deriveKey(
