@@ -28,6 +28,14 @@ export function capitalise(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+/**
+ * Returns `str` with all regex special characters escaped.
+ * Copied from https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript/3561711#3561711
+ */
+export function escapeRegex(str: string) {
+  return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+}
+
 /** Returns true if note content is empty. */
 export function isEmptyNote(note?: { content: Note['content'] }): boolean {
   if (!note) return false;
