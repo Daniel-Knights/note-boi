@@ -1,8 +1,9 @@
 import { mount } from '@vue/test-utils';
 
+import type { Bounds } from '../../../components/types';
 import { getByTestId } from '../../utils';
 
-import FindInPage, { Bounds } from '../../../components/FindInPage.vue';
+import FindInPage from '../../../components/FindInPage.vue';
 
 const linebreaks = '\n'.repeat(20);
 const rootEl = document.createElement('div');

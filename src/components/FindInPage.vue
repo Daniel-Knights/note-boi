@@ -59,16 +59,11 @@ import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from
 
 import { escapeRegex } from '../utils';
 
+import type { Bounds } from './types';
+
 import ChevronDownIcon from './svg/ChevronDownIcon.vue';
 import ChevronUpIcon from './svg/ChevronUpIcon.vue';
 import CloseIcon from './svg/CloseIcon.vue';
-
-export type Bounds = {
-  top: number;
-  left: number;
-  height: number;
-  width: number;
-};
 
 const props = defineProps<{
   text: string;
