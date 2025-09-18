@@ -32,8 +32,8 @@
       <div class="editor__body" ref="editor-body" data-test-id="body"></div>
     </div>
     <FindInPage
-      v-if="quillEditor && editorBody && openFindInPage"
-      :text="quillEditor.getText()"
+      v-if="quillEditorInitialised && editorBody && openFindInPage"
+      :text="editorText"
       :root-el="editorBody!"
       :get-bounds-at-index="(i, len) => quillEditor!.getBounds(i, len)"
       @close="openFindInPage = false"
@@ -54,31 +54,35 @@ import FindInPage from './FindInPage.vue';
 const editorBody = useTemplateRef('editor-body');
 
 const openFindInPage = ref(false);
-const quillEditor = ref<Quill | undefined>();
+const quillEditorInitialised = ref(false);
+const editorText = ref('');
 
+// NOTE: We can't use `ref` for `quillEditor`, because it breaks something
+// to do with how Quill works internally
+let quillEditor: Quill | undefined;
 let ignoreTextChange = false;
 
 function newNoteEventHandler() {
   // Timeout to wait for note to be created/selected
   setTimeout(() => {
-    quillEditor.value?.setSelection(0, 0);
-    quillEditor.value?.root.click(); // Needed for MacOS
+    quillEditor?.setSelection(0, 0);
+    quillEditor?.root.click(); // Needed for MacOS
   });
 }
 function changeNoteEventHandler() {
   ignoreTextChange = true;
 
   // @ts-expect-error - TS won't accept the Delta type here
-  quillEditor.value?.setContents(noteState.selectedNote.content.delta);
+  quillEditor?.setContents(noteState.selectedNote.content.delta);
 }
 function selectNoteEventHandler() {
   ignoreTextChange = true;
   openFindInPage.value = false;
-  quillEditor.value?.blur(); // Prevent focus bug after new note
+  quillEditor?.blur(); // Prevent focus bug after new note
 }
 
 onMounted(() => {
-  quillEditor.value = new Quill(editorBody.value!, {
+  quillEditor = new Quill(editorBody.value!, {
     modules: {
       toolbar: '.editor__toolbar',
     },
@@ -86,19 +90,21 @@ onMounted(() => {
     theme: 'snow',
   });
 
-  quillEditor.value.on('text-change', (delta, oldDelta) => {
+  quillEditor.on('text-change', (delta, oldDelta) => {
+    editorText.value = quillEditor!.getText();
+
     if (ignoreTextChange) {
       ignoreTextChange = false;
 
       return;
     }
 
-    if (!quillEditor.value) return;
-
-    const [title, body] = quillEditor.value.getText().split(/\n+/);
+    const [title, body] = editorText.value.split(/\n+/);
 
     editNote(oldDelta.compose(delta), title!, body);
   });
+
+  quillEditorInitialised.value = true;
 });
 
 // Event listeners

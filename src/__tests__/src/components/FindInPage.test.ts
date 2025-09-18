@@ -7,15 +7,16 @@ import FindInPage from '../../../components/FindInPage.vue';
 
 const linebreaks = '\n'.repeat(20);
 const rootEl = document.createElement('div');
-const dummyBounds: Bounds[] = [];
-
 const initialDummyBounds = [
   { top: 128, left: 34, width: 28, height: 18 },
   { top: 433, left: 67, width: 6, height: 18 },
   { top: 574, left: 128, width: 12, height: 18 },
   { top: 784, left: 13, width: 157, height: 40 },
   { top: 1283, left: 35, width: 12, height: 18 },
+  { top: 1445, left: 56, width: 45, height: 18 },
 ] satisfies Bounds[];
+
+let dummyBounds: Bounds[] = [];
 
 const defaultProps = {
   text: `How${linebreaks}Now${linebreaks}Brown${linebreaks}Cow${linebreaks}`.repeat(5),
@@ -25,7 +26,7 @@ const defaultProps = {
 
 beforeEach(() => {
   // Reset dummy bounds, as `getBoundsAtIndex` shifts it
-  dummyBounds.push(...initialDummyBounds);
+  dummyBounds = [...initialDummyBounds];
 });
 
 describe('FindInPage', () => {
@@ -47,21 +48,39 @@ describe('FindInPage', () => {
   it('Highlights searched text', async () => {
     const wrapper = mount(FindInPage, { props: defaultProps });
     const highlightsContainerEl = rootEl.children[0]!;
+    const inputWrapper = getByTestId(wrapper, 'input');
 
-    await getByTestId(wrapper, 'input').setValue('Now');
+    await inputWrapper.setValue('Now');
 
     assert.strictEqual(highlightsContainerEl.childElementCount, 5);
     assertActiveEl(highlightsContainerEl, 0);
 
     // Assert correct positions for each highlight el
-    initialDummyBounds.forEach((bounds, i) => {
-      const highlightEl = highlightsContainerEl.children[i]! as HTMLSpanElement;
+    initialDummyBounds.slice(0, -1).forEach((bounds, i) => {
+      const highlightEl = highlightsContainerEl.children[i] as HTMLSpanElement;
 
+      assertStyleMatchesBounds(highlightEl, bounds);
+    });
+
+    // Updating the `text` prop below triggers a re-render which needs to use the
+    // first five dummy bounds again
+    dummyBounds = [...initialDummyBounds];
+
+    // Test source text update when text is already highlighted
+    await wrapper.setProps({ text: `${defaultProps.text}Now` });
+
+    assert.strictEqual(highlightsContainerEl.childElementCount, 6);
+    assertStyleMatchesBounds(
+      highlightsContainerEl.children[5]! as HTMLSpanElement,
+      initialDummyBounds[5]!
+    );
+
+    function assertStyleMatchesBounds(highlightEl: HTMLSpanElement, bounds: Bounds) {
       assert.strictEqual(highlightEl.style.top, `${bounds.top}px`);
       assert.strictEqual(highlightEl.style.left, `${bounds.left}px`);
       assert.strictEqual(highlightEl.style.width, `${bounds.width}px`);
       assert.strictEqual(highlightEl.style.height, `${bounds.height}px`);
-    });
+    }
   });
 
   it('Navigates highlights with up/down buttons', async () => {
