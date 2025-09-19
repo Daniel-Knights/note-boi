@@ -189,7 +189,7 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
     // Placeholder
     &.ql-blank::before {
       color: var(--colour__tertiary);
-      left: $spacing-x + 5px;
+      left: $spacing-x + 3px;
     }
 
     // List numbers and bullets
