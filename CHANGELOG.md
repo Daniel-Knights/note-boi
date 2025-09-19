@@ -1,3 +1,9 @@
+## [v4.1.1](https://github.com/Daniel-Knights/note-boi/compare/v4.0.0...v4.1.1) (19/09/2025)
+
+- fix(editor): adjust placeholder position ([db72ddb](https://github.com/Daniel-Knights/note-boi/commit/db72ddbdc0f4225e1993c05db32432a7f26c9052))
+- fix(editor): toolbar z-index ([0e5c814](https://github.com/Daniel-Knights/note-boi/commit/0e5c814f217041a97e05822a28c30f441939a3c7))
+- fix(find-in-page): vue ref for quill editor breaking internal quill functionality ([e97e2ac](https://github.com/Daniel-Knights/note-boi/commit/e97e2acc67a803a3fb387b992708706fd56371eb))
+
 ## [v4.1.0](https://github.com/Daniel-Knights/note-boi/compare/v4.0.0...v4.1.0) (17/09/2025)
 
 - perf(find-in-page): small perf improvements to search and resize handler ([8205e0b](https://github.com/Daniel-Knights/note-boi/commit/8205e0b27c9bf5e9606df693fc39019001df4538))
