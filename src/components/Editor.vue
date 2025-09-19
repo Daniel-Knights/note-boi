@@ -205,7 +205,9 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
   }
 
   .ql-toolbar {
+    position: relative;
     padding-right: $padding-right;
+    z-index: 10;
 
     // Heading dropdown
     .ql-header {
