@@ -18,7 +18,7 @@ export default defineConfigWithVueTs(
   ...eslintPluginVue.configs['flat/strongly-recommended'],
   vueTsConfigs.recommended,
   {
-    ignores: ['**/node_modules/**/*', '**/dist/**/*', '**/src-tauri'],
+    ignores: ['**/node_modules/**/*', '**/dist/**/*', '**/dist-web/**/*', '**/src-tauri'],
   },
   {
     linterOptions: {
@@ -31,7 +31,13 @@ export default defineConfigWithVueTs(
       parserOptions: {
         parser: '@typescript-eslint/parser',
         projectService: {
-          allowDefaultProject: ['eslint.config.mjs', 'vite.config.ts', 'scripts/*.ts'],
+          allowDefaultProject: [
+            'eslint.config.mjs',
+            'vite.config.ts',
+            'vite.config.web.ts',
+            'scripts/*.ts',
+            'public/*.js',
+          ],
         },
       },
       globals: {
@@ -112,6 +118,7 @@ export default defineConfigWithVueTs(
             'scripts/**',
             'src/__tests__/**',
             'vite.config.ts',
+            'vite.config.web.ts',
           ],
         },
       ],
