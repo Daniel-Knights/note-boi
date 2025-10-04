@@ -19,6 +19,11 @@ export default defineConfig({
     minify: !process.env.TAURI_ENV_DEBUG ? 'esbuild' : false,
     sourcemap: !!process.env.TAURI_ENV_DEBUG,
   },
+  esbuild: {
+    define: {
+      'process.env.APP_ENV': "'desktop'",
+    },
+  },
   test: {
     environment: 'jsdom',
     globals: true,
