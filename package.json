@@ -10,8 +10,8 @@
     "vite:dev": "vite",
     "vite:build": "vite build",
     "vite:preview": "vite preview",
-    "dev": "tauri dev",
-    "build": "pnpm run checks && tauri build",
+    "dev": "pnpm run wasm:all-dev && tauri dev",
+    "build": "pnpm run checks && pnpm run wasm:all-release && tauri build",
     "build:debug": "tauri build --debug",
     "icon": "tauri icon ./artwork/icon.png",
     "info": "tauri info",
@@ -21,6 +21,11 @@
     "lint": "eslint && vue-tsc --noEmit && tsc --noEmit",
     "checks": "pnpm run lint && pnpm run test",
     "format": "prettier --write ./src",
+    "wasm:build-base": "wasm-pack build ./wasm --target web --out-dir ../src/wasm",
+    "wasm:build-dev": "pnpm run wasm:build-base --dev",
+    "wasm:build-release": "pnpm run wasm:build-base --release",
+    "wasm:all-dev": "pnpm run wasm:build-dev",
+    "wasm:all-release": "pnpm run wasm:build-release",
     "release:patch": "tsx ./scripts/release.ts patch",
     "release:minor": "tsx ./scripts/release.ts minor",
     "release:major": "tsx ./scripts/release.ts major"
@@ -77,5 +82,5 @@
       "unrs-resolver"
     ]
   },
-  "packageManager": "pnpm@10.17.1"
+  "packageManager": "pnpm@10.18.1"
 }

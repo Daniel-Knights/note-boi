@@ -18,7 +18,7 @@ export default defineConfigWithVueTs(
   ...eslintPluginVue.configs['flat/strongly-recommended'],
   vueTsConfigs.recommended,
   {
-    ignores: ['**/node_modules/**/*', '**/dist/**/*', '**/src-tauri'],
+    ignores: ['**/node_modules/**/*', '**/dist/**/*', '**/src-tauri', '**/public/wasm'],
   },
   {
     linterOptions: {
