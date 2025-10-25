@@ -1,26 +1,34 @@
 // eslint-disable-next-line import/no-relative-packages
-import init, { decrypt, derive_key as deriveKey, encrypt } from './wasm/note_boi_wasm';
+import init, { derive_key as deriveKey } from './wasm/note_boi_wasm';
+
+let wasmInitialized = false;
+
+async function ensureWasmInit() {
+  if (wasmInitialized) return;
+
+  await init();
+
+  wasmInitialized = true;
+}
 
 export class Wasm {
   static async deriveKey(
-    password: CryptoKey,
+    passwordKey: CryptoKey,
     salt: Uint8Array,
-    keyUsages: Array<'encrypt' | 'decrypt'>
+    keyUsages: KeyUsage[]
   ): Promise<CryptoKey> {
-    await init();
+    await ensureWasmInit();
 
-    return deriveKey(password, salt, keyUsages);
-  }
+    const passwordArrayBuffer = await crypto.subtle.exportKey('raw', passwordKey);
+    const passwordBytes = new Uint8Array(passwordArrayBuffer);
+    const derivedKey = deriveKey(passwordBytes, salt);
 
-  static async encrypt(iv: Uint8Array, key: CryptoKey, data: Uint8Array) {
-    await init();
-
-    return encrypt(iv, key, data);
-  }
-
-  static async decrypt(iv: Uint8Array, key: CryptoKey, data: Uint8Array) {
-    await init();
-
-    return decrypt(iv, key, data);
+    return crypto.subtle.importKey(
+      'raw',
+      new Uint8Array(derivedKey),
+      { name: 'AES-GCM' },
+      false,
+      keyUsages
+    );
   }
 }
