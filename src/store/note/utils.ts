@@ -1,11 +1,11 @@
-import { Note } from '../../classes';
+import { Note, RawNote } from '../../classes';
 import { isEmptyNote } from '../../utils';
 
 import { deleteNote } from './operations';
 import { noteState } from './state';
 
 /** Sorts notes in descending order by timestamp. */
-export const sortNotesFn = (a: Note, b: Note): number => b.timestamp - a.timestamp;
+export const sortNotesFn = (a: RawNote, b: RawNote): number => b.timestamp - a.timestamp;
 
 /** Sorts {@link noteState.notes} in descending order by timestamp. */
 export const sortStateNotes = (): Note[] => noteState.notes.sort(sortNotesFn);
@@ -24,7 +24,7 @@ export function findNote(uuid?: string): Note | undefined {
  * Returns true if note is either {@link noteState.selectedNote}
  * or within {@link noteState.extraSelectedNotes}.
  */
-export function isSelectedNote(note: Note): boolean {
+export function isSelectedNote(note: RawNote): boolean {
   return (
     note.uuid === noteState.selectedNote.uuid ||
     noteState.extraSelectedNotes.some((nt) => nt?.uuid === note.uuid)

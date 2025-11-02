@@ -1,5 +1,5 @@
 import { DeletedNote } from '../../api';
-import { EncryptedNote, Note } from '../../classes';
+import { EncryptedNote, Note, RawNote } from '../../classes';
 import { UUID_REGEX } from '../constant';
 import { Call } from '../mock';
 
@@ -65,36 +65,30 @@ export function normaliseCall(call: Call): Call {
 }
 
 /**
- * Normalises a `Note` by:
- * - Spreading object properties to avoid mutation
- * - Normalising the `uuid` using `normaliseNoteUuid`
- * - Setting the `timestamp` to `0`
+ * Normalises a `Note` ready to be output for snapshots.
  */
-export function normaliseNote(nt: Note): Note {
-  return {
+export function normaliseNote(nt: RawNote): Note {
+  return new Note({
     ...nt,
+    uuid: normaliseNoteUuid(nt.uuid),
+    timestamp: 0,
     content: {
       ...nt.content,
       delta: { ...nt.content.delta },
       title: nt.content.title,
       body: nt.content.body,
     },
-    uuid: normaliseNoteUuid(nt.uuid),
-    timestamp: 0,
-  };
+  });
 }
 
 /**
- * Normalises an `EncryptedNote` by:
- * - Spreading object properties to avoid mutation
- * - Normalising the `uuid` using `normaliseNoteUuid`
- * - Replacing encrypted content with `'content'`
+ * Normalises an `EncryptedNote` ready to be output for snapshots.
  */
 export function normaliseEncryptedNote(nt: EncryptedNote): EncryptedNote {
   return {
     ...nt,
-    content: 'content',
     uuid: normaliseNoteUuid(nt.uuid),
     timestamp: 0,
+    content: 'content',
   };
 }

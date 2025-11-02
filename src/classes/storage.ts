@@ -1,6 +1,8 @@
 import { DeletedNote } from '../api';
 import { ColourTheme, UpdateStrategy } from '../constant';
 
+import { RawNote } from './note';
+
 export const STORAGE_KEYS_STRING = {
   MENU_WIDTH: 'note-menu-width',
   THEME: 'theme',
