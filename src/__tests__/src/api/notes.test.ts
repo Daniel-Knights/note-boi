@@ -355,12 +355,13 @@ describe('Notes (sync)', () => {
         body: '-body',
       };
 
-      const newRemoteNote = new Note();
-      newRemoteNote.content = {
-        delta: { ops: [{ insert: 'New note' }, { insert: '-body' }] },
-        title: 'New note',
-        body: '-body',
-      };
+      const newRemoteNote = new Note({
+        content: {
+          delta: { ops: [{ insert: 'New note' }, { insert: '-body' }] },
+          title: 'New note',
+          body: '-body',
+        },
+      });
 
       unencryptedRemoteNotes.push(newRemoteNote);
 

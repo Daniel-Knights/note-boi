@@ -1,5 +1,5 @@
 import { DeletedNote, NoteDiff } from './api';
-import { EncryptedNote, Note } from './classes';
+import { EncryptedNote, RawNote } from './classes';
 
 export const MIN_PASSWORD_LENGTH = 6;
 
@@ -80,7 +80,7 @@ export const ENDPOINTS = [
 export type TauriCommandPayloads = {
   get_all_notes: {
     payload: never;
-    response: Note[];
+    response: RawNote[];
   };
   delete_note: {
     payload: {
@@ -90,19 +90,19 @@ export type TauriCommandPayloads = {
   };
   new_note: {
     payload: {
-      note: Note;
+      note: RawNote;
     };
     response: never;
   };
   edit_note: {
     payload: {
-      note: Note;
+      note: RawNote;
     };
     response: never;
   };
   sync_local_notes: {
     payload: {
-      notes: Note[];
+      notes: RawNote[];
     };
     response: never;
   };
@@ -110,11 +110,11 @@ export type TauriCommandPayloads = {
     payload: {
       paths: string[];
     };
-    response: Note[];
+    response: RawNote[];
   };
   export_notes: {
     payload: {
-      notes: Note[];
+      notes: RawNote[];
       saveDir: string | string[];
     };
     response: never;
@@ -140,7 +140,7 @@ export type TauriCommandPayloads = {
   };
   backup_notes: {
     payload: {
-      notes: Note[];
+      notes: RawNote[];
     };
     response: never;
   };

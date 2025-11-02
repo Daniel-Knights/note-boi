@@ -3,6 +3,7 @@ import { DragDropEvent } from '@tauri-apps/api/webview';
 import { open } from '@tauri-apps/plugin-dialog';
 
 import { debounceSync } from '../../../api';
+import { Note } from '../../../classes';
 import { tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { noteState } from '../state';
@@ -17,7 +18,10 @@ export async function importNotes(paths: string[]) {
 
   // Ensure imported notes are synced and aren't overwritten if deleted remotely
   syncState.unsyncedNotes.set({ edited: importedNotes.map((nt) => nt.uuid) });
-  noteState.addNotes(importedNotes, { selectLatest: true });
+  noteState.addNotes(
+    importedNotes.map((nt) => new Note(nt)),
+    { selectLatest: true }
+  );
   debounceSync();
 }
 

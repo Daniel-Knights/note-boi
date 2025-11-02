@@ -1,4 +1,5 @@
 import * as n from '../../../../store/note';
+import { Note } from '../../../../classes';
 import { isEmptyNote } from '../../../../utils';
 import { getDummyNotes } from '../../../utils';
 
@@ -39,10 +40,10 @@ describe('state', () => {
     it('Filters out duplicate notes by uuid', () => {
       const dummyNotes = getDummyNotes();
       const originalNote = dummyNotes[0]!;
-      const duplicateNote = {
+      const duplicateNote = new Note({
         ...originalNote,
         content: { ...originalNote.content, title: 'Modified Title' },
-      };
+      });
 
       // Add original note
       n.noteState.addNotes([originalNote]);
@@ -61,10 +62,10 @@ describe('state', () => {
       const dummyNotes = getDummyNotes();
       const existingNote = dummyNotes[0]!;
       const newNote = dummyNotes[1]!;
-      const duplicateNote = {
+      const duplicateNote = new Note({
         ...existingNote,
         content: { ...existingNote.content, title: 'Updated' },
-      };
+      });
 
       // Add existing note
       n.noteState.addNotes([existingNote]);

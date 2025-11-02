@@ -1,4 +1,4 @@
-import { Note } from '../../../classes';
+import { RawNote } from '../../../classes';
 import { TauriCommand, TauriCommandPayloads } from '../../../constant';
 import { hasKeys } from '../../../utils';
 import { getDummyNotes, isNote, resolveImmediate } from '../../utils';
@@ -16,7 +16,7 @@ export function mockTauriInvoke(
     throw mockError;
   }
 
-  let resData: Note[] | string | undefined = [];
+  let resData: RawNote[] | string | undefined = [];
 
   switch (cmd) {
     case 'get_all_notes': {

@@ -14,7 +14,7 @@ export function selectNote(uuid?: string): boolean {
   const foundNote = findNote(uuid);
   if (!foundNote) return false;
 
-  noteState.selectedNote = { ...foundNote };
+  noteState.selectedNote = foundNote.clone();
 
   document.dispatchEvent(selectNoteEvent);
   document.dispatchEvent(changeNoteEvent);
