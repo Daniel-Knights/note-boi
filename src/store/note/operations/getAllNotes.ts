@@ -1,3 +1,4 @@
+import { Note } from '../../../classes';
 import { isEmptyNote, tauriInvoke } from '../../../utils';
 import { changeNoteEvent } from '../event';
 import { noteState } from '../state';
@@ -11,7 +12,7 @@ export async function getAllNotes(): Promise<void> {
   const hasNotes = fetchedNotes && fetchedNotes.length > 0;
   if (!hasNotes) return newNote();
 
-  noteState.notes = fetchedNotes;
+  noteState.notes = fetchedNotes.map((nt) => new Note(nt));
 
   sortStateNotes();
 

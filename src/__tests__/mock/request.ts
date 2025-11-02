@@ -1,6 +1,6 @@
 import * as s from '../../store/sync';
 import { DeletedNote, NoteDiff } from '../../api';
-import { EncryptedNote, Note } from '../../classes';
+import { EncryptedNote, RawNote } from '../../classes';
 import { Endpoint, EndpointPayloads, ENDPOINTS } from '../../constant';
 import { hasKeys } from '../../utils';
 import { isEncryptedNote, NoteCollection, resolveImmediate } from '../utils';
@@ -82,7 +82,7 @@ export function mockRequest(
   const username: string = req.headers!['X-Username'] ?? '';
 
   const resData: {
-    notes?: Note[] | EncryptedNote[];
+    notes?: RawNote[] | EncryptedNote[];
     note_diff?: NoteDiff;
     access_token?: string;
     error?: string;

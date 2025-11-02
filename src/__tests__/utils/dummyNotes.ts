@@ -1,3 +1,5 @@
+import { Note } from '../../classes';
+
 /**
  * Returns an array of unencrypted notes for testing.
  *
@@ -5,7 +7,7 @@
  * static data will be mutated by tests which then causes other tests to
  * fail or rely on polluted data.
  */
-export function getDummyNotes() {
+export function getDummyNotes(): Note[] {
   return [
     {
       uuid: '2cbe0086-4b6f-466f-9ec0-9a302480da6a',
@@ -167,5 +169,5 @@ export function getDummyNotes() {
         body: '😬ö',
       },
     },
-  ];
+  ].map((nt) => new Note(nt));
 }

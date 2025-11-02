@@ -1,4 +1,4 @@
-import { Note } from './note';
+import { Note, RawNote } from './note';
 
 const SALT_LENGTH = 16;
 const IV_LENGTH = 12;
@@ -117,10 +117,10 @@ export class Encryptor {
 
       const decryptedNoteContent = await this.#decryptData(nt.content, passwordKey);
 
-      const decryptedNote: Note = {
+      const decryptedNote: Note = new Note({
         ...nt,
         content: JSON.parse(decryptedNoteContent),
-      };
+      });
 
       return decryptedNote;
     });
@@ -131,6 +131,6 @@ export class Encryptor {
 
 //// Types
 
-export type EncryptedNote = Omit<Note, 'content'> & {
+export type EncryptedNote = Omit<RawNote, 'content'> & {
   content: string;
 };

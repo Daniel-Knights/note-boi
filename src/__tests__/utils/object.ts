@@ -1,11 +1,11 @@
-import { EncryptedNote, Note } from '../../classes';
+import { EncryptedNote, Note, RawNote } from '../../classes';
 import { hasKeys } from '../../utils';
 
 export function isObj(obj: unknown): obj is Record<string, unknown> {
   return typeof obj === 'object' && obj !== null;
 }
 
-export function isNote(note: unknown): note is Note {
+export function isNote(note: unknown): note is RawNote {
   const nt = note as Note;
 
   return (

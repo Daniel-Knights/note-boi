@@ -24,7 +24,7 @@ export function newNote(isButtonClick?: boolean): void {
   const freshNote = new Note();
 
   noteState.notes.unshift(freshNote);
-  noteState.selectedNote = { ...freshNote };
+  noteState.selectedNote = freshNote.clone();
 
   // Ensure new note isn't overwritten on sync
   if (isButtonClick) {
