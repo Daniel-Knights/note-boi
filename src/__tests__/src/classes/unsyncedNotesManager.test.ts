@@ -11,7 +11,7 @@ describe('UnsyncedNotesManager', () => {
   });
 
   it('Initializes with contents from storage', () => {
-    Storage.setJson('UNSYNCED', {
+    Storage.setJSON('UNSYNCED', {
       new: 'n1',
       edited: ['e1', 'e2'],
       deleted: [{ uuid: 'd1', deleted_at: 0 }],
@@ -37,7 +37,7 @@ describe('UnsyncedNotesManager', () => {
   describe('clear', () => {
     it('Clears edited and deleted', () => {
       const manager = new UnsyncedNotesManager();
-      const setJsonSpy = vi.spyOn(Storage, 'setJson');
+      const setJsonSpy = vi.spyOn(Storage, 'setJSON');
 
       manager.new = 'n';
       manager.edited.add('e');
@@ -70,7 +70,7 @@ describe('UnsyncedNotesManager', () => {
   describe('set', () => {
     it('Updates new, edited, and deleted', () => {
       const manager = new UnsyncedNotesManager();
-      const setJsonSpy = vi.spyOn(Storage, 'setJson');
+      const setJsonSpy = vi.spyOn(Storage, 'setJSON');
 
       manager.set({
         new: 'n1',
@@ -122,7 +122,7 @@ describe('UnsyncedNotesManager', () => {
     it('Removes UNSYNCED if empty', () => {
       const manager = new UnsyncedNotesManager();
       const removeSpy = vi.spyOn(Storage, 'remove');
-      const setJsonSpy = vi.spyOn(Storage, 'setJson');
+      const setJsonSpy = vi.spyOn(Storage, 'setJSON');
 
       manager.store();
 
@@ -132,7 +132,7 @@ describe('UnsyncedNotesManager', () => {
 
     it('Sets UNSYNCED if not empty', () => {
       const manager = new UnsyncedNotesManager();
-      const setJsonSpy = vi.spyOn(Storage, 'setJson');
+      const setJsonSpy = vi.spyOn(Storage, 'setJSON');
 
       manager.new = 'n';
       manager.edited.add('e');

@@ -15,7 +15,7 @@ export class UnsyncedNotesManager {
   deleted: DeletedNote[];
 
   constructor() {
-    const storedUnsyncedNotes = Storage.getJson('UNSYNCED');
+    const storedUnsyncedNotes = Storage.getJSON('UNSYNCED');
 
     this.new = storedUnsyncedNotes?.new || '';
     this.edited = new Set<string>(storedUnsyncedNotes?.edited);
@@ -77,7 +77,7 @@ export class UnsyncedNotesManager {
       return;
     }
 
-    Storage.setJson('UNSYNCED', {
+    Storage.setJSON('UNSYNCED', {
       new: this.new,
       edited: [...this.edited],
       deleted: [...this.deleted],
