@@ -35,13 +35,13 @@ export class Storage {
     return localStorage.clear();
   }
 
-  static getJson<T extends keyof StorageValuesJson>(key: T): StorageValues[T] | null {
+  static getJSON<T extends keyof StorageValuesJson>(key: T): StorageValues[T] | null {
     const storedItem = localStorage.getItem(STORAGE_KEYS[key]);
 
     return storedItem ? JSON.parse(storedItem) : null;
   }
 
-  static setJson<T extends keyof StorageValuesJson>(key: T, value: StorageValues[T]) {
+  static setJSON<T extends keyof StorageValuesJson>(key: T, value: StorageValues[T]) {
     return localStorage.setItem(STORAGE_KEYS[key], JSON.stringify(value));
   }
 }
