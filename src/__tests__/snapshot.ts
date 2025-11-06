@@ -32,7 +32,7 @@ export async function snapshotState() {
   );
 
   // storage
-  const storedUnsyncedNotes = Storage.getJson('UNSYNCED');
+  const storedUnsyncedNotes = Storage.getJSON('UNSYNCED');
 
   if (storedUnsyncedNotes) {
     storedUnsyncedNotes.edited = [...storedUnsyncedNotes.edited].map(normaliseNoteUuid);

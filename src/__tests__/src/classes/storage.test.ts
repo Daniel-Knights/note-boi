@@ -27,8 +27,8 @@ describe('Storage', () => {
     assert.isNull(Storage.get('THEME'));
   });
 
-  it('setJson/getJson', () => {
-    assert.isNull(Storage.getJson('UNSYNCED'));
+  it('setJSON/getJSON', () => {
+    assert.isNull(Storage.getJSON('UNSYNCED'));
 
     const unsynced = {
       new: 'note1',
@@ -36,8 +36,8 @@ describe('Storage', () => {
       deleted: [{ uuid: 'note3', deleted_at: 0 }],
     };
 
-    Storage.setJson('UNSYNCED', unsynced);
+    Storage.setJSON('UNSYNCED', unsynced);
 
-    assert.deepEqual(Storage.getJson('UNSYNCED'), unsynced);
+    assert.deepEqual(Storage.getJSON('UNSYNCED'), unsynced);
   });
 });
