@@ -1,14 +1,21 @@
-import * as dialog from '@tauri-apps/plugin-dialog';
 import { event } from '@tauri-apps/api';
 import { invoke } from '@tauri-apps/api/core';
 import { EventCallback, UnlistenFn } from '@tauri-apps/api/event';
 
-import type { Note } from './classes';
+import { Dialog, type Note } from './classes';
 import { TauriCommand, TauriCommandPayloads, TauriEmit, TauriListener } from './constant';
 
 /** `process.env.NODE_ENV === 'development'`. */
 export function isDev(): boolean {
   return process.env.NODE_ENV === 'development';
+}
+
+export function isWeb() {
+  return process.env.APP_ENV === 'web';
+}
+
+export function isDesktop() {
+  return process.env.APP_ENV === 'desktop';
 }
 
 /** Formats Unix time to date-time. */
@@ -79,7 +86,7 @@ export function tauriInvoke<T extends TauriCommand>(
     console.error('Note invoke error:');
     console.error(err);
 
-    return dialog.message(
+    Dialog.message(
       'Something went wrong. Please try again or open an issue in the GitHub repo.',
       { kind: 'error' }
     );

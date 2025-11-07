@@ -1,7 +1,6 @@
-import * as dialog from '@tauri-apps/plugin-dialog';
-
 import {
   AppError,
+  Dialog,
   Encryptor,
   ERROR_CODE,
   ErrorConfig,
@@ -83,7 +82,7 @@ export const deleteAccount = route(async (): Promise<void> => {
     return clientSideLogout();
   }
 
-  const askRes = await dialog.ask('Are you sure?', {
+  const askRes = await Dialog.ask('Are you sure?', {
     title: 'Delete account',
     kind: 'warning',
   });
