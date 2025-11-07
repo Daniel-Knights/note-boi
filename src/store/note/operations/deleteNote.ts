@@ -1,5 +1,6 @@
 import { debounceSync } from '../../../api';
-import { tauriInvoke } from '../../../utils';
+import { Storage } from '../../../classes';
+import { isDesktop, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { changeNoteEvent, selectNoteEvent } from '../event';
 import { noteState } from '../state';
@@ -22,13 +23,24 @@ export function deleteNote(uuid: string): void {
 
   if (syncState.unsyncedNotes.new === uuid) {
     syncState.unsyncedNotes.set({ new: '' });
-  } else {
-    syncState.unsyncedNotes.set({
-      deleted: [{ uuid, deleted_at: Date.now() }],
-    });
 
-    tauriInvoke('delete_note', { uuid }).then(() => debounceSync());
+    return;
   }
+
+  syncState.unsyncedNotes.set({
+    deleted: [{ uuid, deleted_at: Date.now() }],
+  });
+
+  if (isDesktop()) {
+    tauriInvoke('delete_note', { uuid }).then(() => debounceSync());
+
+    return;
+  }
+
+  //// Web
+
+  Storage.setJSON('NOTES', noteState.notes);
+  debounceSync();
 }
 
 /** Deletes {@link noteState.selectedNote} and all notes in {@link noteState.extraSelectedNotes}. */

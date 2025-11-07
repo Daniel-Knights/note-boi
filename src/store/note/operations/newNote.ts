@@ -1,5 +1,5 @@
-import { Note } from '../../../classes';
-import { isEmptyNote, tauriInvoke } from '../../../utils';
+import { Note, Storage } from '../../../classes';
+import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { changeNoteEvent, newNoteEvent, selectNoteEvent } from '../event';
 import { noteState } from '../state';
@@ -35,5 +35,13 @@ export function newNote(isButtonClick?: boolean): void {
   document.dispatchEvent(changeNoteEvent);
   document.dispatchEvent(newNoteEvent);
 
-  tauriInvoke('new_note', { note: { ...freshNote } });
+  if (isDesktop()) {
+    tauriInvoke('new_note', { note: { ...freshNote } });
+
+    return;
+  }
+
+  //// Web
+
+  Storage.setJSON('NOTES', noteState.notes);
 }
