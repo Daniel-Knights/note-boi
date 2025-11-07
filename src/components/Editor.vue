@@ -90,7 +90,7 @@ onMounted(() => {
     theme: 'snow',
   });
 
-  quillEditor.on('text-change', (delta, oldDelta) => {
+  quillEditor.on('text-change', (newDelta, oldDelta) => {
     editorText.value = quillEditor!.getText();
 
     if (ignoreTextChange) {
@@ -99,9 +99,9 @@ onMounted(() => {
       return;
     }
 
-    const [title, body] = editorText.value.split(/\n+/, 2);
+    const [title, body] = editorText.value.trimStart().split(/\n\s*/, 2);
 
-    editNote(oldDelta.compose(delta), title!, body);
+    editNote(oldDelta.compose(newDelta), title!.trimEnd(), body?.trimEnd());
   });
 
   quillEditorInitialised.value = true;
