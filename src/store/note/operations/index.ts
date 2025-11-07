@@ -6,3 +6,4 @@ export * from './importNotes';
 export * from './getAllNotes';
 export * from './newNote';
 export * from './selectNote';
+export * from './syncLocalNotes';
