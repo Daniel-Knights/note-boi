@@ -141,6 +141,7 @@ export type TauriCommandPayloads = {
   backup_notes: {
     payload: {
       notes: RawNote[];
+      maxBackupsCount: number;
     };
     response: never;
   };

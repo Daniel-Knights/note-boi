@@ -1,3 +1,4 @@
+export * from './backupNotes';
 export * from './deleteNote';
 export * from './editNote';
 export * from './exportNotes';
