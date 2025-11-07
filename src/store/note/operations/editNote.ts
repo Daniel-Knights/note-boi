@@ -1,7 +1,8 @@
 import type Delta from 'quill-delta';
 
 import { debounceSync } from '../../../api';
-import { isEmptyNote, tauriInvoke } from '../../../utils';
+import { Storage } from '../../../classes';
+import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { noteState } from '../state';
 import { findNote, sortStateNotes } from '../utils';
@@ -37,5 +38,14 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
     });
   }
 
-  tauriInvoke('edit_note', { note: { ...foundNote } }).then(() => debounceSync());
+  if (isDesktop()) {
+    tauriInvoke('edit_note', { note: { ...foundNote } }).then(() => debounceSync());
+
+    return;
+  }
+
+  //// Web
+
+  Storage.setJSON('NOTES', noteState.notes);
+  debounceSync();
 }

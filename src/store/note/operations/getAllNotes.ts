@@ -1,5 +1,5 @@
-import { Note } from '../../../classes';
-import { isEmptyNote, tauriInvoke } from '../../../utils';
+import { Note, Storage } from '../../../classes';
+import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
 import { changeNoteEvent } from '../event';
 import { noteState } from '../state';
 import { clearEmptyNote, sortStateNotes } from '../utils';
@@ -8,15 +8,17 @@ import { newNote } from './newNote';
 
 /** Fetches all notes and updates {@link noteState}. */
 export async function getAllNotes(): Promise<void> {
-  const fetchedNotes = await tauriInvoke('get_all_notes');
-  const hasNotes = fetchedNotes && fetchedNotes.length > 0;
+  const storedNotes = isDesktop()
+    ? await tauriInvoke('get_all_notes')
+    : Storage.getJSON('NOTES');
+  const hasNotes = storedNotes && storedNotes.length > 0;
   if (!hasNotes) return newNote();
 
-  noteState.notes = fetchedNotes.map((nt) => new Note(nt));
+  noteState.notes = storedNotes.map((nt) => new Note(nt));
 
   sortStateNotes();
 
-  const isSingleEmptyNote = fetchedNotes.length === 1 && isEmptyNote(fetchedNotes[0]);
+  const isSingleEmptyNote = storedNotes.length === 1 && isEmptyNote(storedNotes[0]);
 
   if (isSingleEmptyNote) {
     noteState.notes[0]!.timestamp = Date.now();
