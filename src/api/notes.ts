@@ -181,18 +181,26 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
 }
 
 /**
- * Adds sync call to the debounce queue.
- * `isInitial` indicates this is the initial sync on app load.
+ * Queues a sync call and returns a promise that completes once the sync call has completed.
  */
-export function debounceSync(isInitial = false): void {
-  if (!isInitial && !syncState.isLoggedIn) return;
+export function queueSync(options?: { withDelay?: boolean }): Promise<void> {
+  return new Promise((res) => {
+    syncQueue.add(
+      (isCancelled) => {
+        return sync(isCancelled).finally(res);
+      },
+      options?.withDelay ? 500 : undefined
+    );
+  });
+}
 
-  syncQueue.add(
-    (isCancelled) => {
-      return sync(isCancelled);
-    },
-    isInitial ? undefined : 500
-  );
+/**
+ * Queues a sync call to be run after a short delay.
+ */
+export function debounceSync(): Promise<void> {
+  if (!syncState.isLoggedIn) return Promise.resolve();
+
+  return queueSync({ withDelay: true });
 }
 
 //// Types
