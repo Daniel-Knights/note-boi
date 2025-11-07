@@ -1,10 +1,12 @@
 import { mount } from '@vue/test-utils';
+import Quill, { Delta } from 'quill';
 import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
+import { Note } from '../../../classes';
 import { unixToDateTime } from '../../../utils';
-import { mockApi } from '../../mock';
-import { getByTestId, getDummyNotes } from '../../utils';
+import { clearMockApiResults, mockApi } from '../../mock';
+import { getByTestId, getDummyNotes, waitUntil } from '../../utils';
 
 import Editor from '../../../components/Editor.vue';
 import FindInPage from '../../../components/FindInPage.vue';
@@ -44,6 +46,51 @@ describe('Editor', () => {
     n.selectNote(getDummyNotes()[1]!.uuid);
 
     assert.include(editorBody.text(), getDummyNotes()[1]!.content.body);
+  });
+
+  it('Constructs note object from parsed text', async () => {
+    const { calls } = mockApi();
+    const wrapper = mount(Editor);
+    const wrapperVm = wrapper.vm as unknown as {
+      quillEditor: Quill;
+      ignoreTextChange: boolean;
+    };
+
+    const noteText = `
+        
+         foo  
+
+
+     
+
+         bar 
+      baz
+      
+      `;
+
+    n.newNote();
+
+    // `text-change` event handler doesn't run for some reason,
+    // so we have to reset this manually
+    wrapperVm.ignoreTextChange = false;
+
+    clearMockApiResults({ calls });
+
+    wrapperVm.quillEditor.setText(noteText);
+
+    await waitUntil(() => calls.invoke.has('edit_note'));
+
+    const noteContent = (calls.invoke[0]?.calledWith!.note as Note).content;
+
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.invoke.has('edit_note'));
+    assert.deepEqual(noteContent, {
+      title: 'foo',
+      body: 'bar',
+      // Quill defaults to new line on empty content and this gets composed
+      // into the new note content, so an extra line break is expected here
+      delta: new Delta([{ insert: `${noteText}\n` }]),
+    });
   });
 
   it('Opens find-in-page', async () => {
