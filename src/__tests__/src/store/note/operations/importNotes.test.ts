@@ -24,14 +24,16 @@ describe('importNotes', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls });
 
-      await n.importNotes(paths);
+      const importedNotes = await n.importNotesFromPaths(paths);
+      n.importNotesToState(importedNotes!);
 
       expect(mockChangeEventCB).toHaveBeenCalledOnce();
       expect(mockSelectEventCB).toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 2);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.invoke.has('import_notes'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.deepEqual(calls.invoke[0]?.calledWith, { paths });
     });
 
@@ -46,7 +48,8 @@ describe('importNotes', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls });
 
-      await n.importNotes(paths);
+      const importedNotes = await n.importNotesFromPaths(paths);
+      n.importNotesToState(importedNotes!);
 
       // Once when clearing empty note, once when selecting latest
       expect(mockChangeEventCB).toHaveBeenCalledTimes(2);
@@ -55,8 +58,9 @@ describe('importNotes', () => {
       // One of these is the cleared new note (marked as deleted),
       // other two are imported (marked as edited)
       assert.strictEqual(s.syncState.unsyncedNotes.size, 3);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.invoke.has('import_notes'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.deepEqual(calls.invoke[0]?.calledWith, { paths });
       assert.isTrue(calls.invoke.has('delete_note'));
     });
@@ -73,20 +77,24 @@ describe('importNotes', () => {
       vi.clearAllMocks();
       clearMockApiResults({ calls });
 
-      await waitForAutoSync(() => n.importNotes(paths), calls);
+      await waitForAutoSync(async () => {
+        const importedNotes = await n.importNotesFromPaths(paths);
+
+        n.importNotesToState(importedNotes!);
+      }, calls);
 
       // Once when clearing empty note, once when selecting latest
       expect(mockChangeEventCB).toHaveBeenCalledTimes(2);
       expect(mockSelectEventCB).toHaveBeenCalledTimes(2);
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 0);
-      assert.strictEqual(calls.size, 7);
+      assert.strictEqual(calls.size, 8);
       assert.isTrue(calls.invoke.has('import_notes'));
+      assert.isTrue(calls.invoke.has('sync_local_notes', 2));
       assert.deepEqual(calls.invoke[0]?.calledWith, { paths });
       assert.isTrue(calls.invoke.has('delete_note'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.isTrue(calls.invoke.has('set_access_token'));
-      assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.isTrue(calls.request.has('/notes/sync'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]?.calledWith, {
@@ -99,8 +107,9 @@ describe('importNotes', () => {
 
     it('Returns when passed no paths', async () => {
       const { calls } = mockApi();
+      const importedNotes = await n.importNotesFromPaths([]);
 
-      await n.importNotes([]);
+      n.importNotesToState(importedNotes!);
 
       expect(mockChangeEventCB).not.toHaveBeenCalled();
       expect(mockSelectEventCB).not.toHaveBeenCalled();
@@ -115,7 +124,9 @@ describe('importNotes', () => {
 
       setErrorValue.invoke('import_notes');
 
-      await n.importNotes(paths);
+      const importedNotes = await n.importNotesFromPaths(paths);
+
+      n.importNotesToState(importedNotes!);
 
       expect(mockChangeEventCB).not.toHaveBeenCalled();
       expect(mockSelectEventCB).not.toHaveBeenCalled();
@@ -140,9 +151,10 @@ describe('importNotes', () => {
       expect(mockSelectEventCB).toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 1);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
       assert.isTrue(calls.invoke.has('import_notes'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
     });
 
     it('Opens file chooser and imports multiple notes', async () => {
@@ -156,9 +168,10 @@ describe('importNotes', () => {
       expect(mockSelectEventCB).toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 2);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
       assert.isTrue(calls.invoke.has('import_notes'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.deepEqual(calls.invoke[0]?.calledWith, {
         paths: ['/test1.json', '/test2.txt'],
       });
@@ -182,26 +195,17 @@ describe('importNotes', () => {
 
   describe('handleImportNotesDragDrop', () => {
     it('Adds and removes body class on enter, leave, and drop', () => {
-      n.handleImportNotesDragDrop({
-        // @ts-expect-error - don't need the full object here
-        payload: { type: 'enter', paths: [] },
-      });
+      n.handleImportNotesDragDrop('enter', { paths: [] });
 
       assert.isTrue(document.body.classList.contains('dragging-file'));
 
-      n.handleImportNotesDragDrop({
-        // @ts-expect-error - don't need the full object here
-        payload: { type: 'leave', paths: [] },
-      });
+      n.handleImportNotesDragDrop('leave', { paths: [] });
 
       assert.isFalse(document.body.classList.contains('dragging-file'));
 
       document.body.classList.add('dragging-file');
 
-      n.handleImportNotesDragDrop({
-        // @ts-expect-error - don't need the full object here
-        payload: { type: 'drop', paths: [] },
-      });
+      n.handleImportNotesDragDrop('drop', { paths: [] });
 
       assert.isFalse(document.body.classList.contains('dragging-file'));
     });
@@ -210,12 +214,8 @@ describe('importNotes', () => {
       const { calls } = mockApi();
 
       await waitForAutoSync(() => {
-        n.handleImportNotesDragDrop({
-          // @ts-expect-error - don't need the full object here
-          payload: {
-            type: 'drop',
-            paths: ['/test.json', '/test.txt'],
-          },
+        n.handleImportNotesDragDrop('drop', {
+          paths: ['/test.json', '/test.txt'],
         });
       }, calls);
 
@@ -223,8 +223,9 @@ describe('importNotes', () => {
       expect(mockSelectEventCB).toHaveBeenCalledOnce();
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 2);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.invoke.has('import_notes'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.deepEqual(calls.invoke[0]?.calledWith, {
         paths: ['/test.json', '/test.txt'],
       });
@@ -234,18 +235,15 @@ describe('importNotes', () => {
       const { calls } = mockApi();
 
       await waitForAutoSync(() => {
-        n.handleImportNotesDragDrop({
-          // @ts-expect-error - don't need the full object here
-          payload: {
-            type: 'drop',
-            paths: ['/test.json', '/test.pdf', '/test.txt', '/test.doc'],
-          },
+        n.handleImportNotesDragDrop('drop', {
+          paths: ['/test.json', '/test.pdf', '/test.txt', '/test.doc'],
         });
       }, calls);
 
       assert.strictEqual(s.syncState.unsyncedNotes.size, 2);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.invoke.has('import_notes'));
+      assert.isTrue(calls.invoke.has('sync_local_notes'));
       // Should only include .json and .txt files
       assert.deepEqual(calls.invoke[0]?.calledWith, {
         paths: ['/test.json', '/test.txt'],
@@ -255,12 +253,8 @@ describe('importNotes', () => {
     it('Returns when there are no valid paths', () => {
       const { calls } = mockApi();
 
-      n.handleImportNotesDragDrop({
-        // @ts-expect-error - don't need the full object here
-        payload: {
-          type: 'drop',
-          paths: ['/test.pdf', '/test.doc', '/test.png'],
-        },
+      n.handleImportNotesDragDrop('drop', {
+        paths: ['/test.pdf', '/test.doc', '/test.png'],
       });
 
       expect(mockChangeEventCB).not.toHaveBeenCalled();

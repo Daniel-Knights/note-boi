@@ -6,8 +6,8 @@ import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import { Encryptor, ERROR_CODE, KeyStore, Note, Storage } from '../../../classes';
+import { UUID_REGEX } from '../../../constant';
 import { isEmptyNote, tauriInvoke } from '../../../utils';
-import { UUID_REGEX } from '../../constant';
 import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
 import {
   assertAppError,
