@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { ComponentMountingOptions, mount, VueWrapper } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as a from '../../../api';
@@ -27,12 +27,24 @@ import PopupChangePassword from '../../../components/PopupChangePassword.vue';
 import PopupInfo from '../../../components/PopupInfo.vue';
 import Settings from '../../../components/Settings.vue';
 
-async function mountSettingsAndOpen(options?: Record<string, unknown>) {
+async function mountSettingsAndOpen(
+  options?: ComponentMountingOptions<typeof Settings>
+): Promise<VueWrapper<InstanceType<typeof Settings>>> {
   const wrapper = mount(Settings, options);
 
   await findByTestId(wrapper, 'settings-button').trigger('click');
 
   return wrapper;
+}
+
+function assertMenuItemCount(
+  wrapper: Awaited<ReturnType<typeof mountSettingsAndOpen>>,
+  count: number
+) {
+  const dropMenuWrapper = findByTestId(wrapper, 'drop-menu');
+  const dropMenuEl = dropMenuWrapper.element as HTMLElement;
+
+  assert.strictEqual(dropMenuEl.childElementCount, count);
 }
 
 describe('Settings', () => {
@@ -58,6 +70,7 @@ describe('Settings', () => {
 
     assert.isTrue(wrapperVm.show);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
+    assertMenuItemCount(wrapper, 5);
 
     await settingsButtonWrapper.trigger('click');
 
@@ -67,6 +80,7 @@ describe('Settings', () => {
     await settingsButtonWrapper.trigger('click');
     assert.isTrue(wrapperVm.show);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
+    assertMenuItemCount(wrapper, 5);
 
     wrapper.getComponent(DropMenu).vm.$emit('close');
 
@@ -108,7 +122,7 @@ describe('Settings', () => {
     assert.isTrue(calls.invoke.has('export_notes'));
   });
 
-  it('Import notes', async () => {
+  it('Imports notes', async () => {
     const { calls } = mockApi();
 
     const wrapper = await mountSettingsAndOpen();
@@ -128,6 +142,7 @@ describe('Settings', () => {
 
     assert.strictEqual(u.updateState.strategy, 'manual');
     assert.isNull(Storage.get('UPDATE_STRATEGY'));
+    assert.isFalse(updateAutoWrapper.classes('drop-menu__item--selected'));
 
     await updateAutoWrapper.trigger('click');
     await Promise.all(promises);
@@ -137,6 +152,7 @@ describe('Settings', () => {
     assert.strictEqual(calls.size, 0);
     assert.strictEqual(u.updateState.strategy, 'auto');
     assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'auto');
+    assert.isTrue(updateAutoWrapper.classes('drop-menu__item--selected'));
 
     const updateManualWrapper = findByTestId(wrapper, 'update-manual');
 
@@ -150,6 +166,7 @@ describe('Settings', () => {
     assert.strictEqual(calls.size, 0);
     assert.strictEqual(u.updateState.strategy, 'manual');
     assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'manual');
+    assert.isTrue(updateManualWrapper.classes('drop-menu__item--selected'));
   });
 
   it('Opens info popup', async () => {
@@ -178,16 +195,15 @@ describe('Settings', () => {
   it('Update and restart menu item', async () => {
     const { calls, promises } = mockApi();
     const wrapper = await mountSettingsAndOpen();
-    const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
     assert.isFalse(findByTestId(wrapper, 'update-restart').exists());
-    assert.lengthOf(wrapperVm.menuItems, 5);
+    assertMenuItemCount(wrapper, 5);
 
     await u.handleUpdate();
     await nextTick();
 
     const updateWrapper = findByTestId(wrapper, 'update-restart');
     assert.isTrue(updateWrapper.isVisible());
-    assert.lengthOf(wrapperVm.menuItems, 6);
+    assertMenuItemCount(wrapper, 6);
 
     clearMockApiResults({ calls, promises });
 
@@ -228,9 +244,8 @@ describe('Settings', () => {
     it('Delete account menu item', async () => {
       const { calls, promises } = mockApi();
       const wrapper = await mountSettingsAndOpen();
-      const wrapperVm = wrapper.vm as unknown as { menuItems: [] };
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-      assert.lengthOf(wrapperVm.menuItems, 5);
+      assertMenuItemCount(wrapper, 5);
 
       s.syncState.username = 'd';
       s.syncState.isLoggedIn = true;
@@ -245,7 +260,7 @@ describe('Settings', () => {
 
       const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
       assert.isTrue(deleteAccountWrapper.isVisible());
-      assert.lengthOf(wrapperVm.menuItems, 6);
+      assertMenuItemCount(wrapper, 6);
 
       const deleteAccountSpy = vi.spyOn(a, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
@@ -253,7 +268,7 @@ describe('Settings', () => {
       await waitUntil(() => !findByTestId(wrapper, 'delete-account').exists());
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-      assert.lengthOf(wrapperVm.menuItems, 5);
+      assertMenuItemCount(wrapper, 5);
       assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));

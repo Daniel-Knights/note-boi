@@ -23,7 +23,7 @@ import { openedPopup, POPUP_TYPE } from '../store/popup';
 import { syncState } from '../store/sync';
 import { selectedTheme, setTheme } from '../store/theme';
 import { setUpdateStrategy, updateAndRelaunch, updateState } from '../store/update';
-import { capitalise } from '../utils';
+import { capitalise, isWeb } from '../utils';
 
 import { DropMenuItemData } from './types';
 
@@ -34,81 +34,74 @@ import CogIcon from './svg/CogIcon.vue';
 
 const show = ref(false);
 
-const menuItems = computed(() => {
-  const items: DropMenuItemData[] = [
-    {
-      label: 'Theme',
-      subMenu: COLOUR_THEMES.map((theme) => ({
-        label: theme,
-        testId: theme,
-        clickHandler: () => setTheme(theme),
-        selected: selectedTheme.value === theme,
-      })),
-    },
-    {
-      label: 'Export',
-      testId: 'export',
-      clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.uuid)),
-    },
-    {
-      label: 'Import',
-      testId: 'import',
-      clickHandler: () => importNotesFromFileChooser(),
-    },
-    {
-      label: 'Updates',
-      subMenu: UPDATE_STRATEGIES.map((strategy) => ({
-        label: capitalise(strategy),
-        testId: `update-${strategy}`,
-        selected: updateState.strategy === strategy,
-        clickHandler: () => setUpdateStrategy(strategy),
-      })),
-    },
-    {
-      label: 'Info',
-      testId: 'info',
-      clickHandler: () => {
-        openedPopup.value = POPUP_TYPE.INFO;
-      },
-    },
-  ];
+const menuItems = computed<DropMenuItemData[]>(() => [
+  {
+    label: 'Update and restart',
+    testId: 'update-restart',
+    showIf: () => updateState.isAvailable && !isWeb(),
+    clickHandler: async () => {
+      const update = await check();
+      if (!update) return;
 
-  if (updateState.isAvailable) {
-    items.unshift({
-      label: 'Update and restart',
-      testId: 'update-restart',
-      clickHandler: async () => {
-        const update = await check();
-        if (!update) return;
-
-        updateAndRelaunch(update);
-      },
-    });
-  }
-
-  if (syncState.isLoggedIn) {
-    items.push({
-      label: 'Account',
-      subMenu: [
-        {
-          label: 'Change password',
-          testId: 'change-password',
-          clickHandler: () => {
-            openedPopup.value = POPUP_TYPE.CHANGE_PASSWORD;
-          },
+      updateAndRelaunch(update);
+    },
+  },
+  {
+    label: 'Theme',
+    subMenu: COLOUR_THEMES.map((theme) => ({
+      label: theme,
+      testId: theme,
+      clickHandler: () => setTheme(theme),
+      selected: selectedTheme.value === theme,
+    })),
+  },
+  {
+    label: 'Export',
+    testId: 'export',
+    clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.uuid)),
+  },
+  {
+    label: 'Import',
+    testId: 'import',
+    clickHandler: () => importNotesFromFileChooser(),
+  },
+  {
+    label: 'Updates',
+    showIf: () => !isWeb(),
+    subMenu: UPDATE_STRATEGIES.map((strategy) => ({
+      label: capitalise(strategy),
+      testId: `update-${strategy}`,
+      selected: updateState.strategy === strategy,
+      clickHandler: () => setUpdateStrategy(strategy),
+    })),
+  },
+  {
+    label: 'Info',
+    testId: 'info',
+    clickHandler: () => {
+      openedPopup.value = POPUP_TYPE.INFO;
+    },
+  },
+  {
+    label: 'Account',
+    showIf: () => syncState.isLoggedIn,
+    subMenu: [
+      {
+        label: 'Change password',
+        testId: 'change-password',
+        clickHandler: () => {
+          openedPopup.value = POPUP_TYPE.CHANGE_PASSWORD;
         },
-        {
-          label: 'Delete account',
-          testId: 'delete-account',
-          danger: true,
-          clickHandler: () => deleteAccount(),
-        },
-      ],
-    });
-  }
-
-  return items;
-});
+      },
+      {
+        label: 'Delete account',
+        testId: 'delete-account',
+        danger: true,
+        clickHandler: () => deleteAccount(),
+      },
+    ],
+  },
+]);
 </script>
 
 <style lang="scss" scoped>
