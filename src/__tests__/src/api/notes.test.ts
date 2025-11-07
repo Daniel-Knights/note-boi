@@ -17,7 +17,6 @@ import {
   getDummyNotes,
   getEncryptedNotes,
   hackEncryptionError,
-  immediateDebounceSync,
   waitForAutoSync,
   waitUntil,
 } from '../../utils';
@@ -515,8 +514,7 @@ describe('Notes (sync)', () => {
 
       mockDb.encryptedNotes = getEncryptedNotes();
 
-      immediateDebounceSync();
-
+      await a.queueSync();
       await nextTick();
 
       assert.isTrue(statusWrapper.isVisible());
@@ -597,8 +595,7 @@ describe('Notes (sync)', () => {
       clearMockApiResults({ calls, promises });
 
       // We don't set a res value for this call, because it shouldn't complete
-      immediateDebounceSync();
-
+      await a.queueSync();
       await nextTick();
 
       assert.isTrue(statusWrapper.isVisible());
@@ -686,8 +683,7 @@ describe('Notes (sync)', () => {
       clearMockApiResults({ calls, promises });
 
       // We don't set a res value for this call, because it shouldn't complete
-      immediateDebounceSync();
-
+      await a.queueSync();
       await nextTick();
 
       assert.isTrue(statusWrapper.isVisible());

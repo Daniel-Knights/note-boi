@@ -1,4 +1,3 @@
-import * as a from '../../api';
 import * as s from '../../store/sync';
 import { mockApi } from '../mock';
 
@@ -9,7 +8,7 @@ export function resolveImmediate<T>(val?: T): Promise<T | void> {
   });
 }
 
-/** Returns a promise that resolves after `time`. */
+/** Returns a promise that resolves after `time` milliseconds. */
 export function wait(time: number): Promise<void> {
   return new Promise((res) => {
     setTimeout(res, time);
@@ -47,15 +46,5 @@ export async function waitForAutoSync(
 
   await waitUntil(() => !s.syncState.loadingCount);
 
-  vi.useRealTimers();
-}
-
-/** Uses fake timers to run `debounceSync` immediately. */
-export function immediateDebounceSync() {
-  vi.useFakeTimers();
-
-  a.debounceSync(true);
-
-  vi.advanceTimersByTime(0);
   vi.useRealTimers();
 }
