@@ -7,6 +7,7 @@ import { deleteAccount, queueSync } from './api';
 import { initLogger } from './log';
 import './sass/style.scss';
 import {
+  backupNotes,
   deleteSelectedNotes,
   exportNotes,
   getAllNotes,
@@ -17,61 +18,122 @@ import {
 } from './store/note';
 import { openedPopup, POPUP_TYPE } from './store/popup';
 import { handleUpdate } from './store/update';
-import { isDev, tauriInvoke, tauriListen } from './utils';
+import { isDesktop, isDev, tauriListen } from './utils';
 
 import App from './App.vue';
 
-const webview = WebviewWindow.getCurrent();
-
 createApp(App).mount('#app');
-initLogger();
-handleUpdate();
 
-getAllNotes().then(() => {
-  queueSync();
-});
+if (isDesktop()) {
+  initDesktop();
+} else {
+  initWeb();
+}
 
-webview.onCloseRequested(async () => {
-  await tauriInvoke('backup_notes', {
-    notes: noteState.notes,
-    max_backups_count: 3,
-  }).catch((err) => {
-    console.error('Failed to backup notes:', err);
+//// Desktop
+
+function initDesktop() {
+  initLogger();
+  handleUpdate();
+  getAllNotes().then(() => {
+    queueSync();
   });
 
-  exit();
-});
+  const webview = WebviewWindow.getCurrent();
 
-webview.onDragDropEvent((ev) => {
-  if (ev.payload.type === 'over') return;
+  //// Register event handlers
 
-  const evData = 'paths' in ev.payload ? { paths: ev.payload.paths } : undefined;
+  webview.onCloseRequested(async () => {
+    await backupNotes(noteState.notes);
+    exit();
+  });
 
-  handleImportNotesDragDrop(ev.payload.type, evData);
-});
+  webview.onDragDropEvent((ev) => {
+    if (ev.payload.type === 'over') return;
 
-tauriListen('reload', () => {
-  // Relaunch acts up in dev, but is fine in production
-  if (isDev()) {
-    window.location.reload();
-  } else {
-    relaunch();
-  }
-});
+    const evData = 'paths' in ev.payload ? { paths: ev.payload.paths } : undefined;
 
-tauriListen('new-note', () => newNote(true));
-tauriListen('delete-note', deleteSelectedNotes);
-tauriListen('import-notes', () => {
-  importNotesFromFileChooser();
-});
-tauriListen('export-note', () => {
-  exportNotes([
-    noteState.selectedNote.uuid,
-    ...noteState.extraSelectedNotes.map((nt) => nt.uuid),
-  ]);
-});
-tauriListen('export-all-notes', () => exportNotes(noteState.notes.map((nt) => nt.uuid)));
-tauriListen('delete-account', deleteAccount);
-tauriListen('change-password', () => {
-  openedPopup.value = POPUP_TYPE.CHANGE_PASSWORD;
-});
+    handleImportNotesDragDrop(ev.payload.type, evData);
+  });
+
+  tauriListen('reload', () => {
+    // Relaunch acts up in dev, but is fine in production
+    if (isDev()) {
+      window.location.reload();
+    } else {
+      relaunch();
+    }
+  });
+
+  tauriListen('new-note', () => newNote(true));
+  tauriListen('delete-note', deleteSelectedNotes);
+  tauriListen('import-notes', () => {
+    importNotesFromFileChooser();
+  });
+  tauriListen('export-note', () => {
+    exportNotes([
+      noteState.selectedNote.uuid,
+      ...noteState.extraSelectedNotes.map((nt) => nt.uuid),
+    ]);
+  });
+  tauriListen('export-all-notes', () =>
+    exportNotes(noteState.notes.map((nt) => nt.uuid))
+  );
+  tauriListen('delete-account', deleteAccount);
+  tauriListen('change-password', () => {
+    openedPopup.value = POPUP_TYPE.CHANGE_PASSWORD;
+  });
+}
+
+//// Web
+
+function initWeb() {
+  // Initialise PWA
+  navigator.serviceWorker.getRegistration().then((registration) => {
+    if (registration) {
+      registration.update();
+    } else {
+      navigator.serviceWorker.register('sw.js');
+    }
+  });
+
+  getAllNotes().then(() => {
+    queueSync();
+  });
+
+  //// Register event handlers
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'hidden') return;
+
+    backupNotes(noteState.notes);
+  });
+
+  // NOTE: The drag and drop API is whack
+  document.body.addEventListener('drop', (ev) => {
+    if (!ev.dataTransfer) return;
+
+    ev.preventDefault(); // Prevent opening separate tabs for each dropped file
+    handleImportNotesDragDrop('drop', { files: ev.dataTransfer.files });
+  });
+  document.body.addEventListener('dragenter', () => {
+    handleImportNotesDragDrop('enter');
+  });
+  document.body.addEventListener('dragover', (ev) => {
+    ev.preventDefault(); // `drop` won't fire unless we prevent here
+  });
+  document.body.addEventListener('dragleave', (ev) => {
+    // `dragleave` fires for all child elements too, so we need to check
+    // if it has left the window boundaries explicitly
+    if (
+      ev.clientY > 0 &&
+      ev.clientY < window.innerHeight &&
+      ev.clientX > 0 &&
+      ev.clientX < window.innerWidth
+    ) {
+      return;
+    }
+
+    handleImportNotesDragDrop('leave');
+  });
+}
