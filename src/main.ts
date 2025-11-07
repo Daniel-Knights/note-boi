@@ -43,7 +43,11 @@ webview.onCloseRequested(async () => {
 });
 
 webview.onDragDropEvent((ev) => {
-  handleImportNotesDragDrop(ev);
+  if (ev.payload.type === 'over') return;
+
+  const evData = 'paths' in ev.payload ? { paths: ev.payload.paths } : undefined;
+
+  handleImportNotesDragDrop(ev.payload.type, evData);
 });
 
 tauriListen('reload', () => {

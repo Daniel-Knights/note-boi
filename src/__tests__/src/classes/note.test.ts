@@ -1,5 +1,5 @@
 import { Note } from '../../../classes';
-import { UUID_REGEX } from '../../constant';
+import { UUID_REGEX } from '../../../constant';
 import { floorToThousand } from '../../utils';
 
 it('new Note()', () => {
