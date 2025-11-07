@@ -1,7 +1,7 @@
 <template>
   <ul class="drop-menu" data-test-id="drop-menu">
     <li
-      v-for="item in items"
+      v-for="item in filteredItems"
       :key="item.label"
       v-on="item.clickHandler ? { click: item.clickHandler } : {}"
       class="drop-menu__item"
@@ -20,13 +20,20 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 
 import { DropMenuItemData } from './types';
 
-defineProps<{ items: DropMenuItemData[] }>();
-
+const props = defineProps<{ items: DropMenuItemData[] }>();
 const emit = defineEmits(['close']);
+
+const filteredItems = computed(() => {
+  return props.items.filter((item) => {
+    if (!item.showIf) return true;
+
+    return item.showIf();
+  });
+});
 
 function close() {
   emit('close');
