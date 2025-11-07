@@ -1,0 +1,41 @@
+import { Note, Storage } from '../../../classes';
+import { isDesktop, tauriInvoke } from '../../../utils';
+
+const MAX_BACKUPS_COUNT = 3;
+
+export async function backupNotes(notes: Note[]): Promise<void> {
+  if (isDesktop()) {
+    await tauriInvoke('backup_notes', {
+      notes,
+      maxBackupsCount: MAX_BACKUPS_COUNT,
+    });
+
+    return;
+  }
+
+  //// Web
+
+  const existingNotesBackup = Storage.getJSON('NOTES_BACKUP') ?? {};
+
+  const newNotesBackup = {
+    [Date.now().toString()]: notes,
+    ...existingNotesBackup,
+  };
+
+  const existingBackupKeys = Object.keys(existingNotesBackup);
+
+  if (existingBackupKeys.length >= MAX_BACKUPS_COUNT) {
+    const firstKey = existingBackupKeys[0]!;
+    const firstKeyDate = new Date(parseInt(firstKey));
+
+    const oldestBackupDate = existingBackupKeys.slice(1).reduce((oldestKeyDate, curr) => {
+      const currKeyDate = new Date(parseInt(curr));
+
+      return currKeyDate < oldestKeyDate ? currKeyDate : oldestKeyDate;
+    }, firstKeyDate);
+
+    delete newNotesBackup[`${oldestBackupDate.getTime()}`];
+  }
+
+  Storage.setJSON('NOTES_BACKUP', newNotesBackup);
+}
