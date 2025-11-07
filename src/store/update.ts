@@ -1,9 +1,8 @@
-import * as dialog from '@tauri-apps/plugin-dialog';
 import { relaunch } from '@tauri-apps/plugin-process';
 import { check, Update } from '@tauri-apps/plugin-updater';
 import { reactive } from 'vue';
 
-import { Storage } from '../classes';
+import { Dialog, Storage } from '../classes';
 
 export const updateState = reactive({
   isAvailable: false,
@@ -39,9 +38,11 @@ export async function handleUpdate(): Promise<void> {
     return;
   }
 
-  const shouldInstall = await dialog.ask(
+  const shouldInstall = await Dialog.ask(
     'A new version of NoteBoi is available.\nDo you want to update now?',
-    `Update available: v${newVersion}`
+    {
+      title: `Update available: v${newVersion}`,
+    }
   );
 
   if (!shouldInstall) {
@@ -66,7 +67,7 @@ export async function updateAndRelaunch(update: Update): Promise<void> {
   } catch (err) {
     console.error('Failed to install update:', err);
 
-    const shouldRetry = await dialog.ask('Try again?', {
+    const shouldRetry = await Dialog.ask('Try again?', {
       title: 'Unable to install update',
       kind: 'error',
     });

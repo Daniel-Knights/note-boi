@@ -1,11 +1,11 @@
-import * as dialog from '@tauri-apps/plugin-dialog';
+import * as tauriDialog from '@tauri-apps/plugin-dialog';
 
 import { tauriInvoke } from '../../../utils';
 import { noteState } from '../state';
 
 /** Exports all notes, or a given selection. */
 export async function exportNotes(noteUuids: string[]): Promise<void> {
-  const saveDir = await dialog.open({
+  const saveDir = await tauriDialog.open({
     title: 'Choose a location',
     directory: true,
     multiple: false,

@@ -1,6 +1,6 @@
+import * as tauriDialog from '@tauri-apps/plugin-dialog';
 import { Event as TauriEvent } from '@tauri-apps/api/event';
 import { DragDropEvent } from '@tauri-apps/api/webview';
-import { open } from '@tauri-apps/plugin-dialog';
 
 import { debounceSync } from '../../../api';
 import { Note } from '../../../classes';
@@ -26,7 +26,7 @@ export async function importNotes(paths: string[]) {
 }
 
 export async function importNotesFromFileChooser() {
-  const selectedFiles = await open({
+  const selectedFiles = await tauriDialog.open({
     multiple: true,
     filters: [
       {
