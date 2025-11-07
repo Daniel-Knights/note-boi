@@ -60,16 +60,26 @@ export function hasKeys<T extends string>(
   return keys.every((key) => key in obj);
 }
 
-/** Calls {@link event.emit}, with stronger typing for `id`. */
+/**
+ * Calls {@link event.emit}, with stronger typing for `id`.
+ * Noop in web environments.
+ */
 export function tauriEmit<T>(id: TauriEmit, payload?: T): Promise<void> {
+  if (isWeb()) return Promise.resolve();
+
   return event.emit(id, { isFrontendEmit: true, data: payload });
 }
 
-/** Calls {@link event.listen}, with stronger typing for `id`. */
+/**
+ * Calls {@link event.listen}, with stronger typing for `id`.
+ * Noop in web environments.
+ */
 export function tauriListen<T>(
   id: TauriListener,
   cb: EventCallback<T | undefined>
-): Promise<UnlistenFn> {
+): Promise<UnlistenFn | void> {
+  if (isWeb()) return Promise.resolve();
+
   return event.listen<{ isFrontendEmit: boolean; data: T } | undefined>(id, (ev) => {
     if (ev.payload?.isFrontendEmit) return;
 
@@ -77,11 +87,16 @@ export function tauriListen<T>(
   });
 }
 
-/** Calls {@link invoke}, but with stronger typing. */
+/**
+ * Calls {@link invoke}, but with stronger typing.
+ * Noop in web environments.
+ */
 export function tauriInvoke<T extends TauriCommand>(
   cmd: T,
   args?: TauriCommandPayloads[T]['payload']
 ): Promise<TauriCommandPayloads[T]['response'] | void> {
+  if (isWeb()) return Promise.resolve();
+
   return invoke<T>(cmd, args).catch((err) => {
     console.error('Note invoke error:');
     console.error(err);
