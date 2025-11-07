@@ -99,7 +99,7 @@ onMounted(() => {
       return;
     }
 
-    const [title, body] = editorText.value.split(/\n+/);
+    const [title, body] = editorText.value.split(/\n+/, 2);
 
     editNote(oldDelta.compose(delta), title!, body);
   });
