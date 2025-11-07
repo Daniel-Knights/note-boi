@@ -1,25 +1,15 @@
-use std::{
-  collections::HashMap,
-  fs,
-  path::{Path, PathBuf},
-};
+use std::{collections::HashMap, fs, path::PathBuf};
 
 use uuid::Uuid;
 
-use crate::{commands::new_note::new_note_fn, note::Note, utils::time::now_millis, AppState};
+use crate::{note::Note, utils::time::now_millis};
 
 #[tauri::command]
-pub fn import_notes(
-  state: tauri::State<AppState>,
-  paths: Vec<PathBuf>,
-) -> Result<Vec<Note>, String> {
-  import_notes_fn(&state.app_dir, &paths).map_err(|err| err.to_string())
+pub fn import_notes(paths: Vec<PathBuf>) -> Result<Vec<Note>, String> {
+  import_notes_fn(&paths).map_err(|err| err.to_string())
 }
 
-pub fn import_notes_fn(
-  dir: &Path,
-  paths: &[PathBuf],
-) -> Result<Vec<Note>, Box<dyn std::error::Error>> {
+pub fn import_notes_fn(paths: &[PathBuf]) -> Result<Vec<Note>, Box<dyn std::error::Error>> {
   // Use hash map to prevent duplicates
   let mut notes = HashMap::new();
 
@@ -46,7 +36,6 @@ pub fn import_notes_fn(
     }
 
     nt.timestamp = now_millis() as i64;
-    new_note_fn(dir, &nt)?;
     notes.insert(nt.uuid.clone(), nt);
   }
 

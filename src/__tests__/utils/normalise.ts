@@ -1,6 +1,6 @@
 import { DeletedNote } from '../../api';
 import { EncryptedNote, Note, RawNote } from '../../classes';
-import { UUID_REGEX } from '../constant';
+import { UUID_REGEX } from '../../constant';
 import { Call } from '../mock';
 
 import { getDummyNotes } from './dummyNotes';

@@ -21,6 +21,35 @@ export class Note implements RawNote {
     };
   }
 
+  /**
+   * Creates a Note instance from a stringified JSON representation.
+   * @param overrides Overrides for properties passed to the constructor.
+   */
+  static fromJSONString(str: string, overrides?: Partial<RawNote>): Note {
+    const { uuid, content } = JSON.parse(str);
+
+    return new Note({ uuid, content, ...overrides });
+  }
+
+  /**
+   * Creates a Note instance from a plain string representation.
+   * @param overrides Overrides for properties passed to the constructor.
+   */
+  static fromPlainString(str: string, overrides?: Partial<RawNote>): Note {
+    const [title = '', body = ''] = str.split('\n', 2);
+
+    return new Note({
+      content: {
+        title,
+        body,
+        delta: {
+          ops: [{ insert: str }],
+        },
+      },
+      ...overrides,
+    });
+  }
+
   clone(): Note {
     return new Note({
       uuid: this.uuid,
