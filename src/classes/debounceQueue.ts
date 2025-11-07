@@ -14,20 +14,24 @@ export class DebounceQueue {
    * Adds new task to the debounce queue.
    * If there is an existing task, it will be cleared.
    */
-  add(cb: (isCancelled: () => boolean) => Promise<void>, delay?: number) {
-    this.clear();
+  add(cb: DebounceQueueCallback, delay?: number) {
+    this.#clear();
 
-    const timeoutId = window.setTimeout(() => {
-      if (timeoutId !== this.#current.id) return;
+    if (delay) {
+      const timeoutId = window.setTimeout(() => {
+        this.#run(timeoutId, cb);
+      }, delay);
 
-      this.#current.isRunning = true;
-
-      cb(() => this.#isCancelled(timeoutId)).finally(() => {
-        this.#cancelled.set(timeoutId, { isRunning: false });
+      this.#current.id = timeoutId;
+    } else {
+      const taskId = window.setTimeout(() => {
+        // noop
       });
-    }, delay);
 
-    this.#current.id = timeoutId;
+      this.#current.id = taskId;
+      this.#run(taskId, cb);
+    }
+
     this.#current.isRunning = false;
   }
 
@@ -35,7 +39,7 @@ export class DebounceQueue {
    * Clears the current task in the debounce queue.
    * If the task is running, it will be marked as cancelled.
    */
-  clear() {
+  #clear() {
     if (!this.#current.id) return;
 
     if (this.#current.isRunning) {
@@ -47,14 +51,28 @@ export class DebounceQueue {
     }
   }
 
-  /**
-   * Checks if task with the given timeout ID has been cancelled.
-   */
-  #isCancelled(timeoutId: number) {
-    const cancelled = !!this.#cancelled.get(timeoutId);
+  #run(id: number, cb: DebounceQueueCallback) {
+    if (id !== this.#current.id) return;
 
-    this.#cancelled.delete(timeoutId);
+    this.#current.isRunning = true;
+
+    cb(() => this.#isCancelled(id)).finally(() => {
+      this.#cancelled.set(id, { isRunning: false });
+    });
+  }
+
+  /**
+   * Checks if task with the given ID has been cancelled.
+   */
+  #isCancelled(id: number) {
+    const cancelled = !!this.#cancelled.get(id);
+
+    this.#cancelled.delete(id);
 
     return cancelled;
   }
 }
+
+//// Types
+
+type DebounceQueueCallback = (isCancelled: () => boolean) => Promise<void>;

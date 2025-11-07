@@ -46,22 +46,4 @@ describe('DebounceQueue', () => {
       false, // Second call after wait, not cancelled
     ]);
   });
-
-  it('clear', () => {
-    const dq = new DebounceQueue();
-    const cb = vi.fn(() => Promise.resolve());
-
-    vi.useFakeTimers();
-
-    dq.add(cb, 1000);
-    dq.add(cb, 1000);
-    dq.add(cb, 1000);
-
-    dq.clear();
-
-    vi.advanceTimersByTime(1000);
-    vi.useRealTimers();
-
-    expect(cb).not.toHaveBeenCalled();
-  });
 });

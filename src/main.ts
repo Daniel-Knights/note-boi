@@ -3,7 +3,7 @@ import { exit, relaunch } from '@tauri-apps/plugin-process';
 import 'quill/dist/quill.snow.css';
 import { createApp } from 'vue';
 
-import { debounceSync, deleteAccount } from './api';
+import { deleteAccount, queueSync } from './api';
 import { initLogger } from './log';
 import './sass/style.scss';
 import {
@@ -28,7 +28,7 @@ initLogger();
 handleUpdate();
 
 getAllNotes().then(() => {
-  debounceSync(true);
+  queueSync();
 });
 
 webview.onCloseRequested(async () => {
