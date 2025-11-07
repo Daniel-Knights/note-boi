@@ -7,11 +7,19 @@ use std::{
 use crate::{commands::new_note::new_note_fn, note::Note, AppState, BACKUP_DIR};
 
 #[tauri::command]
-pub fn backup_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(), String> {
-  backup_notes_fn(&state.app_dir, &notes).map_err(|err| err.to_string())
+pub fn backup_notes(
+  state: tauri::State<AppState>,
+  notes: Vec<Note>,
+  max_backups_count: usize,
+) -> Result<(), String> {
+  backup_notes_fn(&state.app_dir, &notes, &max_backups_count).map_err(|err| err.to_string())
 }
 
-pub fn backup_notes_fn(dir: &Path, notes: &[Note]) -> Result<(), Box<dyn std::error::Error>> {
+pub fn backup_notes_fn(
+  dir: &Path,
+  notes: &[Note],
+  max_backups_count: &usize,
+) -> Result<(), Box<dyn std::error::Error>> {
   // Do nothing if no notes or only empty notes
   if notes.is_empty() || notes.iter().all(|nt| nt.is_empty()) {
     return Ok(());
@@ -35,12 +43,12 @@ pub fn backup_notes_fn(dir: &Path, notes: &[Note]) -> Result<(), Box<dyn std::er
     new_note_fn(&backup_instance_dir, nt)?;
   }
 
-  remove_old_backups(&backup_dir);
+  remove_old_backups(&backup_dir, &max_backups_count);
 
   Ok(())
 }
 
-fn remove_old_backups(backup_dir: &Path) {
+fn remove_old_backups(backup_dir: &Path, max_backups_count: &usize) {
   let entries = match backup_dir.read_dir() {
     Ok(entries) => entries,
     Err(_) => return,
@@ -63,9 +71,7 @@ fn remove_old_backups(backup_dir: &Path) {
     })
     .collect();
 
-  const MAX_BACKUPS_COUNT: usize = 3;
-
-  if backup_dirs.len() <= MAX_BACKUPS_COUNT {
+  if backup_dirs.len() <= *max_backups_count {
     return;
   }
 
@@ -75,7 +81,7 @@ fn remove_old_backups(backup_dir: &Path) {
   // Remove oldest directories to keep only 3 most recent
   for (_, path) in backup_dirs
     .iter()
-    .take(backup_dirs.len() - MAX_BACKUPS_COUNT)
+    .take(backup_dirs.len() - max_backups_count)
   {
     let _ = fs::remove_dir_all(path);
   }

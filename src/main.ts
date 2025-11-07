@@ -32,7 +32,10 @@ getAllNotes().then(() => {
 });
 
 webview.onCloseRequested(async () => {
-  await tauriInvoke('backup_notes', { notes: noteState.notes }).catch((err) => {
+  await tauriInvoke('backup_notes', {
+    notes: noteState.notes,
+    max_backups_count: 3,
+  }).catch((err) => {
     console.error('Failed to backup notes:', err);
   });
 
