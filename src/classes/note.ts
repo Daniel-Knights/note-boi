@@ -33,6 +33,19 @@ export class Note implements RawNote {
       },
     });
   }
+
+  /** Returns the full text content of the given note. */
+  getText(): string {
+    if (!this.content.delta.ops) return '';
+
+    return this.content.delta.ops.reduce((acc, op) => {
+      if (typeof op.insert === 'string') {
+        return acc + op.insert;
+      }
+
+      return acc;
+    }, '');
+  }
 }
 
 //// Types
