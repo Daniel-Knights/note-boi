@@ -9,7 +9,14 @@ import {
   KeyStore,
   Note,
 } from '../classes';
-import { changeNoteEvent, findNote, newNote, noteState, selectNote } from '../store/note';
+import {
+  changeNoteEvent,
+  findNote,
+  newNote,
+  noteState,
+  selectNote,
+  syncLocalNotes,
+} from '../store/note';
 import { resetAppError, syncState } from '../store/sync';
 import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
 
@@ -177,7 +184,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
 
   syncState.unsyncedNotes.clear();
 
-  return tauriInvoke('sync_local_notes', { notes: noteState.notes });
+  return syncLocalNotes(noteState.notes);
 }
 
 /**

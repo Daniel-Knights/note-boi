@@ -12,6 +12,7 @@ export const STORAGE_KEYS_STRING = {
 } satisfies Record<StorageKeyString, string>;
 
 export const STORAGE_KEYS_JSON = {
+  NOTES: 'notes',
   NOTES_BACKUP: 'notes-backup',
   UNSYNCED: 'unsynced-note-uuids',
 } satisfies Record<StorageKeyJson, string>;
@@ -50,6 +51,7 @@ export class Storage {
 //// Types
 
 type StorageValues = {
+  NOTES: RawNote[];
   NOTES_BACKUP: Record<string, RawNote[]>;
   MENU_WIDTH: string;
   THEME: ColourTheme;
