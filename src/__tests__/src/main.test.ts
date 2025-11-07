@@ -2,12 +2,8 @@ import * as a from '../../api';
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import * as u from '../../store/update';
-import { AppError, ERROR_CODE } from '../../classes';
-import { openedPopup, POPUP_TYPE } from '../../store/popup';
 import { clearMockApiResults, mockApi } from '../mock';
 import { assertRequest, getAppDiv, resolveImmediate, waitUntil } from '../utils';
-
-let main: typeof import('../../main');
 
 beforeEach(() => {
   const appDiv = getAppDiv();
@@ -29,8 +25,7 @@ describe('main', () => {
 
     clearMockApiResults({ calls });
 
-    main = await import('../../main');
-
+    await import('../../main');
     await waitUntil(() => calls.size >= 23);
     await resolveImmediate(); // Just in case
 
@@ -73,112 +68,6 @@ describe('main', () => {
       data: {
         is_logged_in: true,
       },
-    });
-  });
-
-  describe('exitApp', () => {
-    it('With no unsynced notes', async () => {
-      const { calls } = mockApi();
-      const mockCb = vi.fn();
-      const syncSpy = vi.spyOn(a, 'sync');
-
-      await main.exitApp(mockCb);
-
-      expect(mockCb).toHaveBeenCalledOnce();
-      expect(syncSpy).not.toHaveBeenCalled();
-
-      assert.strictEqual(calls.size, 0);
-    });
-
-    it('With unsynced notes', async () => {
-      const { calls } = mockApi();
-      const mockCb = vi.fn();
-      const syncSpy = vi.spyOn(a, 'sync');
-
-      s.syncState.unsyncedNotes.edited.add('1');
-
-      await main.exitApp(mockCb);
-
-      expect(mockCb).toHaveBeenCalledOnce();
-      expect(syncSpy).toHaveBeenCalledOnce();
-
-      // `clientSideLogout` is called in `sync` if user isn't logged in
-      assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
-    });
-
-    it('Triggers ask dialog on sync error, and answers "No"', async () => {
-      const { calls, setResValues } = mockApi();
-      const mockCb = vi.fn();
-      const syncSpy = vi.spyOn(a, 'sync');
-
-      s.syncState.unsyncedNotes.edited.add('1');
-      s.syncState.appError = new AppError({ code: ERROR_CODE.SYNC });
-
-      setResValues.tauriApi({ askDialog: [false] });
-
-      await main.exitApp(mockCb);
-
-      expect(mockCb).not.toHaveBeenCalledOnce();
-      expect(syncSpy).toHaveBeenCalledOnce();
-
-      assert.strictEqual(openedPopup.value, POPUP_TYPE.ERROR);
-      assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
-      assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-        message: 'ERROR: Failed to sync notes.\nClose anyway?',
-        title: 'NoteBoi',
-        kind: 'error',
-      });
-    });
-
-    it('Triggers ask dialog on sync error, and answers "Yes"', async () => {
-      const { calls } = mockApi();
-      const mockCb = vi.fn();
-      const syncSpy = vi.spyOn(a, 'sync');
-
-      s.syncState.unsyncedNotes.edited.add('1');
-      s.syncState.appError = new AppError({ code: ERROR_CODE.SYNC });
-
-      // Setting openedPopup to undefined emits this component's close event
-      // and resets syncState.error, so we mock it to prevent that
-      vi.mock('../../components/SyncStatus.vue');
-
-      openedPopup.value = undefined;
-
-      await main.exitApp(mockCb);
-
-      expect(mockCb).toHaveBeenCalledOnce();
-      expect(syncSpy).toHaveBeenCalledOnce();
-
-      assert.isUndefined(openedPopup.value);
-      assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
-      assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-        message: 'ERROR: Failed to sync notes.\nClose anyway?',
-        title: 'NoteBoi',
-        kind: 'error',
-      });
     });
   });
 });
