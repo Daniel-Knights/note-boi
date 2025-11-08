@@ -45,6 +45,7 @@
 import Quill from 'quill';
 import { onMounted, ref, useTemplateRef } from 'vue';
 
+import { Note } from '../classes';
 import { NOTE_EVENTS } from '../constant';
 import { editNote, noteState } from '../store/note';
 import { unixToDateTime } from '../utils';
@@ -99,9 +100,9 @@ onMounted(() => {
       return;
     }
 
-    const [title, body] = editorText.value.trimStart().split(/\n\s*/, 2);
+    const { title, body } = Note.parseTitleAndBody(editorText.value);
 
-    editNote(oldDelta.compose(newDelta), title!.trimEnd(), body?.trimEnd());
+    editNote(oldDelta.compose(newDelta), title, body);
   });
 
   quillEditorInitialised.value = true;

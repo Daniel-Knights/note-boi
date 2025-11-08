@@ -14,7 +14,7 @@ import { findNote, sortStateNotes } from '../utils';
  * `noteState.selectedNote`, as `noteState.selectedNote` is what's reflected in the
  * editor. The timestamp, however, should be updated for both.
  */
-export function editNote(delta: Partial<Delta>, title: string, body?: string): void {
+export function editNote(delta: Partial<Delta>, title: string, body: string): void {
   const foundNote = findNote(noteState.selectedNote.uuid);
   if (!foundNote || delta === foundNote.content.delta) return;
 
@@ -22,8 +22,7 @@ export function editNote(delta: Partial<Delta>, title: string, body?: string): v
 
   foundNote.timestamp = timestamp;
   noteState.selectedNote.timestamp = timestamp;
-
-  foundNote.content = { delta, title, body: body || '' };
+  foundNote.content = { delta, title, body };
 
   sortStateNotes();
 
