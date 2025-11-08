@@ -36,7 +36,7 @@ export class Note implements RawNote {
    * @param overrides Overrides for properties passed to the constructor.
    */
   static fromPlainString(str: string, overrides?: Partial<RawNote>): Note {
-    const [title = '', body = ''] = str.split('\n', 2);
+    const { title, body } = this.parseTitleAndBody(str);
 
     return new Note({
       content: {
@@ -48,6 +48,18 @@ export class Note implements RawNote {
       },
       ...overrides,
     });
+  }
+
+  /**
+   * Returns an object consisting of the title and body parsed from the given string.
+   */
+  static parseTitleAndBody(str: string): { title: string; body: string } {
+    const [title, body] = str.trimStart().split(/\n\s*/, 2);
+
+    return {
+      title: title!.trimEnd(),
+      body: body?.trimEnd() ?? '',
+    };
   }
 
   clone(): Note {
