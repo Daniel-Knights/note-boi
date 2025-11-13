@@ -39,7 +39,12 @@
         >
           {{ syncState.appError.message || 'Something went wrong' }}
         </p>
-        <input type="submit" value="Submit" class="button button--default" />
+        <input
+          type="submit"
+          value="Submit"
+          class="button button--default"
+          :disabled="syncState.loadingCount > 0"
+        />
       </form>
       <button
         @click="handleFormSwitch"
