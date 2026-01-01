@@ -11,6 +11,7 @@ export const ERROR_CODE = {
   ENCRYPTOR: 9,
   FORM_VALIDATION: 10,
   SYNC: 11,
+  AUTHORISATION: 12,
 } as const;
 
 type ErrorCodes = typeof ERROR_CODE;
@@ -21,14 +22,14 @@ type ErrorCode = ErrorCodes[ErrorKey];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type RetryFn = (...args: any[]) => Promise<void> | void;
 
-export type ErrorConfig<T extends RetryFn> = {
+export type ErrorConfig = {
   code: ErrorCode;
   message?: string;
   originalError?: unknown;
   /** Function to call on 'Try again', and its arguments */
   retry?: {
-    fn: T;
-    args?: Parameters<T>;
+    fn: RetryFn;
+    args?: Parameters<RetryFn>;
   };
   /** Whether to display the error in a form and/or `SyncStatus` */
   display?: {
@@ -37,14 +38,14 @@ export type ErrorConfig<T extends RetryFn> = {
   };
 };
 
-export class AppError<T extends RetryFn = RetryFn> {
+export class AppError {
   readonly code;
   readonly message;
   readonly display;
   readonly retryConfig;
   readonly originalError;
 
-  constructor(config: ErrorConfig<T> = { code: ERROR_CODE.NONE }) {
+  constructor(config: ErrorConfig = { code: ERROR_CODE.NONE }) {
     this.code = config.code;
     this.message = config.message;
     this.display = Object.freeze(config.display);

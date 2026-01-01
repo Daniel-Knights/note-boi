@@ -13,16 +13,20 @@ import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
 
 import { updateLocalNoteStateFromDiff } from './notes';
 import {
+  handleStoreKeyError,
   parseErrorRes,
   resIsOk,
   route,
+  throwAuthorisationError,
   throwEncryptorError,
   throwFetchError,
 } from './utils';
 
 export function clientSideLogout(): Promise<void> {
   if (syncState.username) {
-    tauriInvoke('delete_access_token', { username: syncState.username });
+    tauriInvoke('delete_access_token', {
+      username: syncState.username,
+    });
   }
 
   syncState.username = '';
@@ -36,22 +40,23 @@ export function clientSideLogout(): Promise<void> {
 
 // Login
 export const login = route(async () => {
-  const errorConfig = {
+  const errorConfig: ErrorConfig = {
     code: ERROR_CODE.LOGIN,
     retry: { fn: login },
     display: {
       form: true,
       sync: true,
     },
-  } satisfies Omit<ErrorConfig<typeof login>, 'message'>;
+  };
 
-  const passwordKey = await Encryptor.generatePasswordKey(syncState.password);
+  const passwordKey = await Encryptor.generatePasswordKey(syncState.password).catch(
+    (err) => throwAuthorisationError(errorConfig, err)
+  );
 
   const encryptedNotes = await Encryptor.encryptNotes(
     noteState.notes.filter((nt) => !isEmptyNote(nt)),
     passwordKey
   ).catch((err) => throwEncryptorError(errorConfig, err));
-  if (!encryptedNotes) return;
 
   encryptedNotes.forEach((nt) => {
     syncState.encryptedNotesCache.set(nt.uuid, nt);
@@ -67,7 +72,6 @@ export const login = route(async () => {
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
-  if (!res) return;
 
   if (resIsOk(res)) {
     syncState.password = '';
@@ -78,13 +82,14 @@ export const login = route(async () => {
     resetAppError();
     tauriEmit('auth', { is_logged_in: true });
 
-    await KeyStore.storeKey(passwordKey);
+    await KeyStore.storeKey(passwordKey).catch((err) => {
+      throw handleStoreKeyError(err, 'Login');
+    });
 
     const decryptedNotes = await Promise.all([
       Encryptor.decryptNotes(res.data.note_diff.added, passwordKey),
       Encryptor.decryptNotes(res.data.note_diff.edited, passwordKey),
     ]).catch((err) => throwEncryptorError(errorConfig, err));
-    if (!decryptedNotes) return;
 
     await updateLocalNoteStateFromDiff({
       added: decryptedNotes[0],
@@ -101,24 +106,23 @@ export const login = route(async () => {
 
 // Signup
 export const signup = route(async () => {
-  const errorConfig = {
+  const errorConfig: ErrorConfig = {
     code: ERROR_CODE.SIGNUP,
     retry: { fn: signup },
     display: {
       form: true,
       sync: true,
     },
-  } satisfies Omit<ErrorConfig<typeof signup>, 'message'>;
+  };
 
-  const passwordKey = await Encryptor.generatePasswordKey(syncState.password);
-
-  await KeyStore.storeKey(passwordKey);
+  const passwordKey = await Encryptor.generatePasswordKey(syncState.password).catch(
+    (err) => throwAuthorisationError(errorConfig, err)
+  );
 
   const encryptedNotes = await Encryptor.encryptNotes(
     noteState.notes.filter((nt) => !isEmptyNote(nt)),
     passwordKey
   ).catch((err) => throwEncryptorError(errorConfig, err));
-  if (!encryptedNotes) return;
 
   const res = await new FetchBuilder('/auth/signup')
     .method('POST')
@@ -129,7 +133,6 @@ export const signup = route(async () => {
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
-  if (!res) return;
 
   if (resIsOk(res)) {
     resetAppError();
@@ -140,6 +143,10 @@ export const signup = route(async () => {
     syncState.unsyncedNotes.clear();
 
     Storage.set('USERNAME', syncState.username);
+
+    await KeyStore.storeKey(passwordKey).catch((err) => {
+      throw handleStoreKeyError(err, 'Signup');
+    });
   } else {
     throw new AppError({
       ...errorConfig,
@@ -154,18 +161,24 @@ export const logout = route(async () => {
     return clientSideLogout();
   }
 
-  const errorConfig = {
+  const errorConfig: ErrorConfig = {
     code: ERROR_CODE.LOGOUT,
     retry: { fn: logout },
     display: { form: true },
-  } satisfies Omit<ErrorConfig<typeof logout>, 'message'>;
+  };
 
-  const accessToken = await tauriInvoke('get_access_token', {
-    username: syncState.username,
-  });
+  const accessToken = await tauriInvoke(
+    'get_access_token',
+    {
+      username: syncState.username,
+    },
+    {
+      rethrowErrors: true,
+    }
+  ).catch((err) => throwAuthorisationError(errorConfig, err));
 
   if (!accessToken) {
-    return clientSideLogout();
+    throwAuthorisationError(errorConfig);
   }
 
   const fetchPromise = new FetchBuilder('/auth/logout')
