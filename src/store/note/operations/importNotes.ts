@@ -1,7 +1,7 @@
 import * as tauriDialog from '@tauri-apps/plugin-dialog';
 
 import { debounceSync } from '../../../api';
-import { Note } from '../../../classes';
+import { Dialog, Note } from '../../../classes';
 import { UUID_REGEX } from '../../../constant';
 import { isDesktop, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
@@ -30,25 +30,41 @@ export async function importNotesFromPaths(paths: string[]): Promise<Note[] | vo
   return rawNotes.map((nt) => new Note(nt));
 }
 
-function importNotesFromFileList(fileList: FileList): Promise<Note[]> {
+function importNotesFromFileList(fileList: FileList): Promise<Note[] | void> {
   const fileArr = Array.from(fileList);
 
   const fileReadPromises = fileArr.map(async (file) => {
-    const content = await file.text();
+    const content = await file.text().catch((err) => {
+      throw new Error(`Failed to read file "${file.name}"`, {
+        cause: err,
+      });
+    });
+
     const [fileStem = '', fileExt = ''] = file.name.split(/(\.[^\.]+$)/, 2);
     const filenameUUID = UUID_REGEX.test(fileStem) ? fileStem : undefined;
     const overrides = filenameUUID ? { uuid: filenameUUID } : undefined;
 
-    const parsedNote =
-      fileExt === '.json'
-        ? Note.fromJSONString(content, overrides)
-        : Note.fromPlainString(content, overrides);
+    if (fileExt === '.json') {
+      try {
+        return Note.fromJSONString(content, overrides);
+      } catch (err) {
+        throw new Error(`Failed to parse note JSON for file "${file.name}"`, {
+          cause: err,
+        });
+      }
+    }
 
-    return parsedNote;
+    return Note.fromPlainString(content, overrides);
   });
 
-  // TODO: error-handling - check if other web-based operations need this too
-  return Promise.all(fileReadPromises);
+  return Promise.all(fileReadPromises).catch((err) => {
+    console.error(err);
+
+    Dialog.message(err.message, {
+      kind: 'error',
+      title: 'Import notes',
+    });
+  });
 }
 
 export async function importNotesFromFileChooser() {
@@ -84,6 +100,7 @@ export async function importNotesFromFileChooser() {
     if (!inputEl.files) return;
 
     const importedNotes = await importNotesFromFileList(inputEl.files);
+    if (!importedNotes) return;
 
     importNotesToState(importedNotes);
   });
@@ -128,6 +145,7 @@ export async function handleImportNotesDragDrop(
       if (!('files' in evData)) return;
 
       const importedNotes = await importNotesFromFileList(evData.files);
+      if (!importedNotes) return;
 
       importNotesToState(importedNotes);
     }

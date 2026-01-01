@@ -15,7 +15,7 @@ function base64ToBuff(b64: string): Uint8Array {
 }
 
 export class Encryptor {
-  static generatePasswordKey(password: string) {
+  static generatePasswordKey(password: string): Promise<CryptoKey | never> {
     if (password === '') {
       throw new Error('Password cannot be empty');
     }
