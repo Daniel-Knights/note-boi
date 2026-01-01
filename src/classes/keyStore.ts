@@ -47,7 +47,9 @@ export class KeyStore {
 
   static async storeKey(key: CryptoKey): Promise<void> {
     const db = await this.#getDb();
-    if (!db) return;
+    if (!db) {
+      throw new Error('Unable to get DB');
+    }
 
     const transaction = db.transaction([this.#storeName], 'readwrite', {
       durability: 'strict',
@@ -67,7 +69,9 @@ export class KeyStore {
     if (this.#key) return this.#key;
 
     const db = await this.#getDb();
-    if (!db) return;
+    if (!db) {
+      throw new Error('Unable to get DB');
+    }
 
     const transaction = db.transaction([this.#storeName], 'readonly', {
       durability: 'strict',

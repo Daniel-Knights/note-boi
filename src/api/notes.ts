@@ -25,6 +25,7 @@ import {
   parseErrorRes,
   resIsOk,
   route,
+  throwAuthorisationError,
   throwEncryptorError,
   throwFetchError,
 } from './utils';
@@ -37,7 +38,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
     return clientSideLogout();
   }
 
-  const errorConfig = {
+  const errorConfig: ErrorConfig = {
     code: ERROR_CODE.SYNC,
     retry: {
       fn: () => {
@@ -47,13 +48,24 @@ export const sync = route(async (isCancelled?: () => boolean) => {
       },
     },
     display: { sync: true },
-  } satisfies Omit<ErrorConfig<typeof sync | (() => void)>, 'message'>;
+  };
 
-  const passwordKey = await KeyStore.getKey();
+  const [accessToken, passwordKey] = await Promise.all([
+    tauriInvoke(
+      'get_access_token',
+      {
+        username: syncState.username,
+      },
+      {
+        rethrowErrors: true,
+      }
+    ),
+    KeyStore.getKey(),
+  ]).catch((err) => throwAuthorisationError(errorConfig, err));
   if (isCancelled?.()) return;
 
-  if (!passwordKey) {
-    return clientSideLogout();
+  if (!accessToken || !passwordKey) {
+    throwAuthorisationError(errorConfig);
   }
 
   const notesToEncrypt = noteState.notes.filter((nt) => {
@@ -63,19 +75,10 @@ export const sync = route(async (isCancelled?: () => boolean) => {
     return (noteIsEdited || !noteIsCached) && !isEmptyNote(nt);
   });
 
-  const [accessToken, encryptedNotes] = await Promise.all([
-    tauriInvoke('get_access_token', {
-      username: syncState.username,
-    }),
-    Encryptor.encryptNotes(notesToEncrypt, passwordKey).catch((err) =>
-      throwEncryptorError(errorConfig, err)
-    ),
-  ]);
-  if (!encryptedNotes || isCancelled?.()) return;
-
-  if (!accessToken) {
-    return clientSideLogout();
-  }
+  const encryptedNotes = await Encryptor.encryptNotes(notesToEncrypt, passwordKey).catch(
+    (err) => throwEncryptorError(errorConfig, err)
+  );
+  if (isCancelled?.()) return;
 
   encryptedNotes.forEach((nt) => {
     syncState.encryptedNotesCache.set(nt.uuid, nt);
@@ -90,7 +93,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
-  if (!res || isCancelled?.()) return;
+  if (isCancelled?.()) return;
 
   if (resIsOk(res)) {
     resetAppError();
@@ -103,7 +106,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
       Encryptor.decryptNotes(res.data.note_diff.added, passwordKey),
       Encryptor.decryptNotes(res.data.note_diff.edited, passwordKey),
     ]).catch((err) => throwEncryptorError(errorConfig, err));
-    if (!decryptedNotes || isCancelled?.()) return;
+    if (isCancelled?.()) return;
 
     await updateLocalNoteStateFromDiff({
       added: decryptedNotes[0],

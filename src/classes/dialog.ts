@@ -20,7 +20,10 @@ export class Dialog {
     return Promise.resolve(window.confirm(message));
   }
 
-  static async message(message: string, options?: { kind?: DialogKind }): Promise<void> {
+  static async message(
+    message: string,
+    options?: { kind?: DialogKind; title?: string }
+  ): Promise<void> {
     if (isDesktop()) {
       await tauriDialog.message(message, options);
 

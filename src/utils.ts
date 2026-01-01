@@ -93,17 +93,39 @@ export function tauriListen<T>(
  */
 export function tauriInvoke<T extends TauriCommand>(
   cmd: T,
-  args?: TauriCommandPayloads[T]['payload']
-): Promise<TauriCommandPayloads[T]['response'] | void> {
+  args?: TauriCommandPayloads[T]['payload'],
+  options?: { rethrowErrors?: boolean; promptRetryOnError?: boolean }
+): Promise<TauriCommandPayloads[T]['response'] | void | never> {
   if (isWeb()) return Promise.resolve();
 
-  return invoke<T>(cmd, args).catch((err) => {
-    console.error('Note invoke error:');
+  const errMsgMap = {
+    backup_notes: 'backup notes',
+    delete_access_token: 'delete access token',
+    delete_note: 'delete note',
+    edit_note: 'edit note',
+    export_notes: 'export notes',
+    get_access_token: 'get access token',
+    get_all_notes: 'get notes',
+    import_notes: 'import notes',
+    new_note: 'create note',
+    set_access_token: 'set access token',
+    sync_local_notes: 'sync local notes',
+  } satisfies Record<TauriCommand, string>;
+
+  return invoke<T>(cmd, args).catch(async (err) => {
+    if (options?.rethrowErrors) throw err;
+
+    console.error(`${cmd} error:`);
     console.error(err);
 
-    Dialog.message(
-      'Something went wrong. Please try again or open an issue in the GitHub repo.',
-      { kind: 'error' }
-    );
+    if (!options?.promptRetryOnError) return;
+
+    const tryAgain = await Dialog.ask(`Failed to ${errMsgMap[cmd]}. Try again?`, {
+      kind: 'error',
+      title: capitalise(errMsgMap[cmd]),
+    });
+    if (!tryAgain) return;
+
+    return tauriInvoke(cmd, args, options);
   });
 }

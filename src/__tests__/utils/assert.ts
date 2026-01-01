@@ -8,8 +8,8 @@ import { mockApi } from '../mock';
  * No `expectedErrorConfig` asserts a `NONE` error.
  */
 export function assertAppError<T extends RetryFn>(
-  expectedErrorConfig?: Omit<ErrorConfig<T>, 'retry'> & {
-    retry?: ErrorConfig<T>['retry'] | { args: Parameters<T> };
+  expectedErrorConfig?: Omit<ErrorConfig, 'retry'> & {
+    retry?: { fn?: T; args?: Parameters<T> };
   }
 ) {
   const { appError } = s.syncState;

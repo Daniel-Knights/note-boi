@@ -13,9 +13,11 @@ import { tauriInvoke } from '../utils';
 
 import { clientSideLogout } from './auth';
 import {
+  handleStoreKeyError,
   parseErrorRes,
   resIsOk,
   route,
+  throwAuthorisationError,
   throwEncryptorError,
   throwFetchError,
 } from './utils';
@@ -25,32 +27,37 @@ export const changePassword = route(async (): Promise<void> => {
     return clientSideLogout();
   }
 
-  const errorConfig = {
+  const errorConfig: ErrorConfig = {
     code: ERROR_CODE.CHANGE_PASSWORD,
     retry: { fn: changePassword },
     display: {
       form: true,
       sync: true,
     },
-  } satisfies Omit<ErrorConfig<typeof changePassword>, 'message'>;
+  };
 
-  const newKey = await Encryptor.generatePasswordKey(syncState.newPassword);
-
-  await KeyStore.storeKey(newKey);
-
-  const [accessToken, encryptedNotes] = await Promise.all([
-    tauriInvoke('get_access_token', {
-      username: syncState.username,
-    }),
-    Encryptor.encryptNotes(noteState.notes, newKey).catch((err) =>
-      throwEncryptorError(errorConfig, err)
+  const [accessToken, newKey] = await Promise.all([
+    tauriInvoke(
+      'get_access_token',
+      {
+        username: syncState.username,
+      },
+      {
+        rethrowErrors: true,
+      }
     ),
-  ]);
-  if (!encryptedNotes) return;
+    Encryptor.generatePasswordKey(syncState.newPassword),
+  ]).catch((err) => {
+    throwAuthorisationError(errorConfig, err);
+  });
 
   if (!accessToken) {
-    return clientSideLogout();
+    throwAuthorisationError(errorConfig);
   }
+
+  const encryptedNotes = await Encryptor.encryptNotes(noteState.notes, newKey).catch(
+    (err) => throwEncryptorError(errorConfig, err)
+  );
 
   const res = await new FetchBuilder('/account/change-password')
     .method('PUT')
@@ -62,13 +69,16 @@ export const changePassword = route(async (): Promise<void> => {
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
-  if (!res) return;
 
   if (resIsOk(res)) {
     resetAppError();
 
     syncState.password = '';
     syncState.newPassword = '';
+
+    await KeyStore.storeKey(newKey).catch((err) => {
+      throw handleStoreKeyError(err, 'Change password');
+    });
   } else {
     throw new AppError({
       ...errorConfig,
@@ -88,20 +98,26 @@ export const deleteAccount = route(async (): Promise<void> => {
   });
   if (!askRes) return;
 
-  const errorConfig = {
+  const errorConfig: ErrorConfig = {
     code: ERROR_CODE.DELETE_ACCOUNT,
     retry: { fn: deleteAccount },
     display: {
       sync: true,
     },
-  } satisfies Omit<ErrorConfig<typeof deleteAccount>, 'message'>;
+  };
 
-  const accessToken = await tauriInvoke('get_access_token', {
-    username: syncState.username,
-  });
+  const accessToken = await tauriInvoke(
+    'get_access_token',
+    {
+      username: syncState.username,
+    },
+    {
+      rethrowErrors: true,
+    }
+  ).catch((err) => throwAuthorisationError(errorConfig, err));
 
   if (!accessToken) {
-    return clientSideLogout();
+    throwAuthorisationError(errorConfig);
   }
 
   const res = await new FetchBuilder('/account/delete')
@@ -109,7 +125,6 @@ export const deleteAccount = route(async (): Promise<void> => {
     .withAuth(syncState.username, accessToken)
     .fetch()
     .catch((err) => throwFetchError(errorConfig, err));
-  if (!res) return;
 
   if (resIsOk(res)) {
     await clientSideLogout();
