@@ -62,6 +62,8 @@ app.getVersion().then((v) => {
   grid-template-columns: 75px auto;
   margin-top: 12px;
   width: 270px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 
   > .popup-info__text-bold {
     font-weight: 600;
