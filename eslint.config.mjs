@@ -70,6 +70,7 @@ export default defineConfigWithVueTs(
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-redeclare': 'error',
       '@typescript-eslint/no-use-before-define': [
         'error',
         { functions: false, classes: false, variables: false },
@@ -211,7 +212,7 @@ export default defineConfigWithVueTs(
       'no-plusplus': 'error',
       'no-promise-executor-return': 'error',
       'no-prototype-builtins': 'error',
-      'no-redeclare': 'error',
+      'no-redeclare': 'off',
       'no-regex-spaces': 'error',
       'no-restricted-syntax': [
         'error',
