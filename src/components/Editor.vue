@@ -12,21 +12,19 @@
         <option selected></option>
       </select>
       <div class="ql-formats">
-        <button class="ql-bold"></button>
-        <button class="ql-italic"></button>
-        <button class="ql-underline"></button>
-        <button class="ql-strike"></button>
+        <button class="ql-bold" title="Bold"></button>
+        <button class="ql-italic" title="Italic"></button>
+        <button class="ql-underline" title="Underline"></button>
+        <button class="ql-strike" title="Strikethrough"></button>
+        <button class="ql-code" title="Code"></button>
       </div>
       <div class="ql-formats">
-        <button class="ql-list" value="ordered"></button>
-        <button class="ql-list" value="bullet"></button>
-        <button class="ql-code"></button>
+        <button class="ql-list" value="ordered" title="Ordered list"></button>
+        <button class="ql-list" value="bullet" title="Bullet list"></button>
+        <button class="ql-indent" value="-1" title="Decrease indent"></button>
+        <button class="ql-indent" value="+1" title="Increase indent"></button>
+        <button class="ql-clean" title="Clear formatting"></button>
       </div>
-      <div class="ql-formats">
-        <button class="ql-indent" value="-1"></button>
-        <button class="ql-indent" value="+1"></button>
-      </div>
-      <button class="ql-clean"></button>
     </div>
     <div class="editor__scroll-container">
       <div class="editor__body" ref="editor-body" data-test-id="body"></div>
