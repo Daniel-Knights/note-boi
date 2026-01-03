@@ -2,7 +2,7 @@ import { debounceSync } from '../../../api';
 import { Storage } from '../../../classes';
 import { isDesktop, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
-import { changeNoteEvent, selectNoteEvent } from '../event';
+import { dispatchNoteEvent } from '../event';
 import { noteState } from '../state';
 import { findNoteIndex } from '../utils';
 
@@ -17,8 +17,8 @@ export function deleteNote(uuid: string): void {
   } else if (noteState.selectedNote.uuid === uuid) {
     noteState.selectedNote = { ...noteState.notes[0]! };
 
-    document.dispatchEvent(selectNoteEvent);
-    document.dispatchEvent(changeNoteEvent);
+    dispatchNoteEvent('note-select');
+    dispatchNoteEvent('note-change');
   }
 
   if (syncState.unsyncedNotes.new === uuid) {

@@ -6,14 +6,6 @@ export const UUID_REGEX =
 
 export const MIN_PASSWORD_LENGTH = 6;
 
-export const NOTE_EVENTS = {
-  new: 'note-new',
-  /** For preventing note edit on text change. */
-  select: 'note-select',
-  /** For whenever the content of a note is changed. */
-  change: 'note-change',
-} as const;
-
 // Endpoints
 export type EndpointPayloads = {
   '/auth/signup': {
