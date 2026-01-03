@@ -1,4 +1,4 @@
-import { changeNoteEvent, selectNoteEvent } from '../event';
+import { dispatchNoteEvent } from '../event';
 import { noteState } from '../state';
 import { clearEmptyNote, findNote } from '../utils';
 
@@ -16,8 +16,8 @@ export function selectNote(uuid?: string): boolean {
 
   noteState.selectedNote = foundNote.clone();
 
-  document.dispatchEvent(selectNoteEvent);
-  document.dispatchEvent(changeNoteEvent);
+  dispatchNoteEvent('note-select');
+  dispatchNoteEvent('note-change');
 
   return true;
 }

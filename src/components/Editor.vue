@@ -46,8 +46,7 @@ import Quill from 'quill';
 import { onMounted, ref, useTemplateRef } from 'vue';
 
 import { Note } from '../classes';
-import { NOTE_EVENTS } from '../constant';
-import { editNote, noteState } from '../store/note';
+import { addNoteEventListener, editNote, noteState } from '../store/note';
 import { unixToDateTime } from '../utils';
 
 import FindInPage from './FindInPage.vue';
@@ -109,9 +108,9 @@ onMounted(() => {
 });
 
 // Event listeners
-document.addEventListener(NOTE_EVENTS.new, newNoteEventHandler);
-document.addEventListener(NOTE_EVENTS.change, changeNoteEventHandler);
-document.addEventListener(NOTE_EVENTS.select, selectNoteEventHandler);
+addNoteEventListener('note-new', newNoteEventHandler);
+addNoteEventListener('note-select', selectNoteEventHandler);
+addNoteEventListener('note-change', changeNoteEventHandler);
 
 // Open/close find in page
 window.addEventListener('keydown', (ev) => {
