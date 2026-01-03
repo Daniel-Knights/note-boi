@@ -58,7 +58,7 @@
       {
         "title": "NoteBoi",
         "minHeight": 400,
-        "minWidth": 600,
+        "minWidth": 300,
         "resizable": true,
         "fullscreen": false,
         "useHttpsScheme": true

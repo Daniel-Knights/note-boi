@@ -1,7 +1,11 @@
 <template>
   <section
     @click="listIsFocused = true"
-    id="note-menu"
+    class="note-menu"
+    :class="{
+      'note-menu--mobile': isMobile,
+      'note-menu--hidden': isHidden,
+    }"
     :style="{
       width: menuWidth,
       marginLeft: isHidden ? `-${menuWidth}` : '',
@@ -38,9 +42,9 @@
         </p>
       </li>
     </ul>
-    <ContextMenu :ev="contextMenuEv" />
+    <ContextMenu :ev="contextMenuEv" :handle-new-note="handleNewNote" />
     <button
-      @click="newNote(true)"
+      @click="handleNewNote"
       class="note-menu__new-note button button--default"
       data-test-id="new"
     >
@@ -60,7 +64,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onUnmounted, ref, useTemplateRef, watch } from 'vue';
+import { computed, onUnmounted, ref, useTemplateRef, watch } from 'vue';
 
 import { Note, Storage } from '../classes';
 import {
@@ -75,13 +79,18 @@ import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
 
+const mediaQuery = window.matchMedia('(max-width: 750px)');
+
 const noteList = useTemplateRef('note-list');
 
 const contextMenuEv = ref<MouseEvent>();
 const isDragging = ref(false);
-const isHidden = ref(false);
+const isMobile = ref(mediaQuery.matches);
+const isHidden = ref(isMobile.value || false);
 const listIsFocused = ref(true);
-const menuWidth = ref(Storage.get('MENU_WIDTH') || '260px');
+const menuWidthDesktop = ref(Storage.get('MENU_WIDTH') || '260px');
+
+const menuWidth = computed(() => (isMobile.value ? '100vw' : menuWidthDesktop.value));
 
 // Clear all extra notes and remove event listener
 function clearExtraNotes(ev?: MouseEvent) {
@@ -93,6 +102,15 @@ function clearExtraNotes(ev?: MouseEvent) {
   noteState.extraSelectedNotes = [];
 
   document.removeEventListener('click', clearExtraNotes);
+}
+
+// New note handler
+function handleNewNote() {
+  newNote(true);
+
+  if (isMobile.value) {
+    isHidden.value = true;
+  }
 }
 
 // Single or multiple note selection handler
@@ -175,6 +193,10 @@ function handleNoteSelect(ev: MouseEvent) {
 
   // Single click
   selectNote(targetNoteUuid);
+
+  if (isMobile.value) {
+    isHidden.value = true;
+  }
 }
 
 // Drag bar functionality
@@ -191,14 +213,15 @@ function handleDragBar() {
     }
 
     isHidden.value = false;
-    menuWidth.value = `${ev.clientX}px`;
+    menuWidthDesktop.value = `${ev.clientX}px`;
   });
+
   document.addEventListener(
     'mouseup',
     () => {
       isDragging.value = false;
 
-      Storage.set('MENU_WIDTH', menuWidth.value);
+      Storage.set('MENU_WIDTH', menuWidthDesktop.value);
     },
     { once: true }
   );
@@ -227,6 +250,12 @@ function navigateWithArrowKeys(ev: KeyboardEvent) {
     selectNote(noteState.notes[toIndex]?.uuid);
     clearExtraNotes();
   }
+}
+
+// Handle mobile <-> desktop resize
+function handleMediaChange(ev: MediaQueryListEvent) {
+  isMobile.value = ev.matches;
+  isHidden.value = ev.matches;
 }
 
 // Ensure selected note is scrolled into view
@@ -259,9 +288,11 @@ window.addEventListener('click', (ev) => {
 });
 
 window.addEventListener('keydown', navigateWithArrowKeys);
+mediaQuery.addEventListener('change', handleMediaChange);
 
 onUnmounted(() => {
   window.removeEventListener('keydown', navigateWithArrowKeys);
+  mediaQuery.removeEventListener('change', handleMediaChange);
 });
 </script>
 
@@ -272,11 +303,12 @@ onUnmounted(() => {
 
 $new-note-height: 50px;
 
-#note-menu {
+.note-menu {
   flex-shrink: 0;
   position: relative;
   max-height: 100vh;
   max-width: 50vw;
+  background-color: var(--colour__primary);
   z-index: 25;
 }
 
@@ -302,7 +334,7 @@ $new-note-height: 50px;
 
   &:hover,
   &--selected {
-    color: #fff;
+    color: v.$white;
     background-color: var(--colour__tertiary);
   }
 
@@ -395,6 +427,20 @@ $new-note-height: 50px;
   svg {
     height: 10px;
     transform: translateX(-1px);
+  }
+}
+
+//// Mobile
+
+.note-menu--mobile {
+  max-width: 100vw;
+
+  .note-menu__drag-bar {
+    display: none;
+  }
+
+  &:not(.note-menu--hidden) .note-menu__toggle {
+    transform: translateY(-50%) rotate(180deg);
   }
 }
 </style>
