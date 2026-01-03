@@ -12,23 +12,15 @@
 <script lang="ts" setup>
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
-import {
-  deleteNote,
-  deleteSelectedNotes,
-  exportNotes,
-  newNote,
-  noteState,
-} from '../store/note';
+import { deleteNote, deleteSelectedNotes, exportNotes, noteState } from '../store/note';
 import { isEmptyNote } from '../utils';
 
 import DropMenu from './DropMenu.vue';
 
-const props = defineProps({
-  ev: {
-    type: MouseEvent || undefined,
-    default: undefined,
-  },
-});
+const props = defineProps<{
+  handleNewNote: () => void;
+  ev?: MouseEvent;
+}>();
 
 const dropMenu = useTemplateRef('drop-menu');
 
@@ -43,7 +35,7 @@ const items = computed(() => {
   return [
     {
       label: 'New Note',
-      clickHandler: () => newNote(true),
+      clickHandler: props.handleNewNote,
       testId: 'new',
     },
     {
@@ -93,10 +85,12 @@ watch(props, async () => {
   await nextTick();
 
   const dropMenuHeight = dropMenu.value?.$el.clientHeight ?? 120; // Fallback for tests
+  const dropMenuWidth = dropMenu.value?.$el.clientWidth ?? 200; // Fallback for tests
   const maxY = window.innerHeight - dropMenuHeight - 10; // 10 = a bit of padding
+  const maxX = window.innerWidth - dropMenuWidth - 10; // 10 = a bit of padding
 
   top.value = Math.min(props.ev.y, maxY);
-  left.value = props.ev.x;
+  left.value = Math.min(props.ev.x, maxX);
 });
 </script>
 
