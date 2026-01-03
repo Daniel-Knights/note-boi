@@ -8,19 +8,30 @@
 
 ## Features
 
-- [x] Remote storage/backup
+- [x] Remote storage
+- [x] Local backups
 - [x] E2E encryption
-- [x] WYSIWYG editor
+- [x] Rich text editor
+- [x] Web
+- [x] Mobile
+- [x] Find in page
 - [x] Light/dark themes
-- [x] Note backups
-- [ ] Web version (planned)
-- [ ] Mobile support (planned)
 
 <p align="center">
 <img src="artwork/example.gif" width="714" alt="NoteBoi screenshot" >
 </p>
 
-## Installation
+## Usage
+
+### Web
+
+[Click here](https://dk-tetris.netlify.app/).
+
+### Mobile
+
+[Follow the instructions here](https://www.installpwa.com/from/note-boi.netlify.app).
+
+### Desktop
 
 Go to the [releases page](https://github.com/Daniel-Knights/note-boi/releases) and download the appropriate installer.
 
