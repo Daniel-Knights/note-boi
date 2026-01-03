@@ -1,7 +1,7 @@
 import { Note, Storage } from '../../../classes';
 import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
-import { changeNoteEvent, newNoteEvent, selectNoteEvent } from '../event';
+import { dispatchNoteEvent } from '../event';
 import { noteState } from '../state';
 import { findNote } from '../utils';
 
@@ -31,9 +31,9 @@ export function newNote(isButtonClick?: boolean): void {
     syncState.unsyncedNotes.set({ new: freshNote.uuid });
   }
 
-  document.dispatchEvent(selectNoteEvent);
-  document.dispatchEvent(changeNoteEvent);
-  document.dispatchEvent(newNoteEvent);
+  dispatchNoteEvent('note-select');
+  dispatchNoteEvent('note-change');
+  dispatchNoteEvent('note-new');
 
   if (isDesktop()) {
     tauriInvoke('new_note', { note: { ...freshNote } });

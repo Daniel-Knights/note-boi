@@ -1,6 +1,6 @@
 import { Note, Storage } from '../../../classes';
 import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
-import { changeNoteEvent } from '../event';
+import { dispatchNoteEvent } from '../event';
 import { noteState } from '../state';
 import { clearEmptyNote, sortStateNotes } from '../utils';
 
@@ -32,7 +32,6 @@ export async function getAllNotes(): Promise<void> {
 
   if (!isSingleEmptyNote) {
     clearEmptyNote();
-
-    document.dispatchEvent(changeNoteEvent);
+    dispatchNoteEvent('note-change');
   }
 }
