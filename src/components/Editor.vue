@@ -1,5 +1,5 @@
 <template>
-  <section id="editor">
+  <main id="editor">
     <header class="editor__header">
       <small class="editor__date" data-test-id="timestamp">{{
         unixToDateTime(noteState.selectedNote.timestamp || 0)
@@ -38,7 +38,7 @@
       :get-bounds-at-index="(i, len) => quillEditor!.getBounds(i, len)"
       @close="openFindInPage = false"
     />
-  </section>
+  </main>
 </template>
 
 <script lang="ts" setup>
