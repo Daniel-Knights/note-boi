@@ -12,8 +12,16 @@
 <script lang="ts" setup>
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
-import { deleteNote, deleteSelectedNotes, exportNotes, noteState } from '../store/note';
+import {
+  deleteNote,
+  deleteSelectedNotes,
+  exportNotes,
+  importNotesFromFileChooser,
+  noteState,
+} from '../store/note';
 import { isEmptyNote } from '../utils';
+
+import { DropMenuItemData } from './types';
 
 import DropMenu from './DropMenu.vue';
 
@@ -29,7 +37,7 @@ const show = ref(false);
 const top = ref(0);
 const left = ref(0);
 
-const items = computed(() => {
+const items = computed<DropMenuItemData[]>(() => {
   const hasNoNotes = noteState.notes.length === 1 && isEmptyNote(noteState.notes[0]);
 
   return [
@@ -45,10 +53,21 @@ const items = computed(() => {
       testId: 'export',
     },
     {
+      label: 'Export All Notes',
+      testId: 'export',
+      clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.uuid)),
+    },
+    {
+      label: 'Import Notes',
+      testId: 'import',
+      clickHandler: importNotesFromFileChooser,
+    },
+    {
       label: 'Delete Note',
       clickHandler: handleDeleteNote,
       disabled: !clickedNoteUuid.value || hasNoNotes,
       testId: 'delete',
+      danger: true,
     },
   ];
 });
