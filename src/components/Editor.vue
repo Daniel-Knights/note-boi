@@ -1,8 +1,10 @@
 <template>
   <section id="editor">
-    <small class="editor__date" data-test-id="timestamp">{{
-      unixToDateTime(noteState.selectedNote.timestamp || 0)
-    }}</small>
+    <header class="editor__header">
+      <small class="editor__date" data-test-id="timestamp">{{
+        unixToDateTime(noteState.selectedNote.timestamp || 0)
+      }}</small>
+    </header>
     <!-- Toolbar has to be defined manually like this, so scrolling works correctly -->
     <div class="editor__toolbar">
       <select class="ql-header">
@@ -136,16 +138,18 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
   height: 100%;
   overflow: hidden;
 
+  .editor__header {
+    @include v.flex-y(center, center);
+    height: v.$editor-header-height;
+    border-bottom: 1px solid var(--colour__tertiary);
+  }
+
   .editor__date {
     user-select: none;
     -webkit-user-select: none;
-    @include v.flex-x(center, center);
-    height: v.$editor-date-height;
-    width: 100%;
     font-size: 11px;
     letter-spacing: 0.5px;
     color: var(--colour__tertiary-light);
-    border-bottom: 1px solid var(--colour__tertiary);
   }
 
   .editor__scroll-container {
