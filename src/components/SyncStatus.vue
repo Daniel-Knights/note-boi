@@ -78,12 +78,12 @@ tauriListen('signup', () => {
 
 #sync-status {
   position: absolute;
-  right: v.$utility-menu-right;
+  right: v.$utility-button-spacing-x;
   bottom: 12px;
   z-index: 10;
 
   > * {
-    @include v.equal-dimensions(v.$utility-menu-width);
+    @include v.equal-dimensions(v.$utility-button-width);
   }
 }
 
