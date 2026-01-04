@@ -224,7 +224,7 @@ function clearHighlights() {
   position: absolute;
   bottom: 0;
   left: 0;
-  right: v.$utility-menu-width + v.$utility-menu-right;
+  right: v.$utility-button-width + v.$utility-button-spacing-x;
   height: v.$find-in-page-height;
   background-color: var(--colour__primary);
   color: var(--colour__secondary);

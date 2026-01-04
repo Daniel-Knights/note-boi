@@ -3,12 +3,11 @@
     @click="listIsFocused = true"
     class="note-menu"
     :class="{
-      'note-menu--mobile': isMobile,
-      'note-menu--hidden': isHidden,
+      'note-menu--small-screen': isSmallScreen,
     }"
     :style="{
       width: menuWidth,
-      marginLeft: isHidden ? `-${menuWidth}` : '',
+      marginLeft: !showNoteMenu ? `-${menuWidth}` : '',
     }"
   >
     <ul
@@ -55,11 +54,6 @@
       class="note-menu__drag-bar"
       data-test-id="drag-bar"
     ></div>
-    <button @click="isHidden = !isHidden" class="note-menu__toggle" data-test-id="toggle">
-      <svg viewBox="0 0 6 12">
-        <path d="M1 -100V100M5 -100V100" stroke="#fff" stroke-width="2" />
-      </svg>
-    </button>
   </nav>
 </template>
 
@@ -79,18 +73,25 @@ import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
 
-const mediaQuery = window.matchMedia('(max-width: 750px)');
+const props = defineProps<{
+  isSmallScreen: boolean;
+  showNoteMenu: boolean;
+}>();
+
+const emit = defineEmits<{
+  'update:showNoteMenu': [value: boolean];
+}>();
 
 const noteList = useTemplateRef('note-list');
 
 const contextMenuEv = ref<MouseEvent>();
 const isDragging = ref(false);
-const isMobile = ref(mediaQuery.matches);
-const isHidden = ref(isMobile.value || false);
 const listIsFocused = ref(true);
 const menuWidthDesktop = ref(Storage.get('MENU_WIDTH') || '260px');
 
-const menuWidth = computed(() => (isMobile.value ? '100vw' : menuWidthDesktop.value));
+const menuWidth = computed(() =>
+  props.isSmallScreen ? '100vw' : menuWidthDesktop.value
+);
 
 // Clear all extra notes and remove event listener
 function clearExtraNotes(ev?: MouseEvent) {
@@ -108,13 +109,17 @@ function clearExtraNotes(ev?: MouseEvent) {
 function handleNewNote() {
   newNote(true);
 
-  if (isMobile.value) {
-    isHidden.value = true;
+  if (props.isSmallScreen) {
+    emit('update:showNoteMenu', false);
   }
 }
 
 // Single or multiple note selection handler
 function handleNoteSelect(ev: MouseEvent) {
+  if (props.isSmallScreen) {
+    emit('update:showNoteMenu', false);
+  }
+
   const target = ev.target as HTMLElement | null;
   const closestNote = target?.closest<HTMLElement>('.note-menu__note');
   const targetNoteUuid = closestNote?.dataset.noteUuid;
@@ -193,10 +198,6 @@ function handleNoteSelect(ev: MouseEvent) {
 
   // Single click
   selectNote(targetNoteUuid);
-
-  if (isMobile.value) {
-    isHidden.value = true;
-  }
 }
 
 // Drag bar functionality
@@ -255,12 +256,6 @@ function navigateWithArrowKeys(ev: KeyboardEvent) {
   }
 }
 
-// Handle mobile <-> desktop resize
-function handleMediaChange(ev: MediaQueryListEvent) {
-  isMobile.value = ev.matches;
-  isHidden.value = ev.matches;
-}
-
 // Ensure selected note is scrolled into view
 watch(
   [() => noteState.selectedNote],
@@ -291,11 +286,9 @@ window.addEventListener('click', (ev) => {
 });
 
 window.addEventListener('keydown', navigateWithArrowKeys);
-mediaQuery.addEventListener('change', handleMediaChange);
 
 onUnmounted(() => {
   window.removeEventListener('keydown', navigateWithArrowKeys);
-  mediaQuery.removeEventListener('change', handleMediaChange);
 });
 </script>
 
@@ -408,42 +401,13 @@ $new-note-height: 50px;
   }
 }
 
-.note-menu__toggle {
-  cursor: pointer;
-  @include v.flex-x(center, center);
-  position: absolute;
-  top: 50%;
-  right: 0;
-  height: 20px;
-  width: 10px;
-  background-color: var(--colour__tertiary);
-  transform: translate(100%, -50%);
+//// Small screen
 
-  // Hit box
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: -10px;
-  }
-
-  svg {
-    height: 10px;
-    transform: translateX(-1px);
-  }
-}
-
-//// Mobile
-
-.note-menu--mobile {
+.note-menu--small-screen {
   max-width: 100vw;
 
   .note-menu__drag-bar {
     display: none;
-  }
-
-  &:not(.note-menu--hidden) .note-menu__toggle {
-    transform: translateY(-50%) rotate(180deg);
   }
 }
 </style>

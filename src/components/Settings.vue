@@ -107,8 +107,21 @@ const menuItems = computed<DropMenuItemData[]>(() => [
 </script>
 
 <style lang="scss" scoped>
+@use 'sass:math';
+
+@use '../sass/vars' as v;
+
 #settings {
-  position: relative;
+  @include v.flex-y;
+  position: absolute;
+  top: math.div(v.$editor-header-height, 2);
+  right: v.$utility-button-spacing-x;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  .button {
+    @include v.equal-dimensions(v.$utility-button-width);
+  }
 
   .drop-menu {
     right: 0;
