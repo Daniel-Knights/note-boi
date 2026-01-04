@@ -43,6 +43,13 @@ export function escapeRegex(str: string) {
   return str.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
+/**
+ * Constrains a numeric value within a specified range.
+ */
+export function mathClamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
 /** Returns true if note content is empty. */
 export function isEmptyNote(note?: { content: Note['content'] }): boolean {
   if (!note) return false;
