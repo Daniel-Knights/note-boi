@@ -69,9 +69,11 @@ import {
   noteState,
   selectNote,
 } from '../store/note';
-import { isEmptyNote } from '../utils';
+import { isEmptyNote, mathClamp } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
+
+const MIN_MENU_WIDTH = 150;
 
 const props = defineProps<{
   isSmallScreen: boolean;
@@ -207,14 +209,10 @@ function handleDragBar() {
   function handleDragBarMouseMove(ev: MouseEvent) {
     if (!isDragging.value) return;
 
-    if (ev.clientX < 150) {
-      emit('update:showNoteMenu', false);
+    const halfWindowWidth = Math.floor(window.innerWidth / 2);
 
-      return;
-    }
-
-    emit('update:showNoteMenu', true);
-    menuWidthDesktop.value = `${ev.clientX}px`;
+    emit('update:showNoteMenu', ev.clientX >= MIN_MENU_WIDTH);
+    menuWidthDesktop.value = `${mathClamp(ev.clientX, MIN_MENU_WIDTH, halfWindowWidth)}px`;
   }
 
   document.addEventListener('mousemove', handleDragBarMouseMove);
