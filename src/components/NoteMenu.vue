@@ -1,5 +1,5 @@
 <template>
-  <section
+  <nav
     @click="listIsFocused = true"
     class="note-menu"
     :class="{
@@ -60,7 +60,7 @@
         <path d="M1 -100V100M5 -100V100" stroke="#fff" stroke-width="2" />
       </svg>
     </button>
-  </section>
+  </nav>
 </template>
 
 <script lang="ts" setup>
