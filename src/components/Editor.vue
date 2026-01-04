@@ -129,11 +129,9 @@ window.addEventListener('keydown', (ev) => {
 $spacing-x: 12px;
 $text-indent: 1em;
 $toolbar-height: 40px;
-$utility-menu-padding: (v.$utility-menu-right - $spacing-x) * 2;
-$padding-right: v.$utility-menu-width + $utility-menu-padding;
+$utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
 
 #editor {
-  flex-grow: 1;
   position: relative;
   height: 100%;
   overflow: hidden;
@@ -154,7 +152,7 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
 
   .editor__scroll-container {
     position: relative;
-    height: calc(100% - v.$editor-date-height - $toolbar-height);
+    height: calc(100% - v.$editor-header-height - $toolbar-height);
     overflow: auto;
 
     &::-webkit-scrollbar {
@@ -166,7 +164,7 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
     display: inline-block; // Fixes Safari Webview bug where caret duplicates on new line with text-indent set
     position: relative;
     margin: 12px $spacing-x 0;
-    padding: 0 $padding-right v.$find-in-page-height $text-indent;
+    padding: 0 0 v.$find-in-page-height $text-indent;
     height: fit-content;
     width: calc(100% - #{$spacing-x * 2});
     text-indent: -$text-indent;
@@ -208,7 +206,6 @@ $padding-right: v.$utility-menu-width + $utility-menu-padding;
 
   .ql-toolbar {
     position: relative;
-    padding-right: $padding-right;
     z-index: 10;
 
     // Heading dropdown

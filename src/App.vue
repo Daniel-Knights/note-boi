@@ -1,19 +1,45 @@
 <template>
   <Loading v-if="updateState.isDownloading" />
-  <NoteMenu />
-  <Editor />
-  <UtilityMenu />
-  <SyncStatus />
+  <NoteMenu v-model:show-note-menu="showNoteMenu" :is-small-screen="isSmallScreen" />
+  <div class="layout-main">
+    <NoteMenuToggle @click="showNoteMenu = !showNoteMenu" />
+    <Editor :is-small-screen="isSmallScreen" />
+    <Settings />
+    <SyncStatus />
+  </div>
 </template>
 
 <script lang="ts" setup>
+import { onUnmounted, ref } from 'vue';
+
+import { noteState } from './store/note';
 import { updateState } from './store/update';
 
 import Editor from './components/Editor.vue';
 import Loading from './components/Loading.vue';
 import NoteMenu from './components/NoteMenu.vue';
+import NoteMenuToggle from './components/NoteMenuToggle.vue';
+import Settings from './components/Settings.vue';
 import SyncStatus from './components/SyncStatus.vue';
-import UtilityMenu from './components/UtilityMenu.vue';
+
+const smallScreenMediaQuery = window.matchMedia('(max-width: 650px)');
+
+const isSmallScreen = ref(smallScreenMediaQuery.matches);
+const showNoteMenu = ref(!isSmallScreen.value); // Show menu by default on large screens
+
+/**
+ * Updates `isSmallScreen` and toggles note menu on media query match changes.
+ */
+function handleMediaChange(ev: MediaQueryListEvent) {
+  isSmallScreen.value = ev.matches;
+  showNoteMenu.value = !isSmallScreen.value || noteState.notes.length > 1;
+}
+
+smallScreenMediaQuery.addEventListener('change', handleMediaChange);
+
+onUnmounted(() => {
+  smallScreenMediaQuery.removeEventListener('change', handleMediaChange);
+});
 </script>
 
 <style lang="scss">
@@ -59,5 +85,11 @@ a {
     text-decoration: none;
     color: var(--colour__highlight-hover);
   }
+}
+
+.layout-main {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
 }
 </style>
