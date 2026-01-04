@@ -203,18 +203,20 @@ function handleNoteSelect(ev: MouseEvent) {
 function handleDragBar() {
   isDragging.value = true;
 
-  document.addEventListener('mousemove', (ev) => {
+  function handleDragBarMouseMove(ev: MouseEvent) {
     if (!isDragging.value) return;
 
     if (ev.clientX < 150) {
-      isHidden.value = true;
+      emit('update:showNoteMenu', false);
 
       return;
     }
 
-    isHidden.value = false;
+    emit('update:showNoteMenu', true);
     menuWidthDesktop.value = `${ev.clientX}px`;
-  });
+  }
+
+  document.addEventListener('mousemove', handleDragBarMouseMove);
 
   document.addEventListener(
     'mouseup',
@@ -222,6 +224,7 @@ function handleDragBar() {
       isDragging.value = false;
 
       Storage.set('MENU_WIDTH', menuWidthDesktop.value);
+      document.removeEventListener('mousemove', handleDragBarMouseMove);
     },
     { once: true }
   );
