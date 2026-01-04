@@ -60,7 +60,8 @@ $list-bg-colour: var(--colour__tertiary);
 
 .drop-menu__item {
   cursor: pointer;
-  padding: 0.5em 1em;
+  padding: 0.4em 1em;
+  font-size: 14px;
   white-space: nowrap;
   border: v.$drop-menu-padding solid $list-bg-colour;
 
