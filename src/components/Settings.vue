@@ -1,6 +1,11 @@
 <template>
   <div id="settings">
-    <button @click.stop="show = !show" class="button" data-test-id="settings-button">
+    <button
+      @click.stop="show = !show"
+      class="button"
+      data-test-id="settings-button"
+      title="Settings"
+    >
       <CogIcon />
     </button>
     <DropMenu v-if="show" @close="show = false" :items="menuItems" />
@@ -16,9 +21,8 @@
 import { check } from '@tauri-apps/plugin-updater';
 import { computed, ref } from 'vue';
 
-import { deleteAccount } from '../api';
+import { deleteAccount, logout } from '../api';
 import { COLOUR_THEMES, UPDATE_STRATEGIES } from '../constant';
-import { exportNotes, importNotesFromFileChooser, noteState } from '../store/note';
 import { openedPopup, POPUP_TYPE } from '../store/popup';
 import { syncState } from '../store/sync';
 import { selectedTheme, setTheme } from '../store/theme';
@@ -36,17 +40,6 @@ const show = ref(false);
 
 const menuItems = computed<DropMenuItemData[]>(() => [
   {
-    label: 'Update and restart',
-    testId: 'update-restart',
-    showIf: () => updateState.isAvailable && !isWeb(),
-    clickHandler: async () => {
-      const update = await check();
-      if (!update) return;
-
-      updateAndRelaunch(update);
-    },
-  },
-  {
     label: 'Theme',
     subMenu: COLOUR_THEMES.map((theme) => ({
       label: theme,
@@ -56,24 +49,28 @@ const menuItems = computed<DropMenuItemData[]>(() => [
     })),
   },
   {
-    label: 'Export',
-    testId: 'export',
-    clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.uuid)),
-  },
-  {
-    label: 'Import',
-    testId: 'import',
-    clickHandler: () => importNotesFromFileChooser(),
-  },
-  {
     label: 'Updates',
     showIf: () => !isWeb(),
-    subMenu: UPDATE_STRATEGIES.map((strategy) => ({
-      label: capitalise(strategy),
-      testId: `update-${strategy}`,
-      selected: updateState.strategy === strategy,
-      clickHandler: () => setUpdateStrategy(strategy),
-    })),
+    subMenu: [
+      ...UPDATE_STRATEGIES.map((strategy) => ({
+        label: capitalise(strategy),
+        testId: `update-${strategy}`,
+        selected: updateState.strategy === strategy,
+        clickHandler: () => setUpdateStrategy(strategy),
+      })),
+      {
+        label: 'Update and restart',
+        testId: 'update-restart',
+        showIf: () => updateState.isAvailable && !isWeb(),
+        danger: true,
+        clickHandler: async () => {
+          const update = await check();
+          if (!update) return;
+
+          updateAndRelaunch(update);
+        },
+      },
+    ],
   },
   {
     label: 'Info',
@@ -100,6 +97,11 @@ const menuItems = computed<DropMenuItemData[]>(() => [
         clickHandler: () => deleteAccount(),
       },
     ],
+  },
+  {
+    label: 'Logout',
+    showIf: () => syncState.isLoggedIn,
+    clickHandler: logout,
   },
 ]);
 </script>
