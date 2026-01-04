@@ -35,12 +35,16 @@ const filteredItems = computed(() => {
   });
 });
 
-function close() {
+function handleClickOutside(ev: MouseEvent) {
+  if (ev.target instanceof Element && ev.target.closest('.drop-menu')) return;
+
   emit('close');
 }
 
 onMounted(() => {
-  document.addEventListener('click', close, { once: true });
+  document.addEventListener('click', handleClickOutside);
+
+  return () => document.removeEventListener('click', handleClickOutside);
 });
 </script>
 
