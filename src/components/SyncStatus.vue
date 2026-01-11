@@ -105,9 +105,5 @@ tauriListen('signup', () => {
 .sync-status__sync-button {
   cursor: pointer;
   pointer-events: all;
-
-  &:hover {
-    opacity: 0.8;
-  }
 }
 </style>
