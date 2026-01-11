@@ -248,25 +248,32 @@ $utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
     }
 
     // Toolbar buttons
-    $button-states: (
-      'button': var(--colour__tertiary),
-      'button:hover': var(--colour__highlight-hover),
-      '.ql-active': var(--colour__highlight),
-    );
+    @mixin button-color($colour) {
+      color: $colour;
 
-    @each $selector, $colour in $button-states {
-      #{$selector} {
-        color: $colour;
-
-        .ql-stroke,
-        .ql-thin {
-          stroke: $colour;
-        }
-
-        .ql-fill {
-          fill: $colour;
-        }
+      .ql-stroke,
+      .ql-thin {
+        stroke: $colour;
       }
+
+      .ql-fill {
+        fill: $colour;
+      }
+    }
+
+    button {
+      @include button-color(var(--colour__tertiary));
+    }
+
+    // Ensure hover styles aren't applied on touch devices
+    @media (hover: hover) {
+      button:hover {
+        @include button-color(var(--colour__highlight-hover));
+      }
+    }
+
+    .ql-active {
+      @include button-color(var(--colour__highlight));
     }
   }
 }
