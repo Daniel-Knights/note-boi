@@ -5,7 +5,6 @@ export type DropMenuItemData = {
   clickHandler?: () => void;
   showIf?: () => boolean;
   testId?: string;
-  disabled?: boolean;
   selected?: boolean | Ref<boolean>;
   danger?: boolean;
   subMenu?: DropMenuItemData[];
