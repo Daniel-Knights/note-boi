@@ -6,7 +6,6 @@
       v-on="item.clickHandler ? { click: item.clickHandler } : {}"
       class="drop-menu__item"
       :class="{
-        'drop-menu__item--disabled': item.disabled,
         'drop-menu__item--selected': item.selected,
         'drop-menu__item--danger': item.danger,
         'drop-menu__item--has-sub-menu': item.subMenu,
@@ -72,11 +71,6 @@ $list-bg-colour: var(--colour__tertiary);
   &:hover {
     background-color: var(--colour__tertiary-light);
   }
-}
-
-.drop-menu__item--disabled {
-  pointer-events: none;
-  color: var(--colour__tertiary-light);
 }
 
 .drop-menu__item--selected {
