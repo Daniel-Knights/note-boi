@@ -49,7 +49,7 @@ const items = computed<DropMenuItemData[]>(() => {
     {
       label: 'Export Note',
       clickHandler: handleExportNotes,
-      disabled: !clickedNoteUuid.value || hasNoNotes,
+      showIf: () => !!clickedNoteUuid.value && !hasNoNotes,
       testId: 'export',
     },
     {
@@ -65,7 +65,7 @@ const items = computed<DropMenuItemData[]>(() => {
     {
       label: 'Delete Note',
       clickHandler: handleDeleteNote,
-      disabled: !clickedNoteUuid.value || hasNoNotes,
+      showIf: () => !!clickedNoteUuid.value && !hasNoNotes,
       testId: 'delete',
       danger: true,
     },

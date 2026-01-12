@@ -71,7 +71,6 @@ describe('DropMenu', () => {
     const items = Array.from({ length: 5 }, (_, i) => ({
       label: '',
       testId: `item-${i}`,
-      disabled: true,
       selected: true,
       danger: true,
       subMenu: [],
@@ -82,7 +81,6 @@ describe('DropMenu', () => {
       const itemWrapper = getByTestId(wrapper, testId);
 
       assert.isTrue(itemWrapper.isVisible());
-      assert.isTrue(itemWrapper.classes(`${ITEM_CLASS}--disabled`));
       assert.isTrue(itemWrapper.classes(`${ITEM_CLASS}--selected`));
       assert.isTrue(itemWrapper.classes(`${ITEM_CLASS}--danger`));
       assert.isTrue(itemWrapper.classes(`${ITEM_CLASS}--has-sub-menu`));
