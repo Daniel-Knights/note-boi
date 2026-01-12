@@ -31,8 +31,9 @@
     <div class="editor__scroll-container">
       <div class="editor__body" ref="editor-body" data-test-id="body"></div>
     </div>
+    <!-- ENH: Enable on touch devices -->
     <FindInPage
-      v-if="quillEditorInitialised && editorBody && openFindInPage"
+      v-if="quillEditorInitialised && editorBody && openFindInPage && !isTouchDevice"
       :text="editorText"
       :root-el="editorBody!"
       :get-bounds-at-index="(i, len) => quillEditor!.getBounds(i, len)"
@@ -50,6 +51,8 @@ import { addNoteEventListener, editNote, noteState } from '../store/note';
 import { unixToDateTime } from '../utils';
 
 import FindInPage from './FindInPage.vue';
+
+defineProps<{ isTouchDevice: boolean }>();
 
 const editorBody = useTemplateRef('editor-body');
 
