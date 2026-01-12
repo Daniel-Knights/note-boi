@@ -3,7 +3,7 @@
   <NoteMenu v-model:show-note-menu="showNoteMenu" :is-small-screen="isSmallScreen" />
   <div class="layout-main">
     <NoteMenuToggle @click="showNoteMenu = !showNoteMenu" />
-    <Editor :is-small-screen="isSmallScreen" />
+    <Editor :is-touch-device="isTouchDevice" />
     <Settings />
     <SyncStatus />
   </div>
@@ -23,6 +23,7 @@ import Settings from './components/Settings.vue';
 import SyncStatus from './components/SyncStatus.vue';
 
 const smallScreenMediaQuery = window.matchMedia('(max-width: 650px)');
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
 const isSmallScreen = ref(smallScreenMediaQuery.matches);
 const showNoteMenu = ref(!isSmallScreen.value); // Show menu by default on large screens
