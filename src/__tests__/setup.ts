@@ -11,7 +11,7 @@ import { resetMockDb, resetNoteStore, resetSyncStore, resetUpdateStore } from '.
 const assertFailSpy = vi.spyOn(assert, 'fail');
 
 beforeAll(async () => {
-  // jsdom doesn't come with `ResizeObserver` or IndexedDB implementations
+  // JSDom doesn't come with `ResizeObserver`, IndexedDB, or `matchMedia` implementations
   // https://github.com/jsdom/jsdom/issues/3368 - Implement `ResizeObserver`
   // https://github.com/jsdom/jsdom/issues/1748 - Implement IndexedDB
   const MockResizeObserver = vi.fn(() => ({
@@ -28,6 +28,13 @@ beforeAll(async () => {
   });
   Object.defineProperty(window, 'indexedDB', {
     value: indexedDB,
+  });
+  Object.defineProperty(window, 'matchMedia', {
+    value: vi.fn(() => ({
+      matches: false,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    })),
   });
 
   // JSDom has no `scrollIntoView` implementation: https://github.com/jsdom/jsdom/issues/1695
