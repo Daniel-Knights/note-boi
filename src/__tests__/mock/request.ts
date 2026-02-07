@@ -22,7 +22,7 @@ export const initialMockDb = Object.freeze(structuredClone(mockDb));
 
 /** Mocks requests to the server. */
 export function mockRequest(
-  url: string,
+  endpoint: Endpoint,
   req: RequestInit,
   options: {
     resValue?: RequestResValue;
@@ -35,8 +35,6 @@ export function mockRequest(
   if (s.syncState.loadingCount === 0) {
     assert.fail('Loading state not set');
   }
-
-  const endpoint = url.split(/\/api(?=\/)/)[1] as Endpoint;
 
   if (!ENDPOINTS.includes(endpoint)) {
     assert.fail(`Invalid endpoint: ${endpoint}`);

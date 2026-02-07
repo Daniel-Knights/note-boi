@@ -121,7 +121,6 @@ export function mockTauriInvoke(
   }
 
   return {
-    name: cmd,
     calledWith: args,
     promise: resolveImmediate(resData),
   };
