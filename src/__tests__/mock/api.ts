@@ -99,31 +99,16 @@ export function mockApi(): {
     tauriApi?: string;
   } = {};
 
-  function parseCallResult(callType: ApiCallType, call: Call | void) {
-    if (!call) return;
-
-    calls[callType].push(call);
-    calls.size += 1;
-
-    if (call.promise) {
-      promises.push(call.promise);
-    }
-
-    // We normalise the call here, because it can contain references to objects that
-    // are mutated later in the test, which would affect the snapshots.
-    allCalls.push([callType, normaliseCall(call)]);
-
-    return call.promise;
-  }
-
   // Request
   global.fetch = (url, fetchOptions) => {
-    const reqCall = mockRequest(url.toString(), fetchOptions!, {
-      error: errorValues.request,
-      resValue: resValues.request,
-    });
+    const endpoint = url.toString().split(/\/api(?=\/)/)[1] as Endpoint;
 
-    return parseCallResult('request', reqCall) as Promise<Response>;
+    return executeMockCall<Response>('request', endpoint, () =>
+      mockRequest(endpoint, fetchOptions!, {
+        error: errorValues.request,
+        resValue: resValues.request,
+      })
+    );
   };
 
   mockIPC((callId, args) => {
@@ -143,30 +128,41 @@ export function mockApi(): {
 
     // Invoke
     if (TAURI_COMMANDS.includes(callId as TauriCommand)) {
-      const invokeCall = mockTauriInvoke(callId, args as Record<string, unknown>, {
-        error: errorValues.invoke,
-        resValue: resValues.invoke,
-      });
-
-      return parseCallResult('invoke', invokeCall);
+      return executeMockCall('invoke', callId, () =>
+        mockTauriInvoke(callId, args as Record<string, unknown>, {
+          error: errorValues.invoke,
+          resValue: resValues.invoke,
+        })
+      );
     }
 
     // Tauri API
     if (callId === 'plugin:log|log') return;
 
-    const tauriApiCall = mockTauriApi(
-      callId,
-      args as AskDialogArgs | OpenDialogArgs | MessageDialogArgs,
-      {
+    return executeMockCall('tauriApi', callId, () =>
+      mockTauriApi(callId, args as AskDialogArgs | OpenDialogArgs | MessageDialogArgs, {
         error: errorValues.tauriApi,
         resValue: resValues.tauriApi,
-      }
+      })
     );
-
-    if (tauriApiCall) {
-      return parseCallResult('tauriApi', tauriApiCall);
-    }
   });
+
+  //// Helpers
+
+  function parseCallResult(callType: ApiCallType, call: Call) {
+    calls[callType].push(call);
+    calls.size += 1;
+
+    if (call.promise) {
+      promises.push(call.promise);
+    }
+
+    // We normalise the call here, because it can contain references to objects that
+    // are mutated later in the test, which would affect the snapshots.
+    allCalls.push([callType, normaliseCall(call)]);
+
+    return call.promise;
+  }
 
   function setResValues(
     callType: 'request' | 'invoke' | 'tauriApi',
@@ -182,6 +178,32 @@ export function mockApi(): {
         resValuesForType[callName] = resValue;
       }
     });
+  }
+
+  /**
+   * Executes a mock API call and parses the result.
+   *
+   * Executes the provided mock function within a try/finally block to ensure
+   * the result is always parsed, even if the mock function throws.
+   */
+  function executeMockCall<T = unknown>(
+    callType: ApiCallType,
+    name: string,
+    mockFn: () => Record<string, unknown> | undefined
+  ) {
+    let mockCall: ReturnType<typeof mockFn>;
+    let result: ReturnType<typeof parseCallResult>;
+
+    try {
+      mockCall = mockFn();
+    } finally {
+      result = parseCallResult(callType, {
+        name,
+        ...mockCall,
+      });
+    }
+
+    return result as Promise<T>;
   }
 
   return {

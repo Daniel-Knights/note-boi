@@ -83,7 +83,6 @@ export function mockTauriApi(
   }
 
   return {
-    name: callId,
     calledWith,
     promise: resolveImmediate(resData),
   };
