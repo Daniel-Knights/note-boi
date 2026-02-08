@@ -63,6 +63,7 @@ $list-bg-colour: var(--colour__tertiary);
 
 .drop-menu__item {
   cursor: pointer;
+  position: relative;
   padding: 0.4em 1em;
   font-size: 14px;
   white-space: nowrap;
@@ -70,6 +71,13 @@ $list-bg-colour: var(--colour__tertiary);
 
   &:hover {
     background-color: var(--colour__tertiary-light);
+  }
+
+  // Increase hover hit box
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
   }
 }
 
