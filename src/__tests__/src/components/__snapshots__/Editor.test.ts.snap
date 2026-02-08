@@ -31,7 +31,7 @@ exports[`Editor > Closes find-in-page > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -81,6 +81,172 @@ exports[`Editor > Closes find-in-page > updateState 1`] = `
 }
 `;
 
+exports[`Editor > Constructs note object from parsed text > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Constructs note object from parsed text > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Editor > Constructs note object from parsed text > Storage.get('THEME') 1`] = `null`;
+
+exports[`Editor > Constructs note object from parsed text > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Editor > Constructs note object from parsed text > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Editor > Constructs note object from parsed text > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Editor > Constructs note object from parsed text > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": Note {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": Note {
+          "content": {
+            "body": "bar",
+            "delta": {
+              "ops": [
+                {
+                  "insert": "
+        
+         foo  
+
+
+     
+
+         bar 
+      baz
+      
+      
+",
+                },
+              ],
+            },
+            "title": "foo",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "edit_note",
+    },
+  ],
+]
+`;
+
+exports[`Editor > Constructs note object from parsed text > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Editor > Constructs note object from parsed text > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Editor > Constructs note object from parsed text > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    Note {
+      "content": {
+        "body": "bar",
+        "delta": {
+          "ops": [
+            {
+              "insert": "
+        
+         foo  
+
+
+     
+
+         bar 
+      baz
+      
+      
+",
+            },
+          ],
+        },
+        "title": "foo",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Editor > Constructs note object from parsed text > openedPopup 1`] = `undefined`;
+
+exports[`Editor > Constructs note object from parsed text > selectedTheme 1`] = `"System"`;
+
+exports[`Editor > Constructs note object from parsed text > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {
+      "uuid",
+    },
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Editor > Constructs note object from parsed text > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Editor > Has the correct timestamp > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Editor > Has the correct timestamp > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -112,7 +278,7 @@ exports[`Editor > Has the correct timestamp > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -193,7 +359,7 @@ exports[`Editor > Mounts > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -274,7 +440,7 @@ exports[`Editor > Opens find-in-page > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -365,7 +531,7 @@ exports[`Editor > Sets the correct note text > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -424,7 +590,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -439,7 +605,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -454,7 +620,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -469,7 +635,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -484,7 +650,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -499,7 +665,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -514,7 +680,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -529,7 +695,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -544,7 +710,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -560,7 +726,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {

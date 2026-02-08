@@ -52,7 +52,7 @@ exports[`SyncStatus > Displays error icon and opens popup on click > noteState 1
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -199,7 +199,7 @@ exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -219,7 +219,7 @@ exports[`SyncStatus > Displays loading spinner > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -255,7 +255,7 @@ exports[`SyncStatus > Displays loading spinner > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -267,7 +267,7 @@ exports[`SyncStatus > Displays loading spinner > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -381,7 +381,7 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -497,7 +497,7 @@ exports[`SyncStatus > Handles popups > PopupSyncError > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -604,7 +604,7 @@ exports[`SyncStatus > Mounts when logged in > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -706,7 +706,7 @@ exports[`SyncStatus > Mounts when logged out > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

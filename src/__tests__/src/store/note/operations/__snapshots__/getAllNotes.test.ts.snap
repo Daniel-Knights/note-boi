@@ -1,132 +1,5 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getAllNotes > Catches errors > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`getAllNotes > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`getAllNotes > Catches errors > Storage.get('THEME') 1`] = `null`;
-
-exports[`getAllNotes > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`getAllNotes > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`getAllNotes > Catches errors > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`getAllNotes > Catches errors > allCalls 1`] = `
-[
-  [
-    "tauriApi",
-    {
-      "calledWith": {
-        "kind": "error",
-        "message": "Something went wrong. Please try again or open an issue in the GitHub repo.",
-        "okLabel": undefined,
-        "title": undefined,
-      },
-      "name": "plugin:dialog|message",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-]
-`;
-
-exports[`getAllNotes > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`getAllNotes > Catches errors > mockDb 1`] = `
-{
-  "deletedNotes": undefined,
-  "encryptedNotes": [],
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`getAllNotes > Catches errors > noteState 1`] = `
-{
-  "addNotes": [Function],
-  "extraSelectedNotes": [],
-  "notes": [
-    {
-      "content": {
-        "body": "",
-        "delta": {
-          "ops": [],
-        },
-        "title": "",
-      },
-      "timestamp": 0,
-      "uuid": "uuid",
-    },
-  ],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "timestamp": 0,
-    "uuid": "uuid",
-  },
-}
-`;
-
-exports[`getAllNotes > Catches errors > openedPopup 1`] = `undefined`;
-
-exports[`getAllNotes > Catches errors > selectedTheme 1`] = `"System"`;
-
-exports[`getAllNotes > Catches errors > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "encryptedNotesCache": Map {},
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNotes": UnsyncedNotesManager {
-    "deleted": [],
-    "edited": Set {},
-    "new": "",
-  },
-  "username": "",
-}
-`;
-
-exports[`getAllNotes > Catches errors > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
 exports[`getAllNotes > With empty note array > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`getAllNotes > With empty note array > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -152,7 +25,7 @@ exports[`getAllNotes > With empty note array > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -187,7 +60,7 @@ exports[`getAllNotes > With empty note array > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -199,7 +72,7 @@ exports[`getAllNotes > With empty note array > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -290,7 +163,7 @@ exports[`getAllNotes > With notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -349,7 +222,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -364,7 +237,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -379,7 +252,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -394,7 +267,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -409,7 +282,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -424,7 +297,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -439,7 +312,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -454,7 +327,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -469,7 +342,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -485,7 +358,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -624,7 +497,7 @@ exports[`getAllNotes > With single empty note > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {},
@@ -634,7 +507,7 @@ exports[`getAllNotes > With single empty note > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {},
@@ -707,7 +580,7 @@ exports[`getAllNotes > With undefined notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -742,7 +615,7 @@ exports[`getAllNotes > With undefined notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -754,7 +627,7 @@ exports[`getAllNotes > With undefined notes > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

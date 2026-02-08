@@ -46,7 +46,7 @@ exports[`Auth > clientSideLogout > Does not delete access token if no username >
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -150,7 +150,7 @@ exports[`Auth > clientSideLogout > Sets all state to logged out > allCalls 1`] =
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -170,7 +170,7 @@ exports[`Auth > clientSideLogout > Sets all state to logged out > allCalls 1`] =
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -227,7 +227,7 @@ exports[`Auth > clientSideLogout > Sets all state to logged out > noteState 1`] 
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -239,7 +239,7 @@ exports[`Auth > clientSideLogout > Sets all state to logged out > noteState 1`] 
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -343,7 +343,7 @@ exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -363,7 +363,7 @@ exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -399,7 +399,7 @@ exports[`Auth > login > Sets and resets loading state > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -411,7 +411,7 @@ exports[`Auth > login > Sets and resets loading state > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -509,7 +509,7 @@ exports[`Auth > login > Unauthorized > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -612,7 +612,7 @@ exports[`Auth > login > User not found > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -743,7 +743,7 @@ exports[`Auth > login > With decryption error > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -839,10 +839,10 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": undefined,
-        "content": {
+        "content": Note {
           "content": [Circular],
           "timestamp": 0,
           "uuid": "uuid",
@@ -855,7 +855,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "uuid",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -870,7 +870,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -885,7 +885,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -900,7 +900,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -915,7 +915,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -930,7 +930,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -945,7 +945,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -960,7 +960,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -975,7 +975,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -991,7 +991,7 @@ exports[`Auth > login > With encryption error > noteState 1`] = `
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -1151,7 +1151,7 @@ exports[`Auth > login > With no notes > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "😬ö",
               "delta": {
@@ -1210,7 +1210,7 @@ Sugar
             "timestamp": 0,
             "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1225,7 +1225,7 @@ Sugar
             "timestamp": 0,
             "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1240,7 +1240,7 @@ Sugar
             "timestamp": 0,
             "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1255,7 +1255,7 @@ Sugar
             "timestamp": 0,
             "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1270,7 +1270,7 @@ Sugar
             "timestamp": 0,
             "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1285,7 +1285,7 @@ Sugar
             "timestamp": 0,
             "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1300,7 +1300,7 @@ Sugar
             "timestamp": 0,
             "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1315,7 +1315,7 @@ Sugar
             "timestamp": 0,
             "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1330,7 +1330,7 @@ Sugar
             "timestamp": 0,
             "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1421,7 +1421,7 @@ exports[`Auth > login > With no notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -1480,7 +1480,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1495,7 +1495,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1510,7 +1510,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1525,7 +1525,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1540,7 +1540,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1555,7 +1555,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1570,7 +1570,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1585,7 +1585,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1600,7 +1600,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1616,7 +1616,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -1732,7 +1732,7 @@ exports[`Auth > login > With notes > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "😬ö",
               "delta": {
@@ -1791,7 +1791,7 @@ Sugar
             "timestamp": 0,
             "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1806,7 +1806,7 @@ Sugar
             "timestamp": 0,
             "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1821,7 +1821,7 @@ Sugar
             "timestamp": 0,
             "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1836,7 +1836,7 @@ Sugar
             "timestamp": 0,
             "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1851,7 +1851,7 @@ Sugar
             "timestamp": 0,
             "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1866,7 +1866,7 @@ Sugar
             "timestamp": 0,
             "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1881,7 +1881,7 @@ Sugar
             "timestamp": 0,
             "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1896,7 +1896,7 @@ Sugar
             "timestamp": 0,
             "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1911,7 +1911,7 @@ Sugar
             "timestamp": 0,
             "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -2002,7 +2002,7 @@ exports[`Auth > login > With notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -2061,7 +2061,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2076,7 +2076,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2091,7 +2091,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2106,7 +2106,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2121,7 +2121,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2136,7 +2136,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2151,7 +2151,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2166,7 +2166,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2181,7 +2181,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2197,7 +2197,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -2394,7 +2394,7 @@ exports[`Auth > login > With server error > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -2503,7 +2503,7 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -2523,7 +2523,7 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -2605,7 +2605,7 @@ exports[`Auth > logout > Logs a user out and clears user-based state > noteState
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -2617,7 +2617,7 @@ exports[`Auth > logout > Logs a user out and clears user-based state > noteState
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -2660,313 +2660,6 @@ exports[`Auth > logout > Logs a user out and clears user-based state > syncState
 `;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > Storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > allCalls 1`] = `
-[
-  [
-    "request",
-    {
-      "calledWith": {
-        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
-        "headers": {
-          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
-          "Content-Type": "application/json",
-        },
-        "method": "POST",
-      },
-      "name": "/auth/login",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "accessToken": "test-token",
-        "username": "d",
-      },
-      "name": "set_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": true,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "notes": [
-          {
-            "content": {
-              "body": "",
-              "delta": {
-                "ops": [],
-              },
-              "title": "",
-            },
-            "timestamp": 0,
-            "uuid": "uuid",
-          },
-        ],
-      },
-      "name": "sync_local_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "get_access_token",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "username": "d",
-      },
-      "name": "delete_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
-]
-`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > mockDb 1`] = `
-{
-  "deletedNotes": [],
-  "encryptedNotes": [],
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > noteState 1`] = `
-{
-  "addNotes": [Function],
-  "extraSelectedNotes": [],
-  "notes": [
-    {
-      "content": {
-        "body": "",
-        "delta": {
-          "ops": [],
-        },
-        "title": "",
-      },
-      "timestamp": 0,
-      "uuid": "uuid",
-    },
-  ],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "timestamp": 0,
-    "uuid": "uuid",
-  },
-}
-`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > openedPopup 1`] = `undefined`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > selectedTheme 1`] = `"System"`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "encryptedNotesCache": Map {},
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNotes": UnsyncedNotesManager {
-    "deleted": [],
-    "edited": Set {},
-    "new": "",
-  },
-  "username": "",
-}
-`;
-
-exports[`Auth > logout > Only logs out client-side if no access token > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Auth > logout > Only logs out client-side if no username > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`Auth > logout > Only logs out client-side if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no username > Storage.get('THEME') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no username > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no username > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no username > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Auth > logout > Only logs out client-side if no username > allCalls 1`] = `
-[
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": false,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
-]
-`;
-
-exports[`Auth > logout > Only logs out client-side if no username > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Auth > logout > Only logs out client-side if no username > mockDb 1`] = `
-{
-  "deletedNotes": undefined,
-  "encryptedNotes": [],
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Auth > logout > Only logs out client-side if no username > noteState 1`] = `
-{
-  "addNotes": [Function],
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "timestamp": 0,
-    "uuid": "uuid",
-  },
-}
-`;
-
-exports[`Auth > logout > Only logs out client-side if no username > openedPopup 1`] = `undefined`;
-
-exports[`Auth > logout > Only logs out client-side if no username > selectedTheme 1`] = `"System"`;
-
-exports[`Auth > logout > Only logs out client-side if no username > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "encryptedNotesCache": Map {},
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNotes": UnsyncedNotesManager {
-    "deleted": [],
-    "edited": Set {},
-    "new": "",
-  },
-  "username": "",
-}
-`;
-
-exports[`Auth > logout > Only logs out client-side if no username > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -3028,7 +2721,7 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -3048,7 +2741,7 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -3130,7 +2823,7 @@ exports[`Auth > logout > Sets and resets loading state > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -3142,7 +2835,7 @@ exports[`Auth > logout > Sets and resets loading state > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -3185,6 +2878,283 @@ exports[`Auth > logout > Sets and resets loading state > syncState 1`] = `
 `;
 
 exports[`Auth > logout > Sets and resets loading state > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Auth > logout > Throws if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > Throws if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no access token > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no access token > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no access token > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no access token > Storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Auth > logout > Throws if no access token > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": Note {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+]
+`;
+
+exports[`Auth > logout > Throws if no access token > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Auth > logout > Throws if no access token > mockDb 1`] = `
+{
+  "deletedNotes": [],
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Auth > logout > Throws if no access token > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    Note {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Auth > logout > Throws if no access token > openedPopup 1`] = `undefined`;
+
+exports[`Auth > logout > Throws if no access token > selectedTheme 1`] = `"System"`;
+
+exports[`Auth > logout > Throws if no access token > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 12,
+    "display": {
+      "form": true,
+    },
+    "message": "Authorisation error",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": true,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "d",
+}
+`;
+
+exports[`Auth > logout > Throws if no access token > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Auth > logout > Throws if no username > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > logout > Throws if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no username > Storage.get('THEME') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no username > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no username > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no username > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Auth > logout > Throws if no username > allCalls 1`] = `[]`;
+
+exports[`Auth > logout > Throws if no username > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Auth > logout > Throws if no username > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Auth > logout > Throws if no username > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Auth > logout > Throws if no username > openedPopup 1`] = `undefined`;
+
+exports[`Auth > logout > Throws if no username > selectedTheme 1`] = `"System"`;
+
+exports[`Auth > logout > Throws if no username > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 12,
+    "display": {
+      "form": true,
+    },
+    "message": "Authorisation error",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Auth > logout > Throws if no username > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -3246,7 +3216,7 @@ exports[`Auth > logout > Unauthorized > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -3266,7 +3236,7 @@ exports[`Auth > logout > Unauthorized > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -3348,7 +3318,7 @@ exports[`Auth > logout > Unauthorized > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -3360,7 +3330,7 @@ exports[`Auth > logout > Unauthorized > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -3464,7 +3434,7 @@ exports[`Auth > logout > User not found > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -3484,7 +3454,7 @@ exports[`Auth > logout > User not found > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -3564,7 +3534,7 @@ exports[`Auth > logout > User not found > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -3576,7 +3546,7 @@ exports[`Auth > logout > User not found > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -3680,7 +3650,7 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -3700,7 +3670,7 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -3782,7 +3752,7 @@ exports[`Auth > logout > With server error > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -3794,7 +3764,7 @@ exports[`Auth > logout > With server error > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -3844,7 +3814,7 @@ exports[`Auth > logout > With server error > updateState 1`] = `
 }
 `;
 
-exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Auth > signup > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -3892,7 +3862,7 @@ exports[`Auth > signup > Sets and resets loading state > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -3947,7 +3917,7 @@ exports[`Auth > signup > Sets and resets loading state > updateState 1`] = `
 }
 `;
 
-exports[`Auth > signup > With encryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Auth > signup > With encryption error > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Auth > signup > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -3988,10 +3958,10 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": undefined,
-        "content": {
+        "content": Note {
           "content": [Circular],
           "timestamp": 0,
           "uuid": "uuid",
@@ -4004,7 +3974,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "uuid",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4019,7 +3989,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4034,7 +4004,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4049,7 +4019,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4064,7 +4034,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4079,7 +4049,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4094,7 +4064,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4109,7 +4079,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4124,7 +4094,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4140,7 +4110,7 @@ exports[`Auth > signup > With encryption error > noteState 1`] = `
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -4316,7 +4286,7 @@ exports[`Auth > signup > With no notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -4444,7 +4414,7 @@ exports[`Auth > signup > With notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -4503,7 +4473,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4518,7 +4488,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4533,7 +4503,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4548,7 +4518,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4563,7 +4533,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4578,7 +4548,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4593,7 +4563,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4608,7 +4578,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4623,7 +4593,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -4639,7 +4609,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -4737,7 +4707,7 @@ exports[`Auth > signup > With notes > updateState 1`] = `
 }
 `;
 
-exports[`Auth > signup > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+exports[`Auth > signup > With server error > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Auth > signup > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -4785,7 +4755,7 @@ exports[`Auth > signup > With server error > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

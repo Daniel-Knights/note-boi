@@ -31,7 +31,7 @@ exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class o
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -107,6 +107,46 @@ exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file e
       "name": "import_notes",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
 ]
 `;
 
@@ -127,7 +167,7 @@ exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file e
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -142,7 +182,7 @@ exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file e
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -158,7 +198,7 @@ exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file e
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -241,6 +281,46 @@ exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > allCa
       "name": "import_notes",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
 ]
 `;
 
@@ -261,7 +341,7 @@ exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > noteS
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -276,7 +356,7 @@ exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > noteS
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -292,7 +372,7 @@ exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > noteS
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -380,7 +460,7 @@ exports[`importNotes > handleImportNotesDragDrop > Returns when there are no val
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -430,102 +510,6 @@ exports[`importNotes > handleImportNotesDragDrop > Returns when there are no val
 }
 `;
 
-exports[`importNotes > importNotes > Handles import errors > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`importNotes > importNotes > Handles import errors > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`importNotes > importNotes > Handles import errors > Storage.get('THEME') 1`] = `null`;
-
-exports[`importNotes > importNotes > Handles import errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`importNotes > importNotes > Handles import errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`importNotes > importNotes > Handles import errors > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`importNotes > importNotes > Handles import errors > allCalls 1`] = `
-[
-  [
-    "tauriApi",
-    {
-      "calledWith": {
-        "kind": "error",
-        "message": "Something went wrong. Please try again or open an issue in the GitHub repo.",
-        "okLabel": undefined,
-        "title": undefined,
-      },
-      "name": "plugin:dialog|message",
-    },
-  ],
-]
-`;
-
-exports[`importNotes > importNotes > Handles import errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`importNotes > importNotes > Handles import errors > mockDb 1`] = `
-{
-  "deletedNotes": undefined,
-  "encryptedNotes": [],
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`importNotes > importNotes > Handles import errors > noteState 1`] = `
-{
-  "addNotes": [Function],
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "timestamp": 0,
-    "uuid": "uuid",
-  },
-}
-`;
-
-exports[`importNotes > importNotes > Handles import errors > openedPopup 1`] = `undefined`;
-
-exports[`importNotes > importNotes > Handles import errors > selectedTheme 1`] = `"System"`;
-
-exports[`importNotes > importNotes > Handles import errors > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "encryptedNotesCache": Map {},
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNotes": UnsyncedNotesManager {
-    "deleted": [],
-    "edited": Set {},
-    "new": "",
-  },
-  "username": "",
-}
-`;
-
-exports[`importNotes > importNotes > Handles import errors > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
 exports[`importNotes > importNotes > Imports notes > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`importNotes > importNotes > Imports notes > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -559,6 +543,210 @@ exports[`importNotes > importNotes > Imports notes > allCalls 1`] = `
       "name": "import_notes",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+          Note {
+            "content": {
+              "body": "😬ö",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+                  },
+                ],
+              },
+              "title": "Note with special characters",
+            },
+            "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
 ]
 `;
 
@@ -579,7 +767,7 @@ exports[`importNotes > importNotes > Imports notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -594,7 +782,7 @@ exports[`importNotes > importNotes > Imports notes > noteState 1`] = `
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -609,7 +797,7 @@ exports[`importNotes > importNotes > Imports notes > noteState 1`] = `
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -668,7 +856,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -683,7 +871,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -698,7 +886,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -713,7 +901,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -728,7 +916,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -743,7 +931,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -758,7 +946,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -774,7 +962,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -885,7 +1073,7 @@ exports[`importNotes > importNotes > Imports notes and syncs them > allCalls 1`]
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -905,7 +1093,7 @@ exports[`importNotes > importNotes > Imports notes and syncs them > allCalls 1`]
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -940,6 +1128,46 @@ exports[`importNotes > importNotes > Imports notes and syncs them > allCalls 1`]
         "uuid": "uuid",
       },
       "name": "delete_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
     },
   ],
   [
@@ -994,7 +1222,7 @@ exports[`importNotes > importNotes > Imports notes and syncs them > allCalls 1`]
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1009,7 +1237,7 @@ exports[`importNotes > importNotes > Imports notes and syncs them > allCalls 1`]
             "timestamp": 0,
             "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1065,7 +1293,7 @@ exports[`importNotes > importNotes > Imports notes and syncs them > noteState 1`
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1080,7 +1308,7 @@ exports[`importNotes > importNotes > Imports notes and syncs them > noteState 1`
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1096,7 +1324,7 @@ exports[`importNotes > importNotes > Imports notes and syncs them > noteState 1`
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -1179,7 +1407,7 @@ exports[`importNotes > importNotes > Imports notes with no local notes > allCall
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -1215,6 +1443,46 @@ exports[`importNotes > importNotes > Imports notes with no local notes > allCall
       "name": "delete_note",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
 ]
 `;
 
@@ -1235,7 +1503,7 @@ exports[`importNotes > importNotes > Imports notes with no local notes > noteSta
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1250,7 +1518,7 @@ exports[`importNotes > importNotes > Imports notes with no local notes > noteSta
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1266,7 +1534,7 @@ exports[`importNotes > importNotes > Imports notes with no local notes > noteSta
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -1359,7 +1627,7 @@ exports[`importNotes > importNotes > Returns when passed no paths > noteState 1`
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -1447,6 +1715,46 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
       "name": "import_notes",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
 ]
 `;
 
@@ -1467,7 +1775,7 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1482,7 +1790,7 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1498,7 +1806,7 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -1592,6 +1900,31 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
       "name": "import_notes",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
 ]
 `;
 
@@ -1612,7 +1945,7 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1628,7 +1961,7 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -1730,7 +2063,7 @@ exports[`importNotes > importNotesFromFileChooser > Returns on no selected files
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

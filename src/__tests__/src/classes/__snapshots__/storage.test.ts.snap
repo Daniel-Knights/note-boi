@@ -31,7 +31,7 @@ exports[`Storage > clear > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -112,7 +112,7 @@ exports[`Storage > get/set > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -193,7 +193,7 @@ exports[`Storage > remove > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -243,23 +243,23 @@ exports[`Storage > remove > updateState 1`] = `
 }
 `;
 
-exports[`Storage > setJson/getJson > KeyStore.getKey() 1`] = `undefined`;
+exports[`Storage > setJSON/getJSON > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Storage > setJson/getJson > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Storage > setJSON/getJSON > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Storage > setJson/getJson > Storage.get('THEME') 1`] = `null`;
+exports[`Storage > setJSON/getJSON > Storage.get('THEME') 1`] = `null`;
 
-exports[`Storage > setJson/getJson > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Storage > setJSON/getJSON > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Storage > setJson/getJson > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Storage > setJSON/getJSON > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Storage > setJson/getJson > Storage.get('USERNAME') 1`] = `null`;
+exports[`Storage > setJSON/getJSON > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Storage > setJson/getJson > allCalls 1`] = `[]`;
+exports[`Storage > setJSON/getJSON > allCalls 1`] = `[]`;
 
-exports[`Storage > setJson/getJson > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Storage > setJSON/getJSON > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Storage > setJson/getJson > mockDb 1`] = `
+exports[`Storage > setJSON/getJSON > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -269,12 +269,12 @@ exports[`Storage > setJson/getJson > mockDb 1`] = `
 }
 `;
 
-exports[`Storage > setJson/getJson > noteState 1`] = `
+exports[`Storage > setJSON/getJSON > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -288,11 +288,11 @@ exports[`Storage > setJson/getJson > noteState 1`] = `
 }
 `;
 
-exports[`Storage > setJson/getJson > openedPopup 1`] = `undefined`;
+exports[`Storage > setJSON/getJSON > openedPopup 1`] = `undefined`;
 
-exports[`Storage > setJson/getJson > selectedTheme 1`] = `"System"`;
+exports[`Storage > setJSON/getJSON > selectedTheme 1`] = `"System"`;
 
-exports[`Storage > setJson/getJson > syncState 1`] = `
+exports[`Storage > setJSON/getJSON > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -316,7 +316,7 @@ exports[`Storage > setJson/getJson > syncState 1`] = `
 }
 `;
 
-exports[`Storage > setJson/getJson > updateState 1`] = `
+exports[`Storage > setJSON/getJSON > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

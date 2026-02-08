@@ -99,7 +99,7 @@ exports[`Settings > Account menu item > Delete account menu item > noteState 1`]
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -180,7 +180,7 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -230,241 +230,6 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
 }
 `;
 
-exports[`Settings > Exports all notes > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`Settings > Exports all notes > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Settings > Exports all notes > Storage.get('THEME') 1`] = `null`;
-
-exports[`Settings > Exports all notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Settings > Exports all notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Settings > Exports all notes > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Settings > Exports all notes > allCalls 1`] = `
-[
-  [
-    "tauriApi",
-    {
-      "calledWith": {
-        "directory": true,
-        "multiple": false,
-        "recursive": false,
-        "title": "Choose a location",
-      },
-      "name": "plugin:dialog|open",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "notes": [],
-        "saveDir": "C:\\path",
-      },
-      "name": "export_notes",
-    },
-  ],
-]
-`;
-
-exports[`Settings > Exports all notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Settings > Exports all notes > mockDb 1`] = `
-{
-  "deletedNotes": undefined,
-  "encryptedNotes": [],
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Settings > Exports all notes > noteState 1`] = `
-{
-  "addNotes": [Function],
-  "extraSelectedNotes": [],
-  "notes": [],
-  "selectedNote": {
-    "content": {
-      "body": "",
-      "delta": {
-        "ops": [],
-      },
-      "title": "",
-    },
-    "timestamp": 0,
-    "uuid": "uuid",
-  },
-}
-`;
-
-exports[`Settings > Exports all notes > openedPopup 1`] = `undefined`;
-
-exports[`Settings > Exports all notes > selectedTheme 1`] = `"System"`;
-
-exports[`Settings > Exports all notes > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "encryptedNotesCache": Map {},
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNotes": UnsyncedNotesManager {
-    "deleted": [],
-    "edited": Set {},
-    "new": "",
-  },
-  "username": "",
-}
-`;
-
-exports[`Settings > Exports all notes > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`Settings > Import notes > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`Settings > Import notes > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`Settings > Import notes > Storage.get('THEME') 1`] = `null`;
-
-exports[`Settings > Import notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`Settings > Import notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`Settings > Import notes > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`Settings > Import notes > allCalls 1`] = `
-[
-  [
-    "tauriApi",
-    {
-      "calledWith": {
-        "directory": undefined,
-        "multiple": true,
-        "recursive": undefined,
-        "title": undefined,
-      },
-      "name": "plugin:dialog|open",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "paths": [
-          "C:\\path",
-        ],
-      },
-      "name": "import_notes",
-    },
-  ],
-]
-`;
-
-exports[`Settings > Import notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`Settings > Import notes > mockDb 1`] = `
-{
-  "deletedNotes": undefined,
-  "encryptedNotes": [],
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`Settings > Import notes > noteState 1`] = `
-{
-  "addNotes": [Function],
-  "extraSelectedNotes": [],
-  "notes": [
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    },
-  ],
-  "selectedNote": {
-    "content": {
-      "body": "amet consectetur adipisicing",
-      "delta": {
-        "ops": [
-          {
-            "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-          },
-        ],
-      },
-      "title": "Amet consectetur adipisicing",
-    },
-    "timestamp": 0,
-    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-  },
-}
-`;
-
-exports[`Settings > Import notes > openedPopup 1`] = `undefined`;
-
-exports[`Settings > Import notes > selectedTheme 1`] = `"System"`;
-
-exports[`Settings > Import notes > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "encryptedNotesCache": Map {},
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNotes": UnsyncedNotesManager {
-    "deleted": [],
-    "edited": Set {
-      "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    },
-    "new": "",
-  },
-  "username": "",
-}
-`;
-
-exports[`Settings > Import notes > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
 exports[`Settings > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Settings > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -496,7 +261,7 @@ exports[`Settings > Mounts > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -577,7 +342,7 @@ exports[`Settings > Opens and closes drop menu > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -668,7 +433,7 @@ exports[`Settings > Opens info popup > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -749,7 +514,7 @@ exports[`Settings > Sets theme preference > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -799,23 +564,23 @@ exports[`Settings > Sets theme preference > updateState 1`] = `
 }
 `;
 
-exports[`Settings > Sets update strategy > KeyStore.getKey() 1`] = `undefined`;
+exports[`Settings > Updates menu item > Sets update strategy > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Settings > Sets update strategy > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Settings > Updates menu item > Sets update strategy > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Settings > Sets update strategy > Storage.get('THEME') 1`] = `null`;
+exports[`Settings > Updates menu item > Sets update strategy > Storage.get('THEME') 1`] = `null`;
 
-exports[`Settings > Sets update strategy > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Settings > Updates menu item > Sets update strategy > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Settings > Sets update strategy > Storage.get('UPDATE_STRATEGY') 1`] = `"manual"`;
+exports[`Settings > Updates menu item > Sets update strategy > Storage.get('UPDATE_STRATEGY') 1`] = `"manual"`;
 
-exports[`Settings > Sets update strategy > Storage.get('USERNAME') 1`] = `null`;
+exports[`Settings > Updates menu item > Sets update strategy > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Settings > Sets update strategy > allCalls 1`] = `[]`;
+exports[`Settings > Updates menu item > Sets update strategy > allCalls 1`] = `[]`;
 
-exports[`Settings > Sets update strategy > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Settings > Updates menu item > Sets update strategy > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Settings > Sets update strategy > mockDb 1`] = `
+exports[`Settings > Updates menu item > Sets update strategy > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -825,12 +590,12 @@ exports[`Settings > Sets update strategy > mockDb 1`] = `
 }
 `;
 
-exports[`Settings > Sets update strategy > noteState 1`] = `
+exports[`Settings > Updates menu item > Sets update strategy > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -844,11 +609,11 @@ exports[`Settings > Sets update strategy > noteState 1`] = `
 }
 `;
 
-exports[`Settings > Sets update strategy > openedPopup 1`] = `undefined`;
+exports[`Settings > Updates menu item > Sets update strategy > openedPopup 1`] = `undefined`;
 
-exports[`Settings > Sets update strategy > selectedTheme 1`] = `"System"`;
+exports[`Settings > Updates menu item > Sets update strategy > selectedTheme 1`] = `"System"`;
 
-exports[`Settings > Sets update strategy > syncState 1`] = `
+exports[`Settings > Updates menu item > Sets update strategy > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -872,7 +637,7 @@ exports[`Settings > Sets update strategy > syncState 1`] = `
 }
 `;
 
-exports[`Settings > Sets update strategy > updateState 1`] = `
+exports[`Settings > Updates menu item > Sets update strategy > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -880,19 +645,19 @@ exports[`Settings > Sets update strategy > updateState 1`] = `
 }
 `;
 
-exports[`Settings > Update and restart menu item > KeyStore.getKey() 1`] = `undefined`;
+exports[`Settings > Updates menu item > Update and restart menu item > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Settings > Update and restart menu item > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Settings > Updates menu item > Update and restart menu item > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Settings > Update and restart menu item > Storage.get('THEME') 1`] = `null`;
+exports[`Settings > Updates menu item > Update and restart menu item > Storage.get('THEME') 1`] = `null`;
 
-exports[`Settings > Update and restart menu item > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Settings > Updates menu item > Update and restart menu item > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Settings > Update and restart menu item > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Settings > Updates menu item > Update and restart menu item > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Settings > Update and restart menu item > Storage.get('USERNAME') 1`] = `null`;
+exports[`Settings > Updates menu item > Update and restart menu item > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Settings > Update and restart menu item > allCalls 1`] = `
+exports[`Settings > Updates menu item > Update and restart menu item > allCalls 1`] = `
 [
   [
     "tauriApi",
@@ -951,9 +716,9 @@ Do you want to update now?",
 ]
 `;
 
-exports[`Settings > Update and restart menu item > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Settings > Updates menu item > Update and restart menu item > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Settings > Update and restart menu item > mockDb 1`] = `
+exports[`Settings > Updates menu item > Update and restart menu item > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -963,12 +728,12 @@ exports[`Settings > Update and restart menu item > mockDb 1`] = `
 }
 `;
 
-exports[`Settings > Update and restart menu item > noteState 1`] = `
+exports[`Settings > Updates menu item > Update and restart menu item > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -982,11 +747,11 @@ exports[`Settings > Update and restart menu item > noteState 1`] = `
 }
 `;
 
-exports[`Settings > Update and restart menu item > openedPopup 1`] = `undefined`;
+exports[`Settings > Updates menu item > Update and restart menu item > openedPopup 1`] = `undefined`;
 
-exports[`Settings > Update and restart menu item > selectedTheme 1`] = `"System"`;
+exports[`Settings > Updates menu item > Update and restart menu item > selectedTheme 1`] = `"System"`;
 
-exports[`Settings > Update and restart menu item > syncState 1`] = `
+exports[`Settings > Updates menu item > Update and restart menu item > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1010,7 +775,7 @@ exports[`Settings > Update and restart menu item > syncState 1`] = `
 }
 `;
 
-exports[`Settings > Update and restart menu item > updateState 1`] = `
+exports[`Settings > Updates menu item > Update and restart menu item > updateState 1`] = `
 {
   "isAvailable": true,
   "isDownloading": true,
