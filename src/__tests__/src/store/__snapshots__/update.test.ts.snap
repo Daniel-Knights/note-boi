@@ -53,7 +53,7 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -170,7 +170,7 @@ exports[`Update > handleUpdate > Handles update > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -261,7 +261,7 @@ exports[`Update > handleUpdate > Returns if update unavailable > noteState 1`] =
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -352,7 +352,7 @@ exports[`Update > handleUpdate > Returns if version has been seen > noteState 1`
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -457,7 +457,7 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -538,7 +538,7 @@ exports[`Update > setUpdateStrategy > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -612,6 +612,12 @@ exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > allCall
   [
     "tauriApi",
     {
+      "name": "plugin:updater|download_and_install",
+    },
+  ],
+  [
+    "tauriApi",
+    {
       "calledWith": {
         "kind": "error",
         "message": "Try again?",
@@ -640,7 +646,7 @@ exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > noteSta
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -714,12 +720,24 @@ exports[`Update > updateAndRelaunch > Catches errors and retries > allCalls 1`] 
   [
     "tauriApi",
     {
+      "name": "plugin:updater|download_and_install",
+    },
+  ],
+  [
+    "tauriApi",
+    {
       "calledWith": {
         "kind": "error",
         "message": "Try again?",
         "title": "Unable to install update",
       },
       "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "name": "plugin:updater|download_and_install",
     },
   ],
   [
@@ -753,7 +771,7 @@ exports[`Update > updateAndRelaunch > Catches errors and retries > noteState 1`]
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -858,7 +876,7 @@ exports[`Update > updateAndRelaunch > Updates and relaunches > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

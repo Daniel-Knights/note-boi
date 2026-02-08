@@ -46,7 +46,7 @@ exports[`Utils > Tauri API wrappers > tauriEmit > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -146,7 +146,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -196,38 +196,32 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > KeyStore.getKey() 1`] = `undefined`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > allCalls 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > allCalls 1`] = `
 [
   [
-    "tauriApi",
+    "invoke",
     {
-      "calledWith": {
-        "kind": "error",
-        "message": "Something went wrong. Please try again or open an issue in the GitHub repo.",
-        "okLabel": undefined,
-        "title": undefined,
-      },
-      "name": "plugin:dialog|message",
+      "name": "delete_note",
     },
   ],
 ]
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > mockDb 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -237,12 +231,12 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > mockDb 1`] 
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > noteState 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -256,11 +250,11 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > noteState 1
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > openedPopup 1`] = `undefined`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > openedPopup 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > selectedTheme 1`] = `"System"`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > selectedTheme 1`] = `"System"`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > syncState 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -284,7 +278,125 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > syncState 1
 }
 `;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors > updateState 1`] = `
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('THEME') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "name": "new_note",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Failed to create note. Try again?",
+        "title": "Create note",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "name": "new_note",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Failed to create note. Try again?",
+        "title": "Create note",
+      },
+      "name": "plugin:dialog|ask",
+    },
+  ],
+]
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > openedPopup 1`] = `undefined`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > selectedTheme 1`] = `"System"`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -332,7 +444,7 @@ exports[`Utils > Tauri API wrappers > tauriListen > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -413,7 +525,7 @@ exports[`Utils > capitalise > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -494,7 +606,7 @@ exports[`Utils > escapeRegex > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -575,7 +687,7 @@ exports[`Utils > hasKeys > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -656,7 +768,7 @@ exports[`Utils > isDev > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -737,7 +849,7 @@ exports[`Utils > isEmptyNote > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -818,7 +930,7 @@ exports[`Utils > isWhitespaceOnly > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -899,7 +1011,7 @@ exports[`Utils > unixToDateTime > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
