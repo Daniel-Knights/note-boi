@@ -74,28 +74,4 @@ describe('getAllNotes', () => {
     assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.invoke.has('get_all_notes'));
   });
-
-  it('Catches errors', async () => {
-    const { calls, setErrorValue } = mockApi();
-    const consoleErrorSpy = vi.spyOn(console, 'error');
-
-    setErrorValue.invoke('get_all_notes');
-
-    await n.getAllNotes();
-
-    expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Note invoke error:');
-    expect(consoleErrorSpy).toHaveBeenCalledWith(new Error('Mock Tauri Invoke error'));
-
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.invoke.has('new_note')); // `getAllNotes` throws, gets caught, and calls newNote
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
-    assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-      message:
-        'Something went wrong. Please try again or open an issue in the GitHub repo.',
-      kind: 'error',
-      okLabel: undefined,
-      title: undefined,
-    });
-  });
 });

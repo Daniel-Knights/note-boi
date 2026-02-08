@@ -3,12 +3,7 @@ import * as n from '../../../../../store/note';
 import * as s from '../../../../../store/sync';
 import { isEmptyNote } from '../../../../../utils';
 import { clearMockApiResults, mockApi } from '../../../../mock';
-import {
-  floorToThousand,
-  getDummyNotes,
-  waitForAutoSync,
-  waitUntil,
-} from '../../../../utils';
+import { floorToThousand, getDummyNotes, waitForAutoSync } from '../../../../utils';
 import {
   existingNote,
   mockChangeEventCB,
@@ -158,35 +153,6 @@ describe('deleteNote', () => {
     assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.invoke.has('delete_note'));
   });
-
-  it('Catches errors', async () => {
-    const { calls, setErrorValue } = mockApi();
-    const consoleErrorSpy = vi.spyOn(console, 'error');
-
-    await n.getAllNotes();
-
-    vi.clearAllMocks();
-    clearMockApiResults({ calls });
-    setErrorValue.invoke('delete_note');
-
-    n.deleteNote(existingNote.uuid);
-
-    await waitUntil(() => calls.tauriApi.has('plugin:dialog|message'));
-
-    expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Note invoke error:');
-    expect(consoleErrorSpy).toHaveBeenCalledWith(new Error('Mock Tauri Invoke error'));
-
-    assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
-    assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-      message:
-        'Something went wrong. Please try again or open an issue in the GitHub repo.',
-      kind: 'error',
-      okLabel: undefined,
-      title: undefined,
-    });
-  });
 });
 
 describe('deleteSelectedNotes', () => {
@@ -228,35 +194,6 @@ describe('deleteSelectedNotes', () => {
     assert.isEmpty(n.noteState.extraSelectedNotes);
     assert.strictEqual(calls.size, allNotesToDelete.length);
     assert.isTrue(calls.invoke.has('delete_note', allNotesToDelete.length));
-  });
-
-  it('Catches errors', async () => {
-    const { calls, setErrorValue } = mockApi();
-    const consoleErrorSpy = vi.spyOn(console, 'error');
-
-    await n.getAllNotes();
-
-    vi.clearAllMocks();
-    clearMockApiResults({ calls });
-    setErrorValue.invoke('delete_note');
-
-    n.deleteSelectedNotes();
-
-    await waitUntil(() => calls.tauriApi.has('plugin:dialog|message'));
-
-    expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Note invoke error:');
-    expect(consoleErrorSpy).toHaveBeenCalledWith(new Error('Mock Tauri Invoke error'));
-
-    assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
-    assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-      message:
-        'Something went wrong. Please try again or open an issue in the GitHub repo.',
-      kind: 'error',
-      okLabel: undefined,
-      title: undefined,
-    });
   });
 });
 

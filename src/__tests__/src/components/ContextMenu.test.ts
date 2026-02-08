@@ -4,10 +4,12 @@ import { nextTick } from 'vue';
 import * as n from '../../../store/note';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../mock';
-import { getByTestId, getDummyNotes } from '../../utils';
+import { findByTestId, getByTestId, getDummyNotes, resolveImmediate } from '../../utils';
 
 import ContextMenu from '../../../components/ContextMenu.vue';
 import DropMenu from '../../../components/DropMenu.vue';
+
+const mockHandleNewNote = vi.fn();
 
 describe('ContextMenu', () => {
   it('Mounts without passed ev', async () => {
@@ -52,7 +54,6 @@ describe('ContextMenu', () => {
 
   it('Creates a new note', async () => {
     const { calls, promises } = mockApi();
-
     const ev = getContextMenuEv();
     const wrapper = await mountContextMenu(ev);
 
@@ -68,27 +69,26 @@ describe('ContextMenu', () => {
     await getByTestId(wrapper, 'new').trigger('click');
     await Promise.all(promises);
 
-    assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('new_note'));
-    assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-    assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+    expect(mockHandleNewNote).toHaveBeenCalledOnce();
+
+    assert.strictEqual(calls.size, 0); // Would be 1 if we weren't mocking handleNewNote
   });
 
-  it('Disables export and delete note if no clicked note', async () => {
+  it('Does not show export or delete button if no clicked note', async () => {
     const ev = getContextMenuEv();
     const wrapper = await mountContextMenu(ev);
 
     assertMounted(wrapper, ev);
 
-    const exportNoteItem = getByTestId(wrapper, 'export');
-    const deleteNoteItem = getByTestId(wrapper, 'delete');
+    const exportNoteItem = findByTestId(wrapper, 'export');
+    const deleteNoteItem = findByTestId(wrapper, 'delete');
 
-    assert.isTrue(exportNoteItem.classes('drop-menu__item--disabled'));
-    assert.isTrue(deleteNoteItem.classes('drop-menu__item--disabled'));
+    assert.isFalse(exportNoteItem.exists());
+    assert.isFalse(deleteNoteItem.exists());
   });
 
   it.each(['Export', 'Delete'])(
-    '%s button disabled with no notes',
+    '%s button not shown with no notes',
     async (buttonType) => {
       const { calls, setResValues } = mockApi();
 
@@ -108,9 +108,9 @@ describe('ContextMenu', () => {
       assert.isTrue(calls.invoke.has('get_all_notes'));
       assert.isTrue(calls.invoke.has('new_note'));
 
-      const button = getByTestId<HTMLButtonElement>(wrapper, buttonType.toLowerCase());
+      const button = findByTestId(wrapper, buttonType.toLowerCase());
 
-      assert.isTrue(button.element.classList.contains('drop-menu__item--disabled'));
+      assert.isFalse(button.exists());
     }
   );
 
@@ -220,6 +220,34 @@ describe('ContextMenu', () => {
 
     expect(deleteSelectedSpy).toHaveBeenCalledOnce();
   });
+
+  it('Exports all notes', async () => {
+    const { promises } = mockApi();
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev);
+    const exportNotesSpy = vi.spyOn(n, 'exportNotes');
+    const exportWrapper = getByTestId(wrapper, 'export-all');
+
+    await exportWrapper.trigger('click');
+    await Promise.all(promises);
+    await resolveImmediate(); // Defer execution to exportNotes
+
+    expect(exportNotesSpy).toHaveBeenCalledOnce();
+    expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes);
+  });
+
+  it('Imports notes', async () => {
+    mockApi();
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev);
+    const importNotesSpy = vi.spyOn(n, 'importNotesFromFileChooser');
+    const importWrapper = getByTestId(wrapper, 'import');
+
+    await importWrapper.trigger('click');
+
+    expect(importNotesSpy).toHaveBeenCalledOnce();
+    expect(importNotesSpy).toHaveBeenCalledWith();
+  });
 });
 
 //// Utils
@@ -232,7 +260,10 @@ async function mountContextMenu(
 ) {
   options.attachTo?.dispatchEvent(ev);
 
-  const wrapper = mount(ContextMenu, { attachTo: options.attachTo });
+  const wrapper = mount(ContextMenu, {
+    attachTo: options.attachTo,
+    props: { handleNewNote: mockHandleNewNote },
+  });
   await wrapper.setProps({ ev });
 
   // First time to wait for component to mount, second time to wait for `nextTick`

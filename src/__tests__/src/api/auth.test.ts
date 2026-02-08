@@ -577,32 +577,25 @@ describe('Auth', () => {
       });
     });
 
-    it('Only logs out client-side if no username', async () => {
+    it('Throws if no username', async () => {
       const { calls } = mockApi();
 
       clearMockApiResults({ calls });
 
       await a.logout();
 
-      // Can't spy on `clientSideLogout` because it's called from the same file
-      // expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
-
-      assertAppError();
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.isFalse(s.syncState.isLoggedIn);
-      assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
+      assertAppError({
+        code: ERROR_CODE.AUTHORISATION,
+        message: 'Authorisation error',
+        retry: undefined,
+        display: { form: true },
       });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.strictEqual(calls.size, 0);
     });
 
-    it('Only logs out client-side if no access token', async () => {
+    it('Throws if no access token', async () => {
       const { calls } = mockApi();
 
       s.syncState.username = 'd';
@@ -615,26 +608,17 @@ describe('Auth', () => {
 
       await a.logout();
 
-      // Can't spy on `clientSideLogout` because it's called from the same file
-      // expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+      assertAppError({
+        code: ERROR_CODE.AUTHORISATION,
+        message: 'Authorisation error',
+        retry: { fn: a.logout },
+        display: { form: true },
+      });
 
-      assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.isFalse(s.syncState.isLoggedIn);
-      assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('Sets and resets loading state', () => {

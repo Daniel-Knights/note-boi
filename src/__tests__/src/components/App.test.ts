@@ -8,6 +8,7 @@ import App from '../../../App.vue';
 import Editor from '../../../components/Editor.vue';
 import Loading from '../../../components/Loading.vue';
 import NoteMenu from '../../../components/NoteMenu.vue';
+import NoteMenuToggle from '../../../components/NoteMenuToggle.vue';
 import SyncStatus from '../../../components/SyncStatus.vue';
 
 describe('App', () => {
@@ -37,5 +38,24 @@ describe('App', () => {
     await nextTick();
 
     assert.isTrue(wrapper.getComponent(Loading).isVisible());
+  });
+
+  it('Handles note menu toggling', async () => {
+    mockApi();
+    const wrapper = mount(App);
+    const wrapperVm = wrapper.vm as unknown as {
+      showNoteMenu: boolean;
+    };
+    const toggleButton = wrapper.getComponent(NoteMenuToggle);
+
+    assert.strictEqual(wrapperVm.showNoteMenu, true);
+
+    await toggleButton.trigger('click');
+
+    assert.strictEqual(wrapperVm.showNoteMenu, false);
+
+    await toggleButton.trigger('click');
+
+    assert.strictEqual(wrapperVm.showNoteMenu, true);
   });
 });

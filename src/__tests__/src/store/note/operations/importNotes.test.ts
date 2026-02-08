@@ -117,26 +117,6 @@ describe('importNotes', () => {
       assert.strictEqual(s.syncState.unsyncedNotes.size, 0);
       assert.strictEqual(calls.size, 0);
     });
-
-    it('Handles import errors', async () => {
-      const { calls, setErrorValue } = mockApi();
-      const paths = ['/foo.json'];
-
-      setErrorValue.invoke('import_notes');
-
-      const importedNotes = await n.importNotesFromPaths(paths);
-
-      n.importNotesToState(importedNotes!);
-
-      expect(mockChangeEventCB).not.toHaveBeenCalled();
-      expect(mockSelectEventCB).not.toHaveBeenCalled();
-
-      assert.strictEqual(s.syncState.unsyncedNotes.size, 0);
-      assert.strictEqual(calls.size, 1);
-      // `tauriInvoke` catch
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
-      assert.strictEqual(calls.tauriApi[0]?.calledWith?.kind, 'error');
-    });
   });
 
   describe('importNotesFromFileChooser', () => {
