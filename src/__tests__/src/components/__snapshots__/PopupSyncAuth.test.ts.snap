@@ -46,7 +46,7 @@ exports[`PopupSyncAuth > Emits close > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -142,7 +142,7 @@ exports[`PopupSyncAuth > Mounts > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -238,7 +238,7 @@ exports[`PopupSyncAuth > Shows default error message when none provided > noteSt
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -336,7 +336,7 @@ exports[`PopupSyncAuth > Shows error message > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -434,7 +434,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Clears form validation 
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -530,7 +530,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > n
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -629,7 +629,7 @@ exports[`PopupSyncAuth > Switches between login/signup > Switches > noteState 1`
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -745,7 +745,7 @@ exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -765,7 +765,7 @@ exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "",
               "delta": {
@@ -801,7 +801,7 @@ exports[`PopupSyncAuth > Validates fields > On login > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -813,7 +813,7 @@ exports[`PopupSyncAuth > Validates fields > On login > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -946,7 +946,7 @@ exports[`PopupSyncAuth > Validates fields > On signup > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

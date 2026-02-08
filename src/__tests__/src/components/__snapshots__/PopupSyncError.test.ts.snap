@@ -31,7 +31,7 @@ exports[`PopupSyncError > Emits close > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -136,7 +136,7 @@ exports[`PopupSyncError > Ignores > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -217,7 +217,7 @@ exports[`PopupSyncError > Mounts > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -298,7 +298,7 @@ exports[`PopupSyncError > No try again button when no retry function > noteState
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -379,7 +379,7 @@ exports[`PopupSyncError > Retries > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -460,7 +460,7 @@ exports[`PopupSyncError > Shows default error message when none provided > noteS
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

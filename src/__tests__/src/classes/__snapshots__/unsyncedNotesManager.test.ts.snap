@@ -31,7 +31,7 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > noteState 1`
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -112,7 +112,7 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > noteSta
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -193,7 +193,7 @@ exports[`UnsyncedNotesManager > clear > Clears edited and deleted > noteState 1`
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -274,7 +274,7 @@ exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > noteSt
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -355,7 +355,7 @@ exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > note
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -436,7 +436,7 @@ exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > noteS
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -517,7 +517,7 @@ exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > noteSta
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -598,7 +598,7 @@ exports[`UnsyncedNotesManager > size > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -679,7 +679,7 @@ exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > noteState 1`
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -760,7 +760,7 @@ exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > noteState 1
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

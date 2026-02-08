@@ -31,7 +31,7 @@ exports[`ContextMenu > Closes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -102,25 +102,6 @@ exports[`ContextMenu > Creates a new note > allCalls 1`] = `
       "name": "get_all_notes",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
 ]
 `;
 
@@ -141,18 +122,7 @@ exports[`ContextMenu > Creates a new note > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
-      "content": {
-        "body": "",
-        "delta": {
-          "ops": [],
-        },
-        "title": "",
-      },
-      "timestamp": 0,
-      "uuid": "uuid",
-    },
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -211,7 +181,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -226,7 +196,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -241,7 +211,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -256,7 +226,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -271,7 +241,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -286,7 +256,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -301,7 +271,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -316,7 +286,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -331,7 +301,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -347,16 +317,64 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
-      "body": "",
+      "body": "😬ö",
       "delta": {
-        "ops": [],
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
       },
-      "title": "",
+      "title": "Note with special characters",
     },
     "timestamp": 0,
-    "uuid": "uuid",
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
@@ -383,7 +401,7 @@ exports[`ContextMenu > Creates a new note > syncState 1`] = `
   "unsyncedNotes": UnsyncedNotesManager {
     "deleted": [],
     "edited": Set {},
-    "new": "uuid",
+    "new": "",
   },
   "username": "",
 }
@@ -397,19 +415,19 @@ exports[`ContextMenu > Creates a new note > updateState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Delete button disabled with no notes > KeyStore.getKey() 1`] = `undefined`;
+exports[`ContextMenu > Delete button not shown with no notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > Storage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`ContextMenu > Delete button disabled with no notes > allCalls 1`] = `
+exports[`ContextMenu > Delete button not shown with no notes > allCalls 1`] = `
 [
   [
     "invoke",
@@ -422,7 +440,7 @@ exports[`ContextMenu > Delete button disabled with no notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -440,9 +458,9 @@ exports[`ContextMenu > Delete button disabled with no notes > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Delete button disabled with no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Delete button not shown with no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`ContextMenu > Delete button disabled with no notes > mockDb 1`] = `
+exports[`ContextMenu > Delete button not shown with no notes > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -452,12 +470,12 @@ exports[`ContextMenu > Delete button disabled with no notes > mockDb 1`] = `
 }
 `;
 
-exports[`ContextMenu > Delete button disabled with no notes > noteState 1`] = `
+exports[`ContextMenu > Delete button not shown with no notes > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -469,7 +487,7 @@ exports[`ContextMenu > Delete button disabled with no notes > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -483,11 +501,11 @@ exports[`ContextMenu > Delete button disabled with no notes > noteState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Delete button disabled with no notes > openedPopup 1`] = `undefined`;
+exports[`ContextMenu > Delete button not shown with no notes > openedPopup 1`] = `undefined`;
 
-exports[`ContextMenu > Delete button disabled with no notes > selectedTheme 1`] = `"System"`;
+exports[`ContextMenu > Delete button not shown with no notes > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
+exports[`ContextMenu > Delete button not shown with no notes > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -511,7 +529,7 @@ exports[`ContextMenu > Delete button disabled with no notes > syncState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Delete button disabled with no notes > updateState 1`] = `
+exports[`ContextMenu > Delete button not shown with no notes > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -569,7 +587,7 @@ exports[`ContextMenu > Deletes a note > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -628,7 +646,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -643,7 +661,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -658,7 +676,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -673,7 +691,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -688,7 +706,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -703,7 +721,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -718,7 +736,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -733,7 +751,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -749,7 +767,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -938,7 +956,7 @@ exports[`ContextMenu > Deletes all selected notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -997,7 +1015,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1012,7 +1030,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1027,7 +1045,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1042,7 +1060,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1058,7 +1076,7 @@ Sugar
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -1177,23 +1195,23 @@ exports[`ContextMenu > Deletes all selected notes > updateState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > KeyStore.getKey() 1`] = `undefined`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > allCalls 1`] = `[]`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > allCalls 1`] = `[]`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > mockDb 1`] = `
+exports[`ContextMenu > Does not show export or delete button if no clicked note > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -1203,12 +1221,12 @@ exports[`ContextMenu > Disables export and delete note if no clicked note > mock
 }
 `;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > noteState 1`] = `
+exports[`ContextMenu > Does not show export or delete button if no clicked note > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -1222,11 +1240,11 @@ exports[`ContextMenu > Disables export and delete note if no clicked note > note
 }
 `;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > openedPopup 1`] = `undefined`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > openedPopup 1`] = `undefined`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > selectedTheme 1`] = `"System"`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > syncState 1`] = `
+exports[`ContextMenu > Does not show export or delete button if no clicked note > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1250,7 +1268,7 @@ exports[`ContextMenu > Disables export and delete note if no clicked note > sync
 }
 `;
 
-exports[`ContextMenu > Disables export and delete note if no clicked note > updateState 1`] = `
+exports[`ContextMenu > Does not show export or delete button if no clicked note > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1258,19 +1276,19 @@ exports[`ContextMenu > Disables export and delete note if no clicked note > upda
 }
 `;
 
-exports[`ContextMenu > Export button disabled with no notes > KeyStore.getKey() 1`] = `undefined`;
+exports[`ContextMenu > Export button not shown with no notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > Storage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`ContextMenu > Export button disabled with no notes > allCalls 1`] = `
+exports[`ContextMenu > Export button not shown with no notes > allCalls 1`] = `
 [
   [
     "invoke",
@@ -1283,7 +1301,7 @@ exports[`ContextMenu > Export button disabled with no notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -1301,9 +1319,9 @@ exports[`ContextMenu > Export button disabled with no notes > allCalls 1`] = `
 ]
 `;
 
-exports[`ContextMenu > Export button disabled with no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`ContextMenu > Export button not shown with no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`ContextMenu > Export button disabled with no notes > mockDb 1`] = `
+exports[`ContextMenu > Export button not shown with no notes > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -1313,12 +1331,12 @@ exports[`ContextMenu > Export button disabled with no notes > mockDb 1`] = `
 }
 `;
 
-exports[`ContextMenu > Export button disabled with no notes > noteState 1`] = `
+exports[`ContextMenu > Export button not shown with no notes > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -1330,7 +1348,7 @@ exports[`ContextMenu > Export button disabled with no notes > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -1344,11 +1362,11 @@ exports[`ContextMenu > Export button disabled with no notes > noteState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Export button disabled with no notes > openedPopup 1`] = `undefined`;
+exports[`ContextMenu > Export button not shown with no notes > openedPopup 1`] = `undefined`;
 
-exports[`ContextMenu > Export button disabled with no notes > selectedTheme 1`] = `"System"`;
+exports[`ContextMenu > Export button not shown with no notes > selectedTheme 1`] = `"System"`;
 
-exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
+exports[`ContextMenu > Export button not shown with no notes > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1372,7 +1390,7 @@ exports[`ContextMenu > Export button disabled with no notes > syncState 1`] = `
 }
 `;
 
-exports[`ContextMenu > Export button disabled with no notes > updateState 1`] = `
+exports[`ContextMenu > Export button not shown with no notes > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1418,7 +1436,7 @@ exports[`ContextMenu > Exports a note > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1459,7 +1477,7 @@ exports[`ContextMenu > Exports a note > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -1518,7 +1536,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1533,7 +1551,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1548,7 +1566,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1563,7 +1581,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1578,7 +1596,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1593,7 +1611,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1608,7 +1626,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1623,7 +1641,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1638,7 +1656,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1654,7 +1672,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -1708,6 +1726,112 @@ exports[`ContextMenu > Exports a note > updateState 1`] = `
 }
 `;
 
+exports[`ContextMenu > Exports all notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Exports all notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Exports all notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Exports all notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Exports all notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Exports all notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Exports all notes > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": true,
+        "multiple": false,
+        "recursive": false,
+        "title": "Choose a location",
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [],
+        "saveDir": "C:\\path",
+      },
+      "name": "export_notes",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Exports all notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Exports all notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Exports all notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`ContextMenu > Exports all notes > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Exports all notes > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Exports all notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Exports all notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`ContextMenu > Exports all selected notes > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`ContextMenu > Exports all selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -1746,7 +1870,7 @@ exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1761,7 +1885,7 @@ exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
             "timestamp": 0,
             "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1776,7 +1900,7 @@ exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
             "timestamp": 0,
             "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1791,7 +1915,7 @@ exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
             "timestamp": 0,
             "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1806,7 +1930,7 @@ exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
             "timestamp": 0,
             "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -1846,7 +1970,7 @@ exports[`ContextMenu > Exports all selected notes > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1861,7 +1985,7 @@ exports[`ContextMenu > Exports all selected notes > noteState 1`] = `
       "timestamp": 739056902017,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1876,7 +2000,7 @@ exports[`ContextMenu > Exports all selected notes > noteState 1`] = `
       "timestamp": 157836992432,
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1891,7 +2015,7 @@ exports[`ContextMenu > Exports all selected notes > noteState 1`] = `
       "timestamp": 1066734006578,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1908,7 +2032,7 @@ exports[`ContextMenu > Exports all selected notes > noteState 1`] = `
     },
   ],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -1967,7 +2091,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1982,7 +2106,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1997,7 +2121,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2012,7 +2136,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2027,7 +2151,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2042,7 +2166,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2057,7 +2181,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2072,7 +2196,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2087,7 +2211,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2103,7 +2227,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -2157,6 +2281,113 @@ exports[`ContextMenu > Exports all selected notes > updateState 1`] = `
 }
 `;
 
+exports[`ContextMenu > Imports notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`ContextMenu > Imports notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`ContextMenu > Imports notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`ContextMenu > Imports notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`ContextMenu > Imports notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`ContextMenu > Imports notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`ContextMenu > Imports notes > allCalls 1`] = `
+[
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "directory": undefined,
+        "multiple": true,
+        "recursive": undefined,
+        "title": undefined,
+      },
+      "name": "plugin:dialog|open",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "paths": [
+          "C:\\path",
+        ],
+      },
+      "name": "import_notes",
+    },
+  ],
+]
+`;
+
+exports[`ContextMenu > Imports notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`ContextMenu > Imports notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`ContextMenu > Imports notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`ContextMenu > Imports notes > openedPopup 1`] = `undefined`;
+
+exports[`ContextMenu > Imports notes > selectedTheme 1`] = `"System"`;
+
+exports[`ContextMenu > Imports notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`ContextMenu > Imports notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`ContextMenu > Mounts with ev > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`ContextMenu > Mounts with ev > Storage.get('MENU_WIDTH') 1`] = `null`;
@@ -2188,7 +2419,7 @@ exports[`ContextMenu > Mounts with ev > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -2269,7 +2500,7 @@ exports[`ContextMenu > Mounts without passed ev > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -2350,7 +2581,7 @@ exports[`ContextMenu > Remains onscreen if opened at bottom of page > noteState 
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

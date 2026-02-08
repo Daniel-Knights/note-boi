@@ -25,7 +25,7 @@ exports[`NoteMenu > Creates a new note > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -60,7 +60,7 @@ exports[`NoteMenu > Creates a new note > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -71,7 +71,7 @@ exports[`NoteMenu > Creates a new note > noteState 1`] = `
       "timestamp": 0,
       "uuid": "uuid",
     },
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -130,7 +130,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -145,7 +145,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -160,7 +160,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -175,7 +175,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -190,7 +190,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -205,7 +205,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -220,7 +220,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -235,7 +235,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -250,7 +250,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -266,7 +266,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -357,7 +357,7 @@ exports[`NoteMenu > Mounts > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -416,7 +416,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -431,7 +431,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -446,7 +446,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -461,7 +461,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -476,7 +476,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -491,7 +491,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -506,7 +506,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -521,7 +521,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -536,7 +536,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -552,7 +552,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -691,7 +691,7 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -750,7 +750,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -765,7 +765,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -780,7 +780,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -795,7 +795,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -810,7 +810,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -825,7 +825,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -840,7 +840,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -855,7 +855,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -870,7 +870,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -886,7 +886,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -981,7 +981,7 @@ exports[`NoteMenu > Renders a list item for every note > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -1040,7 +1040,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1055,7 +1055,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1070,7 +1070,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1085,7 +1085,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1100,7 +1100,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1115,7 +1115,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1130,7 +1130,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1145,7 +1145,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1160,7 +1160,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1176,7 +1176,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -1306,7 +1306,7 @@ exports[`NoteMenu > Renders a single empty note > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": {
+        "note": Note {
           "content": {
             "body": "",
             "delta": {
@@ -1341,7 +1341,7 @@ exports[`NoteMenu > Renders a single empty note > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "",
         "delta": {
@@ -1353,7 +1353,7 @@ exports[`NoteMenu > Renders a single empty note > noteState 1`] = `
       "uuid": "uuid",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -1444,7 +1444,7 @@ exports[`NoteMenu > Selects a clicked note > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -1503,7 +1503,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1518,7 +1518,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1533,7 +1533,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1548,7 +1548,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1563,7 +1563,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1578,7 +1578,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1593,7 +1593,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1608,7 +1608,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1623,7 +1623,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1639,7 +1639,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -1734,7 +1734,7 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > n
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -1793,7 +1793,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1808,7 +1808,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1823,7 +1823,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1838,7 +1838,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1853,7 +1853,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1868,7 +1868,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1883,7 +1883,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1898,7 +1898,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1913,7 +1913,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1929,7 +1929,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -2068,7 +2068,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > noteState 1`
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -2127,7 +2127,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2142,7 +2142,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2157,7 +2157,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2172,7 +2172,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2187,7 +2187,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2202,7 +2202,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2217,7 +2217,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2232,7 +2232,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2247,7 +2247,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2263,7 +2263,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -2358,7 +2358,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -2417,7 +2417,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2432,7 +2432,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2447,7 +2447,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2462,7 +2462,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2477,7 +2477,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2492,7 +2492,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2507,7 +2507,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2522,7 +2522,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2537,7 +2537,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2553,7 +2553,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -2648,7 +2648,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -2707,7 +2707,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2722,7 +2722,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2737,7 +2737,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2752,7 +2752,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2767,7 +2767,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2782,7 +2782,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2797,7 +2797,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2812,7 +2812,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2827,7 +2827,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -2843,7 +2843,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -2938,7 +2938,7 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > noteState 1`] =
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -2997,7 +2997,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3012,7 +3012,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3027,7 +3027,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3042,7 +3042,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3057,7 +3057,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3072,7 +3072,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3087,7 +3087,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3102,7 +3102,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3117,7 +3117,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3133,7 +3133,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "amet consectetur adipisicing",
       "delta": {
@@ -3228,7 +3228,7 @@ exports[`NoteMenu > Sets contextmenu ev > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -3287,7 +3287,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3302,7 +3302,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3317,7 +3317,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3332,7 +3332,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3347,7 +3347,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3362,7 +3362,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3377,7 +3377,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3392,7 +3392,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3407,7 +3407,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3423,7 +3423,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -3562,7 +3562,7 @@ exports[`NoteMenu > Sets menu width with drag-bar > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -3621,7 +3621,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3636,7 +3636,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3651,7 +3651,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3666,7 +3666,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3681,7 +3681,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3696,7 +3696,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3711,7 +3711,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3726,7 +3726,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3741,7 +3741,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -3757,7 +3757,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -3848,340 +3848,6 @@ exports[`NoteMenu > Sets menu width with drag-bar > syncState 1`] = `
 `;
 
 exports[`NoteMenu > Sets menu width with drag-bar > updateState 1`] = `
-{
-  "isAvailable": false,
-  "isDownloading": false,
-  "strategy": "manual",
-}
-`;
-
-exports[`NoteMenu > Toggles menu visibility > KeyStore.getKey() 1`] = `undefined`;
-
-exports[`NoteMenu > Toggles menu visibility > Storage.get('MENU_WIDTH') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > Storage.get('THEME') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > Storage.get('UPDATE_SEEN') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > Storage.get('USERNAME') 1`] = `null`;
-
-exports[`NoteMenu > Toggles menu visibility > allCalls 1`] = `
-[
-  [
-    "invoke",
-    {
-      "calledWith": {},
-      "name": "get_all_notes",
-    },
-  ],
-]
-`;
-
-exports[`NoteMenu > Toggles menu visibility > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
-
-exports[`NoteMenu > Toggles menu visibility > mockDb 1`] = `
-{
-  "deletedNotes": undefined,
-  "encryptedNotes": [],
-  "users": {
-    "d": "1",
-  },
-}
-`;
-
-exports[`NoteMenu > Toggles menu visibility > noteState 1`] = `
-{
-  "addNotes": [Function],
-  "extraSelectedNotes": [],
-  "notes": [
-    {
-      "content": {
-        "body": "😬ö",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Note with special characters
-
-😬ö
-  sss
-	
-Ketchup
-Salt 
-Sugar
-
-¯\\_(ツ)_/¯
-
-──────────────────────────────────
-──────▄▀▀▄────────────────▄▀▀▄────
-─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
-─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
-────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
-───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
-─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
-▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
-▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
-▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
-▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
-▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
-▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
-▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
-▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
-▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
-▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
-▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
-▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
-▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
-█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
-█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
-▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-
-",
-            },
-          ],
-        },
-        "title": "Note with special characters",
-      },
-      "timestamp": 0,
-      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-    },
-    {
-      "content": {
-        "body": "amet consectetur adipisicing",
-        "delta": {
-          "ops": [
-            {
-              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-            },
-          ],
-        },
-        "title": "Amet consectetur adipisicing",
-      },
-      "timestamp": 0,
-      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-    },
-  ],
-  "selectedNote": {
-    "content": {
-      "body": "😬ö",
-      "delta": {
-        "ops": [
-          {
-            "insert": "Note with special characters
-
-😬ö
-  sss
-	
-Ketchup
-Salt 
-Sugar
-
-¯\\_(ツ)_/¯
-
-──────────────────────────────────
-──────▄▀▀▄────────────────▄▀▀▄────
-─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
-─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
-────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
-───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
-─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
-▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
-▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
-▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
-▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
-▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
-▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
-▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
-▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
-▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
-▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
-▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
-▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
-▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
-█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
-█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
-▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-
-",
-          },
-        ],
-      },
-      "title": "Note with special characters",
-    },
-    "timestamp": 0,
-    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-  },
-}
-`;
-
-exports[`NoteMenu > Toggles menu visibility > openedPopup 1`] = `undefined`;
-
-exports[`NoteMenu > Toggles menu visibility > selectedTheme 1`] = `"System"`;
-
-exports[`NoteMenu > Toggles menu visibility > syncState 1`] = `
-{
-  "appError": AppError {
-    "code": 0,
-    "display": undefined,
-    "message": undefined,
-    "originalError": undefined,
-    "retry": [Function],
-    "retryConfig": undefined,
-  },
-  "encryptedNotesCache": Map {},
-  "isLoggedIn": false,
-  "loadingCount": 0,
-  "newPassword": "",
-  "password": "",
-  "unsyncedNotes": UnsyncedNotesManager {
-    "deleted": [],
-    "edited": Set {},
-    "new": "",
-  },
-  "username": "",
-}
-`;
-
-exports[`NoteMenu > Toggles menu visibility > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

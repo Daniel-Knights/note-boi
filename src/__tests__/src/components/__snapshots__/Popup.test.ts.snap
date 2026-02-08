@@ -31,7 +31,7 @@ exports[`Popup > Closes on click outside > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -112,7 +112,7 @@ exports[`Popup > Closes on escape key > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -193,7 +193,7 @@ exports[`Popup > Mounts > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {
@@ -274,7 +274,7 @@ exports[`Popup > Unmounts > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "",
       "delta": {

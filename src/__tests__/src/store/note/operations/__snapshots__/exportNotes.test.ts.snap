@@ -38,7 +38,7 @@ exports[`exportNotes > All notes > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "😬ö",
               "delta": {
@@ -97,7 +97,7 @@ Sugar
             "timestamp": 0,
             "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -112,7 +112,7 @@ Sugar
             "timestamp": 0,
             "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -127,7 +127,7 @@ Sugar
             "timestamp": 0,
             "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -142,7 +142,7 @@ Sugar
             "timestamp": 0,
             "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -157,7 +157,7 @@ Sugar
             "timestamp": 0,
             "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -172,7 +172,7 @@ Sugar
             "timestamp": 0,
             "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -187,7 +187,7 @@ Sugar
             "timestamp": 0,
             "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -202,7 +202,7 @@ Sugar
             "timestamp": 0,
             "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -217,7 +217,7 @@ Sugar
             "timestamp": 0,
             "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
           },
-          {
+          Note {
             "content": {
               "body": "amet consectetur adipisicing",
               "delta": {
@@ -258,7 +258,7 @@ exports[`exportNotes > All notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -317,7 +317,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -332,7 +332,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -347,7 +347,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -362,7 +362,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -377,7 +377,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -392,7 +392,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -407,7 +407,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -422,7 +422,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -437,7 +437,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -453,7 +453,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -551,19 +551,19 @@ exports[`exportNotes > All notes > updateState 1`] = `
 }
 `;
 
-exports[`exportNotes > Catches errors > KeyStore.getKey() 1`] = `undefined`;
+exports[`exportNotes > Catches errors and tries again > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`exportNotes > Catches errors > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`exportNotes > Catches errors > Storage.get('THEME') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > Storage.get('THEME') 1`] = `null`;
 
-exports[`exportNotes > Catches errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`exportNotes > Catches errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`exportNotes > Catches errors > Storage.get('USERNAME') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`exportNotes > Catches errors > allCalls 1`] = `
+exports[`exportNotes > Catches errors and tries again > allCalls 1`] = `
 [
   [
     "invoke",
@@ -575,12 +575,6 @@ exports[`exportNotes > Catches errors > allCalls 1`] = `
   [
     "tauriApi",
     {
-      "calledWith": {
-        "directory": true,
-        "multiple": false,
-        "recursive": false,
-        "title": "Choose a location",
-      },
       "name": "plugin:dialog|open",
     },
   ],
@@ -589,19 +583,35 @@ exports[`exportNotes > Catches errors > allCalls 1`] = `
     {
       "calledWith": {
         "kind": "error",
-        "message": "Something went wrong. Please try again or open an issue in the GitHub repo.",
-        "okLabel": undefined,
-        "title": undefined,
+        "message": "Failed to open directory. Try again?",
+        "title": "Export notes",
       },
-      "name": "plugin:dialog|message",
+      "name": "plugin:dialog|ask",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "name": "plugin:dialog|open",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Failed to open directory. Try again?",
+        "title": "Export notes",
+      },
+      "name": "plugin:dialog|ask",
     },
   ],
 ]
 `;
 
-exports[`exportNotes > Catches errors > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`exportNotes > Catches errors and tries again > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`exportNotes > Catches errors > mockDb 1`] = `
+exports[`exportNotes > Catches errors and tries again > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -611,12 +621,12 @@ exports[`exportNotes > Catches errors > mockDb 1`] = `
 }
 `;
 
-exports[`exportNotes > Catches errors > noteState 1`] = `
+exports[`exportNotes > Catches errors and tries again > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -675,7 +685,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -690,7 +700,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -705,7 +715,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -720,7 +730,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -735,7 +745,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -750,7 +760,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -765,7 +775,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -780,7 +790,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -795,7 +805,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -811,7 +821,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -873,11 +883,11 @@ Sugar
 }
 `;
 
-exports[`exportNotes > Catches errors > openedPopup 1`] = `undefined`;
+exports[`exportNotes > Catches errors and tries again > openedPopup 1`] = `undefined`;
 
-exports[`exportNotes > Catches errors > selectedTheme 1`] = `"System"`;
+exports[`exportNotes > Catches errors and tries again > selectedTheme 1`] = `"System"`;
 
-exports[`exportNotes > Catches errors > syncState 1`] = `
+exports[`exportNotes > Catches errors and tries again > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -901,7 +911,7 @@ exports[`exportNotes > Catches errors > syncState 1`] = `
 }
 `;
 
-exports[`exportNotes > Catches errors > updateState 1`] = `
+exports[`exportNotes > Catches errors and tries again > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -947,7 +957,7 @@ exports[`exportNotes > Passed selection of notes > allCalls 1`] = `
     {
       "calledWith": {
         "notes": [
-          {
+          Note {
             "content": {
               "body": "😬ö",
               "delta": {
@@ -1032,7 +1042,7 @@ exports[`exportNotes > Passed selection of notes > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -1091,7 +1101,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1106,7 +1116,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1121,7 +1131,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1136,7 +1146,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1151,7 +1161,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1166,7 +1176,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1181,7 +1191,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1196,7 +1206,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1211,7 +1221,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1227,7 +1237,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
@@ -1378,7 +1388,7 @@ exports[`exportNotes > Returns when no location chosen > noteState 1`] = `
   "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
-    {
+    Note {
       "content": {
         "body": "😬ö",
         "delta": {
@@ -1437,7 +1447,7 @@ Sugar
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1452,7 +1462,7 @@ Sugar
       "timestamp": 0,
       "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1467,7 +1477,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1482,7 +1492,7 @@ Sugar
       "timestamp": 0,
       "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1497,7 +1507,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1512,7 +1522,7 @@ Sugar
       "timestamp": 0,
       "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1527,7 +1537,7 @@ Sugar
       "timestamp": 0,
       "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1542,7 +1552,7 @@ Sugar
       "timestamp": 0,
       "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1557,7 +1567,7 @@ Sugar
       "timestamp": 0,
       "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
     },
-    {
+    Note {
       "content": {
         "body": "amet consectetur adipisicing",
         "delta": {
@@ -1573,7 +1583,7 @@ Sugar
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
   ],
-  "selectedNote": {
+  "selectedNote": Note {
     "content": {
       "body": "😬ö",
       "delta": {
