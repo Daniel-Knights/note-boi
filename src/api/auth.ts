@@ -157,15 +157,19 @@ export const signup = route(async () => {
 
 // Logout
 export const logout = route(async () => {
-  if (!syncState.username) {
-    return clientSideLogout();
-  }
-
   const errorConfig: ErrorConfig = {
     code: ERROR_CODE.LOGOUT,
     retry: { fn: logout },
     display: { form: true },
   };
+
+  // This shouldn't happen, but just in case
+  if (!syncState.username) {
+    throwAuthorisationError({
+      ...errorConfig,
+      retry: undefined,
+    });
+  }
 
   const accessToken = await tauriInvoke(
     'get_access_token',
