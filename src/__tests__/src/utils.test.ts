@@ -12,7 +12,7 @@ import {
   unixToDateTime,
 } from '../../utils';
 import { clearMockApiResults, mockApi } from '../mock';
-import { mockError } from '../mock/tauri';
+import { waitUntil } from '../utils';
 
 describe('Utils', () => {
   it('isDev', () => {
@@ -132,25 +132,53 @@ describe('Utils', () => {
         assert.deepEqual(calls.invoke[0]!.calledWith, {});
       });
 
-      it('Catches errors', async () => {
+      it('Catches errors and rethrows', async () => {
         const { calls, setErrorValue } = mockApi();
         const consoleErrorSpy = vi.spyOn(console, 'error');
 
-        setErrorValue.invoke('new_note');
+        clearMockApiResults({ calls });
+        setErrorValue.invoke('delete_note');
 
-        await tauriInvoke('new_note', { note: new Note() });
+        await expect(
+          tauriInvoke('delete_note', { uuid: 'uuid' }, { rethrowErrors: true })
+        ).rejects.toThrow('Mock Tauri Invoke error');
 
-        expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
-        expect(consoleErrorSpy).toHaveBeenCalledWith('Note invoke error:');
-        expect(consoleErrorSpy).toHaveBeenCalledWith(mockError);
-
+        expect(consoleErrorSpy).not.toHaveBeenCalled();
         assert.strictEqual(calls.size, 1);
-        assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-          message:
-            'Something went wrong. Please try again or open an issue in the GitHub repo.',
+        assert.isTrue(calls.invoke.has('delete_note'));
+      });
+
+      it('Catches errors and retries', async () => {
+        const { calls, setErrorValue, setResValues } = mockApi();
+        const consoleErrorSpy = vi.spyOn(console, 'error');
+
+        clearMockApiResults({ calls });
+        setErrorValue.invoke('new_note');
+        setResValues.tauriApi({ askDialog: [true, false] });
+
+        await tauriInvoke(
+          'new_note',
+          { note: new Note() },
+          {
+            promptRetryOnError: true,
+          }
+        );
+
+        await waitUntil(() => calls.tauriApi.has('plugin:dialog|ask', 2));
+
+        expect(consoleErrorSpy).toHaveBeenCalledTimes(4);
+        expect(consoleErrorSpy).toHaveBeenCalledWith('new_note error:');
+        expect(consoleErrorSpy).toHaveBeenCalledWith(
+          new Error('Mock Tauri Invoke error')
+        );
+
+        assert.strictEqual(calls.size, 4);
+        assert.isTrue(calls.invoke.has('new_note', 2));
+        assert.isTrue(calls.tauriApi.has('plugin:dialog|ask', 2));
+        assert.deepEqual(calls.tauriApi[1]!.calledWith, {
+          title: 'Create note',
           kind: 'error',
-          okLabel: undefined,
-          title: undefined,
+          message: 'Failed to create note. Try again?',
         });
       });
     });

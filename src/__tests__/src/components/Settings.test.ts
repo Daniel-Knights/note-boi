@@ -1,8 +1,7 @@
-import { ComponentMountingOptions, mount, VueWrapper } from '@vue/test-utils';
+import { ComponentMountingOptions, DOMWrapper, mount, VueWrapper } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as a from '../../../api';
-import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import * as u from '../../../store/update';
 import { Storage } from '../../../classes';
@@ -17,8 +16,6 @@ import {
   getAppDiv,
   getByTestId,
   getTeleportMountOptions,
-  resolveImmediate,
-  waitForAutoSync,
   waitUntil,
 } from '../../utils';
 
@@ -38,7 +35,7 @@ async function mountSettingsAndOpen(
 }
 
 function assertMenuItemCount(
-  wrapper: Awaited<ReturnType<typeof mountSettingsAndOpen>>,
+  wrapper: VueWrapper | Omit<DOMWrapper<Node>, 'exists'>,
   count: number
 ) {
   const dropMenuWrapper = findByTestId(wrapper, 'drop-menu');
@@ -70,7 +67,7 @@ describe('Settings', () => {
 
     assert.isTrue(wrapperVm.show);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
-    assertMenuItemCount(wrapper, 5);
+    assertMenuItemCount(wrapper, 3);
 
     await settingsButtonWrapper.trigger('click');
 
@@ -80,7 +77,7 @@ describe('Settings', () => {
     await settingsButtonWrapper.trigger('click');
     assert.isTrue(wrapperVm.show);
     assert.isTrue(findByTestId(wrapper, 'drop-menu').isVisible());
-    assertMenuItemCount(wrapper, 5);
+    assertMenuItemCount(wrapper, 3);
 
     wrapper.getComponent(DropMenu).vm.$emit('close');
 
@@ -105,68 +102,67 @@ describe('Settings', () => {
     }
   });
 
-  it('Exports all notes', async () => {
-    const { calls, promises } = mockApi();
-    const wrapper = await mountSettingsAndOpen();
-    const exportNotesSpy = vi.spyOn(n, 'exportNotes');
-    const exportWrapper = findByTestId(wrapper, 'export');
+  describe('Updates menu item', () => {
+    it('Sets update strategy', async () => {
+      const { calls, promises } = mockApi();
+      const wrapper = await mountSettingsAndOpen();
+      const setUpdateStrategySpy = vi.spyOn(u, 'setUpdateStrategy');
+      const updateAutoWrapper = findByTestId(wrapper, 'update-auto');
 
-    await exportWrapper.trigger('click');
-    await Promise.all(promises);
-    await resolveImmediate(); // Defer execution to exportNotes
+      assert.strictEqual(u.updateState.strategy, 'manual');
+      assert.isNull(Storage.get('UPDATE_STRATEGY'));
+      assert.isFalse(updateAutoWrapper.classes('drop-menu__item--selected'));
 
-    expect(exportNotesSpy).toHaveBeenCalledOnce();
-    expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes);
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
-    assert.isTrue(calls.invoke.has('export_notes'));
-  });
+      await updateAutoWrapper.trigger('click');
+      await Promise.all(promises);
 
-  it('Imports notes', async () => {
-    const { calls } = mockApi();
+      expect(setUpdateStrategySpy).toHaveBeenCalledOnce();
+      expect(setUpdateStrategySpy).toHaveBeenCalledWith('auto');
+      assert.strictEqual(calls.size, 0);
+      assert.strictEqual(u.updateState.strategy, 'auto');
+      assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'auto');
+      assert.isTrue(updateAutoWrapper.classes('drop-menu__item--selected'));
 
-    const wrapper = await mountSettingsAndOpen();
-    const importNotesSpy = vi.spyOn(n, 'importNotesFromFileChooser');
-    const importWrapper = findByTestId(wrapper, 'import');
+      const updateManualWrapper = findByTestId(wrapper, 'update-manual');
 
-    await waitForAutoSync(() => importWrapper.trigger('click'), calls);
+      vi.clearAllMocks();
 
-    expect(importNotesSpy).toHaveBeenCalledOnce();
-  });
+      await updateManualWrapper.trigger('click');
+      await Promise.all(promises);
 
-  it('Sets update strategy', async () => {
-    const { calls, promises } = mockApi();
-    const wrapper = await mountSettingsAndOpen();
-    const setUpdateStrategySpy = vi.spyOn(u, 'setUpdateStrategy');
-    const updateAutoWrapper = findByTestId(wrapper, 'update-auto');
+      expect(setUpdateStrategySpy).toHaveBeenCalledOnce();
+      expect(setUpdateStrategySpy).toHaveBeenCalledWith('manual');
+      assert.strictEqual(calls.size, 0);
+      assert.strictEqual(u.updateState.strategy, 'manual');
+      assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'manual');
+      assert.isTrue(updateManualWrapper.classes('drop-menu__item--selected'));
+    });
 
-    assert.strictEqual(u.updateState.strategy, 'manual');
-    assert.isNull(Storage.get('UPDATE_STRATEGY'));
-    assert.isFalse(updateAutoWrapper.classes('drop-menu__item--selected'));
+    it('Update and restart menu item', async () => {
+      const { calls, promises } = mockApi();
+      const wrapper = await mountSettingsAndOpen();
+      const updatesWrapper = getByTestId(wrapper, 'updates');
+      let updateRestartWrapper = findByTestId(updatesWrapper, 'update-restart');
+      assert.isFalse(updateRestartWrapper.exists());
+      assertMenuItemCount(updatesWrapper, 1);
 
-    await updateAutoWrapper.trigger('click');
-    await Promise.all(promises);
+      await u.handleUpdate();
+      await nextTick();
 
-    expect(setUpdateStrategySpy).toHaveBeenCalledOnce();
-    expect(setUpdateStrategySpy).toHaveBeenCalledWith('auto');
-    assert.strictEqual(calls.size, 0);
-    assert.strictEqual(u.updateState.strategy, 'auto');
-    assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'auto');
-    assert.isTrue(updateAutoWrapper.classes('drop-menu__item--selected'));
+      updateRestartWrapper = findByTestId(updatesWrapper, 'update-restart');
+      assert.isTrue(updateRestartWrapper.isVisible());
+      assertMenuItemCount(updatesWrapper, 2);
 
-    const updateManualWrapper = findByTestId(wrapper, 'update-manual');
+      clearMockApiResults({ calls, promises });
 
-    vi.clearAllMocks();
+      await updateRestartWrapper.trigger('click');
+      await waitUntil(() => calls.size === 3);
 
-    await updateManualWrapper.trigger('click');
-    await Promise.all(promises);
-
-    expect(setUpdateStrategySpy).toHaveBeenCalledOnce();
-    expect(setUpdateStrategySpy).toHaveBeenCalledWith('manual');
-    assert.strictEqual(calls.size, 0);
-    assert.strictEqual(u.updateState.strategy, 'manual');
-    assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'manual');
-    assert.isTrue(updateManualWrapper.classes('drop-menu__item--selected'));
+      assert.strictEqual(calls.size, 3);
+      assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
+      assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
+      assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
+    });
   });
 
   it('Opens info popup', async () => {
@@ -190,30 +186,6 @@ describe('Settings', () => {
 
     assert.isUndefined(openedPopup.value);
     assert.isFalse(findByTestId(wrapper, 'popup-info').exists());
-  });
-
-  it('Update and restart menu item', async () => {
-    const { calls, promises } = mockApi();
-    const wrapper = await mountSettingsAndOpen();
-    assert.isFalse(findByTestId(wrapper, 'update-restart').exists());
-    assertMenuItemCount(wrapper, 5);
-
-    await u.handleUpdate();
-    await nextTick();
-
-    const updateWrapper = findByTestId(wrapper, 'update-restart');
-    assert.isTrue(updateWrapper.isVisible());
-    assertMenuItemCount(wrapper, 6);
-
-    clearMockApiResults({ calls, promises });
-
-    await updateWrapper.trigger('click');
-    await waitUntil(() => calls.size === 3);
-
-    assert.strictEqual(calls.size, 3);
-    assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
-    assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
-    assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
   });
 
   describe('Account menu item', () => {
@@ -245,7 +217,7 @@ describe('Settings', () => {
       const { calls, promises } = mockApi();
       const wrapper = await mountSettingsAndOpen();
       assert.isFalse(findByTestId(wrapper, 'delete-account').exists());
-      assertMenuItemCount(wrapper, 5);
+      assertMenuItemCount(wrapper, 3);
 
       s.syncState.username = 'd';
       s.syncState.isLoggedIn = true;
@@ -260,7 +232,7 @@ describe('Settings', () => {
 
       const deleteAccountWrapper = findByTestId(wrapper, 'delete-account');
       assert.isTrue(deleteAccountWrapper.isVisible());
-      assertMenuItemCount(wrapper, 6);
+      assertMenuItemCount(wrapper, 5);
 
       const deleteAccountSpy = vi.spyOn(a, 'deleteAccount');
       await deleteAccountWrapper.trigger('click');
@@ -268,7 +240,7 @@ describe('Settings', () => {
       await waitUntil(() => !findByTestId(wrapper, 'delete-account').exists());
 
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
-      assertMenuItemCount(wrapper, 5);
+      assertMenuItemCount(wrapper, 3);
       assert.strictEqual(calls.size, 5);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));

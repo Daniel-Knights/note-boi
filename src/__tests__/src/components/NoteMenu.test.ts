@@ -158,6 +158,7 @@ describe('NoteMenu', () => {
   it('Sets menu width with drag-bar', async () => {
     const wrapper = shallowMount(NoteMenu);
     const wrapperVm = wrapper.vm as unknown as {
+      MIN_MENU_WIDTH: string;
       menuWidth: string;
       isDragging: boolean;
       isHidden: boolean;
@@ -167,16 +168,18 @@ describe('NoteMenu', () => {
     assert.match(initialWidth, /^\d+px$/);
     assert.isFalse(wrapperVm.isDragging);
 
+    // Ensure only clicks on drag bar initialise dragging
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
+    assert.strictEqual(wrapperVm.menuWidth, initialWidth);
 
     document.dispatchEvent(new MouseEvent('mousemove'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
+    assert.strictEqual(wrapperVm.menuWidth, initialWidth);
 
+    // Click drag bar
     const dragBar = getByTestId(wrapper, 'drag-bar');
     await dragBar.trigger('mousedown');
 
@@ -187,15 +190,17 @@ describe('NoteMenu', () => {
     assert.isFalse(wrapperVm.isDragging);
     assert.isNotNull(Storage.get('MENU_WIDTH'));
 
+    // Is hidden when dragged below min width
     await dragBar.trigger('mousedown');
 
     assert.isTrue(wrapperVm.isDragging);
 
     document.dispatchEvent(new MouseEvent('mousemove', { clientX: 100 }));
 
-    assert.strictEqual(initialWidth, wrapperVm.menuWidth);
-    assert.isTrue(wrapperVm.isHidden);
+    assert.strictEqual(wrapperVm.menuWidth, `${wrapperVm.MIN_MENU_WIDTH}px`);
+    assert.strictEqual(wrapper.emitted('update:showNoteMenu')![0]![0], false);
 
+    // Is shown when dragged above min width
     document.dispatchEvent(new MouseEvent('mousemove', { clientX: 400 }));
 
     assert.strictEqual(wrapperVm.menuWidth, '400px');
@@ -203,37 +208,12 @@ describe('NoteMenu', () => {
     await nextTick();
 
     assert.strictEqual(wrapper.element.style.width, '400px');
-    assert.isFalse(wrapperVm.isHidden);
+    assert.strictEqual(wrapper.emitted('update:showNoteMenu')![1]![0], true);
 
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
     assert.strictEqual(Storage.get('MENU_WIDTH'), '400px');
-  });
-
-  it('Toggles menu visibility', async () => {
-    const wrapper = shallowMount(NoteMenu);
-    const wrapperVm = wrapper.vm as unknown as {
-      menuWidth: string;
-      isHidden: boolean;
-    };
-    const initialWidth = wrapperVm.menuWidth;
-
-    assert.isFalse(wrapperVm.isHidden);
-
-    const toggleButton = getByTestId(wrapper, 'toggle');
-
-    await toggleButton.trigger('click');
-
-    assert.isTrue(wrapperVm.isHidden);
-    assert.strictEqual(wrapperVm.menuWidth, initialWidth);
-    assert.strictEqual(wrapper.element.style.marginLeft, `-${wrapperVm.menuWidth}`);
-
-    await toggleButton.trigger('click');
-
-    assert.isFalse(wrapperVm.isHidden);
-    assert.strictEqual(wrapperVm.menuWidth, initialWidth);
-    assert.strictEqual(wrapper.element.style.marginLeft, '');
   });
 
   describe('Selects/deselects extra notes', () => {
