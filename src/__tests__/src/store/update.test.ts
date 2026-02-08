@@ -110,9 +110,10 @@ describe('Update', () => {
 
       assert.isFalse(u.updateState.isDownloading);
       assert.isFalse(u.updateState.isAvailable);
-      assert.strictEqual(calls.size, 1);
+      assert.strictEqual(calls.size, 2);
+      assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
-      assert.deepEqual(calls.tauriApi[0]!.calledWith, {
+      assert.deepEqual(calls.tauriApi[1]!.calledWith, {
         message: 'Try again?',
         title: 'Unable to install update',
         kind: 'error',
@@ -131,7 +132,8 @@ describe('Update', () => {
 
       assert.isFalse(u.updateState.isDownloading);
       assert.isFalse(u.updateState.isAvailable);
-      assert.strictEqual(calls.size, 2);
+      assert.strictEqual(calls.size, 4);
+      assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install', 2));
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask', 2));
     });
   });

@@ -5,6 +5,11 @@ import * as u from '../../store/update';
 import { clearMockApiResults, mockApi } from '../mock';
 import { assertRequest, getAppDiv, resolveImmediate, waitUntil } from '../utils';
 
+// Prevent App initialisation from affecting test results
+vi.mock('../../App.vue', () => ({
+  default: {},
+}));
+
 beforeEach(() => {
   const appDiv = getAppDiv();
 
@@ -16,7 +21,7 @@ describe('main', () => {
     const { calls } = mockApi();
     const getAllNotesSpy = vi.spyOn(n, 'getAllNotes');
     const handleUpdateSpy = vi.spyOn(u, 'handleUpdate');
-    const syncSpy = vi.spyOn(a, 'debounceSync');
+    const queueSyncSpy = vi.spyOn(a, 'queueSync');
 
     s.syncState.username = 'd';
     s.syncState.password = '1';
@@ -31,7 +36,7 @@ describe('main', () => {
 
     expect(getAllNotesSpy).toHaveBeenCalledOnce();
     expect(handleUpdateSpy).toHaveBeenCalledOnce();
-    expect(syncSpy).toHaveBeenCalledOnce();
+    expect(queueSyncSpy).toHaveBeenCalledOnce();
 
     assert.strictEqual(calls.size, 23);
     assert.isTrue(calls.request.has('/notes/sync'));

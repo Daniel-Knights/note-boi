@@ -58,7 +58,7 @@ describe('Popup', () => {
 
     const wrapper = mountPopup();
 
-    document.body.dispatchEvent(new MouseEvent('mousedown'));
+    document.body.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.lengthOf(wrapper.emitted('close')!, 1);
     expect(removeWindowListenerSpy).toHaveBeenCalledOnce();

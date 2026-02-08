@@ -2,7 +2,6 @@ import { mount, shallowMount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as a from '../../../api';
-import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
 import { Encryptor, ERROR_CODE, KeyStore, Note, Storage } from '../../../classes';
@@ -93,23 +92,6 @@ describe('Notes (sync)', () => {
         isFrontendEmit: true,
         data: {
           is_logged_in: true,
-        },
-      });
-    });
-
-    it('Returns if not logged in', async () => {
-      const { calls } = mockApi();
-
-      await a.sync();
-
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.strictEqual(n.noteState.notes.length, 0);
-      assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
         },
       });
     });
@@ -383,63 +365,25 @@ describe('Notes (sync)', () => {
       assertNoteItemText(newRemoteNote.uuid, 'New note-body');
     });
 
-    it('Logs out client-side if no username', async () => {
+    it('Throws if not logged in', async () => {
       const { calls } = mockApi();
-      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
-
-      clearMockApiResults({ calls });
 
       await a.sync();
 
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
-
-      assertAppError();
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.isFalse(s.syncState.isLoggedIn);
-      assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
+      assertAppError({
+        code: ERROR_CODE.AUTHORISATION,
+        message: 'Authorisation error',
+        retry: undefined,
+        display: { sync: true },
       });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.strictEqual(n.noteState.notes.length, 0);
+      assert.strictEqual(calls.size, 0);
     });
 
-    it('Logs out client-side if no password key', async () => {
+    it('Throws if no access token or password key', async () => {
       const { calls } = mockApi();
-      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
-
-      s.syncState.username = 'd';
-
-      clearMockApiResults({ calls });
-
-      await a.sync();
-
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
-
-      assertAppError();
-      assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.isFalse(s.syncState.isLoggedIn);
-      assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
-    });
-
-    it('Logs out client-side if no access token', async () => {
-      const { calls } = mockApi();
-      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -451,25 +395,17 @@ describe('Notes (sync)', () => {
 
       await a.sync();
 
-      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+      assertAppError({
+        code: ERROR_CODE.AUTHORISATION,
+        message: 'Authorisation error',
+        retry: expect.any(Object),
+        display: { sync: true },
+      });
 
-      assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
-      assert.isFalse(s.syncState.isLoggedIn);
-      assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
-      assert.strictEqual(calls.size, 3);
+      assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.invoke.has('delete_access_token'));
-      assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
-      assert.isTrue(calls.emits.has('auth'));
-      assert.deepEqual(calls.emits[0]!.calledWith, {
-        isFrontendEmit: true,
-        data: {
-          is_logged_in: false,
-        },
-      });
     });
 
     it('Sets and resets loading state', () => {
@@ -514,8 +450,8 @@ describe('Notes (sync)', () => {
 
       mockDb.encryptedNotes = getEncryptedNotes();
 
-      await a.queueSync();
-      await nextTick();
+      a.queueSync();
+      await waitUntil(() => s.syncState.loadingCount > 0);
 
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(getByTestId(statusWrapper, 'loading').isVisible());
@@ -595,8 +531,8 @@ describe('Notes (sync)', () => {
       clearMockApiResults({ calls, promises });
 
       // We don't set a res value for this call, because it shouldn't complete
-      await a.queueSync();
-      await nextTick();
+      a.queueSync();
+      await waitUntil(() => s.syncState.loadingCount > 0);
 
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(getByTestId(statusWrapper, 'loading').isVisible());
@@ -683,8 +619,8 @@ describe('Notes (sync)', () => {
       clearMockApiResults({ calls, promises });
 
       // We don't set a res value for this call, because it shouldn't complete
-      await a.queueSync();
-      await nextTick();
+      a.queueSync();
+      await waitUntil(() => s.syncState.loadingCount > 0);
 
       assert.isTrue(statusWrapper.isVisible());
       assert.isTrue(getByTestId(statusWrapper, 'loading').isVisible());

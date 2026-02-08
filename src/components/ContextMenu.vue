@@ -54,13 +54,15 @@ const items = computed<DropMenuItemData[]>(() => {
     },
     {
       label: 'Export All Notes',
-      testId: 'export',
+      testId: 'export-all',
       clickHandler: () => exportNotes(noteState.notes.map((nt) => nt.uuid)),
     },
     {
       label: 'Import Notes',
       testId: 'import',
-      clickHandler: importNotesFromFileChooser,
+      // NOTE: This needs to be called within an arrow function,
+      //       so it can be spied on in tests.
+      clickHandler: () => importNotesFromFileChooser(),
     },
     {
       label: 'Delete Note',

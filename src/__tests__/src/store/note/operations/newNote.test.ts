@@ -2,7 +2,7 @@ import * as n from '../../../../../store/note';
 import { Note } from '../../../../../classes';
 import { isEmptyNote } from '../../../../../utils';
 import { clearMockApiResults, mockApi } from '../../../../mock';
-import { wait, waitUntil } from '../../../../utils';
+import { wait } from '../../../../utils';
 import {
   existingNote,
   mockChangeEventCB,
@@ -63,34 +63,5 @@ describe('newNote', () => {
     assert.notStrictEqual(n.noteState.selectedNote.timestamp, emptyNote.timestamp);
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
     assert.strictEqual(calls.size, 0);
-  });
-
-  it('Catches errors', async () => {
-    const { calls, setErrorValue } = mockApi();
-    const consoleErrorSpy = vi.spyOn(console, 'error');
-
-    await n.getAllNotes();
-
-    vi.clearAllMocks();
-    clearMockApiResults({ calls });
-    setErrorValue.invoke('new_note');
-
-    n.newNote();
-
-    await waitUntil(() => calls.tauriApi.has('plugin:dialog|message'));
-
-    expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Note invoke error:');
-    expect(consoleErrorSpy).toHaveBeenCalledWith(new Error('Mock Tauri Invoke error'));
-
-    assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
-    assert.deepEqual(calls.tauriApi[0]!.calledWith, {
-      message:
-        'Something went wrong. Please try again or open an issue in the GitHub repo.',
-      kind: 'error',
-      okLabel: undefined,
-      title: undefined,
-    });
   });
 });

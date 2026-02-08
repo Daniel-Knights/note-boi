@@ -51,32 +51,34 @@ describe('exportNotes', () => {
     assert.isTrue(calls.invoke.has('export_notes'));
   });
 
-  it('Catches errors', async () => {
-    const { calls, setErrorValue } = mockApi();
+  it('Catches errors and tries again', async () => {
+    const { calls, setErrorValue, setResValues } = mockApi();
     const consoleErrorSpy = vi.spyOn(console, 'error');
 
     await n.getAllNotes();
 
     clearMockApiResults({ calls });
-    setErrorValue.invoke('export_notes');
+    setErrorValue.tauriApi('plugin:dialog|open');
+    setResValues.tauriApi({ askDialog: [true, false] });
 
     await n.exportNotes(n.noteState.notes.map((nt) => nt.uuid));
 
-    await waitUntil(() => calls.tauriApi.has('plugin:dialog|message'));
+    await waitUntil(() => calls.tauriApi.has('plugin:dialog|ask', 2));
 
-    expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Note invoke error:');
-    expect(consoleErrorSpy).toHaveBeenCalledWith(new Error('Mock Tauri Invoke error'));
+    expect(consoleErrorSpy).toHaveBeenCalledTimes(4);
+    expect(consoleErrorSpy).toHaveBeenCalledWith('Failed to open directory:');
+    expect(consoleErrorSpy).toHaveBeenCalledWith(new Error('Mock Tauri API error'));
 
-    assert.strictEqual(calls.size, 2);
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|open'));
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
-    assert.deepEqual(calls.tauriApi[1]!.calledWith, {
-      message:
-        'Something went wrong. Please try again or open an issue in the GitHub repo.',
+    const expectedAskCalledWith = {
+      title: 'Export notes',
       kind: 'error',
-      okLabel: undefined,
-      title: undefined,
-    });
+      message: 'Failed to open directory. Try again?',
+    };
+
+    assert.strictEqual(calls.size, 4);
+    assert.isTrue(calls.tauriApi.has('plugin:dialog|open', 2));
+    assert.isTrue(calls.tauriApi.has('plugin:dialog|ask', 2));
+    assert.deepEqual(calls.tauriApi[1]!.calledWith, expectedAskCalledWith);
+    assert.deepEqual(calls.tauriApi[3]!.calledWith, expectedAskCalledWith);
   });
 });
