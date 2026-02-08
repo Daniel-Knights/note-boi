@@ -20,7 +20,6 @@ import {
 import { resetAppError, syncState } from '../store/sync';
 import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
 
-import { clientSideLogout } from './auth';
 import {
   parseErrorRes,
   resIsOk,
@@ -34,10 +33,6 @@ const syncQueue = new DebounceQueue();
 
 // Sync
 export const sync = route(async (isCancelled?: () => boolean) => {
-  if (!syncState.username) {
-    return clientSideLogout();
-  }
-
   const errorConfig: ErrorConfig = {
     code: ERROR_CODE.SYNC,
     retry: {
@@ -49,6 +44,14 @@ export const sync = route(async (isCancelled?: () => boolean) => {
     },
     display: { sync: true },
   };
+
+  // This shouldn't happen, but just in case
+  if (!syncState.username) {
+    throwAuthorisationError({
+      ...errorConfig,
+      retry: undefined,
+    });
+  }
 
   const [accessToken, passwordKey] = await Promise.all([
     tauriInvoke(
