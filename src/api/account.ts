@@ -23,10 +23,6 @@ import {
 } from './utils';
 
 export const changePassword = route(async (): Promise<void> => {
-  if (!syncState.username) {
-    return clientSideLogout();
-  }
-
   const errorConfig: ErrorConfig = {
     code: ERROR_CODE.CHANGE_PASSWORD,
     retry: { fn: changePassword },
@@ -35,6 +31,14 @@ export const changePassword = route(async (): Promise<void> => {
       sync: true,
     },
   };
+
+  // This shouldn't happen, but just in case
+  if (!syncState.username) {
+    throwAuthorisationError({
+      ...errorConfig,
+      retry: undefined,
+    });
+  }
 
   const [accessToken, newKey] = await Promise.all([
     tauriInvoke(
@@ -88,10 +92,6 @@ export const changePassword = route(async (): Promise<void> => {
 });
 
 export const deleteAccount = route(async (): Promise<void> => {
-  if (!syncState.username) {
-    return clientSideLogout();
-  }
-
   const askRes = await Dialog.ask('Are you sure?', {
     title: 'Delete account',
     kind: 'warning',
@@ -105,6 +105,14 @@ export const deleteAccount = route(async (): Promise<void> => {
       sync: true,
     },
   };
+
+  // This shouldn't happen, but just in case
+  if (!syncState.username) {
+    throwAuthorisationError({
+      ...errorConfig,
+      retry: undefined,
+    });
+  }
 
   const accessToken = await tauriInvoke(
     'get_access_token',
