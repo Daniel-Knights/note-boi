@@ -50,14 +50,21 @@ const menuItems = computed<DropMenuItemData[]>(() => [
   },
   {
     label: 'Updates',
+    testId: 'updates',
     showIf: () => !isWeb(),
     subMenu: [
-      ...UPDATE_STRATEGIES.map((strategy) => ({
-        label: capitalise(strategy),
-        testId: `update-${strategy}`,
-        selected: updateState.strategy === strategy,
-        clickHandler: () => setUpdateStrategy(strategy),
-      })),
+      {
+        label: 'Strategy',
+        testId: 'update-strategy',
+        subMenu: [
+          ...UPDATE_STRATEGIES.map((strategy) => ({
+            label: capitalise(strategy),
+            testId: `update-${strategy}`,
+            selected: updateState.strategy === strategy,
+            clickHandler: () => setUpdateStrategy(strategy),
+          })),
+        ],
+      },
       {
         label: 'Update and restart',
         testId: 'update-restart',
