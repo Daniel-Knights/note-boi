@@ -162,23 +162,23 @@ exports[`DropMenu > Adds click handlers to items > updateState 1`] = `
 }
 `;
 
-exports[`DropMenu > Emits close on click > KeyStore.getKey() 1`] = `undefined`;
+exports[`DropMenu > Emits close on click outside > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Emits close on click > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > Storage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click > allCalls 1`] = `[]`;
+exports[`DropMenu > Emits close on click outside > allCalls 1`] = `[]`;
 
-exports[`DropMenu > Emits close on click > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DropMenu > Emits close on click outside > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`DropMenu > Emits close on click > mockDb 1`] = `
+exports[`DropMenu > Emits close on click outside > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -188,7 +188,7 @@ exports[`DropMenu > Emits close on click > mockDb 1`] = `
 }
 `;
 
-exports[`DropMenu > Emits close on click > noteState 1`] = `
+exports[`DropMenu > Emits close on click outside > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -207,11 +207,11 @@ exports[`DropMenu > Emits close on click > noteState 1`] = `
 }
 `;
 
-exports[`DropMenu > Emits close on click > openedPopup 1`] = `undefined`;
+exports[`DropMenu > Emits close on click outside > openedPopup 1`] = `undefined`;
 
-exports[`DropMenu > Emits close on click > selectedTheme 1`] = `"System"`;
+exports[`DropMenu > Emits close on click outside > selectedTheme 1`] = `"System"`;
 
-exports[`DropMenu > Emits close on click > syncState 1`] = `
+exports[`DropMenu > Emits close on click outside > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -235,7 +235,88 @@ exports[`DropMenu > Emits close on click > syncState 1`] = `
 }
 `;
 
-exports[`DropMenu > Emits close on click > updateState 1`] = `
+exports[`DropMenu > Emits close on click outside > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('THEME') 1`] = `null`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > allCalls 1`] = `[]`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > openedPopup 1`] = `undefined`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > selectedTheme 1`] = `"System"`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

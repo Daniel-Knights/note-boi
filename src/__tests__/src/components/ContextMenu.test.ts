@@ -52,6 +52,36 @@ describe('ContextMenu', () => {
     assert.isFalse(wrapperVm.show);
   });
 
+  it('Closes on menu item click', async () => {
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev);
+
+    assertMounted(wrapper, ev);
+
+    const wrapperVm = wrapper.vm as unknown as { show: boolean };
+
+    await getByTestId(wrapper, 'new').trigger('click');
+    await nextTick();
+
+    assert.isFalse(wrapper.isVisible());
+    assert.isFalse(wrapperVm.show);
+  });
+
+  it('Closes on click outside', async () => {
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev);
+
+    assertMounted(wrapper, ev);
+
+    const wrapperVm = wrapper.vm as unknown as { show: boolean };
+
+    document.body.click();
+    await nextTick();
+
+    assert.isFalse(wrapper.isVisible());
+    assert.isFalse(wrapperVm.show);
+  });
+
   it('Creates a new note', async () => {
     const { calls, promises } = mockApi();
     const ev = getContextMenuEv();
