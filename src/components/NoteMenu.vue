@@ -303,7 +303,7 @@ $new-note-height: 50px;
   max-height: 100vh;
   max-width: 50vw;
   background-color: var(--colour__primary);
-  z-index: 25;
+  z-index: 60;
 }
 
 .note-menu__note-list {
