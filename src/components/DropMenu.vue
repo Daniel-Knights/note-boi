@@ -3,7 +3,7 @@
     <li
       v-for="item in filteredItems"
       :key="item.label"
-      v-on="item.clickHandler ? { click: item.clickHandler } : {}"
+      v-on="handleClickHandler(item.clickHandler)"
       class="drop-menu__item"
       :class="{
         'drop-menu__item--selected': item.selected,
@@ -13,7 +13,11 @@
       :data-test-id="item.testId"
     >
       {{ item.label }}
-      <DropMenu v-if="item.subMenu" :items="item.subMenu" />
+      <DropMenu
+        v-if="item.subMenu"
+        :items="item.subMenu"
+        :close-on-click="closeOnClick"
+      />
     </li>
   </ul>
 </template>
@@ -23,8 +27,11 @@ import { computed, onMounted } from 'vue';
 
 import { DropMenuItemData } from './types';
 
-const props = defineProps<{ items: DropMenuItemData[] }>();
 const emit = defineEmits(['close']);
+const props = defineProps<{
+  items: DropMenuItemData[];
+  closeOnClick?: boolean;
+}>();
 
 const filteredItems = computed(() => {
   return props.items.filter((item) => {
@@ -38,6 +45,22 @@ function handleClickOutside(ev: MouseEvent) {
   if (ev.target instanceof Element && ev.target.closest('.drop-menu')) return;
 
   emit('close');
+}
+
+/**
+ * Handles click events and executes the provided callback.
+ * Closes menu if `props.closeOnClick` is `true`.
+ */
+function handleClickHandler(clickHandler?: (() => void) | (() => Promise<void>)) {
+  return {
+    click: () => {
+      if (props.closeOnClick) {
+        emit('close');
+      }
+
+      clickHandler?.();
+    },
+  };
 }
 
 onMounted(() => {
