@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 
-import { DropMenuItemData } from '../../../components/types';
 import { mockApi } from '../../mock';
 import { findByTestId, getByTestId } from '../../utils';
 
@@ -8,9 +7,12 @@ import DropMenu from '../../../components/DropMenu.vue';
 
 const ITEM_CLASS = 'drop-menu__item';
 
-function mountDropMenu(items: DropMenuItemData[] = []) {
+function mountDropMenu(props?: Partial<InstanceType<typeof DropMenu>['$props']>) {
   return mount(DropMenu, {
-    props: { items },
+    props: {
+      items: [],
+      ...props,
+    },
   });
 }
 
@@ -26,10 +28,21 @@ describe('DropMenu', () => {
     assert.strictEqual(calls.size, 0);
   });
 
-  it('Emits close on click', () => {
+  it('Emits close on click outside', () => {
     const wrapper = mountDropMenu();
 
     document.body.click();
+
+    assert.lengthOf(wrapper.emitted('close')!, 1);
+  });
+
+  it('Emits close on menu item click if closeOnClick is true', async () => {
+    const wrapper = mountDropMenu({
+      items: [{ label: 'Test', testId: 'test' }],
+      closeOnClick: true,
+    });
+
+    await getByTestId(wrapper, 'test').trigger('click');
 
     assert.lengthOf(wrapper.emitted('close')!, 1);
   });
@@ -39,7 +52,7 @@ describe('DropMenu', () => {
       label: `label-${i}`,
       testId: `item-${i}`,
     }));
-    const wrapper = mountDropMenu(items);
+    const wrapper = mountDropMenu({ items });
 
     items.forEach(({ label, testId }) => {
       const itemWrapper = getByTestId(wrapper, testId);
@@ -55,7 +68,7 @@ describe('DropMenu', () => {
       testId: `item-${i}`,
       clickHandler: vi.fn(),
     }));
-    const wrapper = mountDropMenu(items);
+    const wrapper = mountDropMenu({ items });
 
     items.forEach(({ testId, clickHandler }) => {
       const itemWrapper = getByTestId(wrapper, testId);
@@ -75,7 +88,7 @@ describe('DropMenu', () => {
       danger: true,
       subMenu: [],
     }));
-    const wrapper = mountDropMenu(items);
+    const wrapper = mountDropMenu({ items });
 
     items.forEach(({ testId }) => {
       const itemWrapper = getByTestId(wrapper, testId);
@@ -97,7 +110,7 @@ describe('DropMenu', () => {
         { label: '', testId: 'sub-item-3' },
       ],
     }));
-    const wrapper = mountDropMenu(items);
+    const wrapper = mountDropMenu({ items });
 
     items.forEach(({ testId }) => {
       const itemWrapper = getByTestId(wrapper, testId);

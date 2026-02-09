@@ -4,6 +4,7 @@
     @close="show = false"
     :style="{ top: top + 'px', left: left + 'px' }"
     :items="items"
+    :close-on-click="true"
     ref="drop-menu"
   >
   </DropMenu>

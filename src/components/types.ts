@@ -2,7 +2,7 @@ import { Ref } from 'vue';
 
 export type DropMenuItemData = {
   label: string;
-  clickHandler?: () => void;
+  clickHandler?: (() => void) | (() => Promise<void>);
   showIf?: () => boolean;
   testId?: string;
   selected?: boolean | Ref<boolean>;
