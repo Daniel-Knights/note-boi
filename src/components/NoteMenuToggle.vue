@@ -22,7 +22,7 @@
   left: v.$utility-button-spacing-x;
   @include v.equal-dimensions(v.$utility-button-width);
   transform: translateY(-50%);
-  z-index: 100;
+  z-index: 50;
 
   svg {
     @include v.equal-dimensions(24px);
