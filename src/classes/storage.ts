@@ -4,6 +4,7 @@ import { ColourTheme, UpdateStrategy } from '../constant';
 import { RawNote } from './note';
 
 export const STORAGE_KEYS_STRING = {
+  ACCESS_TOKEN: 'access-token',
   MENU_WIDTH: 'note-menu-width',
   THEME: 'theme',
   UPDATE_SEEN: 'update-seen',
@@ -51,6 +52,7 @@ export class Storage {
 //// Types
 
 type StorageValues = {
+  ACCESS_TOKEN: string;
   NOTES: RawNote[];
   NOTES_BACKUP: Record<string, RawNote[]>;
   MENU_WIDTH: string;

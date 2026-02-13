@@ -6,10 +6,11 @@ import {
   FetchBuilder,
   KeyStore,
   Storage,
+  TokenStore,
 } from '../classes';
 import { noteState } from '../store/note';
 import { resetAppError, syncState } from '../store/sync';
-import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
+import { isEmptyNote, tauriEmit } from '../utils';
 
 import { updateLocalNoteStateFromDiff } from './notes';
 import {
@@ -24,9 +25,7 @@ import {
 
 export function clientSideLogout(): Promise<void> {
   if (syncState.username) {
-    tauriInvoke('delete_access_token', {
-      username: syncState.username,
-    });
+    TokenStore.deleteAccessToken(syncState.username);
   }
 
   syncState.username = '';
@@ -171,15 +170,9 @@ export const logout = route(async () => {
     });
   }
 
-  const accessToken = await tauriInvoke(
-    'get_access_token',
-    {
-      username: syncState.username,
-    },
-    {
-      rethrowErrors: true,
-    }
-  ).catch((err) => throwAuthorisationError(errorConfig, err));
+  const accessToken = await TokenStore.getAccessToken(syncState.username).catch((err) =>
+    throwAuthorisationError(errorConfig, err)
+  );
 
   if (!accessToken) {
     throwAuthorisationError(errorConfig);

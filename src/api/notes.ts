@@ -8,6 +8,7 @@ import {
   FetchBuilder,
   KeyStore,
   Note,
+  TokenStore,
 } from '../classes';
 import {
   dispatchNoteEvent,
@@ -18,7 +19,7 @@ import {
   syncLocalNotes,
 } from '../store/note';
 import { resetAppError, syncState } from '../store/sync';
-import { isEmptyNote, tauriEmit, tauriInvoke } from '../utils';
+import { isEmptyNote, tauriEmit } from '../utils';
 
 import {
   parseErrorRes,
@@ -54,15 +55,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
   }
 
   const [accessToken, passwordKey] = await Promise.all([
-    tauriInvoke(
-      'get_access_token',
-      {
-        username: syncState.username,
-      },
-      {
-        rethrowErrors: true,
-      }
-    ),
+    TokenStore.getAccessToken(syncState.username),
     KeyStore.getKey(),
   ]).catch((err) => throwAuthorisationError(errorConfig, err));
   if (isCancelled?.()) return;

@@ -3,9 +3,8 @@ import { nextTick } from 'vue';
 
 import * as a from '../../../api';
 import * as s from '../../../store/sync';
-import { AppError, ERROR_CODE, KeyStore } from '../../../classes';
+import { AppError, ERROR_CODE, KeyStore, TokenStore } from '../../../classes';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
-import { tauriInvoke } from '../../../utils';
 import { mockApi } from '../../mock';
 import {
   assertAppError,
@@ -64,10 +63,7 @@ describe('SyncStatus', () => {
     s.syncState.username = 'd';
 
     await KeyStore.storeKey(passwordKey);
-    await tauriInvoke('set_access_token', {
-      username: 'd',
-      accessToken: 'test-token',
-    });
+    await TokenStore.setAccessToken('d', 'test-token');
 
     a.sync();
 

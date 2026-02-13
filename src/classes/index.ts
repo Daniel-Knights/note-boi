@@ -6,4 +6,5 @@ export * from './fetchBuilder';
 export * from './keyStore';
 export * from './note';
 export * from './storage';
+export * from './tokenStore';
 export * from './unsyncedNotesManager';
