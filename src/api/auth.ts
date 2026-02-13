@@ -17,11 +17,13 @@ import {
   handleStoreKeyError,
   parseErrorRes,
   resIsOk,
-  route,
   throwAuthorisationError,
   throwEncryptorError,
   throwFetchError,
 } from './utils';
+import { createRoute } from './utils/route';
+
+const route = createRoute(syncState);
 
 export function clientSideLogout(): Promise<void> {
   if (syncState.username) {

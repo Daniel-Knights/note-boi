@@ -1,7 +1,9 @@
 import * as s from '../../../../store/sync';
-import { route } from '../../../../api/utils';
+import { createRoute } from '../../../../api/utils/route';
 import { ERROR_CODE } from '../../../../classes';
 import { assertAppError, assertLoadingState } from '../../../utils';
+
+const route = createRoute(s.syncState);
 
 describe('route', () => {
   it('Handles unknown errors', async () => {
