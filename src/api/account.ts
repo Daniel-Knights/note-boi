@@ -16,11 +16,13 @@ import {
   handleStoreKeyError,
   parseErrorRes,
   resIsOk,
-  route,
   throwAuthorisationError,
   throwEncryptorError,
   throwFetchError,
 } from './utils';
+import { createRoute } from './utils/route';
+
+const route = createRoute(syncState);
 
 export const changePassword = route(async (): Promise<void> => {
   const errorConfig: ErrorConfig = {

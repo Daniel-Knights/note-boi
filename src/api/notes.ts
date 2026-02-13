@@ -24,11 +24,13 @@ import { isEmptyNote, tauriEmit } from '../utils';
 import {
   parseErrorRes,
   resIsOk,
-  route,
   throwAuthorisationError,
   throwEncryptorError,
   throwFetchError,
 } from './utils';
+import { createRoute } from './utils/route';
+
+const route = createRoute(syncState);
 
 const syncQueue = new DebounceQueue();
 
