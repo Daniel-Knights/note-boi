@@ -17,6 +17,7 @@ import {
   noteState,
 } from './store/note';
 import { openedPopup, POPUP_TYPE } from './store/popup';
+import { syncState } from './store/sync';
 import { handleUpdate } from './store/update';
 import { isDesktop, isDev, tauriListen } from './utils';
 
@@ -36,6 +37,8 @@ function initDesktop() {
   initLogger();
   handleUpdate();
   getAllNotes().then(() => {
+    if (!syncState.username) return;
+
     queueSync();
   });
 
@@ -98,6 +101,8 @@ function initWeb() {
   });
 
   getAllNotes().then(() => {
+    if (!syncState.username) return;
+
     queueSync();
   });
 
