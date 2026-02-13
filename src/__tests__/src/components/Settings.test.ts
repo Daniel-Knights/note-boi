@@ -4,11 +4,10 @@ import { nextTick } from 'vue';
 import * as a from '../../../api';
 import * as s from '../../../store/sync';
 import * as u from '../../../store/update';
-import { Storage } from '../../../classes';
+import { Storage, TokenStore } from '../../../classes';
 import { COLOUR_THEMES } from '../../../constant';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { selectedTheme } from '../../../store/theme';
-import { tauriInvoke } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../mock';
 import {
   assertRequest,
@@ -221,11 +220,7 @@ describe('Settings', () => {
 
       s.syncState.username = 'd';
       s.syncState.isLoggedIn = true;
-      await tauriInvoke('set_access_token', {
-        username: 'd',
-        accessToken: 'test-token',
-      });
-
+      await TokenStore.setAccessToken('d', 'test-token');
       await nextTick();
 
       clearMockApiResults({ calls, promises });
