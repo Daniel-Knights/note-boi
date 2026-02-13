@@ -1,6 +1,8 @@
 import { ParsedResponse } from '../api';
 import { Endpoint, EndpointPayloads } from '../constant';
-import { isDev, tauriInvoke } from '../utils';
+import { isDev } from '../utils';
+
+import { TokenStore } from './tokenStore';
 
 export class FetchBuilder<
   E extends Endpoint = Endpoint,
@@ -77,10 +79,7 @@ export class FetchBuilder<
 
     // TBR: Use secure cookies - https://github.com/tauri-apps/wry/issues/444
     if (body.access_token && username) {
-      await tauriInvoke('set_access_token', {
-        username,
-        accessToken: body.access_token,
-      });
+      await TokenStore.setAccessToken(username, body.access_token);
     } else if (body.access_token) {
       console.error(`Unexpected access_token for endpoint: ${this.#endpoint}`);
     }

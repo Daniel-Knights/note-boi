@@ -6,10 +6,10 @@ import {
   ErrorConfig,
   FetchBuilder,
   KeyStore,
+  TokenStore,
 } from '../classes';
 import { noteState } from '../store/note';
 import { resetAppError, syncState } from '../store/sync';
-import { tauriInvoke } from '../utils';
 
 import { clientSideLogout } from './auth';
 import {
@@ -41,15 +41,7 @@ export const changePassword = route(async (): Promise<void> => {
   }
 
   const [accessToken, newKey] = await Promise.all([
-    tauriInvoke(
-      'get_access_token',
-      {
-        username: syncState.username,
-      },
-      {
-        rethrowErrors: true,
-      }
-    ),
+    TokenStore.getAccessToken(syncState.username),
     Encryptor.generatePasswordKey(syncState.newPassword),
   ]).catch((err) => {
     throwAuthorisationError(errorConfig, err);
@@ -114,15 +106,9 @@ export const deleteAccount = route(async (): Promise<void> => {
     });
   }
 
-  const accessToken = await tauriInvoke(
-    'get_access_token',
-    {
-      username: syncState.username,
-    },
-    {
-      rethrowErrors: true,
-    }
-  ).catch((err) => throwAuthorisationError(errorConfig, err));
+  const accessToken = await TokenStore.getAccessToken(syncState.username).catch((err) =>
+    throwAuthorisationError(errorConfig, err)
+  );
 
   if (!accessToken) {
     throwAuthorisationError(errorConfig);
