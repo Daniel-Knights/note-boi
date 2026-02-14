@@ -1,6 +1,5 @@
 import { ParsedResponse } from '../api';
 import { Endpoint, EndpointPayloads } from '../constant';
-import { isDev } from '../utils';
 
 import { TokenStore } from './tokenStore';
 
@@ -11,19 +10,15 @@ export class FetchBuilder<
   #endpoint;
   #init: RequestInit = {};
 
-  constructor(e: E) {
-    this.#endpoint = e;
-  }
-
-  static serverUrl =
-    isDev() || process.env.NODE_ENV === 'test'
-      ? 'http://localhost:8000'
-      : 'https://note-boi-server-v4-1098279308841.europe-west2.run.app';
-
+  static serverUrl = process.env.SERVER_URL;
   static defaultHeaders = {
     'Content-Type': 'application/json',
     'Content-Security-Policy': `default-src 'self'; connect-src ${FetchBuilder.serverUrl};`,
   };
+
+  constructor(e: E) {
+    this.#endpoint = e;
+  }
 
   method(m: 'GET' | 'PUT' | 'POST' | 'DELETE') {
     this.#init.method = m;
