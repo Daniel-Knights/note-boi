@@ -2,6 +2,8 @@
 
 exports[`new Note() > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`new Note() > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`new Note() > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`new Note() > Storage.get('THEME') 1`] = `null`;

@@ -2,6 +2,8 @@
 
 exports[`App > Handles note menu toggling > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`App > Handles note menu toggling > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`App > Handles note menu toggling > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`App > Handles note menu toggling > Storage.get('THEME') 1`] = `null`;
@@ -104,6 +106,8 @@ exports[`App > Handles note menu toggling > updateState 1`] = `
 
 exports[`App > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`App > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`App > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`App > Mounts > Storage.get('THEME') 1`] = `null`;
@@ -205,6 +209,8 @@ exports[`App > Mounts > updateState 1`] = `
 `;
 
 exports[`App > Shows loading spinner when update is downloading > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Shows loading spinner when update is downloading > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`App > Shows loading spinner when update is downloading > Storage.get('MENU_WIDTH') 1`] = `null`;
 

@@ -2,6 +2,8 @@
 
 exports[`Utils > Tauri API wrappers > tauriEmit > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('THEME') 1`] = `null`;
@@ -97,6 +99,8 @@ exports[`Utils > Tauri API wrappers > tauriEmit > updateState 1`] = `
 `;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -198,6 +202,8 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('THEME') 1`] = `null`;
@@ -287,6 +293,8 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows 
 `;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -406,6 +414,8 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
 
 exports[`Utils > Tauri API wrappers > tauriListen > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('THEME') 1`] = `null`;
@@ -496,6 +506,8 @@ exports[`Utils > Tauri API wrappers > tauriListen > updateState 1`] = `
 
 exports[`Utils > capitalise > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Utils > capitalise > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Utils > capitalise > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > capitalise > Storage.get('THEME') 1`] = `null`;
@@ -576,6 +588,8 @@ exports[`Utils > capitalise > updateState 1`] = `
 `;
 
 exports[`Utils > escapeRegex > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > escapeRegex > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Utils > escapeRegex > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -658,6 +672,8 @@ exports[`Utils > escapeRegex > updateState 1`] = `
 
 exports[`Utils > hasKeys > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Utils > hasKeys > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Utils > hasKeys > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > hasKeys > Storage.get('THEME') 1`] = `null`;
@@ -738,6 +754,8 @@ exports[`Utils > hasKeys > updateState 1`] = `
 `;
 
 exports[`Utils > isDev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > isDev > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Utils > isDev > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -820,6 +838,8 @@ exports[`Utils > isDev > updateState 1`] = `
 
 exports[`Utils > isEmptyNote > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Utils > isEmptyNote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Utils > isEmptyNote > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > isEmptyNote > Storage.get('THEME') 1`] = `null`;
@@ -901,6 +921,8 @@ exports[`Utils > isEmptyNote > updateState 1`] = `
 
 exports[`Utils > isWhitespaceOnly > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Utils > isWhitespaceOnly > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Utils > isWhitespaceOnly > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Utils > isWhitespaceOnly > Storage.get('THEME') 1`] = `null`;
@@ -981,6 +1003,8 @@ exports[`Utils > isWhitespaceOnly > updateState 1`] = `
 `;
 
 exports[`Utils > unixToDateTime > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Utils > unixToDateTime > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Utils > unixToDateTime > Storage.get('MENU_WIDTH') 1`] = `null`;
 

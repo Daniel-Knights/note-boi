@@ -2,6 +2,8 @@
 
 exports[`selectNote > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`selectNote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`selectNote > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`selectNote > Storage.get('THEME') 1`] = `null`;

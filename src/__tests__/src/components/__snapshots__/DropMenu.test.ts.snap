@@ -2,6 +2,8 @@
 
 exports[`DropMenu > Adds classes to items > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`DropMenu > Adds classes to items > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`DropMenu > Adds classes to items > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`DropMenu > Adds classes to items > Storage.get('THEME') 1`] = `null`;
@@ -82,6 +84,8 @@ exports[`DropMenu > Adds classes to items > updateState 1`] = `
 `;
 
 exports[`DropMenu > Adds click handlers to items > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DropMenu > Adds click handlers to items > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`DropMenu > Adds click handlers to items > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -164,6 +168,8 @@ exports[`DropMenu > Adds click handlers to items > updateState 1`] = `
 
 exports[`DropMenu > Emits close on click outside > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`DropMenu > Emits close on click outside > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`DropMenu > Emits close on click outside > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`DropMenu > Emits close on click outside > Storage.get('THEME') 1`] = `null`;
@@ -244,6 +250,8 @@ exports[`DropMenu > Emits close on click outside > updateState 1`] = `
 `;
 
 exports[`DropMenu > Emits close on menu item click if closeOnClick is true > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -326,6 +334,8 @@ exports[`DropMenu > Emits close on menu item click if closeOnClick is true > upd
 
 exports[`DropMenu > Handles sub-menus > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`DropMenu > Handles sub-menus > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`DropMenu > Handles sub-menus > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`DropMenu > Handles sub-menus > Storage.get('THEME') 1`] = `null`;
@@ -407,6 +417,8 @@ exports[`DropMenu > Handles sub-menus > updateState 1`] = `
 
 exports[`DropMenu > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`DropMenu > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`DropMenu > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`DropMenu > Mounts > Storage.get('THEME') 1`] = `null`;
@@ -487,6 +499,8 @@ exports[`DropMenu > Mounts > updateState 1`] = `
 `;
 
 exports[`DropMenu > Renders each item > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DropMenu > Renders each item > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`DropMenu > Renders each item > Storage.get('MENU_WIDTH') 1`] = `null`;
 

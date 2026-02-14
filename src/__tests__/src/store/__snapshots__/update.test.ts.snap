@@ -2,6 +2,8 @@
 
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('THEME') 1`] = `null`;
@@ -104,6 +106,8 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
 `;
 
 exports[`Update > handleUpdate > Handles update > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Handles update > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Update > handleUpdate > Handles update > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -222,6 +226,8 @@ exports[`Update > handleUpdate > Handles update > updateState 1`] = `
 
 exports[`Update > handleUpdate > Returns if update unavailable > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('THEME') 1`] = `null`;
@@ -313,6 +319,8 @@ exports[`Update > handleUpdate > Returns if update unavailable > updateState 1`]
 
 exports[`Update > handleUpdate > Returns if version has been seen > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('THEME') 1`] = `null`;
@@ -403,6 +411,8 @@ exports[`Update > handleUpdate > Returns if version has been seen > updateState 
 `;
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -509,6 +519,8 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
 
 exports[`Update > setUpdateStrategy > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Update > setUpdateStrategy > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Update > setUpdateStrategy > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Update > setUpdateStrategy > Storage.get('THEME') 1`] = `null`;
@@ -589,6 +601,8 @@ exports[`Update > setUpdateStrategy > updateState 1`] = `
 `;
 
 exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -697,6 +711,8 @@ exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > updateS
 `;
 
 exports[`Update > updateAndRelaunch > Catches errors and retries > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -822,6 +838,8 @@ exports[`Update > updateAndRelaunch > Catches errors and retries > updateState 1
 `;
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('MENU_WIDTH') 1`] = `null`;
 

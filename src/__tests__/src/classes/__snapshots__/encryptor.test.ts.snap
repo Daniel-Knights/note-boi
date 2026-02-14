@@ -2,6 +2,8 @@
 
 exports[`Encryptor > decryptNotes > Decrypts notes > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('THEME') 1`] = `null`;
@@ -82,6 +84,8 @@ exports[`Encryptor > decryptNotes > Decrypts notes > updateState 1`] = `
 `;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -164,6 +168,8 @@ exports[`Encryptor > decryptNotes > Handles unencrypted notes > updateState 1`] 
 
 exports[`Encryptor > encryptNotes > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Encryptor > encryptNotes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Encryptor > encryptNotes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Encryptor > encryptNotes > Storage.get('THEME') 1`] = `null`;
@@ -245,6 +251,8 @@ exports[`Encryptor > encryptNotes > updateState 1`] = `
 
 exports[`Encryptor > generatePasswordKey > Generates a password key > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('THEME') 1`] = `null`;
@@ -325,6 +333,8 @@ exports[`Encryptor > generatePasswordKey > Generates a password key > updateStat
 `;
 
 exports[`Encryptor > generatePasswordKey > Throws an error for empty password > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Encryptor > generatePasswordKey > Throws an error for empty password > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Encryptor > generatePasswordKey > Throws an error for empty password > Storage.get('MENU_WIDTH') 1`] = `null`;
 

@@ -2,6 +2,8 @@
 
 exports[`Loading > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Loading > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Loading > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Loading > Mounts > Storage.get('THEME') 1`] = `null`;

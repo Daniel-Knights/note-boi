@@ -2,6 +2,8 @@
 
 exports[`editNote > Edits notes > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`editNote > Edits notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`editNote > Edits notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`editNote > Edits notes > Storage.get('THEME') 1`] = `null`;
@@ -318,6 +320,8 @@ exports[`editNote > Edits notes > updateState 1`] = `
 `;
 
 exports[`editNote > Sets new unsynced note if empty to prevent sync clear > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('MENU_WIDTH') 1`] = `null`;
 
