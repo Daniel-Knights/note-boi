@@ -28,7 +28,7 @@ import DropMenu from './DropMenu.vue';
 
 const props = defineProps<{
   handleNewNote: () => void;
-  ev?: MouseEvent;
+  ev?: PointerEvent;
 }>();
 
 const dropMenu = useTemplateRef('drop-menu');
@@ -111,8 +111,8 @@ watch(props, async () => {
   const maxY = window.innerHeight - dropMenuHeight - 10; // 10 = a bit of padding
   const maxX = window.innerWidth - dropMenuWidth - 10; // 10 = a bit of padding
 
-  top.value = Math.min(props.ev.y, maxY);
-  left.value = Math.min(props.ev.x, maxX);
+  top.value = Math.min(props.ev.clientY, maxY);
+  left.value = Math.min(props.ev.clientX, maxX);
 });
 </script>
 
