@@ -14,14 +14,16 @@ beforeAll(async () => {
   // JSDom doesn't come with `ResizeObserver`, IndexedDB, or `matchMedia` implementations
   // https://github.com/jsdom/jsdom/issues/3368 - Implement `ResizeObserver`
   // https://github.com/jsdom/jsdom/issues/1748 - Implement IndexedDB
-  const MockResizeObserver = vi.fn(() => ({
-    observe() {
-      // noop
-    },
-    disconnect() {
-      // noop
-    },
-  }));
+  const MockResizeObserver = vi.fn(function () {
+    return {
+      observe() {
+        // noop
+      },
+      disconnect() {
+        // noop
+      },
+    };
+  });
 
   Object.defineProperty(window, 'ResizeObserver', {
     value: MockResizeObserver,
