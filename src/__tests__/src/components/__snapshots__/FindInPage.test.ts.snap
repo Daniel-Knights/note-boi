@@ -2,6 +2,8 @@
 
 exports[`FindInPage > Closes > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`FindInPage > Closes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`FindInPage > Closes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`FindInPage > Closes > Storage.get('THEME') 1`] = `null`;
@@ -82,6 +84,8 @@ exports[`FindInPage > Closes > updateState 1`] = `
 `;
 
 exports[`FindInPage > Highlights searched text > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`FindInPage > Highlights searched text > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`FindInPage > Highlights searched text > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -164,6 +168,8 @@ exports[`FindInPage > Highlights searched text > updateState 1`] = `
 
 exports[`FindInPage > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`FindInPage > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`FindInPage > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`FindInPage > Mounts > Storage.get('THEME') 1`] = `null`;
@@ -244,6 +250,8 @@ exports[`FindInPage > Mounts > updateState 1`] = `
 `;
 
 exports[`FindInPage > Navigates highlights with up/down buttons > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('MENU_WIDTH') 1`] = `null`;
 

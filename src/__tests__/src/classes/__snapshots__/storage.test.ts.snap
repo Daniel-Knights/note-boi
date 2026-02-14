@@ -2,6 +2,8 @@
 
 exports[`Storage > clear > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Storage > clear > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Storage > clear > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Storage > clear > Storage.get('THEME') 1`] = `null`;
@@ -82,6 +84,8 @@ exports[`Storage > clear > updateState 1`] = `
 `;
 
 exports[`Storage > get/set > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Storage > get/set > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Storage > get/set > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -164,6 +168,8 @@ exports[`Storage > get/set > updateState 1`] = `
 
 exports[`Storage > remove > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Storage > remove > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Storage > remove > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Storage > remove > Storage.get('THEME') 1`] = `null`;
@@ -244,6 +250,8 @@ exports[`Storage > remove > updateState 1`] = `
 `;
 
 exports[`Storage > setJSON/getJSON > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Storage > setJSON/getJSON > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Storage > setJSON/getJSON > Storage.get('MENU_WIDTH') 1`] = `null`;
 

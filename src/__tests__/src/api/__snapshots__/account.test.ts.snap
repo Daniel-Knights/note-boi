@@ -2,6 +2,8 @@
 
 exports[`Account > changePassword > Changes password for currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > changePassword > Changes password for currently logged in account > Storage.get('THEME') 1`] = `null`;
@@ -234,6 +236,8 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 
 exports[`Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > changePassword > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > changePassword > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > changePassword > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
@@ -441,6 +445,8 @@ exports[`Account > changePassword > Sets and resets loading state > updateState 
 
 exports[`Account > changePassword > Throws if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > changePassword > Throws if no access token > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > changePassword > Throws if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > changePassword > Throws if no access token > Storage.get('THEME') 1`] = `null`;
@@ -636,6 +642,8 @@ exports[`Account > changePassword > Throws if no access token > updateState 1`] 
 
 exports[`Account > changePassword > Throws if no username > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Account > changePassword > Throws if no username > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > changePassword > Throws if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > changePassword > Throws if no username > Storage.get('THEME') 1`] = `null`;
@@ -719,6 +727,8 @@ exports[`Account > changePassword > Throws if no username > updateState 1`] = `
 `;
 
 exports[`Account > changePassword > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > changePassword > User not found > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Account > changePassword > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -869,6 +879,8 @@ exports[`Account > changePassword > User not found > updateState 1`] = `
 `;
 
 exports[`Account > changePassword > With encryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > changePassword > With encryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Account > changePassword > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1253,6 +1265,8 @@ exports[`Account > changePassword > With encryption error > updateState 1`] = `
 
 exports[`Account > changePassword > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > changePassword > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > changePassword > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > changePassword > With server error > Storage.get('THEME') 1`] = `null`;
@@ -1454,6 +1468,8 @@ exports[`Account > changePassword > With server error > updateState 1`] = `
 `;
 
 exports[`Account > deleteAccount > Deletes currently logged in account > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Account > deleteAccount > Deletes currently logged in account > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1682,6 +1698,8 @@ exports[`Account > deleteAccount > Deletes currently logged in account > updateS
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > Storage.get('THEME') 1`] = `null`;
@@ -1776,6 +1794,8 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > updateS
 `;
 
 exports[`Account > deleteAccount > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Account > deleteAccount > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -2004,6 +2024,8 @@ exports[`Account > deleteAccount > Sets and resets loading state > updateState 1
 
 exports[`Account > deleteAccount > Throws if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > deleteAccount > Throws if no access token > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > deleteAccount > Throws if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > deleteAccount > Throws if no access token > Storage.get('THEME') 1`] = `null`;
@@ -2209,6 +2231,8 @@ exports[`Account > deleteAccount > Throws if no access token > updateState 1`] =
 
 exports[`Account > deleteAccount > Throws if no username > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Account > deleteAccount > Throws if no username > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > deleteAccount > Throws if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > deleteAccount > Throws if no username > Storage.get('THEME') 1`] = `null`;
@@ -2305,6 +2329,8 @@ exports[`Account > deleteAccount > Throws if no username > updateState 1`] = `
 `;
 
 exports[`Account > deleteAccount > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > Unauthorized > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Account > deleteAccount > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -2518,6 +2544,8 @@ exports[`Account > deleteAccount > Unauthorized > updateState 1`] = `
 
 exports[`Account > deleteAccount > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Account > deleteAccount > User not found > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Account > deleteAccount > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Account > deleteAccount > User not found > Storage.get('THEME') 1`] = `null`;
@@ -2677,6 +2705,8 @@ exports[`Account > deleteAccount > User not found > updateState 1`] = `
 `;
 
 exports[`Account > deleteAccount > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > deleteAccount > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Account > deleteAccount > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 

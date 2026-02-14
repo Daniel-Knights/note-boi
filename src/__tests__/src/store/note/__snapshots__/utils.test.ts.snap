@@ -2,6 +2,8 @@
 
 exports[`utils > findNote > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`utils > findNote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`utils > findNote > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`utils > findNote > Storage.get('THEME') 1`] = `null`;
@@ -336,6 +338,8 @@ exports[`utils > findNote > updateState 1`] = `
 
 exports[`utils > findNoteIndex > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`utils > findNoteIndex > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`utils > findNoteIndex > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`utils > findNoteIndex > Storage.get('THEME') 1`] = `null`;
@@ -669,6 +673,8 @@ exports[`utils > findNoteIndex > updateState 1`] = `
 `;
 
 exports[`utils > isSelectedNote > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`utils > isSelectedNote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`utils > isSelectedNote > Storage.get('MENU_WIDTH') 1`] = `null`;
 

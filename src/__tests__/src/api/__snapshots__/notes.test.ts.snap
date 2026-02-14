@@ -2,6 +2,8 @@
 
 exports[`Notes (sync) > Edge cases > No local, no remote > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('THEME') 1`] = `null`;
@@ -198,6 +200,8 @@ exports[`Notes (sync) > Edge cases > No local, no remote > updateState 1`] = `
 `;
 
 exports[`Notes (sync) > Edge cases > No local, some remote > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -869,6 +873,8 @@ exports[`Notes (sync) > Edge cases > No local, some remote > updateState 1`] = `
 `;
 
 exports[`Notes (sync) > Edge cases > No remote, some local > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1564,6 +1570,8 @@ exports[`Notes (sync) > Edge cases > No remote, some local > updateState 1`] = `
 
 exports[`Notes (sync) > sync > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
@@ -1803,6 +1811,8 @@ exports[`Notes (sync) > sync > Sets and resets loading state > updateState 1`] =
 `;
 
 exports[`Notes (sync) > sync > Syncs notes with the server > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -2495,6 +2505,8 @@ exports[`Notes (sync) > sync > Syncs notes with the server > updateState 1`] = `
 
 exports[`Notes (sync) > sync > Throws if no access token or password key > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('THEME') 1`] = `null`;
@@ -2689,6 +2701,8 @@ exports[`Notes (sync) > sync > Throws if no access token or password key > updat
 
 exports[`Notes (sync) > sync > Throws if not logged in > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('THEME') 1`] = `null`;
@@ -2771,6 +2785,8 @@ exports[`Notes (sync) > sync > Throws if not logged in > updateState 1`] = `
 `;
 
 exports[`Notes (sync) > sync > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > sync > Unauthorized > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > sync > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -2972,6 +2988,8 @@ exports[`Notes (sync) > sync > Unauthorized > updateState 1`] = `
 `;
 
 exports[`Notes (sync) > sync > Updates editor if selected note is unedited > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -3604,6 +3622,8 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > upd
 
 exports[`Notes (sync) > sync > Updates note menu > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Notes (sync) > sync > Updates note menu > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > sync > Updates note menu > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > sync > Updates note menu > Storage.get('THEME') 1`] = `null`;
@@ -4224,6 +4244,8 @@ exports[`Notes (sync) > sync > Updates note menu > updateState 1`] = `
 
 exports[`Notes (sync) > sync > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Notes (sync) > sync > User not found > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > sync > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > sync > User not found > Storage.get('THEME') 1`] = `null`;
@@ -4674,6 +4696,8 @@ exports[`Notes (sync) > sync > User not found > updateState 1`] = `
 
 exports[`Notes (sync) > sync > With decryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Notes (sync) > sync > With decryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > sync > With decryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > sync > With decryption error > Storage.get('THEME') 1`] = `null`;
@@ -4903,6 +4927,8 @@ exports[`Notes (sync) > sync > With decryption error > updateState 1`] = `
 
 exports[`Notes (sync) > sync > With encryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Notes (sync) > sync > With encryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > sync > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > sync > With encryption error > Storage.get('THEME') 1`] = `null`;
@@ -5094,6 +5120,8 @@ exports[`Notes (sync) > sync > With encryption error > updateState 1`] = `
 `;
 
 exports[`Notes (sync) > sync > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > sync > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > sync > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -5295,6 +5323,8 @@ exports[`Notes (sync) > sync > With server error > updateState 1`] = `
 `;
 
 exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -5679,6 +5709,8 @@ exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged i
 `;
 
 exports[`Notes (sync) > unsyncedNotes > deleted > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > unsyncedNotes > deleted > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > unsyncedNotes > deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -6639,6 +6671,8 @@ exports[`Notes (sync) > unsyncedNotes > deleted > updateState 1`] = `
 
 exports[`Notes (sync) > unsyncedNotes > edited > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('THEME') 1`] = `null`;
@@ -6807,18 +6841,6 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
     },
   ],
   [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": true,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
-  [
     "request",
     {
       "calledWith": {
@@ -6832,6 +6854,18 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
         "method": "PUT",
       },
       "name": "/notes/sync",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
     },
   ],
   [
@@ -7894,6 +7928,8 @@ exports[`Notes (sync) > unsyncedNotes > edited > updateState 1`] = `
 `;
 
 exports[`Notes (sync) > unsyncedNotes > new > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > unsyncedNotes > new > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Notes (sync) > unsyncedNotes > new > Storage.get('MENU_WIDTH') 1`] = `null`;
 

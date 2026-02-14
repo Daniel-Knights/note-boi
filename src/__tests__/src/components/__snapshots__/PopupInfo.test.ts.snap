@@ -2,6 +2,8 @@
 
 exports[`PopupInfo > Emits close > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`PopupInfo > Emits close > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`PopupInfo > Emits close > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`PopupInfo > Emits close > Storage.get('THEME') 1`] = `null`;
@@ -93,6 +95,8 @@ exports[`PopupInfo > Emits close > updateState 1`] = `
 
 exports[`PopupInfo > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`PopupInfo > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`PopupInfo > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`PopupInfo > Mounts > Storage.get('THEME') 1`] = `null`;
@@ -183,6 +187,8 @@ exports[`PopupInfo > Mounts > updateState 1`] = `
 `;
 
 exports[`PopupInfo > Renders correct description list items > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`PopupInfo > Renders correct description list items > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`PopupInfo > Renders correct description list items > Storage.get('MENU_WIDTH') 1`] = `null`;
 

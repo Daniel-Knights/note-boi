@@ -2,6 +2,8 @@
 
 exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > Storage.get('THEME') 1`] = `null`;
@@ -82,6 +84,8 @@ exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class o
 `;
 
 exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -257,6 +261,8 @@ exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file e
 
 exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > Storage.get('THEME') 1`] = `null`;
@@ -431,6 +437,8 @@ exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > updat
 
 exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > Storage.get('THEME') 1`] = `null`;
@@ -511,6 +519,8 @@ exports[`importNotes > handleImportNotesDragDrop > Returns when there are no val
 `;
 
 exports[`importNotes > importNotes > Imports notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotes > Imports notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`importNotes > importNotes > Imports notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1021,6 +1031,8 @@ exports[`importNotes > importNotes > Imports notes > updateState 1`] = `
 
 exports[`importNotes > importNotes > Imports notes and syncs them > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`importNotes > importNotes > Imports notes and syncs them > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`importNotes > importNotes > Imports notes and syncs them > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`importNotes > importNotes > Imports notes and syncs them > Storage.get('THEME') 1`] = `null`;
@@ -1391,6 +1403,8 @@ exports[`importNotes > importNotes > Imports notes and syncs them > updateState 
 
 exports[`importNotes > importNotes > Imports notes with no local notes > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`importNotes > importNotes > Imports notes with no local notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`importNotes > importNotes > Imports notes with no local notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`importNotes > importNotes > Imports notes with no local notes > Storage.get('THEME') 1`] = `null`;
@@ -1598,6 +1612,8 @@ exports[`importNotes > importNotes > Imports notes with no local notes > updateS
 
 exports[`importNotes > importNotes > Returns when passed no paths > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`importNotes > importNotes > Returns when passed no paths > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`importNotes > importNotes > Returns when passed no paths > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`importNotes > importNotes > Returns when passed no paths > Storage.get('THEME') 1`] = `null`;
@@ -1678,6 +1694,8 @@ exports[`importNotes > importNotes > Returns when passed no paths > updateState 
 `;
 
 exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1865,6 +1883,8 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
 
 exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > Storage.get('THEME') 1`] = `null`;
@@ -2018,6 +2038,8 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
 `;
 
 exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > Storage.get('MENU_WIDTH') 1`] = `null`;
 

@@ -2,6 +2,8 @@
 
 exports[`Log > forwardConsole > console.debug > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Log > forwardConsole > console.debug > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Log > forwardConsole > console.debug > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.debug > Storage.get('THEME') 1`] = `null`;
@@ -82,6 +84,8 @@ exports[`Log > forwardConsole > console.debug > updateState 1`] = `
 `;
 
 exports[`Log > forwardConsole > console.error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -164,6 +168,8 @@ exports[`Log > forwardConsole > console.error > updateState 1`] = `
 
 exports[`Log > forwardConsole > console.info > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Log > forwardConsole > console.info > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Log > forwardConsole > console.info > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.info > Storage.get('THEME') 1`] = `null`;
@@ -244,6 +250,8 @@ exports[`Log > forwardConsole > console.info > updateState 1`] = `
 `;
 
 exports[`Log > forwardConsole > console.log > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > forwardConsole > console.log > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.log > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -326,6 +334,8 @@ exports[`Log > forwardConsole > console.log > updateState 1`] = `
 
 exports[`Log > forwardConsole > console.warn > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Log > forwardConsole > console.warn > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Log > forwardConsole > console.warn > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.warn > Storage.get('THEME') 1`] = `null`;
@@ -406,6 +416,8 @@ exports[`Log > forwardConsole > console.warn > updateState 1`] = `
 `;
 
 exports[`Log > initLogger > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Log > initLogger > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Log > initLogger > Storage.get('MENU_WIDTH') 1`] = `null`;
 

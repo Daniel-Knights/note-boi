@@ -2,6 +2,8 @@
 
 exports[`getAllNotes > With empty note array > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`getAllNotes > With empty note array > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`getAllNotes > With empty note array > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`getAllNotes > With empty note array > Storage.get('THEME') 1`] = `null`;
@@ -123,6 +125,8 @@ exports[`getAllNotes > With empty note array > updateState 1`] = `
 `;
 
 exports[`getAllNotes > With notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`getAllNotes > With notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`getAllNotes > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -458,6 +462,8 @@ exports[`getAllNotes > With notes > updateState 1`] = `
 
 exports[`getAllNotes > With single empty note > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`getAllNotes > With single empty note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`getAllNotes > With single empty note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`getAllNotes > With single empty note > Storage.get('THEME') 1`] = `null`;
@@ -556,6 +562,8 @@ exports[`getAllNotes > With single empty note > updateState 1`] = `
 `;
 
 exports[`getAllNotes > With undefined notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`getAllNotes > With undefined notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`getAllNotes > With undefined notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 

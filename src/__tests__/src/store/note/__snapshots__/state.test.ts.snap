@@ -2,6 +2,8 @@
 
 exports[`state > addNotes > Adds new notes to empty state > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`state > addNotes > Adds new notes to empty state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`state > addNotes > Adds new notes to empty state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`state > addNotes > Adds new notes to empty state > Storage.get('THEME') 1`] = `null`;
@@ -113,6 +115,8 @@ exports[`state > addNotes > Adds new notes to empty state > updateState 1`] = `
 `;
 
 exports[`state > addNotes > Adds notes to existing state > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Adds notes to existing state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`state > addNotes > Adds notes to existing state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -271,6 +275,8 @@ exports[`state > addNotes > Adds notes to existing state > updateState 1`] = `
 
 exports[`state > addNotes > Does not select latest note by default > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`state > addNotes > Does not select latest note by default > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`state > addNotes > Does not select latest note by default > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`state > addNotes > Does not select latest note by default > Storage.get('THEME') 1`] = `null`;
@@ -383,6 +389,8 @@ exports[`state > addNotes > Does not select latest note by default > updateState
 
 exports[`state > addNotes > Filters out duplicate notes by uuid > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`state > addNotes > Filters out duplicate notes by uuid > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`state > addNotes > Filters out duplicate notes by uuid > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`state > addNotes > Filters out duplicate notes by uuid > Storage.get('THEME') 1`] = `null`;
@@ -480,6 +488,8 @@ exports[`state > addNotes > Filters out duplicate notes by uuid > updateState 1`
 
 exports[`state > addNotes > Handles empty array gracefully > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`state > addNotes > Handles empty array gracefully > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`state > addNotes > Handles empty array gracefully > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`state > addNotes > Handles empty array gracefully > Storage.get('THEME') 1`] = `null`;
@@ -560,6 +570,8 @@ exports[`state > addNotes > Handles empty array gracefully > updateState 1`] = `
 `;
 
 exports[`state > addNotes > Handles mixed duplicates and new notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Handles mixed duplicates and new notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`state > addNotes > Handles mixed duplicates and new notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -673,6 +685,8 @@ exports[`state > addNotes > Handles mixed duplicates and new notes > updateState
 
 exports[`state > addNotes > Handles selectLatest option with empty array > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`state > addNotes > Handles selectLatest option with empty array > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`state > addNotes > Handles selectLatest option with empty array > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`state > addNotes > Handles selectLatest option with empty array > Storage.get('THEME') 1`] = `null`;
@@ -753,6 +767,8 @@ exports[`state > addNotes > Handles selectLatest option with empty array > updat
 `;
 
 exports[`state > addNotes > Selects latest note when selectLatest option is true > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`state > addNotes > Selects latest note when selectLatest option is true > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`state > addNotes > Selects latest note when selectLatest option is true > Storage.get('MENU_WIDTH') 1`] = `null`;
 

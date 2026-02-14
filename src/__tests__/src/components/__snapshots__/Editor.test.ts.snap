@@ -2,6 +2,8 @@
 
 exports[`Editor > Closes find-in-page > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Editor > Closes find-in-page > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Editor > Closes find-in-page > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Editor > Closes find-in-page > Storage.get('THEME') 1`] = `null`;
@@ -82,6 +84,8 @@ exports[`Editor > Closes find-in-page > updateState 1`] = `
 `;
 
 exports[`Editor > Constructs note object from parsed text > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Constructs note object from parsed text > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Editor > Constructs note object from parsed text > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -249,6 +253,8 @@ exports[`Editor > Constructs note object from parsed text > updateState 1`] = `
 
 exports[`Editor > Has the correct timestamp > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Editor > Has the correct timestamp > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Editor > Has the correct timestamp > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Editor > Has the correct timestamp > Storage.get('THEME') 1`] = `null`;
@@ -329,6 +335,8 @@ exports[`Editor > Has the correct timestamp > updateState 1`] = `
 `;
 
 exports[`Editor > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Editor > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -411,6 +419,8 @@ exports[`Editor > Mounts > updateState 1`] = `
 
 exports[`Editor > Opens find-in-page > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Editor > Opens find-in-page > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Editor > Opens find-in-page > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Editor > Opens find-in-page > Storage.get('THEME') 1`] = `null`;
@@ -491,6 +501,8 @@ exports[`Editor > Opens find-in-page > updateState 1`] = `
 `;
 
 exports[`Editor > Sets the correct note text > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Editor > Sets the correct note text > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Editor > Sets the correct note text > Storage.get('MENU_WIDTH') 1`] = `null`;
 
