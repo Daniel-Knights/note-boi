@@ -2,8 +2,11 @@
 import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
 
+export const SERVER_URL_PROD =
+  'https://note-boi-server-v4-1098279308841.europe-west2.run.app';
+
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [vue()],
   server: {
     port: 3000,
@@ -19,10 +22,10 @@ export default defineConfig({
     minify: !process.env.TAURI_ENV_DEBUG ? 'esbuild' : false,
     sourcemap: !!process.env.TAURI_ENV_DEBUG,
   },
-  esbuild: {
-    define: {
-      'process.env.APP_ENV': "'desktop'",
-    },
+  define: {
+    'process.env.APP_ENV': "'desktop'",
+    'process.env.SERVER_URL':
+      mode === 'production' ? `"${SERVER_URL_PROD}"` : '"http://localhost:8000"',
   },
   test: {
     environment: 'jsdom',
@@ -34,4 +37,4 @@ export default defineConfig({
     // Seems to help reduce test flakiness
     fileParallelism: false,
   },
-});
+}));

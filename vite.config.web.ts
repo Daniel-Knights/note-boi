@@ -2,8 +2,10 @@ import vue from '@vitejs/plugin-vue';
 import fs from 'node:fs';
 import { defineConfig, Plugin } from 'vite';
 
+import { SERVER_URL_PROD } from './vite.config';
+
 // https://vitejs.dev/config/
-export default defineConfig(() => ({
+export default defineConfig(({ mode }) => ({
   plugins: [vue(), pwaPlugin],
   publicDir: './public',
   server: {
@@ -19,10 +21,10 @@ export default defineConfig(() => ({
     minify: false,
     sourcemap: true,
   },
-  esbuild: {
-    define: {
-      'process.env.APP_ENV': "'web'",
-    },
+  define: {
+    'process.env.APP_ENV': "'web'",
+    'process.env.SERVER_URL':
+      mode === 'production' ? `"${SERVER_URL_PROD}"` : '"http://localhost:8000"',
   },
 }));
 
