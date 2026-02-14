@@ -93,4 +93,13 @@ a {
   position: relative;
   overflow: hidden;
 }
+
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select,
+  [contenteditable='true'] {
+    font-size: 16px; // Prevent iOS zoom on focus
+  }
+}
 </style>
