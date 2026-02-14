@@ -2,6 +2,8 @@
 
 exports[`PopupSyncAuth > Emits close > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`PopupSyncAuth > Emits close > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`PopupSyncAuth > Emits close > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`PopupSyncAuth > Emits close > Storage.get('THEME') 1`] = `null`;
@@ -98,6 +100,8 @@ exports[`PopupSyncAuth > Emits close > updateState 1`] = `
 
 exports[`PopupSyncAuth > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`PopupSyncAuth > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`PopupSyncAuth > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`PopupSyncAuth > Mounts > Storage.get('THEME') 1`] = `null`;
@@ -193,6 +197,8 @@ exports[`PopupSyncAuth > Mounts > updateState 1`] = `
 `;
 
 exports[`PopupSyncAuth > Shows default error message when none provided > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Shows default error message when none provided > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`PopupSyncAuth > Shows default error message when none provided > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -292,6 +298,8 @@ exports[`PopupSyncAuth > Shows default error message when none provided > update
 
 exports[`PopupSyncAuth > Shows error message > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`PopupSyncAuth > Shows error message > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`PopupSyncAuth > Shows error message > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`PopupSyncAuth > Shows error message > Storage.get('THEME') 1`] = `null`;
@@ -390,6 +398,8 @@ exports[`PopupSyncAuth > Shows error message > updateState 1`] = `
 
 exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`PopupSyncAuth > Switches between login/signup > Clears form validation errors > Storage.get('THEME') 1`] = `null`;
@@ -485,6 +495,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Clears form validation 
 `;
 
 exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -585,6 +597,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Retains sync errors > u
 
 exports[`PopupSyncAuth > Switches between login/signup > Switches > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`PopupSyncAuth > Switches between login/signup > Switches > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`PopupSyncAuth > Switches between login/signup > Switches > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`PopupSyncAuth > Switches between login/signup > Switches > Storage.get('THEME') 1`] = `null`;
@@ -680,6 +694,8 @@ exports[`PopupSyncAuth > Switches between login/signup > Switches > updateState 
 `;
 
 exports[`PopupSyncAuth > Validates fields > On login > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`PopupSyncAuth > Validates fields > On login > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`PopupSyncAuth > Validates fields > On login > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -864,6 +880,8 @@ exports[`PopupSyncAuth > Validates fields > On login > updateState 1`] = `
 `;
 
 exports[`PopupSyncAuth > Validates fields > On signup > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`PopupSyncAuth > Validates fields > On signup > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`PopupSyncAuth > Validates fields > On signup > Storage.get('MENU_WIDTH') 1`] = `null`;
 

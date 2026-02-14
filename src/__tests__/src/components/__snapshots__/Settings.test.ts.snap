@@ -2,6 +2,8 @@
 
 exports[`Settings > Account menu item > Delete account menu item > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Settings > Account menu item > Delete account menu item > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Settings > Account menu item > Delete account menu item > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Settings > Account menu item > Delete account menu item > Storage.get('THEME') 1`] = `null`;
@@ -151,6 +153,8 @@ exports[`Settings > Account menu item > Delete account menu item > updateState 1
 
 exports[`Settings > Account menu item > Opens and closes change password popup > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Settings > Account menu item > Opens and closes change password popup > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Settings > Account menu item > Opens and closes change password popup > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Settings > Account menu item > Opens and closes change password popup > Storage.get('THEME') 1`] = `null`;
@@ -231,6 +235,8 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
 `;
 
 exports[`Settings > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Settings > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -313,6 +319,8 @@ exports[`Settings > Mounts > updateState 1`] = `
 
 exports[`Settings > Opens and closes drop menu > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Settings > Opens and closes drop menu > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Settings > Opens and closes drop menu > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Settings > Opens and closes drop menu > Storage.get('THEME') 1`] = `null`;
@@ -393,6 +401,8 @@ exports[`Settings > Opens and closes drop menu > updateState 1`] = `
 `;
 
 exports[`Settings > Opens info popup > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Opens info popup > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Settings > Opens info popup > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -485,6 +495,8 @@ exports[`Settings > Opens info popup > updateState 1`] = `
 
 exports[`Settings > Sets theme preference > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Settings > Sets theme preference > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Settings > Sets theme preference > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Settings > Sets theme preference > Storage.get('THEME') 1`] = `"System"`;
@@ -566,6 +578,8 @@ exports[`Settings > Sets theme preference > updateState 1`] = `
 
 exports[`Settings > Updates menu item > Sets update strategy > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Settings > Updates menu item > Sets update strategy > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Settings > Updates menu item > Sets update strategy > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Settings > Updates menu item > Sets update strategy > Storage.get('THEME') 1`] = `null`;
@@ -646,6 +660,8 @@ exports[`Settings > Updates menu item > Sets update strategy > updateState 1`] =
 `;
 
 exports[`Settings > Updates menu item > Update and restart menu item > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Updates menu item > Update and restart menu item > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Settings > Updates menu item > Update and restart menu item > Storage.get('MENU_WIDTH') 1`] = `null`;
 

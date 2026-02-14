@@ -2,6 +2,8 @@
 
 exports[`route > Handles unknown errors > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`route > Handles unknown errors > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`route > Handles unknown errors > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`route > Handles unknown errors > Storage.get('THEME') 1`] = `null`;

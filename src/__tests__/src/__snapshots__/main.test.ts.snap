@@ -2,6 +2,8 @@
 
 exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('THEME') 1`] = `null`;

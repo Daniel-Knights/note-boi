@@ -2,6 +2,8 @@
 
 exports[`deleteNote > Calls debounceSync > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`deleteNote > Calls debounceSync > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`deleteNote > Calls debounceSync > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`deleteNote > Calls debounceSync > Storage.get('THEME') 1`] = `null`;
@@ -334,6 +336,8 @@ exports[`deleteNote > Calls debounceSync > updateState 1`] = `
 `;
 
 exports[`deleteNote > Deletes selected note and selects next > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`deleteNote > Deletes selected note and selects next > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`deleteNote > Deletes selected note and selects next > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -668,6 +672,8 @@ exports[`deleteNote > Deletes selected note and selects next > updateState 1`] =
 
 exports[`deleteNote > Resets unsynced new note > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`deleteNote > Resets unsynced new note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`deleteNote > Resets unsynced new note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`deleteNote > Resets unsynced new note > Storage.get('THEME') 1`] = `null`;
@@ -987,6 +993,8 @@ exports[`deleteNote > Resets unsynced new note > updateState 1`] = `
 
 exports[`deleteNote > With no notes > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`deleteNote > With no notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`deleteNote > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`deleteNote > With no notes > Storage.get('THEME') 1`] = `null`;
@@ -1122,6 +1130,8 @@ exports[`deleteNote > With no notes > updateState 1`] = `
 `;
 
 exports[`deleteNote > Without selecting next note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`deleteNote > Without selecting next note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`deleteNote > Without selecting next note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1411,6 +1421,8 @@ exports[`deleteNote > Without selecting next note > updateState 1`] = `
 `;
 
 exports[`deleteSelectedNotes > Deletes selected notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`deleteSelectedNotes > Deletes selected notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`deleteSelectedNotes > Deletes selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 

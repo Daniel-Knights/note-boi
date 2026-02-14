@@ -2,6 +2,8 @@
 
 exports[`NoteMenu > Creates a new note > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`NoteMenu > Creates a new note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`NoteMenu > Creates a new note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`NoteMenu > Creates a new note > Storage.get('THEME') 1`] = `null`;
@@ -317,6 +319,8 @@ exports[`NoteMenu > Creates a new note > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Mounts > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`NoteMenu > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -652,6 +656,8 @@ exports[`NoteMenu > Mounts > updateState 1`] = `
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('THEME') 1`] = `null`;
@@ -941,6 +947,8 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > updateState 1`] = 
 `;
 
 exports[`NoteMenu > Renders a list item for every note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Renders a list item for every note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`NoteMenu > Renders a list item for every note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1276,6 +1284,8 @@ exports[`NoteMenu > Renders a list item for every note > updateState 1`] = `
 
 exports[`NoteMenu > Renders a single empty note > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`NoteMenu > Renders a single empty note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`NoteMenu > Renders a single empty note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`NoteMenu > Renders a single empty note > Storage.get('THEME') 1`] = `null`;
@@ -1404,6 +1414,8 @@ exports[`NoteMenu > Renders a single empty note > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Selects a clicked note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects a clicked note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`NoteMenu > Selects a clicked note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1694,6 +1706,8 @@ exports[`NoteMenu > Selects a clicked note > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -2029,6 +2043,8 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > u
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('THEME') 1`] = `null`;
@@ -2318,6 +2334,8 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > updateState 
 `;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -2609,6 +2627,8 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('THEME') 1`] = `null`;
@@ -2899,6 +2919,8 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('THEME') 1`] = `null`;
@@ -3188,6 +3210,8 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > updateState 1`]
 `;
 
 exports[`NoteMenu > Sets contextmenu ev > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Sets contextmenu ev > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`NoteMenu > Sets contextmenu ev > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -3522,6 +3546,8 @@ exports[`NoteMenu > Sets contextmenu ev > updateState 1`] = `
 `;
 
 exports[`NoteMenu > Sets menu width with drag-bar > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('MENU_WIDTH') 1`] = `"400px"`;
 

@@ -2,6 +2,8 @@
 
 exports[`DebounceQueue > add > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`DebounceQueue > add > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`DebounceQueue > add > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`DebounceQueue > add > Storage.get('THEME') 1`] = `null`;

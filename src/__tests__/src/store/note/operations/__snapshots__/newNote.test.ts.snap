@@ -2,6 +2,8 @@
 
 exports[`newNote > Only updates timestamp when empty note selected > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`newNote > Only updates timestamp when empty note selected > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`newNote > Only updates timestamp when empty note selected > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`newNote > Only updates timestamp when empty note selected > Storage.get('THEME') 1`] = `null`;
@@ -298,6 +300,8 @@ exports[`newNote > Only updates timestamp when empty note selected > updateState
 `;
 
 exports[`newNote > When selected note isn't empty > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`newNote > When selected note isn't empty > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`newNote > When selected note isn't empty > Storage.get('MENU_WIDTH') 1`] = `null`;
 

@@ -2,6 +2,8 @@
 
 exports[`Auth > clientSideLogout > Does not delete access token if no username > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('THEME') 1`] = `null`;
@@ -97,6 +99,8 @@ exports[`Auth > clientSideLogout > Does not delete access token if no username >
 `;
 
 exports[`Auth > clientSideLogout > Sets all state to logged out > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > clientSideLogout > Sets all state to logged out > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > clientSideLogout > Sets all state to logged out > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -291,6 +295,8 @@ exports[`Auth > clientSideLogout > Sets all state to logged out > updateState 1`
 
 exports[`Auth > login > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > login > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > login > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > login > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
@@ -463,6 +469,8 @@ exports[`Auth > login > Sets and resets loading state > updateState 1`] = `
 
 exports[`Auth > login > Unauthorized > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Auth > login > Unauthorized > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > login > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > login > Unauthorized > Storage.get('THEME') 1`] = `null`;
@@ -566,6 +574,8 @@ exports[`Auth > login > Unauthorized > updateState 1`] = `
 
 exports[`Auth > login > User not found > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Auth > login > User not found > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > login > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > login > User not found > Storage.get('THEME') 1`] = `null`;
@@ -668,6 +678,8 @@ exports[`Auth > login > User not found > updateState 1`] = `
 `;
 
 exports[`Auth > login > With decryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > login > With decryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > login > With decryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -799,6 +811,8 @@ exports[`Auth > login > With decryption error > updateState 1`] = `
 `;
 
 exports[`Auth > login > With encryption error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > login > With encryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > login > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1097,6 +1111,8 @@ exports[`Auth > login > With encryption error > updateState 1`] = `
 `;
 
 exports[`Auth > login > With no notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > login > With no notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > login > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -1671,6 +1687,8 @@ exports[`Auth > login > With no notes > updateState 1`] = `
 `;
 
 exports[`Auth > login > With notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > login > With notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > login > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -2348,6 +2366,8 @@ exports[`Auth > login > With notes > updateState 1`] = `
 
 exports[`Auth > login > With server error > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Auth > login > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > login > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > login > With server error > Storage.get('THEME') 1`] = `null`;
@@ -2450,6 +2470,8 @@ exports[`Auth > login > With server error > updateState 1`] = `
 `;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -2669,6 +2691,8 @@ exports[`Auth > logout > Logs a user out and clears user-based state > updateSta
 
 exports[`Auth > logout > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > logout > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > logout > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > logout > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
@@ -2887,6 +2911,8 @@ exports[`Auth > logout > Sets and resets loading state > updateState 1`] = `
 
 exports[`Auth > logout > Throws if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > logout > Throws if no access token > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > logout > Throws if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > logout > Throws if no access token > Storage.get('THEME') 1`] = `null`;
@@ -3081,6 +3107,8 @@ exports[`Auth > logout > Throws if no access token > updateState 1`] = `
 
 exports[`Auth > logout > Throws if no username > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Auth > logout > Throws if no username > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > logout > Throws if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > logout > Throws if no username > Storage.get('THEME') 1`] = `null`;
@@ -3163,6 +3191,8 @@ exports[`Auth > logout > Throws if no username > updateState 1`] = `
 `;
 
 exports[`Auth > logout > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > Unauthorized > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > logout > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -3382,6 +3412,8 @@ exports[`Auth > logout > Unauthorized > updateState 1`] = `
 
 exports[`Auth > logout > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > logout > User not found > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > logout > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > logout > User not found > Storage.get('THEME') 1`] = `null`;
@@ -3597,6 +3629,8 @@ exports[`Auth > logout > User not found > updateState 1`] = `
 `;
 
 exports[`Auth > logout > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > logout > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > logout > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -3816,6 +3850,8 @@ exports[`Auth > logout > With server error > updateState 1`] = `
 
 exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] = `undefined`;
 
+exports[`Auth > signup > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > signup > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > signup > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
@@ -3918,6 +3954,8 @@ exports[`Auth > signup > Sets and resets loading state > updateState 1`] = `
 `;
 
 exports[`Auth > signup > With encryption error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > signup > With encryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > signup > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -4217,6 +4255,8 @@ exports[`Auth > signup > With encryption error > updateState 1`] = `
 
 exports[`Auth > signup > With no notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
+exports[`Auth > signup > With no notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
 exports[`Auth > signup > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
 exports[`Auth > signup > With no notes > Storage.get('THEME') 1`] = `null`;
@@ -4337,6 +4377,8 @@ exports[`Auth > signup > With no notes > updateState 1`] = `
 `;
 
 exports[`Auth > signup > With notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Auth > signup > With notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > signup > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
@@ -4708,6 +4750,8 @@ exports[`Auth > signup > With notes > updateState 1`] = `
 `;
 
 exports[`Auth > signup > With server error > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Auth > signup > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
 exports[`Auth > signup > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
 
