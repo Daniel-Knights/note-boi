@@ -356,20 +356,25 @@ $new-note-height: 50px;
   }
 }
 
-.note-menu__note:hover,
-.note-menu__note--selected {
-  text-shadow: v.$text-shadow;
-}
-
 .note-menu__note {
   cursor: pointer;
   position: relative;
   padding: 12px 15px;
 
-  &:hover,
-  &--selected {
+  @mixin note-highlight {
     color: v.$white;
     background-color: var(--colour__tertiary);
+    text-shadow: v.$text-shadow;
+  }
+
+  &--selected {
+    @include note-highlight;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      @include note-highlight;
+    }
   }
 
   &--empty::before {
