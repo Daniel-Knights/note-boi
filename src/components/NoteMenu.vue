@@ -12,7 +12,11 @@
   >
     <ul
       @click="handleNoteSelect"
-      @contextmenu.prevent="contextMenuEv = $event"
+      @pointerdown="handlePointerDown"
+      @pointermove="handlePointerMove"
+      @pointerup="handlePointerUp"
+      @pointercancel="handlePointerUp"
+      @contextmenu.prevent="handleContextMenu"
       class="note-menu__note-list"
       ref="note-list"
       data-test-id="note-list"
@@ -86,7 +90,8 @@ const emit = defineEmits<{
 
 const noteList = useTemplateRef('note-list');
 
-const contextMenuEv = ref<MouseEvent>();
+const contextMenuEv = ref<PointerEvent>();
+const longPressTimer = ref<number>();
 const isDragging = ref(false);
 const listIsFocused = ref(true);
 const menuWidthDesktop = ref(Storage.get('MENU_WIDTH') || '260px');
@@ -202,6 +207,37 @@ function handleNoteSelect(ev: MouseEvent) {
   selectNote(targetNoteUuid);
 }
 
+//// Context menu handling (handles both mouse right-click and touch long-press)
+function handleContextMenu(ev: PointerEvent) {
+  // Right-click (desktop) - contextmenu event already prevented by .prevent modifier
+  contextMenuEv.value = ev;
+}
+
+function handlePointerDown(ev: PointerEvent) {
+  if (ev.pointerType !== 'touch') return;
+
+  // Long-press (mobile/touch)
+  longPressTimer.value = window.setTimeout(() => {
+    contextMenuEv.value = ev;
+  }, 500);
+}
+
+function handlePointerMove() {
+  if (!longPressTimer.value) return;
+
+  // Cancel long press if user moves/scrolls
+  clearTimeout(longPressTimer.value);
+  longPressTimer.value = undefined;
+}
+
+function handlePointerUp() {
+  if (!longPressTimer.value) return;
+
+  // Clean up long press timer
+  clearTimeout(longPressTimer.value);
+  longPressTimer.value = undefined;
+}
+
 // Drag bar functionality
 function handleDragBar() {
   isDragging.value = true;
@@ -287,6 +323,7 @@ window.addEventListener('keydown', navigateWithArrowKeys);
 
 onUnmounted(() => {
   window.removeEventListener('keydown', navigateWithArrowKeys);
+  clearTimeout(longPressTimer.value);
 });
 </script>
 
@@ -307,9 +344,12 @@ $new-note-height: 50px;
 }
 
 .note-menu__note-list {
-  height: 100%;
-  padding-bottom: $new-note-height;
   overflow-y: scroll;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  padding-bottom: $new-note-height;
+  height: 100%;
 
   &::-webkit-scrollbar {
     display: none;
