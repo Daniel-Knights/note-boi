@@ -14,7 +14,7 @@ beforeAll(() => {
 });
 
 describe('importNotes', () => {
-  describe('importNotes', () => {
+  describe('importNotesFromPaths/importNotesToState', () => {
     it('Imports notes', async () => {
       const { calls } = mockApi();
       const paths = ['/foo.json', '/bar.txt'];
