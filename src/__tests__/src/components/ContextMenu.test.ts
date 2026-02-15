@@ -283,7 +283,7 @@ describe('ContextMenu', () => {
 //// Utils
 
 async function mountContextMenu(
-  ev: MouseEvent,
+  ev: PointerEvent,
   options: {
     attachTo?: HTMLElement;
   } = {}
@@ -321,7 +321,7 @@ function assertMounted(
 }
 
 function getContextMenuEv(options?: { x?: number; y?: number }) {
-  return new MouseEvent('contextmenu', {
+  return new PointerEvent('contextmenu', {
     clientX: options?.x ?? 100,
     clientY: options?.y ?? 200,
   });
