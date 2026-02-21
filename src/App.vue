@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onUnmounted, ref } from 'vue';
+import { onBeforeUnmount, ref } from 'vue';
 
 import { noteState } from './store/note';
 import { updateState } from './store/update';
@@ -38,7 +38,7 @@ function handleMediaChange(ev: MediaQueryListEvent) {
 
 smallScreenMediaQuery.addEventListener('change', handleMediaChange);
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   smallScreenMediaQuery.removeEventListener('change', handleMediaChange);
 });
 </script>
