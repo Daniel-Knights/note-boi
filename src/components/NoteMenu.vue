@@ -56,19 +56,14 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, ref, useTemplateRef, watch } from 'vue';
+import { useTemplateRef, watch } from 'vue';
 
-import { Note, Storage } from '../classes';
-import { LONG_PRESS_TIMEOUT, MIN_MENU_WIDTH } from '../constant';
-import {
-  findNote,
-  findNoteIndex,
-  isSelectedNote,
-  newNote,
-  noteState,
-  selectNote,
-} from '../store/note';
-import { isEmptyNote, mathClamp } from '../utils';
+import { useContextMenu } from '../composables/useContextMenu';
+import { useKeyboardNavigation } from '../composables/useKeyboardNavigation';
+import { useMenuResize } from '../composables/useMenuResize';
+import { useNoteSelection } from '../composables/useNoteSelection';
+import { isSelectedNote, newNote, noteState } from '../store/note';
+import { isEmptyNote } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
 
@@ -83,27 +78,26 @@ const emit = defineEmits<{
 
 const noteList = useTemplateRef('note-list');
 
-const contextMenuEv = ref<MouseEvent | PointerEvent>();
-const longPressTimer = ref<number>();
-const isDragging = ref(false);
-const listIsFocused = ref(true);
-const menuWidthDesktop = ref(Storage.get('MENU_WIDTH') || '260px');
-
-const menuWidth = computed(() =>
-  props.isSmallScreen ? '100vw' : menuWidthDesktop.value
-);
-
-// Clear all extra notes and remove event listener
-function clearExtraNotes(ev?: MouseEvent) {
-  if (ev) {
-    if (ev.button !== 0) return; // Only clear on left click
-    if (ev.metaKey || ev.ctrlKey) return;
-  }
-
-  noteState.extraSelectedNotes = [];
-
-  document.removeEventListener('click', clearExtraNotes);
-}
+// Use composables
+const { clearExtraNotes, handleNoteSelect: handleNoteSelectionBase } = useNoteSelection();
+const {
+  contextMenuEv,
+  // Imported for testing
+  longPressTimer, // eslint-disable-line @typescript-eslint/no-unused-vars
+  handleContextMenu,
+  handlePointerDown,
+  handlePointerMove,
+  handlePointerUp,
+} = useContextMenu();
+const {
+  // Imported for testing
+  isDragging, // eslint-disable-line @typescript-eslint/no-unused-vars
+  menuWidth,
+  // Imported for testing
+  menuWidthDesktop, // eslint-disable-line @typescript-eslint/no-unused-vars
+  handleDragBar,
+} = useMenuResize(() => props.isSmallScreen, emit);
+const { listIsFocused } = useKeyboardNavigation(clearExtraNotes);
 
 // New note handler
 function handleNewNote() {
@@ -114,173 +108,13 @@ function handleNewNote() {
   }
 }
 
-// Single or multiple note selection handler
+// Wrap handleNoteSelect to include small screen logic
 function handleNoteSelect(ev: MouseEvent) {
   if (props.isSmallScreen) {
     emit('update:showNoteMenu', false);
   }
 
-  const target = ev.target as HTMLElement | null;
-  const closestNote = target?.closest<HTMLElement>('.note-menu__note');
-  const targetNoteUuid = closestNote?.dataset.noteUuid;
-  if (!targetNoteUuid) return;
-
-  const hasExtraNotes = noteState.extraSelectedNotes.length > 0;
-
-  // Shift key + click
-  if (ev.shiftKey) {
-    const targetNoteIndex = findNoteIndex(targetNoteUuid);
-
-    if (targetNoteIndex >= 0) {
-      const lastSelectedNote = hasExtraNotes
-        ? noteState.extraSelectedNotes[noteState.extraSelectedNotes.length - 1]?.uuid
-        : noteState.selectedNote.uuid;
-      const selectedNoteIndex = findNoteIndex(lastSelectedNote);
-
-      if (selectedNoteIndex >= 0) {
-        const lowestIndex = Math.min(selectedNoteIndex, targetNoteIndex);
-        const highestIndex = Math.max(selectedNoteIndex, targetNoteIndex);
-
-        let noteSlice: Note[] = [];
-
-        if (lowestIndex === selectedNoteIndex) {
-          noteSlice = noteState.notes.slice(lowestIndex + 1, highestIndex + 1);
-        } else if (highestIndex === selectedNoteIndex) {
-          // Reverse to ensure correct selection order, `0` = next in queue
-          noteSlice = noteState.notes.slice(lowestIndex, highestIndex).reverse();
-        }
-
-        const withoutDuplicates = noteSlice.filter((nt) => !isSelectedNote(nt));
-
-        noteState.extraSelectedNotes.push(...withoutDuplicates);
-
-        ev.stopImmediatePropagation(); // Prevent `clearExtraNotes` firing immediately
-        document.addEventListener('click', clearExtraNotes);
-      }
-    }
-
-    return;
-  }
-
-  // Ctrl key + click
-  if (ev.metaKey || ev.ctrlKey) {
-    const alreadySelectedIndex = noteState.extraSelectedNotes.findIndex(
-      (nt) => nt?.uuid === targetNoteUuid
-    );
-
-    // Deselect
-    if (alreadySelectedIndex >= 0) {
-      noteState.extraSelectedNotes.splice(alreadySelectedIndex, 1);
-
-      if (noteState.selectedNote.uuid === targetNoteUuid) {
-        selectNote(noteState.extraSelectedNotes[0]?.uuid);
-      }
-
-      // Select next extra note when current selected note is deselected
-    } else if (noteState.selectedNote.uuid === targetNoteUuid && hasExtraNotes) {
-      selectNote(noteState.extraSelectedNotes[0]?.uuid);
-
-      noteState.extraSelectedNotes.splice(0, 1);
-
-      // Add to selection
-    } else if (noteState.selectedNote.uuid !== targetNoteUuid) {
-      const foundNote = findNote(targetNoteUuid);
-
-      if (foundNote) {
-        noteState.extraSelectedNotes.push(foundNote);
-
-        document.addEventListener('click', clearExtraNotes);
-      }
-    }
-
-    return;
-  }
-
-  // Single click
-  selectNote(targetNoteUuid);
-}
-
-//// Context menu handling (handles both mouse right-click and touch long-press)
-function handleContextMenu(ev: PointerEvent) {
-  // Right-click (desktop) - contextmenu event already prevented by .prevent modifier
-  contextMenuEv.value = ev;
-}
-
-function handlePointerDown(ev: PointerEvent) {
-  if (ev.pointerType !== 'touch') return;
-
-  // Long-press (mobile/touch)
-  longPressTimer.value = window.setTimeout(() => {
-    contextMenuEv.value = ev;
-  }, LONG_PRESS_TIMEOUT);
-}
-
-function handlePointerMove() {
-  if (!longPressTimer.value) return;
-
-  // Cancel long press if user moves/scrolls
-  clearTimeout(longPressTimer.value);
-  longPressTimer.value = undefined;
-}
-
-function handlePointerUp() {
-  if (!longPressTimer.value) return;
-
-  // Clean up long press timer
-  clearTimeout(longPressTimer.value);
-  longPressTimer.value = undefined;
-}
-
-// Drag bar functionality
-function handleDragBar() {
-  isDragging.value = true;
-
-  function handleDragBarMouseMove(ev: MouseEvent) {
-    if (!isDragging.value) return;
-
-    const halfWindowWidth = Math.floor(window.innerWidth / 2);
-
-    emit('update:showNoteMenu', ev.clientX >= MIN_MENU_WIDTH);
-    menuWidthDesktop.value = `${mathClamp(ev.clientX, MIN_MENU_WIDTH, halfWindowWidth)}px`;
-  }
-
-  document.addEventListener('mousemove', handleDragBarMouseMove);
-
-  document.addEventListener(
-    'mouseup',
-    () => {
-      isDragging.value = false;
-
-      Storage.set('MENU_WIDTH', menuWidthDesktop.value);
-      document.removeEventListener('mousemove', handleDragBarMouseMove);
-    },
-    { once: true }
-  );
-}
-
-// Navigate notes with up/down arrow keys
-function navigateWithArrowKeys(ev: KeyboardEvent) {
-  if (!listIsFocused.value) return;
-
-  ev.preventDefault(); // Prevents noise on Mac
-
-  const keyDirection = {
-    ArrowUp: 1,
-    ArrowDown: -1,
-  };
-
-  const directionIndex: number | undefined =
-    keyDirection[ev.key as keyof typeof keyDirection];
-
-  if (directionIndex) {
-    const lastSelectedNoteUuid =
-      noteState.extraSelectedNotes[0]?.uuid || noteState.selectedNote.uuid;
-    // Index of the note we're selecting
-    const toIndex = findNoteIndex(lastSelectedNoteUuid) - directionIndex;
-
-    selectNote(noteState.notes[toIndex]?.uuid);
-    clearExtraNotes();
-  }
+  handleNoteSelectionBase(ev);
 }
 
 // Ensure selected note is scrolled into view
@@ -304,20 +138,6 @@ watch(
   },
   { deep: true }
 );
-
-// Register list blur
-window.addEventListener('click', (ev) => {
-  if (!(ev.target as HTMLElement)?.closest('#note-menu')) {
-    listIsFocused.value = false;
-  }
-});
-
-window.addEventListener('keydown', navigateWithArrowKeys);
-
-onBeforeUnmount(() => {
-  window.removeEventListener('keydown', navigateWithArrowKeys);
-  clearTimeout(longPressTimer.value);
-});
 </script>
 
 <style lang="scss" scoped>
