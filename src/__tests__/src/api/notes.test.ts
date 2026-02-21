@@ -4,7 +4,14 @@ import { nextTick } from 'vue';
 import * as a from '../../../api';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import { Encryptor, ERROR_CODE, KeyStore, Note, Storage } from '../../../classes';
+import {
+  Encryptor,
+  ERROR_CODE,
+  KeyStore,
+  Note,
+  Storage,
+  TokenStore,
+} from '../../../classes';
 import { UUID_REGEX } from '../../../constant';
 import { isEmptyNote, tauriInvoke } from '../../../utils';
 import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
@@ -389,7 +396,7 @@ describe('Notes (sync)', () => {
       s.syncState.password = '1';
 
       await a.login();
-      await tauriInvoke('delete_access_token', { username: 'd' });
+      await TokenStore.deleteAccessToken('d');
 
       clearMockApiResults({ calls });
 
