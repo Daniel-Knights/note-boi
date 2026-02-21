@@ -47,18 +47,6 @@ onBeforeUnmount(() => {
 <style lang="scss">
 @use './sass/vars' as v;
 
-html,
-body {
-  height: 100%;
-  overflow: hidden;
-}
-
-body {
-  margin: 0;
-  color: var(--colour__secondary);
-  background-color: var(--colour__primary);
-}
-
 .dragging-file::before {
   content: '+';
   cursor: copy;
@@ -80,27 +68,9 @@ body {
     'Helvetica Neue', sans-serif;
 }
 
-a {
-  color: var(--colour__highlight);
-
-  &:hover {
-    text-decoration: none;
-    color: var(--colour__highlight-hover);
-  }
-}
-
 .layout-main {
   flex-grow: 1;
   position: relative;
   overflow: hidden;
-}
-
-@media (pointer: coarse) {
-  input,
-  textarea,
-  select,
-  [contenteditable='true'] {
-    font-size: 16px; // Prevent iOS zoom on focus
-  }
 }
 </style>
