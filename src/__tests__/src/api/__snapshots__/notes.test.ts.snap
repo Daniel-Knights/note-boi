@@ -2784,6 +2784,193 @@ exports[`Notes (sync) > sync > Throws if not logged in > updateState 1`] = `
 }
 `;
 
+exports[`Notes (sync) > sync > Throws if password key is missing > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('THEME') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": Note {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+]
+`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > mockDb 1`] = `
+{
+  "deletedNotes": [],
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    Note {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > openedPopup 1`] = `undefined`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > selectedTheme 1`] = `"System"`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 12,
+    "display": {
+      "sync": true,
+    },
+    "message": "Authorisation error",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": {
+      "fn": [Function],
+    },
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": true,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "d",
+}
+`;
+
+exports[`Notes (sync) > sync > Throws if password key is missing > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Notes (sync) > sync > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
 exports[`Notes (sync) > sync > Unauthorized > Storage.get('ACCESS_TOKEN') 1`] = `null`;
@@ -5856,22 +6043,6 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
     },
   ],
   [
-    "request",
-    {
-      "calledWith": {
-        "body": "{"notes":[],"deleted_notes":[{"uuid":"uuid","deleted_at":0}]}",
-        "headers": {
-          "Authorization": "Bearer test-token",
-          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
-          "Content-Type": "application/json",
-          "X-Username": "d",
-        },
-        "method": "PUT",
-      },
-      "name": "/notes/sync",
-    },
-  ],
-  [
     "invoke",
     {
       "calledWith": {
@@ -5881,16 +6052,6 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
     },
   ],
   [
-    "invoke",
-    {
-      "calledWith": {
-        "accessToken": "test-token",
-        "username": "d",
-      },
-      "name": "set_access_token",
-    },
-  ],
-  [
     "request",
     {
       "calledWith": {
@@ -5904,18 +6065,6 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
         "method": "PUT",
       },
       "name": "/notes/sync",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": true,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
     },
   ],
   [
@@ -6365,10 +6514,6 @@ exports[`Notes (sync) > unsyncedNotes > deleted > mockDb 1`] = `
     {
       "deleted_at": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-    },
-    {
-      "deleted_at": 0,
-      "uuid": "uuid",
     },
     {
       "deleted_at": 0,
@@ -6841,22 +6986,6 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
     },
   ],
   [
-    "request",
-    {
-      "calledWith": {
-        "body": "{"notes":[{"uuid":"uuid","timestamp":0,"content":"content"}],"deleted_notes":[]}",
-        "headers": {
-          "Authorization": "Bearer test-token",
-          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
-          "Content-Type": "application/json",
-          "X-Username": "d",
-        },
-        "method": "PUT",
-      },
-      "name": "/notes/sync",
-    },
-  ],
-  [
     "emits",
     {
       "calledWith": {
@@ -6866,241 +6995,6 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "accessToken": "test-token",
-        "username": "d",
-      },
-      "name": "set_access_token",
-    },
-  ],
-  [
-    "emits",
-    {
-      "calledWith": {
-        "data": {
-          "is_logged_in": true,
-        },
-        "isFrontendEmit": true,
-      },
-      "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "notes": [
-          Note {
-            "content": {
-              "body": "body",
-              "delta": {},
-              "title": "title",
-            },
-            "timestamp": 0,
-            "uuid": "uuid",
-          },
-          Note {
-            "content": {
-              "body": "😬ö",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Note with special characters
-
-😬ö
-  sss
-	
-Ketchup
-Salt 
-Sugar
-
-¯\\_(ツ)_/¯
-
-──────────────────────────────────
-──────▄▀▀▄────────────────▄▀▀▄────
-─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
-─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
-────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
-───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
-─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
-▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
-▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
-▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
-▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
-▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
-▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
-▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
-▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
-▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
-▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
-▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
-▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
-▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
-█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
-█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
-▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-
-",
-                  },
-                ],
-              },
-              "title": "Note with special characters",
-            },
-            "timestamp": 0,
-            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
-          },
-          Note {
-            "content": {
-              "body": "amet consectetur adipisicing",
-              "delta": {
-                "ops": [
-                  {
-                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
-                  },
-                ],
-              },
-              "title": "Amet consectetur adipisicing",
-            },
-            "timestamp": 0,
-            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-          },
-        ],
-      },
-      "name": "sync_local_notes",
     },
   ],
   [
