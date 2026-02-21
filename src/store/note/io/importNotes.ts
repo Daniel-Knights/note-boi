@@ -5,6 +5,7 @@ import { Dialog, Note } from '../../../classes';
 import { UUID_REGEX } from '../../../constant';
 import { isDesktop, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
+import { addNotes } from '../actions';
 import { noteState } from '../state';
 
 import { syncLocalNotes } from './syncLocalNotes';
@@ -16,7 +17,7 @@ export function importNotesToState(notes: Note[] | undefined) {
 
   // Ensure imported notes are synced and aren't overwritten if deleted remotely
   syncState.unsyncedNotes.set({ edited: notes.map((nt) => nt.uuid) });
-  noteState.addNotes(notes, { selectLatest: true });
+  addNotes(notes, { selectLatest: true });
   syncLocalNotes(noteState.notes);
   debounceSync();
 }

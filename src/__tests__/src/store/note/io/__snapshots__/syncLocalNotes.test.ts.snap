@@ -65,7 +65,6 @@ exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > mockDb 1`] 
 
 exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

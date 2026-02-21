@@ -30,7 +30,6 @@ exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class o
 
 exports[`importNotes > handleImportNotesDragDrop > Adds and removes body class on enter, leave, and drop > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -168,7 +167,6 @@ exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file e
 
 exports[`importNotes > handleImportNotesDragDrop > Filters out unaccepted file extensions > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -344,7 +342,6 @@ exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > mockD
 
 exports[`importNotes > handleImportNotesDragDrop > Imports dropped notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -465,7 +462,6 @@ exports[`importNotes > handleImportNotesDragDrop > Returns when there are no val
 
 exports[`importNotes > handleImportNotesDragDrop > Returns when there are no valid paths > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -615,7 +611,6 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
 
 exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports multiple notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -787,7 +782,6 @@ exports[`importNotes > importNotesFromFileChooser > Opens file chooser and impor
 
 exports[`importNotes > importNotesFromFileChooser > Opens file chooser and imports one note > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -907,7 +901,6 @@ exports[`importNotes > importNotesFromFileChooser > Returns on no selected files
 
 exports[`importNotes > importNotesFromFileChooser > Returns on no selected files > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1216,7 +1209,6 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes >
 
 exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1744,7 +1736,6 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes a
 
 exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes and syncs them > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1956,7 +1947,6 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes w
 
 exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes with no local notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -2082,7 +2072,6 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Returns when pa
 
 exports[`importNotes > importNotesFromPaths/importNotesToState > Returns when passed no paths > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

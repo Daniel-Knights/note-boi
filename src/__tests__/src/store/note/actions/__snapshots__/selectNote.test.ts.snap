@@ -49,7 +49,6 @@ exports[`selectNote > mockDb 1`] = `
 
 exports[`selectNote > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {

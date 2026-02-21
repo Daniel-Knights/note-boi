@@ -1,20 +1,20 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`newNote > Only updates timestamp when empty note selected > KeyStore.getKey() 1`] = `undefined`;
+exports[`editNote > Edits notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`newNote > Only updates timestamp when empty note selected > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`editNote > Edits notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`newNote > Only updates timestamp when empty note selected > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`editNote > Edits notes > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`newNote > Only updates timestamp when empty note selected > Storage.get('THEME') 1`] = `null`;
+exports[`editNote > Edits notes > Storage.get('THEME') 1`] = `null`;
 
-exports[`newNote > Only updates timestamp when empty note selected > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`editNote > Edits notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`newNote > Only updates timestamp when empty note selected > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`editNote > Edits notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`newNote > Only updates timestamp when empty note selected > Storage.get('USERNAME') 1`] = `null`;
+exports[`editNote > Edits notes > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`newNote > Only updates timestamp when empty note selected > allCalls 1`] = `
+exports[`editNote > Edits notes > allCalls 1`] = `
 [
   [
     "invoke",
@@ -23,12 +23,36 @@ exports[`newNote > Only updates timestamp when empty note selected > allCalls 1`
       "name": "get_all_notes",
     },
   ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": Note {
+          "content": {
+            "body": "Body",
+            "delta": {
+              "ops": [
+                {
+                  "insert": "Title
+Body",
+                },
+              ],
+            },
+            "title": "Title",
+          },
+          "timestamp": 0,
+          "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        },
+      },
+      "name": "edit_note",
+    },
+  ],
 ]
 `;
 
-exports[`newNote > Only updates timestamp when empty note selected > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`editNote > Edits notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`newNote > Only updates timestamp when empty note selected > mockDb 1`] = `
+exports[`editNote > Edits notes > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -38,66 +62,22 @@ exports[`newNote > Only updates timestamp when empty note selected > mockDb 1`] 
 }
 `;
 
-exports[`newNote > Only updates timestamp when empty note selected > noteState 1`] = `
+exports[`editNote > Edits notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
       "content": {
-        "body": "😬ö",
+        "body": "Body",
         "delta": {
           "ops": [
             {
-              "insert": "Note with special characters
-
-😬ö
-  sss
-	
-Ketchup
-Salt 
-Sugar
-
-¯\\_(ツ)_/¯
-
-──────────────────────────────────
-──────▄▀▀▄────────────────▄▀▀▄────
-─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
-─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
-────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
-───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
-─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
-▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
-▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
-▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
-▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
-▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
-▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
-▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
-▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
-▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
-▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
-▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
-▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
-▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
-█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
-█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
-▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-
-",
+              "insert": "Title
+Body",
             },
           ],
         },
-        "title": "Note with special characters",
+        "title": "Title",
       },
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
@@ -237,37 +217,74 @@ Sugar
       "timestamp": 0,
       "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
     },
-    Note {
-      "content": {
-        "body": "",
-        "delta": {
-          "ops": [],
-        },
-        "title": "",
-      },
-      "timestamp": 0,
-      "uuid": "uuid",
-    },
   ],
   "selectedNote": Note {
     "content": {
-      "body": "",
+      "body": "😬ö",
       "delta": {
-        "ops": [],
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
       },
-      "title": "",
+      "title": "Note with special characters",
     },
     "timestamp": 0,
-    "uuid": "uuid",
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
 
-exports[`newNote > Only updates timestamp when empty note selected > openedPopup 1`] = `undefined`;
+exports[`editNote > Edits notes > openedPopup 1`] = `undefined`;
 
-exports[`newNote > Only updates timestamp when empty note selected > selectedTheme 1`] = `"System"`;
+exports[`editNote > Edits notes > selectedTheme 1`] = `"System"`;
 
-exports[`newNote > Only updates timestamp when empty note selected > syncState 1`] = `
+exports[`editNote > Edits notes > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -284,14 +301,16 @@ exports[`newNote > Only updates timestamp when empty note selected > syncState 1
   "password": "",
   "unsyncedNotes": UnsyncedNotesManager {
     "deleted": [],
-    "edited": Set {},
+    "edited": Set {
+      "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+    },
     "new": "",
   },
   "username": "",
 }
 `;
 
-exports[`newNote > Only updates timestamp when empty note selected > updateState 1`] = `
+exports[`editNote > Edits notes > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -299,21 +318,21 @@ exports[`newNote > Only updates timestamp when empty note selected > updateState
 }
 `;
 
-exports[`newNote > When selected note isn't empty > KeyStore.getKey() 1`] = `undefined`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`newNote > When selected note isn't empty > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`newNote > When selected note isn't empty > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`newNote > When selected note isn't empty > Storage.get('THEME') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('THEME') 1`] = `null`;
 
-exports[`newNote > When selected note isn't empty > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`newNote > When selected note isn't empty > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`newNote > When selected note isn't empty > Storage.get('USERNAME') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`newNote > When selected note isn't empty > allCalls 1`] = `
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > allCalls 1`] = `
 [
   [
     "invoke",
@@ -330,23 +349,27 @@ exports[`newNote > When selected note isn't empty > allCalls 1`] = `
           "content": {
             "body": "",
             "delta": {
-              "ops": [],
+              "ops": [
+                {
+                  "insert": "",
+                },
+              ],
             },
             "title": "",
           },
           "timestamp": 0,
-          "uuid": "uuid",
+          "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
         },
       },
-      "name": "new_note",
+      "name": "edit_note",
     },
   ],
 ]
 `;
 
-exports[`newNote > When selected note isn't empty > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`newNote > When selected note isn't empty > mockDb 1`] = `
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -356,77 +379,21 @@ exports[`newNote > When selected note isn't empty > mockDb 1`] = `
 }
 `;
 
-exports[`newNote > When selected note isn't empty > noteState 1`] = `
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
       "content": {
         "body": "",
         "delta": {
-          "ops": [],
-        },
-        "title": "",
-      },
-      "timestamp": 0,
-      "uuid": "uuid",
-    },
-    Note {
-      "content": {
-        "body": "😬ö",
-        "delta": {
           "ops": [
             {
-              "insert": "Note with special characters
-
-😬ö
-  sss
-	
-Ketchup
-Salt 
-Sugar
-
-¯\\_(ツ)_/¯
-
-──────────────────────────────────
-──────▄▀▀▄────────────────▄▀▀▄────
-─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
-─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
-────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
-───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
-─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
-▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
-▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
-▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
-▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
-▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
-▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
-▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
-▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
-▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
-▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
-▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
-▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
-▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
-▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
-▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
-▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
-█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
-█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
-▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
-▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
-
-",
+              "insert": "",
             },
           ],
         },
-        "title": "Note with special characters",
+        "title": "",
       },
       "timestamp": 0,
       "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
@@ -569,23 +536,71 @@ Sugar
   ],
   "selectedNote": Note {
     "content": {
-      "body": "",
+      "body": "😬ö",
       "delta": {
-        "ops": [],
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
       },
-      "title": "",
+      "title": "Note with special characters",
     },
     "timestamp": 0,
-    "uuid": "uuid",
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
 }
 `;
 
-exports[`newNote > When selected note isn't empty > openedPopup 1`] = `undefined`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > openedPopup 1`] = `undefined`;
 
-exports[`newNote > When selected note isn't empty > selectedTheme 1`] = `"System"`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > selectedTheme 1`] = `"System"`;
 
-exports[`newNote > When selected note isn't empty > syncState 1`] = `
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -603,13 +618,13 @@ exports[`newNote > When selected note isn't empty > syncState 1`] = `
   "unsyncedNotes": UnsyncedNotesManager {
     "deleted": [],
     "edited": Set {},
-    "new": "",
+    "new": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
   },
   "username": "",
 }
 `;
 
-exports[`newNote > When selected note isn't empty > updateState 1`] = `
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

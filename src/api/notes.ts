@@ -11,6 +11,7 @@ import {
   TokenStore,
 } from '../classes';
 import {
+  addNotes,
   dispatchNoteEvent,
   findNote,
   newNote,
@@ -157,7 +158,7 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
   }
 
   // Add new notes from the server
-  noteState.addNotes(noteDiff.added);
+  addNotes(noteDiff.added);
 
   // New note if no notes exist
   if (noteState.notes.length === 0) {
