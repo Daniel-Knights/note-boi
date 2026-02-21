@@ -220,6 +220,7 @@ $utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
       }
 
       .ql-picker-label {
+        line-height: 24px;
         color: var(--colour__tertiary);
 
         .ql-stroke {
