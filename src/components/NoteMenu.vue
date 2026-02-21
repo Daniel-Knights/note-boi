@@ -31,16 +31,10 @@
         }"
         :data-note-uuid="note.uuid"
       >
-        <h2
-          class="note-menu__title"
-          :class="{ 'note-menu__title--empty': !note.content.title }"
-        >
+        <h2 v-if="note.content.title" class="note-menu__title">
           {{ note.content.title }}
         </h2>
-        <p
-          class="note-menu__body"
-          :class="{ 'note-menu__body--empty': !note.content.body }"
-        >
+        <p v-if="note.content.body" class="note-menu__body">
           {{ note.content.body }}
         </p>
       </li>
@@ -390,22 +384,16 @@ $new-note-height: 50px;
   -webkit-user-select: none;
 }
 
-.note-menu__title {
-  &,
-  &--empty + .note-menu__body {
-    margin-top: 0;
-    font-size: 18px;
-    font-weight: 600;
-  }
+.note-menu__title,
+.note-menu__note:not(:has(.note-menu__title)) .note-menu__body {
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .note-menu__body {
   margin-top: 3px;
   font-size: 15px;
-
-  &--empty {
-    display: none;
-  }
 }
 
 .note-menu__new-note {
