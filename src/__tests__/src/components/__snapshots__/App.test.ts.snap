@@ -104,6 +104,861 @@ exports[`App > Handles note menu toggling > updateState 1`] = `
 }
 `;
 
+exports[`App > Media query logic > Detects non-touch device > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Media query logic > Detects non-touch device > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Media query logic > Detects non-touch device > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Media query logic > Detects non-touch device > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Media query logic > Detects non-touch device > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Media query logic > Detects non-touch device > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Media query logic > Detects non-touch device > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Media query logic > Detects non-touch device > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Media query logic > Detects non-touch device > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Media query logic > Detects non-touch device > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Media query logic > Detects non-touch device > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Media query logic > Detects non-touch device > openedPopup 1`] = `undefined`;
+
+exports[`App > Media query logic > Detects non-touch device > selectedTheme 1`] = `"System"`;
+
+exports[`App > Media query logic > Detects non-touch device > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Media query logic > Detects non-touch device > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`App > Media query logic > Detects touch device > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Media query logic > Detects touch device > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Media query logic > Detects touch device > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Media query logic > Detects touch device > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Media query logic > Detects touch device > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Media query logic > Detects touch device > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Media query logic > Detects touch device > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Media query logic > Detects touch device > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Media query logic > Detects touch device > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Media query logic > Detects touch device > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Media query logic > Detects touch device > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Media query logic > Detects touch device > openedPopup 1`] = `undefined`;
+
+exports[`App > Media query logic > Detects touch device > selectedTheme 1`] = `"System"`;
+
+exports[`App > Media query logic > Detects touch device > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Media query logic > Detects touch device > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > openedPopup 1`] = `undefined`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > selectedTheme 1`] = `"System"`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Media query logic > Initializes with menu hidden on small screen > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > openedPopup 1`] = `undefined`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > selectedTheme 1`] = `"System"`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Media query logic > Initializes with menu shown on large screen > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`App > Media query logic > Removes event listener on unmount > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Media query logic > Removes event listener on unmount > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Media query logic > Removes event listener on unmount > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Media query logic > Removes event listener on unmount > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Media query logic > Removes event listener on unmount > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Media query logic > Removes event listener on unmount > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Media query logic > Removes event listener on unmount > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Media query logic > Removes event listener on unmount > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Media query logic > Removes event listener on unmount > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Media query logic > Removes event listener on unmount > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Media query logic > Removes event listener on unmount > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Media query logic > Removes event listener on unmount > openedPopup 1`] = `undefined`;
+
+exports[`App > Media query logic > Removes event listener on unmount > selectedTheme 1`] = `"System"`;
+
+exports[`App > Media query logic > Removes event listener on unmount > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Media query logic > Removes event listener on unmount > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    Note {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+    Note {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > openedPopup 1`] = `undefined`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > selectedTheme 1`] = `"System"`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > openedPopup 1`] = `undefined`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > selectedTheme 1`] = `"System"`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to large > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('THEME') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > openedPopup 1`] = `undefined`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > selectedTheme 1`] = `"System"`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Media query logic > Updates state when screen size changes to small > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`App > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`App > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
