@@ -1,0 +1,119 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('THEME') 1`] = `null`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+]
+`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > openedPopup 1`] = `undefined`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > selectedTheme 1`] = `"System"`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

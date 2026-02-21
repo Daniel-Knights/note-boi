@@ -234,6 +234,254 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 }
 `;
 
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > Storage.get('THEME') 1`] = `null`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": Note {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"current_password":"1","new_password":"2","notes":[{"uuid":"uuid","timestamp":0,"content":"content"}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
+      "name": "/account/change-password",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "tauriApi",
+    {
+      "calledWith": {
+        "kind": "error",
+        "message": "Unable to store encryption key. Please try again.",
+        "okLabel": undefined,
+        "title": "Change password",
+      },
+      "name": "plugin:dialog|message",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > mockDb 1`] = `
+{
+  "deletedNotes": [],
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    Note {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > openedPopup 1`] = `undefined`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > selectedTheme 1`] = `"System"`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 1,
+    "display": {
+      "form": true,
+      "sync": true,
+    },
+    "message": "An unknown error occurred",
+    "originalError": [Error: Unable to store encryption key],
+    "retry": [Function],
+    "retryConfig": {
+      "args": [],
+      "fn": [Function],
+    },
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Account > changePassword > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
 exports[`Account > changePassword > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;

@@ -1,5 +1,191 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`PopupSyncAuth > Disables submit button while loading > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > Storage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > Storage.get('USERNAME') 1`] = `"d"`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "note": Note {
+          "content": {
+            "body": "",
+            "delta": {
+              "ops": [],
+            },
+            "title": "",
+          },
+          "timestamp": 0,
+          "uuid": "uuid",
+        },
+      },
+      "name": "new_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+]
+`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > mockDb 1`] = `
+{
+  "deletedNotes": [],
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [
+    Note {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "uuid",
+    },
+  ],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": true,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "d",
+}
+`;
+
+exports[`PopupSyncAuth > Disables submit button while loading > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`PopupSyncAuth > Emits close > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`PopupSyncAuth > Emits close > Storage.get('ACCESS_TOKEN') 1`] = `null`;

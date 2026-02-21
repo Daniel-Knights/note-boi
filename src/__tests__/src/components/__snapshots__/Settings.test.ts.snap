@@ -234,6 +234,231 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
 }
 `;
 
+exports[`Settings > Has title attribute on settings button > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Has title attribute on settings button > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Settings > Has title attribute on settings button > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Has title attribute on settings button > Storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Has title attribute on settings button > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Has title attribute on settings button > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Has title attribute on settings button > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Has title attribute on settings button > allCalls 1`] = `[]`;
+
+exports[`Settings > Has title attribute on settings button > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Has title attribute on settings button > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Has title attribute on settings button > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Settings > Has title attribute on settings button > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Has title attribute on settings button > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Has title attribute on settings button > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Has title attribute on settings button > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > Storage.get('THEME') 1`] = `null`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > allCalls 1`] = `
+[
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": undefined,
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/logout",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "delete_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": false,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+]
+`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > openedPopup 1`] = `undefined`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > selectedTheme 1`] = `"System"`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Settings > Logout menu item > Logs out when clicked > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Settings > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`Settings > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;

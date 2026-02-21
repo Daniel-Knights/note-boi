@@ -1,24 +1,24 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`DebounceQueue > add > KeyStore.getKey() 1`] = `undefined`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DebounceQueue > add > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DebounceQueue > add > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DebounceQueue > add > Storage.get('THEME') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('THEME') 1`] = `null`;
 
-exports[`DebounceQueue > add > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DebounceQueue > add > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DebounceQueue > add > Storage.get('USERNAME') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('USERNAME') 1`] = `null`;
 
-exports[`DebounceQueue > add > allCalls 1`] = `[]`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > allCalls 1`] = `[]`;
 
-exports[`DebounceQueue > add > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`DebounceQueue > add > mockDb 1`] = `
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -28,7 +28,7 @@ exports[`DebounceQueue > add > mockDb 1`] = `
 }
 `;
 
-exports[`DebounceQueue > add > noteState 1`] = `
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > noteState 1`] = `
 {
   "addNotes": [Function],
   "extraSelectedNotes": [],
@@ -47,11 +47,11 @@ exports[`DebounceQueue > add > noteState 1`] = `
 }
 `;
 
-exports[`DebounceQueue > add > openedPopup 1`] = `undefined`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > openedPopup 1`] = `undefined`;
 
-exports[`DebounceQueue > add > selectedTheme 1`] = `"System"`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > selectedTheme 1`] = `"System"`;
 
-exports[`DebounceQueue > add > syncState 1`] = `
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -75,7 +75,256 @@ exports[`DebounceQueue > add > syncState 1`] = `
 }
 `;
 
-exports[`DebounceQueue > add > updateState 1`] = `
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('THEME') 1`] = `null`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > allCalls 1`] = `[]`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > openedPopup 1`] = `undefined`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > selectedTheme 1`] = `"System"`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`DebounceQueue > Debounces tasks with delay > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DebounceQueue > Debounces tasks with delay > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`DebounceQueue > Debounces tasks with delay > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DebounceQueue > Debounces tasks with delay > Storage.get('THEME') 1`] = `null`;
+
+exports[`DebounceQueue > Debounces tasks with delay > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DebounceQueue > Debounces tasks with delay > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DebounceQueue > Debounces tasks with delay > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`DebounceQueue > Debounces tasks with delay > allCalls 1`] = `[]`;
+
+exports[`DebounceQueue > Debounces tasks with delay > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DebounceQueue > Debounces tasks with delay > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DebounceQueue > Debounces tasks with delay > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`DebounceQueue > Debounces tasks with delay > openedPopup 1`] = `undefined`;
+
+exports[`DebounceQueue > Debounces tasks with delay > selectedTheme 1`] = `"System"`;
+
+exports[`DebounceQueue > Debounces tasks with delay > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`DebounceQueue > Debounces tasks with delay > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('THEME') 1`] = `null`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('USERNAME') 1`] = `null`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > allCalls 1`] = `[]`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > noteState 1`] = `
+{
+  "addNotes": [Function],
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > openedPopup 1`] = `undefined`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > selectedTheme 1`] = `"System"`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`DebounceQueue > Executes immediately when no delay is provided > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
