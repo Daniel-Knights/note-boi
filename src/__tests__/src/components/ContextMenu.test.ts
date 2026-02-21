@@ -4,7 +4,13 @@ import { nextTick } from 'vue';
 import * as n from '../../../store/note';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../mock';
-import { findByTestId, getByTestId, getDummyNotes, resolveImmediate } from '../../utils';
+import {
+  findByTestId,
+  getByTestId,
+  getDummyNotes,
+  resolveImmediate,
+  waitUntil,
+} from '../../utils';
 
 import ContextMenu from '../../../components/ContextMenu.vue';
 import DropMenu from '../../../components/DropMenu.vue';
@@ -211,7 +217,9 @@ describe('ContextMenu', () => {
   });
 
   it('Deletes a note', async () => {
-    mockApi();
+    const { setResValues, calls } = mockApi();
+
+    setResValues.tauriApi({ askDialog: [true] });
 
     await n.getAllNotes();
 
@@ -229,13 +237,42 @@ describe('ContextMenu', () => {
     const deleteSpy = vi.spyOn(n, 'deleteNote');
 
     await getByTestId(wrapper, 'delete').trigger('click');
+    await waitUntil(() => calls.invoke.has('delete_note'));
 
     expect(deleteSpy).toHaveBeenCalledOnce();
     expect(deleteSpy).toHaveBeenCalledWith(noteToDelete.uuid);
   });
 
+  it('Does not delete note if confirmation is cancelled', async () => {
+    const { setResValues } = mockApi();
+
+    setResValues.tauriApi({ askDialog: [false] });
+
+    await n.getAllNotes();
+
+    const noteToDelete = { ...getDummyNotes()[0] };
+    const div = document.createElement('div');
+    div.dataset.noteUuid = noteToDelete.uuid;
+
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev, { attachTo: div });
+
+    assertMounted(wrapper, ev);
+
+    n.selectNote(noteToDelete.uuid);
+
+    const deleteSpy = vi.spyOn(n, 'deleteNote');
+
+    await getByTestId(wrapper, 'delete').trigger('click');
+    await resolveImmediate(); // Wait for Dialog.ask to resolve
+
+    expect(deleteSpy).not.toHaveBeenCalled();
+  });
+
   it('Deletes all selected notes', async () => {
-    mockApi();
+    const { setResValues, calls } = mockApi();
+
+    setResValues.tauriApi({ askDialog: [true] });
 
     await n.getAllNotes();
 
@@ -255,8 +292,37 @@ describe('ContextMenu', () => {
     const deleteSelectedSpy = vi.spyOn(n, 'deleteSelectedNotes');
 
     await getByTestId(wrapper, 'delete').trigger('click');
+    await waitUntil(() => calls.invoke.has('delete_note'));
 
     expect(deleteSelectedSpy).toHaveBeenCalledOnce();
+  });
+
+  it('Does not delete selected notes if confirmation is cancelled', async () => {
+    const { setResValues } = mockApi();
+
+    setResValues.tauriApi({ askDialog: [false] });
+
+    await n.getAllNotes();
+
+    const noteToDelete = { ...getDummyNotes()[0] };
+    const noteSlice = getDummyNotes().slice(2, 6);
+    const div = document.createElement('div');
+    div.dataset.noteUuid = noteToDelete.uuid;
+
+    const ev = getContextMenuEv();
+    const wrapper = await mountContextMenu(ev, { attachTo: div });
+
+    assertMounted(wrapper, ev);
+
+    n.selectNote(noteToDelete.uuid);
+    n.noteState.extraSelectedNotes.push(...noteSlice);
+
+    const deleteSelectedSpy = vi.spyOn(n, 'deleteSelectedNotes');
+
+    await getByTestId(wrapper, 'delete').trigger('click');
+    await resolveImmediate(); // Wait for Dialog.ask to resolve
+
+    expect(deleteSelectedSpy).not.toHaveBeenCalled();
   });
 
   it('Exports all notes', async () => {

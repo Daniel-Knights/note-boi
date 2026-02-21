@@ -13,6 +13,7 @@
 <script lang="ts" setup>
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
+import { Dialog } from '../classes';
 import {
   deleteNote,
   deleteSelectedNotes,
@@ -86,7 +87,13 @@ function handleExportNotes() {
   }
 }
 
-function handleDeleteNote() {
+async function handleDeleteNote() {
+  const confirmed = await Dialog.ask('Are you sure?', {
+    title: 'Delete Note(s)',
+    kind: 'warning',
+  });
+  if (!confirmed) return;
+
   if (noteState.extraSelectedNotes.length > 0) {
     deleteSelectedNotes();
   } else if (clickedNoteUuid.value) {
