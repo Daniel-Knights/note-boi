@@ -2,7 +2,7 @@ import * as a from '../../../api';
 import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import { ERROR_CODE, Storage } from '../../../classes';
+import { ERROR_CODE, Storage, TokenStore } from '../../../classes';
 import { tauriInvoke } from '../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
@@ -205,7 +205,7 @@ describe('Account', () => {
       s.syncState.newPassword = '2';
 
       await a.login();
-      await tauriInvoke('delete_access_token', { username: 'd' });
+      await TokenStore.deleteAccessToken('d');
 
       clearMockApiResults({ calls });
 
@@ -432,7 +432,7 @@ describe('Account', () => {
       s.syncState.password = '1';
 
       await a.login();
-      await tauriInvoke('delete_access_token', { username: 'd' });
+      await TokenStore.deleteAccessToken('d');
 
       clearMockApiResults({ calls });
 
