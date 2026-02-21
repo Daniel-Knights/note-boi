@@ -16,6 +16,8 @@ $utility-button-width: 32px;
 $text-shadow: 0 1px 0 $black;
 $drop-menu-padding: 3px;
 $find-in-page-height: 38px;
+// Note: This needs to be kept in sync with the MEDIA_QUERY_SMALL_SCREEN JS const
+$small-screen-width: 650px;
 
 // Mixins
 @mixin flex-x($justify: false, $align: false) {
