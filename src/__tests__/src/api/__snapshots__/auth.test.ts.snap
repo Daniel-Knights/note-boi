@@ -45,7 +45,6 @@ exports[`Auth > clientSideLogout > Does not delete access token if no username >
 
 exports[`Auth > clientSideLogout > Does not delete access token if no username > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -228,7 +227,6 @@ exports[`Auth > clientSideLogout > Sets all state to logged out > mockDb 1`] = `
 
 exports[`Auth > clientSideLogout > Sets all state to logged out > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -446,7 +444,6 @@ exports[`Auth > login > Handles KeyStore.storeKey error after successful login >
 
 exports[`Auth > login > Handles KeyStore.storeKey error after successful login > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -614,7 +611,6 @@ exports[`Auth > login > Sets and resets loading state > mockDb 1`] = `
 
 exports[`Auth > login > Sets and resets loading state > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -726,7 +722,6 @@ exports[`Auth > login > Unauthorized > mockDb 1`] = `
 
 exports[`Auth > login > Unauthorized > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -831,7 +826,6 @@ exports[`Auth > login > User not found > mockDb 1`] = `
 
 exports[`Auth > login > User not found > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -964,7 +958,6 @@ exports[`Auth > login > With decryption error > mockDb 1`] = `
 
 exports[`Auth > login > With decryption error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1062,7 +1055,6 @@ exports[`Auth > login > With encryption error > mockDb 1`] = `
 
 exports[`Auth > login > With encryption error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1646,7 +1638,6 @@ exports[`Auth > login > With no notes > mockDb 1`] = `
 
 exports[`Auth > login > With no notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -2229,7 +2220,6 @@ exports[`Auth > login > With notes > mockDb 1`] = `
 
 exports[`Auth > login > With notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -2623,7 +2613,6 @@ exports[`Auth > login > With server error > mockDb 1`] = `
 
 exports[`Auth > login > With server error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -2836,7 +2825,6 @@ exports[`Auth > logout > Logs a user out and clears user-based state > mockDb 1`
 
 exports[`Auth > logout > Logs a user out and clears user-based state > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -3056,7 +3044,6 @@ exports[`Auth > logout > Sets and resets loading state > mockDb 1`] = `
 
 exports[`Auth > logout > Sets and resets loading state > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -3248,7 +3235,6 @@ exports[`Auth > logout > Throws if no access token > mockDb 1`] = `
 
 exports[`Auth > logout > Throws if no access token > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -3347,7 +3333,6 @@ exports[`Auth > logout > Throws if no username > mockDb 1`] = `
 
 exports[`Auth > logout > Throws if no username > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -3557,7 +3542,6 @@ exports[`Auth > logout > Unauthorized > mockDb 1`] = `
 
 exports[`Auth > logout > Unauthorized > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -3775,7 +3759,6 @@ exports[`Auth > logout > User not found > mockDb 1`] = `
 
 exports[`Auth > logout > User not found > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -3995,7 +3978,6 @@ exports[`Auth > logout > With server error > mockDb 1`] = `
 
 exports[`Auth > logout > With server error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -4163,7 +4145,6 @@ exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup
 
 exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -4269,7 +4250,6 @@ exports[`Auth > signup > Sets and resets loading state > mockDb 1`] = `
 
 exports[`Auth > signup > Sets and resets loading state > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -4367,7 +4347,6 @@ exports[`Auth > signup > With encryption error > mockDb 1`] = `
 
 exports[`Auth > signup > With encryption error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -4697,7 +4676,6 @@ exports[`Auth > signup > With no notes > mockDb 1`] = `
 
 exports[`Auth > signup > With no notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -4827,7 +4805,6 @@ exports[`Auth > signup > With notes > mockDb 1`] = `
 
 exports[`Auth > signup > With notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -5170,7 +5147,6 @@ exports[`Auth > signup > With server error > mockDb 1`] = `
 
 exports[`Auth > signup > With server error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

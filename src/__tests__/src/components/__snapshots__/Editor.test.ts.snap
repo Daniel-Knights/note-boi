@@ -30,7 +30,6 @@ exports[`Editor > Closes find-in-page > mockDb 1`] = `
 
 exports[`Editor > Closes find-in-page > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -169,7 +168,6 @@ exports[`Editor > Constructs note object from parsed text > mockDb 1`] = `
 
 exports[`Editor > Constructs note object from parsed text > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -281,7 +279,6 @@ exports[`Editor > Does not show find-in-page on touch devices > mockDb 1`] = `
 
 exports[`Editor > Does not show find-in-page on touch devices > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -364,7 +361,6 @@ exports[`Editor > Has the correct timestamp > mockDb 1`] = `
 
 exports[`Editor > Has the correct timestamp > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -447,7 +443,6 @@ exports[`Editor > Mounts > mockDb 1`] = `
 
 exports[`Editor > Mounts > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -530,7 +525,6 @@ exports[`Editor > Opens find-in-page > mockDb 1`] = `
 
 exports[`Editor > Opens find-in-page > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -623,7 +617,6 @@ exports[`Editor > Sets the correct note text > mockDb 1`] = `
 
 exports[`Editor > Sets the correct note text > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {

@@ -40,7 +40,6 @@ exports[`utils > findNote > mockDb 1`] = `
 
 exports[`utils > findNote > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -376,7 +375,6 @@ exports[`utils > findNoteIndex > mockDb 1`] = `
 
 exports[`utils > findNoteIndex > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -712,7 +710,6 @@ exports[`utils > isSelectedNote > mockDb 1`] = `
 
 exports[`utils > isSelectedNote > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {

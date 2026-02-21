@@ -30,7 +30,6 @@ exports[`Popup > Sets opened popup > mockDb 1`] = `
 
 exports[`Popup > Sets opened popup > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

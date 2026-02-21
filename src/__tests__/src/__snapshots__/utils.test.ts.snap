@@ -45,7 +45,6 @@ exports[`Utils > Tauri API wrappers > tauriEmit > mockDb 1`] = `
 
 exports[`Utils > Tauri API wrappers > tauriEmit > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -147,7 +146,6 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -239,7 +237,6 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows 
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -359,7 +356,6 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -451,7 +447,6 @@ exports[`Utils > Tauri API wrappers > tauriListen > mockDb 1`] = `
 
 exports[`Utils > Tauri API wrappers > tauriListen > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -534,7 +529,6 @@ exports[`Utils > capitalise > mockDb 1`] = `
 
 exports[`Utils > capitalise > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -617,7 +611,6 @@ exports[`Utils > escapeRegex > mockDb 1`] = `
 
 exports[`Utils > escapeRegex > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -700,7 +693,6 @@ exports[`Utils > hasKeys > mockDb 1`] = `
 
 exports[`Utils > hasKeys > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -783,7 +775,6 @@ exports[`Utils > isDev > mockDb 1`] = `
 
 exports[`Utils > isDev > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -866,7 +857,6 @@ exports[`Utils > isEmptyNote > mockDb 1`] = `
 
 exports[`Utils > isEmptyNote > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -949,7 +939,6 @@ exports[`Utils > isWhitespaceOnly > mockDb 1`] = `
 
 exports[`Utils > isWhitespaceOnly > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1032,7 +1021,6 @@ exports[`Utils > mathClamp > mockDb 1`] = `
 
 exports[`Utils > mathClamp > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1115,7 +1103,6 @@ exports[`Utils > unixToDateTime > mockDb 1`] = `
 
 exports[`Utils > unixToDateTime > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

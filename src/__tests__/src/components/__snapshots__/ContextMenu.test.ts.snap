@@ -30,7 +30,6 @@ exports[`ContextMenu > Closes > mockDb 1`] = `
 
 exports[`ContextMenu > Closes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`ContextMenu > Closes on click outside > mockDb 1`] = `
 
 exports[`ContextMenu > Closes on click outside > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -196,7 +194,6 @@ exports[`ContextMenu > Closes on menu item click > mockDb 1`] = `
 
 exports[`ContextMenu > Closes on menu item click > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -289,7 +286,6 @@ exports[`ContextMenu > Creates a new note > mockDb 1`] = `
 
 exports[`ContextMenu > Creates a new note > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -644,7 +640,6 @@ exports[`ContextMenu > Delete button not shown with no notes > mockDb 1`] = `
 
 exports[`ContextMenu > Delete button not shown with no notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -769,7 +764,6 @@ exports[`ContextMenu > Deletes a note > mockDb 1`] = `
 
 exports[`ContextMenu > Deletes a note > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1151,7 +1145,6 @@ exports[`ContextMenu > Deletes all selected notes > mockDb 1`] = `
 
 exports[`ContextMenu > Deletes all selected notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1444,7 +1437,6 @@ exports[`ContextMenu > Does not delete note if confirmation is cancelled > mockD
 
 exports[`ContextMenu > Does not delete note if confirmation is cancelled > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1747,7 +1739,6 @@ exports[`ContextMenu > Does not delete selected notes if confirmation is cancell
 
 exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [
     Note {
       "content": {
@@ -2090,7 +2081,6 @@ exports[`ContextMenu > Does not show export or delete button if no clicked note 
 
 exports[`ContextMenu > Does not show export or delete button if no clicked note > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -2202,7 +2192,6 @@ exports[`ContextMenu > Export button not shown with no notes > mockDb 1`] = `
 
 exports[`ContextMenu > Export button not shown with no notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -2345,7 +2334,6 @@ exports[`ContextMenu > Exports a note > mockDb 1`] = `
 
 exports[`ContextMenu > Exports a note > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -2652,7 +2640,6 @@ exports[`ContextMenu > Exports all notes > mockDb 1`] = `
 
 exports[`ContextMenu > Exports all notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -2843,7 +2830,6 @@ exports[`ContextMenu > Exports all selected notes > mockDb 1`] = `
 
 exports[`ContextMenu > Exports all selected notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [
     Note {
       "content": {
@@ -3212,7 +3198,6 @@ exports[`ContextMenu > Imports notes > mockDb 1`] = `
 
 exports[`ContextMenu > Imports notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -3295,7 +3280,6 @@ exports[`ContextMenu > Mounts with ev > mockDb 1`] = `
 
 exports[`ContextMenu > Mounts with ev > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -3378,7 +3362,6 @@ exports[`ContextMenu > Mounts without passed ev > mockDb 1`] = `
 
 exports[`ContextMenu > Mounts without passed ev > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -3461,7 +3444,6 @@ exports[`ContextMenu > Remains onscreen if opened at bottom of page > mockDb 1`]
 
 exports[`ContextMenu > Remains onscreen if opened at bottom of page > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -3544,7 +3526,6 @@ exports[`ContextMenu > Remains onscreen if opened at right edge of page > mockDb
 
 exports[`ContextMenu > Remains onscreen if opened at right edge of page > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

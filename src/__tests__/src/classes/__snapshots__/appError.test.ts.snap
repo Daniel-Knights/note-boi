@@ -30,7 +30,6 @@ exports[`AppError > With default values > mockDb 1`] = `
 
 exports[`AppError > With default values > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`AppError > With provided values > mockDb 1`] = `
 
 exports[`AppError > With provided values > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -196,7 +194,6 @@ exports[`AppError > isNone > Returns false when code is not NONE > mockDb 1`] = 
 
 exports[`AppError > isNone > Returns false when code is not NONE > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -279,7 +276,6 @@ exports[`AppError > isNone > Returns true when code is NONE > mockDb 1`] = `
 
 exports[`AppError > isNone > Returns true when code is NONE > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -362,7 +358,6 @@ exports[`AppError > retry > With no arguments > mockDb 1`] = `
 
 exports[`AppError > retry > With no arguments > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -445,7 +440,6 @@ exports[`AppError > retry > With provided arguments > mockDb 1`] = `
 
 exports[`AppError > retry > With provided arguments > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -528,7 +522,6 @@ exports[`AppError > retry > Without retryConfig > mockDb 1`] = `
 
 exports[`AppError > retry > Without retryConfig > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
