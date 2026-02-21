@@ -66,7 +66,6 @@ exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount 
 
 exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

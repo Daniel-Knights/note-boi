@@ -1,7 +1,7 @@
 import { Note, RawNote } from '../../classes';
 import { isEmptyNote } from '../../utils';
 
-import { deleteNote } from './operations';
+import { deleteNote } from './io';
 import { noteState } from './state';
 
 /** Sorts notes in descending order by timestamp. */
