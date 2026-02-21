@@ -191,6 +191,7 @@ export const COLOUR_THEMES = ['Light', 'Dark', 'System'] as const;
 export type ColourTheme = (typeof COLOUR_THEMES)[number];
 
 // Media queries
+// Note: This needs to be kept in sync with the $small-screen-width Sass var
 export const MEDIA_QUERY_SMALL_SCREEN = '(max-width: 650px)';
 export const MEDIA_QUERY_TOUCH_DEVICE = '(pointer: coarse)';
 

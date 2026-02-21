@@ -279,6 +279,28 @@ $utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
     .ql-active {
       @include button-color(var(--colour__highlight));
     }
+
+    // Increase button sizes on small screens
+    @media (max-width: v.$small-screen-width) {
+      $button-size: 30px;
+
+      .ql-header {
+        height: $button-size;
+        font-size: 16px;
+
+        .ql-picker-label::before {
+          line-height: $button-size;
+        }
+      }
+
+      button {
+        @include v.equal-dimensions($button-size);
+      }
+
+      .ql-formats {
+        margin-right: 8px;
+      }
+    }
   }
 }
 </style>
