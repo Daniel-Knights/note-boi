@@ -23,6 +23,7 @@ export class DebounceQueue {
       }, delay);
 
       this.#current.id = timeoutId;
+      this.#current.isRunning = false;
     } else {
       const taskId = window.setTimeout(() => {
         // noop
@@ -31,8 +32,6 @@ export class DebounceQueue {
       this.#current.id = taskId;
       this.#run(taskId, cb);
     }
-
-    this.#current.isRunning = false;
   }
 
   /**
@@ -58,6 +57,10 @@ export class DebounceQueue {
 
     cb(() => this.#isCancelled(id)).finally(() => {
       this.#cancelled.set(id, { isRunning: false });
+
+      if (this.#current.id === id) {
+        this.#current.isRunning = false;
+      }
     });
   }
 
