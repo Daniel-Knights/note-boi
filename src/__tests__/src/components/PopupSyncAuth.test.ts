@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import * as a from '../../../api';
 import * as s from '../../../store/sync';
@@ -368,5 +369,45 @@ describe('PopupSyncAuth', () => {
         },
       });
     });
+  });
+
+  it('Disables submit button while loading', async () => {
+    const { calls } = mockApi();
+    const wrapper = mountPopupSyncAuth();
+
+    const submitButton = getByTestId<HTMLInputElement>(wrapper, 'submit');
+    const usernameInput = getByTestId<HTMLInputElement>(wrapper, 'username');
+    const passwordInput = getByTestId<HTMLInputElement>(wrapper, 'password');
+
+    // Initially enabled
+    assert.isFalse(submitButton.element.disabled);
+
+    // Fill in valid credentials
+    usernameInput.setValue('d');
+    passwordInput.setValue('1');
+
+    clearMockApiResults({ calls });
+
+    // Submit form
+    const formWrapper = getByTestId(wrapper, 'form');
+    await formWrapper.trigger('submit');
+
+    await waitUntil(() => s.syncState.loadingCount > 0);
+    await nextTick();
+
+    // Re-query button to get updated state
+    const submitButtonDuringLoading = getByTestId<HTMLInputElement>(wrapper, 'submit');
+
+    // Button should be disabled during loading
+    assert.isTrue(submitButtonDuringLoading.element.disabled);
+
+    await waitUntil(() => s.syncState.loadingCount === 0);
+    await nextTick();
+
+    // Re-query button to get updated state
+    const submitButtonAfterLoading = getByTestId<HTMLInputElement>(wrapper, 'submit');
+
+    // Button should be enabled again
+    assert.isFalse(submitButtonAfterLoading.element.disabled);
   });
 });

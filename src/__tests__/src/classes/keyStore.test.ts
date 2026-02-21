@@ -35,6 +35,36 @@ describe('KeyStore', () => {
 
       assert.strictEqual(storedKey, key);
     });
+
+    it('Throws error when unable to get DB', async () => {
+      // Spy on indexedDB.open to return a request that fails
+      const openSpy = vi.spyOn(window.indexedDB, 'open').mockImplementation(() => {
+        const request = {
+          error: new Error('Unable to get DB'),
+        } as IDBOpenDBRequest;
+
+        setTimeout(() => {
+          request.onerror!({} as Event);
+        });
+
+        return request;
+      });
+
+      try {
+        let errorThrown = false;
+
+        try {
+          await KeyStore.storeKey(key);
+        } catch (err) {
+          errorThrown = true;
+          assert.include((err as Error).message, 'Unable to get DB');
+        }
+
+        assert.isTrue(errorThrown, 'Should throw error when DB is unavailable');
+      } finally {
+        openSpy.mockRestore();
+      }
+    });
   });
 
   describe('getKey', () => {
@@ -44,6 +74,36 @@ describe('KeyStore', () => {
       const storedKey = await KeyStore.getKey();
 
       assert.strictEqual(storedKey, key);
+    });
+
+    it('Throws error when unable to get DB', async () => {
+      // Spy on indexedDB.open to return a request that fails
+      const openSpy = vi.spyOn(window.indexedDB, 'open').mockImplementation(() => {
+        const request = {
+          error: new Error('Unable to get DB'),
+        } as IDBOpenDBRequest;
+
+        setTimeout(() => {
+          request.onerror!({} as Event);
+        });
+
+        return request;
+      });
+
+      try {
+        let errorThrown = false;
+
+        try {
+          await KeyStore.getKey();
+        } catch (err) {
+          errorThrown = true;
+          assert.include((err as Error).message, 'Unable to get DB');
+        }
+
+        assert.isTrue(errorThrown, 'Should throw error when DB is unavailable');
+      } finally {
+        openSpy.mockRestore();
+      }
     });
   });
 });

@@ -189,3 +189,16 @@ export type UpdateStrategy = (typeof UPDATE_STRATEGIES)[number];
 export const COLOUR_THEMES = ['Light', 'Dark', 'System'] as const;
 
 export type ColourTheme = (typeof COLOUR_THEMES)[number];
+
+// Media queries
+export const MEDIA_QUERY_SMALL_SCREEN = '(max-width: 650px)';
+export const MEDIA_QUERY_TOUCH_DEVICE = '(pointer: coarse)';
+
+// Long press timeout (ms)
+export const LONG_PRESS_TIMEOUT = 500;
+
+// Menu dimensions
+export const MIN_MENU_WIDTH = 150;
+
+// Backups
+export const MAX_BACKUPS_COUNT = 3;

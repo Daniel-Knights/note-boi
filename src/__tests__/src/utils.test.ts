@@ -6,6 +6,7 @@ import {
   isDev,
   isEmptyNote,
   isWhitespaceOnly,
+  mathClamp,
   tauriEmit,
   tauriInvoke,
   tauriListen,
@@ -24,7 +25,7 @@ describe('Utils', () => {
     const formattedDateTime = unixToDateTime(1650003060221);
 
     // 6 is for GitHub workflow, 7 is for local testing
-    assert.isTrue(/Apr 15, 2022, (6|7):11 AM/.test(formattedDateTime));
+    assert.match(formattedDateTime, /Apr 15, 2022, (6|7):11 AM/);
   });
 
   it('isWhitespaceOnly', () => {
@@ -82,6 +83,31 @@ describe('Utils', () => {
     obj.c = 3;
 
     assert.isTrue(hasKeys(obj, keys));
+  });
+
+  it('mathClamp', () => {
+    // Value within range
+    assert.strictEqual(mathClamp(5, 0, 10), 5);
+    assert.strictEqual(mathClamp(0, 0, 10), 0);
+    assert.strictEqual(mathClamp(10, 0, 10), 10);
+
+    // Value below min
+    assert.strictEqual(mathClamp(-5, 0, 10), 0);
+    assert.strictEqual(mathClamp(-100, 0, 10), 0);
+
+    // Value above max
+    assert.strictEqual(mathClamp(15, 0, 10), 10);
+    assert.strictEqual(mathClamp(100, 0, 10), 10);
+
+    // Negative ranges
+    assert.strictEqual(mathClamp(-5, -10, -1), -5);
+    assert.strictEqual(mathClamp(-15, -10, -1), -10);
+    assert.strictEqual(mathClamp(0, -10, -1), -1);
+
+    // Decimal values
+    assert.strictEqual(mathClamp(5.5, 0, 10), 5.5);
+    assert.strictEqual(mathClamp(10.1, 0, 10), 10);
+    assert.strictEqual(mathClamp(-0.1, 0, 10), 0);
   });
 
   describe('Tauri API wrappers', () => {

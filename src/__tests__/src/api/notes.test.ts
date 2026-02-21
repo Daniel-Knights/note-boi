@@ -13,7 +13,7 @@ import {
   TokenStore,
 } from '../../../classes';
 import { UUID_REGEX } from '../../../constant';
-import { isEmptyNote, tauriInvoke } from '../../../utils';
+import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi, mockDb, mockKeyring } from '../../mock';
 import {
   assertAppError,
@@ -401,6 +401,35 @@ describe('Notes (sync)', () => {
       clearMockApiResults({ calls });
 
       await a.sync();
+
+      assertAppError({
+        code: ERROR_CODE.AUTHORISATION,
+        message: 'Authorisation error',
+        retry: expect.any(Object),
+        display: { sync: true },
+      });
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.strictEqual(calls.size, 1);
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+    });
+
+    it('Throws if password key is missing', async () => {
+      const { calls } = mockApi();
+      const getKeySpy = vi.spyOn(KeyStore, 'getKey').mockResolvedValueOnce(undefined);
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await a.login();
+
+      getKeySpy.mockClear();
+      clearMockApiResults({ calls });
+
+      await a.sync();
+
+      expect(getKeySpy).toHaveBeenCalledOnce();
 
       assertAppError({
         code: ERROR_CODE.AUTHORISATION,
@@ -827,6 +856,7 @@ describe('Notes (sync)', () => {
       const { setResValues } = mockApi();
 
       setResValues.invoke({ get_all_notes: [[]] });
+      mockDb.encryptedNotes = [];
 
       await n.getAllNotes();
 

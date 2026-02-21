@@ -12,6 +12,7 @@
 <script lang="ts" setup>
 import { onBeforeUnmount, ref } from 'vue';
 
+import { MEDIA_QUERY_SMALL_SCREEN, MEDIA_QUERY_TOUCH_DEVICE } from './constant';
 import { noteState } from './store/note';
 import { updateState } from './store/update';
 
@@ -22,8 +23,8 @@ import NoteMenuToggle from './components/NoteMenuToggle.vue';
 import Settings from './components/Settings.vue';
 import SyncStatus from './components/SyncStatus.vue';
 
-const smallScreenMediaQuery = window.matchMedia('(max-width: 650px)');
-const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+const smallScreenMediaQuery = window.matchMedia(MEDIA_QUERY_SMALL_SCREEN);
+const isTouchDevice = window.matchMedia(MEDIA_QUERY_TOUCH_DEVICE).matches;
 
 const isSmallScreen = ref(smallScreenMediaQuery.matches);
 const showNoteMenu = ref(!isSmallScreen.value); // Show menu by default on large screens

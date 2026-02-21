@@ -6,7 +6,13 @@ import { KeyStore, Storage } from '../classes';
 
 import { allCalls, mockKeyring } from './mock';
 import { snapshotState } from './snapshot';
-import { resetMockDb, resetNoteStore, resetSyncStore, resetUpdateStore } from './utils';
+import {
+  createMediaQueryListMock,
+  resetMockDb,
+  resetNoteStore,
+  resetSyncStore,
+  resetUpdateStore,
+} from './utils';
 
 const assertFailSpy = vi.spyOn(assert, 'fail');
 
@@ -32,18 +38,16 @@ beforeAll(async () => {
     value: indexedDB,
   });
   Object.defineProperty(window, 'matchMedia', {
-    value: vi.fn(() => ({
-      matches: false,
-      addEventListener: vi.fn(),
-      removeEventListener: vi.fn(),
-    })),
+    value: vi.fn(() => createMediaQueryListMock()),
   });
 
   // JSDom has no `scrollIntoView` implementation: https://github.com/jsdom/jsdom/issues/1695
   Element.prototype.scrollIntoView = vi.fn();
 
   await KeyStore.reset();
+});
 
+beforeEach(() => {
   mockWindows('main');
 });
 

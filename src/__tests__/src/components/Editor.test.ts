@@ -15,7 +15,7 @@ describe('Editor', () => {
   it('Mounts', async () => {
     const { calls, promises } = mockApi();
 
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
 
     await Promise.all(promises);
 
@@ -24,7 +24,7 @@ describe('Editor', () => {
   });
 
   it('Has the correct timestamp', () => {
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
     const timestamp = getByTestId(wrapper, 'timestamp');
 
     assert.strictEqual(timestamp.text(), unixToDateTime(new Date().getTime()));
@@ -32,7 +32,7 @@ describe('Editor', () => {
 
   it('Sets the correct note text', async () => {
     const { calls } = mockApi();
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
     const editorBody = getByTestId(wrapper, 'body');
 
     assert.isEmpty(editorBody.text());
@@ -50,7 +50,7 @@ describe('Editor', () => {
 
   it('Constructs note object from parsed text', async () => {
     const { calls } = mockApi();
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
     const wrapperVm = wrapper.vm as unknown as {
       quillEditor: Quill;
       ignoreTextChange: boolean;
@@ -94,7 +94,7 @@ describe('Editor', () => {
   });
 
   it('Opens find-in-page', async () => {
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
 
     window.dispatchEvent(new KeyboardEvent('keydown', { metaKey: true, key: 'f' }));
 
@@ -103,8 +103,18 @@ describe('Editor', () => {
     assert.isTrue(wrapper.getComponent(FindInPage).isVisible());
   });
 
+  it('Does not show find-in-page on touch devices', async () => {
+    const wrapper = mount(Editor, { props: { isTouchDevice: true } });
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { metaKey: true, key: 'f' }));
+
+    await nextTick();
+
+    assert.isFalse(wrapper.findComponent(FindInPage).exists());
+  });
+
   it('Closes find-in-page', async () => {
-    const wrapper = mount(Editor);
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
 

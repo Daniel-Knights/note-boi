@@ -3,6 +3,7 @@ import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
 import { Note, Storage } from '../../../classes';
+import { LONG_PRESS_TIMEOUT, MIN_MENU_WIDTH } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
 import { mockApi } from '../../mock';
 import { getByTestId, getDummyNotes, resetNoteStore } from '../../utils';
@@ -10,6 +11,15 @@ import { getByTestId, getDummyNotes, resetNoteStore } from '../../utils';
 import NoteMenu from '../../../components/NoteMenu.vue';
 
 const getDataNoteUuid = (uuid: string) => `li[data-note-uuid="${uuid}"]`;
+
+function mountNoteMenu(props?: { isSmallScreen?: boolean; showNoteMenu?: boolean }) {
+  return shallowMount(NoteMenu, {
+    props: {
+      isSmallScreen: props?.isSmallScreen ?? false,
+      showNoteMenu: props?.showNoteMenu ?? true,
+    },
+  });
+}
 
 // Hooks
 beforeEach(async () => {
@@ -27,7 +37,7 @@ beforeEach(async () => {
 describe('NoteMenu', () => {
   it('Mounts', async () => {
     const { calls, promises } = mockApi();
-    const wrapper = shallowMount(NoteMenu);
+    const wrapper = mountNoteMenu();
 
     await Promise.all(promises);
 
@@ -36,7 +46,7 @@ describe('NoteMenu', () => {
   });
 
   it('Renders a list item for every note', () => {
-    const wrapper = shallowMount(NoteMenu);
+    const wrapper = mountNoteMenu();
 
     assert.lengthOf(wrapper.findAll('li'), getDummyNotes().length);
 
@@ -53,7 +63,7 @@ describe('NoteMenu', () => {
   it('Renders a single empty note', async () => {
     resetNoteStore();
     const { setResValues } = mockApi();
-    const wrapper = shallowMount(NoteMenu);
+    const wrapper = mountNoteMenu();
 
     setResValues.invoke({ get_all_notes: [[]] });
 
@@ -62,21 +72,19 @@ describe('NoteMenu', () => {
     const noteItems = wrapper.findAll('li');
     assert.lengthOf(noteItems, 1);
 
-    const firstChild = noteItems[0]!.get(':first-child');
-    const lastChild = noteItems[0]!.get(':last-child');
     const noteItemClassName = noteItems[0]!.classes().join(' ');
 
     assert.isTrue(noteItems[0]!.isVisible());
-    assert.isEmpty(firstChild.text());
-    assert.isEmpty(lastChild.text());
     assert.isTrue(noteItemClassName.includes('--selected'));
     assert.isTrue(noteItemClassName.includes('--empty'));
-    assert.isTrue(lastChild.classes().join(' ').includes('--empty'));
+
+    // Empty notes don't render child elements due to v-if conditions
+    assert.isEmpty(noteItems[0]!.text());
   });
 
   it('Creates a new note', async () => {
     const { calls, promises } = mockApi();
-    const wrapper = shallowMount(NoteMenu);
+    const wrapper = mountNoteMenu();
     const newNoteButton = getByTestId(wrapper, 'new');
 
     newNoteButton.trigger('click');
@@ -89,8 +97,19 @@ describe('NoteMenu', () => {
     assert.isTrue(calls.invoke.has('new_note'));
   });
 
+  it('Closes menu on small screen when creating new note', async () => {
+    const { promises } = mockApi();
+    const wrapper = mountNoteMenu({ isSmallScreen: true });
+    const newNoteButton = getByTestId(wrapper, 'new');
+
+    newNoteButton.trigger('click');
+    await Promise.all(promises);
+
+    assert.isTrue(wrapper.emitted('update:showNoteMenu')![0]![0] === false);
+  });
+
   it('Selects a clicked note', async () => {
-    const wrapper = shallowMount(NoteMenu);
+    const wrapper = mountNoteMenu();
 
     const noteToSelect = getDummyNotes()[2]!;
     const noteItem = wrapper.get(getDataNoteUuid(noteToSelect.uuid));
@@ -104,9 +123,19 @@ describe('NoteMenu', () => {
     assert.isTrue(noteItem.classes().join(' ').includes('--selected'));
   });
 
+  it('Closes menu on small screen when selecting note', async () => {
+    const wrapper = mountNoteMenu({ isSmallScreen: true });
+    const noteToSelect = getDummyNotes()[2]!;
+    const noteItem = wrapper.get(getDataNoteUuid(noteToSelect.uuid));
+
+    await noteItem.trigger('click');
+
+    assert.isTrue(wrapper.emitted('update:showNoteMenu')![0]![0] === false);
+  });
+
   // ENH: Test selected note visibility on arrow key navigation
   it('Navigates notes with up/down arrow keys', async () => {
-    const wrapper = shallowMount(NoteMenu);
+    const wrapper = mountNoteMenu();
 
     function keyNav(direction: 'Up' | 'Down') {
       window.dispatchEvent(new KeyboardEvent('keydown', { key: `Arrow${direction}` }));
@@ -142,9 +171,9 @@ describe('NoteMenu', () => {
   });
 
   it('Sets contextmenu ev', async () => {
-    const wrapper = shallowMount(NoteMenu);
+    const wrapper = mountNoteMenu();
     const wrapperVm = wrapper.vm as unknown as {
-      contextMenuEv?: MouseEvent;
+      contextMenuEv?: MouseEvent | PointerEvent;
     };
 
     assert.isUndefined(wrapperVm.contextMenuEv);
@@ -152,18 +181,113 @@ describe('NoteMenu', () => {
     const listWrapper = getByTestId(wrapper, 'note-list');
     await listWrapper.trigger('contextmenu');
 
-    assert.isTrue(wrapperVm.contextMenuEv! instanceof MouseEvent);
+    assert.isDefined(wrapperVm.contextMenuEv);
+
+    const ev = wrapperVm.contextMenuEv as MouseEvent | PointerEvent;
+    assert.isDefined(ev.clientX);
+    assert.isDefined(ev.clientY);
+  });
+
+  it('Sets contextmenu ev on touch long-press', async () => {
+    const wrapper = mountNoteMenu();
+    const listWrapper = getByTestId(wrapper, 'note-list');
+    const wrapperVm = wrapper.vm as unknown as {
+      contextMenuEv?: PointerEvent;
+      longPressTimer?: number;
+    };
+
+    assert.isUndefined(wrapperVm.contextMenuEv);
+    assert.isUndefined(wrapperVm.longPressTimer);
+
+    // Start long press
+    vi.useFakeTimers();
+
+    await listWrapper.trigger('pointerdown', { pointerType: 'touch' });
+    assert.isDefined(wrapperVm.longPressTimer);
+
+    // Wait for long press timeout
+    vi.advanceTimersByTime(LONG_PRESS_TIMEOUT);
+
+    assert.isDefined(wrapperVm.contextMenuEv);
+
+    vi.useRealTimers();
+  });
+
+  it('Cancels touch long-press on pointer move', async () => {
+    const wrapper = mountNoteMenu();
+    const listWrapper = getByTestId(wrapper, 'note-list');
+    const wrapperVm = wrapper.vm as unknown as {
+      contextMenuEv?: PointerEvent;
+      longPressTimer?: number;
+    };
+
+    // Start long press
+    vi.useFakeTimers();
+
+    await listWrapper.trigger('pointerdown', { pointerType: 'touch' });
+    assert.isDefined(wrapperVm.longPressTimer);
+
+    // Move pointer (cancels long press)
+    await listWrapper.trigger('pointermove');
+    assert.isUndefined(wrapperVm.longPressTimer);
+
+    // Wait to ensure context menu is not set
+    vi.advanceTimersByTime(LONG_PRESS_TIMEOUT);
+
+    assert.isUndefined(wrapperVm.contextMenuEv);
+
+    vi.useRealTimers();
+  });
+
+  it('Cancels touch long-press on pointer up', async () => {
+    const wrapper = mountNoteMenu();
+    const listWrapper = getByTestId(wrapper, 'note-list');
+    const wrapperVm = wrapper.vm as unknown as {
+      contextMenuEv?: PointerEvent;
+      longPressTimer?: number;
+    };
+
+    // Start long press
+    vi.useFakeTimers();
+
+    await listWrapper.trigger('pointerdown', { pointerType: 'touch' });
+    assert.isDefined(wrapperVm.longPressTimer);
+
+    // Release pointer (cancels long press)
+    await listWrapper.trigger('pointerup');
+    assert.isUndefined(wrapperVm.longPressTimer);
+
+    vi.advanceTimersByTime(LONG_PRESS_TIMEOUT);
+
+    assert.isUndefined(wrapperVm.contextMenuEv);
+
+    vi.useRealTimers();
+  });
+
+  it('Cleans up long press timer on unmount', async () => {
+    const wrapper = mountNoteMenu();
+    const listWrapper = getByTestId(wrapper, 'note-list');
+    const wrapperVm = wrapper.vm as unknown as {
+      longPressTimer?: number;
+    };
+
+    await listWrapper.trigger('pointerdown', { pointerType: 'touch' });
+    assert.isDefined(wrapperVm.longPressTimer);
+
+    const clearTimeoutSpy = vi.spyOn(global, 'clearTimeout');
+
+    wrapper.unmount();
+
+    expect(clearTimeoutSpy).toHaveBeenCalledWith(wrapperVm.longPressTimer);
   });
 
   it('Sets menu width with drag-bar', async () => {
-    const wrapper = shallowMount(NoteMenu);
+    const wrapper = mountNoteMenu();
     const wrapperVm = wrapper.vm as unknown as {
-      MIN_MENU_WIDTH: string;
-      menuWidth: string;
+      menuWidthDesktop: string;
       isDragging: boolean;
-      isHidden: boolean;
     };
-    const initialWidth = wrapperVm.menuWidth;
+    const initialWidth = wrapperVm.menuWidthDesktop;
 
     assert.match(initialWidth, /^\d+px$/);
     assert.isFalse(wrapperVm.isDragging);
@@ -172,12 +296,12 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(wrapperVm.menuWidth, initialWidth);
+    assert.strictEqual(wrapperVm.menuWidthDesktop, initialWidth);
 
     document.dispatchEvent(new MouseEvent('mousemove'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(wrapperVm.menuWidth, initialWidth);
+    assert.strictEqual(wrapperVm.menuWidthDesktop, initialWidth);
 
     // Click drag bar
     const dragBar = getByTestId(wrapper, 'drag-bar');
@@ -197,13 +321,13 @@ describe('NoteMenu', () => {
 
     document.dispatchEvent(new MouseEvent('mousemove', { clientX: 100 }));
 
-    assert.strictEqual(wrapperVm.menuWidth, `${wrapperVm.MIN_MENU_WIDTH}px`);
+    assert.strictEqual(wrapperVm.menuWidthDesktop, `${MIN_MENU_WIDTH}px`);
     assert.strictEqual(wrapper.emitted('update:showNoteMenu')![0]![0], false);
 
     // Is shown when dragged above min width
     document.dispatchEvent(new MouseEvent('mousemove', { clientX: 400 }));
 
-    assert.strictEqual(wrapperVm.menuWidth, '400px');
+    assert.strictEqual(wrapperVm.menuWidthDesktop, '400px');
 
     await nextTick();
 
@@ -214,6 +338,12 @@ describe('NoteMenu', () => {
 
     assert.isFalse(wrapperVm.isDragging);
     assert.strictEqual(Storage.get('MENU_WIDTH'), '400px');
+  });
+
+  it('Uses 100vw width on small screens', () => {
+    const wrapper = mountNoteMenu({ isSmallScreen: true });
+
+    assert.strictEqual(wrapper.element.style.width, '100vw');
   });
 
   describe('Selects/deselects extra notes', () => {
@@ -339,7 +469,7 @@ describe('NoteMenu', () => {
     // Tests //
 
     it('Not single selected note', async () => {
-      const wrapper = shallowMount(NoteMenu);
+      const wrapper = mountNoteMenu();
       const selectedNoteItem = wrapper.get(
         getDataNoteUuid(n.noteState.selectedNote.uuid)
       );
@@ -350,7 +480,7 @@ describe('NoteMenu', () => {
     });
 
     it('With cmd/ctrl', async () => {
-      const wrapper = shallowMount(NoteMenu);
+      const wrapper = mountNoteMenu();
       const notesToSelect = [
         getDummyNotes()[2]!,
         getDummyNotes()[4]!,
@@ -362,7 +492,7 @@ describe('NoteMenu', () => {
     });
 
     it('With shift', async () => {
-      const wrapper = shallowMount(NoteMenu);
+      const wrapper = mountNoteMenu();
       const noteItem = wrapper.get(getDataNoteUuid(n.noteState.notes[6]!.uuid));
 
       await noteItem.trigger('click', { shiftKey: true });
@@ -380,7 +510,7 @@ describe('NoteMenu', () => {
       'With cmd/ctrl and shift',
       (testSelectsMethodName) => {
         it(testSelectsMethodName, async () => {
-          const wrapper = shallowMount(NoteMenu);
+          const wrapper = mountNoteMenu();
 
           const testSelects = testMetaShiftKeySelects(wrapper);
           testSelects[testSelectsMethodName]();

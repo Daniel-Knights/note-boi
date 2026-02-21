@@ -2,20 +2,21 @@ import * as a from '../../../api';
 import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import { ERROR_CODE, Storage, TokenStore } from '../../../classes';
-import { tauriInvoke } from '../../../utils';
+import { ERROR_CODE, KeyStore, Storage, TokenStore } from '../../../classes';
 import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
   assertAppError,
   assertLoadingState,
   assertRequest,
   hackEncryptionError,
+  waitUntil,
 } from '../../utils';
 
 describe('Account', () => {
   describe('changePassword', () => {
     it('Changes password for currently logged in account', async () => {
       const { calls, promises } = mockApi();
+      const storeKeySpy = vi.spyOn(KeyStore, 'storeKey');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -59,6 +60,8 @@ describe('Account', () => {
       clearMockApiResults({ calls, promises });
 
       await a.changePassword();
+
+      expect(storeKeySpy).toHaveBeenCalledOnce();
 
       assertAppError();
       assert.strictEqual(calls.size, 3);
@@ -221,6 +224,61 @@ describe('Account', () => {
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
+    });
+
+    it('Handles KeyStore.storeKey error after successful password change', async () => {
+      const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
+      const storeKeySpy = vi.spyOn(KeyStore, 'storeKey');
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await a.login();
+
+      clearMockApiResults({ calls });
+
+      // Clear spy call history and mock storeKey to fail on the next call during changePassword
+      storeKeySpy.mockClear();
+      storeKeySpy.mockRejectedValueOnce(new Error('Unable to get DB'));
+
+      s.syncState.password = '1';
+      s.syncState.newPassword = '2';
+
+      await a.changePassword();
+
+      // Error should be caught by route wrapper and stored in appError
+      assert.strictEqual(s.syncState.appError.code, ERROR_CODE.UNKNOWN);
+      assert.strictEqual(
+        (s.syncState.appError.originalError as Error).message,
+        'Unable to store encryption key'
+      );
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+      expect(storeKeySpy).toHaveBeenCalledOnce();
+
+      // Wait for fire-and-forget clientSideLogout to complete
+      await waitUntil(() => !s.syncState.isLoggedIn);
+
+      assert.strictEqual(calls.size, 6);
+      assert.strictEqual(s.syncState.loadingCount, 0);
+      assert.isTrue(calls.request.has('/account/change-password'));
+      assert.isTrue(calls.invoke.has('get_access_token'));
+      assert.deepEqual(calls.invoke[0]?.calledWith, { username: 'd' });
+      assert.isTrue(calls.invoke.has('set_access_token'));
+      assert.deepEqual(calls.invoke[1]?.calledWith, {
+        username: 'd',
+        accessToken: 'test-token',
+      });
+      assert.isTrue(calls.invoke.has('delete_access_token'));
+      assert.deepEqual(calls.invoke[2]?.calledWith, { username: 'd' });
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]?.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
     });
 
     it('Sets and resets loading state', () => {
