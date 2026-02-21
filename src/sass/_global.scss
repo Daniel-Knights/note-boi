@@ -1,0 +1,29 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  color: var(--colour__secondary);
+  background-color: var(--colour__primary);
+}
+
+a {
+  color: var(--colour__highlight);
+
+  &:hover {
+    text-decoration: none;
+    color: var(--colour__highlight-hover);
+  }
+}
+
+@media (pointer: coarse) {
+  input,
+  textarea,
+  select,
+  [contenteditable='true'] {
+    font-size: 16px; // Prevent iOS zoom on focus
+  }
+}
