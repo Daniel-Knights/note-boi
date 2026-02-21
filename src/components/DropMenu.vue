@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted } from 'vue';
+import { computed, onBeforeUnmount, onMounted } from 'vue';
 
 import { DropMenuItemData } from './types';
 
@@ -65,8 +65,10 @@ function handleClickHandler(clickHandler?: (() => void) | (() => Promise<void>))
 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside);
+});
 
-  return () => document.removeEventListener('click', handleClickOutside);
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside);
 });
 </script>
 
