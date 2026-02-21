@@ -62,7 +62,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onUnmounted, ref, useTemplateRef, watch } from 'vue';
+import { computed, onBeforeUnmount, ref, useTemplateRef, watch } from 'vue';
 
 import { Note, Storage } from '../classes';
 import {
@@ -321,7 +321,7 @@ window.addEventListener('click', (ev) => {
 
 window.addEventListener('keydown', navigateWithArrowKeys);
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   window.removeEventListener('keydown', navigateWithArrowKeys);
   clearTimeout(longPressTimer.value);
 });
