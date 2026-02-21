@@ -65,6 +65,7 @@
 import { computed, onBeforeUnmount, ref, useTemplateRef, watch } from 'vue';
 
 import { Note, Storage } from '../classes';
+import { LONG_PRESS_TIMEOUT, MIN_MENU_WIDTH } from '../constant';
 import {
   findNote,
   findNoteIndex,
@@ -77,8 +78,6 @@ import { isEmptyNote, mathClamp } from '../utils';
 
 import ContextMenu from './ContextMenu.vue';
 
-const MIN_MENU_WIDTH = 150;
-
 const props = defineProps<{
   isSmallScreen: boolean;
   showNoteMenu: boolean;
@@ -90,7 +89,7 @@ const emit = defineEmits<{
 
 const noteList = useTemplateRef('note-list');
 
-const contextMenuEv = ref<PointerEvent>();
+const contextMenuEv = ref<MouseEvent | PointerEvent>();
 const longPressTimer = ref<number>();
 const isDragging = ref(false);
 const listIsFocused = ref(true);
@@ -219,7 +218,7 @@ function handlePointerDown(ev: PointerEvent) {
   // Long-press (mobile/touch)
   longPressTimer.value = window.setTimeout(() => {
     contextMenuEv.value = ev;
-  }, 500);
+  }, LONG_PRESS_TIMEOUT);
 }
 
 function handlePointerMove() {

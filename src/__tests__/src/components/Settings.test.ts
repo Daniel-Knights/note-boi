@@ -54,6 +54,13 @@ describe('Settings', () => {
     assert.strictEqual(calls.size, 0);
   });
 
+  it('Has title attribute on settings button', () => {
+    const wrapper = mount(Settings);
+    const settingsButton = findByTestId(wrapper, 'settings-button');
+
+    assert.strictEqual(settingsButton.attributes('title'), 'Settings');
+  });
+
   it('Opens and closes drop menu', async () => {
     const wrapper = mount(Settings);
     const wrapperVm = wrapper.vm as unknown as { show: boolean };
@@ -106,7 +113,8 @@ describe('Settings', () => {
       const { calls, promises } = mockApi();
       const wrapper = await mountSettingsAndOpen();
       const setUpdateStrategySpy = vi.spyOn(u, 'setUpdateStrategy');
-      const updateAutoWrapper = findByTestId(wrapper, 'update-auto');
+      const updateStrategyWrapper = getByTestId(wrapper, 'update-strategy');
+      const updateAutoWrapper = findByTestId(updateStrategyWrapper, 'update-auto');
 
       assert.strictEqual(u.updateState.strategy, 'manual');
       assert.isNull(Storage.get('UPDATE_STRATEGY'));
@@ -122,7 +130,7 @@ describe('Settings', () => {
       assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'auto');
       assert.isTrue(updateAutoWrapper.classes('drop-menu__item--selected'));
 
-      const updateManualWrapper = findByTestId(wrapper, 'update-manual');
+      const updateManualWrapper = findByTestId(updateStrategyWrapper, 'update-manual');
 
       vi.clearAllMocks();
 
@@ -244,6 +252,38 @@ describe('Settings', () => {
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
       assert.isTrue(calls.invoke.has('delete_access_token'));
       assert.deepEqual(calls.invoke[1]!.calledWith, { username: 'd' });
+      assert.isTrue(calls.emits.has('auth'));
+      assert.deepEqual(calls.emits[0]!.calledWith, {
+        isFrontendEmit: true,
+        data: {
+          is_logged_in: false,
+        },
+      });
+    });
+  });
+
+  describe('Logout menu item', () => {
+    it('Logs out when clicked', async () => {
+      const { calls, promises } = mockApi();
+      const wrapper = await mountSettingsAndOpen();
+
+      assert.isFalse(findByTestId(wrapper, 'logout').exists());
+
+      s.syncState.username = 'd';
+      s.syncState.isLoggedIn = true;
+      await TokenStore.setAccessToken('d', 'test-token');
+      await nextTick();
+
+      clearMockApiResults({ calls, promises });
+
+      const logoutWrapper = findByTestId(wrapper, 'logout');
+      assert.isTrue(logoutWrapper.isVisible());
+
+      await logoutWrapper.trigger('click');
+      await waitUntil(() => !s.syncState.isLoggedIn);
+
+      assert.isFalse(s.syncState.isLoggedIn);
+      assert.isTrue(calls.invoke.has('delete_access_token'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
         isFrontendEmit: true,

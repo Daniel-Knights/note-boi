@@ -41,3 +41,26 @@ export function getTeleportMountOptions(appDiv: HTMLElement) {
     },
   };
 }
+
+/**
+ * Creates a mock MediaQueryList object for testing.
+ * Includes a `trigger` method to simulate media query changes.
+ */
+export function createMediaQueryListMock(matches = false) {
+  type MediaQueryListener = (ev: MediaQueryListEvent) => void;
+  const listeners = new Set<MediaQueryListener>();
+
+  return {
+    matches,
+    addEventListener: (_event: string, listener: MediaQueryListener) => {
+      listeners.add(listener);
+    },
+    removeEventListener: (_event: string, listener: MediaQueryListener) => {
+      listeners.delete(listener);
+    },
+    trigger: (newMatches: boolean) => {
+      const event = { matches: newMatches } as MediaQueryListEvent;
+      listeners.forEach((listener) => listener(event));
+    },
+  };
+}
