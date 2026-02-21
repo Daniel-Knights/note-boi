@@ -1,7 +1,6 @@
 import { Note, Storage } from '../../../classes';
+import { MAX_BACKUPS_COUNT } from '../../../constant';
 import { isDesktop, tauriInvoke } from '../../../utils';
-
-const MAX_BACKUPS_COUNT = 3;
 
 export async function backupNotes(notes: Note[]): Promise<void> {
   if (isDesktop()) {

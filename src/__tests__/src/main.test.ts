@@ -2,8 +2,18 @@ import * as a from '../../api';
 import * as n from '../../store/note';
 import * as s from '../../store/sync';
 import * as u from '../../store/update';
+import { initApp } from '../../main';
 import { clearMockApiResults, mockApi } from '../mock';
 import { assertRequest, getAppDiv, resolveImmediate, waitUntil } from '../utils';
+
+// Store original console methods to restore between tests
+const originalConsoleMethods = {
+  log: console.log,
+  debug: console.debug,
+  info: console.info,
+  warn: console.warn,
+  error: console.error,
+};
 
 // Prevent App initialisation from affecting test results
 vi.mock('../../App.vue', () => ({
@@ -14,6 +24,15 @@ beforeEach(() => {
   const appDiv = getAppDiv();
 
   document.body.appendChild(appDiv);
+});
+
+afterEach(() => {
+  // Restore original console methods to prevent nested wrapping by initLogger
+  console.log = originalConsoleMethods.log;
+  console.debug = originalConsoleMethods.debug;
+  console.info = originalConsoleMethods.info;
+  console.warn = originalConsoleMethods.warn;
+  console.error = originalConsoleMethods.error;
 });
 
 describe('main', () => {
@@ -30,7 +49,7 @@ describe('main', () => {
 
     clearMockApiResults({ calls });
 
-    await import('../../main');
+    initApp();
     await waitUntil(() => calls.size >= 23);
     await resolveImmediate(); // Just in case
 
@@ -74,5 +93,20 @@ describe('main', () => {
         is_logged_in: true,
       },
     });
+  });
+
+  it('Does not sync if no username is set', async () => {
+    const { calls } = mockApi();
+    const queueSyncSpy = vi.spyOn(a, 'queueSync');
+
+    s.syncState.username = '';
+
+    clearMockApiResults({ calls });
+
+    initApp();
+    await waitUntil(() => calls.invoke.has('get_all_notes'));
+
+    expect(queueSyncSpy).not.toHaveBeenCalled();
+    assert.isFalse(calls.request.has('/notes/sync'));
   });
 });

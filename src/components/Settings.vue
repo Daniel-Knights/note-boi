@@ -107,6 +107,7 @@ const menuItems = computed<DropMenuItemData[]>(() => [
   },
   {
     label: 'Logout',
+    testId: 'logout',
     showIf: () => syncState.isLoggedIn,
     clickHandler: logout,
   },

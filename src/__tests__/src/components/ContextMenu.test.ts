@@ -37,6 +37,14 @@ describe('ContextMenu', () => {
     assertMounted(wrapper, { x: ev.clientX, y: window.innerHeight - 10 });
   });
 
+  it('Remains onscreen if opened at right edge of page', async () => {
+    const ev = getContextMenuEv({ x: window.innerWidth });
+    const wrapper = await mountContextMenu(ev);
+
+    // 10 = a bit of padding
+    assertMounted(wrapper, { x: window.innerWidth - 10, y: ev.clientY });
+  });
+
   it('Closes', async () => {
     const ev = getContextMenuEv();
     const wrapper = await mountContextMenu(ev);
@@ -263,7 +271,7 @@ describe('ContextMenu', () => {
     await resolveImmediate(); // Defer execution to exportNotes
 
     expect(exportNotesSpy).toHaveBeenCalledOnce();
-    expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes);
+    expect(exportNotesSpy).toHaveBeenCalledWith(n.noteState.notes.map((nt) => nt.uuid));
   });
 
   it('Imports notes', async () => {

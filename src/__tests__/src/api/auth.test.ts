@@ -1,8 +1,9 @@
 import * as a from '../../../api';
+import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import { ERROR_CODE, Storage, TokenStore } from '../../../classes';
-import { isEmptyNote, tauriInvoke } from '../../../utils';
+import { ERROR_CODE, KeyStore, Storage, TokenStore } from '../../../classes';
+import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
   assertAppError,
@@ -11,6 +12,7 @@ import {
   getDummyNotes,
   getEncryptedNotes,
   hackEncryptionError,
+  waitUntil,
 } from '../../utils';
 
 describe('Auth', () => {
@@ -63,6 +65,7 @@ describe('Auth', () => {
   describe('login', () => {
     it('With no notes', async () => {
       const { calls } = mockApi();
+      const storeKeySpy = vi.spyOn(KeyStore, 'storeKey');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -98,10 +101,12 @@ describe('Auth', () => {
           is_logged_in: true,
         },
       });
+      expect(storeKeySpy).toHaveBeenCalledOnce();
     });
 
     it('With notes', async () => {
       const { calls } = mockApi();
+      const storeKeySpy = vi.spyOn(KeyStore, 'storeKey');
 
       s.syncState.username = 'd';
       s.syncState.password = '1';
@@ -139,6 +144,7 @@ describe('Auth', () => {
           is_logged_in: true,
         },
       });
+      expect(storeKeySpy).toHaveBeenCalledOnce();
     });
 
     it('With encryption error', async () => {
@@ -282,6 +288,38 @@ describe('Auth', () => {
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
     });
 
+    it('Handles KeyStore.storeKey error after successful login', async () => {
+      const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
+      const storeKeySpy = vi
+        .spyOn(KeyStore, 'storeKey')
+        .mockRejectedValueOnce(new Error('Unable to get DB'));
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      mockDb.encryptedNotes = getEncryptedNotes();
+
+      await a.login();
+
+      // Error should be caught by route wrapper and stored in appError
+      assert.strictEqual(s.syncState.appError.code, ERROR_CODE.UNKNOWN);
+      assert.strictEqual(
+        (s.syncState.appError.originalError as Error).message,
+        'Unable to store encryption key'
+      );
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+      expect(storeKeySpy).toHaveBeenCalledOnce();
+
+      // Wait for fire-and-forget clientSideLogout to complete
+      await waitUntil(() => !s.syncState.isLoggedIn);
+
+      assert.isTrue(calls.request.has('/auth/login'));
+      assert.isTrue(calls.invoke.has('set_access_token'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
+      assert.strictEqual(s.syncState.loadingCount, 0);
+    });
+
     it('Sets and resets loading state', () => {
       return assertLoadingState(() => {
         s.syncState.username = 'd';
@@ -295,6 +333,7 @@ describe('Auth', () => {
   describe('signup', () => {
     it('With no notes', async () => {
       const { calls } = mockApi();
+      const storeKeySpy = vi.spyOn(KeyStore, 'storeKey');
 
       s.syncState.username = 'k';
       s.syncState.password = '2';
@@ -323,10 +362,12 @@ describe('Auth', () => {
           is_logged_in: true,
         },
       });
+      expect(storeKeySpy).toHaveBeenCalledOnce();
     });
 
     it('With notes', async () => {
       const { calls } = mockApi();
+      const storeKeySpy = vi.spyOn(KeyStore, 'storeKey');
 
       s.syncState.username = 'k';
       s.syncState.password = '2';
@@ -363,6 +404,7 @@ describe('Auth', () => {
           is_logged_in: true,
         },
       });
+      expect(storeKeySpy).toHaveBeenCalledOnce();
     });
 
     it('With encryption error', async () => {
@@ -415,6 +457,38 @@ describe('Auth', () => {
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/auth/signup'));
       assertRequest('/auth/signup', calls.request[0]!.calledWith!);
+    });
+
+    it('Handles KeyStore.storeKey error after successful signup', async () => {
+      const { calls } = mockApi();
+      const clientSideLogoutSpy = vi.spyOn(auth, 'clientSideLogout');
+      const storeKeySpy = vi
+        .spyOn(KeyStore, 'storeKey')
+        .mockRejectedValueOnce(new Error('Unable to get DB'));
+
+      s.syncState.username = 'k';
+      s.syncState.password = '2';
+
+      await a.signup();
+
+      // Error should be caught by route wrapper and stored in appError
+      assert.strictEqual(s.syncState.appError.code, ERROR_CODE.UNKNOWN);
+      assert.strictEqual(
+        (s.syncState.appError.originalError as Error).message,
+        'Unable to store encryption key'
+      );
+      expect(clientSideLogoutSpy).toHaveBeenCalledOnce();
+      expect(storeKeySpy).toHaveBeenCalledOnce();
+
+      // Verify the expected calls were made (signup + error handling)
+      assert.isTrue(calls.request.has('/auth/signup'));
+      assert.isTrue(calls.invoke.has('set_access_token'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
+
+      // Wait for fire-and-forget clientSideLogout to complete
+      await waitUntil(() => !s.syncState.isLoggedIn);
+
+      assert.strictEqual(s.syncState.loadingCount, 0);
     });
 
     it('Sets and resets loading state', () => {

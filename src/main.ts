@@ -23,12 +23,19 @@ import { isDesktop, isDev, tauriListen } from './utils';
 
 import App from './App.vue';
 
-createApp(App).mount('#app');
+export function initApp() {
+  createApp(App).mount('#app');
 
-if (isDesktop()) {
-  initDesktop();
-} else {
-  initWeb();
+  if (isDesktop()) {
+    initDesktop();
+  } else {
+    initWeb();
+  }
+}
+
+// Run initialisation immediately unless in test environment
+if (import.meta.env.MODE !== 'test') {
+  initApp();
 }
 
 //// Desktop

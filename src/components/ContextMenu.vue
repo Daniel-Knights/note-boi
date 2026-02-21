@@ -28,7 +28,7 @@ import DropMenu from './DropMenu.vue';
 
 const props = defineProps<{
   handleNewNote: () => void;
-  ev?: PointerEvent;
+  ev?: MouseEvent | PointerEvent;
 }>();
 
 const dropMenu = useTemplateRef('drop-menu');
