@@ -30,7 +30,6 @@ exports[`PopupSyncError > Emits close > mockDb 1`] = `
 
 exports[`PopupSyncError > Emits close > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -137,7 +136,6 @@ exports[`PopupSyncError > Ignores > mockDb 1`] = `
 
 exports[`PopupSyncError > Ignores > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -220,7 +218,6 @@ exports[`PopupSyncError > Mounts > mockDb 1`] = `
 
 exports[`PopupSyncError > Mounts > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -303,7 +300,6 @@ exports[`PopupSyncError > No try again button when no retry function > mockDb 1`
 
 exports[`PopupSyncError > No try again button when no retry function > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -386,7 +382,6 @@ exports[`PopupSyncError > Retries > mockDb 1`] = `
 
 exports[`PopupSyncError > Retries > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -469,7 +464,6 @@ exports[`PopupSyncError > Shows default error message when none provided > mockD
 
 exports[`PopupSyncError > Shows default error message when none provided > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

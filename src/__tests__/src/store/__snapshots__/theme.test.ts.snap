@@ -30,7 +30,6 @@ exports[`Theme > Uses system as default > mockDb 1`] = `
 
 exports[`Theme > Uses system as default > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`Theme > setTheme > mockDb 1`] = `
 
 exports[`Theme > setTheme > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

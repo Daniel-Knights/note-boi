@@ -30,7 +30,6 @@ exports[`DebounceQueue > Cancels previous task when adding a new task with delay
 
 exports[`DebounceQueue > Cancels previous task when adding a new task with delay > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`DebounceQueue > Cancels previous task when adding a new task without de
 
 exports[`DebounceQueue > Cancels previous task when adding a new task without delay > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -196,7 +194,6 @@ exports[`DebounceQueue > Debounces tasks with delay > mockDb 1`] = `
 
 exports[`DebounceQueue > Debounces tasks with delay > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -279,7 +276,6 @@ exports[`DebounceQueue > Executes immediately when no delay is provided > mockDb
 
 exports[`DebounceQueue > Executes immediately when no delay is provided > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

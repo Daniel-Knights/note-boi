@@ -51,7 +51,6 @@ exports[`App > Handles note menu toggling > mockDb 1`] = `
 
 exports[`App > Handles note menu toggling > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -155,7 +154,6 @@ exports[`App > Media query logic > Detects non-touch device > mockDb 1`] = `
 
 exports[`App > Media query logic > Detects non-touch device > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -259,7 +257,6 @@ exports[`App > Media query logic > Detects touch device > mockDb 1`] = `
 
 exports[`App > Media query logic > Detects touch device > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -363,7 +360,6 @@ exports[`App > Media query logic > Initializes with menu hidden on small screen 
 
 exports[`App > Media query logic > Initializes with menu hidden on small screen > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -467,7 +463,6 @@ exports[`App > Media query logic > Initializes with menu shown on large screen >
 
 exports[`App > Media query logic > Initializes with menu shown on large screen > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -571,7 +566,6 @@ exports[`App > Media query logic > Removes event listener on unmount > mockDb 1`
 
 exports[`App > Media query logic > Removes event listener on unmount > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -675,7 +669,6 @@ exports[`App > Media query logic > Shows menu on small screen when multiple note
 
 exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -802,7 +795,6 @@ exports[`App > Media query logic > Updates state when screen size changes to lar
 
 exports[`App > Media query logic > Updates state when screen size changes to large > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -906,7 +898,6 @@ exports[`App > Media query logic > Updates state when screen size changes to sma
 
 exports[`App > Media query logic > Updates state when screen size changes to small > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1010,7 +1001,6 @@ exports[`App > Mounts > mockDb 1`] = `
 
 exports[`App > Mounts > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1114,7 +1104,6 @@ exports[`App > Shows loading spinner when update is downloading > mockDb 1`] = `
 
 exports[`App > Shows loading spinner when update is downloading > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

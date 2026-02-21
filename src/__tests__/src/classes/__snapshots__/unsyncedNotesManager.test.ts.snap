@@ -30,7 +30,6 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > mockDb 1`] =
 
 exports[`UnsyncedNotesManager > Initializes empty when no storage > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > mockDb 
 
 exports[`UnsyncedNotesManager > Initializes with contents from storage > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -196,7 +194,6 @@ exports[`UnsyncedNotesManager > clear > Clears edited and deleted > mockDb 1`] =
 
 exports[`UnsyncedNotesManager > clear > Clears edited and deleted > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -279,7 +276,6 @@ exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > mockDb
 
 exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -362,7 +358,6 @@ exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > mock
 
 exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -445,7 +440,6 @@ exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > mockD
 
 exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -528,7 +522,6 @@ exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > mockDb 
 
 exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -611,7 +604,6 @@ exports[`UnsyncedNotesManager > size > mockDb 1`] = `
 
 exports[`UnsyncedNotesManager > size > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -694,7 +686,6 @@ exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > mockDb 1`] =
 
 exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -777,7 +768,6 @@ exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > mockDb 1`] 
 
 exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

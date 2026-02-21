@@ -98,7 +98,6 @@ exports[`Settings > Account menu item > Delete account menu item > mockDb 1`] = 
 
 exports[`Settings > Account menu item > Delete account menu item > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -181,7 +180,6 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
 
 exports[`Settings > Account menu item > Opens and closes change password popup > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -264,7 +262,6 @@ exports[`Settings > Has title attribute on settings button > mockDb 1`] = `
 
 exports[`Settings > Has title attribute on settings button > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -406,7 +403,6 @@ exports[`Settings > Logout menu item > Logs out when clicked > mockDb 1`] = `
 
 exports[`Settings > Logout menu item > Logs out when clicked > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -489,7 +485,6 @@ exports[`Settings > Mounts > mockDb 1`] = `
 
 exports[`Settings > Mounts > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -572,7 +567,6 @@ exports[`Settings > Opens and closes drop menu > mockDb 1`] = `
 
 exports[`Settings > Opens and closes drop menu > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -665,7 +659,6 @@ exports[`Settings > Opens info popup > mockDb 1`] = `
 
 exports[`Settings > Opens info popup > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -748,7 +741,6 @@ exports[`Settings > Sets theme preference > mockDb 1`] = `
 
 exports[`Settings > Sets theme preference > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -831,7 +823,6 @@ exports[`Settings > Updates menu item > Sets update strategy > mockDb 1`] = `
 
 exports[`Settings > Updates menu item > Sets update strategy > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -971,7 +962,6 @@ exports[`Settings > Updates menu item > Update and restart menu item > mockDb 1`
 
 exports[`Settings > Updates menu item > Update and restart menu item > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

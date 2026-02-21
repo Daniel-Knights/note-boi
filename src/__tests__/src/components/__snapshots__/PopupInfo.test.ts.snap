@@ -40,7 +40,6 @@ exports[`PopupInfo > Emits close > mockDb 1`] = `
 
 exports[`PopupInfo > Emits close > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -133,7 +132,6 @@ exports[`PopupInfo > Mounts > mockDb 1`] = `
 
 exports[`PopupInfo > Mounts > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -302,7 +300,6 @@ exports[`PopupInfo > Renders correct description list items > mockDb 1`] = `
 
 exports[`PopupInfo > Renders correct description list items > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {

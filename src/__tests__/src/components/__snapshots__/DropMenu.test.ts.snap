@@ -30,7 +30,6 @@ exports[`DropMenu > Adds classes to items > mockDb 1`] = `
 
 exports[`DropMenu > Adds classes to items > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`DropMenu > Adds click handlers to items > mockDb 1`] = `
 
 exports[`DropMenu > Adds click handlers to items > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -196,7 +194,6 @@ exports[`DropMenu > Cleans up event listener on unmount > mockDb 1`] = `
 
 exports[`DropMenu > Cleans up event listener on unmount > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -279,7 +276,6 @@ exports[`DropMenu > Does not emit close on click inside menu > mockDb 1`] = `
 
 exports[`DropMenu > Does not emit close on click inside menu > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -362,7 +358,6 @@ exports[`DropMenu > Does not emit close on menu item click if closeOnClick is fa
 
 exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -445,7 +440,6 @@ exports[`DropMenu > Emits close on click outside > mockDb 1`] = `
 
 exports[`DropMenu > Emits close on click outside > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -528,7 +522,6 @@ exports[`DropMenu > Emits close on menu item click if closeOnClick is true > moc
 
 exports[`DropMenu > Emits close on menu item click if closeOnClick is true > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -611,7 +604,6 @@ exports[`DropMenu > Filters items based on showIf condition > mockDb 1`] = `
 
 exports[`DropMenu > Filters items based on showIf condition > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -694,7 +686,6 @@ exports[`DropMenu > Handles sub-menus > mockDb 1`] = `
 
 exports[`DropMenu > Handles sub-menus > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -777,7 +768,6 @@ exports[`DropMenu > Mounts > mockDb 1`] = `
 
 exports[`DropMenu > Mounts > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -860,7 +850,6 @@ exports[`DropMenu > Renders each item > mockDb 1`] = `
 
 exports[`DropMenu > Renders each item > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

@@ -30,7 +30,6 @@ exports[`Note > clone > Creates a deep copy of a note > mockDb 1`] = `
 
 exports[`Note > clone > Creates a deep copy of a note > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`Note > clone > Creates independent copy (mutations do not affect origin
 
 exports[`Note > clone > Creates independent copy (mutations do not affect original) > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -196,7 +194,6 @@ exports[`Note > fromJSONString > Applies overrides > mockDb 1`] = `
 
 exports[`Note > fromJSONString > Applies overrides > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -279,7 +276,6 @@ exports[`Note > fromJSONString > Creates a Note from JSON string > mockDb 1`] = 
 
 exports[`Note > fromJSONString > Creates a Note from JSON string > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -362,7 +358,6 @@ exports[`Note > fromPlainString > Applies overrides > mockDb 1`] = `
 
 exports[`Note > fromPlainString > Applies overrides > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -445,7 +440,6 @@ exports[`Note > fromPlainString > Creates a Note from plain string with title an
 
 exports[`Note > fromPlainString > Creates a Note from plain string with title and body > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -528,7 +522,6 @@ exports[`Note > fromPlainString > Handles string with only title > mockDb 1`] = 
 
 exports[`Note > fromPlainString > Handles string with only title > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -611,7 +604,6 @@ exports[`Note > getText > Extracts text from delta ops > mockDb 1`] = `
 
 exports[`Note > getText > Extracts text from delta ops > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -694,7 +686,6 @@ exports[`Note > getText > Ignores non-string inserts > mockDb 1`] = `
 
 exports[`Note > getText > Ignores non-string inserts > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -777,7 +768,6 @@ exports[`Note > getText > Returns empty string for empty delta > mockDb 1`] = `
 
 exports[`Note > getText > Returns empty string for empty delta > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -860,7 +850,6 @@ exports[`Note > new Note() > mockDb 1`] = `
 
 exports[`Note > new Note() > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -943,7 +932,6 @@ exports[`Note > parseTitleAndBody > Handles empty string > mockDb 1`] = `
 
 exports[`Note > parseTitleAndBody > Handles empty string > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1026,7 +1014,6 @@ exports[`Note > parseTitleAndBody > Handles multiple newlines > mockDb 1`] = `
 
 exports[`Note > parseTitleAndBody > Handles multiple newlines > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1109,7 +1096,6 @@ exports[`Note > parseTitleAndBody > Handles string with only title > mockDb 1`] 
 
 exports[`Note > parseTitleAndBody > Handles string with only title > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1192,7 +1178,6 @@ exports[`Note > parseTitleAndBody > Parses title and body from string > mockDb 1
 
 exports[`Note > parseTitleAndBody > Parses title and body from string > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1275,7 +1260,6 @@ exports[`Note > parseTitleAndBody > Trims whitespace > mockDb 1`] = `
 
 exports[`Note > parseTitleAndBody > Trims whitespace > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

@@ -30,7 +30,6 @@ exports[`route > Handles unknown errors > mockDb 1`] = `
 
 exports[`route > Handles unknown errors > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

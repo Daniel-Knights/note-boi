@@ -137,7 +137,6 @@ exports[`main > Does not sync if no username is set > mockDb 1`] = `
 
 exports[`main > Does not sync if no username is set > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -962,7 +961,6 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
 
 exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {

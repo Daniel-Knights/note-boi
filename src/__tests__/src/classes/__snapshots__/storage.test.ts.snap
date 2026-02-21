@@ -30,7 +30,6 @@ exports[`Storage > clear > mockDb 1`] = `
 
 exports[`Storage > clear > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`Storage > get/set > mockDb 1`] = `
 
 exports[`Storage > get/set > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -196,7 +194,6 @@ exports[`Storage > remove > mockDb 1`] = `
 
 exports[`Storage > remove > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -279,7 +276,6 @@ exports[`Storage > setJSON/getJSON > mockDb 1`] = `
 
 exports[`Storage > setJSON/getJSON > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {

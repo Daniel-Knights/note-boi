@@ -169,7 +169,6 @@ exports[`Account > changePassword > Changes password for currently logged in acc
 
 exports[`Account > changePassword > Changes password for currently logged in account > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -411,7 +410,6 @@ exports[`Account > changePassword > Handles KeyStore.storeKey error after succes
 
 exports[`Account > changePassword > Handles KeyStore.storeKey error after successful password change > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -626,7 +624,6 @@ exports[`Account > changePassword > Sets and resets loading state > mockDb 1`] =
 
 exports[`Account > changePassword > Sets and resets loading state > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -818,7 +815,6 @@ exports[`Account > changePassword > Throws if no access token > mockDb 1`] = `
 
 exports[`Account > changePassword > Throws if no access token > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -918,7 +914,6 @@ exports[`Account > changePassword > Throws if no username > mockDb 1`] = `
 
 exports[`Account > changePassword > Throws if no username > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1068,7 +1063,6 @@ exports[`Account > changePassword > User not found > mockDb 1`] = `
 
 exports[`Account > changePassword > User not found > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -1251,7 +1245,6 @@ exports[`Account > changePassword > With encryption error > mockDb 1`] = `
 
 exports[`Account > changePassword > With encryption error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1645,7 +1638,6 @@ exports[`Account > changePassword > With server error > mockDb 1`] = `
 
 exports[`Account > changePassword > With server error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1879,7 +1871,6 @@ exports[`Account > deleteAccount > Deletes currently logged in account > mockDb 
 
 exports[`Account > deleteAccount > Deletes currently logged in account > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -1988,7 +1979,6 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > mockDb 
 
 exports[`Account > deleteAccount > Returns if ask dialog returns false > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -2205,7 +2195,6 @@ exports[`Account > deleteAccount > Sets and resets loading state > mockDb 1`] = 
 
 exports[`Account > deleteAccount > Sets and resets loading state > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -2408,7 +2397,6 @@ exports[`Account > deleteAccount > Throws if no access token > mockDb 1`] = `
 
 exports[`Account > deleteAccount > Throws if no access token > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -2521,7 +2509,6 @@ exports[`Account > deleteAccount > Throws if no username > mockDb 1`] = `
 
 exports[`Account > deleteAccount > Throws if no username > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -2721,7 +2708,6 @@ exports[`Account > deleteAccount > Unauthorized > mockDb 1`] = `
 
 exports[`Account > deleteAccount > Unauthorized > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {
@@ -2895,7 +2881,6 @@ exports[`Account > deleteAccount > User not found > mockDb 1`] = `
 
 exports[`Account > deleteAccount > User not found > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -3097,7 +3082,6 @@ exports[`Account > deleteAccount > With server error > mockDb 1`] = `
 
 exports[`Account > deleteAccount > With server error > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [
     Note {

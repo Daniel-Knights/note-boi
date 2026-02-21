@@ -30,7 +30,6 @@ exports[`Encryptor > decryptNotes > Decrypts notes > mockDb 1`] = `
 
 exports[`Encryptor > decryptNotes > Decrypts notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -113,7 +112,6 @@ exports[`Encryptor > decryptNotes > Handles unencrypted notes > mockDb 1`] = `
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -196,7 +194,6 @@ exports[`Encryptor > encryptNotes > mockDb 1`] = `
 
 exports[`Encryptor > encryptNotes > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -279,7 +276,6 @@ exports[`Encryptor > generatePasswordKey > Generates a password key > mockDb 1`]
 
 exports[`Encryptor > generatePasswordKey > Generates a password key > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
@@ -362,7 +358,6 @@ exports[`Encryptor > generatePasswordKey > Throws an error for empty password > 
 
 exports[`Encryptor > generatePasswordKey > Throws an error for empty password > noteState 1`] = `
 {
-  "addNotes": [Function],
   "extraSelectedNotes": [],
   "notes": [],
   "selectedNote": Note {
