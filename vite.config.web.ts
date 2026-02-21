@@ -28,19 +28,23 @@ export default defineConfig(({ mode }) => ({
   },
 }));
 
+// Injects build output filenames into sw.js for PWA caching
 const pwaPlugin = {
   name: 'pwa',
   async writeBundle() {
+    // Get all built files
     const outFiles = await fs.promises.readdir('./dist-web', { recursive: true });
     const sw = await fs.promises.readFile('./dist-web/sw.js', 'utf-8');
     const excludeFiles = ['sw.js', 'assets'];
 
+    // Format as list of paths for service worker cache manifest
     const injectFilenames = outFiles
       .filter((f) => !excludeFiles.includes(f))
       .concat('') // Root
       .map((f) => `"/${f}"`)
       .join(',\n');
 
+    // Replace placeholder in sw.js
     await fs.promises.writeFile(
       './dist-web/sw.js',
       sw.replace('/* <INJECTED> */', injectFilenames)
