@@ -171,13 +171,6 @@ $utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
     height: fit-content;
     width: calc(100% - #{$spacing-x * 2});
     text-indent: -$text-indent;
-
-    // TBR: The default Quill values for these cause the highlight boxes for the
-    // first letter on a wrapped line to be huge, because `getBounds` returns
-    // the top right position as being the point at which the line wraps.
-    white-space: unset;
-    line-break: unset;
-
     z-index: 5;
 
     .ql-code-block-container {
