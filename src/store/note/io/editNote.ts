@@ -1,7 +1,7 @@
 import type Delta from 'quill-delta';
 
 import { debounceSync } from '../../../api';
-import { Storage } from '../../../classes';
+import { PersistentStorage } from '../../../classes';
 import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { noteState } from '../state';
@@ -45,6 +45,6 @@ export function editNote(delta: Partial<Delta>, title: string, body: string): vo
 
   //// Web
 
-  Storage.setJSON('NOTES', noteState.notes);
+  PersistentStorage.setJSON('NOTES', noteState.notes);
   debounceSync();
 }

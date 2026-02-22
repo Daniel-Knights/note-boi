@@ -2,7 +2,7 @@ import * as a from '../../../api';
 import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import { ERROR_CODE, KeyStore, Storage, TokenStore } from '../../../classes';
+import { ERROR_CODE, KeyStore, PersistentStorage, TokenStore } from '../../../classes';
 import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
   assertAppError,
@@ -29,7 +29,7 @@ describe('Account', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.password);
       assert.isEmpty(s.syncState.newPassword);
-      assert.strictEqual(Storage.get('USERNAME'), 'd');
+      assert.strictEqual(PersistentStorage.get('USERNAME'), 'd');
 
       s.syncState.password = '2';
       s.syncState.newPassword = '1';
@@ -314,7 +314,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(Storage.get('USERNAME'), 'd');
+      assert.strictEqual(PersistentStorage.get('USERNAME'), 'd');
 
       await a.deleteAccount();
 
@@ -385,7 +385,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.username, 'd');
       assert.isTrue(s.syncState.isLoggedIn);
-      assert.strictEqual(Storage.get('USERNAME'), 'd');
+      assert.strictEqual(PersistentStorage.get('USERNAME'), 'd');
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
       assert.isTrue(calls.request.has('/account/delete'));

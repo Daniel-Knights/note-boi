@@ -1,24 +1,24 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Storage > clear > KeyStore.getKey() 1`] = `undefined`;
+exports[`PersistentStorage > clear > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Storage > clear > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PersistentStorage > clear > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Storage > clear > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PersistentStorage > clear > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Storage > clear > Storage.get('THEME') 1`] = `null`;
+exports[`PersistentStorage > clear > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Storage > clear > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PersistentStorage > clear > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Storage > clear > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PersistentStorage > clear > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Storage > clear > Storage.get('USERNAME') 1`] = `null`;
+exports[`PersistentStorage > clear > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`Storage > clear > allCalls 1`] = `[]`;
+exports[`PersistentStorage > clear > allCalls 1`] = `[]`;
 
-exports[`Storage > clear > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`PersistentStorage > clear > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Storage > clear > mockDb 1`] = `
+exports[`PersistentStorage > clear > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -28,7 +28,7 @@ exports[`Storage > clear > mockDb 1`] = `
 }
 `;
 
-exports[`Storage > clear > noteState 1`] = `
+exports[`PersistentStorage > clear > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -46,11 +46,11 @@ exports[`Storage > clear > noteState 1`] = `
 }
 `;
 
-exports[`Storage > clear > openedPopup 1`] = `undefined`;
+exports[`PersistentStorage > clear > openedPopup 1`] = `undefined`;
 
-exports[`Storage > clear > selectedTheme 1`] = `"System"`;
+exports[`PersistentStorage > clear > selectedTheme 1`] = `"System"`;
 
-exports[`Storage > clear > syncState 1`] = `
+exports[`PersistentStorage > clear > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -74,7 +74,7 @@ exports[`Storage > clear > syncState 1`] = `
 }
 `;
 
-exports[`Storage > clear > updateState 1`] = `
+exports[`PersistentStorage > clear > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -82,25 +82,25 @@ exports[`Storage > clear > updateState 1`] = `
 }
 `;
 
-exports[`Storage > get/set > KeyStore.getKey() 1`] = `undefined`;
+exports[`PersistentStorage > get/set > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Storage > get/set > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PersistentStorage > get/set > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Storage > get/set > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PersistentStorage > get/set > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Storage > get/set > Storage.get('THEME') 1`] = `null`;
+exports[`PersistentStorage > get/set > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Storage > get/set > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PersistentStorage > get/set > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Storage > get/set > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PersistentStorage > get/set > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Storage > get/set > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`PersistentStorage > get/set > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
-exports[`Storage > get/set > allCalls 1`] = `[]`;
+exports[`PersistentStorage > get/set > allCalls 1`] = `[]`;
 
-exports[`Storage > get/set > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`PersistentStorage > get/set > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Storage > get/set > mockDb 1`] = `
+exports[`PersistentStorage > get/set > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -110,7 +110,7 @@ exports[`Storage > get/set > mockDb 1`] = `
 }
 `;
 
-exports[`Storage > get/set > noteState 1`] = `
+exports[`PersistentStorage > get/set > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -128,11 +128,11 @@ exports[`Storage > get/set > noteState 1`] = `
 }
 `;
 
-exports[`Storage > get/set > openedPopup 1`] = `undefined`;
+exports[`PersistentStorage > get/set > openedPopup 1`] = `undefined`;
 
-exports[`Storage > get/set > selectedTheme 1`] = `"System"`;
+exports[`PersistentStorage > get/set > selectedTheme 1`] = `"System"`;
 
-exports[`Storage > get/set > syncState 1`] = `
+exports[`PersistentStorage > get/set > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -156,7 +156,7 @@ exports[`Storage > get/set > syncState 1`] = `
 }
 `;
 
-exports[`Storage > get/set > updateState 1`] = `
+exports[`PersistentStorage > get/set > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -164,25 +164,25 @@ exports[`Storage > get/set > updateState 1`] = `
 }
 `;
 
-exports[`Storage > remove > KeyStore.getKey() 1`] = `undefined`;
+exports[`PersistentStorage > remove > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Storage > remove > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PersistentStorage > remove > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Storage > remove > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PersistentStorage > remove > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Storage > remove > Storage.get('THEME') 1`] = `null`;
+exports[`PersistentStorage > remove > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Storage > remove > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PersistentStorage > remove > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Storage > remove > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PersistentStorage > remove > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Storage > remove > Storage.get('USERNAME') 1`] = `null`;
+exports[`PersistentStorage > remove > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`Storage > remove > allCalls 1`] = `[]`;
+exports[`PersistentStorage > remove > allCalls 1`] = `[]`;
 
-exports[`Storage > remove > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`PersistentStorage > remove > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Storage > remove > mockDb 1`] = `
+exports[`PersistentStorage > remove > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -192,7 +192,7 @@ exports[`Storage > remove > mockDb 1`] = `
 }
 `;
 
-exports[`Storage > remove > noteState 1`] = `
+exports[`PersistentStorage > remove > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -210,11 +210,11 @@ exports[`Storage > remove > noteState 1`] = `
 }
 `;
 
-exports[`Storage > remove > openedPopup 1`] = `undefined`;
+exports[`PersistentStorage > remove > openedPopup 1`] = `undefined`;
 
-exports[`Storage > remove > selectedTheme 1`] = `"System"`;
+exports[`PersistentStorage > remove > selectedTheme 1`] = `"System"`;
 
-exports[`Storage > remove > syncState 1`] = `
+exports[`PersistentStorage > remove > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -238,7 +238,7 @@ exports[`Storage > remove > syncState 1`] = `
 }
 `;
 
-exports[`Storage > remove > updateState 1`] = `
+exports[`PersistentStorage > remove > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -246,25 +246,25 @@ exports[`Storage > remove > updateState 1`] = `
 }
 `;
 
-exports[`Storage > setJSON/getJSON > KeyStore.getKey() 1`] = `undefined`;
+exports[`PersistentStorage > setJSON/getJSON > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Storage > setJSON/getJSON > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PersistentStorage > setJSON/getJSON > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Storage > setJSON/getJSON > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PersistentStorage > setJSON/getJSON > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Storage > setJSON/getJSON > Storage.get('THEME') 1`] = `null`;
+exports[`PersistentStorage > setJSON/getJSON > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Storage > setJSON/getJSON > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PersistentStorage > setJSON/getJSON > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Storage > setJSON/getJSON > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PersistentStorage > setJSON/getJSON > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Storage > setJSON/getJSON > Storage.get('USERNAME') 1`] = `null`;
+exports[`PersistentStorage > setJSON/getJSON > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`Storage > setJSON/getJSON > allCalls 1`] = `[]`;
+exports[`PersistentStorage > setJSON/getJSON > allCalls 1`] = `[]`;
 
-exports[`Storage > setJSON/getJSON > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`PersistentStorage > setJSON/getJSON > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`Storage > setJSON/getJSON > mockDb 1`] = `
+exports[`PersistentStorage > setJSON/getJSON > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -274,7 +274,7 @@ exports[`Storage > setJSON/getJSON > mockDb 1`] = `
 }
 `;
 
-exports[`Storage > setJSON/getJSON > noteState 1`] = `
+exports[`PersistentStorage > setJSON/getJSON > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -292,11 +292,11 @@ exports[`Storage > setJSON/getJSON > noteState 1`] = `
 }
 `;
 
-exports[`Storage > setJSON/getJSON > openedPopup 1`] = `undefined`;
+exports[`PersistentStorage > setJSON/getJSON > openedPopup 1`] = `undefined`;
 
-exports[`Storage > setJSON/getJSON > selectedTheme 1`] = `"System"`;
+exports[`PersistentStorage > setJSON/getJSON > selectedTheme 1`] = `"System"`;
 
-exports[`Storage > setJSON/getJSON > syncState 1`] = `
+exports[`PersistentStorage > setJSON/getJSON > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -320,7 +320,7 @@ exports[`Storage > setJSON/getJSON > syncState 1`] = `
 }
 `;
 
-exports[`Storage > setJSON/getJSON > updateState 1`] = `
+exports[`PersistentStorage > setJSON/getJSON > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,

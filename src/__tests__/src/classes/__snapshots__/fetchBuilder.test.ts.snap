@@ -2,17 +2,17 @@
 
 exports[`FetchBuilder > With auth > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`FetchBuilder > With auth > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`FetchBuilder > With auth > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`FetchBuilder > With auth > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`FetchBuilder > With auth > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`FetchBuilder > With auth > Storage.get('THEME') 1`] = `null`;
+exports[`FetchBuilder > With auth > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`FetchBuilder > With auth > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`FetchBuilder > With auth > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`FetchBuilder > With auth > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`FetchBuilder > With auth > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`FetchBuilder > With auth > Storage.get('USERNAME') 1`] = `null`;
+exports[`FetchBuilder > With auth > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`FetchBuilder > With auth > allCalls 1`] = `
 [
@@ -114,17 +114,17 @@ exports[`FetchBuilder > With auth > updateState 1`] = `
 
 exports[`FetchBuilder > Without auth > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`FetchBuilder > Without auth > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`FetchBuilder > Without auth > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`FetchBuilder > Without auth > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`FetchBuilder > Without auth > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`FetchBuilder > Without auth > Storage.get('THEME') 1`] = `null`;
+exports[`FetchBuilder > Without auth > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`FetchBuilder > Without auth > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`FetchBuilder > Without auth > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`FetchBuilder > Without auth > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`FetchBuilder > Without auth > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`FetchBuilder > Without auth > Storage.get('USERNAME') 1`] = `null`;
+exports[`FetchBuilder > Without auth > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`FetchBuilder > Without auth > allCalls 1`] = `
 [

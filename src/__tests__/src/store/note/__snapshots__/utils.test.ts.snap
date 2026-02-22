@@ -2,17 +2,17 @@
 
 exports[`utils > findNote > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`utils > findNote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`utils > findNote > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`utils > findNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`utils > findNote > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`utils > findNote > Storage.get('THEME') 1`] = `null`;
+exports[`utils > findNote > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`utils > findNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`utils > findNote > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`utils > findNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`utils > findNote > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`utils > findNote > Storage.get('USERNAME') 1`] = `null`;
+exports[`utils > findNote > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`utils > findNote > allCalls 1`] = `
 [
@@ -337,17 +337,17 @@ exports[`utils > findNote > updateState 1`] = `
 
 exports[`utils > findNoteIndex > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`utils > findNoteIndex > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`utils > findNoteIndex > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`utils > findNoteIndex > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`utils > findNoteIndex > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`utils > findNoteIndex > Storage.get('THEME') 1`] = `null`;
+exports[`utils > findNoteIndex > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`utils > findNoteIndex > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`utils > findNoteIndex > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`utils > findNoteIndex > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`utils > findNoteIndex > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`utils > findNoteIndex > Storage.get('USERNAME') 1`] = `null`;
+exports[`utils > findNoteIndex > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`utils > findNoteIndex > allCalls 1`] = `
 [
@@ -672,17 +672,17 @@ exports[`utils > findNoteIndex > updateState 1`] = `
 
 exports[`utils > isSelectedNote > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`utils > isSelectedNote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`utils > isSelectedNote > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`utils > isSelectedNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`utils > isSelectedNote > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`utils > isSelectedNote > Storage.get('THEME') 1`] = `null`;
+exports[`utils > isSelectedNote > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`utils > isSelectedNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`utils > isSelectedNote > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`utils > isSelectedNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`utils > isSelectedNote > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`utils > isSelectedNote > Storage.get('USERNAME') 1`] = `null`;
+exports[`utils > isSelectedNote > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`utils > isSelectedNote > allCalls 1`] = `
 [

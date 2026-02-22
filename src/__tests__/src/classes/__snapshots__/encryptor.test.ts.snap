@@ -2,17 +2,17 @@
 
 exports[`Encryptor > decryptNotes > Decrypts notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('THEME') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Decrypts notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Decrypts notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Decrypts notes > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`Encryptor > decryptNotes > Decrypts notes > updateState 1`] = `
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('THEME') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Encryptor > decryptNotes > Handles unencrypted notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`Encryptor > decryptNotes > Handles unencrypted notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > decryptNotes > Handles unencrypted notes > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`Encryptor > decryptNotes > Handles unencrypted notes > updateState 1`] 
 
 exports[`Encryptor > encryptNotes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Encryptor > encryptNotes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Encryptor > encryptNotes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Encryptor > encryptNotes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Encryptor > encryptNotes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Encryptor > encryptNotes > Storage.get('THEME') 1`] = `null`;
+exports[`Encryptor > encryptNotes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Encryptor > encryptNotes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Encryptor > encryptNotes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Encryptor > encryptNotes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Encryptor > encryptNotes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Encryptor > encryptNotes > Storage.get('USERNAME') 1`] = `null`;
+exports[`Encryptor > encryptNotes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > encryptNotes > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`Encryptor > encryptNotes > updateState 1`] = `
 
 exports[`Encryptor > generatePasswordKey > Generates a password key > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Generates a password key > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Generates a password key > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('THEME') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Generates a password key > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Generates a password key > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Generates a password key > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Generates a password key > Storage.get('USERNAME') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Generates a password key > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > generatePasswordKey > Generates a password key > allCalls 1`] = `[]`;
 
@@ -330,17 +330,17 @@ exports[`Encryptor > generatePasswordKey > Generates a password key > updateStat
 
 exports[`Encryptor > generatePasswordKey > Throws an error for empty password > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Encryptor > generatePasswordKey > Throws an error for empty password > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Throws an error for empty password > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Throws an error for empty password > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Throws an error for empty password > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Throws an error for empty password > Storage.get('THEME') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Throws an error for empty password > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Throws an error for empty password > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Throws an error for empty password > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Throws an error for empty password > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Throws an error for empty password > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Encryptor > generatePasswordKey > Throws an error for empty password > Storage.get('USERNAME') 1`] = `null`;
+exports[`Encryptor > generatePasswordKey > Throws an error for empty password > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Encryptor > generatePasswordKey > Throws an error for empty password > allCalls 1`] = `[]`;
 

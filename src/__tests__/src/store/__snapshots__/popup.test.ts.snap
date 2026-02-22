@@ -2,17 +2,17 @@
 
 exports[`Popup > Sets opened popup > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Popup > Sets opened popup > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Popup > Sets opened popup > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Popup > Sets opened popup > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Popup > Sets opened popup > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Popup > Sets opened popup > Storage.get('THEME') 1`] = `null`;
+exports[`Popup > Sets opened popup > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Popup > Sets opened popup > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Popup > Sets opened popup > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Popup > Sets opened popup > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Popup > Sets opened popup > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Popup > Sets opened popup > Storage.get('USERNAME') 1`] = `null`;
+exports[`Popup > Sets opened popup > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Sets opened popup > allCalls 1`] = `[]`;
 

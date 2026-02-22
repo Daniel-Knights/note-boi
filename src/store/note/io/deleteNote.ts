@@ -1,5 +1,5 @@
 import { debounceSync } from '../../../api';
-import { Storage } from '../../../classes';
+import { PersistentStorage } from '../../../classes';
 import { isDesktop, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { dispatchNoteEvent } from '../event';
@@ -39,7 +39,7 @@ export function deleteNote(uuid: string): void {
 
   //// Web
 
-  Storage.setJSON('NOTES', noteState.notes);
+  PersistentStorage.setJSON('NOTES', noteState.notes);
   debounceSync();
 }
 

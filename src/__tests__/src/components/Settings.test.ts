@@ -4,7 +4,7 @@ import { nextTick } from 'vue';
 import * as a from '../../../api';
 import * as s from '../../../store/sync';
 import * as u from '../../../store/update';
-import { Storage, TokenStore } from '../../../classes';
+import { PersistentStorage, TokenStore } from '../../../classes';
 import { COLOUR_THEMES } from '../../../constant';
 import { openedPopup, POPUP_TYPE } from '../../../store/popup';
 import { selectedTheme } from '../../../store/theme';
@@ -103,7 +103,7 @@ describe('Settings', () => {
       await currentThemeWrapper.trigger('click');
 
       assert.strictEqual(selectedTheme.value, theme);
-      assert.strictEqual(Storage.get('THEME'), theme);
+      assert.strictEqual(PersistentStorage.get('THEME'), theme);
       assert.isTrue(currentThemeWrapper.classes('drop-menu__item--selected'));
     }
   });
@@ -117,7 +117,7 @@ describe('Settings', () => {
       const updateAutoWrapper = findByTestId(updateStrategyWrapper, 'update-auto');
 
       assert.strictEqual(u.updateState.strategy, 'manual');
-      assert.isNull(Storage.get('UPDATE_STRATEGY'));
+      assert.isNull(PersistentStorage.get('UPDATE_STRATEGY'));
       assert.isFalse(updateAutoWrapper.classes('drop-menu__item--selected'));
 
       await updateAutoWrapper.trigger('click');
@@ -127,7 +127,7 @@ describe('Settings', () => {
       expect(setUpdateStrategySpy).toHaveBeenCalledWith('auto');
       assert.strictEqual(calls.size, 0);
       assert.strictEqual(u.updateState.strategy, 'auto');
-      assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'auto');
+      assert.strictEqual(PersistentStorage.get('UPDATE_STRATEGY'), 'auto');
       assert.isTrue(updateAutoWrapper.classes('drop-menu__item--selected'));
 
       const updateManualWrapper = findByTestId(updateStrategyWrapper, 'update-manual');
@@ -141,7 +141,7 @@ describe('Settings', () => {
       expect(setUpdateStrategySpy).toHaveBeenCalledWith('manual');
       assert.strictEqual(calls.size, 0);
       assert.strictEqual(u.updateState.strategy, 'manual');
-      assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'manual');
+      assert.strictEqual(PersistentStorage.get('UPDATE_STRATEGY'), 'manual');
       assert.isTrue(updateManualWrapper.classes('drop-menu__item--selected'));
     });
 

@@ -21,7 +21,7 @@ export const STORAGE_KEYS_JSON = {
 export const STORAGE_KEYS = { ...STORAGE_KEYS_STRING, ...STORAGE_KEYS_JSON };
 
 /** `localStorage` convenience methods with stronger typing. */
-export class Storage {
+export class PersistentStorage {
   static get<T extends keyof StorageValuesString>(key: T): StorageValues[T] | null {
     return localStorage.getItem(STORAGE_KEYS[key]) as StorageValues[T] | null;
   }

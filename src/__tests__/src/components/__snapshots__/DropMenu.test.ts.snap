@@ -2,17 +2,17 @@
 
 exports[`DropMenu > Adds classes to items > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Adds classes to items > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Adds classes to items > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Adds classes to items > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Adds classes to items > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Adds classes to items > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Adds classes to items > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Adds classes to items > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Adds classes to items > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Adds classes to items > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Adds classes to items > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Adds classes to items > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Adds classes to items > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Adds classes to items > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`DropMenu > Adds classes to items > updateState 1`] = `
 
 exports[`DropMenu > Adds click handlers to items > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Adds click handlers to items > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Adds click handlers to items > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Adds click handlers to items > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Adds click handlers to items > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Adds click handlers to items > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Adds click handlers to items > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Adds click handlers to items > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Adds click handlers to items > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Adds click handlers to items > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Adds click handlers to items > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Adds click handlers to items > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Adds click handlers to items > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Adds click handlers to items > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`DropMenu > Adds click handlers to items > updateState 1`] = `
 
 exports[`DropMenu > Cleans up event listener on unmount > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Cleans up event listener on unmount > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Cleans up event listener on unmount > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Cleans up event listener on unmount > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Cleans up event listener on unmount > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Cleans up event listener on unmount > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Cleans up event listener on unmount > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Cleans up event listener on unmount > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Cleans up event listener on unmount > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Cleans up event listener on unmount > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Cleans up event listener on unmount > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Cleans up event listener on unmount > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Cleans up event listener on unmount > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Cleans up event listener on unmount > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`DropMenu > Cleans up event listener on unmount > updateState 1`] = `
 
 exports[`DropMenu > Does not emit close on click inside menu > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Does not emit close on click inside menu > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Does not emit close on click inside menu > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on click inside menu > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Does not emit close on click inside menu > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on click inside menu > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Does not emit close on click inside menu > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on click inside menu > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Does not emit close on click inside menu > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on click inside menu > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Does not emit close on click inside menu > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on click inside menu > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Does not emit close on click inside menu > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Does not emit close on click inside menu > allCalls 1`] = `[]`;
 
@@ -330,17 +330,17 @@ exports[`DropMenu > Does not emit close on click inside menu > updateState 1`] =
 
 exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Does not emit close on menu item click if closeOnClick is false > allCalls 1`] = `[]`;
 
@@ -412,17 +412,17 @@ exports[`DropMenu > Does not emit close on menu item click if closeOnClick is fa
 
 exports[`DropMenu > Emits close on click outside > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Emits close on click outside > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click outside > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click outside > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click outside > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click outside > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Emits close on click outside > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Emits close on click outside > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Emits close on click outside > allCalls 1`] = `[]`;
 
@@ -494,17 +494,17 @@ exports[`DropMenu > Emits close on click outside > updateState 1`] = `
 
 exports[`DropMenu > Emits close on menu item click if closeOnClick is true > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Emits close on menu item click if closeOnClick is true > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Emits close on menu item click if closeOnClick is true > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Emits close on menu item click if closeOnClick is true > allCalls 1`] = `[]`;
 
@@ -576,17 +576,17 @@ exports[`DropMenu > Emits close on menu item click if closeOnClick is true > upd
 
 exports[`DropMenu > Filters items based on showIf condition > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Filters items based on showIf condition > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Filters items based on showIf condition > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Filters items based on showIf condition > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Filters items based on showIf condition > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Filters items based on showIf condition > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Filters items based on showIf condition > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Filters items based on showIf condition > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Filters items based on showIf condition > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Filters items based on showIf condition > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Filters items based on showIf condition > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Filters items based on showIf condition > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Filters items based on showIf condition > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Filters items based on showIf condition > allCalls 1`] = `[]`;
 
@@ -658,17 +658,17 @@ exports[`DropMenu > Filters items based on showIf condition > updateState 1`] = 
 
 exports[`DropMenu > Handles sub-menus > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Handles sub-menus > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Handles sub-menus > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Handles sub-menus > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Handles sub-menus > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Handles sub-menus > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Handles sub-menus > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Handles sub-menus > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Handles sub-menus > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Handles sub-menus > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Handles sub-menus > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Handles sub-menus > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Handles sub-menus > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Handles sub-menus > allCalls 1`] = `[]`;
 
@@ -740,17 +740,17 @@ exports[`DropMenu > Handles sub-menus > updateState 1`] = `
 
 exports[`DropMenu > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Mounts > allCalls 1`] = `[]`;
 
@@ -822,17 +822,17 @@ exports[`DropMenu > Mounts > updateState 1`] = `
 
 exports[`DropMenu > Renders each item > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Renders each item > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Renders each item > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Renders each item > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Renders each item > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Renders each item > Storage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Renders each item > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Renders each item > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Renders each item > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Renders each item > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Renders each item > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Renders each item > Storage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Renders each item > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DropMenu > Renders each item > allCalls 1`] = `[]`;
 

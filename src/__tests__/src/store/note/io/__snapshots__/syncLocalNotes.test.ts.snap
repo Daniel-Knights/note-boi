@@ -2,17 +2,17 @@
 
 exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('THEME') 1`] = `null`;
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`syncLocalNotes > Calls sync_local_notes invoke with notes > allCalls 1`] = `
 [

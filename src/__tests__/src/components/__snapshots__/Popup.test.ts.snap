@@ -2,17 +2,17 @@
 
 exports[`Popup > Closes on click outside > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Popup > Closes on click outside > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Popup > Closes on click outside > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Popup > Closes on click outside > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Popup > Closes on click outside > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Popup > Closes on click outside > Storage.get('THEME') 1`] = `null`;
+exports[`Popup > Closes on click outside > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Popup > Closes on click outside > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Popup > Closes on click outside > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Popup > Closes on click outside > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Popup > Closes on click outside > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Popup > Closes on click outside > Storage.get('USERNAME') 1`] = `null`;
+exports[`Popup > Closes on click outside > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Closes on click outside > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`Popup > Closes on click outside > updateState 1`] = `
 
 exports[`Popup > Closes on escape key > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Popup > Closes on escape key > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Popup > Closes on escape key > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Popup > Closes on escape key > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Popup > Closes on escape key > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Popup > Closes on escape key > Storage.get('THEME') 1`] = `null`;
+exports[`Popup > Closes on escape key > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Popup > Closes on escape key > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Popup > Closes on escape key > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Popup > Closes on escape key > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Popup > Closes on escape key > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Popup > Closes on escape key > Storage.get('USERNAME') 1`] = `null`;
+exports[`Popup > Closes on escape key > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Closes on escape key > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`Popup > Closes on escape key > updateState 1`] = `
 
 exports[`Popup > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Popup > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Popup > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Popup > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Popup > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Popup > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`Popup > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Popup > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Popup > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Popup > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Popup > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Popup > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`Popup > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Mounts > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`Popup > Mounts > updateState 1`] = `
 
 exports[`Popup > Unmounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Popup > Unmounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Popup > Unmounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Popup > Unmounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Popup > Unmounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Popup > Unmounts > Storage.get('THEME') 1`] = `null`;
+exports[`Popup > Unmounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Popup > Unmounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Popup > Unmounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Popup > Unmounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Popup > Unmounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Popup > Unmounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`Popup > Unmounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Popup > Unmounts > allCalls 1`] = `[]`;
 

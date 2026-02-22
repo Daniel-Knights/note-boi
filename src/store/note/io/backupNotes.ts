@@ -1,4 +1,4 @@
-import { Note, Storage } from '../../../classes';
+import { Note, PersistentStorage } from '../../../classes';
 import { MAX_BACKUPS_COUNT } from '../../../constant';
 import { isDesktop, tauriInvoke } from '../../../utils';
 
@@ -14,7 +14,7 @@ export async function backupNotes(notes: Note[]): Promise<void> {
 
   //// Web
 
-  const existingNotesBackup = Storage.getJSON('NOTES_BACKUP') ?? {};
+  const existingNotesBackup = PersistentStorage.getJSON('NOTES_BACKUP') ?? {};
 
   const newNotesBackup = {
     [Date.now().toString()]: notes,
@@ -36,5 +36,5 @@ export async function backupNotes(notes: Note[]): Promise<void> {
     delete newNotesBackup[`${oldestBackupDate.getTime()}`];
   }
 
-  Storage.setJSON('NOTES_BACKUP', newNotesBackup);
+  PersistentStorage.setJSON('NOTES_BACKUP', newNotesBackup);
 }

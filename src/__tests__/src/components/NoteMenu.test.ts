@@ -2,7 +2,7 @@ import { shallowMount, VueWrapper } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
-import { Note, Storage } from '../../../classes';
+import { Note, PersistentStorage } from '../../../classes';
 import { LONG_PRESS_TIMEOUT, MIN_MENU_WIDTH } from '../../../constant';
 import { isEmptyNote } from '../../../utils';
 import { mockApi } from '../../mock';
@@ -312,7 +312,7 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.isNotNull(Storage.get('MENU_WIDTH'));
+    assert.isNotNull(PersistentStorage.get('MENU_WIDTH'));
 
     // Is hidden when dragged below min width
     await dragBar.trigger('mousedown');
@@ -337,7 +337,7 @@ describe('NoteMenu', () => {
     document.dispatchEvent(new MouseEvent('mouseup'));
 
     assert.isFalse(wrapperVm.isDragging);
-    assert.strictEqual(Storage.get('MENU_WIDTH'), '400px');
+    assert.strictEqual(PersistentStorage.get('MENU_WIDTH'), '400px');
   });
 
   it('Uses 100vw width on small screens', () => {

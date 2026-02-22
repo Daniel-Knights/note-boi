@@ -2,17 +2,17 @@
 
 exports[`ContextMenu > Closes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Closes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Closes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Closes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Closes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Closes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Closes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Closes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Closes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Closes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Closes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Closes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Closes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Closes > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`ContextMenu > Closes > updateState 1`] = `
 
 exports[`ContextMenu > Closes on click outside > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Closes on click outside > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Closes on click outside > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Closes on click outside > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Closes on click outside > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Closes on click outside > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Closes on click outside > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Closes on click outside > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Closes on click outside > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Closes on click outside > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Closes on click outside > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Closes on click outside > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Closes on click outside > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Closes on click outside > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`ContextMenu > Closes on click outside > updateState 1`] = `
 
 exports[`ContextMenu > Closes on menu item click > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Closes on menu item click > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Closes on menu item click > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Closes on menu item click > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Closes on menu item click > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Closes on menu item click > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Closes on menu item click > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Closes on menu item click > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Closes on menu item click > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Closes on menu item click > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Closes on menu item click > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Closes on menu item click > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Closes on menu item click > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Closes on menu item click > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`ContextMenu > Closes on menu item click > updateState 1`] = `
 
 exports[`ContextMenu > Creates a new note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Creates a new note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Creates a new note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Creates a new note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Creates a new note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Creates a new note > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Creates a new note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Creates a new note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Creates a new note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Creates a new note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Creates a new note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Creates a new note > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Creates a new note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Creates a new note > allCalls 1`] = `
 [
@@ -583,17 +583,17 @@ exports[`ContextMenu > Creates a new note > updateState 1`] = `
 
 exports[`ContextMenu > Delete button not shown with no notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Delete button not shown with no notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Delete button not shown with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Delete button not shown with no notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Delete button not shown with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Delete button not shown with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Delete button not shown with no notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Delete button not shown with no notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Delete button not shown with no notes > allCalls 1`] = `
 [
@@ -706,17 +706,17 @@ exports[`ContextMenu > Delete button not shown with no notes > updateState 1`] =
 
 exports[`ContextMenu > Deletes a note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Deletes a note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Deletes a note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Deletes a note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Deletes a note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Deletes a note > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Deletes a note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Deletes a note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Deletes a note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Deletes a note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Deletes a note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Deletes a note > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Deletes a note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Deletes a note > allCalls 1`] = `
 [
@@ -1051,17 +1051,17 @@ exports[`ContextMenu > Deletes a note > updateState 1`] = `
 
 exports[`ContextMenu > Deletes all selected notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Deletes all selected notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Deletes all selected notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Deletes all selected notes > allCalls 1`] = `
 [
@@ -1388,17 +1388,17 @@ exports[`ContextMenu > Deletes all selected notes > updateState 1`] = `
 
 exports[`ContextMenu > Does not delete note if confirmation is cancelled > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Does not delete note if confirmation is cancelled > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Does not delete note if confirmation is cancelled > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete note if confirmation is cancelled > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Does not delete note if confirmation is cancelled > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete note if confirmation is cancelled > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Does not delete note if confirmation is cancelled > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete note if confirmation is cancelled > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Does not delete note if confirmation is cancelled > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete note if confirmation is cancelled > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Does not delete note if confirmation is cancelled > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete note if confirmation is cancelled > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Does not delete note if confirmation is cancelled > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Does not delete note if confirmation is cancelled > allCalls 1`] = `
 [
@@ -1690,17 +1690,17 @@ exports[`ContextMenu > Does not delete note if confirmation is cancelled > updat
 
 exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Does not delete selected notes if confirmation is cancelled > allCalls 1`] = `
 [
@@ -2053,17 +2053,17 @@ exports[`ContextMenu > Does not delete selected notes if confirmation is cancell
 
 exports[`ContextMenu > Does not show export or delete button if no clicked note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Does not show export or delete button if no clicked note > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Does not show export or delete button if no clicked note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Does not show export or delete button if no clicked note > allCalls 1`] = `[]`;
 
@@ -2135,17 +2135,17 @@ exports[`ContextMenu > Does not show export or delete button if no clicked note 
 
 exports[`ContextMenu > Export button not shown with no notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Export button not shown with no notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Export button not shown with no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Export button not shown with no notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Export button not shown with no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Export button not shown with no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Export button not shown with no notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Export button not shown with no notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Export button not shown with no notes > allCalls 1`] = `
 [
@@ -2258,17 +2258,17 @@ exports[`ContextMenu > Export button not shown with no notes > updateState 1`] =
 
 exports[`ContextMenu > Exports a note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Exports a note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Exports a note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Exports a note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Exports a note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Exports a note > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Exports a note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Exports a note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Exports a note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Exports a note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Exports a note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Exports a note > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Exports a note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Exports a note > allCalls 1`] = `
 [
@@ -2587,17 +2587,17 @@ exports[`ContextMenu > Exports a note > updateState 1`] = `
 
 exports[`ContextMenu > Exports all notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Exports all notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Exports all notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Exports all notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Exports all notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Exports all notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Exports all notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Exports all notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Exports all notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Exports all notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Exports all notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Exports all notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Exports all notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Exports all notes > allCalls 1`] = `
 [
@@ -2694,17 +2694,17 @@ exports[`ContextMenu > Exports all notes > updateState 1`] = `
 
 exports[`ContextMenu > Exports all selected notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Exports all selected notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Exports all selected notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Exports all selected notes > allCalls 1`] = `
 [
@@ -3144,17 +3144,17 @@ exports[`ContextMenu > Exports all selected notes > updateState 1`] = `
 
 exports[`ContextMenu > Imports notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Imports notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Imports notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Imports notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Imports notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Imports notes > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Imports notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Imports notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Imports notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Imports notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Imports notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Imports notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Imports notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Imports notes > allCalls 1`] = `
 [
@@ -3252,17 +3252,17 @@ exports[`ContextMenu > Imports notes > updateState 1`] = `
 
 exports[`ContextMenu > Mounts with ev > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Mounts with ev > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Mounts with ev > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Mounts with ev > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Mounts with ev > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Mounts with ev > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Mounts with ev > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Mounts with ev > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Mounts with ev > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Mounts with ev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Mounts with ev > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Mounts with ev > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Mounts with ev > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Mounts with ev > allCalls 1`] = `[]`;
 
@@ -3334,17 +3334,17 @@ exports[`ContextMenu > Mounts with ev > updateState 1`] = `
 
 exports[`ContextMenu > Mounts without passed ev > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Mounts without passed ev > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Mounts without passed ev > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Mounts without passed ev > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Mounts without passed ev > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Mounts without passed ev > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Mounts without passed ev > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Mounts without passed ev > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Mounts without passed ev > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Mounts without passed ev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Mounts without passed ev > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Mounts without passed ev > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Mounts without passed ev > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Mounts without passed ev > allCalls 1`] = `[]`;
 
@@ -3416,17 +3416,17 @@ exports[`ContextMenu > Mounts without passed ev > updateState 1`] = `
 
 exports[`ContextMenu > Remains onscreen if opened at bottom of page > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at bottom of page > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at bottom of page > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Remains onscreen if opened at bottom of page > allCalls 1`] = `[]`;
 
@@ -3498,17 +3498,17 @@ exports[`ContextMenu > Remains onscreen if opened at bottom of page > updateStat
 
 exports[`ContextMenu > Remains onscreen if opened at right edge of page > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`ContextMenu > Remains onscreen if opened at right edge of page > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at right edge of page > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at right edge of page > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at right edge of page > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at right edge of page > Storage.get('THEME') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at right edge of page > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at right edge of page > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at right edge of page > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at right edge of page > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at right edge of page > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`ContextMenu > Remains onscreen if opened at right edge of page > Storage.get('USERNAME') 1`] = `null`;
+exports[`ContextMenu > Remains onscreen if opened at right edge of page > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`ContextMenu > Remains onscreen if opened at right edge of page > allCalls 1`] = `[]`;
 

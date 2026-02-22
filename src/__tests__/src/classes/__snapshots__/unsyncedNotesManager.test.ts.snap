@@ -2,17 +2,17 @@
 
 exports[`UnsyncedNotesManager > Initializes empty when no storage > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > Initializes empty when no storage > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > updateState 
 
 exports[`UnsyncedNotesManager > Initializes with contents from storage > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > Initializes with contents from storage > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > updateS
 
 exports[`UnsyncedNotesManager > clear > Clears edited and deleted > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > clear > Clears edited and deleted > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears edited and deleted > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears edited and deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears edited and deleted > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears edited and deleted > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears edited and deleted > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears edited and deleted > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears edited and deleted > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears edited and deleted > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears edited and deleted > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears edited and deleted > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears edited and deleted > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > clear > Clears edited and deleted > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`UnsyncedNotesManager > clear > Clears edited and deleted > updateState 
 
 exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > allCalls 1`] = `[]`;
 
@@ -330,17 +330,17 @@ exports[`UnsyncedNotesManager > clear > Clears new, edited, and deleted > update
 
 exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > allCalls 1`] = `[]`;
 
@@ -412,17 +412,17 @@ exports[`UnsyncedNotesManager > set > Removes edited note if also deleted > upda
 
 exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > allCalls 1`] = `[]`;
 
@@ -494,17 +494,17 @@ exports[`UnsyncedNotesManager > set > Resets new if in edited or deleted > updat
 
 exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > allCalls 1`] = `[]`;
 
@@ -576,17 +576,17 @@ exports[`UnsyncedNotesManager > set > Updates new, edited, and deleted > updateS
 
 exports[`UnsyncedNotesManager > size > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > size > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > size > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > size > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > size > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > size > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > size > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > size > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > size > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > size > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > size > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > size > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > size > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > size > allCalls 1`] = `[]`;
 
@@ -658,17 +658,17 @@ exports[`UnsyncedNotesManager > size > updateState 1`] = `
 
 exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > allCalls 1`] = `[]`;
 
@@ -740,17 +740,17 @@ exports[`UnsyncedNotesManager > store > Removes UNSYNCED if empty > updateState 
 
 exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > Storage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > Storage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`UnsyncedNotesManager > store > Sets UNSYNCED if not empty > allCalls 1`] = `[]`;
 

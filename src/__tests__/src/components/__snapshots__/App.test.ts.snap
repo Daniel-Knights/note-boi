@@ -2,17 +2,17 @@
 
 exports[`App > Handles note menu toggling > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Handles note menu toggling > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Handles note menu toggling > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Handles note menu toggling > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Handles note menu toggling > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Handles note menu toggling > Storage.get('THEME') 1`] = `null`;
+exports[`App > Handles note menu toggling > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Handles note menu toggling > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Handles note menu toggling > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Handles note menu toggling > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Handles note menu toggling > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Handles note menu toggling > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Handles note menu toggling > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Handles note menu toggling > allCalls 1`] = `
 [
@@ -105,17 +105,17 @@ exports[`App > Handles note menu toggling > updateState 1`] = `
 
 exports[`App > Media query logic > Detects non-touch device > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Media query logic > Detects non-touch device > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Media query logic > Detects non-touch device > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Media query logic > Detects non-touch device > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Media query logic > Detects non-touch device > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Media query logic > Detects non-touch device > Storage.get('THEME') 1`] = `null`;
+exports[`App > Media query logic > Detects non-touch device > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Media query logic > Detects non-touch device > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Media query logic > Detects non-touch device > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Media query logic > Detects non-touch device > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Media query logic > Detects non-touch device > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Media query logic > Detects non-touch device > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Media query logic > Detects non-touch device > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Media query logic > Detects non-touch device > allCalls 1`] = `
 [
@@ -208,17 +208,17 @@ exports[`App > Media query logic > Detects non-touch device > updateState 1`] = 
 
 exports[`App > Media query logic > Detects touch device > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Media query logic > Detects touch device > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Media query logic > Detects touch device > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Media query logic > Detects touch device > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Media query logic > Detects touch device > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Media query logic > Detects touch device > Storage.get('THEME') 1`] = `null`;
+exports[`App > Media query logic > Detects touch device > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Media query logic > Detects touch device > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Media query logic > Detects touch device > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Media query logic > Detects touch device > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Media query logic > Detects touch device > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Media query logic > Detects touch device > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Media query logic > Detects touch device > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Media query logic > Detects touch device > allCalls 1`] = `
 [
@@ -311,17 +311,17 @@ exports[`App > Media query logic > Detects touch device > updateState 1`] = `
 
 exports[`App > Media query logic > Initializes with menu hidden on small screen > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu hidden on small screen > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu hidden on small screen > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('THEME') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu hidden on small screen > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu hidden on small screen > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu hidden on small screen > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu hidden on small screen > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu hidden on small screen > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Media query logic > Initializes with menu hidden on small screen > allCalls 1`] = `
 [
@@ -414,17 +414,17 @@ exports[`App > Media query logic > Initializes with menu hidden on small screen 
 
 exports[`App > Media query logic > Initializes with menu shown on large screen > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu shown on large screen > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu shown on large screen > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('THEME') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu shown on large screen > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu shown on large screen > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu shown on large screen > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Media query logic > Initializes with menu shown on large screen > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Media query logic > Initializes with menu shown on large screen > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Media query logic > Initializes with menu shown on large screen > allCalls 1`] = `
 [
@@ -517,17 +517,17 @@ exports[`App > Media query logic > Initializes with menu shown on large screen >
 
 exports[`App > Media query logic > Removes event listener on unmount > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Media query logic > Removes event listener on unmount > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Media query logic > Removes event listener on unmount > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Media query logic > Removes event listener on unmount > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Media query logic > Removes event listener on unmount > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Media query logic > Removes event listener on unmount > Storage.get('THEME') 1`] = `null`;
+exports[`App > Media query logic > Removes event listener on unmount > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Media query logic > Removes event listener on unmount > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Media query logic > Removes event listener on unmount > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Media query logic > Removes event listener on unmount > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Media query logic > Removes event listener on unmount > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Media query logic > Removes event listener on unmount > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Media query logic > Removes event listener on unmount > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Media query logic > Removes event listener on unmount > allCalls 1`] = `
 [
@@ -620,17 +620,17 @@ exports[`App > Media query logic > Removes event listener on unmount > updateSta
 
 exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('THEME') 1`] = `null`;
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Media query logic > Shows menu on small screen when multiple notes exist > allCalls 1`] = `
 [
@@ -746,17 +746,17 @@ exports[`App > Media query logic > Shows menu on small screen when multiple note
 
 exports[`App > Media query logic > Updates state when screen size changes to large > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to large > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to large > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('THEME') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to large > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to large > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to large > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to large > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to large > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Media query logic > Updates state when screen size changes to large > allCalls 1`] = `
 [
@@ -849,17 +849,17 @@ exports[`App > Media query logic > Updates state when screen size changes to lar
 
 exports[`App > Media query logic > Updates state when screen size changes to small > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to small > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to small > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('THEME') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to small > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to small > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to small > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Media query logic > Updates state when screen size changes to small > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Media query logic > Updates state when screen size changes to small > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Media query logic > Updates state when screen size changes to small > allCalls 1`] = `
 [
@@ -952,17 +952,17 @@ exports[`App > Media query logic > Updates state when screen size changes to sma
 
 exports[`App > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`App > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Mounts > allCalls 1`] = `
 [
@@ -1055,17 +1055,17 @@ exports[`App > Mounts > updateState 1`] = `
 
 exports[`App > Shows loading spinner when update is downloading > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`App > Shows loading spinner when update is downloading > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`App > Shows loading spinner when update is downloading > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`App > Shows loading spinner when update is downloading > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`App > Shows loading spinner when update is downloading > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`App > Shows loading spinner when update is downloading > Storage.get('THEME') 1`] = `null`;
+exports[`App > Shows loading spinner when update is downloading > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`App > Shows loading spinner when update is downloading > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`App > Shows loading spinner when update is downloading > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`App > Shows loading spinner when update is downloading > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`App > Shows loading spinner when update is downloading > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`App > Shows loading spinner when update is downloading > Storage.get('USERNAME') 1`] = `null`;
+exports[`App > Shows loading spinner when update is downloading > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`App > Shows loading spinner when update is downloading > allCalls 1`] = `
 [

@@ -1,7 +1,7 @@
 import { check } from '@tauri-apps/plugin-updater';
 
 import * as u from '../../../store/update';
-import { Storage } from '../../../classes';
+import { PersistentStorage } from '../../../classes';
 import { clearMockApiResults, mockApi } from '../../mock';
 
 describe('Update', () => {
@@ -51,7 +51,7 @@ describe('Update', () => {
     it('Returns if version has been seen', async () => {
       const { calls } = mockApi();
 
-      Storage.set('UPDATE_SEEN', '1.0.0');
+      PersistentStorage.set('UPDATE_SEEN', '1.0.0');
 
       await u.handleUpdate();
 
@@ -78,7 +78,7 @@ describe('Update', () => {
         title: 'Update available: v1.0.0',
         kind: undefined,
       });
-      assert.strictEqual(Storage.get('UPDATE_SEEN'), '1.0.0');
+      assert.strictEqual(PersistentStorage.get('UPDATE_SEEN'), '1.0.0');
     });
   });
 
@@ -140,11 +140,11 @@ describe('Update', () => {
 
   it('setUpdateStrategy', () => {
     assert.strictEqual(u.updateState.strategy, 'manual');
-    assert.isNull(Storage.get('UPDATE_STRATEGY'));
+    assert.isNull(PersistentStorage.get('UPDATE_STRATEGY'));
 
     u.setUpdateStrategy('auto');
 
     assert.strictEqual(u.updateState.strategy, 'auto');
-    assert.strictEqual(Storage.get('UPDATE_STRATEGY'), 'auto');
+    assert.strictEqual(PersistentStorage.get('UPDATE_STRATEGY'), 'auto');
   });
 });

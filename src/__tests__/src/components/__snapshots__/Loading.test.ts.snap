@@ -2,17 +2,17 @@
 
 exports[`Loading > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Loading > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Loading > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Loading > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Loading > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Loading > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`Loading > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Loading > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Loading > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Loading > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Loading > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Loading > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`Loading > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Loading > Mounts > allCalls 1`] = `[]`;
 

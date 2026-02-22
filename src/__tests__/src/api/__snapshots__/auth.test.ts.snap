@@ -2,17 +2,17 @@
 
 exports[`Auth > clientSideLogout > Does not delete access token if no username > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > clientSideLogout > Does not delete access token if no username > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > clientSideLogout > Does not delete access token if no username > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > clientSideLogout > Does not delete access token if no username > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > clientSideLogout > Does not delete access token if no username > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > clientSideLogout > Does not delete access token if no username > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Does not delete access token if no username > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > clientSideLogout > Does not delete access token if no username > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > clientSideLogout > Does not delete access token if no username > allCalls 1`] = `
 [
@@ -99,17 +99,17 @@ exports[`Auth > clientSideLogout > Does not delete access token if no username >
 
 exports[`Auth > clientSideLogout > Sets all state to logged out > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > clientSideLogout > Sets all state to logged out > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > clientSideLogout > Sets all state to logged out > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Sets all state to logged out > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > clientSideLogout > Sets all state to logged out > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Sets all state to logged out > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > clientSideLogout > Sets all state to logged out > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Sets all state to logged out > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > clientSideLogout > Sets all state to logged out > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Sets all state to logged out > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > clientSideLogout > Sets all state to logged out > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > clientSideLogout > Sets all state to logged out > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > clientSideLogout > Sets all state to logged out > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > clientSideLogout > Sets all state to logged out > allCalls 1`] = `
 [
@@ -293,17 +293,17 @@ exports[`Auth > clientSideLogout > Sets all state to logged out > updateState 1`
 
 exports[`Auth > login > Handles KeyStore.storeKey error after successful login > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > login > Handles KeyStore.storeKey error after successful login > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > Handles KeyStore.storeKey error after successful login > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > Handles KeyStore.storeKey error after successful login > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > Handles KeyStore.storeKey error after successful login > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > Handles KeyStore.storeKey error after successful login > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > Handles KeyStore.storeKey error after successful login > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > Handles KeyStore.storeKey error after successful login > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > Handles KeyStore.storeKey error after successful login > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > Handles KeyStore.storeKey error after successful login > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > Handles KeyStore.storeKey error after successful login > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > Handles KeyStore.storeKey error after successful login > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > login > Handles KeyStore.storeKey error after successful login > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > login > Handles KeyStore.storeKey error after successful login > allCalls 1`] = `
 [
@@ -504,17 +504,17 @@ exports[`Auth > login > Handles KeyStore.storeKey error after successful login >
 
 exports[`Auth > login > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > Sets and resets loading state > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > Sets and resets loading state > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > Sets and resets loading state > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > Sets and resets loading state > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > Sets and resets loading state > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Auth > login > Sets and resets loading state > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
 [
@@ -677,17 +677,17 @@ exports[`Auth > login > Sets and resets loading state > updateState 1`] = `
 
 exports[`Auth > login > Unauthorized > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > login > Unauthorized > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > Unauthorized > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > Unauthorized > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > Unauthorized > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > Unauthorized > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > Unauthorized > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > Unauthorized > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > Unauthorized > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > login > Unauthorized > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > login > Unauthorized > allCalls 1`] = `
 [
@@ -781,17 +781,17 @@ exports[`Auth > login > Unauthorized > updateState 1`] = `
 
 exports[`Auth > login > User not found > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > login > User not found > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > User not found > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > User not found > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > User not found > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > User not found > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > User not found > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > User not found > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > User not found > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > login > User not found > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > login > User not found > allCalls 1`] = `
 [
@@ -885,17 +885,17 @@ exports[`Auth > login > User not found > updateState 1`] = `
 
 exports[`Auth > login > With decryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > login > With decryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > With decryption error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > With decryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > With decryption error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > With decryption error > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > With decryption error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > With decryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > With decryption error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > With decryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > With decryption error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > With decryption error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Auth > login > With decryption error > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Auth > login > With decryption error > allCalls 1`] = `
 [
@@ -1017,17 +1017,17 @@ exports[`Auth > login > With decryption error > updateState 1`] = `
 
 exports[`Auth > login > With encryption error > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > login > With encryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > With encryption error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > With encryption error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > With encryption error > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > With encryption error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > With encryption error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > With encryption error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > With encryption error > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > login > With encryption error > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > login > With encryption error > allCalls 1`] = `
 [
@@ -1316,17 +1316,17 @@ exports[`Auth > login > With encryption error > updateState 1`] = `
 
 exports[`Auth > login > With no notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > login > With no notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > With no notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > With no notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > With no notes > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > With no notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > With no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > With no notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > With no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > With no notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > With no notes > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Auth > login > With no notes > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Auth > login > With no notes > allCalls 1`] = `
 [
@@ -1891,17 +1891,17 @@ exports[`Auth > login > With no notes > updateState 1`] = `
 
 exports[`Auth > login > With notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > login > With notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > With notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > With notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > With notes > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > With notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > With notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > With notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > With notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > With notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > With notes > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Auth > login > With notes > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Auth > login > With notes > allCalls 1`] = `
 [
@@ -2568,17 +2568,17 @@ exports[`Auth > login > With notes > updateState 1`] = `
 
 exports[`Auth > login > With server error > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > login > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > login > With server error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > login > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > login > With server error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > login > With server error > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > login > With server error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > login > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > login > With server error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > login > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > login > With server error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > login > With server error > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > login > With server error > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > login > With server error > allCalls 1`] = `
 [
@@ -2672,17 +2672,17 @@ exports[`Auth > login > With server error > updateState 1`] = `
 
 exports[`Auth > logout > Logs a user out and clears user-based state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > logout > Logs a user out and clears user-based state > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > logout > Logs a user out and clears user-based state > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 1`] = `
 [
@@ -2891,17 +2891,17 @@ exports[`Auth > logout > Logs a user out and clears user-based state > updateSta
 
 exports[`Auth > logout > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > logout > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > logout > Sets and resets loading state > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
 [
@@ -3110,17 +3110,17 @@ exports[`Auth > logout > Sets and resets loading state > updateState 1`] = `
 
 exports[`Auth > logout > Throws if no access token > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > logout > Throws if no access token > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > logout > Throws if no access token > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no access token > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > logout > Throws if no access token > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no access token > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > logout > Throws if no access token > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no access token > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > logout > Throws if no access token > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no access token > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > logout > Throws if no access token > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no access token > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Auth > logout > Throws if no access token > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Auth > logout > Throws if no access token > allCalls 1`] = `
 [
@@ -3305,17 +3305,17 @@ exports[`Auth > logout > Throws if no access token > updateState 1`] = `
 
 exports[`Auth > logout > Throws if no username > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > logout > Throws if no username > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > logout > Throws if no username > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no username > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > logout > Throws if no username > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no username > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > logout > Throws if no username > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no username > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > logout > Throws if no username > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no username > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > logout > Throws if no username > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > logout > Throws if no username > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > logout > Throws if no username > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > Throws if no username > allCalls 1`] = `[]`;
 
@@ -3389,17 +3389,17 @@ exports[`Auth > logout > Throws if no username > updateState 1`] = `
 
 exports[`Auth > logout > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > logout > Unauthorized > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > logout > Unauthorized > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > logout > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > logout > Unauthorized > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > logout > Unauthorized > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > logout > Unauthorized > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > logout > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > logout > Unauthorized > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > logout > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > logout > Unauthorized > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > logout > Unauthorized > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > logout > Unauthorized > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > Unauthorized > allCalls 1`] = `
 [
@@ -3608,17 +3608,17 @@ exports[`Auth > logout > Unauthorized > updateState 1`] = `
 
 exports[`Auth > logout > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > logout > User not found > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > logout > User not found > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > logout > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > logout > User not found > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > logout > User not found > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > logout > User not found > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > logout > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > logout > User not found > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > logout > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > logout > User not found > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > logout > User not found > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > logout > User not found > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > User not found > allCalls 1`] = `
 [
@@ -3825,17 +3825,17 @@ exports[`Auth > logout > User not found > updateState 1`] = `
 
 exports[`Auth > logout > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > logout > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > logout > With server error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > logout > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > logout > With server error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > logout > With server error > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > logout > With server error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > logout > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > logout > With server error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > logout > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > logout > With server error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > logout > With server error > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > logout > With server error > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > logout > With server error > allCalls 1`] = `
 [
@@ -4044,17 +4044,17 @@ exports[`Auth > logout > With server error > updateState 1`] = `
 
 exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup > allCalls 1`] = `
 [
@@ -4205,17 +4205,17 @@ exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup
 
 exports[`Auth > signup > Sets and resets loading state > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > signup > Sets and resets loading state > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > signup > Sets and resets loading state > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > signup > Sets and resets loading state > allCalls 1`] = `
 [
@@ -4309,17 +4309,17 @@ exports[`Auth > signup > Sets and resets loading state > updateState 1`] = `
 
 exports[`Auth > signup > With encryption error > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > signup > With encryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > signup > With encryption error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > signup > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > signup > With encryption error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > signup > With encryption error > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > signup > With encryption error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > signup > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > signup > With encryption error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > signup > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > signup > With encryption error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > signup > With encryption error > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > signup > With encryption error > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > signup > With encryption error > allCalls 1`] = `
 [
@@ -4608,17 +4608,17 @@ exports[`Auth > signup > With encryption error > updateState 1`] = `
 
 exports[`Auth > signup > With no notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > signup > With no notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > signup > With no notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > signup > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > signup > With no notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > signup > With no notes > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > signup > With no notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > signup > With no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > signup > With no notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > signup > With no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > signup > With no notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > signup > With no notes > Storage.get('USERNAME') 1`] = `"k"`;
+exports[`Auth > signup > With no notes > PersistentStorage.get('USERNAME') 1`] = `"k"`;
 
 exports[`Auth > signup > With no notes > allCalls 1`] = `
 [
@@ -4730,17 +4730,17 @@ exports[`Auth > signup > With no notes > updateState 1`] = `
 
 exports[`Auth > signup > With notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Auth > signup > With notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > signup > With notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > signup > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > signup > With notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > signup > With notes > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > signup > With notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > signup > With notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > signup > With notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > signup > With notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > signup > With notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > signup > With notes > Storage.get('USERNAME') 1`] = `"k"`;
+exports[`Auth > signup > With notes > PersistentStorage.get('USERNAME') 1`] = `"k"`;
 
 exports[`Auth > signup > With notes > allCalls 1`] = `
 [
@@ -5102,17 +5102,17 @@ exports[`Auth > signup > With notes > updateState 1`] = `
 
 exports[`Auth > signup > With server error > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Auth > signup > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Auth > signup > With server error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Auth > signup > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Auth > signup > With server error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Auth > signup > With server error > Storage.get('THEME') 1`] = `null`;
+exports[`Auth > signup > With server error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Auth > signup > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Auth > signup > With server error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Auth > signup > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Auth > signup > With server error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Auth > signup > With server error > Storage.get('USERNAME') 1`] = `null`;
+exports[`Auth > signup > With server error > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Auth > signup > With server error > allCalls 1`] = `
 [

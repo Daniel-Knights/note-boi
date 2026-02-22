@@ -2,17 +2,17 @@
 
 exports[`main > Does not sync if no username is set > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`main > Does not sync if no username is set > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`main > Does not sync if no username is set > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`main > Does not sync if no username is set > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`main > Does not sync if no username is set > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`main > Does not sync if no username is set > Storage.get('THEME') 1`] = `null`;
+exports[`main > Does not sync if no username is set > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`main > Does not sync if no username is set > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`main > Does not sync if no username is set > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`main > Does not sync if no username is set > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`main > Does not sync if no username is set > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`main > Does not sync if no username is set > Storage.get('USERNAME') 1`] = `null`;
+exports[`main > Does not sync if no username is set > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`main > Does not sync if no username is set > allCalls 1`] = `
 [
@@ -434,17 +434,17 @@ exports[`main > Does not sync if no username is set > updateState 1`] = `
 
 exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('THEME') 1`] = `null`;
+exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`main > Gets all notes, checks for update, syncs notes, and adds listeners > allCalls 1`] = `
 [

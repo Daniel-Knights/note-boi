@@ -5,6 +5,6 @@ export * from './encryptor';
 export * from './fetchBuilder';
 export * from './keyStore';
 export * from './note';
-export * from './storage';
+export * from './persistentStorage';
 export * from './tokenStore';
 export * from './unsyncedNotesManager';
