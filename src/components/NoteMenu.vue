@@ -146,6 +146,7 @@ watch(
 @use '../sass/vars' as v;
 
 $new-note-height: 50px;
+$font-size: 18px;
 
 .note-menu {
   flex-shrink: 0;
@@ -192,23 +193,19 @@ $new-note-height: 50px;
 
   &--empty::before {
     content: 'New note';
+    font-size: $font-size;
   }
 }
 
 .note-menu__title,
 .note-menu__body {
+  font-size: $font-size;
+  font-weight: 600;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
-}
-
-.note-menu__title,
-.note-menu__note:not(:has(.note-menu__title)) .note-menu__body {
-  margin-top: 0;
-  font-size: 18px;
-  font-weight: 600;
 }
 
 .note-menu__body {
