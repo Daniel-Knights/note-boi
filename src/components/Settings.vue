@@ -27,9 +27,8 @@ import { openedPopup, POPUP_TYPE } from '../store/popup';
 import { syncState } from '../store/sync';
 import { selectedTheme, setTheme } from '../store/theme';
 import { setUpdateStrategy, updateAndRelaunch, updateState } from '../store/update';
+import { DropMenuItemData } from '../types';
 import { capitalise, isWeb } from '../utils';
-
-import { DropMenuItemData } from './types';
 
 import DropMenu from './DropMenu.vue';
 import PopupChangePassword from './PopupChangePassword.vue';

@@ -21,9 +21,8 @@ import {
   importNotesFromFileChooser,
   noteState,
 } from '../store/note';
+import { DropMenuItemData } from '../types';
 import { isEmptyNote } from '../utils';
-
-import { DropMenuItemData } from './types';
 
 import DropMenu from './DropMenu.vue';
 

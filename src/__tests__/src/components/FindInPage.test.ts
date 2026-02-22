@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 
-import type { Bounds } from '../../../components/types';
+import type { Bounds } from '../../../types';
 import { getByTestId } from '../../utils';
 
 import FindInPage from '../../../components/FindInPage.vue';
