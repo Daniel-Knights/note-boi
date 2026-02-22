@@ -42,12 +42,11 @@ describe('importNotes', () => {
       const paths = ['/foo.json', '/bar.txt'];
 
       n.newNote();
+      vi.clearAllMocks();
+      clearMockApiResults({ calls });
 
       // Wait 1ms to ensure imported notes have newer timestamps
       await wait(1);
-
-      vi.clearAllMocks();
-      clearMockApiResults({ calls });
 
       const importedNotes = await n.importNotesFromPaths(paths);
       n.importNotesToState(importedNotes!);

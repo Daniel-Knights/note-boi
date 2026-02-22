@@ -10,6 +10,7 @@ import {
 } from '../classes';
 import { noteState } from '../store/note';
 import { resetAppError, syncState } from '../store/sync';
+import { isEmptyNote } from '../utils';
 
 import { clientSideLogout } from './auth';
 import {
@@ -53,9 +54,10 @@ export const changePassword = route(async (): Promise<void> => {
     throwAuthorisationError(errorConfig);
   }
 
-  const encryptedNotes = await Encryptor.encryptNotes(noteState.notes, newKey).catch(
-    (err) => throwEncryptorError(errorConfig, err)
-  );
+  const encryptedNotes = await Encryptor.encryptNotes(
+    noteState.notes.filter((nt) => !isEmptyNote(nt)),
+    newKey
+  ).catch((err) => throwEncryptorError(errorConfig, err));
 
   const res = await new FetchBuilder('/account/change-password')
     .method('PUT')
