@@ -4,7 +4,7 @@ use std::{
   time::{SystemTime, UNIX_EPOCH},
 };
 
-use crate::{commands::new_note::new_note_fn, note::Note, AppState, BACKUP_DIR};
+use crate::{commands::edit_note::edit_note_fn, note::Note, AppState, BACKUP_DIR};
 
 #[tauri::command]
 pub fn backup_notes(
@@ -40,7 +40,7 @@ pub fn backup_notes_fn(
 
   // Write backup files
   for nt in notes {
-    new_note_fn(&backup_instance_dir, nt)?;
+    edit_note_fn(&backup_instance_dir, nt)?;
   }
 
   remove_old_backups(&backup_dir, &max_backups_count);

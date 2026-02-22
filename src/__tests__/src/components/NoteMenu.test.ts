@@ -86,15 +86,17 @@ describe('NoteMenu', () => {
     const { calls, promises } = mockApi();
     const wrapper = mountNoteMenu();
     const newNoteButton = getByTestId(wrapper, 'new');
+    const newNoteSpy = vi.spyOn(n, 'newNote');
 
     newNoteButton.trigger('click');
 
     await Promise.all(promises);
 
+    expect(newNoteSpy).toHaveBeenCalledOnce();
+
+    assert.strictEqual(calls.size, 0);
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-    assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('new_note'));
   });
 
   it('Closes menu on small screen when creating new note', async () => {

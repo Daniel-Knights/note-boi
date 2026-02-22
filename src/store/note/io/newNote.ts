@@ -1,5 +1,5 @@
-import { Note, PersistentStorage } from '../../../classes';
-import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
+import { Note } from '../../../classes';
+import { isEmptyNote } from '../../../utils';
 import { syncState } from '../../sync';
 import { dispatchNoteEvent } from '../event';
 import { noteState } from '../state';
@@ -34,14 +34,4 @@ export function newNote(isButtonClick?: boolean): void {
   dispatchNoteEvent('note-select');
   dispatchNoteEvent('note-change');
   dispatchNoteEvent('note-new');
-
-  if (isDesktop()) {
-    tauriInvoke('new_note', { note: { ...freshNote } });
-
-    return;
-  }
-
-  //// Web
-
-  PersistentStorage.setJSON('NOTES', noteState.notes);
 }

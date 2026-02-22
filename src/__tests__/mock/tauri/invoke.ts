@@ -28,14 +28,6 @@ export function mockTauriInvoke(
 
       break;
     }
-    case 'new_note':
-      if (!hasKeys(args, ['note'])) {
-        assert.fail('Missing note');
-      } else if (!isNote(args.note)) {
-        assert.fail('Invalid note');
-      }
-
-      break;
     case 'edit_note':
       if (!hasKeys(args, ['note'])) {
         assert.fail('Missing note');

@@ -118,9 +118,8 @@ describe('deleteNote', () => {
     assert.lengthOf(n.noteState.notes, 1);
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
     assert.isUndefined(n.findNote(existingNote.uuid));
-    assert.strictEqual(calls.size, 2);
+    assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.invoke.has('delete_note'));
-    assert.isTrue(calls.invoke.has('new_note'));
   });
 
   it('Resets unsynced new note', async () => {

@@ -22,9 +22,8 @@ describe('getAllNotes', () => {
     assert.lengthOf(n.noteState.notes, 1);
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-    assert.strictEqual(calls.size, 2);
+    assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.invoke.has('get_all_notes'));
-    assert.isTrue(calls.invoke.has('new_note'));
   });
 
   it('With empty note array', async () => {
@@ -39,9 +38,8 @@ describe('getAllNotes', () => {
     assert.lengthOf(n.noteState.notes, 1);
     assert.isTrue(isEmptyNote(n.noteState.notes[0]));
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
-    assert.strictEqual(calls.size, 2);
+    assert.strictEqual(calls.size, 1);
     assert.isTrue(calls.invoke.has('get_all_notes'));
-    assert.isTrue(calls.invoke.has('new_note'));
   });
 
   it('With single empty note', async () => {

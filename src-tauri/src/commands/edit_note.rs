@@ -1,6 +1,6 @@
 use std::{fs, path::Path};
 
-use crate::{note::Note, AppState};
+use crate::{note::Note, AppState, NOTES_DIR};
 
 #[tauri::command]
 pub fn edit_note(state: tauri::State<AppState>, note: Note) -> Result<(), String> {
@@ -8,6 +8,12 @@ pub fn edit_note(state: tauri::State<AppState>, note: Note) -> Result<(), String
 }
 
 pub fn edit_note_fn(dir: &Path, note: &Note) -> Result<(), Box<dyn std::error::Error>> {
+  let notes_path = dir.join(NOTES_DIR);
+
+  if !notes_path.is_dir() {
+    fs::create_dir_all(&notes_path)?;
+  }
+
   let path = Note::get_path(&dir, &note.uuid);
 
   fs::write(path, serde_json::to_string(note)?)?;

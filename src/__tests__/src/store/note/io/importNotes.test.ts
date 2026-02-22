@@ -2,7 +2,7 @@ import * as a from '../../../../../api';
 import * as n from '../../../../../store/note';
 import * as s from '../../../../../store/sync';
 import { clearMockApiResults, mockApi } from '../../../../mock';
-import { waitForAutoSync, waitUntil } from '../../../../utils';
+import { wait, waitForAutoSync } from '../../../../utils';
 import {
   mockChangeEventCB,
   mockSelectEventCB,
@@ -43,7 +43,8 @@ describe('importNotes', () => {
 
       n.newNote();
 
-      await waitUntil(() => calls.invoke.has('new_note'));
+      // Wait 1ms to ensure imported notes have newer timestamps
+      await wait(1);
 
       vi.clearAllMocks();
       clearMockApiResults({ calls });

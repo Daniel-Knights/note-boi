@@ -83,12 +83,6 @@ export type TauriCommandPayloads = {
     };
     response: never;
   };
-  new_note: {
-    payload: {
-      note: RawNote;
-    };
-    response: never;
-  };
   edit_note: {
     payload: {
       note: RawNote;
@@ -147,7 +141,6 @@ export type TauriCommand = keyof TauriCommandPayloads;
 export const TAURI_COMMANDS = [
   'get_all_notes',
   'delete_note',
-  'new_note',
   'edit_note',
   'sync_local_notes',
   'import_notes',

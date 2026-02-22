@@ -143,14 +143,16 @@ describe('ContextMenu', () => {
       const div = document.createElement('div');
       div.dataset.noteUuid = n.noteState.notes[0]!.uuid;
 
+      clearMockApiResults({ calls });
+
       const ev = getContextMenuEv();
       const wrapper = await mountContextMenu(ev, { attachTo: div });
 
       assertMounted(wrapper, ev);
 
-      assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.invoke.has('get_all_notes'));
-      assert.isTrue(calls.invoke.has('new_note'));
+      assert.strictEqual(calls.size, 0);
+      assert.strictEqual(n.noteState.notes.length, 1);
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
 
       const button = findByTestId(wrapper, buttonType.toLowerCase());
 

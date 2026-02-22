@@ -5,5 +5,4 @@ pub mod edit_note;
 pub mod export_notes;
 pub mod get_all_notes;
 pub mod import_notes;
-pub mod new_note;
 pub mod sync_local_notes;
