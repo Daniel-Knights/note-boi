@@ -453,6 +453,30 @@ describe('Notes (sync)', () => {
         await a.sync();
       });
     });
+
+    it('Does not send empty notes', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await a.login();
+      await n.getAllNotes();
+      n.newNote();
+
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+
+      clearMockApiResults({ calls });
+
+      await a.sync();
+
+      assert.isTrue(calls.request.has('/notes/sync'));
+
+      // Assert no empty notes were sent
+      const requestBody = JSON.parse(calls.request[0]!.calledWith!.body as string);
+
+      assert.isFalse(requestBody.notes.some((nt: Note) => isEmptyNote(nt)));
+    });
   });
 
   describe('unsyncedNotes', () => {

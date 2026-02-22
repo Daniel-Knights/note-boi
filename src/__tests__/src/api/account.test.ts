@@ -2,7 +2,14 @@ import * as a from '../../../api';
 import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import { ERROR_CODE, KeyStore, PersistentStorage, TokenStore } from '../../../classes';
+import {
+  ERROR_CODE,
+  KeyStore,
+  Note,
+  PersistentStorage,
+  TokenStore,
+} from '../../../classes';
+import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
   assertAppError,
@@ -279,6 +286,33 @@ describe('Account', () => {
           is_logged_in: false,
         },
       });
+    });
+
+    it('Does not send empty notes', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await a.login();
+      await n.getAllNotes();
+      n.newNote();
+
+      assert.isTrue(isEmptyNote(n.noteState.notes[0]));
+
+      clearMockApiResults({ calls });
+
+      s.syncState.password = '1';
+      s.syncState.newPassword = '2';
+
+      await a.changePassword();
+
+      assert.isTrue(calls.request.has('/account/change-password'));
+
+      // Assert no empty notes were sent
+      const requestBody = JSON.parse(calls.request[0]!.calledWith!.body as string);
+
+      assert.isFalse(requestBody.notes.some((nt: Note) => isEmptyNote(nt)));
     });
 
     it('Sets and resets loading state', () => {
