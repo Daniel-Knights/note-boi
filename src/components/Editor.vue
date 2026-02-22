@@ -131,10 +131,10 @@ window.addEventListener('keydown', (ev) => {
 
 $spacing-x: 12px;
 $text-indent: 1em;
-$toolbar-height: 40px;
 $utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
 
 #editor {
+  @include v.flex-y;
   position: relative;
   height: 100%;
   overflow: hidden;
@@ -154,8 +154,8 @@ $utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
   }
 
   .editor__scroll-container {
+    flex: 1;
     position: relative;
-    height: calc(100% - v.$editor-header-height - $toolbar-height);
     overflow: auto;
 
     &::-webkit-scrollbar {
