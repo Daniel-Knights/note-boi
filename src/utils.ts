@@ -114,7 +114,6 @@ export function tauriInvoke<T extends TauriCommand>(
     get_access_token: 'get access token',
     get_all_notes: 'get notes',
     import_notes: 'import notes',
-    new_note: 'create note',
     set_access_token: 'set access token',
     sync_local_notes: 'sync local notes',
   } satisfies Record<TauriCommand, string>;

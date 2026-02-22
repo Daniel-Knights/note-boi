@@ -230,7 +230,7 @@ describe('PopupSyncAuth', () => {
       assertAppError();
       assert.isEmpty(wrapperVm.confirmPassword);
       assert.lengthOf(wrapper.emitted('close')!, 1);
-      assert.strictEqual(calls.size, 5);
+      assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('set_access_token'));
@@ -238,7 +238,6 @@ describe('PopupSyncAuth', () => {
         username: 'd',
         accessToken: 'test-token',
       });
-      assert.isTrue(calls.invoke.has('new_note'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {

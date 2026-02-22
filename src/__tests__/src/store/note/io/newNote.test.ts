@@ -34,8 +34,7 @@ describe('newNote', () => {
 
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
-    assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('new_note'));
+    assert.strictEqual(calls.size, 0);
   });
 
   it('Only updates timestamp when empty note selected', async () => {

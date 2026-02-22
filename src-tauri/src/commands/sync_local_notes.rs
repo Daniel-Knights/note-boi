@@ -1,6 +1,6 @@
 use std::{fs, path::Path};
 
-use crate::{commands::new_note::new_note_fn, note::Note, AppState, NOTES_DIR};
+use crate::{commands::edit_note::edit_note_fn, note::Note, AppState, NOTES_DIR};
 
 #[tauri::command()]
 pub fn sync_local_notes(state: tauri::State<AppState>, notes: Vec<Note>) -> Result<(), String> {
@@ -13,7 +13,7 @@ pub fn sync_local_notes_fn(dir: &Path, notes: &[Note]) -> Result<(), Box<dyn std
   fs::remove_dir_all(&notes_dir)?;
 
   for nt in notes {
-    new_note_fn(dir, nt)?;
+    edit_note_fn(dir, nt)?;
   }
 
   Ok(())

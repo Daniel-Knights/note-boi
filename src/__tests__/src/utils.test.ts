@@ -179,11 +179,11 @@ describe('Utils', () => {
         const consoleErrorSpy = vi.spyOn(console, 'error');
 
         clearMockApiResults({ calls });
-        setErrorValue.invoke('new_note');
+        setErrorValue.invoke('edit_note');
         setResValues.tauriApi({ askDialog: [true, false] });
 
         await tauriInvoke(
-          'new_note',
+          'edit_note',
           { note: new Note() },
           {
             promptRetryOnError: true,
@@ -193,18 +193,18 @@ describe('Utils', () => {
         await waitUntil(() => calls.tauriApi.has('plugin:dialog|ask', 2));
 
         expect(consoleErrorSpy).toHaveBeenCalledTimes(4);
-        expect(consoleErrorSpy).toHaveBeenCalledWith('new_note error:');
+        expect(consoleErrorSpy).toHaveBeenCalledWith('edit_note error:');
         expect(consoleErrorSpy).toHaveBeenCalledWith(
           new Error('Mock Tauri Invoke error')
         );
 
         assert.strictEqual(calls.size, 4);
-        assert.isTrue(calls.invoke.has('new_note', 2));
+        assert.isTrue(calls.invoke.has('edit_note', 2));
         assert.isTrue(calls.tauriApi.has('plugin:dialog|ask', 2));
         assert.deepEqual(calls.tauriApi[1]!.calledWith, {
-          title: 'Create note',
+          title: 'Edit note',
           kind: 'error',
-          message: 'Failed to create note. Try again?',
+          message: 'Failed to edit note. Try again?',
         });
       });
     });
