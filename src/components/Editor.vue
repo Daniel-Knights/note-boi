@@ -77,6 +77,9 @@ function changeNoteEventHandler() {
 
   // @ts-expect-error - TS won't accept the Delta type here
   quillEditor?.setContents(noteState.selectedNote.content.delta);
+
+  // Clear undo history to prevent previous note's content from being restored
+  quillEditor?.history.clear();
 }
 function selectNoteEventHandler() {
   ignoreTextChange = true;
