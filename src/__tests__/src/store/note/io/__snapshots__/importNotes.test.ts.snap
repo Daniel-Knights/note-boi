@@ -1519,25 +1519,6 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes a
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -1850,25 +1831,6 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes w
 
 exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes with no local notes > allCalls 1`] = `
 [
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
   [
     "invoke",
     {

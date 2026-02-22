@@ -104,25 +104,6 @@ exports[`Editor > Constructs note object from parsed text > allCalls 1`] = `
       "calledWith": {
         "note": Note {
           "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
             "body": "bar",
             "delta": {
               "ops": [

@@ -1,24 +1,24 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > KeyStore.getKey() 1`] = `undefined`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > PersistentStorage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > allCalls 1`] = `[]`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > allCalls 1`] = `[]`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > mockDb 1`] = `
+exports[`UnsyncedNotesManager > Initialises empty when no storage > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -28,7 +28,7 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > mockDb 1`] =
 }
 `;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > noteState 1`] = `
+exports[`UnsyncedNotesManager > Initialises empty when no storage > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -46,11 +46,11 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > noteState 1`
 }
 `;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > openedPopup 1`] = `undefined`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > openedPopup 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > selectedTheme 1`] = `"System"`;
+exports[`UnsyncedNotesManager > Initialises empty when no storage > selectedTheme 1`] = `"System"`;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > syncState 1`] = `
+exports[`UnsyncedNotesManager > Initialises empty when no storage > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -74,7 +74,7 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > syncState 1`
 }
 `;
 
-exports[`UnsyncedNotesManager > Initializes empty when no storage > updateState 1`] = `
+exports[`UnsyncedNotesManager > Initialises empty when no storage > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -82,25 +82,25 @@ exports[`UnsyncedNotesManager > Initializes empty when no storage > updateState 
 }
 `;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > KeyStore.getKey() 1`] = `undefined`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('THEME') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > PersistentStorage.get('USERNAME') 1`] = `null`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > allCalls 1`] = `[]`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > allCalls 1`] = `[]`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > mockDb 1`] = `
+exports[`UnsyncedNotesManager > Initialises with contents from storage > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -110,7 +110,7 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > mockDb 
 }
 `;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > noteState 1`] = `
+exports[`UnsyncedNotesManager > Initialises with contents from storage > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -128,11 +128,11 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > noteSta
 }
 `;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > openedPopup 1`] = `undefined`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > openedPopup 1`] = `undefined`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > selectedTheme 1`] = `"System"`;
+exports[`UnsyncedNotesManager > Initialises with contents from storage > selectedTheme 1`] = `"System"`;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > syncState 1`] = `
+exports[`UnsyncedNotesManager > Initialises with contents from storage > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -156,7 +156,7 @@ exports[`UnsyncedNotesManager > Initializes with contents from storage > syncSta
 }
 `;
 
-exports[`UnsyncedNotesManager > Initializes with contents from storage > updateState 1`] = `
+exports[`UnsyncedNotesManager > Initialises with contents from storage > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
