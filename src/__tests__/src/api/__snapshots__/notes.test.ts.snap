@@ -24,25 +24,6 @@ exports[`Notes (sync) > Edge cases > No local, no remote > allCalls 1`] = `
     },
   ],
   [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
     "listeners",
     {
       "name": "login",
@@ -219,25 +200,6 @@ exports[`Notes (sync) > Edge cases > No local, some remote > allCalls 1`] = `
     {
       "calledWith": {},
       "name": "get_all_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -1621,25 +1583,6 @@ exports[`Notes (sync) > sync > Sets and resets loading state > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -1827,25 +1770,6 @@ exports[`Notes (sync) > sync > Syncs notes with the server > allCalls 1`] = `
     {
       "calledWith": {},
       "name": "get_all_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -2554,25 +2478,6 @@ exports[`Notes (sync) > sync > Throws if no access token or password key > allCa
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -2833,25 +2738,6 @@ exports[`Notes (sync) > sync > Throws if password key is missing > allCalls 1`] 
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -3013,25 +2899,6 @@ exports[`Notes (sync) > sync > Unauthorized > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -3215,25 +3082,6 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > all
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -3847,25 +3695,6 @@ exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -4925,25 +4754,6 @@ exports[`Notes (sync) > sync > With decryption error > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -5155,25 +4965,6 @@ exports[`Notes (sync) > sync > With encryption error > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -5348,25 +5139,6 @@ exports[`Notes (sync) > sync > With server error > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -5515,25 +5287,6 @@ exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged i
     {
       "calledWith": {},
       "name": "get_all_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -5935,25 +5688,6 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -5987,25 +5721,6 @@ exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
     "listeners",
     {
       "name": "signup",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -6847,25 +6562,6 @@ exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -8088,25 +7784,6 @@ Sugar
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "username": "d",
       },
       "name": "get_access_token",
@@ -8937,25 +8614,6 @@ Sugar
         ],
       },
       "name": "sync_local_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
 ]

@@ -153,25 +153,6 @@ exports[`Auth > clientSideLogout > Sets all state to logged out > allCalls 1`] =
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -552,25 +533,6 @@ exports[`Auth > login > Sets and resets loading state > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -2726,25 +2688,6 @@ exports[`Auth > logout > Logs a user out and clears user-based state > allCalls 
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -2945,25 +2888,6 @@ exports[`Auth > logout > Sets and resets loading state > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -3158,25 +3082,6 @@ exports[`Auth > logout > Throws if no access token > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -3443,25 +3348,6 @@ exports[`Auth > logout > Unauthorized > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -3662,25 +3548,6 @@ exports[`Auth > logout > User not found > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -3873,25 +3740,6 @@ exports[`Auth > logout > With server error > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [

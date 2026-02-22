@@ -56,25 +56,6 @@ exports[`Account > changePassword > Changes password for currently logged in acc
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -283,25 +264,6 @@ exports[`Account > changePassword > Handles KeyStore.storeKey error after succes
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -536,25 +498,6 @@ exports[`Account > changePassword > Sets and resets loading state > allCalls 1`]
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -738,25 +681,6 @@ exports[`Account > changePassword > Throws if no access token > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -1176,25 +1100,6 @@ exports[`Account > changePassword > With encryption error > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -1560,25 +1465,6 @@ exports[`Account > changePassword > With server error > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -1757,25 +1643,6 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -2087,25 +1954,6 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -2309,25 +2157,6 @@ exports[`Account > deleteAccount > Throws if no access token > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -2613,25 +2442,6 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [
@@ -2987,25 +2797,6 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [

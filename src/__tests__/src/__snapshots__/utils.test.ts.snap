@@ -308,7 +308,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
   [
     "invoke",
     {
-      "name": "new_note",
+      "name": "edit_note",
     },
   ],
   [
@@ -316,8 +316,8 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
     {
       "calledWith": {
         "kind": "error",
-        "message": "Failed to create note. Try again?",
-        "title": "Create note",
+        "message": "Failed to edit note. Try again?",
+        "title": "Edit note",
       },
       "name": "plugin:dialog|ask",
     },
@@ -325,7 +325,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
   [
     "invoke",
     {
-      "name": "new_note",
+      "name": "edit_note",
     },
   ],
   [
@@ -333,8 +333,8 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
     {
       "calledWith": {
         "kind": "error",
-        "message": "Failed to create note. Try again?",
-        "title": "Create note",
+        "message": "Failed to edit note. Try again?",
+        "title": "Edit note",
       },
       "name": "plugin:dialog|ask",
     },

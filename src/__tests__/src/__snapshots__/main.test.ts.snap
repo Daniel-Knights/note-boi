@@ -488,25 +488,6 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {

@@ -1015,25 +1015,6 @@ exports[`deleteNote > With no notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
       },
       "name": "delete_note",

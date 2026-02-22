@@ -1028,25 +1028,6 @@ exports[`NoteMenu > Closes menu on small screen when creating new note > allCall
       "name": "get_all_notes",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
 ]
 `;
 
@@ -1634,25 +1615,6 @@ exports[`NoteMenu > Creates a new note > allCalls 1`] = `
     {
       "calledWith": {},
       "name": "get_all_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
 ]
@@ -2919,25 +2881,6 @@ exports[`NoteMenu > Renders a single empty note > allCalls 1`] = `
     {
       "calledWith": {},
       "name": "get_all_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
 ]

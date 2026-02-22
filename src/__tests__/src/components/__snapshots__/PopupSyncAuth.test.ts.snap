@@ -68,25 +68,6 @@ exports[`PopupSyncAuth > Disables submit button while loading > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
         "notes": [
           Note {
             "content": {
@@ -933,25 +914,6 @@ exports[`PopupSyncAuth > Validates fields > On login > allCalls 1`] = `
         "isFrontendEmit": true,
       },
       "name": "auth",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
   [

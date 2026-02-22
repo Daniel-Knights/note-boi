@@ -23,25 +23,6 @@ exports[`getAllNotes > With empty note array > allCalls 1`] = `
       "name": "get_all_notes",
     },
   ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
-    },
-  ],
 ]
 `;
 
@@ -579,25 +560,6 @@ exports[`getAllNotes > With undefined notes > allCalls 1`] = `
     {
       "calledWith": {},
       "name": "get_all_notes",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "note": Note {
-          "content": {
-            "body": "",
-            "delta": {
-              "ops": [],
-            },
-            "title": "",
-          },
-          "timestamp": 0,
-          "uuid": "uuid",
-        },
-      },
-      "name": "new_note",
     },
   ],
 ]
