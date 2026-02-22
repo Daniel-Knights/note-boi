@@ -236,6 +236,7 @@ function clearHighlights() {
     position: relative;
     height: 26px;
     width: 300px;
+    max-width: 50vw;
     color: var(--colour__primary);
     background-color: var(--colour__secondary);
   }
@@ -245,6 +246,7 @@ function clearHighlights() {
     -webkit-appearance: none;
     appearance: none;
     margin: 0;
+    width: 100%;
     background-color: transparent;
     border: none;
     border-radius: 0;
