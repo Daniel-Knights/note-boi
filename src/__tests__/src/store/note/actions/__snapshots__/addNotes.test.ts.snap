@@ -2,17 +2,17 @@
 
 exports[`addNotes > Adds new notes to empty state > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`addNotes > Adds new notes to empty state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`addNotes > Adds new notes to empty state > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`addNotes > Adds new notes to empty state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`addNotes > Adds new notes to empty state > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`addNotes > Adds new notes to empty state > Storage.get('THEME') 1`] = `null`;
+exports[`addNotes > Adds new notes to empty state > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`addNotes > Adds new notes to empty state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`addNotes > Adds new notes to empty state > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`addNotes > Adds new notes to empty state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`addNotes > Adds new notes to empty state > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`addNotes > Adds new notes to empty state > Storage.get('USERNAME') 1`] = `null`;
+exports[`addNotes > Adds new notes to empty state > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`addNotes > Adds new notes to empty state > allCalls 1`] = `[]`;
 
@@ -115,17 +115,17 @@ exports[`addNotes > Adds new notes to empty state > updateState 1`] = `
 
 exports[`addNotes > Adds notes to existing state > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`addNotes > Adds notes to existing state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`addNotes > Adds notes to existing state > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`addNotes > Adds notes to existing state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`addNotes > Adds notes to existing state > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`addNotes > Adds notes to existing state > Storage.get('THEME') 1`] = `null`;
+exports[`addNotes > Adds notes to existing state > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`addNotes > Adds notes to existing state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`addNotes > Adds notes to existing state > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`addNotes > Adds notes to existing state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`addNotes > Adds notes to existing state > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`addNotes > Adds notes to existing state > Storage.get('USERNAME') 1`] = `null`;
+exports[`addNotes > Adds notes to existing state > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`addNotes > Adds notes to existing state > allCalls 1`] = `[]`;
 
@@ -273,17 +273,17 @@ exports[`addNotes > Adds notes to existing state > updateState 1`] = `
 
 exports[`addNotes > Does not select latest note by default > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`addNotes > Does not select latest note by default > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`addNotes > Does not select latest note by default > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`addNotes > Does not select latest note by default > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`addNotes > Does not select latest note by default > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`addNotes > Does not select latest note by default > Storage.get('THEME') 1`] = `null`;
+exports[`addNotes > Does not select latest note by default > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`addNotes > Does not select latest note by default > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`addNotes > Does not select latest note by default > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`addNotes > Does not select latest note by default > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`addNotes > Does not select latest note by default > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`addNotes > Does not select latest note by default > Storage.get('USERNAME') 1`] = `null`;
+exports[`addNotes > Does not select latest note by default > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`addNotes > Does not select latest note by default > allCalls 1`] = `[]`;
 
@@ -386,17 +386,17 @@ exports[`addNotes > Does not select latest note by default > updateState 1`] = `
 
 exports[`addNotes > Filters out duplicate notes by uuid > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`addNotes > Filters out duplicate notes by uuid > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`addNotes > Filters out duplicate notes by uuid > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`addNotes > Filters out duplicate notes by uuid > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`addNotes > Filters out duplicate notes by uuid > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`addNotes > Filters out duplicate notes by uuid > Storage.get('THEME') 1`] = `null`;
+exports[`addNotes > Filters out duplicate notes by uuid > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`addNotes > Filters out duplicate notes by uuid > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`addNotes > Filters out duplicate notes by uuid > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`addNotes > Filters out duplicate notes by uuid > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`addNotes > Filters out duplicate notes by uuid > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`addNotes > Filters out duplicate notes by uuid > Storage.get('USERNAME') 1`] = `null`;
+exports[`addNotes > Filters out duplicate notes by uuid > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`addNotes > Filters out duplicate notes by uuid > allCalls 1`] = `[]`;
 
@@ -484,17 +484,17 @@ exports[`addNotes > Filters out duplicate notes by uuid > updateState 1`] = `
 
 exports[`addNotes > Handles empty array gracefully > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`addNotes > Handles empty array gracefully > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`addNotes > Handles empty array gracefully > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`addNotes > Handles empty array gracefully > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`addNotes > Handles empty array gracefully > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`addNotes > Handles empty array gracefully > Storage.get('THEME') 1`] = `null`;
+exports[`addNotes > Handles empty array gracefully > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`addNotes > Handles empty array gracefully > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`addNotes > Handles empty array gracefully > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`addNotes > Handles empty array gracefully > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`addNotes > Handles empty array gracefully > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`addNotes > Handles empty array gracefully > Storage.get('USERNAME') 1`] = `null`;
+exports[`addNotes > Handles empty array gracefully > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`addNotes > Handles empty array gracefully > allCalls 1`] = `[]`;
 
@@ -566,17 +566,17 @@ exports[`addNotes > Handles empty array gracefully > updateState 1`] = `
 
 exports[`addNotes > Handles mixed duplicates and new notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`addNotes > Handles mixed duplicates and new notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`addNotes > Handles mixed duplicates and new notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`addNotes > Handles mixed duplicates and new notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`addNotes > Handles mixed duplicates and new notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`addNotes > Handles mixed duplicates and new notes > Storage.get('THEME') 1`] = `null`;
+exports[`addNotes > Handles mixed duplicates and new notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`addNotes > Handles mixed duplicates and new notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`addNotes > Handles mixed duplicates and new notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`addNotes > Handles mixed duplicates and new notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`addNotes > Handles mixed duplicates and new notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`addNotes > Handles mixed duplicates and new notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`addNotes > Handles mixed duplicates and new notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`addNotes > Handles mixed duplicates and new notes > allCalls 1`] = `[]`;
 
@@ -679,17 +679,17 @@ exports[`addNotes > Handles mixed duplicates and new notes > updateState 1`] = `
 
 exports[`addNotes > Handles selectLatest option with empty array > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`addNotes > Handles selectLatest option with empty array > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`addNotes > Handles selectLatest option with empty array > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`addNotes > Handles selectLatest option with empty array > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`addNotes > Handles selectLatest option with empty array > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`addNotes > Handles selectLatest option with empty array > Storage.get('THEME') 1`] = `null`;
+exports[`addNotes > Handles selectLatest option with empty array > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`addNotes > Handles selectLatest option with empty array > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`addNotes > Handles selectLatest option with empty array > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`addNotes > Handles selectLatest option with empty array > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`addNotes > Handles selectLatest option with empty array > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`addNotes > Handles selectLatest option with empty array > Storage.get('USERNAME') 1`] = `null`;
+exports[`addNotes > Handles selectLatest option with empty array > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`addNotes > Handles selectLatest option with empty array > allCalls 1`] = `[]`;
 
@@ -761,17 +761,17 @@ exports[`addNotes > Handles selectLatest option with empty array > updateState 1
 
 exports[`addNotes > Selects latest note when selectLatest option is true > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`addNotes > Selects latest note when selectLatest option is true > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`addNotes > Selects latest note when selectLatest option is true > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`addNotes > Selects latest note when selectLatest option is true > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`addNotes > Selects latest note when selectLatest option is true > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`addNotes > Selects latest note when selectLatest option is true > Storage.get('THEME') 1`] = `null`;
+exports[`addNotes > Selects latest note when selectLatest option is true > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`addNotes > Selects latest note when selectLatest option is true > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`addNotes > Selects latest note when selectLatest option is true > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`addNotes > Selects latest note when selectLatest option is true > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`addNotes > Selects latest note when selectLatest option is true > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`addNotes > Selects latest note when selectLatest option is true > Storage.get('USERNAME') 1`] = `null`;
+exports[`addNotes > Selects latest note when selectLatest option is true > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`addNotes > Selects latest note when selectLatest option is true > allCalls 1`] = `[]`;
 

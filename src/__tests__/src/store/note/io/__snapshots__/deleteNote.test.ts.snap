@@ -2,17 +2,17 @@
 
 exports[`deleteNote > Calls debounceSync > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Calls debounceSync > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNote > Calls debounceSync > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNote > Calls debounceSync > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > Storage.get('THEME') 1`] = `null`;
+exports[`deleteNote > Calls debounceSync > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNote > Calls debounceSync > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNote > Calls debounceSync > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > Storage.get('USERNAME') 1`] = `null`;
+exports[`deleteNote > Calls debounceSync > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`deleteNote > Calls debounceSync > allCalls 1`] = `
 [
@@ -336,17 +336,17 @@ exports[`deleteNote > Calls debounceSync > updateState 1`] = `
 
 exports[`deleteNote > Deletes selected note and selects next > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Deletes selected note and selects next > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > Storage.get('THEME') 1`] = `null`;
+exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > Storage.get('USERNAME') 1`] = `null`;
+exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`deleteNote > Deletes selected note and selects next > allCalls 1`] = `
 [
@@ -670,17 +670,17 @@ exports[`deleteNote > Deletes selected note and selects next > updateState 1`] =
 
 exports[`deleteNote > Resets unsynced new note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Resets unsynced new note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > Storage.get('THEME') 1`] = `null`;
+exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > Storage.get('USERNAME') 1`] = `null`;
+exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`deleteNote > Resets unsynced new note > allCalls 1`] = `
 [
@@ -990,17 +990,17 @@ exports[`deleteNote > Resets unsynced new note > updateState 1`] = `
 
 exports[`deleteNote > With no notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > With no notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNote > With no notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > With no notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNote > With no notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > With no notes > Storage.get('THEME') 1`] = `null`;
+exports[`deleteNote > With no notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > With no notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNote > With no notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > With no notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNote > With no notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > With no notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`deleteNote > With no notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`deleteNote > With no notes > allCalls 1`] = `
 [
@@ -1127,17 +1127,17 @@ exports[`deleteNote > With no notes > updateState 1`] = `
 
 exports[`deleteNote > Without selecting next note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Without selecting next note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNote > Without selecting next note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNote > Without selecting next note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > Storage.get('THEME') 1`] = `null`;
+exports[`deleteNote > Without selecting next note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNote > Without selecting next note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNote > Without selecting next note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > Storage.get('USERNAME') 1`] = `null`;
+exports[`deleteNote > Without selecting next note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`deleteNote > Without selecting next note > allCalls 1`] = `
 [
@@ -1417,17 +1417,17 @@ exports[`deleteNote > Without selecting next note > updateState 1`] = `
 
 exports[`deleteSelectedNotes > Deletes selected notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteSelectedNotes > Deletes selected notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteSelectedNotes > Deletes selected notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Deletes selected notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteSelectedNotes > Deletes selected notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Deletes selected notes > Storage.get('THEME') 1`] = `null`;
+exports[`deleteSelectedNotes > Deletes selected notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Deletes selected notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteSelectedNotes > Deletes selected notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Deletes selected notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteSelectedNotes > Deletes selected notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteSelectedNotes > Deletes selected notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`deleteSelectedNotes > Deletes selected notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`deleteSelectedNotes > Deletes selected notes > allCalls 1`] = `
 [

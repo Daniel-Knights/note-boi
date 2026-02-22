@@ -1,9 +1,14 @@
 import { reactive } from 'vue';
 
-import { AppError, EncryptedNote, Storage, UnsyncedNotesManager } from '../classes';
+import {
+  AppError,
+  EncryptedNote,
+  PersistentStorage,
+  UnsyncedNotesManager,
+} from '../classes';
 
 export const syncState = reactive({
-  username: Storage.get('USERNAME') || '',
+  username: PersistentStorage.get('USERNAME') || '',
   password: '',
   newPassword: '',
   loadingCount: 0,

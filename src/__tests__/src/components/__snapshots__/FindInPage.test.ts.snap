@@ -2,17 +2,17 @@
 
 exports[`FindInPage > Closes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`FindInPage > Closes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`FindInPage > Closes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`FindInPage > Closes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`FindInPage > Closes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`FindInPage > Closes > Storage.get('THEME') 1`] = `null`;
+exports[`FindInPage > Closes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`FindInPage > Closes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`FindInPage > Closes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`FindInPage > Closes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`FindInPage > Closes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`FindInPage > Closes > Storage.get('USERNAME') 1`] = `null`;
+exports[`FindInPage > Closes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`FindInPage > Closes > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`FindInPage > Closes > updateState 1`] = `
 
 exports[`FindInPage > Highlights searched text > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`FindInPage > Highlights searched text > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`FindInPage > Highlights searched text > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`FindInPage > Highlights searched text > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`FindInPage > Highlights searched text > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`FindInPage > Highlights searched text > Storage.get('THEME') 1`] = `null`;
+exports[`FindInPage > Highlights searched text > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`FindInPage > Highlights searched text > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`FindInPage > Highlights searched text > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`FindInPage > Highlights searched text > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`FindInPage > Highlights searched text > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`FindInPage > Highlights searched text > Storage.get('USERNAME') 1`] = `null`;
+exports[`FindInPage > Highlights searched text > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`FindInPage > Highlights searched text > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`FindInPage > Highlights searched text > updateState 1`] = `
 
 exports[`FindInPage > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`FindInPage > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`FindInPage > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`FindInPage > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`FindInPage > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`FindInPage > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`FindInPage > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`FindInPage > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`FindInPage > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`FindInPage > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`FindInPage > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`FindInPage > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`FindInPage > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`FindInPage > Mounts > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`FindInPage > Mounts > updateState 1`] = `
 
 exports[`FindInPage > Navigates highlights with up/down buttons > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('THEME') 1`] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`FindInPage > Navigates highlights with up/down buttons > Storage.get('USERNAME') 1`] = `null`;
+exports[`FindInPage > Navigates highlights with up/down buttons > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`FindInPage > Navigates highlights with up/down buttons > allCalls 1`] = `[]`;
 

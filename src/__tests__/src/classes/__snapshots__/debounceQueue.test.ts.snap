@@ -2,17 +2,17 @@
 
 exports[`DebounceQueue > Cancels previous task when adding a new task with delay > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('THEME') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task with delay > Storage.get('USERNAME') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task with delay > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DebounceQueue > Cancels previous task when adding a new task with delay > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`DebounceQueue > Cancels previous task when adding a new task with delay
 
 exports[`DebounceQueue > Cancels previous task when adding a new task without delay > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('THEME') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DebounceQueue > Cancels previous task when adding a new task without delay > Storage.get('USERNAME') 1`] = `null`;
+exports[`DebounceQueue > Cancels previous task when adding a new task without delay > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DebounceQueue > Cancels previous task when adding a new task without delay > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`DebounceQueue > Cancels previous task when adding a new task without de
 
 exports[`DebounceQueue > Debounces tasks with delay > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DebounceQueue > Debounces tasks with delay > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DebounceQueue > Debounces tasks with delay > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DebounceQueue > Debounces tasks with delay > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DebounceQueue > Debounces tasks with delay > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DebounceQueue > Debounces tasks with delay > Storage.get('THEME') 1`] = `null`;
+exports[`DebounceQueue > Debounces tasks with delay > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DebounceQueue > Debounces tasks with delay > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DebounceQueue > Debounces tasks with delay > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DebounceQueue > Debounces tasks with delay > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DebounceQueue > Debounces tasks with delay > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DebounceQueue > Debounces tasks with delay > Storage.get('USERNAME') 1`] = `null`;
+exports[`DebounceQueue > Debounces tasks with delay > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DebounceQueue > Debounces tasks with delay > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`DebounceQueue > Debounces tasks with delay > updateState 1`] = `
 
 exports[`DebounceQueue > Executes immediately when no delay is provided > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DebounceQueue > Executes immediately when no delay is provided > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DebounceQueue > Executes immediately when no delay is provided > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('THEME') 1`] = `null`;
+exports[`DebounceQueue > Executes immediately when no delay is provided > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DebounceQueue > Executes immediately when no delay is provided > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DebounceQueue > Executes immediately when no delay is provided > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DebounceQueue > Executes immediately when no delay is provided > Storage.get('USERNAME') 1`] = `null`;
+exports[`DebounceQueue > Executes immediately when no delay is provided > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`DebounceQueue > Executes immediately when no delay is provided > allCalls 1`] = `[]`;
 

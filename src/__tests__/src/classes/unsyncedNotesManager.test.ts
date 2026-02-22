@@ -1,8 +1,8 @@
 import { UnsyncedNotesManager } from '../../../classes';
-import { Storage } from '../../../classes/storage';
+import { PersistentStorage } from '../../../classes/persistentStorage';
 
 describe('UnsyncedNotesManager', () => {
-  it('Initializes empty when no storage', () => {
+  it('Initialises empty when no storage', () => {
     const manager = new UnsyncedNotesManager();
 
     assert.strictEqual(manager.new, '');
@@ -10,8 +10,8 @@ describe('UnsyncedNotesManager', () => {
     assert.strictEqual(manager.deleted.length, 0);
   });
 
-  it('Initializes with contents from storage', () => {
-    Storage.setJSON('UNSYNCED', {
+  it('Initialises with contents from storage', () => {
+    PersistentStorage.setJSON('UNSYNCED', {
       new: 'n1',
       edited: ['e1', 'e2'],
       deleted: [{ uuid: 'd1', deleted_at: 0 }],
@@ -37,7 +37,7 @@ describe('UnsyncedNotesManager', () => {
   describe('clear', () => {
     it('Clears edited and deleted', () => {
       const manager = new UnsyncedNotesManager();
-      const setJsonSpy = vi.spyOn(Storage, 'setJSON');
+      const setJsonSpy = vi.spyOn(PersistentStorage, 'setJSON');
 
       manager.new = 'n';
       manager.edited.add('e');
@@ -53,7 +53,7 @@ describe('UnsyncedNotesManager', () => {
 
     it('Clears new, edited, and deleted', () => {
       const manager = new UnsyncedNotesManager();
-      const removeSpy = vi.spyOn(Storage, 'remove');
+      const removeSpy = vi.spyOn(PersistentStorage, 'remove');
 
       manager.new = 'n';
       manager.edited.add('e');
@@ -70,7 +70,7 @@ describe('UnsyncedNotesManager', () => {
   describe('set', () => {
     it('Updates new, edited, and deleted', () => {
       const manager = new UnsyncedNotesManager();
-      const setJsonSpy = vi.spyOn(Storage, 'setJSON');
+      const setJsonSpy = vi.spyOn(PersistentStorage, 'setJSON');
 
       manager.set({
         new: 'n1',
@@ -121,8 +121,8 @@ describe('UnsyncedNotesManager', () => {
   describe('store', () => {
     it('Removes UNSYNCED if empty', () => {
       const manager = new UnsyncedNotesManager();
-      const removeSpy = vi.spyOn(Storage, 'remove');
-      const setJsonSpy = vi.spyOn(Storage, 'setJSON');
+      const removeSpy = vi.spyOn(PersistentStorage, 'remove');
+      const setJsonSpy = vi.spyOn(PersistentStorage, 'setJSON');
 
       manager.store();
 
@@ -132,7 +132,7 @@ describe('UnsyncedNotesManager', () => {
 
     it('Sets UNSYNCED if not empty', () => {
       const manager = new UnsyncedNotesManager();
-      const setJsonSpy = vi.spyOn(Storage, 'setJSON');
+      const setJsonSpy = vi.spyOn(PersistentStorage, 'setJSON');
 
       manager.new = 'n';
       manager.edited.add('e');

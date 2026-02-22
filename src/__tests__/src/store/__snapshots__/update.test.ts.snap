@@ -2,17 +2,17 @@
 
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('THEME') 1`] = `null`;
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > PersistentStorage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
 
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Asks if user wants to update and sets seen version if they don't > allCalls 1`] = `
 [
@@ -106,17 +106,17 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
 
 exports[`Update > handleUpdate > Handles update > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > handleUpdate > Handles update > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > handleUpdate > Handles update > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > handleUpdate > Handles update > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > handleUpdate > Handles update > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > handleUpdate > Handles update > Storage.get('THEME') 1`] = `null`;
+exports[`Update > handleUpdate > Handles update > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > handleUpdate > Handles update > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > handleUpdate > Handles update > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > handleUpdate > Handles update > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > handleUpdate > Handles update > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > handleUpdate > Handles update > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > handleUpdate > Handles update > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Handles update > allCalls 1`] = `
 [
@@ -224,17 +224,17 @@ exports[`Update > handleUpdate > Handles update > updateState 1`] = `
 
 exports[`Update > handleUpdate > Returns if update unavailable > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if update unavailable > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if update unavailable > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('THEME') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if update unavailable > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if update unavailable > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if update unavailable > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if update unavailable > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if update unavailable > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Returns if update unavailable > allCalls 1`] = `
 [
@@ -316,17 +316,17 @@ exports[`Update > handleUpdate > Returns if update unavailable > updateState 1`]
 
 exports[`Update > handleUpdate > Returns if version has been seen > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if version has been seen > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if version has been seen > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('THEME') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if version has been seen > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
+exports[`Update > handleUpdate > Returns if version has been seen > PersistentStorage.get('UPDATE_SEEN') 1`] = `"1.0.0"`;
 
-exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if version has been seen > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > handleUpdate > Returns if version has been seen > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > handleUpdate > Returns if version has been seen > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Returns if version has been seen > allCalls 1`] = `
 [
@@ -408,17 +408,17 @@ exports[`Update > handleUpdate > Returns if version has been seen > updateState 
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('THEME') 1`] = `null`;
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
 
-exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'auto' > allCalls 1`] = `
 [
@@ -514,17 +514,17 @@ exports[`Update > handleUpdate > Updates without asking, if updateStrategy is 'a
 
 exports[`Update > setUpdateStrategy > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > setUpdateStrategy > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > setUpdateStrategy > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > setUpdateStrategy > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > setUpdateStrategy > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > setUpdateStrategy > Storage.get('THEME') 1`] = `null`;
+exports[`Update > setUpdateStrategy > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > setUpdateStrategy > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > setUpdateStrategy > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > setUpdateStrategy > Storage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
+exports[`Update > setUpdateStrategy > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `"auto"`;
 
-exports[`Update > setUpdateStrategy > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > setUpdateStrategy > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > setUpdateStrategy > allCalls 1`] = `[]`;
 
@@ -596,17 +596,17 @@ exports[`Update > setUpdateStrategy > updateState 1`] = `
 
 exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('THEME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > allCalls 1`] = `
 [
@@ -705,17 +705,17 @@ exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > updateS
 
 exports[`Update > updateAndRelaunch > Catches errors and retries > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('THEME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Catches errors and retries > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Catches errors and retries > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Catches errors and retries > allCalls 1`] = `
 [
@@ -831,17 +831,17 @@ exports[`Update > updateAndRelaunch > Catches errors and retries > updateState 1
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Updates and relaunches > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Updates and relaunches > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('THEME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Updates and relaunches > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Updates and relaunches > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Updates and relaunches > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Update > updateAndRelaunch > Updates and relaunches > Storage.get('USERNAME') 1`] = `null`;
+exports[`Update > updateAndRelaunch > Updates and relaunches > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Update > updateAndRelaunch > Updates and relaunches > allCalls 1`] = `
 [

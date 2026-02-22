@@ -2,17 +2,17 @@
 
 exports[`Notes (sync) > Edge cases > No local, no remote > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, no remote > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, no remote > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > Edge cases > No local, no remote > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > Edge cases > No local, no remote > allCalls 1`] = `
 [
@@ -200,17 +200,17 @@ exports[`Notes (sync) > Edge cases > No local, no remote > updateState 1`] = `
 
 exports[`Notes (sync) > Edge cases > No local, some remote > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No local, some remote > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No local, some remote > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > Edge cases > No local, some remote > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > Edge cases > No local, some remote > allCalls 1`] = `
 [
@@ -872,17 +872,17 @@ exports[`Notes (sync) > Edge cases > No local, some remote > updateState 1`] = `
 
 exports[`Notes (sync) > Edge cases > No remote, some local > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > Edge cases > No remote, some local > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > Edge cases > No remote, some local > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > Edge cases > No remote, some local > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > Edge cases > No remote, some local > allCalls 1`] = `
 [
@@ -1567,17 +1567,17 @@ exports[`Notes (sync) > Edge cases > No remote, some local > updateState 1`] = `
 
 exports[`Notes (sync) > sync > Sets and resets loading state > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Sets and resets loading state > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Sets and resets loading state > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Sets and resets loading state > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > Sets and resets loading state > allCalls 1`] = `
 [
@@ -1808,17 +1808,17 @@ exports[`Notes (sync) > sync > Sets and resets loading state > updateState 1`] =
 
 exports[`Notes (sync) > sync > Syncs notes with the server > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Syncs notes with the server > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Syncs notes with the server > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Syncs notes with the server > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > Syncs notes with the server > allCalls 1`] = `
 [
@@ -2500,17 +2500,17 @@ exports[`Notes (sync) > sync > Syncs notes with the server > updateState 1`] = `
 
 exports[`Notes (sync) > sync > Throws if no access token or password key > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if no access token or password key > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if no access token or password key > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if no access token or password key > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if no access token or password key > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if no access token or password key > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if no access token or password key > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Throws if no access token or password key > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > Throws if no access token or password key > allCalls 1`] = `
 [
@@ -2695,17 +2695,17 @@ exports[`Notes (sync) > sync > Throws if no access token or password key > updat
 
 exports[`Notes (sync) > sync > Throws if not logged in > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if not logged in > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if not logged in > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if not logged in > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if not logged in > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if not logged in > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if not logged in > Storage.get('USERNAME') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if not logged in > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Notes (sync) > sync > Throws if not logged in > allCalls 1`] = `[]`;
 
@@ -2779,17 +2779,17 @@ exports[`Notes (sync) > sync > Throws if not logged in > updateState 1`] = `
 
 exports[`Notes (sync) > sync > Throws if password key is missing > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if password key is missing > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if password key is missing > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if password key is missing > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if password key is missing > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Throws if password key is missing > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Throws if password key is missing > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Throws if password key is missing > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > Throws if password key is missing > allCalls 1`] = `
 [
@@ -2965,17 +2965,17 @@ exports[`Notes (sync) > sync > Throws if password key is missing > updateState 1
 
 exports[`Notes (sync) > sync > Unauthorized > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > Unauthorized > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Unauthorized > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Unauthorized > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Unauthorized > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Unauthorized > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Unauthorized > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Unauthorized > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Unauthorized > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > Unauthorized > allCalls 1`] = `
 [
@@ -3167,17 +3167,17 @@ exports[`Notes (sync) > sync > Unauthorized > updateState 1`] = `
 
 exports[`Notes (sync) > sync > Updates editor if selected note is unedited > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates editor if selected note is unedited > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Updates editor if selected note is unedited > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > Updates editor if selected note is unedited > allCalls 1`] = `
 [
@@ -3799,17 +3799,17 @@ exports[`Notes (sync) > sync > Updates editor if selected note is unedited > upd
 
 exports[`Notes (sync) > sync > Updates note menu > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > Updates note menu > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates note menu > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates note menu > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates note menu > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates note menu > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates note menu > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates note menu > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates note menu > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates note menu > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > Updates note menu > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > Updates note menu > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > Updates note menu > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > Updates note menu > allCalls 1`] = `
 [
@@ -4420,17 +4420,17 @@ exports[`Notes (sync) > sync > Updates note menu > updateState 1`] = `
 
 exports[`Notes (sync) > sync > User not found > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > User not found > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > User not found > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > User not found > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > User not found > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > User not found > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > User not found > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > User not found > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > User not found > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > User not found > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > User not found > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > User not found > Storage.get('USERNAME') 1`] = `"k"`;
+exports[`Notes (sync) > sync > User not found > PersistentStorage.get('USERNAME') 1`] = `"k"`;
 
 exports[`Notes (sync) > sync > User not found > allCalls 1`] = `
 [
@@ -4871,17 +4871,17 @@ exports[`Notes (sync) > sync > User not found > updateState 1`] = `
 
 exports[`Notes (sync) > sync > With decryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > With decryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > With decryption error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With decryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > With decryption error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With decryption error > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > With decryption error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With decryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > With decryption error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With decryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > With decryption error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With decryption error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > With decryption error > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > With decryption error > allCalls 1`] = `
 [
@@ -5101,17 +5101,17 @@ exports[`Notes (sync) > sync > With decryption error > updateState 1`] = `
 
 exports[`Notes (sync) > sync > With encryption error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > With encryption error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > With encryption error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With encryption error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > With encryption error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With encryption error > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > With encryption error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With encryption error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > With encryption error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With encryption error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > With encryption error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With encryption error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > With encryption error > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > With encryption error > allCalls 1`] = `
 [
@@ -5294,17 +5294,17 @@ exports[`Notes (sync) > sync > With encryption error > updateState 1`] = `
 
 exports[`Notes (sync) > sync > With server error > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > sync > With server error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > sync > With server error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With server error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > sync > With server error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With server error > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > sync > With server error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With server error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > sync > With server error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With server error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > sync > With server error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > sync > With server error > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > sync > With server error > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > sync > With server error > allCalls 1`] = `
 [
@@ -5496,17 +5496,17 @@ exports[`Notes (sync) > sync > With server error > updateState 1`] = `
 
 exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > Storage.get('USERNAME') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged in > allCalls 1`] = `
 [
@@ -5881,17 +5881,17 @@ exports[`Notes (sync) > unsyncedNotes > Registers unsynced notes if not logged i
 
 exports[`Notes (sync) > unsyncedNotes > deleted > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > unsyncedNotes > deleted > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > deleted > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > deleted > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > deleted > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > deleted > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > deleted > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > deleted > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > deleted > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > deleted > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > deleted > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > deleted > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > unsyncedNotes > deleted > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > unsyncedNotes > deleted > allCalls 1`] = `
 [
@@ -6799,17 +6799,17 @@ exports[`Notes (sync) > unsyncedNotes > deleted > updateState 1`] = `
 
 exports[`Notes (sync) > unsyncedNotes > edited > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > edited > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > edited > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > edited > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > edited > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > edited > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > edited > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > unsyncedNotes > edited > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > unsyncedNotes > edited > allCalls 1`] = `
 [
@@ -7805,17 +7805,17 @@ exports[`Notes (sync) > unsyncedNotes > edited > updateState 1`] = `
 
 exports[`Notes (sync) > unsyncedNotes > new > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`Notes (sync) > unsyncedNotes > new > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > new > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > new > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > new > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > new > Storage.get('THEME') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > new > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > new > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > new > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > new > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Notes (sync) > unsyncedNotes > new > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Notes (sync) > unsyncedNotes > new > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`Notes (sync) > unsyncedNotes > new > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`Notes (sync) > unsyncedNotes > new > allCalls 1`] = `
 [

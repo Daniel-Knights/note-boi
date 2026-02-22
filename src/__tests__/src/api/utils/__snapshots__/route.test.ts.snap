@@ -2,17 +2,17 @@
 
 exports[`route > Handles unknown errors > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`route > Handles unknown errors > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`route > Handles unknown errors > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`route > Handles unknown errors > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`route > Handles unknown errors > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`route > Handles unknown errors > Storage.get('THEME') 1`] = `null`;
+exports[`route > Handles unknown errors > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`route > Handles unknown errors > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`route > Handles unknown errors > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`route > Handles unknown errors > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`route > Handles unknown errors > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`route > Handles unknown errors > Storage.get('USERNAME') 1`] = `null`;
+exports[`route > Handles unknown errors > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`route > Handles unknown errors > allCalls 1`] = `[]`;
 

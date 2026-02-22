@@ -2,17 +2,17 @@
 
 exports[`NoteMenu > Cancels touch long-press on pointer move > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer move > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer move > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer move > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer move > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer move > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer move > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer move > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer move > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer move > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer move > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer move > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer move > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Cancels touch long-press on pointer move > allCalls 1`] = `
 [
@@ -337,17 +337,17 @@ exports[`NoteMenu > Cancels touch long-press on pointer move > updateState 1`] =
 
 exports[`NoteMenu > Cancels touch long-press on pointer up > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer up > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer up > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer up > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer up > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer up > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer up > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer up > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer up > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer up > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer up > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Cancels touch long-press on pointer up > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Cancels touch long-press on pointer up > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Cancels touch long-press on pointer up > allCalls 1`] = `
 [
@@ -672,17 +672,17 @@ exports[`NoteMenu > Cancels touch long-press on pointer up > updateState 1`] = `
 
 exports[`NoteMenu > Cleans up long press timer on unmount > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Cleans up long press timer on unmount > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Cleans up long press timer on unmount > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Cleans up long press timer on unmount > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Cleans up long press timer on unmount > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Cleans up long press timer on unmount > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Cleans up long press timer on unmount > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Cleans up long press timer on unmount > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Cleans up long press timer on unmount > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Cleans up long press timer on unmount > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Cleans up long press timer on unmount > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Cleans up long press timer on unmount > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Cleans up long press timer on unmount > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Cleans up long press timer on unmount > allCalls 1`] = `
 [
@@ -1007,17 +1007,17 @@ exports[`NoteMenu > Cleans up long press timer on unmount > updateState 1`] = `
 
 exports[`NoteMenu > Closes menu on small screen when creating new note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Closes menu on small screen when creating new note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when creating new note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when creating new note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when creating new note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when creating new note > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when creating new note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when creating new note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when creating new note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when creating new note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when creating new note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when creating new note > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when creating new note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Closes menu on small screen when creating new note > allCalls 1`] = `
 [
@@ -1324,17 +1324,17 @@ exports[`NoteMenu > Closes menu on small screen when creating new note > updateS
 
 exports[`NoteMenu > Closes menu on small screen when selecting note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Closes menu on small screen when selecting note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when selecting note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when selecting note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when selecting note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when selecting note > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when selecting note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when selecting note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when selecting note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when selecting note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when selecting note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Closes menu on small screen when selecting note > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Closes menu on small screen when selecting note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Closes menu on small screen when selecting note > allCalls 1`] = `
 [
@@ -1615,17 +1615,17 @@ exports[`NoteMenu > Closes menu on small screen when selecting note > updateStat
 
 exports[`NoteMenu > Creates a new note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Creates a new note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Creates a new note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Creates a new note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Creates a new note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Creates a new note > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Creates a new note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Creates a new note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Creates a new note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Creates a new note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Creates a new note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Creates a new note > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Creates a new note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Creates a new note > allCalls 1`] = `
 [
@@ -1932,17 +1932,17 @@ exports[`NoteMenu > Creates a new note > updateState 1`] = `
 
 exports[`NoteMenu > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Mounts > allCalls 1`] = `
 [
@@ -2267,17 +2267,17 @@ exports[`NoteMenu > Mounts > updateState 1`] = `
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Navigates notes with up/down arrow keys > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Navigates notes with up/down arrow keys > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Navigates notes with up/down arrow keys > allCalls 1`] = `
 [
@@ -2558,17 +2558,17 @@ exports[`NoteMenu > Navigates notes with up/down arrow keys > updateState 1`] = 
 
 exports[`NoteMenu > Renders a list item for every note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Renders a list item for every note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Renders a list item for every note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Renders a list item for every note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Renders a list item for every note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Renders a list item for every note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Renders a list item for every note > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Renders a list item for every note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Renders a list item for every note > allCalls 1`] = `
 [
@@ -2893,17 +2893,17 @@ exports[`NoteMenu > Renders a list item for every note > updateState 1`] = `
 
 exports[`NoteMenu > Renders a single empty note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Renders a single empty note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Renders a single empty note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Renders a single empty note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Renders a single empty note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Renders a single empty note > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Renders a single empty note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Renders a single empty note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Renders a single empty note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Renders a single empty note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Renders a single empty note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Renders a single empty note > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Renders a single empty note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Renders a single empty note > allCalls 1`] = `
 [
@@ -3023,17 +3023,17 @@ exports[`NoteMenu > Renders a single empty note > updateState 1`] = `
 
 exports[`NoteMenu > Selects a clicked note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Selects a clicked note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Selects a clicked note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects a clicked note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Selects a clicked note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Selects a clicked note > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Selects a clicked note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Selects a clicked note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Selects a clicked note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects a clicked note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Selects a clicked note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Selects a clicked note > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Selects a clicked note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects a clicked note > allCalls 1`] = `
 [
@@ -3314,17 +3314,17 @@ exports[`NoteMenu > Selects a clicked note > updateState 1`] = `
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > allCalls 1`] = `
 [
@@ -3649,17 +3649,17 @@ exports[`NoteMenu > Selects/deselects extra notes > Not single selected note > u
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > allCalls 1`] = `
 [
@@ -3940,17 +3940,17 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl > updateState 
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setHigherToLower > allCalls 1`] = `
 [
@@ -4231,17 +4231,17 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > setLowerToHigher > allCalls 1`] = `
 [
@@ -4522,17 +4522,17 @@ exports[`NoteMenu > Selects/deselects extra notes > With cmd/ctrl and shift > se
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Selects/deselects extra notes > With shift > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Selects/deselects extra notes > With shift > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Selects/deselects extra notes > With shift > allCalls 1`] = `
 [
@@ -4813,17 +4813,17 @@ exports[`NoteMenu > Selects/deselects extra notes > With shift > updateState 1`]
 
 exports[`NoteMenu > Sets contextmenu ev > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Sets contextmenu ev > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Sets contextmenu ev > allCalls 1`] = `
 [
@@ -5148,17 +5148,17 @@ exports[`NoteMenu > Sets contextmenu ev > updateState 1`] = `
 
 exports[`NoteMenu > Sets contextmenu ev on touch long-press > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Sets contextmenu ev on touch long-press > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev on touch long-press > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev on touch long-press > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev on touch long-press > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev on touch long-press > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev on touch long-press > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev on touch long-press > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev on touch long-press > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev on touch long-press > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev on touch long-press > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Sets contextmenu ev on touch long-press > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Sets contextmenu ev on touch long-press > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Sets contextmenu ev on touch long-press > allCalls 1`] = `
 [
@@ -5483,17 +5483,17 @@ exports[`NoteMenu > Sets contextmenu ev on touch long-press > updateState 1`] = 
 
 exports[`NoteMenu > Sets menu width with drag-bar > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Sets menu width with drag-bar > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('MENU_WIDTH') 1`] = `"400px"`;
+exports[`NoteMenu > Sets menu width with drag-bar > PersistentStorage.get('MENU_WIDTH') 1`] = `"400px"`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Sets menu width with drag-bar > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Sets menu width with drag-bar > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Sets menu width with drag-bar > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Sets menu width with drag-bar > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Sets menu width with drag-bar > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Sets menu width with drag-bar > allCalls 1`] = `
 [
@@ -5818,17 +5818,17 @@ exports[`NoteMenu > Sets menu width with drag-bar > updateState 1`] = `
 
 exports[`NoteMenu > Uses 100vw width on small screens > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`NoteMenu > Uses 100vw width on small screens > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`NoteMenu > Uses 100vw width on small screens > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`NoteMenu > Uses 100vw width on small screens > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`NoteMenu > Uses 100vw width on small screens > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`NoteMenu > Uses 100vw width on small screens > Storage.get('THEME') 1`] = `null`;
+exports[`NoteMenu > Uses 100vw width on small screens > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`NoteMenu > Uses 100vw width on small screens > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`NoteMenu > Uses 100vw width on small screens > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`NoteMenu > Uses 100vw width on small screens > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`NoteMenu > Uses 100vw width on small screens > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`NoteMenu > Uses 100vw width on small screens > Storage.get('USERNAME') 1`] = `null`;
+exports[`NoteMenu > Uses 100vw width on small screens > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`NoteMenu > Uses 100vw width on small screens > allCalls 1`] = `
 [

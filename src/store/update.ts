@@ -2,12 +2,12 @@ import { relaunch } from '@tauri-apps/plugin-process';
 import { check, Update } from '@tauri-apps/plugin-updater';
 import { reactive } from 'vue';
 
-import { Dialog, Storage } from '../classes';
+import { Dialog, PersistentStorage } from '../classes';
 
 export const updateState = reactive({
   isAvailable: false,
   isDownloading: false,
-  strategy: Storage.get('UPDATE_STRATEGY') ?? 'manual',
+  strategy: PersistentStorage.get('UPDATE_STRATEGY') ?? 'manual',
 });
 
 export async function handleUpdate(): Promise<void> {
@@ -31,7 +31,7 @@ export async function handleUpdate(): Promise<void> {
   const newVersion = update.version;
 
   // Check if the user has already been notified
-  const seenVersion = Storage.get('UPDATE_SEEN');
+  const seenVersion = PersistentStorage.get('UPDATE_SEEN');
   if (seenVersion === newVersion) {
     console.log('Update already seen');
 
@@ -48,7 +48,7 @@ export async function handleUpdate(): Promise<void> {
   if (!shouldInstall) {
     console.log('User chose not to update');
 
-    Storage.set('UPDATE_SEEN', newVersion);
+    PersistentStorage.set('UPDATE_SEEN', newVersion);
 
     return;
   }
@@ -83,5 +83,5 @@ export async function updateAndRelaunch(update: Update): Promise<void> {
 export function setUpdateStrategy(strategy: 'auto' | 'manual'): void {
   updateState.strategy = strategy;
 
-  Storage.set('UPDATE_STRATEGY', strategy);
+  PersistentStorage.set('UPDATE_STRATEGY', strategy);
 }

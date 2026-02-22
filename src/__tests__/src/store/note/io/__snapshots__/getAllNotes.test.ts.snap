@@ -2,17 +2,17 @@
 
 exports[`getAllNotes > With empty note array > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`getAllNotes > With empty note array > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`getAllNotes > With empty note array > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`getAllNotes > With empty note array > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`getAllNotes > With empty note array > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`getAllNotes > With empty note array > Storage.get('THEME') 1`] = `null`;
+exports[`getAllNotes > With empty note array > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`getAllNotes > With empty note array > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`getAllNotes > With empty note array > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`getAllNotes > With empty note array > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`getAllNotes > With empty note array > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`getAllNotes > With empty note array > Storage.get('USERNAME') 1`] = `null`;
+exports[`getAllNotes > With empty note array > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`getAllNotes > With empty note array > allCalls 1`] = `
 [
@@ -125,17 +125,17 @@ exports[`getAllNotes > With empty note array > updateState 1`] = `
 
 exports[`getAllNotes > With notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`getAllNotes > With notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`getAllNotes > With notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`getAllNotes > With notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`getAllNotes > With notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`getAllNotes > With notes > Storage.get('THEME') 1`] = `null`;
+exports[`getAllNotes > With notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`getAllNotes > With notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`getAllNotes > With notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`getAllNotes > With notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`getAllNotes > With notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`getAllNotes > With notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`getAllNotes > With notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`getAllNotes > With notes > allCalls 1`] = `
 [
@@ -460,17 +460,17 @@ exports[`getAllNotes > With notes > updateState 1`] = `
 
 exports[`getAllNotes > With single empty note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`getAllNotes > With single empty note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`getAllNotes > With single empty note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`getAllNotes > With single empty note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`getAllNotes > With single empty note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`getAllNotes > With single empty note > Storage.get('THEME') 1`] = `null`;
+exports[`getAllNotes > With single empty note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`getAllNotes > With single empty note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`getAllNotes > With single empty note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`getAllNotes > With single empty note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`getAllNotes > With single empty note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`getAllNotes > With single empty note > Storage.get('USERNAME') 1`] = `null`;
+exports[`getAllNotes > With single empty note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`getAllNotes > With single empty note > allCalls 1`] = `
 [
@@ -560,17 +560,17 @@ exports[`getAllNotes > With single empty note > updateState 1`] = `
 
 exports[`getAllNotes > With undefined notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`getAllNotes > With undefined notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`getAllNotes > With undefined notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`getAllNotes > With undefined notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`getAllNotes > With undefined notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`getAllNotes > With undefined notes > Storage.get('THEME') 1`] = `null`;
+exports[`getAllNotes > With undefined notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`getAllNotes > With undefined notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`getAllNotes > With undefined notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`getAllNotes > With undefined notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`getAllNotes > With undefined notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`getAllNotes > With undefined notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`getAllNotes > With undefined notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`getAllNotes > With undefined notes > allCalls 1`] = `
 [

@@ -2,17 +2,17 @@
 
 exports[`Editor > Closes find-in-page > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Editor > Closes find-in-page > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Editor > Closes find-in-page > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Editor > Closes find-in-page > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Editor > Closes find-in-page > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Editor > Closes find-in-page > Storage.get('THEME') 1`] = `null`;
+exports[`Editor > Closes find-in-page > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Editor > Closes find-in-page > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Editor > Closes find-in-page > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Closes find-in-page > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Editor > Closes find-in-page > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Editor > Closes find-in-page > Storage.get('USERNAME') 1`] = `null`;
+exports[`Editor > Closes find-in-page > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Closes find-in-page > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`Editor > Closes find-in-page > updateState 1`] = `
 
 exports[`Editor > Constructs note object from parsed text > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Editor > Constructs note object from parsed text > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Editor > Constructs note object from parsed text > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Editor > Constructs note object from parsed text > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Editor > Constructs note object from parsed text > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Editor > Constructs note object from parsed text > Storage.get('THEME') 1`] = `null`;
+exports[`Editor > Constructs note object from parsed text > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Editor > Constructs note object from parsed text > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Editor > Constructs note object from parsed text > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Constructs note object from parsed text > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Editor > Constructs note object from parsed text > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Editor > Constructs note object from parsed text > Storage.get('USERNAME') 1`] = `null`;
+exports[`Editor > Constructs note object from parsed text > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Constructs note object from parsed text > allCalls 1`] = `
 [
@@ -251,17 +251,17 @@ exports[`Editor > Constructs note object from parsed text > updateState 1`] = `
 
 exports[`Editor > Does not show find-in-page on touch devices > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Editor > Does not show find-in-page on touch devices > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Editor > Does not show find-in-page on touch devices > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Editor > Does not show find-in-page on touch devices > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Editor > Does not show find-in-page on touch devices > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Editor > Does not show find-in-page on touch devices > Storage.get('THEME') 1`] = `null`;
+exports[`Editor > Does not show find-in-page on touch devices > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Editor > Does not show find-in-page on touch devices > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Editor > Does not show find-in-page on touch devices > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Does not show find-in-page on touch devices > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Editor > Does not show find-in-page on touch devices > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Editor > Does not show find-in-page on touch devices > Storage.get('USERNAME') 1`] = `null`;
+exports[`Editor > Does not show find-in-page on touch devices > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Does not show find-in-page on touch devices > allCalls 1`] = `[]`;
 
@@ -333,17 +333,17 @@ exports[`Editor > Does not show find-in-page on touch devices > updateState 1`] 
 
 exports[`Editor > Has the correct timestamp > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Editor > Has the correct timestamp > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Editor > Has the correct timestamp > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Editor > Has the correct timestamp > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Editor > Has the correct timestamp > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Editor > Has the correct timestamp > Storage.get('THEME') 1`] = `null`;
+exports[`Editor > Has the correct timestamp > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Editor > Has the correct timestamp > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Editor > Has the correct timestamp > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Has the correct timestamp > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Editor > Has the correct timestamp > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Editor > Has the correct timestamp > Storage.get('USERNAME') 1`] = `null`;
+exports[`Editor > Has the correct timestamp > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Has the correct timestamp > allCalls 1`] = `[]`;
 
@@ -415,17 +415,17 @@ exports[`Editor > Has the correct timestamp > updateState 1`] = `
 
 exports[`Editor > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Editor > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Editor > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Editor > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Editor > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Editor > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`Editor > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Editor > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Editor > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Editor > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Editor > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`Editor > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Mounts > allCalls 1`] = `[]`;
 
@@ -497,17 +497,17 @@ exports[`Editor > Mounts > updateState 1`] = `
 
 exports[`Editor > Opens find-in-page > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Editor > Opens find-in-page > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Editor > Opens find-in-page > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Editor > Opens find-in-page > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Editor > Opens find-in-page > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Editor > Opens find-in-page > Storage.get('THEME') 1`] = `null`;
+exports[`Editor > Opens find-in-page > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Editor > Opens find-in-page > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Editor > Opens find-in-page > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Opens find-in-page > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Editor > Opens find-in-page > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Editor > Opens find-in-page > Storage.get('USERNAME') 1`] = `null`;
+exports[`Editor > Opens find-in-page > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Opens find-in-page > allCalls 1`] = `[]`;
 
@@ -579,17 +579,17 @@ exports[`Editor > Opens find-in-page > updateState 1`] = `
 
 exports[`Editor > Sets the correct note text > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Editor > Sets the correct note text > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Editor > Sets the correct note text > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Editor > Sets the correct note text > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Editor > Sets the correct note text > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Editor > Sets the correct note text > Storage.get('THEME') 1`] = `null`;
+exports[`Editor > Sets the correct note text > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Editor > Sets the correct note text > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Editor > Sets the correct note text > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Editor > Sets the correct note text > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Editor > Sets the correct note text > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Editor > Sets the correct note text > Storage.get('USERNAME') 1`] = `null`;
+exports[`Editor > Sets the correct note text > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Editor > Sets the correct note text > allCalls 1`] = `
 [

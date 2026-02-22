@@ -1,34 +1,34 @@
-import { Storage } from '../../../classes';
+import { PersistentStorage } from '../../../classes';
 
-describe('Storage', () => {
+describe('PersistentStorage', () => {
   it('get/set', () => {
-    assert.isNull(Storage.get('USERNAME'));
+    assert.isNull(PersistentStorage.get('USERNAME'));
 
-    Storage.set('USERNAME', 'd');
+    PersistentStorage.set('USERNAME', 'd');
 
-    assert.strictEqual(Storage.get('USERNAME'), 'd');
+    assert.strictEqual(PersistentStorage.get('USERNAME'), 'd');
   });
 
   it('remove', () => {
-    Storage.set('USERNAME', 'd');
+    PersistentStorage.set('USERNAME', 'd');
 
-    Storage.remove('USERNAME');
+    PersistentStorage.remove('USERNAME');
 
-    assert.isNull(Storage.get('USERNAME'));
+    assert.isNull(PersistentStorage.get('USERNAME'));
   });
 
   it('clear', () => {
-    Storage.set('USERNAME', 'd');
-    Storage.set('THEME', 'Dark');
+    PersistentStorage.set('USERNAME', 'd');
+    PersistentStorage.set('THEME', 'Dark');
 
-    Storage.clear();
+    PersistentStorage.clear();
 
-    assert.isNull(Storage.get('USERNAME'));
-    assert.isNull(Storage.get('THEME'));
+    assert.isNull(PersistentStorage.get('USERNAME'));
+    assert.isNull(PersistentStorage.get('THEME'));
   });
 
   it('setJSON/getJSON', () => {
-    assert.isNull(Storage.getJSON('UNSYNCED'));
+    assert.isNull(PersistentStorage.getJSON('UNSYNCED'));
 
     const unsynced = {
       new: 'note1',
@@ -36,8 +36,8 @@ describe('Storage', () => {
       deleted: [{ uuid: 'note3', deleted_at: 0 }],
     };
 
-    Storage.setJSON('UNSYNCED', unsynced);
+    PersistentStorage.setJSON('UNSYNCED', unsynced);
 
-    assert.deepEqual(Storage.getJSON('UNSYNCED'), unsynced);
+    assert.deepEqual(PersistentStorage.getJSON('UNSYNCED'), unsynced);
   });
 });

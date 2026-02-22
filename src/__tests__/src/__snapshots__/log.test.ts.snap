@@ -2,17 +2,17 @@
 
 exports[`Log > forwardConsole > console.debug > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Log > forwardConsole > console.debug > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.debug > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.debug > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Log > forwardConsole > console.debug > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.debug > Storage.get('THEME') 1`] = `null`;
+exports[`Log > forwardConsole > console.debug > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.debug > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.debug > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.debug > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Log > forwardConsole > console.debug > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.debug > Storage.get('USERNAME') 1`] = `null`;
+exports[`Log > forwardConsole > console.debug > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.debug > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`Log > forwardConsole > console.debug > updateState 1`] = `
 
 exports[`Log > forwardConsole > console.error > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Log > forwardConsole > console.error > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.error > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.error > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Log > forwardConsole > console.error > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.error > Storage.get('THEME') 1`] = `null`;
+exports[`Log > forwardConsole > console.error > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.error > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.error > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.error > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Log > forwardConsole > console.error > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.error > Storage.get('USERNAME') 1`] = `null`;
+exports[`Log > forwardConsole > console.error > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.error > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`Log > forwardConsole > console.error > updateState 1`] = `
 
 exports[`Log > forwardConsole > console.info > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Log > forwardConsole > console.info > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.info > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.info > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Log > forwardConsole > console.info > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.info > Storage.get('THEME') 1`] = `null`;
+exports[`Log > forwardConsole > console.info > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.info > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.info > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.info > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Log > forwardConsole > console.info > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.info > Storage.get('USERNAME') 1`] = `null`;
+exports[`Log > forwardConsole > console.info > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.info > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`Log > forwardConsole > console.info > updateState 1`] = `
 
 exports[`Log > forwardConsole > console.log > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Log > forwardConsole > console.log > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.log > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.log > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Log > forwardConsole > console.log > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.log > Storage.get('THEME') 1`] = `null`;
+exports[`Log > forwardConsole > console.log > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.log > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.log > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.log > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Log > forwardConsole > console.log > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.log > Storage.get('USERNAME') 1`] = `null`;
+exports[`Log > forwardConsole > console.log > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.log > allCalls 1`] = `[]`;
 
@@ -330,17 +330,17 @@ exports[`Log > forwardConsole > console.log > updateState 1`] = `
 
 exports[`Log > forwardConsole > console.warn > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Log > forwardConsole > console.warn > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.warn > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.warn > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Log > forwardConsole > console.warn > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.warn > Storage.get('THEME') 1`] = `null`;
+exports[`Log > forwardConsole > console.warn > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.warn > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Log > forwardConsole > console.warn > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.warn > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Log > forwardConsole > console.warn > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Log > forwardConsole > console.warn > Storage.get('USERNAME') 1`] = `null`;
+exports[`Log > forwardConsole > console.warn > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > forwardConsole > console.warn > allCalls 1`] = `[]`;
 
@@ -412,17 +412,17 @@ exports[`Log > forwardConsole > console.warn > updateState 1`] = `
 
 exports[`Log > initLogger > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Log > initLogger > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Log > initLogger > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Log > initLogger > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Log > initLogger > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Log > initLogger > Storage.get('THEME') 1`] = `null`;
+exports[`Log > initLogger > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Log > initLogger > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Log > initLogger > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Log > initLogger > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Log > initLogger > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Log > initLogger > Storage.get('USERNAME') 1`] = `null`;
+exports[`Log > initLogger > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Log > initLogger > allCalls 1`] = `[]`;
 

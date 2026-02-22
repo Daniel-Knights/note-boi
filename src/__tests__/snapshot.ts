@@ -1,7 +1,12 @@
 import * as n from '../store/note';
 import * as s from '../store/sync';
 import * as u from '../store/update';
-import { KeyStore, Storage, STORAGE_KEYS_STRING, StorageKeyString } from '../classes';
+import {
+  KeyStore,
+  PersistentStorage,
+  STORAGE_KEYS_STRING,
+  StorageKeyString,
+} from '../classes';
 import { openedPopup } from '../store/popup';
 import { selectedTheme } from '../store/theme';
 
@@ -31,8 +36,8 @@ export async function snapshotState() {
     ])
   );
 
-  // storage
-  const storedUnsyncedNotes = Storage.getJSON('UNSYNCED');
+  // PersistentStorage
+  const storedUnsyncedNotes = PersistentStorage.getJSON('UNSYNCED');
 
   if (storedUnsyncedNotes) {
     storedUnsyncedNotes.edited = [...storedUnsyncedNotes.edited].map(normaliseNoteUuid);
@@ -76,6 +81,8 @@ export async function snapshotState() {
   expect(allCalls).toMatchSnapshot('allCalls');
 
   Object.keys(STORAGE_KEYS_STRING).forEach((key) => {
-    expect(Storage.get(key as StorageKeyString)).toMatchSnapshot(`Storage.get('${key}')`);
+    expect(PersistentStorage.get(key as StorageKeyString)).toMatchSnapshot(
+      `PersistentStorage.get('${key}')`
+    );
   });
 }

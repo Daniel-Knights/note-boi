@@ -2,17 +2,17 @@
 
 exports[`Note > clone > Creates a deep copy of a note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > clone > Creates a deep copy of a note > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > clone > Creates a deep copy of a note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > clone > Creates a deep copy of a note > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > clone > Creates a deep copy of a note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > clone > Creates a deep copy of a note > Storage.get('THEME') 1`] = `null`;
+exports[`Note > clone > Creates a deep copy of a note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > clone > Creates a deep copy of a note > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > clone > Creates a deep copy of a note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > clone > Creates a deep copy of a note > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > clone > Creates a deep copy of a note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > clone > Creates a deep copy of a note > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > clone > Creates a deep copy of a note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > clone > Creates a deep copy of a note > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`Note > clone > Creates a deep copy of a note > updateState 1`] = `
 
 exports[`Note > clone > Creates independent copy (mutations do not affect original) > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > clone > Creates independent copy (mutations do not affect original) > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > clone > Creates independent copy (mutations do not affect original) > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > clone > Creates independent copy (mutations do not affect original) > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > clone > Creates independent copy (mutations do not affect original) > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > clone > Creates independent copy (mutations do not affect original) > Storage.get('THEME') 1`] = `null`;
+exports[`Note > clone > Creates independent copy (mutations do not affect original) > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > clone > Creates independent copy (mutations do not affect original) > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > clone > Creates independent copy (mutations do not affect original) > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > clone > Creates independent copy (mutations do not affect original) > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > clone > Creates independent copy (mutations do not affect original) > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > clone > Creates independent copy (mutations do not affect original) > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > clone > Creates independent copy (mutations do not affect original) > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > clone > Creates independent copy (mutations do not affect original) > allCalls 1`] = `[]`;
 
@@ -166,17 +166,17 @@ exports[`Note > clone > Creates independent copy (mutations do not affect origin
 
 exports[`Note > fromJSONString > Applies overrides > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > fromJSONString > Applies overrides > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > fromJSONString > Applies overrides > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > fromJSONString > Applies overrides > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > fromJSONString > Applies overrides > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > fromJSONString > Applies overrides > Storage.get('THEME') 1`] = `null`;
+exports[`Note > fromJSONString > Applies overrides > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > fromJSONString > Applies overrides > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > fromJSONString > Applies overrides > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > fromJSONString > Applies overrides > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > fromJSONString > Applies overrides > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > fromJSONString > Applies overrides > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > fromJSONString > Applies overrides > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > fromJSONString > Applies overrides > allCalls 1`] = `[]`;
 
@@ -248,17 +248,17 @@ exports[`Note > fromJSONString > Applies overrides > updateState 1`] = `
 
 exports[`Note > fromJSONString > Creates a Note from JSON string > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > fromJSONString > Creates a Note from JSON string > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > fromJSONString > Creates a Note from JSON string > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > fromJSONString > Creates a Note from JSON string > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > fromJSONString > Creates a Note from JSON string > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > fromJSONString > Creates a Note from JSON string > Storage.get('THEME') 1`] = `null`;
+exports[`Note > fromJSONString > Creates a Note from JSON string > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > fromJSONString > Creates a Note from JSON string > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > fromJSONString > Creates a Note from JSON string > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > fromJSONString > Creates a Note from JSON string > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > fromJSONString > Creates a Note from JSON string > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > fromJSONString > Creates a Note from JSON string > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > fromJSONString > Creates a Note from JSON string > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > fromJSONString > Creates a Note from JSON string > allCalls 1`] = `[]`;
 
@@ -330,17 +330,17 @@ exports[`Note > fromJSONString > Creates a Note from JSON string > updateState 1
 
 exports[`Note > fromPlainString > Applies overrides > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > fromPlainString > Applies overrides > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > fromPlainString > Applies overrides > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > fromPlainString > Applies overrides > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > fromPlainString > Applies overrides > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > fromPlainString > Applies overrides > Storage.get('THEME') 1`] = `null`;
+exports[`Note > fromPlainString > Applies overrides > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > fromPlainString > Applies overrides > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > fromPlainString > Applies overrides > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > fromPlainString > Applies overrides > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > fromPlainString > Applies overrides > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > fromPlainString > Applies overrides > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > fromPlainString > Applies overrides > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > fromPlainString > Applies overrides > allCalls 1`] = `[]`;
 
@@ -412,17 +412,17 @@ exports[`Note > fromPlainString > Applies overrides > updateState 1`] = `
 
 exports[`Note > fromPlainString > Creates a Note from plain string with title and body > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > fromPlainString > Creates a Note from plain string with title and body > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > fromPlainString > Creates a Note from plain string with title and body > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > fromPlainString > Creates a Note from plain string with title and body > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > fromPlainString > Creates a Note from plain string with title and body > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > fromPlainString > Creates a Note from plain string with title and body > Storage.get('THEME') 1`] = `null`;
+exports[`Note > fromPlainString > Creates a Note from plain string with title and body > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > fromPlainString > Creates a Note from plain string with title and body > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > fromPlainString > Creates a Note from plain string with title and body > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > fromPlainString > Creates a Note from plain string with title and body > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > fromPlainString > Creates a Note from plain string with title and body > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > fromPlainString > Creates a Note from plain string with title and body > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > fromPlainString > Creates a Note from plain string with title and body > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > fromPlainString > Creates a Note from plain string with title and body > allCalls 1`] = `[]`;
 
@@ -494,17 +494,17 @@ exports[`Note > fromPlainString > Creates a Note from plain string with title an
 
 exports[`Note > fromPlainString > Handles string with only title > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > fromPlainString > Handles string with only title > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > fromPlainString > Handles string with only title > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > fromPlainString > Handles string with only title > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > fromPlainString > Handles string with only title > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > fromPlainString > Handles string with only title > Storage.get('THEME') 1`] = `null`;
+exports[`Note > fromPlainString > Handles string with only title > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > fromPlainString > Handles string with only title > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > fromPlainString > Handles string with only title > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > fromPlainString > Handles string with only title > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > fromPlainString > Handles string with only title > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > fromPlainString > Handles string with only title > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > fromPlainString > Handles string with only title > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > fromPlainString > Handles string with only title > allCalls 1`] = `[]`;
 
@@ -576,17 +576,17 @@ exports[`Note > fromPlainString > Handles string with only title > updateState 1
 
 exports[`Note > getText > Extracts text from delta ops > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > getText > Extracts text from delta ops > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > getText > Extracts text from delta ops > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > getText > Extracts text from delta ops > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > getText > Extracts text from delta ops > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > getText > Extracts text from delta ops > Storage.get('THEME') 1`] = `null`;
+exports[`Note > getText > Extracts text from delta ops > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > getText > Extracts text from delta ops > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > getText > Extracts text from delta ops > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > getText > Extracts text from delta ops > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > getText > Extracts text from delta ops > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > getText > Extracts text from delta ops > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > getText > Extracts text from delta ops > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > getText > Extracts text from delta ops > allCalls 1`] = `[]`;
 
@@ -658,17 +658,17 @@ exports[`Note > getText > Extracts text from delta ops > updateState 1`] = `
 
 exports[`Note > getText > Ignores non-string inserts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > getText > Ignores non-string inserts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > getText > Ignores non-string inserts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > getText > Ignores non-string inserts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > getText > Ignores non-string inserts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > getText > Ignores non-string inserts > Storage.get('THEME') 1`] = `null`;
+exports[`Note > getText > Ignores non-string inserts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > getText > Ignores non-string inserts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > getText > Ignores non-string inserts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > getText > Ignores non-string inserts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > getText > Ignores non-string inserts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > getText > Ignores non-string inserts > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > getText > Ignores non-string inserts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > getText > Ignores non-string inserts > allCalls 1`] = `[]`;
 
@@ -740,17 +740,17 @@ exports[`Note > getText > Ignores non-string inserts > updateState 1`] = `
 
 exports[`Note > getText > Returns empty string for empty delta > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > getText > Returns empty string for empty delta > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > getText > Returns empty string for empty delta > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > getText > Returns empty string for empty delta > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > getText > Returns empty string for empty delta > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > getText > Returns empty string for empty delta > Storage.get('THEME') 1`] = `null`;
+exports[`Note > getText > Returns empty string for empty delta > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > getText > Returns empty string for empty delta > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > getText > Returns empty string for empty delta > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > getText > Returns empty string for empty delta > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > getText > Returns empty string for empty delta > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > getText > Returns empty string for empty delta > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > getText > Returns empty string for empty delta > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > getText > Returns empty string for empty delta > allCalls 1`] = `[]`;
 
@@ -822,17 +822,17 @@ exports[`Note > getText > Returns empty string for empty delta > updateState 1`]
 
 exports[`Note > new Note() > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > new Note() > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > new Note() > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > new Note() > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > new Note() > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > new Note() > Storage.get('THEME') 1`] = `null`;
+exports[`Note > new Note() > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > new Note() > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > new Note() > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > new Note() > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > new Note() > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > new Note() > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > new Note() > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > new Note() > allCalls 1`] = `[]`;
 
@@ -904,17 +904,17 @@ exports[`Note > new Note() > updateState 1`] = `
 
 exports[`Note > parseTitleAndBody > Handles empty string > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > parseTitleAndBody > Handles empty string > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles empty string > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles empty string > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles empty string > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles empty string > Storage.get('THEME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles empty string > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles empty string > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles empty string > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles empty string > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles empty string > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles empty string > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles empty string > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > parseTitleAndBody > Handles empty string > allCalls 1`] = `[]`;
 
@@ -986,17 +986,17 @@ exports[`Note > parseTitleAndBody > Handles empty string > updateState 1`] = `
 
 exports[`Note > parseTitleAndBody > Handles multiple newlines > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > parseTitleAndBody > Handles multiple newlines > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles multiple newlines > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles multiple newlines > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles multiple newlines > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles multiple newlines > Storage.get('THEME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles multiple newlines > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles multiple newlines > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles multiple newlines > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles multiple newlines > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles multiple newlines > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles multiple newlines > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles multiple newlines > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > parseTitleAndBody > Handles multiple newlines > allCalls 1`] = `[]`;
 
@@ -1068,17 +1068,17 @@ exports[`Note > parseTitleAndBody > Handles multiple newlines > updateState 1`] 
 
 exports[`Note > parseTitleAndBody > Handles string with only title > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > parseTitleAndBody > Handles string with only title > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles string with only title > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles string with only title > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles string with only title > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles string with only title > Storage.get('THEME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles string with only title > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles string with only title > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles string with only title > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles string with only title > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles string with only title > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Handles string with only title > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Handles string with only title > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > parseTitleAndBody > Handles string with only title > allCalls 1`] = `[]`;
 
@@ -1150,17 +1150,17 @@ exports[`Note > parseTitleAndBody > Handles string with only title > updateState
 
 exports[`Note > parseTitleAndBody > Parses title and body from string > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > parseTitleAndBody > Parses title and body from string > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Parses title and body from string > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Parses title and body from string > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Parses title and body from string > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Parses title and body from string > Storage.get('THEME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Parses title and body from string > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Parses title and body from string > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Parses title and body from string > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Parses title and body from string > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Parses title and body from string > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Parses title and body from string > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Parses title and body from string > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > parseTitleAndBody > Parses title and body from string > allCalls 1`] = `[]`;
 
@@ -1232,17 +1232,17 @@ exports[`Note > parseTitleAndBody > Parses title and body from string > updateSt
 
 exports[`Note > parseTitleAndBody > Trims whitespace > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Note > parseTitleAndBody > Trims whitespace > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Trims whitespace > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Trims whitespace > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Trims whitespace > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Trims whitespace > Storage.get('THEME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Trims whitespace > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Trims whitespace > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Trims whitespace > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Trims whitespace > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Trims whitespace > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Note > parseTitleAndBody > Trims whitespace > Storage.get('USERNAME') 1`] = `null`;
+exports[`Note > parseTitleAndBody > Trims whitespace > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Note > parseTitleAndBody > Trims whitespace > allCalls 1`] = `[]`;
 

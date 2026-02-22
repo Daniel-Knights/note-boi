@@ -2,17 +2,17 @@
 
 exports[`Theme > Uses system as default > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Theme > Uses system as default > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Theme > Uses system as default > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Theme > Uses system as default > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Theme > Uses system as default > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Theme > Uses system as default > Storage.get('THEME') 1`] = `null`;
+exports[`Theme > Uses system as default > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Theme > Uses system as default > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Theme > Uses system as default > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Theme > Uses system as default > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Theme > Uses system as default > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Theme > Uses system as default > Storage.get('USERNAME') 1`] = `null`;
+exports[`Theme > Uses system as default > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Theme > Uses system as default > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`Theme > Uses system as default > updateState 1`] = `
 
 exports[`Theme > setTheme > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Theme > setTheme > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Theme > setTheme > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Theme > setTheme > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Theme > setTheme > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Theme > setTheme > Storage.get('THEME') 1`] = `"Dark"`;
+exports[`Theme > setTheme > PersistentStorage.get('THEME') 1`] = `"Dark"`;
 
-exports[`Theme > setTheme > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Theme > setTheme > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Theme > setTheme > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Theme > setTheme > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Theme > setTheme > Storage.get('USERNAME') 1`] = `null`;
+exports[`Theme > setTheme > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Theme > setTheme > allCalls 1`] = `[]`;
 

@@ -1,6 +1,6 @@
 import { DeletedNote } from '../api';
 
-import { Storage } from './storage';
+import { PersistentStorage } from './persistentStorage';
 
 /**
  * Manages unsynced notes by tracking new, edited, and deleted notes.
@@ -15,7 +15,7 @@ export class UnsyncedNotesManager {
   deleted: DeletedNote[];
 
   constructor() {
-    const storedUnsyncedNotes = Storage.getJSON('UNSYNCED');
+    const storedUnsyncedNotes = PersistentStorage.getJSON('UNSYNCED');
 
     this.new = storedUnsyncedNotes?.new || '';
     this.edited = new Set<string>(storedUnsyncedNotes?.edited);
@@ -72,12 +72,12 @@ export class UnsyncedNotesManager {
    */
   store() {
     if (this.size === 0 && !this.new) {
-      Storage.remove('UNSYNCED');
+      PersistentStorage.remove('UNSYNCED');
 
       return;
     }
 
-    Storage.setJSON('UNSYNCED', {
+    PersistentStorage.setJSON('UNSYNCED', {
       new: this.new,
       edited: [...this.edited],
       deleted: [...this.deleted],

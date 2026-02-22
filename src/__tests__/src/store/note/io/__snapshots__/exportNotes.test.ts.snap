@@ -2,17 +2,17 @@
 
 exports[`exportNotes > All notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`exportNotes > All notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`exportNotes > All notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`exportNotes > All notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`exportNotes > All notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`exportNotes > All notes > Storage.get('THEME') 1`] = `null`;
+exports[`exportNotes > All notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`exportNotes > All notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`exportNotes > All notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`exportNotes > All notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`exportNotes > All notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`exportNotes > All notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`exportNotes > All notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`exportNotes > All notes > allCalls 1`] = `
 [
@@ -554,17 +554,17 @@ exports[`exportNotes > All notes > updateState 1`] = `
 
 exports[`exportNotes > Catches errors and tries again > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`exportNotes > Catches errors and tries again > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`exportNotes > Catches errors and tries again > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`exportNotes > Catches errors and tries again > Storage.get('THEME') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`exportNotes > Catches errors and tries again > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`exportNotes > Catches errors and tries again > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`exportNotes > Catches errors and tries again > Storage.get('USERNAME') 1`] = `null`;
+exports[`exportNotes > Catches errors and tries again > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`exportNotes > Catches errors and tries again > allCalls 1`] = `
 [
@@ -923,17 +923,17 @@ exports[`exportNotes > Catches errors and tries again > updateState 1`] = `
 
 exports[`exportNotes > Passed selection of notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`exportNotes > Passed selection of notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`exportNotes > Passed selection of notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`exportNotes > Passed selection of notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`exportNotes > Passed selection of notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`exportNotes > Passed selection of notes > Storage.get('THEME') 1`] = `null`;
+exports[`exportNotes > Passed selection of notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`exportNotes > Passed selection of notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`exportNotes > Passed selection of notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`exportNotes > Passed selection of notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`exportNotes > Passed selection of notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`exportNotes > Passed selection of notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`exportNotes > Passed selection of notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`exportNotes > Passed selection of notes > allCalls 1`] = `
 [
@@ -1340,17 +1340,17 @@ exports[`exportNotes > Passed selection of notes > updateState 1`] = `
 
 exports[`exportNotes > Returns when no location chosen > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`exportNotes > Returns when no location chosen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`exportNotes > Returns when no location chosen > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`exportNotes > Returns when no location chosen > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`exportNotes > Returns when no location chosen > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`exportNotes > Returns when no location chosen > Storage.get('THEME') 1`] = `null`;
+exports[`exportNotes > Returns when no location chosen > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`exportNotes > Returns when no location chosen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`exportNotes > Returns when no location chosen > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`exportNotes > Returns when no location chosen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`exportNotes > Returns when no location chosen > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`exportNotes > Returns when no location chosen > Storage.get('USERNAME') 1`] = `null`;
+exports[`exportNotes > Returns when no location chosen > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`exportNotes > Returns when no location chosen > allCalls 1`] = `
 [

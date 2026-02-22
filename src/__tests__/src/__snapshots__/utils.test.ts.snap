@@ -2,17 +2,17 @@
 
 exports[`Utils > Tauri API wrappers > tauriEmit > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriEmit > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriEmit > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriEmit > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriEmit > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriEmit > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriEmit > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriEmit > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriEmit > allCalls 1`] = `
 [
@@ -99,17 +99,17 @@ exports[`Utils > Tauri API wrappers > tauriEmit > updateState 1`] = `
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct command and args > allCalls 1`] = `
 [
@@ -200,17 +200,17 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows > allCalls 1`] = `
 [
@@ -291,17 +291,17 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows 
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries > allCalls 1`] = `
 [
@@ -410,17 +410,17 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
 
 exports[`Utils > Tauri API wrappers > tauriListen > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > Tauri API wrappers > tauriListen > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > Tauri API wrappers > tauriListen > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > Tauri API wrappers > tauriListen > allCalls 1`] = `
 [
@@ -501,17 +501,17 @@ exports[`Utils > Tauri API wrappers > tauriListen > updateState 1`] = `
 
 exports[`Utils > capitalise > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > capitalise > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > capitalise > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > capitalise > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > capitalise > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > capitalise > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > capitalise > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > capitalise > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > capitalise > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > capitalise > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > capitalise > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > capitalise > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > capitalise > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > capitalise > allCalls 1`] = `[]`;
 
@@ -583,17 +583,17 @@ exports[`Utils > capitalise > updateState 1`] = `
 
 exports[`Utils > escapeRegex > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > escapeRegex > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > escapeRegex > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > escapeRegex > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > escapeRegex > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > escapeRegex > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > escapeRegex > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > escapeRegex > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > escapeRegex > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > escapeRegex > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > escapeRegex > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > escapeRegex > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > escapeRegex > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > escapeRegex > allCalls 1`] = `[]`;
 
@@ -665,17 +665,17 @@ exports[`Utils > escapeRegex > updateState 1`] = `
 
 exports[`Utils > hasKeys > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > hasKeys > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > hasKeys > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > hasKeys > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > hasKeys > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > hasKeys > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > hasKeys > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > hasKeys > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > hasKeys > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > hasKeys > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > hasKeys > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > hasKeys > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > hasKeys > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > hasKeys > allCalls 1`] = `[]`;
 
@@ -747,17 +747,17 @@ exports[`Utils > hasKeys > updateState 1`] = `
 
 exports[`Utils > isDev > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > isDev > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > isDev > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > isDev > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > isDev > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > isDev > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > isDev > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > isDev > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > isDev > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > isDev > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > isDev > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > isDev > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > isDev > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isDev > allCalls 1`] = `[]`;
 
@@ -829,17 +829,17 @@ exports[`Utils > isDev > updateState 1`] = `
 
 exports[`Utils > isEmptyNote > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > isEmptyNote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > isEmptyNote > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > isEmptyNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > isEmptyNote > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > isEmptyNote > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > isEmptyNote > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > isEmptyNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > isEmptyNote > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > isEmptyNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > isEmptyNote > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > isEmptyNote > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > isEmptyNote > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isEmptyNote > allCalls 1`] = `[]`;
 
@@ -911,17 +911,17 @@ exports[`Utils > isEmptyNote > updateState 1`] = `
 
 exports[`Utils > isWhitespaceOnly > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > isWhitespaceOnly > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > isWhitespaceOnly > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > isWhitespaceOnly > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > isWhitespaceOnly > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > isWhitespaceOnly > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > isWhitespaceOnly > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > isWhitespaceOnly > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > isWhitespaceOnly > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > isWhitespaceOnly > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > isWhitespaceOnly > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > isWhitespaceOnly > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > isWhitespaceOnly > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > isWhitespaceOnly > allCalls 1`] = `[]`;
 
@@ -993,17 +993,17 @@ exports[`Utils > isWhitespaceOnly > updateState 1`] = `
 
 exports[`Utils > mathClamp > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > mathClamp > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > mathClamp > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > mathClamp > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > mathClamp > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > mathClamp > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > mathClamp > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > mathClamp > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > mathClamp > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > mathClamp > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > mathClamp > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > mathClamp > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > mathClamp > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > mathClamp > allCalls 1`] = `[]`;
 
@@ -1075,17 +1075,17 @@ exports[`Utils > mathClamp > updateState 1`] = `
 
 exports[`Utils > unixToDateTime > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`Utils > unixToDateTime > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`Utils > unixToDateTime > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`Utils > unixToDateTime > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`Utils > unixToDateTime > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`Utils > unixToDateTime > Storage.get('THEME') 1`] = `null`;
+exports[`Utils > unixToDateTime > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`Utils > unixToDateTime > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`Utils > unixToDateTime > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`Utils > unixToDateTime > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`Utils > unixToDateTime > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`Utils > unixToDateTime > Storage.get('USERNAME') 1`] = `null`;
+exports[`Utils > unixToDateTime > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`Utils > unixToDateTime > allCalls 1`] = `[]`;
 

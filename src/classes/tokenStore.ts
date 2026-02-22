@@ -1,6 +1,6 @@
 import { isWeb, tauriInvoke } from '../utils';
 
-import { Storage } from './storage';
+import { PersistentStorage } from './persistentStorage';
 
 /**
  * Adapter class for storing tokens:
@@ -10,7 +10,7 @@ import { Storage } from './storage';
 export class TokenStore {
   static getAccessToken(username: string): Promise<string | void> {
     if (isWeb()) {
-      return Promise.resolve(Storage.get('ACCESS_TOKEN') ?? undefined);
+      return Promise.resolve(PersistentStorage.get('ACCESS_TOKEN') ?? undefined);
     }
 
     return tauriInvoke('get_access_token', { username }, { rethrowErrors: true });
@@ -18,7 +18,7 @@ export class TokenStore {
 
   static setAccessToken(username: string, accessToken: string): Promise<void> {
     if (isWeb()) {
-      Storage.set('ACCESS_TOKEN', accessToken);
+      PersistentStorage.set('ACCESS_TOKEN', accessToken);
 
       return Promise.resolve();
     }
@@ -28,7 +28,7 @@ export class TokenStore {
 
   static deleteAccessToken(username: string): Promise<void> {
     if (isWeb()) {
-      Storage.remove('ACCESS_TOKEN');
+      PersistentStorage.remove('ACCESS_TOKEN');
 
       return Promise.resolve();
     }

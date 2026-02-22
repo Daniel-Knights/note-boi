@@ -5,7 +5,7 @@ import {
   ErrorConfig,
   FetchBuilder,
   KeyStore,
-  Storage,
+  PersistentStorage,
   TokenStore,
 } from '../classes';
 import { noteState } from '../store/note';
@@ -33,7 +33,7 @@ export function clientSideLogout(): Promise<void> {
   syncState.username = '';
   syncState.isLoggedIn = false;
 
-  Storage.remove('USERNAME');
+  PersistentStorage.remove('USERNAME');
   KeyStore.reset();
 
   return tauriEmit('auth', { is_logged_in: false });
@@ -78,7 +78,7 @@ export const login = route(async () => {
     syncState.password = '';
     syncState.isLoggedIn = true;
 
-    Storage.set('USERNAME', syncState.username);
+    PersistentStorage.set('USERNAME', syncState.username);
 
     resetAppError();
     tauriEmit('auth', { is_logged_in: true });
@@ -143,7 +143,7 @@ export const signup = route(async () => {
     syncState.isLoggedIn = true;
     syncState.unsyncedNotes.clear();
 
-    Storage.set('USERNAME', syncState.username);
+    PersistentStorage.set('USERNAME', syncState.username);
 
     await KeyStore.storeKey(passwordKey).catch((err) => {
       throw handleStoreKeyError(err, 'Signup');

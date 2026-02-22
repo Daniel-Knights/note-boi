@@ -1,4 +1,4 @@
-import { RawNote, Storage } from '../../../classes';
+import { PersistentStorage, RawNote } from '../../../classes';
 import { isDesktop, tauriInvoke } from '../../../utils';
 
 export function syncLocalNotes(notes: RawNote[]) {
@@ -8,5 +8,5 @@ export function syncLocalNotes(notes: RawNote[]) {
 
   //// Web
 
-  Storage.setJSON('NOTES', notes);
+  PersistentStorage.setJSON('NOTES', notes);
 }

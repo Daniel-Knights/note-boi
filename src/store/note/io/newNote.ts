@@ -1,4 +1,4 @@
-import { Note, Storage } from '../../../classes';
+import { Note, PersistentStorage } from '../../../classes';
 import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
 import { syncState } from '../../sync';
 import { dispatchNoteEvent } from '../event';
@@ -43,5 +43,5 @@ export function newNote(isButtonClick?: boolean): void {
 
   //// Web
 
-  Storage.setJSON('NOTES', noteState.notes);
+  PersistentStorage.setJSON('NOTES', noteState.notes);
 }

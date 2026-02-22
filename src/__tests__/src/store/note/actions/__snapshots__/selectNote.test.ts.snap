@@ -2,17 +2,17 @@
 
 exports[`selectNote > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`selectNote > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`selectNote > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`selectNote > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`selectNote > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`selectNote > Storage.get('THEME') 1`] = `null`;
+exports[`selectNote > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`selectNote > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`selectNote > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`selectNote > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`selectNote > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`selectNote > Storage.get('USERNAME') 1`] = `null`;
+exports[`selectNote > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`selectNote > allCalls 1`] = `
 [

@@ -2,7 +2,7 @@ import * as a from '../../../api';
 import * as auth from '../../../api/auth';
 import * as n from '../../../store/note';
 import * as s from '../../../store/sync';
-import { ERROR_CODE, KeyStore, Storage, TokenStore } from '../../../classes';
+import { ERROR_CODE, KeyStore, PersistentStorage, TokenStore } from '../../../classes';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi, mockDb } from '../../mock';
 import {
@@ -30,7 +30,7 @@ describe('Auth', () => {
 
       assert.isEmpty(s.syncState.username);
       assert.isFalse(s.syncState.isLoggedIn);
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.invoke.has('delete_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
@@ -50,7 +50,7 @@ describe('Auth', () => {
 
       assert.isEmpty(s.syncState.username);
       assert.isFalse(s.syncState.isLoggedIn);
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.emits.has('auth'));
       assert.deepEqual(calls.emits[0]!.calledWith, {
@@ -84,7 +84,7 @@ describe('Auth', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
-      assert.strictEqual(Storage.get('USERNAME'), 'd');
+      assert.strictEqual(PersistentStorage.get('USERNAME'), 'd');
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
@@ -127,7 +127,7 @@ describe('Auth', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.isEmpty(s.syncState.password);
-      assert.strictEqual(Storage.get('USERNAME'), 'd');
+      assert.strictEqual(PersistentStorage.get('USERNAME'), 'd');
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
@@ -230,7 +230,7 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.password, '1');
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
@@ -256,7 +256,7 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'd');
       assert.strictEqual(s.syncState.password, '2');
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
@@ -282,7 +282,7 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.strictEqual(s.syncState.password, '2');
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/auth/login'));
       assertRequest('/auth/login', calls.request[0]!.calledWith!);
@@ -346,7 +346,7 @@ describe('Auth', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
-      assert.strictEqual(Storage.get('USERNAME'), 'k');
+      assert.strictEqual(PersistentStorage.get('USERNAME'), 'k');
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/auth/signup'));
       assertRequest('/auth/signup', calls.request[0]!.calledWith!);
@@ -388,7 +388,7 @@ describe('Auth', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.isEmpty(s.syncState.password);
-      assert.strictEqual(Storage.get('USERNAME'), 'k');
+      assert.strictEqual(PersistentStorage.get('USERNAME'), 'k');
       assert.strictEqual(calls.size, 3);
       assert.isTrue(calls.request.has('/auth/signup'));
       assertRequest('/auth/signup', calls.request[0]!.calledWith!);
@@ -453,7 +453,7 @@ describe('Auth', () => {
       assert.isFalse(s.syncState.isLoggedIn);
       assert.strictEqual(s.syncState.username, 'k');
       assert.strictEqual(s.syncState.password, '2');
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 1);
       assert.isTrue(calls.request.has('/auth/signup'));
       assertRequest('/auth/signup', calls.request[0]!.calledWith!);
@@ -519,7 +519,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);
@@ -557,7 +557,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);
@@ -595,7 +595,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);
@@ -634,7 +634,7 @@ describe('Auth', () => {
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.isFalse(s.syncState.isLoggedIn);
       assert.isEmpty(s.syncState.username);
-      assert.isNull(Storage.get('USERNAME'));
+      assert.isNull(PersistentStorage.get('USERNAME'));
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.request.has('/auth/logout'));
       assertRequest('/auth/logout', calls.request[0]!.calledWith!);

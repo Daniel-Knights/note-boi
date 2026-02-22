@@ -1,15 +1,15 @@
 import { ref } from 'vue';
 
-import { Storage } from '../classes';
+import { PersistentStorage } from '../classes';
 import { ColourTheme } from '../constant';
 
-export const selectedTheme = ref(Storage.get('THEME') || 'System');
+export const selectedTheme = ref(PersistentStorage.get('THEME') || 'System');
 
 export function setTheme(theme: ColourTheme): void {
   document.body.classList.remove(`theme--${selectedTheme.value.toLowerCase()}`);
   document.body.classList.add(`theme--${theme.toLowerCase()}`);
 
-  Storage.set('THEME', theme);
+  PersistentStorage.set('THEME', theme);
 
   selectedTheme.value = theme;
 }

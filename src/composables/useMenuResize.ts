@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue';
 
-import { Storage } from '../classes';
+import { PersistentStorage } from '../classes';
 import { MIN_MENU_WIDTH } from '../constant';
 import { mathClamp } from '../utils';
 
@@ -9,7 +9,7 @@ export function useMenuResize(
   emit: (event: 'update:showNoteMenu', value: boolean) => void
 ) {
   const isDragging = ref(false);
-  const menuWidthDesktop = ref(Storage.get('MENU_WIDTH') || '260px');
+  const menuWidthDesktop = ref(PersistentStorage.get('MENU_WIDTH') || '260px');
 
   const menuWidth = computed(() => (isSmallScreen() ? '100vw' : menuWidthDesktop.value));
 
@@ -32,7 +32,7 @@ export function useMenuResize(
       () => {
         isDragging.value = false;
 
-        Storage.set('MENU_WIDTH', menuWidthDesktop.value);
+        PersistentStorage.set('MENU_WIDTH', menuWidthDesktop.value);
         document.removeEventListener('mousemove', handleDragBarMouseMove);
       },
       { once: true }

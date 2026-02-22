@@ -1,4 +1,4 @@
-import { Note, Storage } from '../../../classes';
+import { Note, PersistentStorage } from '../../../classes';
 import { isDesktop, isEmptyNote, tauriInvoke } from '../../../utils';
 import { dispatchNoteEvent } from '../event';
 import { noteState } from '../state';
@@ -10,7 +10,7 @@ import { newNote } from './newNote';
 export async function getAllNotes(): Promise<void> {
   const storedNotes = isDesktop()
     ? await tauriInvoke('get_all_notes')
-    : Storage.getJSON('NOTES');
+    : PersistentStorage.getJSON('NOTES');
   const hasNotes = storedNotes && storedNotes.length > 0;
   if (!hasNotes) return newNote();
 

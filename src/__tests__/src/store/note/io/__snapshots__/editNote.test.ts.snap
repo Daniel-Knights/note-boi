@@ -2,17 +2,17 @@
 
 exports[`editNote > Edits notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`editNote > Edits notes > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`editNote > Edits notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`editNote > Edits notes > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`editNote > Edits notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`editNote > Edits notes > Storage.get('THEME') 1`] = `null`;
+exports[`editNote > Edits notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`editNote > Edits notes > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`editNote > Edits notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`editNote > Edits notes > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`editNote > Edits notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`editNote > Edits notes > Storage.get('USERNAME') 1`] = `null`;
+exports[`editNote > Edits notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`editNote > Edits notes > allCalls 1`] = `
 [
@@ -320,17 +320,17 @@ exports[`editNote > Edits notes > updateState 1`] = `
 
 exports[`editNote > Sets new unsynced note if empty to prevent sync clear > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('THEME') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`editNote > Sets new unsynced note if empty to prevent sync clear > Storage.get('USERNAME') 1`] = `null`;
+exports[`editNote > Sets new unsynced note if empty to prevent sync clear > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`editNote > Sets new unsynced note if empty to prevent sync clear > allCalls 1`] = `
 [

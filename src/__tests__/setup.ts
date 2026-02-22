@@ -2,7 +2,7 @@ import { clearMocks, mockWindows } from '@tauri-apps/api/mocks';
 import { enableAutoUnmount } from '@vue/test-utils';
 import { indexedDB } from 'fake-indexeddb';
 
-import { KeyStore, Storage } from '../classes';
+import { KeyStore, PersistentStorage } from '../classes';
 
 import { allCalls, mockKeyring } from './mock';
 import { snapshotState } from './snapshot';
@@ -68,7 +68,7 @@ afterEach(async () => {
   });
 
   clearMocks();
-  Storage.clear();
+  PersistentStorage.clear();
 
   document.body.innerHTML = '';
 

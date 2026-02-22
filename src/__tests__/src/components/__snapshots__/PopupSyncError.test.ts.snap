@@ -2,17 +2,17 @@
 
 exports[`PopupSyncError > Emits close > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncError > Emits close > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupSyncError > Emits close > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupSyncError > Emits close > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupSyncError > Emits close > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupSyncError > Emits close > Storage.get('THEME') 1`] = `null`;
+exports[`PopupSyncError > Emits close > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupSyncError > Emits close > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupSyncError > Emits close > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupSyncError > Emits close > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupSyncError > Emits close > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupSyncError > Emits close > Storage.get('USERNAME') 1`] = `null`;
+exports[`PopupSyncError > Emits close > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > Emits close > allCalls 1`] = `[]`;
 
@@ -84,17 +84,17 @@ exports[`PopupSyncError > Emits close > updateState 1`] = `
 
 exports[`PopupSyncError > Ignores > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncError > Ignores > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupSyncError > Ignores > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupSyncError > Ignores > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupSyncError > Ignores > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupSyncError > Ignores > Storage.get('THEME') 1`] = `null`;
+exports[`PopupSyncError > Ignores > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupSyncError > Ignores > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupSyncError > Ignores > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupSyncError > Ignores > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupSyncError > Ignores > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupSyncError > Ignores > Storage.get('USERNAME') 1`] = `null`;
+exports[`PopupSyncError > Ignores > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > Ignores > allCalls 1`] = `
 [
@@ -190,17 +190,17 @@ exports[`PopupSyncError > Ignores > updateState 1`] = `
 
 exports[`PopupSyncError > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncError > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupSyncError > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupSyncError > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupSyncError > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupSyncError > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`PopupSyncError > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupSyncError > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupSyncError > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupSyncError > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupSyncError > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupSyncError > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`PopupSyncError > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > Mounts > allCalls 1`] = `[]`;
 
@@ -272,17 +272,17 @@ exports[`PopupSyncError > Mounts > updateState 1`] = `
 
 exports[`PopupSyncError > No try again button when no retry function > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncError > No try again button when no retry function > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupSyncError > No try again button when no retry function > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupSyncError > No try again button when no retry function > Storage.get('THEME') 1`] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupSyncError > No try again button when no retry function > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupSyncError > No try again button when no retry function > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupSyncError > No try again button when no retry function > Storage.get('USERNAME') 1`] = `null`;
+exports[`PopupSyncError > No try again button when no retry function > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > No try again button when no retry function > allCalls 1`] = `[]`;
 
@@ -354,17 +354,17 @@ exports[`PopupSyncError > No try again button when no retry function > updateSta
 
 exports[`PopupSyncError > Retries > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncError > Retries > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupSyncError > Retries > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupSyncError > Retries > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupSyncError > Retries > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupSyncError > Retries > Storage.get('THEME') 1`] = `null`;
+exports[`PopupSyncError > Retries > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupSyncError > Retries > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupSyncError > Retries > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupSyncError > Retries > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupSyncError > Retries > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupSyncError > Retries > Storage.get('USERNAME') 1`] = `null`;
+exports[`PopupSyncError > Retries > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > Retries > allCalls 1`] = `[]`;
 
@@ -436,17 +436,17 @@ exports[`PopupSyncError > Retries > updateState 1`] = `
 
 exports[`PopupSyncError > Shows default error message when none provided > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupSyncError > Shows default error message when none provided > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupSyncError > Shows default error message when none provided > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupSyncError > Shows default error message when none provided > Storage.get('THEME') 1`] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupSyncError > Shows default error message when none provided > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupSyncError > Shows default error message when none provided > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupSyncError > Shows default error message when none provided > Storage.get('USERNAME') 1`] = `null`;
+exports[`PopupSyncError > Shows default error message when none provided > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupSyncError > Shows default error message when none provided > allCalls 1`] = `[]`;
 

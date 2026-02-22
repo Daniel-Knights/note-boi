@@ -2,17 +2,17 @@
 
 exports[`PopupInfo > Emits close > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupInfo > Emits close > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupInfo > Emits close > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupInfo > Emits close > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupInfo > Emits close > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupInfo > Emits close > Storage.get('THEME') 1`] = `null`;
+exports[`PopupInfo > Emits close > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupInfo > Emits close > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupInfo > Emits close > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupInfo > Emits close > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupInfo > Emits close > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupInfo > Emits close > Storage.get('USERNAME') 1`] = `null`;
+exports[`PopupInfo > Emits close > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupInfo > Emits close > allCalls 1`] = `
 [
@@ -94,17 +94,17 @@ exports[`PopupInfo > Emits close > updateState 1`] = `
 
 exports[`PopupInfo > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`PopupInfo > Mounts > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupInfo > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupInfo > Mounts > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupInfo > Mounts > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupInfo > Mounts > Storage.get('THEME') 1`] = `null`;
+exports[`PopupInfo > Mounts > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupInfo > Mounts > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupInfo > Mounts > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupInfo > Mounts > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupInfo > Mounts > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupInfo > Mounts > Storage.get('USERNAME') 1`] = `null`;
+exports[`PopupInfo > Mounts > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`PopupInfo > Mounts > allCalls 1`] = `
 [
@@ -186,17 +186,17 @@ exports[`PopupInfo > Mounts > updateState 1`] = `
 
 exports[`PopupInfo > Renders correct description list items > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
-exports[`PopupInfo > Renders correct description list items > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`PopupInfo > Renders correct description list items > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`PopupInfo > Renders correct description list items > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`PopupInfo > Renders correct description list items > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`PopupInfo > Renders correct description list items > Storage.get('THEME') 1`] = `null`;
+exports[`PopupInfo > Renders correct description list items > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`PopupInfo > Renders correct description list items > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`PopupInfo > Renders correct description list items > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`PopupInfo > Renders correct description list items > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`PopupInfo > Renders correct description list items > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`PopupInfo > Renders correct description list items > Storage.get('USERNAME') 1`] = `"d"`;
+exports[`PopupInfo > Renders correct description list items > PersistentStorage.get('USERNAME') 1`] = `"d"`;
 
 exports[`PopupInfo > Renders correct description list items > allCalls 1`] = `
 [

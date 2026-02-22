@@ -2,17 +2,17 @@
 
 exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > Storage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > Storage.get('MENU_WIDTH') 1`] = `null`;
+exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > Storage.get('THEME') 1`] = `null`;
+exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > Storage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > Storage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > Storage.get('USERNAME') 1`] = `null`;
+exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > PersistentStorage.get('USERNAME') 1`] = `null`;
 
 exports[`backupNotes > Calls backup_notes invoke with notes and maxBackupsCount > allCalls 1`] = `
 [
