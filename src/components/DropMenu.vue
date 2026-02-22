@@ -25,7 +25,7 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted } from 'vue';
 
-import { DropMenuItemData } from './types';
+import { DropMenuItemData } from '../types';
 
 const emit = defineEmits(['close']);
 const props = defineProps<{

@@ -57,9 +57,8 @@
 <script lang="ts" setup>
 import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue';
 
+import type { Bounds } from '../types';
 import { escapeRegex } from '../utils';
-
-import type { Bounds } from './types';
 
 import ChevronDownIcon from './svg/ChevronDownIcon.vue';
 import ChevronUpIcon from './svg/ChevronUpIcon.vue';
