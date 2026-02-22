@@ -25,7 +25,7 @@
 
 ### Web
 
-[Click here](https://dk-tetris.netlify.app/).
+[Click here](https://note-boi.netlify.app/).
 
 ### Mobile
 
