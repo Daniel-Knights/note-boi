@@ -122,4 +122,33 @@ describe('Editor', () => {
 
     assert.isFalse(wrapper.findComponent(FindInPage).exists());
   });
+
+  it('Clears undo history when switching notes', async () => {
+    mockApi();
+    const dummyNotes = getDummyNotes();
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
+    const wrapperVm = wrapper.vm as unknown as {
+      quillEditor: Quill;
+      ignoreTextChange: boolean;
+    };
+
+    await n.getAllNotes();
+
+    // Select first note and add some text
+    n.selectNote(dummyNotes[0]!.uuid);
+    await nextTick();
+
+    // Select second note
+    n.selectNote(dummyNotes[9]!.uuid);
+    await nextTick();
+
+    // Try to undo - should not restore previous note's content
+    wrapperVm.quillEditor.history.undo();
+    await nextTick();
+
+    // Verify content is from the second note, not the first
+    const currentText = wrapperVm.quillEditor.getText();
+    assert.notStrictEqual(currentText, dummyNotes[0]!.getText());
+    assert.strictEqual(currentText, dummyNotes[9]!.getText());
+  });
 });
