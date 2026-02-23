@@ -1527,6 +1527,667 @@ exports[`Notes (sync) > Edge cases > No remote, some local > updateState 1`] = `
 }
 `;
 
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > KeyStore.getKey() 1`] = `CryptoKey {}`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > PersistentStorage.get('USERNAME') 1`] = `"d"`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > allCalls 1`] = `
+[
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"username":"d","password":"1","notes":[],"deleted_notes":[]}",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+        },
+        "method": "POST",
+      },
+      "name": "/auth/login",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {},
+      "name": "get_all_notes",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+      },
+      "name": "delete_note",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "username": "d",
+      },
+      "name": "get_access_token",
+    },
+  ],
+  [
+    "request",
+    {
+      "calledWith": {
+        "body": "{"notes":[{"uuid":"6fb3ce26-82e0-408f-84bf-bd8cd64c35b2","timestamp":0,"content":"content"},{"uuid":"b9754a63-843c-4f59-9aea-9a374aa1603d","timestamp":0,"content":"content"},{"uuid":"ac4e006d-38d4-4373-af31-4a5f46fc5184","timestamp":0,"content":"content"},{"uuid":"2cbe0086-4b6f-466f-9ec0-9a302480da6a","timestamp":0,"content":"content"},{"uuid":"2e36d871-0de2-43e6-9cbc-3c77e5d154cb","timestamp":0,"content":"content"},{"uuid":"b8ff4ac5-6541-49d2-9c79-4444d872481e","timestamp":0,"content":"content"},{"uuid":"9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3","timestamp":0,"content":"content"},{"uuid":"81648517-86ff-4ed9-8bf7-941c32dd0fad","timestamp":0,"content":"content"},{"uuid":"6b24cde1-6118-4277-9791-8eab3c71cabb","timestamp":0,"content":"content"}],"deleted_notes":[{"uuid":"7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf","deleted_at":0}]}",
+        "headers": {
+          "Authorization": "Bearer test-token",
+          "Content-Security-Policy": "default-src 'self'; connect-src http://localhost:8000;",
+          "Content-Type": "application/json",
+          "X-Username": "d",
+        },
+        "method": "PUT",
+      },
+      "name": "/notes/sync",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "accessToken": "test-token",
+        "username": "d",
+      },
+      "name": "set_access_token",
+    },
+  ],
+  [
+    "emits",
+    {
+      "calledWith": {
+        "data": {
+          "is_logged_in": true,
+        },
+        "isFrontendEmit": true,
+      },
+      "name": "auth",
+    },
+  ],
+  [
+    "invoke",
+    {
+      "calledWith": {
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "",
+                  },
+                ],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+          },
+        ],
+      },
+      "name": "sync_local_notes",
+    },
+  ],
+]
+`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > mockDb 1`] = `
+{
+  "deletedNotes": [
+    {
+      "deleted_at": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+    },
+  ],
+  "encryptedNotes": [
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+    },
+    {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+    },
+  ],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [
+    Note {
+      "content": {
+        "body": "",
+        "delta": {
+          "ops": [
+            {
+              "insert": "",
+            },
+          ],
+        },
+        "title": "",
+      },
+      "timestamp": 0,
+      "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
+    },
+    Note {
+      "content": {
+        "body": "amet consectetur adipisicing",
+        "delta": {
+          "ops": [
+            {
+              "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+            },
+          ],
+        },
+        "title": "Amet consectetur adipisicing",
+      },
+      "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+    },
+  ],
+  "selectedNote": Note {
+    "content": {
+      "body": "😬ö",
+      "delta": {
+        "ops": [
+          {
+            "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+          },
+        ],
+      },
+      "title": "Note with special characters",
+    },
+    "timestamp": 0,
+    "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+  },
+}
+`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > openedPopup 1`] = `undefined`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > selectedTheme 1`] = `"System"`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {
+    "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+    },
+    "b9754a63-843c-4f59-9aea-9a374aa1603d" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+    },
+    "ac4e006d-38d4-4373-af31-4a5f46fc5184" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+    },
+    "2cbe0086-4b6f-466f-9ec0-9a302480da6a" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+    },
+    "2e36d871-0de2-43e6-9cbc-3c77e5d154cb" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    },
+    "b8ff4ac5-6541-49d2-9c79-4444d872481e" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+    },
+    "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "9a2f52b3-69ac-4158-a9f7-b79ba9dbafd3",
+    },
+    "81648517-86ff-4ed9-8bf7-941c32dd0fad" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "81648517-86ff-4ed9-8bf7-941c32dd0fad",
+    },
+    "6b24cde1-6118-4277-9791-8eab3c71cabb" => {
+      "content": "content",
+      "timestamp": 0,
+      "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+    },
+  },
+  "isLoggedIn": true,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "d",
+}
+`;
+
+exports[`Notes (sync) > sync > Does not clear empty deleted note after sync > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`Notes (sync) > sync > Does not send empty notes > KeyStore.getKey() 1`] = `CryptoKey {}`;
 
 exports[`Notes (sync) > sync > Does not send empty notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
