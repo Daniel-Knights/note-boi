@@ -178,8 +178,11 @@ export function updateLocalNoteStateFromDiff(noteDiff: DecryptedNoteDiff) {
   // Select next note if current selected note is empty and not deliberately created
   else if (noteState.notes.length > 1 && !syncState.unsyncedNotes.new) {
     const foundNote = findNote(noteState.selectedNote.uuid);
+    const isInDeleted = syncState.unsyncedNotes.deleted.some(
+      (nt) => nt.uuid === noteState.selectedNote.uuid
+    );
 
-    if (!foundNote || isEmptyNote(foundNote)) {
+    if (!foundNote || (isEmptyNote(foundNote) && !isInDeleted)) {
       selectNote(noteState.notes[1]!.uuid);
     }
   }

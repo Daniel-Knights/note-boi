@@ -477,6 +477,49 @@ describe('Notes (sync)', () => {
 
       assert.isFalse(requestBody.notes.some((nt: Note) => isEmptyNote(nt)));
     });
+
+    it('Does not clear empty deleted note after sync', async () => {
+      const { calls } = mockApi();
+
+      s.syncState.username = 'd';
+      s.syncState.password = '1';
+
+      await a.login();
+      await n.getAllNotes();
+
+      // Ensure we have multiple notes
+      assert.isTrue(n.noteState.notes.length > 1);
+
+      const noteToEmpty = { ...n.noteState.selectedNote };
+
+      // Simulate note being previously synced
+      s.syncState.encryptedNotesCache.set(noteToEmpty.uuid, {
+        uuid: noteToEmpty.uuid,
+        content: 'encrypted',
+        timestamp: noteToEmpty.timestamp,
+      });
+
+      clearMockApiResults({ calls });
+
+      mockDb.encryptedNotes = getEncryptedNotes();
+
+      // Empty the note - this should mark it as deleted
+      await waitForAutoSync(() => {
+        n.editNote({ ops: [{ insert: '' }] }, '', '');
+
+        // Check that note is marked as deleted
+        const emptyNote = n.findNote(noteToEmpty.uuid);
+        assert.isTrue(emptyNote && isEmptyNote(emptyNote));
+        assert.strictEqual(s.syncState.unsyncedNotes.deleted.length, 1);
+        assert.strictEqual(s.syncState.unsyncedNotes.deleted[0]!.uuid, noteToEmpty.uuid);
+        assert.strictEqual(n.noteState.selectedNote.uuid, noteToEmpty.uuid);
+      }, calls);
+
+      clearMockApiResults({ calls });
+
+      assert.strictEqual(n.noteState.selectedNote.uuid, noteToEmpty.uuid);
+      assert.isEmpty(s.syncState.unsyncedNotes.deleted);
+    });
   });
 
   describe('unsyncedNotes', () => {
