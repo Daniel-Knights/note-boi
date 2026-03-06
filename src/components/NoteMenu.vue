@@ -58,10 +58,12 @@
 <script lang="ts" setup>
 import { useTemplateRef, watch } from 'vue';
 
-import { useContextMenu } from '../composables/useContextMenu';
-import { useKeyboardNavigation } from '../composables/useKeyboardNavigation';
-import { useMenuResize } from '../composables/useMenuResize';
-import { useNoteSelection } from '../composables/useNoteSelection';
+import {
+  useContextMenu,
+  useKeyboardNavigation,
+  useMenuResize,
+  useNoteSelection,
+} from '../composables';
 import { isSelectedNote, newNote, noteState } from '../store/note';
 import { isEmptyNote } from '../utils';
 
