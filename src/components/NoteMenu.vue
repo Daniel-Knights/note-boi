@@ -16,6 +16,7 @@
       type="search"
       placeholder="Filter notes..."
       v-model="filterText"
+      data-test-id="note-filter"
     />
     <ul
       @click="handleNoteSelect"
