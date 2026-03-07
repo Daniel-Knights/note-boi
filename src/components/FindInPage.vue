@@ -6,6 +6,7 @@
         @input="handleSearch"
         v-model="searchText"
         class="find-in-page__input"
+        name="find-in-page-input"
         ref="search-input"
         data-test-id="input"
       />
