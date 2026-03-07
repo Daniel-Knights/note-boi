@@ -238,7 +238,6 @@ function clearHighlights() {
     height: 26px;
     width: 300px;
     max-width: 50vw;
-    color: var(--colour__primary);
     background-color: var(--colour__secondary);
   }
 
@@ -252,6 +251,7 @@ function clearHighlights() {
     border: none;
     border-radius: 0;
     outline: none;
+    color: var(--colour__primary);
   }
 
   &__ordinal {
