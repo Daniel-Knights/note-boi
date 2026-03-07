@@ -82,6 +82,36 @@ describe('NoteMenu', () => {
     assert.isEmpty(noteItems[0]!.text());
   });
 
+  it('Filters notes by text input', async () => {
+    const wrapper = mountNoteMenu();
+    const wrapperVm = wrapper.vm as unknown as { filteredNotes: Note[] };
+    const dummyNotesLength = getDummyNotes().length;
+
+    assert.lengthOf(wrapper.findAll('li'), dummyNotesLength);
+
+    const filterInput = getByTestId(wrapper, 'note-filter');
+    const inputCases = ['Amet', 'amet', '😬ö'];
+
+    for (const inputText of inputCases) {
+      // eslint-disable-next-line no-await-in-loop
+      await filterInput.setValue(inputText);
+      // eslint-disable-next-line no-await-in-loop
+      await nextTick();
+
+      assert.isBelow(wrapperVm.filteredNotes.length, dummyNotesLength);
+
+      wrapperVm.filteredNotes.forEach((note) => {
+        assert.include(note.getText().toLowerCase(), inputText.toLowerCase());
+      });
+    }
+
+    // Case: clear filter text
+    await filterInput.setValue('');
+    await nextTick();
+
+    assert.strictEqual(wrapperVm.filteredNotes.length, dummyNotesLength);
+  });
+
   it('Creates a new note', async () => {
     const { calls, promises } = mockApi();
     const wrapper = mountNoteMenu();
