@@ -10,6 +10,13 @@
       marginLeft: !showNoteMenu ? `-${menuWidth}` : '',
     }"
   >
+    <input
+      class="note-menu__filter-input"
+      name="note-menu-filter-input"
+      type="search"
+      placeholder="Filter notes..."
+      v-model="filterText"
+    />
     <ul
       @click="handleNoteSelect"
       @pointerdown="handlePointerDown"
@@ -22,7 +29,7 @@
       data-test-id="note-list"
     >
       <li
-        v-for="note in noteState.notes"
+        v-for="note in filteredNotes"
         :key="note.uuid"
         class="note-menu__note"
         :class="{
@@ -56,7 +63,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useTemplateRef, watch } from 'vue';
+import { computed, ref, useTemplateRef, watch } from 'vue';
 
 import {
   useContextMenu,
@@ -80,6 +87,9 @@ const emit = defineEmits<{
 
 const noteList = useTemplateRef('note-list');
 
+/** User inputted text to filter notes by. */
+const filterText = ref();
+
 // Use composables
 const { clearExtraNotes, handleNoteSelect: handleNoteSelectionBase } = useNoteSelection();
 const {
@@ -100,6 +110,17 @@ const {
   handleDragBar,
 } = useMenuResize(() => props.isSmallScreen, emit);
 const { listIsFocused } = useKeyboardNavigation(clearExtraNotes);
+
+// Filter notes by user inputted filter text
+const filteredNotes = computed(() => {
+  if (!filterText.value) return noteState.notes;
+
+  const filterTextLower = filterText.value.toLowerCase();
+
+  return noteState.notes.filter((nt) => {
+    return nt.getText().toLowerCase().includes(filterTextLower);
+  });
+});
 
 // New note handler
 function handleNewNote() {
@@ -157,6 +178,29 @@ $font-size: 18px;
   max-width: 50vw;
   background-color: var(--colour__primary);
   z-index: 60;
+}
+
+.note-menu__filter-input {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  margin: 0;
+  padding: 10px 12px;
+  width: 100%;
+  background-color: var(--colour__primary);
+  border: none;
+  border-bottom: 1px solid var(--colour__tertiary);
+  border-radius: 0;
+
+  &,
+  &::placeholder {
+    color: var(--colour__secondary);
+  }
+
+  &::placeholder {
+    color: var(--colour__tertiary);
+    font-style: italic;
+  }
 }
 
 .note-menu__note-list {
