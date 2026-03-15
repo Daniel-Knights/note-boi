@@ -76,7 +76,7 @@ describe('editNote', () => {
     );
     assert.notStrictEqual(editedNote.timestamp, noteToEdit.timestamp);
     assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('delete_note'));
+    assert.isTrue(calls.invoke.has('delete_notes'));
   });
 
   it('Marks synced note as deleted when emptied', async () => {
@@ -106,7 +106,7 @@ describe('editNote', () => {
     assert.isEmpty(s.syncState.unsyncedNotes.new);
     assert.isFalse(s.syncState.encryptedNotesCache.has(noteToEdit.uuid));
     assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('delete_note'));
+    assert.isTrue(calls.invoke.has('delete_notes'));
   });
 
   it('Generates new UUID when adding content to deleted note', async () => {

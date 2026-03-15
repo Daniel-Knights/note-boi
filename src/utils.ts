@@ -108,7 +108,7 @@ export function tauriInvoke<T extends TauriCommand>(
   const errMsgMap = {
     backup_notes: 'backup notes',
     delete_access_token: 'delete access token',
-    delete_note: 'delete note',
+    delete_notes: 'delete note',
     edit_note: 'edit note',
     export_notes: 'export notes',
     get_access_token: 'get access token',

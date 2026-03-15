@@ -15,9 +15,10 @@ import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
 import { Dialog } from '../classes';
 import {
-  deleteNote,
+  deleteNotes,
   deleteSelectedNotes,
   exportNotes,
+  findNote,
   importNotesFromFileChooser,
   noteState,
 } from '../store/note';
@@ -66,7 +67,7 @@ const items = computed<DropMenuItemData[]>(() => {
       clickHandler: () => importNotesFromFileChooser(),
     },
     {
-      label: 'Delete Note',
+      label: noteState.extraSelectedNotes.length ? 'Delete Notes' : 'Delete Note',
       clickHandler: handleDeleteNote,
       showIf: () => !!clickedNoteUuid.value && !hasNoNotes,
       testId: 'delete',
@@ -96,7 +97,10 @@ async function handleDeleteNote() {
   if (noteState.extraSelectedNotes.length > 0) {
     deleteSelectedNotes();
   } else if (clickedNoteUuid.value) {
-    deleteNote(clickedNoteUuid.value);
+    const clickedNote = findNote(clickedNoteUuid.value);
+    if (!clickedNote) return;
+
+    deleteNotes([clickedNote]);
   }
 }
 

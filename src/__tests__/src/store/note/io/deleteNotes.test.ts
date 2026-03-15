@@ -15,7 +15,7 @@ beforeAll(() => {
   setupMockNoteEventListeners();
 });
 
-describe('deleteNote', () => {
+describe('deleteNotes', () => {
   it('Deletes selected note and selects next', async () => {
     const { calls } = mockApi();
 
@@ -31,7 +31,7 @@ describe('deleteNote', () => {
 
     const deletedAt = Date.now();
 
-    n.deleteNote(existingNote.uuid);
+    n.deleteNotes([existingNote]);
 
     expect(mockSelectEventCB).toHaveBeenCalledOnce();
     expect(mockChangeEventCB).toHaveBeenCalledOnce();
@@ -47,7 +47,7 @@ describe('deleteNote', () => {
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
     assert.isUndefined(n.findNote(existingNote.uuid));
     assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('delete_note'));
+    assert.isTrue(calls.invoke.has('delete_notes'));
   });
 
   it('Without selecting next note', async () => {
@@ -67,7 +67,7 @@ describe('deleteNote', () => {
 
     const deletedAt = Date.now();
 
-    n.deleteNote(otherExistingNote.uuid);
+    n.deleteNotes([otherExistingNote]);
 
     await Promise.all(promises);
 
@@ -85,7 +85,7 @@ describe('deleteNote', () => {
     assert.notDeepEqual(n.noteState.selectedNote, n.noteState.notes[0]);
     assert.isUndefined(n.findNote(otherExistingNote.uuid));
     assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('delete_note'));
+    assert.isTrue(calls.invoke.has('delete_notes'));
   });
 
   it('With no notes', async () => {
@@ -103,7 +103,7 @@ describe('deleteNote', () => {
 
     const deletedAt = Date.now();
 
-    n.deleteNote(existingNote.uuid);
+    n.deleteNotes([existingNote]);
 
     expect(mockSelectEventCB).toHaveBeenCalledOnce();
     expect(mockChangeEventCB).toHaveBeenCalledOnce();
@@ -119,7 +119,7 @@ describe('deleteNote', () => {
     assert.isTrue(isEmptyNote(n.noteState.selectedNote));
     assert.isUndefined(n.findNote(existingNote.uuid));
     assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('delete_note'));
+    assert.isTrue(calls.invoke.has('delete_notes'));
   });
 
   it('Resets unsynced new note', async () => {
@@ -129,7 +129,7 @@ describe('deleteNote', () => {
 
     s.syncState.unsyncedNotes.set({ new: existingNote.uuid });
 
-    n.deleteNote(existingNote.uuid);
+    n.deleteNotes([existingNote]);
 
     assert.strictEqual(s.syncState.unsyncedNotes.new, '');
   });
@@ -144,13 +144,13 @@ describe('deleteNote', () => {
     vi.clearAllMocks();
     clearMockApiResults({ calls, promises });
 
-    await waitForAutoSync(() => n.deleteNote(otherExistingNote.uuid), calls);
+    await waitForAutoSync(() => n.deleteNotes([otherExistingNote]), calls);
 
     expect(debounceSyncSpy).toHaveBeenCalledOnce();
 
     assert.isUndefined(n.findNote(otherExistingNote.uuid));
     assert.strictEqual(calls.size, 1);
-    assert.isTrue(calls.invoke.has('delete_note'));
+    assert.isTrue(calls.invoke.has('delete_notes'));
   });
 });
 
@@ -161,6 +161,7 @@ describe('deleteSelectedNotes', () => {
     await n.getAllNotes();
 
     const currentSelectedNote = n.noteState.selectedNote;
+    const nextNoteToSelect = n.noteState.notes[1];
     const notesSlice = n.noteState.notes.slice(2, 5);
     const allNotesToDelete = [currentSelectedNote, ...notesSlice];
 
@@ -188,11 +189,11 @@ describe('deleteSelectedNotes', () => {
       });
     }
 
-    assert.notDeepEqual(n.noteState.selectedNote, currentSelectedNote);
+    assert.deepEqual(n.noteState.selectedNote, nextNoteToSelect);
     assert.isUndefined(n.findNote(currentSelectedNote.uuid));
     assert.isEmpty(n.noteState.extraSelectedNotes);
-    assert.strictEqual(calls.size, allNotesToDelete.length);
-    assert.isTrue(calls.invoke.has('delete_note', allNotesToDelete.length));
+    assert.strictEqual(calls.size, 1);
+    assert.isTrue(calls.invoke.has('delete_notes'));
   });
 });
 

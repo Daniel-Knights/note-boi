@@ -77,9 +77,9 @@ export type TauriCommandPayloads = {
     payload: never;
     response: RawNote[];
   };
-  delete_note: {
+  delete_notes: {
     payload: {
-      uuid: string;
+      notes: RawNote[];
     };
     response: never;
   };
@@ -140,7 +140,7 @@ export type TauriCommand = keyof TauriCommandPayloads;
 
 export const TAURI_COMMANDS = [
   'get_all_notes',
-  'delete_note',
+  'delete_notes',
   'edit_note',
   'sync_local_notes',
   'import_notes',
@@ -160,7 +160,7 @@ export type TauriEmit = (typeof TAURI_EMITS)[number];
 export const TAURI_LISTENERS = [
   'reload',
   'new-note',
-  'delete-note',
+  'delete-selected-notes',
   'import-notes',
   'export-note',
   'export-all-notes',

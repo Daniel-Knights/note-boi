@@ -4,6 +4,7 @@ import 'quill/dist/quill.snow.css';
 import { createApp } from 'vue';
 
 import { deleteAccount, queueSync } from './api';
+import { Dialog } from './classes';
 import { initLogger } from './log';
 import './sass/style.scss';
 import {
@@ -76,7 +77,15 @@ function initDesktop() {
   });
 
   tauriListen('new-note', () => newNote(true));
-  tauriListen('delete-note', deleteSelectedNotes);
+  tauriListen('delete-selected-notes', async () => {
+    const confirmed = await Dialog.ask('Are you sure?', {
+      title: 'Delete Selected Note(s)',
+      kind: 'warning',
+    });
+    if (!confirmed) return;
+
+    deleteSelectedNotes();
+  });
   tauriListen('import-notes', () => {
     importNotesFromFileChooser();
   });

@@ -6,7 +6,7 @@ mod utils;
 use crate::commands::{
   access_token::{delete_access_token, get_access_token, set_access_token},
   backup_notes::backup_notes,
-  delete_note::delete_note,
+  delete_notes::delete_notes,
   edit_note::edit_note,
   export_notes::export_notes,
   get_all_notes::get_all_notes,
@@ -43,7 +43,7 @@ pub fn run() {
     .plugin(tauri_plugin_dialog::init())
     .invoke_handler(tauri::generate_handler![
       backup_notes,
-      delete_note,
+      delete_notes,
       edit_note,
       export_notes,
       get_all_notes,
