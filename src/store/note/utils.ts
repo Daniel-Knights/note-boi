@@ -1,7 +1,7 @@
 import { Note, RawNote } from '../../classes';
 import { isEmptyNote } from '../../utils';
 
-import { deleteNote } from './io';
+import { deleteNotes } from './io';
 import { noteState } from './state';
 
 /** Sorts notes in descending order by timestamp. */
@@ -40,6 +40,6 @@ export function clearEmptyNote(): void {
   if (!foundNote) return;
 
   if (isEmptyNote(foundNote)) {
-    deleteNote(noteState.selectedNote.uuid);
+    deleteNotes([noteState.selectedNote]);
   }
 }

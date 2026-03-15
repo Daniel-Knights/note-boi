@@ -80,7 +80,7 @@ describe('main', () => {
     assert.isTrue(calls.listeners.has('tauri://drag-leave'));
     assert.isTrue(calls.listeners.has('reload'));
     assert.isTrue(calls.listeners.has('new-note'));
-    assert.isTrue(calls.listeners.has('delete-note'));
+    assert.isTrue(calls.listeners.has('delete-selected-notes'));
     assert.isTrue(calls.listeners.has('import-notes'));
     assert.isTrue(calls.listeners.has('export-note'));
     assert.isTrue(calls.listeners.has('export-all-notes'));

@@ -141,12 +141,12 @@ describe('Utils', () => {
       it('Calls invoke with correct command and args', async () => {
         const { calls } = mockApi();
 
-        await tauriInvoke('delete_note', { uuid: 'uuid' });
+        await tauriInvoke('delete_notes', { notes: [] });
 
         assert.strictEqual(calls.size, 1);
-        assert.isTrue(calls.invoke.has('delete_note'));
+        assert.isTrue(calls.invoke.has('delete_notes'));
         assert.deepEqual(calls.invoke[0]!.calledWith, {
-          uuid: 'uuid',
+          notes: [],
         });
 
         clearMockApiResults({ calls });
@@ -163,15 +163,15 @@ describe('Utils', () => {
         const consoleErrorSpy = vi.spyOn(console, 'error');
 
         clearMockApiResults({ calls });
-        setErrorValue.invoke('delete_note');
+        setErrorValue.invoke('delete_notes');
 
         await expect(
-          tauriInvoke('delete_note', { uuid: 'uuid' }, { rethrowErrors: true })
+          tauriInvoke('delete_notes', { notes: [] }, { rethrowErrors: true })
         ).rejects.toThrow('Mock Tauri Invoke error');
 
         expect(consoleErrorSpy).not.toHaveBeenCalled();
         assert.strictEqual(calls.size, 1);
-        assert.isTrue(calls.invoke.has('delete_note'));
+        assert.isTrue(calls.invoke.has('delete_notes'));
       });
 
       it('Catches errors and retries', async () => {

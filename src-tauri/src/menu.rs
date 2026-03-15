@@ -62,7 +62,7 @@ fn build_menu(app: &App<Wry>) -> Menu<Wry> {
   let import_notes = &get_item(app, "Import Notes", "import-notes", None);
   let export_note = &get_item(app, "Export Note", "export-note", None);
   let export_all_notes = &get_item(app, "Export All Notes", "export-all-notes", None);
-  let delete_note = &get_item(app, "Delete Note", "delete-note", None);
+  let delete_notes = &get_item(app, "Delete Selected Notes", "delete-selected-notes", None);
 
   let file_menu = &SubmenuBuilder::new(app, "File")
     .items(&[
@@ -70,7 +70,7 @@ fn build_menu(app: &App<Wry>) -> Menu<Wry> {
       import_notes,
       export_note,
       export_all_notes,
-      delete_note,
+      delete_notes,
     ])
     .build()
     .unwrap();
