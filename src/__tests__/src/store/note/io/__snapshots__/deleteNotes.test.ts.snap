@@ -1,20 +1,20 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`deleteNote > Calls debounceSync > KeyStore.getKey() 1`] = `undefined`;
+exports[`deleteNotes > Calls debounceSync > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Calls debounceSync > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNotes > Calls debounceSync > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNotes > Calls debounceSync > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > PersistentStorage.get('THEME') 1`] = `null`;
+exports[`deleteNotes > Calls debounceSync > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNotes > Calls debounceSync > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNotes > Calls debounceSync > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > PersistentStorage.get('USERNAME') 1`] = `null`;
+exports[`deleteNotes > Calls debounceSync > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`deleteNote > Calls debounceSync > allCalls 1`] = `
+exports[`deleteNotes > Calls debounceSync > allCalls 1`] = `
 [
   [
     "invoke",
@@ -27,17 +27,33 @@ exports[`deleteNote > Calls debounceSync > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]
 `;
 
-exports[`deleteNote > Calls debounceSync > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`deleteNotes > Calls debounceSync > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`deleteNote > Calls debounceSync > mockDb 1`] = `
+exports[`deleteNotes > Calls debounceSync > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -47,7 +63,7 @@ exports[`deleteNote > Calls debounceSync > mockDb 1`] = `
 }
 `;
 
-exports[`deleteNote > Calls debounceSync > noteState 1`] = `
+exports[`deleteNotes > Calls debounceSync > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -293,11 +309,11 @@ Sugar
 }
 `;
 
-exports[`deleteNote > Calls debounceSync > openedPopup 1`] = `undefined`;
+exports[`deleteNotes > Calls debounceSync > openedPopup 1`] = `undefined`;
 
-exports[`deleteNote > Calls debounceSync > selectedTheme 1`] = `"System"`;
+exports[`deleteNotes > Calls debounceSync > selectedTheme 1`] = `"System"`;
 
-exports[`deleteNote > Calls debounceSync > syncState 1`] = `
+exports[`deleteNotes > Calls debounceSync > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -326,7 +342,7 @@ exports[`deleteNote > Calls debounceSync > syncState 1`] = `
 }
 `;
 
-exports[`deleteNote > Calls debounceSync > updateState 1`] = `
+exports[`deleteNotes > Calls debounceSync > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -334,21 +350,21 @@ exports[`deleteNote > Calls debounceSync > updateState 1`] = `
 }
 `;
 
-exports[`deleteNote > Deletes selected note and selects next > KeyStore.getKey() 1`] = `undefined`;
+exports[`deleteNotes > Deletes selected note and selects next > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNotes > Deletes selected note and selects next > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNotes > Deletes selected note and selects next > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('THEME') 1`] = `null`;
+exports[`deleteNotes > Deletes selected note and selects next > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNotes > Deletes selected note and selects next > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNotes > Deletes selected note and selects next > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > PersistentStorage.get('USERNAME') 1`] = `null`;
+exports[`deleteNotes > Deletes selected note and selects next > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`deleteNote > Deletes selected note and selects next > allCalls 1`] = `
+exports[`deleteNotes > Deletes selected note and selects next > allCalls 1`] = `
 [
   [
     "invoke",
@@ -361,17 +377,33 @@ exports[`deleteNote > Deletes selected note and selects next > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]
 `;
 
-exports[`deleteNote > Deletes selected note and selects next > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`deleteNotes > Deletes selected note and selects next > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`deleteNote > Deletes selected note and selects next > mockDb 1`] = `
+exports[`deleteNotes > Deletes selected note and selects next > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -381,7 +413,7 @@ exports[`deleteNote > Deletes selected note and selects next > mockDb 1`] = `
 }
 `;
 
-exports[`deleteNote > Deletes selected note and selects next > noteState 1`] = `
+exports[`deleteNotes > Deletes selected note and selects next > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -627,11 +659,11 @@ Sugar
 }
 `;
 
-exports[`deleteNote > Deletes selected note and selects next > openedPopup 1`] = `undefined`;
+exports[`deleteNotes > Deletes selected note and selects next > openedPopup 1`] = `undefined`;
 
-exports[`deleteNote > Deletes selected note and selects next > selectedTheme 1`] = `"System"`;
+exports[`deleteNotes > Deletes selected note and selects next > selectedTheme 1`] = `"System"`;
 
-exports[`deleteNote > Deletes selected note and selects next > syncState 1`] = `
+exports[`deleteNotes > Deletes selected note and selects next > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -660,7 +692,7 @@ exports[`deleteNote > Deletes selected note and selects next > syncState 1`] = `
 }
 `;
 
-exports[`deleteNote > Deletes selected note and selects next > updateState 1`] = `
+exports[`deleteNotes > Deletes selected note and selects next > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -668,21 +700,21 @@ exports[`deleteNote > Deletes selected note and selects next > updateState 1`] =
 }
 `;
 
-exports[`deleteNote > Resets unsynced new note > KeyStore.getKey() 1`] = `undefined`;
+exports[`deleteNotes > Resets unsynced new note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNotes > Resets unsynced new note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNotes > Resets unsynced new note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('THEME') 1`] = `null`;
+exports[`deleteNotes > Resets unsynced new note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNotes > Resets unsynced new note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNotes > Resets unsynced new note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > PersistentStorage.get('USERNAME') 1`] = `null`;
+exports[`deleteNotes > Resets unsynced new note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`deleteNote > Resets unsynced new note > allCalls 1`] = `
+exports[`deleteNotes > Resets unsynced new note > allCalls 1`] = `
 [
   [
     "invoke",
@@ -694,9 +726,9 @@ exports[`deleteNote > Resets unsynced new note > allCalls 1`] = `
 ]
 `;
 
-exports[`deleteNote > Resets unsynced new note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`deleteNotes > Resets unsynced new note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`deleteNote > Resets unsynced new note > mockDb 1`] = `
+exports[`deleteNotes > Resets unsynced new note > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -706,7 +738,7 @@ exports[`deleteNote > Resets unsynced new note > mockDb 1`] = `
 }
 `;
 
-exports[`deleteNote > Resets unsynced new note > noteState 1`] = `
+exports[`deleteNotes > Resets unsynced new note > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -952,11 +984,11 @@ Sugar
 }
 `;
 
-exports[`deleteNote > Resets unsynced new note > openedPopup 1`] = `undefined`;
+exports[`deleteNotes > Resets unsynced new note > openedPopup 1`] = `undefined`;
 
-exports[`deleteNote > Resets unsynced new note > selectedTheme 1`] = `"System"`;
+exports[`deleteNotes > Resets unsynced new note > selectedTheme 1`] = `"System"`;
 
-exports[`deleteNote > Resets unsynced new note > syncState 1`] = `
+exports[`deleteNotes > Resets unsynced new note > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -980,7 +1012,7 @@ exports[`deleteNote > Resets unsynced new note > syncState 1`] = `
 }
 `;
 
-exports[`deleteNote > Resets unsynced new note > updateState 1`] = `
+exports[`deleteNotes > Resets unsynced new note > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -988,21 +1020,21 @@ exports[`deleteNote > Resets unsynced new note > updateState 1`] = `
 }
 `;
 
-exports[`deleteNote > With no notes > KeyStore.getKey() 1`] = `undefined`;
+exports[`deleteNotes > With no notes > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > With no notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNotes > With no notes > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > With no notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNotes > With no notes > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > With no notes > PersistentStorage.get('THEME') 1`] = `null`;
+exports[`deleteNotes > With no notes > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > With no notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNotes > With no notes > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > With no notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNotes > With no notes > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > With no notes > PersistentStorage.get('USERNAME') 1`] = `null`;
+exports[`deleteNotes > With no notes > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`deleteNote > With no notes > allCalls 1`] = `
+exports[`deleteNotes > With no notes > allCalls 1`] = `
 [
   [
     "invoke",
@@ -1015,17 +1047,33 @@ exports[`deleteNote > With no notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]
 `;
 
-exports[`deleteNote > With no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`deleteNotes > With no notes > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`deleteNote > With no notes > mockDb 1`] = `
+exports[`deleteNotes > With no notes > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -1035,7 +1083,7 @@ exports[`deleteNote > With no notes > mockDb 1`] = `
 }
 `;
 
-exports[`deleteNote > With no notes > noteState 1`] = `
+exports[`deleteNotes > With no notes > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -1065,11 +1113,11 @@ exports[`deleteNote > With no notes > noteState 1`] = `
 }
 `;
 
-exports[`deleteNote > With no notes > openedPopup 1`] = `undefined`;
+exports[`deleteNotes > With no notes > openedPopup 1`] = `undefined`;
 
-exports[`deleteNote > With no notes > selectedTheme 1`] = `"System"`;
+exports[`deleteNotes > With no notes > selectedTheme 1`] = `"System"`;
 
-exports[`deleteNote > With no notes > syncState 1`] = `
+exports[`deleteNotes > With no notes > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1098,7 +1146,7 @@ exports[`deleteNote > With no notes > syncState 1`] = `
 }
 `;
 
-exports[`deleteNote > With no notes > updateState 1`] = `
+exports[`deleteNotes > With no notes > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1106,21 +1154,21 @@ exports[`deleteNote > With no notes > updateState 1`] = `
 }
 `;
 
-exports[`deleteNote > Without selecting next note > KeyStore.getKey() 1`] = `undefined`;
+exports[`deleteNotes > Without selecting next note > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`deleteNote > Without selecting next note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`deleteNotes > Without selecting next note > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+exports[`deleteNotes > Without selecting next note > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > PersistentStorage.get('THEME') 1`] = `null`;
+exports[`deleteNotes > Without selecting next note > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`deleteNotes > Without selecting next note > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`deleteNotes > Without selecting next note > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > PersistentStorage.get('USERNAME') 1`] = `null`;
+exports[`deleteNotes > Without selecting next note > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`deleteNote > Without selecting next note > allCalls 1`] = `
+exports[`deleteNotes > Without selecting next note > allCalls 1`] = `
 [
   [
     "invoke",
@@ -1133,17 +1181,33 @@ exports[`deleteNote > Without selecting next note > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]
 `;
 
-exports[`deleteNote > Without selecting next note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`deleteNotes > Without selecting next note > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`deleteNote > Without selecting next note > mockDb 1`] = `
+exports[`deleteNotes > Without selecting next note > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -1153,7 +1217,7 @@ exports[`deleteNote > Without selecting next note > mockDb 1`] = `
 }
 `;
 
-exports[`deleteNote > Without selecting next note > noteState 1`] = `
+exports[`deleteNotes > Without selecting next note > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [
@@ -1355,11 +1419,11 @@ Sugar
 }
 `;
 
-exports[`deleteNote > Without selecting next note > openedPopup 1`] = `undefined`;
+exports[`deleteNotes > Without selecting next note > openedPopup 1`] = `undefined`;
 
-exports[`deleteNote > Without selecting next note > selectedTheme 1`] = `"System"`;
+exports[`deleteNotes > Without selecting next note > selectedTheme 1`] = `"System"`;
 
-exports[`deleteNote > Without selecting next note > syncState 1`] = `
+exports[`deleteNotes > Without selecting next note > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -1388,7 +1452,7 @@ exports[`deleteNote > Without selecting next note > syncState 1`] = `
 }
 `;
 
-exports[`deleteNote > Without selecting next note > updateState 1`] = `
+exports[`deleteNotes > Without selecting next note > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
@@ -1423,36 +1487,114 @@ exports[`deleteSelectedNotes > Deletes selected notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "notes": [
+          Note {
+            "content": {
+              "body": "😬ö",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Note with special characters
+
+😬ö
+  sss
+	
+Ketchup
+Salt 
+Sugar
+
+¯\\_(ツ)_/¯
+
+──────────────────────────────────
+──────▄▀▀▄────────────────▄▀▀▄────
+─────▐▒▒▒▒▌──────────────▌▒▒▒▒▌───
+─────▌▒▒▒▒▐─────────────▐▒▒▒▒▒▐───
+────▐▒▒▒▒▒▒▌─▄▄▄▀▀▀▀▄▄▄─▌▒▒▒▒▒▒▌──
+───▄▌▒▒▒▒▒▒▒▀▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒▒▐───
+─▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌───
+▐▒▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐───
+▌▒▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌──
+▒▒▐▒▒▒▒▒▒▒▒▒▄▀▀▀▀▄▒▒▒▒▒▄▀▀▀▀▄▒▒▐──
+▒▒▌▒▒▒▒▒▒▒▒▐▌─▄▄─▐▌▒▒▒▐▌─▄▄─▐▌▒▒▌─
+▒▐▒▒▒▒▒▒▒▒▒▐▌▐█▄▌▐▌▒▒▒▐▌▐█▄▌▐▌▒▒▐─
+▒▌▒▒▒▒▒▒▒▒▒▐▌─▀▀─▐▌▒▒▒▐▌─▀▀─▐▌▒▒▒▌
+▒▌▒▒▒▒▒▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▒▀▄▄▄▄▀▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▄▒▒▒▒▒▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▀▒▀▒▒▒▀▒▒▒▀▒▀▒▒▒▒▒▒▐
+▒▌▒▒▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▄▀▄▒▒▒▀▒▒▒▒▒▒▒▐
+▒▐▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▄▀▒▒▒▀▄▒▒▒▄▀▒▒▒▒▐
+▒▓▌▒▒▒▒▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▐
+▒▓▓▌▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▓▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌─
+▒▒▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐──
+▒▒▒▓▓▓▓▓▀▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄▀▀▒▌─
+▒▒▒▒▒▓▓▓▓▓▓▓▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▐─
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌
+▒▒▒▒▒▒▒█▒█▒█▀▒█▀█▒█▒▒▒█▒█▒█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒█▀█▒█▀▒█▄█▒▀█▒█▀▒▀▀█▒▒▒▒▒▒▐
+▒▒▒▒▒▒▒▀▒▀▒▀▀▒▀▒▀▒▒▒▀▒▒▒▀▀▀▒▒▒▒▒▒▐
+█▀▄▒█▀▄▒█▀▒█▀█▒▀█▀▒█▒█▒█▒█▄▒█▒▄▀▀▐
+█▀▄▒█▀▄▒█▀▒█▄█▒▒█▒▒█▀█▒█▒█▀██▒█▒█▐
+▀▀▒▒▀▒▀▒▀▀▒▀▒▀▒▒▀▒▒▀▒▀▒▀▒▀▒▒▀▒▒▀▀▐
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▐
+
+",
+                  },
+                ],
+              },
+              "title": "Note with special characters",
+            },
+            "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+        ],
       },
-      "name": "delete_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "uuid": "b9754a63-843c-4f59-9aea-9a374aa1603d",
-      },
-      "name": "delete_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      },
-      "name": "delete_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
-      },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]

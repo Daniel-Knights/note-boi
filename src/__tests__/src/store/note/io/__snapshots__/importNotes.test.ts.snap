@@ -1552,9 +1552,21 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes a
     "invoke",
     {
       "calledWith": {
-        "uuid": "uuid",
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
   [
@@ -1847,9 +1859,21 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes w
     "invoke",
     {
       "calledWith": {
-        "uuid": "uuid",
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
   [
