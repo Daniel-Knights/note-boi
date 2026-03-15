@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 
 import * as n from '../../../store/note';
+import { Note } from '../../../classes';
 import { isEmptyNote } from '../../../utils';
 import { clearMockApiResults, mockApi } from '../../mock';
 import {
@@ -236,13 +237,13 @@ describe('ContextMenu', () => {
 
     n.selectNote(noteToDelete.uuid);
 
-    const deleteSpy = vi.spyOn(n, 'deleteNote');
+    const deleteSpy = vi.spyOn(n, 'deleteNotes');
 
     await getByTestId(wrapper, 'delete').trigger('click');
-    await waitUntil(() => calls.invoke.has('delete_note'));
+    await waitUntil(() => calls.invoke.has('delete_notes'));
 
     expect(deleteSpy).toHaveBeenCalledOnce();
-    expect(deleteSpy).toHaveBeenCalledWith(noteToDelete.uuid);
+    expect(deleteSpy).toHaveBeenCalledWith([new Note(noteToDelete)]);
   });
 
   it('Does not delete note if confirmation is cancelled', async () => {
@@ -263,7 +264,7 @@ describe('ContextMenu', () => {
 
     n.selectNote(noteToDelete.uuid);
 
-    const deleteSpy = vi.spyOn(n, 'deleteNote');
+    const deleteSpy = vi.spyOn(n, 'deleteNotes');
 
     await getByTestId(wrapper, 'delete').trigger('click');
     await resolveImmediate(); // Wait for Dialog.ask to resolve
@@ -294,7 +295,7 @@ describe('ContextMenu', () => {
     const deleteSelectedSpy = vi.spyOn(n, 'deleteSelectedNotes');
 
     await getByTestId(wrapper, 'delete').trigger('click');
-    await waitUntil(() => calls.invoke.has('delete_note'));
+    await waitUntil(() => calls.invoke.has('delete_notes'));
 
     expect(deleteSelectedSpy).toHaveBeenCalledOnce();
   });

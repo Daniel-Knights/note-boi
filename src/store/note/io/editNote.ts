@@ -43,7 +43,7 @@ export function editNote(delta: Partial<Delta>, title: string, body: string): vo
 
     // Delete from disk but keep in memory for continued editing
     if (isDesktop()) {
-      tauriInvoke('delete_note', { uuid: foundNote.uuid }).then(() => debounceSync());
+      tauriInvoke('delete_notes', { notes: [foundNote] }).then(() => debounceSync());
 
       return;
     }

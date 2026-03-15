@@ -62,7 +62,7 @@ describe('importNotes', () => {
       assert.isTrue(calls.invoke.has('import_notes'));
       assert.isTrue(calls.invoke.has('sync_local_notes'));
       assert.deepEqual(calls.invoke[0]?.calledWith, { paths });
-      assert.isTrue(calls.invoke.has('delete_note'));
+      assert.isTrue(calls.invoke.has('delete_notes'));
     });
 
     it('Imports notes and syncs them', async () => {
@@ -92,7 +92,7 @@ describe('importNotes', () => {
       assert.isTrue(calls.invoke.has('import_notes'));
       assert.isTrue(calls.invoke.has('sync_local_notes', 2));
       assert.deepEqual(calls.invoke[0]?.calledWith, { paths });
-      assert.isTrue(calls.invoke.has('delete_note'));
+      assert.isTrue(calls.invoke.has('delete_notes'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.isTrue(calls.invoke.has('set_access_token'));
       assert.isTrue(calls.request.has('/notes/sync'));

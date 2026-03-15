@@ -36,11 +36,11 @@ export function mockTauriInvoke(
       }
 
       break;
-    case 'delete_note':
-      if (!hasKeys(args, ['uuid'])) {
-        assert.fail('Missing uuid');
-      } else if (typeof args.uuid !== 'string') {
-        assert.fail('Invalid uuid');
+    case 'delete_notes':
+      if (!hasKeys(args, ['notes'])) {
+        assert.fail('Missing notes');
+      } else if (!Array.isArray(args.notes) || args.notes.some((nt) => !isNote(nt))) {
+        assert.fail('Invalid notes');
       }
 
       break;

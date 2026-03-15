@@ -730,7 +730,7 @@ describe('Notes (sync)', () => {
 
       await waitForAutoSync(async () => {
         mockDb.encryptedNotes = getEncryptedNotes();
-        n.deleteNote(n.noteState.selectedNote.uuid);
+        n.deleteNotes([n.noteState.selectedNote]);
 
         const storedUnsyncedNotes = PersistentStorage.getJSON('UNSYNCED');
 
@@ -766,7 +766,7 @@ describe('Notes (sync)', () => {
       const secondCachedNote = { ...n.noteState.selectedNote };
 
       await waitForAutoSync(async () => {
-        n.deleteNote(n.noteState.selectedNote.uuid);
+        n.deleteNotes([n.noteState.selectedNote]);
 
         const storedUnsyncedNotes = PersistentStorage.getJSON('UNSYNCED');
 
@@ -838,7 +838,7 @@ describe('Notes (sync)', () => {
       const cachedUuid = n.noteState.selectedNote.uuid;
 
       await waitForAutoSync(() => {
-        n.deleteNote(n.noteState.selectedNote.uuid);
+        n.deleteNotes([n.noteState.selectedNote]);
 
         storedUnsyncedNotes = PersistentStorage.getJSON('UNSYNCED');
 
