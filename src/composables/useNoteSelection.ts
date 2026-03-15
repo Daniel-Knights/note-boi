@@ -1,23 +1,19 @@
 import { Note } from '../classes';
 import {
+  addNoteEventListener,
   findNote,
   findNoteIndex,
   isSelectedNote,
   noteState,
+  removeNoteEventListener,
   selectNote,
 } from '../store/note';
 
 export function useNoteSelection() {
   // Clear all extra notes and remove event listener
-  function clearExtraNotes(ev?: MouseEvent) {
-    if (ev) {
-      if (ev.button !== 0) return; // Only clear on left click
-      if (ev.metaKey || ev.ctrlKey) return;
-    }
-
+  function clearExtraNotes() {
     noteState.extraSelectedNotes = [];
-
-    document.removeEventListener('click', clearExtraNotes);
+    removeNoteEventListener('note-select', clearExtraNotes);
   }
 
   // Single or multiple note selection handler
@@ -57,7 +53,7 @@ export function useNoteSelection() {
           noteState.extraSelectedNotes.push(...withoutDuplicates);
 
           ev.stopImmediatePropagation(); // Prevent `clearExtraNotes` firing immediately
-          document.addEventListener('click', clearExtraNotes);
+          addNoteEventListener('note-select', clearExtraNotes);
         }
       }
 
@@ -91,7 +87,7 @@ export function useNoteSelection() {
         if (foundNote) {
           noteState.extraSelectedNotes.push(foundNote);
 
-          document.addEventListener('click', clearExtraNotes);
+          addNoteEventListener('note-select', clearExtraNotes);
         }
       }
 
