@@ -169,6 +169,7 @@ watch(
 
 @use '../sass/vars' as v;
 
+$filter-input-height: 34px;
 $new-note-height: 50px;
 $font-size: 18px;
 
@@ -186,7 +187,8 @@ $font-size: 18px;
   appearance: none;
   outline: none;
   margin: 0;
-  padding: 10px 12px;
+  padding: 0 12px;
+  height: $filter-input-height;
   width: 100%;
   background-color: var(--colour__primary);
   border: none;
@@ -210,7 +212,7 @@ $font-size: 18px;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   padding-bottom: $new-note-height;
-  height: 100%;
+  height: calc(100% - $filter-input-height);
 
   &::-webkit-scrollbar {
     display: none;
