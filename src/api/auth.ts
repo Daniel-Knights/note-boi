@@ -9,7 +9,7 @@ import {
   TokenStore,
 } from '../classes';
 import { noteState } from '../store/note';
-import { resetAppError, syncState } from '../store/sync';
+import { applyDiffToEncryptedNotesCache, resetAppError, syncState } from '../store/sync';
 import { isEmptyNote, tauriEmit } from '../utils';
 
 import { updateLocalNoteStateFromDiff } from './notes';
@@ -32,6 +32,7 @@ export function clientSideLogout(): Promise<void> {
 
   syncState.username = '';
   syncState.isLoggedIn = false;
+  syncState.encryptedNotesCache.clear();
 
   PersistentStorage.remove('USERNAME');
   KeyStore.reset();
@@ -54,13 +55,20 @@ export const login = route(async () => {
     (err) => throwAuthorisationError(errorConfig, err)
   );
 
-  const encryptedNotes = await Encryptor.encryptNotes(
-    noteState.notes.filter((nt) => !isEmptyNote(nt)),
-    passwordKey
-  ).catch((err) => throwEncryptorError(errorConfig, err));
+  // Encrypt notes
+  const [encryptedNotes, encryptedDeletedNotes] = await Promise.all([
+    Encryptor.encryptNotes(
+      noteState.notes.filter((nt) => !isEmptyNote(nt)),
+      passwordKey
+    ),
+    Encryptor.encryptNotes(syncState.unsyncedNotes.deleted, passwordKey),
+  ]).catch((err) => throwEncryptorError(errorConfig, err));
 
-  encryptedNotes.forEach((nt) => {
-    syncState.encryptedNotesCache.set(nt.uuid, nt);
+  // Set encrypted notes cache
+  syncState.encryptedNotesCache.clear();
+
+  [...encryptedNotes, ...encryptedDeletedNotes].forEach((nt) => {
+    syncState.encryptedNotesCache.set(nt.uuid, nt.content);
   });
 
   const res = await new FetchBuilder('/auth/login')
@@ -69,7 +77,7 @@ export const login = route(async () => {
       username: syncState.username,
       password: syncState.password,
       notes: encryptedNotes,
-      deleted_notes: syncState.unsyncedNotes.deleted,
+      deleted_notes: encryptedDeletedNotes,
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
@@ -86,6 +94,8 @@ export const login = route(async () => {
     await KeyStore.storeKey(passwordKey).catch((err) => {
       throw handleStoreKeyError(err, 'Login');
     });
+
+    applyDiffToEncryptedNotesCache(res.data.note_diff);
 
     const decryptedNotes = await Promise.all([
       Encryptor.decryptNotes(res.data.note_diff.added, passwordKey),
@@ -147,6 +157,13 @@ export const signup = route(async () => {
 
     await KeyStore.storeKey(passwordKey).catch((err) => {
       throw handleStoreKeyError(err, 'Signup');
+    });
+
+    // Cache encrypted notes
+    syncState.encryptedNotesCache.clear();
+
+    encryptedNotes.forEach((nt) => {
+      syncState.encryptedNotesCache.set(nt.uuid, nt.content);
     });
   } else {
     throw new AppError({

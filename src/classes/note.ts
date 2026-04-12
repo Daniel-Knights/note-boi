@@ -75,6 +75,8 @@ export class Note implements RawNote {
     });
   }
 
+  // TODO: add DeletedNote class and abstract this method to a getTextFromDelta util so both classes can use it
+  //       or just make this a helper to be used separately?
   /** Returns the full text content of the given note. */
   getText(): string {
     if (!this.content.delta.ops) return '';
@@ -97,7 +99,7 @@ export type RawNote = {
   content: NoteContent;
 };
 
-type NoteContent = {
+export type NoteContent = {
   title: string;
   body: string;
   delta: Partial<Delta>;

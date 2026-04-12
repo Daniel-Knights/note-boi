@@ -1,5 +1,5 @@
-import { DeletedNote, NoteDiff } from './api';
-import { EncryptedNote, RawNote } from './classes';
+import { NoteDiff } from './api';
+import { EncryptedDeletedNote, EncryptedNote, RawNote } from './classes';
 
 export const UUID_REGEX =
   /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/;
@@ -23,7 +23,7 @@ export type EndpointPayloads = {
       username: string;
       password: string;
       notes: EncryptedNote[];
-      deleted_notes: DeletedNote[];
+      deleted_notes: EncryptedDeletedNote[];
     };
     response: {
       note_diff: NoteDiff;
@@ -37,7 +37,7 @@ export type EndpointPayloads = {
   '/notes/sync': {
     payload: {
       notes: EncryptedNote[];
-      deleted_notes: DeletedNote[];
+      deleted_notes: EncryptedDeletedNote[];
     };
     response: {
       note_diff: NoteDiff;
@@ -53,6 +53,7 @@ export type EndpointPayloads = {
       current_password: string;
       new_password: string;
       notes: EncryptedNote[];
+      deleted_notes: EncryptedDeletedNote[];
     };
     response: {
       access_token: string;

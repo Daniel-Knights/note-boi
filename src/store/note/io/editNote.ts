@@ -29,11 +29,17 @@ export function editNote(delta: Partial<Delta>, title: string, body: string): vo
   if (isEmptyNote(foundNote)) {
     // Check if note was previously synced to server
     if (syncState.encryptedNotesCache.has(foundNote.uuid)) {
-      // Was synced, so mark as deleted to remove from server
+      // Was previously synced, so mark as deleted to remove from server
       syncState.unsyncedNotes.set({
-        deleted: [{ uuid: foundNote.uuid, deleted_at: Date.now() }],
+        deleted: [
+          {
+            uuid: foundNote.uuid,
+            deleted_at: Date.now(),
+            deleted_permanently: true,
+            content: foundNote.content,
+          },
+        ],
       });
-      syncState.encryptedNotesCache.delete(foundNote.uuid);
     } else {
       // Never synced, just mark as new
       syncState.unsyncedNotes.set({

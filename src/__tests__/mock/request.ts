@@ -240,6 +240,7 @@ function hasValidAuthHeaders(headers?: HeadersInit) {
 function syncDbNotesFromRequest(
   reqPayload: EndpointPayloads['/notes/sync' | '/auth/login']['payload']
 ) {
+  // TODO: update this mock to reflect latest server side changes
   const dbNotes = new NoteCollection(mockDb.encryptedNotes);
   const payloadNotes = new NoteCollection(reqPayload.notes ?? []);
   const deletedNotes = reqPayload.deleted_notes.concat(mockDb.deletedNotes ?? []);

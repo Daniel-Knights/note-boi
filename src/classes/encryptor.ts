@@ -1,4 +1,6 @@
-import { Note, RawNote } from './note';
+import { DeletedNote } from '../api';
+
+import { Note, NoteContent, RawNote } from './note';
 
 const SALT_LENGTH = 16;
 const IV_LENGTH = 12;
@@ -88,14 +90,17 @@ export class Encryptor {
     return dec.decode(decryptedContent);
   }
 
-  static encryptNotes(notes: Note[], passwordKey: CryptoKey): Promise<EncryptedNote[]> {
+  static encryptNotes<T extends { content: NoteContent; [key: string]: unknown }>(
+    notes: T[],
+    passwordKey: CryptoKey
+  ): Promise<(T & { content: string })[]> {
     const encryptedNotePromises = notes.map(async (nt) => {
       const encryptedNoteContent = await this.#encryptData(
         JSON.stringify(nt.content),
         passwordKey
       );
 
-      const encryptedNote: EncryptedNote = {
+      const encryptedNote = {
         ...nt,
         content: encryptedNoteContent,
       };
@@ -106,23 +111,31 @@ export class Encryptor {
     return Promise.all(encryptedNotePromises);
   }
 
-  static decryptNotes(
-    notes: (EncryptedNote | Note)[],
-    passwordKey: CryptoKey
-  ): Promise<Note[]> {
+  static decryptNotes<
+    T extends EncryptedNote | Note | EncryptedDeletedNote | DeletedNote,
+    R = T extends EncryptedNote | Note ? Note : DeletedNote,
+  >(notes: T[], passwordKey: CryptoKey): Promise<R[]> {
     const decryptedNotePromises = notes.map(async (nt) => {
       if (typeof nt.content !== 'string') {
-        return nt as Note;
+        return nt as unknown as R;
       }
 
       const decryptedNoteContent = await this.#decryptData(nt.content, passwordKey);
+      const parsedDecryptedNoteContent = JSON.parse(decryptedNoteContent);
 
-      const decryptedNote: Note = new Note({
-        ...nt,
-        content: JSON.parse(decryptedNoteContent),
-      });
+      const decryptedNote =
+        // TODO: add isDeletedNote helper?
+        'deleted_at' in nt
+          ? {
+              ...nt,
+              content: parsedDecryptedNoteContent,
+            }
+          : new Note({
+              ...nt,
+              content: parsedDecryptedNoteContent,
+            });
 
-      return decryptedNote;
+      return decryptedNote as R;
     });
 
     return Promise.all(decryptedNotePromises);
@@ -132,5 +145,9 @@ export class Encryptor {
 //// Types
 
 export type EncryptedNote = Omit<RawNote, 'content'> & {
+  content: string;
+};
+
+export type EncryptedDeletedNote = Omit<DeletedNote, 'content'> & {
   content: string;
 };

@@ -1,6 +1,7 @@
 import {
   AppError,
   DebounceQueue,
+  EncryptedDeletedNote,
   EncryptedNote,
   Encryptor,
   ERROR_CODE,
@@ -8,6 +9,7 @@ import {
   FetchBuilder,
   KeyStore,
   Note,
+  NoteContent,
   TokenStore,
 } from '../classes';
 import {
@@ -19,7 +21,7 @@ import {
   selectNote,
   syncLocalNotes,
 } from '../store/note';
-import { resetAppError, syncState } from '../store/sync';
+import { applyDiffToEncryptedNotesCache, resetAppError, syncState } from '../store/sync';
 import { isEmptyNote, tauriEmit } from '../utils';
 
 import {
@@ -67,6 +69,7 @@ export const sync = route(async (isCancelled?: () => boolean) => {
     throwAuthorisationError(errorConfig);
   }
 
+  // Encrypt any edited or deleted notes that haven't already been encrypted
   const notesToEncrypt = noteState.notes.filter((nt) => {
     const noteIsEdited = syncState.unsyncedNotes.edited.has(nt.uuid);
     const noteIsCached = syncState.encryptedNotesCache.has(nt.uuid);
@@ -74,21 +77,28 @@ export const sync = route(async (isCancelled?: () => boolean) => {
     return (noteIsEdited || !noteIsCached) && !isEmptyNote(nt);
   });
 
-  const encryptedNotes = await Encryptor.encryptNotes(notesToEncrypt, passwordKey).catch(
-    (err) => throwEncryptorError(errorConfig, err)
-  );
+  // Deleted notes should already be cached, but just in case
+  const deletedNotesToEncrypt = noteState.deletedNotes.filter((nt) => {
+    return !syncState.encryptedNotesCache.has(nt.uuid);
+  });
+
+  const [encryptedNotes, encryptedDeletedNotes] = await Promise.all([
+    Encryptor.encryptNotes(notesToEncrypt, passwordKey),
+    Encryptor.encryptNotes(deletedNotesToEncrypt, passwordKey),
+  ]).catch((err) => throwEncryptorError(errorConfig, err));
   if (isCancelled?.()) return;
 
-  encryptedNotes.forEach((nt) => {
-    syncState.encryptedNotesCache.set(nt.uuid, nt);
+  // Add to encrypted notes cache
+  [...encryptedNotes, ...encryptedDeletedNotes].forEach((nt) => {
+    syncState.encryptedNotesCache.set(nt.uuid, nt.content);
   });
 
   const res = await new FetchBuilder('/notes/sync')
     .method('PUT')
     .withAuth(syncState.username, accessToken)
     .body({
-      notes: [...syncState.encryptedNotesCache.values()],
-      deleted_notes: syncState.unsyncedNotes.deleted,
+      notes: encryptedNotes,
+      deleted_notes: encryptedDeletedNotes,
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
@@ -100,6 +110,8 @@ export const sync = route(async (isCancelled?: () => boolean) => {
 
     // Users' session must still be valid
     syncState.isLoggedIn = true;
+
+    applyDiffToEncryptedNotesCache(res.data.note_diff);
 
     const decryptedNotes = await Promise.all([
       Encryptor.decryptNotes(res.data.note_diff.added, passwordKey),
@@ -120,6 +132,9 @@ export const sync = route(async (isCancelled?: () => boolean) => {
   }
 });
 
+// TODO: add get deleted notes route handler
+
+// TODO: move this to a separate file
 /**
  * Updates local note state based on the given diff.
  */
@@ -220,16 +235,18 @@ export function debounceSync(): Promise<void> {
 export type NoteDiff = {
   added: EncryptedNote[];
   edited: EncryptedNote[];
-  deleted: DeletedNote[];
+  deleted: EncryptedDeletedNote[];
 };
 
 export type DecryptedNoteDiff = {
   added: Note[];
   edited: Note[];
-  deleted: DeletedNote[];
+  deleted: EncryptedDeletedNote[];
 };
 
 export type DeletedNote = {
   uuid: string;
   deleted_at: number;
+  deleted_permanently: boolean;
+  content: NoteContent;
 };

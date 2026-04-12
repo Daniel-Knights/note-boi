@@ -29,11 +29,9 @@ export async function snapshotState() {
     s.syncState.unsyncedNotes.new = normaliseNoteUuid(s.syncState.unsyncedNotes.new);
   }
 
-  s.syncState.encryptedNotesCache = new Map(
-    [...s.syncState.encryptedNotesCache.entries()].map(([uuid, nt]) => [
-      normaliseNoteUuid(uuid),
-      normaliseEncryptedNote(nt),
-    ])
+  // TODO
+  s.syncState.encryptedNotesCache = [...s.syncState.encryptedNotesCache.keys()].map(
+    (uuid) => normaliseNoteUuid(uuid)
   );
 
   // PersistentStorage

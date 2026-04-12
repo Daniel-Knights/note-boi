@@ -16,8 +16,15 @@ export function deleteNotes(notes: RawNote[]): void {
   let includesNewNote = false;
 
   notes.forEach((nt) => {
+    const deletedNote = {
+      uuid: nt.uuid,
+      content: nt.content,
+      deleted_at: Date.now(),
+      deleted_permanently: false,
+    };
+
     noteState.notes.splice(findNoteIndex(nt.uuid), 1);
-    deletedNotes.push({ uuid: nt.uuid, deleted_at: Date.now() });
+    deletedNotes.push(deletedNote);
 
     includesSelectedNote ||= nt.uuid === noteState.selectedNote.uuid;
     includesNewNote ||= nt.uuid === syncState.unsyncedNotes.new;

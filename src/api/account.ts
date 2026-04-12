@@ -35,6 +35,8 @@ export const changePassword = route(async (): Promise<void> => {
     },
   };
 
+  // TODO: should change password sync first to ensure notes are up to date?
+
   // This shouldn't happen, but just in case
   if (!syncState.username) {
     throwAuthorisationError({
@@ -54,10 +56,13 @@ export const changePassword = route(async (): Promise<void> => {
     throwAuthorisationError(errorConfig);
   }
 
-  const encryptedNotes = await Encryptor.encryptNotes(
-    noteState.notes.filter((nt) => !isEmptyNote(nt)),
-    newKey
-  ).catch((err) => throwEncryptorError(errorConfig, err));
+  const [encryptedNotes, encryptedDeletedNotes] = await Promise.all([
+    Encryptor.encryptNotes(
+      noteState.notes.filter((nt) => !isEmptyNote(nt)),
+      newKey
+    ),
+    Encryptor.encryptNotes(noteState.deletedNotes, newKey),
+  ]).catch((err) => throwEncryptorError(errorConfig, err));
 
   const res = await new FetchBuilder('/account/change-password')
     .method('PUT')
@@ -66,6 +71,7 @@ export const changePassword = route(async (): Promise<void> => {
       current_password: syncState.password,
       new_password: syncState.newPassword,
       notes: encryptedNotes,
+      deleted_notes: encryptedDeletedNotes,
     })
     .fetch(syncState.username)
     .catch((err) => throwFetchError(errorConfig, err));
@@ -78,6 +84,13 @@ export const changePassword = route(async (): Promise<void> => {
 
     await KeyStore.storeKey(newKey).catch((err) => {
       throw handleStoreKeyError(err, 'Change password');
+    });
+
+    // Update encrypted notes cache
+    syncState.encryptedNotesCache.clear();
+
+    [...encryptedNotes, ...encryptedDeletedNotes].forEach((nt) => {
+      syncState.encryptedNotesCache.set(nt.uuid, nt.content);
     });
   } else {
     throw new AppError({
@@ -128,6 +141,7 @@ export const deleteAccount = route(async (): Promise<void> => {
     await clientSideLogout();
     resetAppError();
     syncState.unsyncedNotes.clear(true);
+    syncState.encryptedNotesCache.clear();
   } else {
     throw new AppError({
       ...errorConfig,
