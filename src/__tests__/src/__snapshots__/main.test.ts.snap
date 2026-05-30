@@ -57,7 +57,7 @@ exports[`main > Does not sync if no username is set > allCalls 1`] = `
   [
     "listeners",
     {
-      "name": "delete-note",
+      "name": "delete-selected-notes",
     },
   ],
   [
@@ -546,7 +546,7 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
   [
     "listeners",
     {
-      "name": "delete-note",
+      "name": "delete-selected-notes",
     },
   ],
   [

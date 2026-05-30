@@ -335,9 +335,21 @@ exports[`Auth > login > Does not send empty notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "uuid",
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "uuid",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
   [
