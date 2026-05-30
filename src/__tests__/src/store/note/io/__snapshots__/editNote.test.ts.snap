@@ -622,9 +622,25 @@ exports[`editNote > Marks synced note as deleted when emptied > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "",
+                  },
+                ],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]
@@ -927,9 +943,25 @@ exports[`editNote > Sets new unsynced note if empty to prevent sync clear > allC
     "invoke",
     {
       "calledWith": {
-        "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+        "notes": [
+          Note {
+            "content": {
+              "body": "",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "",
+                  },
+                ],
+              },
+              "title": "",
+            },
+            "timestamp": 0,
+            "uuid": "7a7bccda-3fac-4465-b9c9-8f67dc1b5bdf",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]

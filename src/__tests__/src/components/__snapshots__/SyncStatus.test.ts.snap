@@ -37,7 +37,7 @@ exports[`SyncStatus > Displays error icon and opens popup on click > allCalls 1`
 ]
 `;
 
-exports[`SyncStatus > Displays error icon and opens popup on click > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`SyncStatus > Displays error icon and opens popup on click > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"></div></body>"`;
 
 exports[`SyncStatus > Displays error icon and opens popup on click > mockDb 1`] = `
 {
@@ -349,7 +349,7 @@ exports[`SyncStatus > Handles popups > PopupSyncAuth > allCalls 1`] = `
 ]
 `;
 
-exports[`SyncStatus > Handles popups > PopupSyncAuth > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`SyncStatus > Handles popups > PopupSyncAuth > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"></div></body>"`;
 
 exports[`SyncStatus > Handles popups > PopupSyncAuth > mockDb 1`] = `
 {
@@ -466,7 +466,7 @@ exports[`SyncStatus > Handles popups > PopupSyncError > allCalls 1`] = `
 ]
 `;
 
-exports[`SyncStatus > Handles popups > PopupSyncError > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`SyncStatus > Handles popups > PopupSyncError > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"></div></body>"`;
 
 exports[`SyncStatus > Handles popups > PopupSyncError > mockDb 1`] = `
 {

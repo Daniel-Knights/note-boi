@@ -166,7 +166,7 @@ exports[`Settings > Account menu item > Opens and closes change password popup >
 
 exports[`Settings > Account menu item > Opens and closes change password popup > allCalls 1`] = `[]`;
 
-exports[`Settings > Account menu item > Opens and closes change password popup > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`Settings > Account menu item > Opens and closes change password popup > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"></div></body>"`;
 
 exports[`Settings > Account menu item > Opens and closes change password popup > mockDb 1`] = `
 {
@@ -645,7 +645,7 @@ exports[`Settings > Opens info popup > allCalls 1`] = `
 ]
 `;
 
-exports[`Settings > Opens info popup > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"><div data-v-app=""></div></div></body>"`;
+exports[`Settings > Opens info popup > document.body.outerHTML 1`] = `"<body class="theme--system"><div id="app"></div></body>"`;
 
 exports[`Settings > Opens info popup > mockDb 1`] = `
 {

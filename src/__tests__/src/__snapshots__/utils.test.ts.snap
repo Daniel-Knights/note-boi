@@ -117,9 +117,9 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Calls invoke with correct co
     "invoke",
     {
       "calledWith": {
-        "uuid": "uuid",
+        "notes": [],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
   [
@@ -217,7 +217,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and rethrows 
   [
     "invoke",
     {
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]

@@ -723,9 +723,25 @@ exports[`ContextMenu > Deletes a note > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+        ],
       },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]
@@ -1068,45 +1084,85 @@ exports[`ContextMenu > Deletes all selected notes > allCalls 1`] = `
     "invoke",
     {
       "calledWith": {
-        "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+        "notes": [
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
+          },
+          Note {
+            "content": {
+              "body": "amet consectetur adipisicing",
+              "delta": {
+                "ops": [
+                  {
+                    "insert": "Amet consectetur adipisicing\\n\\namet consectetur adipisicing\\namet consectetur adipisicing\\namet consectetur adipisicing\\n",
+                  },
+                ],
+              },
+              "title": "Amet consectetur adipisicing",
+            },
+            "timestamp": 0,
+            "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
+          },
+        ],
       },
-      "name": "delete_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "uuid": "b8ff4ac5-6541-49d2-9c79-4444d872481e",
-      },
-      "name": "delete_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "uuid": "6b24cde1-6118-4277-9791-8eab3c71cabb",
-      },
-      "name": "delete_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "uuid": "ac4e006d-38d4-4373-af31-4a5f46fc5184",
-      },
-      "name": "delete_note",
-    },
-  ],
-  [
-    "invoke",
-    {
-      "calledWith": {
-        "uuid": "6fb3ce26-82e0-408f-84bf-bd8cd64c35b2",
-      },
-      "name": "delete_note",
+      "name": "delete_notes",
     },
   ],
 ]
