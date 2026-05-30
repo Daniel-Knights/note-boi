@@ -180,7 +180,7 @@ describe('Utils', () => {
 
         clearMockApiResults({ calls });
         setErrorValue.invoke('edit_note');
-        setResValues.tauriApi({ askDialog: [true, false] });
+        setResValues.tauriApi({ askDialog: ['Yes', 'No'] });
 
         await tauriInvoke(
           'edit_note',
@@ -190,7 +190,7 @@ describe('Utils', () => {
           }
         );
 
-        await waitUntil(() => calls.tauriApi.has('plugin:dialog|ask', 2));
+        await waitUntil(() => calls.tauriApi.has('plugin:dialog|message', 2));
 
         expect(consoleErrorSpy).toHaveBeenCalledTimes(4);
         expect(consoleErrorSpy).toHaveBeenCalledWith('edit_note error:');
@@ -200,7 +200,7 @@ describe('Utils', () => {
 
         assert.strictEqual(calls.size, 4);
         assert.isTrue(calls.invoke.has('edit_note', 2));
-        assert.isTrue(calls.tauriApi.has('plugin:dialog|ask', 2));
+        assert.isTrue(calls.tauriApi.has('plugin:dialog|message', 2));
         assert.deepEqual(calls.tauriApi[1]!.calledWith, {
           title: 'Edit note',
           kind: 'error',

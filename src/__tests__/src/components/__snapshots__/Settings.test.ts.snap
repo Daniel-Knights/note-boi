@@ -34,7 +34,7 @@ exports[`Settings > Account menu item > Delete account menu item > allCalls 1`] 
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -907,7 +907,7 @@ exports[`Settings > Updates menu item > Update and restart menu item > allCalls 
 Do you want to update now?",
         "title": "Update available: v1.0.0",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [

@@ -59,11 +59,11 @@ describe('exportNotes', () => {
 
     clearMockApiResults({ calls });
     setErrorValue.tauriApi('plugin:dialog|open');
-    setResValues.tauriApi({ askDialog: [true, false] });
+    setResValues.tauriApi({ askDialog: ['Yes', 'No'] });
 
     await n.exportNotes(n.noteState.notes.map((nt) => nt.uuid));
 
-    await waitUntil(() => calls.tauriApi.has('plugin:dialog|ask', 2));
+    await waitUntil(() => calls.tauriApi.has('plugin:dialog|message', 2));
 
     expect(consoleErrorSpy).toHaveBeenCalledTimes(4);
     expect(consoleErrorSpy).toHaveBeenCalledWith('Failed to open directory:');
@@ -77,7 +77,7 @@ describe('exportNotes', () => {
 
     assert.strictEqual(calls.size, 4);
     assert.isTrue(calls.tauriApi.has('plugin:dialog|open', 2));
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|ask', 2));
+    assert.isTrue(calls.tauriApi.has('plugin:dialog|message', 2));
     assert.deepEqual(calls.tauriApi[1]!.calledWith, expectedAskCalledWith);
     assert.deepEqual(calls.tauriApi[3]!.calledWith, expectedAskCalledWith);
   });

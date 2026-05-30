@@ -70,7 +70,7 @@ describe('main', () => {
     });
     assert.isTrue(calls.invoke.has('sync_local_notes'));
     assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
-    assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+    assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
     assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
     assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
     assert.isTrue(calls.listeners.has('tauri://close-requested'));

@@ -15,7 +15,7 @@ describe('Update', () => {
       assert.isTrue(u.updateState.isAvailable);
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
       assert.isTrue(calls.tauriApi.has('plugin:process|restart'));
     });
@@ -64,7 +64,7 @@ describe('Update', () => {
     it("Asks if user wants to update and sets seen version if they don't", async () => {
       const { calls, setResValues } = mockApi();
 
-      setResValues.tauriApi({ askDialog: [false] });
+      setResValues.tauriApi({ askDialog: ['No'] });
 
       await u.handleUpdate();
 
@@ -72,7 +72,7 @@ describe('Update', () => {
       assert.isTrue(u.updateState.isAvailable);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('plugin:updater|check'));
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.deepEqual(calls.tauriApi[1]!.calledWith, {
         message: 'A new version of NoteBoi is available.\nDo you want to update now?',
         title: 'Update available: v1.0.0',
@@ -104,7 +104,7 @@ describe('Update', () => {
 
       clearMockApiResults({ calls });
       setErrorValue.tauriApi('plugin:updater|download_and_install');
-      setResValues.tauriApi({ askDialog: [false], downloadAndInstallUpdate: [] });
+      setResValues.tauriApi({ askDialog: ['No'], downloadAndInstallUpdate: [] });
 
       await u.updateAndRelaunch(mockUpdate);
 
@@ -112,7 +112,7 @@ describe('Update', () => {
       assert.isFalse(u.updateState.isAvailable);
       assert.strictEqual(calls.size, 2);
       assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install'));
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.deepEqual(calls.tauriApi[1]!.calledWith, {
         message: 'Try again?',
         title: 'Unable to install update',
@@ -126,7 +126,7 @@ describe('Update', () => {
 
       clearMockApiResults({ calls });
       setErrorValue.tauriApi('plugin:updater|download_and_install');
-      setResValues.tauriApi({ askDialog: [true, false] });
+      setResValues.tauriApi({ askDialog: ['Yes', 'No'] });
 
       await u.updateAndRelaunch(mockUpdate);
 
@@ -134,7 +134,7 @@ describe('Update', () => {
       assert.isFalse(u.updateState.isAvailable);
       assert.strictEqual(calls.size, 4);
       assert.isTrue(calls.tauriApi.has('plugin:updater|download_and_install', 2));
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask', 2));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message', 2));
     });
   });
 

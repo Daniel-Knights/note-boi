@@ -1028,7 +1028,6 @@ exports[`Auth > login > Handles KeyStore.storeKey error after successful login >
       "calledWith": {
         "kind": "error",
         "message": "Unable to store encryption key. Please try again.",
-        "okLabel": undefined,
         "title": "Login",
       },
       "name": "plugin:dialog|message",
@@ -4646,7 +4645,6 @@ exports[`Auth > signup > Handles KeyStore.storeKey error after successful signup
       "calledWith": {
         "kind": "error",
         "message": "Unable to store encryption key. Please try again.",
-        "okLabel": undefined,
         "title": "Signup",
       },
       "name": "plugin:dialog|message",
