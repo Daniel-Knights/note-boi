@@ -32,7 +32,7 @@ exports[`Update > handleUpdate > Asks if user wants to update and sets seen vers
 Do you want to update now?",
         "title": "Update available: v1.0.0",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]
@@ -136,7 +136,7 @@ exports[`Update > handleUpdate > Handles update > allCalls 1`] = `
 Do you want to update now?",
         "title": "Update available: v1.0.0",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -631,7 +631,7 @@ exports[`Update > updateAndRelaunch > Catches errors and doesn't retry > allCall
         "message": "Try again?",
         "title": "Unable to install update",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]
@@ -740,7 +740,7 @@ exports[`Update > updateAndRelaunch > Catches errors and retries > allCalls 1`] 
         "message": "Try again?",
         "title": "Unable to install update",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -757,7 +757,7 @@ exports[`Update > updateAndRelaunch > Catches errors and retries > allCalls 1`] 
         "message": "Try again?",
         "title": "Unable to install update",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]

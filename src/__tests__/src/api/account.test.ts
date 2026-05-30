@@ -358,7 +358,7 @@ describe('Account', () => {
       assertAppError();
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 5);
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.deepEqual(calls.tauriApi[0]!.calledWith, {
         title: 'Delete account',
         kind: 'warning',
@@ -382,14 +382,14 @@ describe('Account', () => {
     it('Returns if ask dialog returns false', async () => {
       const { calls, setResValues } = mockApi();
 
-      setResValues.tauriApi({ askDialog: [false] });
+      setResValues.tauriApi({ askDialog: ['No'] });
 
       s.syncState.username = 'd';
 
       await a.deleteAccount();
 
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.strictEqual(s.syncState.loadingCount, 0);
     });
 
@@ -421,7 +421,7 @@ describe('Account', () => {
       assert.isTrue(s.syncState.isLoggedIn);
       assert.strictEqual(PersistentStorage.get('USERNAME'), 'd');
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.isTrue(calls.request.has('/account/delete'));
       assertRequest('/account/delete', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
@@ -455,7 +455,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.isTrue(calls.request.has('/account/delete'));
       assertRequest('/account/delete', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
@@ -489,7 +489,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 3);
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.isTrue(calls.request.has('/account/delete'));
       assertRequest('/account/delete', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));
@@ -499,7 +499,7 @@ describe('Account', () => {
     it('Throws if no username', async () => {
       const { calls, setResValues } = mockApi();
 
-      setResValues.tauriApi({ askDialog: [true] });
+      setResValues.tauriApi({ askDialog: ['Yes'] });
 
       clearMockApiResults({ calls });
 
@@ -514,7 +514,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 1);
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
     });
 
     it('Throws if no access token', async () => {
@@ -539,7 +539,7 @@ describe('Account', () => {
 
       assert.strictEqual(s.syncState.loadingCount, 0);
       assert.strictEqual(calls.size, 2);
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.isTrue(calls.invoke.has('get_access_token'));
       assert.deepEqual(calls.invoke[0]!.calledWith, { username: 'd' });
     });

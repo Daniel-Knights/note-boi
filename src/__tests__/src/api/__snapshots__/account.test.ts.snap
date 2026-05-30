@@ -718,7 +718,6 @@ exports[`Account > changePassword > Handles KeyStore.storeKey error after succes
       "calledWith": {
         "kind": "error",
         "message": "Unable to store encryption key. Please try again.",
-        "okLabel": undefined,
         "title": "Change password",
       },
       "name": "plugin:dialog|message",
@@ -2064,7 +2063,7 @@ exports[`Account > deleteAccount > Deletes currently logged in account > allCall
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -2216,7 +2215,7 @@ exports[`Account > deleteAccount > Returns if ask dialog returns false > allCall
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]
@@ -2369,7 +2368,7 @@ exports[`Account > deleteAccount > Sets and resets loading state > allCalls 1`] 
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -2587,7 +2586,7 @@ exports[`Account > deleteAccount > Throws if no access token > allCalls 1`] = `
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -2708,7 +2707,7 @@ exports[`Account > deleteAccount > Throws if no username > allCalls 1`] = `
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]
@@ -2863,7 +2862,7 @@ exports[`Account > deleteAccount > Unauthorized > allCalls 1`] = `
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -3036,7 +3035,7 @@ exports[`Account > deleteAccount > User not found > allCalls 1`] = `
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -3218,7 +3217,7 @@ exports[`Account > deleteAccount > With server error > allCalls 1`] = `
         "message": "Are you sure?",
         "title": "Delete account",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [

@@ -319,7 +319,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
         "message": "Failed to edit note. Try again?",
         "title": "Edit note",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -336,7 +336,7 @@ exports[`Utils > Tauri API wrappers > tauriInvoke > Catches errors and retries >
         "message": "Failed to edit note. Try again?",
         "title": "Edit note",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]

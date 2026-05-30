@@ -222,7 +222,7 @@ describe('ContextMenu', () => {
   it('Deletes a note', async () => {
     const { setResValues, calls } = mockApi();
 
-    setResValues.tauriApi({ askDialog: [true] });
+    setResValues.tauriApi({ askDialog: ['Yes'] });
 
     await n.getAllNotes();
 
@@ -249,7 +249,7 @@ describe('ContextMenu', () => {
   it('Does not delete note if confirmation is cancelled', async () => {
     const { setResValues } = mockApi();
 
-    setResValues.tauriApi({ askDialog: [false] });
+    setResValues.tauriApi({ askDialog: ['No'] });
 
     await n.getAllNotes();
 
@@ -275,7 +275,7 @@ describe('ContextMenu', () => {
   it('Deletes all selected notes', async () => {
     const { setResValues, calls } = mockApi();
 
-    setResValues.tauriApi({ askDialog: [true] });
+    setResValues.tauriApi({ askDialog: ['Yes'] });
 
     await n.getAllNotes();
 
@@ -303,7 +303,7 @@ describe('ContextMenu', () => {
   it('Does not delete selected notes if confirmation is cancelled', async () => {
     const { setResValues } = mockApi();
 
-    setResValues.tauriApi({ askDialog: [false] });
+    setResValues.tauriApi({ askDialog: ['No'] });
 
     await n.getAllNotes();
 

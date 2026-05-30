@@ -589,7 +589,7 @@ exports[`exportNotes > Catches errors and tries again > allCalls 1`] = `
         "message": "Failed to open directory. Try again?",
         "title": "Export notes",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -606,7 +606,7 @@ exports[`exportNotes > Catches errors and tries again > allCalls 1`] = `
         "message": "Failed to open directory. Try again?",
         "title": "Export notes",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]

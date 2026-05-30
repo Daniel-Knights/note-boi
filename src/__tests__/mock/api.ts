@@ -9,7 +9,6 @@ import {
   EmitArgs,
   InvokeResValue,
   ListenArgs,
-  MessageDialogArgs,
   mockTauriApi,
   mockTauriEmit,
   mockTauriInvoke,
@@ -140,7 +139,7 @@ export function mockApi(): {
     if (callId === 'plugin:log|log') return;
 
     return executeMockCall('tauriApi', callId, () =>
-      mockTauriApi(callId, args as AskDialogArgs | OpenDialogArgs | MessageDialogArgs, {
+      mockTauriApi(callId, args as AskDialogArgs | OpenDialogArgs, {
         error: errorValues.tauriApi,
         resValue: resValues.tauriApi,
       })

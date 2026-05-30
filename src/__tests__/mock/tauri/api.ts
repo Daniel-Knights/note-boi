@@ -21,11 +21,11 @@ export function mockTauriApi(
       resData = pkg.version;
 
       break;
-    case 'plugin:dialog|ask': {
+    case 'plugin:dialog|message': {
       const askDialogArgs = args as AskDialogArgs;
       const resValue = options.resValue?.askDialog?.shift();
 
-      resData = resValue === undefined ? true : resValue;
+      resData = resValue === undefined ? 'Yes' : resValue;
       calledWith = {
         message: askDialogArgs.message,
         title: askDialogArgs.title,
@@ -44,18 +44,6 @@ export function mockTauriApi(
         multiple: openDialogArgs.options.multiple,
         recursive: openDialogArgs.options.recursive,
         title: openDialogArgs.options.title,
-      };
-
-      break;
-    }
-    case 'plugin:dialog|message': {
-      const messageDialogArgs = args as MessageDialogArgs;
-
-      calledWith = {
-        message: messageDialogArgs.message,
-        okLabel: messageDialogArgs.okLabel,
-        title: messageDialogArgs.title,
-        kind: messageDialogArgs.kind,
       };
 
       break;
@@ -91,7 +79,7 @@ export function mockTauriApi(
 //// Types
 
 export type TauriApiResValue = Record<string, unknown[]> & {
-  askDialog?: boolean[];
+  askDialog?: Array<'Yes' | 'No'>;
   openDialog?: string[] | string[][];
   checkUpdate?: (Partial<ConstructorParameters<typeof Update>[0]> | null)[];
   downloadAndInstallUpdate?: ReturnType<Update['downloadAndInstall']>[];
@@ -112,11 +100,4 @@ export type OpenDialogArgs = {
     recursive?: boolean;
     title?: string;
   };
-};
-
-export type MessageDialogArgs = {
-  message: string;
-  okLabel?: string;
-  title?: string;
-  kind?: 'error' | 'info' | 'warning';
 };

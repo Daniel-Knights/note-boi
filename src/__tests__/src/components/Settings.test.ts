@@ -245,7 +245,7 @@ describe('Settings', () => {
       expect(deleteAccountSpy).toHaveBeenCalledOnce();
       assertMenuItemCount(wrapper, 3);
       assert.strictEqual(calls.size, 5);
-      assert.isTrue(calls.tauriApi.has('plugin:dialog|ask'));
+      assert.isTrue(calls.tauriApi.has('plugin:dialog|message'));
       assert.isTrue(calls.request.has('/account/delete'));
       assertRequest('/account/delete', calls.request[0]!.calledWith!);
       assert.isTrue(calls.invoke.has('get_access_token'));

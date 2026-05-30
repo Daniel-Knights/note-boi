@@ -716,7 +716,7 @@ exports[`ContextMenu > Deletes a note > allCalls 1`] = `
         "message": "Are you sure?",
         "title": "Delete Note(s)",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -1077,7 +1077,7 @@ exports[`ContextMenu > Deletes all selected notes > allCalls 1`] = `
         "message": "Are you sure?",
         "title": "Delete Note(s)",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
@@ -1454,7 +1454,7 @@ exports[`ContextMenu > Does not delete note if confirmation is cancelled > allCa
         "message": "Are you sure?",
         "title": "Delete Note(s)",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]
@@ -1756,7 +1756,7 @@ exports[`ContextMenu > Does not delete selected notes if confirmation is cancell
         "message": "Are you sure?",
         "title": "Delete Note(s)",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]

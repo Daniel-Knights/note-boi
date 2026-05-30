@@ -117,7 +117,7 @@ exports[`main > Does not sync if no username is set > allCalls 1`] = `
 Do you want to update now?",
         "title": "Update available: v1.0.0",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
 ]
@@ -606,7 +606,7 @@ exports[`main > Gets all notes, checks for update, syncs notes, and adds listene
 Do you want to update now?",
         "title": "Update available: v1.0.0",
       },
-      "name": "plugin:dialog|ask",
+      "name": "plugin:dialog|message",
     },
   ],
   [
