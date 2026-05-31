@@ -134,7 +134,7 @@ function handleNewNote() {
 
 // Wrap handleNoteSelect to include small screen logic
 function handleNoteSelect(ev: MouseEvent) {
-  if (props.isSmallScreen) {
+  if (!ev.shiftKey && !ev.metaKey && !ev.ctrlKey && props.isSmallScreen) {
     emit('update:showNoteMenu', false);
   }
 

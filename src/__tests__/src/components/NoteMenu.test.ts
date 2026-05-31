@@ -165,6 +165,24 @@ describe('NoteMenu', () => {
     assert.isTrue(wrapper.emitted('update:showNoteMenu')![0]![0] === false);
   });
 
+  it("Doesn't Close menu on small screen when modifier keys are held", async () => {
+    const wrapper = mountNoteMenu({ isSmallScreen: true });
+    const noteToSelect = getDummyNotes()[2]!;
+    const noteItem = wrapper.get(getDataNoteUuid(noteToSelect.uuid));
+
+    await noteItem.trigger('click', { shiftKey: true });
+
+    assert.isUndefined(wrapper.emitted('update:showNoteMenu'));
+
+    await noteItem.trigger('click', { metaKey: true });
+
+    assert.isUndefined(wrapper.emitted('update:showNoteMenu'));
+
+    await noteItem.trigger('click', { ctrlKey: true });
+
+    assert.isUndefined(wrapper.emitted('update:showNoteMenu'));
+  });
+
   // ENH: Test selected note visibility on arrow key navigation
   it('Navigates notes with up/down arrow keys', async () => {
     const wrapper = mountNoteMenu();
