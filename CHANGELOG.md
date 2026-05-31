@@ -1,3 +1,12 @@
+## [v4.3.0](https://github.com/Daniel-Knights/note-boi/compare/v4.2.0...v4.3.0) (31/05/2026)
+
+- fix(NoteMenu): don't close on small screens when modifier key is held ([c576aad](https://github.com/Daniel-Knights/note-boi/commit/c576aada7ebf2b9a5068a8d12b9f97fff5cb2e19))
+- feat(NoteMenu): add ability to filter notes by text input ([c7c756f](https://github.com/Daniel-Knights/note-boi/commit/c7c756fc46eca34498fb8348b18f6683cb0e6b9c))
+- perf(deleteNotes): bulk delete notes instead of deleting each separately ([81d9e1b](https://github.com/Daniel-Knights/note-boi/commit/81d9e1b83a89db9b1ada1ef6fa7f788b4cde6c9b))
+- fix(NoteMenu): delete extra selected notes only deleting selected note ([dd3edf0](https://github.com/Daniel-Knights/note-boi/commit/dd3edf0176afeb6b18b8fc7ee390a0f502902833))
+- fix(FindInPage): ensure input clear icon follows theme colours ([ff961ca](https://github.com/Daniel-Knights/note-boi/commit/ff961cac56b15b35d79bf546c4ad638f5ea5ef30))
+- fix(FindInPage): input text color in light mode ([0ead81b](https://github.com/Daniel-Knights/note-boi/commit/0ead81b858200837c8c6605de29f9745390169f8))
+
 ## [v4.2.0](https://github.com/Daniel-Knights/note-boi/compare/v4.1.1...v4.2.0) (23/02/2026)
 
 - fix(sync): empty synced note handling ([de1203b](https://github.com/Daniel-Knights/note-boi/commit/de1203b5e33811fde817ff6a46de568b47cbbddb))
