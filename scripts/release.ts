@@ -16,11 +16,7 @@ fs.rmSync('dist', { recursive: true, force: true });
 run('pnpm', ['build']);
 
 run('pnpm', ['version', args[0]]);
-run('npx', [
-  'changenog',
-  '--commit-filter-preset=angular',
-  '--commit-filter-preset=angular-readme-only-docs',
-]);
+run('pnpm', ['run', 'changenog']);
 
 // Confirm changes
 const rl = readline.createInterface({
