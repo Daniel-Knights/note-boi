@@ -26,7 +26,8 @@
     "format": "prettier --write ./src",
     "release:patch": "tsx ./scripts/release.ts patch",
     "release:minor": "tsx ./scripts/release.ts minor",
-    "release:major": "tsx ./scripts/release.ts major"
+    "release:major": "tsx ./scripts/release.ts major",
+    "changenog": "changenog --commit-filter-preset=angular --commit-filter-preset=angular-readme-only-docs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.0",
