@@ -71,4 +71,3 @@ jobs:
           releaseBody: 'See [CHANGELOG.md](https://github.com/Daniel-Knights/note-boi/blob/main/CHANGELOG.md).'
           prerelease: false
           args: ${{ matrix.args }}
-          includeUpdaterJson: true
