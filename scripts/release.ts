@@ -5,12 +5,13 @@ import readline from 'node:readline';
 const args = process.argv.slice(2);
 
 if (run('git', ['status', '-s'], { stdio: 'pipe' }).stdout.toString()) {
-  throw new Error('Uncommitted changes in working tree.');
+  throw new Error('Please commit all changes before running this script.');
 }
 
 //// Main
 
 fs.rmSync('dist', { recursive: true, force: true });
+fs.rmSync('dist-web', { recursive: true, force: true });
 
 // This is here purely to check the build works before triggering a release
 run('pnpm', ['build']);
