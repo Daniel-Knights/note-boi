@@ -18,7 +18,7 @@
   position: fixed;
   @include v.cover;
   background-color: var(--colour__primary);
-  z-index: 50;
+  z-index: 500000;
 }
 
 .loading__spinner {
