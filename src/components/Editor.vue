@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts" setup>
-import Quill from 'quill';
+import Quill, { Delta } from 'quill';
 import { onMounted, ref, useTemplateRef } from 'vue';
 
 import { Note } from '../classes';
@@ -108,6 +108,11 @@ onMounted(() => {
     const { title, body } = Note.parseTitleAndBody(editorText.value);
 
     editNote(oldDelta.compose(newDelta), title, body);
+  });
+
+  // Prevent pasted links from being parsed as links
+  quillEditor.clipboard.addMatcher('A', (node) => {
+    return new Delta().insert((node as HTMLAnchorElement).innerText);
   });
 
   quillEditorInitialised.value = true;
