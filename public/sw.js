@@ -13,9 +13,7 @@
 
 const CACHE_NAME = 'note-boi-v1';
 
-const APP_STATIC_RESOURCES = [
-  /* <INJECTED> */
-];
+const APP_STATIC_RESOURCES = [/* <INJECTED> */];
 
 self.addEventListener('install', (ev) => {
   ev.waitUntil(
