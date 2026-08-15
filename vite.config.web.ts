@@ -2,7 +2,7 @@ import vue from '@vitejs/plugin-vue';
 import fs from 'node:fs';
 import { defineConfig, Plugin } from 'vite';
 
-import { SERVER_URL_PROD } from './vite.config';
+import { SERVER_URL_PROD } from './vite.config.ts';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
