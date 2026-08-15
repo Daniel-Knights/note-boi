@@ -61,7 +61,7 @@
     "eslint-plugin-vue": "^10.10.0",
     "fake-indexeddb": "^6.2.5",
     "globals": "^17.11.0",
-    "jsdom": "^28.1.0",
+    "jsdom": "^30.0.1",
     "prettier": "^3.9.6",
     "quill-delta": "^5.1.0",
     "sass-embedded": "1.102.0",
