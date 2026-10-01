@@ -104,9 +104,7 @@ const rootElResizeObserver = new ResizeObserver(() => {
 });
 
 onMounted(() => {
-  // `.focus()` doesn't work consistently here
-  searchInput.value?.setSelectionRange(0, 0);
-  searchInput.value?.click();
+  focusInput();
   rootElResizeObserver.observe(props.rootEl);
 });
 
@@ -122,6 +120,19 @@ watch(
 );
 
 //// Functions
+
+/** Moves focus to the search input and selects any existing text. */
+function focusInput() {
+  const input = searchInput.value;
+  if (!input) return;
+
+  // `.focus()` doesn't work consistently on its own here
+  input.focus();
+  input.select();
+  input.click();
+}
+
+defineExpose({ focus: focusInput });
 
 async function handleSearch() {
   findAndHighlight();

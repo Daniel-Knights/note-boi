@@ -124,6 +124,30 @@ describe('Editor', () => {
     assert.isTrue(wrapper.getComponent(FindInPage).isVisible());
   });
 
+  it('Focuses the find-in-page input on open and on repeated shortcut', async () => {
+    const wrapper = mount(Editor, {
+      props: { isTouchDevice: false },
+      attachTo: document.body,
+    });
+    const open = () =>
+      window.dispatchEvent(new KeyboardEvent('keydown', { metaKey: true, key: 'f' }));
+
+    open();
+    await nextTick();
+
+    const input = wrapper.getComponent(FindInPage).find('input').element;
+
+    assert.strictEqual(document.activeElement, input);
+
+    input.blur();
+    open();
+    await nextTick();
+
+    assert.strictEqual(document.activeElement, input);
+
+    wrapper.unmount();
+  });
+
   it('Does not show find-in-page on touch devices', async () => {
     const wrapper = mount(Editor, { props: { isTouchDevice: true } });
 

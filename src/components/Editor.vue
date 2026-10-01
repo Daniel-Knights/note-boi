@@ -33,11 +33,12 @@
     </div>
     <!-- ENH: Enable on touch devices -->
     <FindInPage
+      ref="find-in-page"
       v-if="quillEditorInitialised && editorBody && openFindInPage && !isTouchDevice"
       :text="editorText"
       :root-el="editorBody!"
       :get-bounds-at-index="(i, len) => quillEditor!.getBounds(i, len)"
-      @close="openFindInPage = false"
+      @close="closeFindInPage"
     />
   </main>
 </template>
@@ -57,6 +58,7 @@ defineProps<{ isTouchDevice: boolean }>();
 const editorBody = useTemplateRef('editor-body');
 
 const openFindInPage = ref(false);
+const findInPage = useTemplateRef('find-in-page');
 const quillEditorInitialised = ref(false);
 const editorText = ref('');
 
@@ -148,12 +150,27 @@ addNoteEventListener('note-new', newNoteEventHandler);
 addNoteEventListener('note-select', selectNoteEventHandler);
 addNoteEventListener('note-change', changeNoteEventHandler);
 
+/** Closes find in page, returning focus to the editor if it was inside the find bar. */
+function closeFindInPage() {
+  const hadFocus = !!document.activeElement?.closest('#find-in-page');
+
+  openFindInPage.value = false;
+
+  if (hadFocus) quillEditor?.focus();
+}
+
 // Open/close find in page
 window.addEventListener('keydown', (ev) => {
   if (ev.key === 'f' && (ev.metaKey || ev.ctrlKey)) {
-    openFindInPage.value = true;
+    ev.preventDefault();
+
+    if (openFindInPage.value) {
+      findInPage.value?.focus(); // Already open, so move focus back to it
+    } else {
+      openFindInPage.value = true;
+    }
   } else if (ev.key === 'Escape') {
-    openFindInPage.value = false;
+    closeFindInPage();
   }
 });
 </script>
