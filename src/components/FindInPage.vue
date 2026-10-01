@@ -7,16 +7,21 @@
         v-model="searchText"
         class="find-in-page__input"
         name="find-in-page-input"
+        aria-label="Find in page"
         ref="search-input"
         data-test-id="input"
       />
       <div class="find-in-page__ordinal">
-        <span>{{ currentIndex + 1 }}/{{ currentMatchBounds.length }}</span>
+        <span aria-live="polite"
+          >{{ currentIndex + 1 }}/{{ currentMatchBounds.length }}</span
+        >
       </div>
     </div>
     <button
       class="find-in-page__button find-in-page__button--nav"
       @click="handlePrev"
+      aria-label="Previous match"
+      title="Previous match"
       data-test-id="nav-prev"
     >
       <ChevronUpIcon />
@@ -24,6 +29,8 @@
     <button
       class="find-in-page__button find-in-page__button--nav"
       @click="handleNext"
+      aria-label="Next match"
+      title="Next match"
       data-test-id="nav-next"
     >
       <ChevronDownIcon />
@@ -31,6 +38,8 @@
     <button
       class="find-in-page__button find-in-page__button--close"
       @click="handleClose"
+      aria-label="Close find in page"
+      title="Close find in page"
       data-test-id="close-button"
     >
       <CloseIcon />
@@ -250,7 +259,6 @@ function clearHighlights() {
     background-color: transparent;
     border: none;
     border-radius: 0;
-    outline: none;
     color: var(--colour__primary);
   }
 
