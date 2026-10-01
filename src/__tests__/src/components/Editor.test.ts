@@ -23,6 +23,27 @@ describe('Editor', () => {
     assert.strictEqual(calls.size, 0);
   });
 
+  it('Lets Tab through to the browser after Escape', () => {
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
+    const body = getByTestId(wrapper, 'body');
+    const root = body.find('.ql-editor').element;
+    const press = (key: string) => {
+      const ev = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true });
+      const spy = vi.fn();
+
+      root.addEventListener('keydown', spy);
+      root.dispatchEvent(ev);
+      root.removeEventListener('keydown', spy);
+
+      return spy.mock.calls.length;
+    };
+
+    assert.strictEqual(press('Tab'), 1); // Reaches Quill
+    press('Escape');
+    assert.strictEqual(press('Tab'), 0); // Skips Quill
+    assert.strictEqual(press('Tab'), 1); // Back to normal
+  });
+
   it('Has the correct timestamp', () => {
     const wrapper = mount(Editor, { props: { isTouchDevice: false } });
     const timestamp = getByTestId(wrapper, 'timestamp');
