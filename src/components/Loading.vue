@@ -1,6 +1,6 @@
 <template>
-  <div id="loading">
-    <svg class="loading__spinner" viewBox="0 0 95 95">
+  <div id="loading" role="status" aria-label="Loading">
+    <svg aria-hidden="true" class="loading__spinner" viewBox="0 0 95 95">
       <g transform="translate(-0.88095856,-1.2589302)">
         <circle cx="48.380959" cy="48.75893" r="40" />
       </g>

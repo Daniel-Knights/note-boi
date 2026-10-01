@@ -7,7 +7,7 @@
     </header>
     <!-- Toolbar has to be defined manually like this, so scrolling works correctly -->
     <div class="editor__toolbar">
-      <select class="ql-header">
+      <select class="ql-header" aria-label="Heading level">
         <option value="1"></option>
         <option value="2"></option>
         <option value="3"></option>
@@ -95,6 +95,9 @@ onMounted(() => {
     placeholder: 'New note...',
     theme: 'snow',
   });
+
+  quillEditor.root.setAttribute('aria-label', 'Note content');
+  quillEditor.root.setAttribute('aria-multiline', 'true');
 
   quillEditor.on('text-change', (newDelta, oldDelta) => {
     editorText.value = quillEditor!.getText();

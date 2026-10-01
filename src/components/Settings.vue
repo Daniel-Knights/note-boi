@@ -5,10 +5,14 @@
       class="button"
       data-test-id="settings-button"
       title="Settings"
+      aria-label="Settings"
+      aria-haspopup="menu"
+      aria-controls="settings-menu"
+      :aria-expanded="show"
     >
       <CogIcon />
     </button>
-    <DropMenu v-if="show" @close="show = false" :items="menuItems" />
+    <DropMenu v-if="show" id="settings-menu" @close="show = false" :items="menuItems" />
   </div>
   <PopupInfo v-if="openedPopup === POPUP_TYPE.INFO" @close="openedPopup = undefined" />
   <PopupChangePassword
