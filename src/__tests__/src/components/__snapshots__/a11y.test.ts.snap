@@ -1,0 +1,165 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Accessibility > Loading is announced as a status > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Accessibility > Loading is announced as a status > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Accessibility > Loading is announced as a status > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Accessibility > Loading is announced as a status > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`Accessibility > Loading is announced as a status > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Accessibility > Loading is announced as a status > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Accessibility > Loading is announced as a status > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`Accessibility > Loading is announced as a status > allCalls 1`] = `[]`;
+
+exports[`Accessibility > Loading is announced as a status > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Accessibility > Loading is announced as a status > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Accessibility > Loading is announced as a status > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Accessibility > Loading is announced as a status > openedPopup 1`] = `undefined`;
+
+exports[`Accessibility > Loading is announced as a status > selectedTheme 1`] = `"System"`;
+
+exports[`Accessibility > Loading is announced as a status > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Accessibility > Loading is announced as a status > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > allCalls 1`] = `[]`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > openedPopup 1`] = `undefined`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > selectedTheme 1`] = `"System"`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Accessibility > NoteMenuToggle exposes label and expanded state > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

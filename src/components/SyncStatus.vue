@@ -1,17 +1,20 @@
 <template>
-  <div id="sync-status">
+  <div id="sync-status" role="status">
     <!-- Loading -->
     <div
       v-if="syncState.loadingCount > 0"
       class="sync-status__loading-spinner"
       data-test-id="loading"
-    ></div>
+    >
+      <span class="sr-only">Syncing</span>
+    </div>
     <!-- Error -->
     <button
       v-else-if="syncState.appError.display?.sync"
       @click="openedPopup = POPUP_TYPE.ERROR"
       class="sync-status__error button"
       title="Sync error"
+      aria-label="Sync error"
       data-test-id="error"
     >
       <CloudErrorIcon />
@@ -23,6 +26,7 @@
       data-test-id="success"
     >
       <CloudTickIcon />
+      <span class="sr-only">Changes synced</span>
     </div>
     <!-- Sync ready -->
     <button
@@ -30,6 +34,7 @@
       @click="handlePopupAuthEvent"
       class="sync-status__sync-button button"
       title="Sync changes"
+      aria-label="Sync changes"
       data-test-id="sync-button"
     >
       <CloudSyncIcon />

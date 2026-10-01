@@ -1,5 +1,7 @@
 <template>
   <nav
+    id="note-menu"
+    aria-label="Notes"
     @click="listIsFocused = true"
     class="note-menu"
     :class="{
@@ -185,7 +187,6 @@ $font-size: 18px;
 .note-menu__filter-input {
   -webkit-appearance: none;
   appearance: none;
-  outline: none;
   margin: 0;
   padding: 0 12px;
   height: $filter-input-height;
