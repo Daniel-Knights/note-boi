@@ -99,6 +99,28 @@ onMounted(() => {
   quillEditor.root.setAttribute('aria-label', 'Note content');
   quillEditor.root.setAttribute('aria-multiline', 'true');
 
+  // Escape then Tab leaves the editor instead of inserting a tab (WCAG 2.1.2).
+  // Capture phase on the parent so Quill's own Tab bindings never see the event.
+  let escapePressed = false;
+
+  editorBody.value!.addEventListener(
+    'keydown',
+    (ev) => {
+      if (ev.key === 'Tab' && escapePressed) {
+        escapePressed = false;
+        ev.stopPropagation(); // Skip Quill, keep default browser focus movement
+
+        return;
+      }
+
+      escapePressed = ev.key === 'Escape';
+    },
+    true
+  );
+  quillEditor.root.addEventListener('blur', () => {
+    escapePressed = false;
+  });
+
   quillEditor.on('text-change', (newDelta, oldDelta) => {
     editorText.value = quillEditor!.getText();
 
