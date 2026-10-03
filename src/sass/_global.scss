@@ -18,6 +18,16 @@ body {
   outline-offset: 2px;
 }
 
+// Text inputs always match `:focus-visible`, so hide the ring when focused by pointer
+[data-input-modality='pointer'] {
+  input:not([type='submit'], [type='button']):focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [contenteditable='true']:focus-visible {
+    outline: none;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

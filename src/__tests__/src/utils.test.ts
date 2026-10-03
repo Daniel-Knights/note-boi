@@ -3,6 +3,7 @@ import {
   capitalise,
   escapeRegex,
   hasKeys,
+  initInputModality,
   isDev,
   isEmptyNote,
   isWhitespaceOnly,
@@ -208,5 +209,32 @@ describe('Utils', () => {
         });
       });
     });
+  });
+});
+
+describe('initInputModality', () => {
+  it('Sets modality based on how focus arrived', () => {
+    initInputModality();
+
+    const input = document.createElement('input');
+    const other = document.createElement('input');
+    document.body.append(input, other);
+
+    const modality = () => document.documentElement.getAttribute('data-input-modality');
+
+    window.dispatchEvent(new Event('pointerdown'));
+    input.focus();
+    assert.strictEqual(modality(), 'pointer');
+
+    // A key that doesn't move focus must not change the modality
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+    assert.strictEqual(modality(), 'pointer');
+
+    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+    other.focus();
+    assert.strictEqual(modality(), 'keyboard');
+
+    input.remove();
+    other.remove();
   });
 });
