@@ -86,7 +86,7 @@ function getSiblingItems(): HTMLElement[] {
   );
 }
 
-/** Keyboard support: arrows, Home/End, Enter/Space, Escape, and sub-menu in/out. */
+/** Keyboard support: arrows, Enter, Escape, and sub-menu in/out. */
 function handleKeydown(ev: KeyboardEvent) {
   if (ev.key === 'Escape') {
     emit('close'); // Not stopped, so it bubbles up from sub-menus to the top-level menu
@@ -108,12 +108,6 @@ function handleKeydown(ev: KeyboardEvent) {
     case 'ArrowUp':
       items[(index - 1 + items.length) % items.length]?.focus();
       break;
-    case 'Home':
-      items[0]?.focus();
-      break;
-    case 'End':
-      items[items.length - 1]?.focus();
-      break;
     case 'ArrowLeft': // Sub-menus open to the left
       item.querySelector<HTMLElement>(':scope > .drop-menu > .drop-menu__item')?.focus();
       break;
@@ -121,7 +115,6 @@ function handleKeydown(ev: KeyboardEvent) {
       item.parentElement?.closest<HTMLElement>('.drop-menu__item')?.focus();
       break;
     case 'Enter':
-    case ' ':
       if (ev.target === item) item.click();
       break;
     default:
