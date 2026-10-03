@@ -135,3 +135,21 @@ export function tauriInvoke<T extends TauriCommand>(
     return tauriInvoke(cmd, args, options);
   });
 }
+
+/**
+ * Tracks whether focus last arrived via keyboard or pointer, exposed as
+ * `data-input-modality` on `<html>`. Decided on `focusin` rather than `keydown`,
+ * so keys that don't move focus (e.g. a typed Tab in the editor) have no effect.
+ */
+export function initInputModality() {
+  const root = document.documentElement;
+  let lastInteraction: 'keyboard' | 'pointer' = 'keyboard';
+
+  window.addEventListener('keydown', () => (lastInteraction = 'keyboard'), true);
+  window.addEventListener('pointerdown', () => (lastInteraction = 'pointer'), true);
+  window.addEventListener(
+    'focusin',
+    () => root.setAttribute('data-input-modality', lastInteraction),
+    true
+  );
+}
