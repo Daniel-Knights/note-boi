@@ -26,6 +26,7 @@
       @pointermove="handlePointerMove"
       @pointerup="handlePointerUp"
       @pointercancel="handlePointerUp"
+      @keydown="handleNoteKeydown"
       @contextmenu.prevent="handleContextMenu"
       class="note-menu__note-list"
       ref="note-list"
@@ -40,6 +41,8 @@
           'note-menu__note--empty': isEmptyNote(note),
         }"
         :data-note-uuid="note.uuid"
+        :tabindex="isSelectedNote(note) ? 0 : -1"
+        :aria-current="isSelectedNote(note) ? 'true' : undefined"
       >
         <h2 v-if="note.content.title" class="note-menu__title">
           {{ note.content.title }}
@@ -143,6 +146,24 @@ function handleNoteSelect(ev: MouseEvent) {
   handleNoteSelectionBase(ev);
 }
 
+// Enter/Space selects the focused note, honouring Shift/Ctrl/Cmd for multi-select
+function handleNoteKeydown(ev: KeyboardEvent) {
+  if (ev.key !== 'Enter' && ev.key !== ' ') return;
+
+  const target = ev.target as HTMLElement;
+  if (!target.matches('.note-menu__note')) return;
+
+  ev.preventDefault();
+  target.dispatchEvent(
+    new MouseEvent('click', {
+      bubbles: true,
+      shiftKey: ev.shiftKey,
+      ctrlKey: ev.ctrlKey,
+      metaKey: ev.metaKey,
+    })
+  );
+}
+
 // Ensure selected note is scrolled into view
 watch(
   [() => noteState.selectedNote],
@@ -161,6 +182,11 @@ watch(
 
     // `scrollIntoView` is undefined in tests
     selectedNoteEl?.scrollIntoView?.({ block: 'center' });
+
+    // Keep focus on the selected note when navigating with the arrow keys
+    if (noteList.value?.contains(document.activeElement)) {
+      (selectedNoteEl as HTMLElement | null)?.focus?.({ preventScroll: true });
+    }
   },
   { deep: true }
 );

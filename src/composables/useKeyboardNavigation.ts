@@ -9,6 +9,9 @@ export function useKeyboardNavigation(clearExtraNotes: () => void) {
   function navigateWithArrowKeys(ev: KeyboardEvent) {
     if (!listIsFocused.value) return;
 
+    // Arrow keys belong to any open menu
+    if ((ev.target as HTMLElement | null)?.closest?.('[role="menu"]')) return;
+
     ev.preventDefault(); // Prevents noise on Mac
 
     const keyDirection = {
