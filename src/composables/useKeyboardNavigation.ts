@@ -12,8 +12,6 @@ export function useKeyboardNavigation(clearExtraNotes: () => void) {
     // Arrow keys belong to any open menu
     if ((ev.target as HTMLElement | null)?.closest?.('[role="menu"]')) return;
 
-    ev.preventDefault(); // Prevents noise on Mac
-
     const keyDirection = {
       ArrowUp: 1,
       ArrowDown: -1,
@@ -23,6 +21,8 @@ export function useKeyboardNavigation(clearExtraNotes: () => void) {
       keyDirection[ev.key as keyof typeof keyDirection];
 
     if (directionIndex) {
+      ev.preventDefault(); // Prevents noise on Mac
+
       const lastSelectedNoteUuid =
         noteState.extraSelectedNotes[0]?.uuid || noteState.selectedNote.uuid;
       // Index of the note we're selecting

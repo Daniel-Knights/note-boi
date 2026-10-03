@@ -11,17 +11,6 @@
         ref="search-input"
         data-test-id="input"
       />
-      <button
-        v-if="searchText"
-        @click="handleClear"
-        class="find-in-page__clear"
-        type="button"
-        aria-label="Clear search"
-        title="Clear search"
-        data-test-id="clear-button"
-      >
-        <CloseIcon />
-      </button>
       <div class="find-in-page__ordinal">
         <span aria-live="polite"
           >{{ currentIndex + 1 }}/{{ currentMatchBounds.length }}</span
@@ -175,12 +164,6 @@ function handleClose() {
   emit('close');
 }
 
-function handleClear() {
-  searchText.value = '';
-  findAndHighlight();
-  focusInput();
-}
-
 function handleResize() {
   findAndHighlight(true);
 }
@@ -288,20 +271,6 @@ function clearHighlights() {
     border: none;
     border-radius: 0;
     color: var(--colour__primary);
-
-    // Replaced by a focusable clear button
-    &::-webkit-search-cancel-button {
-      display: none;
-    }
-  }
-
-  &__clear {
-    cursor: pointer;
-    flex-shrink: 0;
-    padding: 0 4px;
-    width: 1.5em;
-    color: var(--colour__tertiary);
-    background-color: var(--colour__secondary);
   }
 
   &__ordinal {

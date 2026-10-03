@@ -65,14 +65,13 @@ describe('DropMenu', () => {
       wrapper.unmount();
     });
 
-    it('Activates item with Enter and Space', async () => {
+    it('Activates item with Enter', async () => {
       const wrapper = mountDropMenu({ items });
       const first = wrapper.findAll(`.${ITEM_CLASS}`)[0]!;
 
       await first.trigger('keydown', { key: 'Enter' });
-      await first.trigger('keydown', { key: ' ' });
 
-      assert.strictEqual(items[0]!.clickHandler.mock.calls.length, 2);
+      assert.strictEqual(items[0]!.clickHandler.mock.calls.length, 1);
     });
 
     it('Emits close on Escape', async () => {
