@@ -41,7 +41,7 @@
           'note-menu__note--empty': isEmptyNote(note),
         }"
         :data-note-uuid="note.uuid"
-        :tabindex="isSelectedNote(note) ? 0 : -1"
+        tabindex="0"
         :aria-current="isSelectedNote(note) ? 'true' : undefined"
       >
         <h2 v-if="note.content.title" class="note-menu__title">
@@ -146,17 +146,23 @@ function handleNoteSelect(ev: MouseEvent) {
   handleNoteSelectionBase(ev);
 }
 
-// Enter/Space selects the focused note, honouring Shift/Ctrl/Cmd for multi-select
+// Enter selects the focused note, or opens the context menu if it's already selected
 function handleNoteKeydown(ev: KeyboardEvent) {
-  if (ev.key !== 'Enter' && ev.key !== ' ') return;
+  if (ev.key !== 'Enter') return;
 
   const target = ev.target as HTMLElement;
   if (!target.matches('.note-menu__note')) return;
 
   ev.preventDefault();
+
+  const isSelected = target.classList.contains('note-menu__note--selected');
+  const type =
+    isSelected && !ev.shiftKey && !ev.ctrlKey && !ev.metaKey ? 'contextmenu' : 'click';
+
   target.dispatchEvent(
-    new MouseEvent('click', {
+    new MouseEvent(type, {
       bubbles: true,
+      cancelable: true,
       shiftKey: ev.shiftKey,
       ctrlKey: ev.ctrlKey,
       metaKey: ev.metaKey,
