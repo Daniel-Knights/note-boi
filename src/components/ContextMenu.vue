@@ -121,8 +121,18 @@ watch(props, async () => {
   const maxY = window.innerHeight - dropMenuHeight - 10; // 10 = a bit of padding
   const maxX = window.innerWidth - dropMenuWidth - 10; // 10 = a bit of padding
 
-  top.value = Math.min(props.ev.clientY, maxY);
-  left.value = Math.min(props.ev.clientX, maxX);
+  let { clientX, clientY } = props.ev;
+
+  // Keyboard-triggered events (Shift+F10 / Menu key) have no pointer position
+  if (clientX === 0 && clientY === 0 && closestNote) {
+    const rect = closestNote.getBoundingClientRect();
+
+    clientX = rect.left + rect.width / 2;
+    clientY = rect.top + rect.height / 2;
+  }
+
+  top.value = Math.min(clientY, maxY);
+  left.value = Math.min(clientX, maxX);
 });
 </script>
 

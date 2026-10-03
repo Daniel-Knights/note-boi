@@ -101,6 +101,40 @@ onMounted(() => {
   quillEditor.root.setAttribute('aria-label', 'Note content');
   quillEditor.root.setAttribute('aria-multiline', 'true');
 
+  // Quill's heading picker only opens on Enter and has no arrow key support
+  const toolbarEl = document.querySelector<HTMLElement>('.editor__toolbar');
+
+  toolbarEl?.addEventListener('keydown', (ev) => {
+    const target = ev.target as HTMLElement;
+    const picker = target.closest<HTMLElement>('.ql-picker');
+    if (!picker) return;
+
+    const items = Array.from(picker.querySelectorAll<HTMLElement>('.ql-picker-item'));
+    const label = picker.querySelector<HTMLElement>('.ql-picker-label');
+    const isOpen = picker.classList.contains('ql-expanded');
+
+    if (target === label && (ev.key === ' ' || ev.key === 'ArrowDown')) {
+      ev.preventDefault();
+
+      if (!isOpen) label.dispatchEvent(new MouseEvent('mousedown')); // Quill's toggle
+
+      items.find((it) => it.classList.contains('ql-selected'))?.focus();
+    } else if (target.classList.contains('ql-picker-item')) {
+      const index = items.indexOf(target);
+
+      if (ev.key === 'ArrowDown') {
+        ev.preventDefault();
+        items[(index + 1) % items.length]?.focus();
+      } else if (ev.key === 'ArrowUp') {
+        ev.preventDefault();
+        items[(index - 1 + items.length) % items.length]?.focus();
+      } else if (ev.key === ' ') {
+        ev.preventDefault();
+        target.click();
+      }
+    }
+  });
+
   // Escape then Tab leaves the editor instead of inserting a tab (WCAG 2.1.2).
   // Capture phase on the parent so Quill's own Tab bindings never see the event.
   let escapePressed = false;
@@ -290,6 +324,12 @@ $utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
 
         .ql-picker-item:hover {
           color: var(--colour__highlight-hover);
+        }
+
+        // Default ring is the same colour as the dropdown background
+        .ql-picker-item:focus-visible {
+          outline: 2px solid var(--colour__white);
+          outline-offset: -2px;
         }
       }
     }
