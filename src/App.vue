@@ -1,8 +1,9 @@
 <template>
+  <a href="#editor" class="skip-link" @click.prevent="focusEditor">Skip to editor</a>
   <Loading v-if="updateState.isDownloading" />
   <NoteMenu v-model:show-note-menu="showNoteMenu" :is-small-screen="isSmallScreen" />
   <div class="layout-main">
-    <NoteMenuToggle @click="showNoteMenu = !showNoteMenu" />
+    <NoteMenuToggle :expanded="showNoteMenu" @click="showNoteMenu = !showNoteMenu" />
     <Editor :is-touch-device="isTouchDevice" />
     <Settings />
     <SyncStatus />
@@ -35,6 +36,10 @@ const showNoteMenu = ref(!isSmallScreen.value); // Show menu by default on large
 function handleMediaChange(ev: MediaQueryListEvent) {
   isSmallScreen.value = ev.matches;
   showNoteMenu.value = !isSmallScreen.value || noteState.notes.length > 1;
+}
+
+function focusEditor() {
+  document.querySelector<HTMLElement>('#editor .ql-editor')?.focus();
 }
 
 smallScreenMediaQuery.addEventListener('change', handleMediaChange);

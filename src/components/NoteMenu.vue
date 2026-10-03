@@ -1,5 +1,7 @@
 <template>
   <nav
+    id="note-menu"
+    aria-label="Notes"
     @click="listIsFocused = true"
     class="note-menu"
     :class="{
@@ -24,6 +26,7 @@
       @pointermove="handlePointerMove"
       @pointerup="handlePointerUp"
       @pointercancel="handlePointerUp"
+      @keydown="handleNoteKeydown"
       @contextmenu.prevent="handleContextMenu"
       class="note-menu__note-list"
       ref="note-list"
@@ -38,6 +41,8 @@
           'note-menu__note--empty': isEmptyNote(note),
         }"
         :data-note-uuid="note.uuid"
+        tabindex="0"
+        :aria-current="isSelectedNote(note) ? 'true' : undefined"
       >
         <h2 v-if="note.content.title" class="note-menu__title">
           {{ note.content.title }}
@@ -141,6 +146,30 @@ function handleNoteSelect(ev: MouseEvent) {
   handleNoteSelectionBase(ev);
 }
 
+// Enter selects the focused note, or opens the context menu if it's already selected
+function handleNoteKeydown(ev: KeyboardEvent) {
+  if (ev.key !== 'Enter') return;
+
+  const target = ev.target as HTMLElement;
+  if (!target.matches('.note-menu__note')) return;
+
+  ev.preventDefault();
+
+  const isSelected = target.classList.contains('note-menu__note--selected');
+  const type =
+    isSelected && !ev.shiftKey && !ev.ctrlKey && !ev.metaKey ? 'contextmenu' : 'click';
+
+  target.dispatchEvent(
+    new MouseEvent(type, {
+      bubbles: true,
+      cancelable: true,
+      shiftKey: ev.shiftKey,
+      ctrlKey: ev.ctrlKey,
+      metaKey: ev.metaKey,
+    })
+  );
+}
+
 // Ensure selected note is scrolled into view
 watch(
   [() => noteState.selectedNote],
@@ -159,6 +188,11 @@ watch(
 
     // `scrollIntoView` is undefined in tests
     selectedNoteEl?.scrollIntoView?.({ block: 'center' });
+
+    // Keep focus on the selected note when navigating with the arrow keys
+    if (noteList.value?.contains(document.activeElement)) {
+      (selectedNoteEl as HTMLElement | null)?.focus?.({ preventScroll: true });
+    }
   },
   { deep: true }
 );
@@ -185,7 +219,6 @@ $font-size: 18px;
 .note-menu__filter-input {
   -webkit-appearance: none;
   appearance: none;
-  outline: none;
   margin: 0;
   padding: 0 12px;
   height: $filter-input-height;

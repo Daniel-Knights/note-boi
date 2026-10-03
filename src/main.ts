@@ -20,12 +20,13 @@ import {
 import { openedPopup, POPUP_TYPE } from './store/popup';
 import { syncState } from './store/sync';
 import { handleUpdate } from './store/update';
-import { isDesktop, isDev, tauriListen } from './utils';
+import { initInputModality, isDesktop, isDev, tauriListen } from './utils';
 
 import App from './App.vue';
 
 export function initApp() {
   createApp(App).mount('#app');
+  initInputModality();
 
   if (isDesktop()) {
     initDesktop();

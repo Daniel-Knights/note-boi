@@ -7,16 +7,21 @@
         v-model="searchText"
         class="find-in-page__input"
         name="find-in-page-input"
+        aria-label="Find in page"
         ref="search-input"
         data-test-id="input"
       />
       <div class="find-in-page__ordinal">
-        <span>{{ currentIndex + 1 }}/{{ currentMatchBounds.length }}</span>
+        <span aria-live="polite"
+          >{{ currentIndex + 1 }}/{{ currentMatchBounds.length }}</span
+        >
       </div>
     </div>
     <button
       class="find-in-page__button find-in-page__button--nav"
       @click="handlePrev"
+      aria-label="Previous match"
+      title="Previous match"
       data-test-id="nav-prev"
     >
       <ChevronUpIcon />
@@ -24,6 +29,8 @@
     <button
       class="find-in-page__button find-in-page__button--nav"
       @click="handleNext"
+      aria-label="Next match"
+      title="Next match"
       data-test-id="nav-next"
     >
       <ChevronDownIcon />
@@ -31,6 +38,8 @@
     <button
       class="find-in-page__button find-in-page__button--close"
       @click="handleClose"
+      aria-label="Close find in page"
+      title="Close find in page"
       data-test-id="close-button"
     >
       <CloseIcon />
@@ -95,9 +104,7 @@ const rootElResizeObserver = new ResizeObserver(() => {
 });
 
 onMounted(() => {
-  // `.focus()` doesn't work consistently here
-  searchInput.value?.setSelectionRange(0, 0);
-  searchInput.value?.click();
+  focusInput();
   rootElResizeObserver.observe(props.rootEl);
 });
 
@@ -113,6 +120,19 @@ watch(
 );
 
 //// Functions
+
+/** Moves focus to the search input and selects any existing text. */
+function focusInput() {
+  const input = searchInput.value;
+  if (!input) return;
+
+  // `.focus()` doesn't work consistently on its own here
+  input.focus();
+  input.select();
+  input.click();
+}
+
+defineExpose({ focus: focusInput });
 
 async function handleSearch() {
   findAndHighlight();
@@ -250,7 +270,6 @@ function clearHighlights() {
     background-color: transparent;
     border: none;
     border-radius: 0;
-    outline: none;
     color: var(--colour__primary);
   }
 
