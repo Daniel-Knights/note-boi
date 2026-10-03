@@ -1006,7 +1006,7 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes >
               "title": "Amet consectetur adipisicing",
             },
             "timestamp": 0,
-            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
           },
           Note {
             "content": {
@@ -1021,7 +1021,7 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes >
               "title": "Amet consectetur adipisicing",
             },
             "timestamp": 0,
-            "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+            "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
           },
           Note {
             "content": {
@@ -1224,7 +1224,7 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes >
         "title": "Amet consectetur adipisicing",
       },
       "timestamp": 0,
-      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
     },
     Note {
       "content": {
@@ -1239,7 +1239,7 @@ exports[`importNotes > importNotesFromPaths/importNotesToState > Imports notes >
         "title": "Amet consectetur adipisicing",
       },
       "timestamp": 0,
-      "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
+      "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
     },
     Note {
       "content": {
@@ -1419,7 +1419,7 @@ Sugar
       "title": "Amet consectetur adipisicing",
     },
     "timestamp": 0,
-    "uuid": "2e36d871-0de2-43e6-9cbc-3c77e5d154cb",
+    "uuid": "2cbe0086-4b6f-466f-9ec0-9a302480da6a",
   },
 }
 `;
