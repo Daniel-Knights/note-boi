@@ -738,25 +738,25 @@ exports[`DropMenu > Handles sub-menus > updateState 1`] = `
 }
 `;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > KeyStore.getKey() 1`] = `undefined`;
+exports[`DropMenu > Keyboard > Activates item with Enter > KeyStore.getKey() 1`] = `undefined`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > PersistentStorage.get('THEME') 1`] = `null`;
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('THEME') 1`] = `null`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > PersistentStorage.get('USERNAME') 1`] = `null`;
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('USERNAME') 1`] = `null`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > allCalls 1`] = `[]`;
+exports[`DropMenu > Keyboard > Activates item with Enter > allCalls 1`] = `[]`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+exports[`DropMenu > Keyboard > Activates item with Enter > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > mockDb 1`] = `
+exports[`DropMenu > Keyboard > Activates item with Enter > mockDb 1`] = `
 {
   "deletedNotes": undefined,
   "encryptedNotes": [],
@@ -766,7 +766,7 @@ exports[`DropMenu > Keyboard > Activates item with Enter and Space > mockDb 1`] 
 }
 `;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > noteState 1`] = `
+exports[`DropMenu > Keyboard > Activates item with Enter > noteState 1`] = `
 {
   "extraSelectedNotes": [],
   "notes": [],
@@ -784,11 +784,11 @@ exports[`DropMenu > Keyboard > Activates item with Enter and Space > noteState 1
 }
 `;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > openedPopup 1`] = `undefined`;
+exports[`DropMenu > Keyboard > Activates item with Enter > openedPopup 1`] = `undefined`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > selectedTheme 1`] = `"System"`;
+exports[`DropMenu > Keyboard > Activates item with Enter > selectedTheme 1`] = `"System"`;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > syncState 1`] = `
+exports[`DropMenu > Keyboard > Activates item with Enter > syncState 1`] = `
 {
   "appError": AppError {
     "code": 0,
@@ -812,7 +812,7 @@ exports[`DropMenu > Keyboard > Activates item with Enter and Space > syncState 1
 }
 `;
 
-exports[`DropMenu > Keyboard > Activates item with Enter and Space > updateState 1`] = `
+exports[`DropMenu > Keyboard > Activates item with Enter > updateState 1`] = `
 {
   "isAvailable": false,
   "isDownloading": false,
