@@ -1,10 +1,20 @@
 <template>
-  <ul class="drop-menu" data-test-id="drop-menu">
+  <ul
+    @keydown="handleKeydown"
+    @focusout="handleFocusOut"
+    class="drop-menu"
+    role="menu"
+    ref="menu"
+    data-test-id="drop-menu"
+  >
     <li
       v-for="item in filteredItems"
       :key="item.label"
       v-on="handleClickHandler(item.clickHandler)"
       class="drop-menu__item"
+      role="menuitem"
+      tabindex="0"
+      :aria-haspopup="item.subMenu ? 'menu' : undefined"
       :class="{
         'drop-menu__item--selected': item.selected,
         'drop-menu__item--danger': item.danger,
@@ -23,7 +33,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, onMounted } from 'vue';
+import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue';
 
 import { DropMenuItemData } from '../types';
 
@@ -32,6 +42,9 @@ const props = defineProps<{
   items: DropMenuItemData[];
   closeOnClick?: boolean;
 }>();
+
+const menu = useTemplateRef('menu');
+const previouslyFocused = document.activeElement as HTMLElement | null;
 
 const filteredItems = computed(() => {
   return props.items.filter((item) => {
@@ -63,12 +76,105 @@ function handleClickHandler(clickHandler?: (() => void) | (() => Promise<void>))
   };
 }
 
+function isTopLevel() {
+  return !menu.value?.parentElement?.closest('.drop-menu');
+}
+
+function getSiblingItems(): HTMLElement[] {
+  return Array.from(menu.value?.children ?? []).filter(
+    (el): el is HTMLElement => el instanceof HTMLElement && el.matches('.drop-menu__item')
+  );
+}
+
+/** Keyboard support: arrows, Home/End, Enter/Space, Escape, and sub-menu in/out. */
+function handleKeydown(ev: KeyboardEvent) {
+  if (ev.key === 'Escape') {
+    emit('close'); // Not stopped, so it bubbles up from sub-menus to the top-level menu
+
+    return;
+  }
+
+  const item = (ev.target as HTMLElement).closest<HTMLElement>('.drop-menu__item');
+  if (!item || item.parentElement !== menu.value) return;
+
+  const items = getSiblingItems();
+  const index = items.indexOf(item);
+  let handled = true;
+
+  switch (ev.key) {
+    case 'ArrowDown':
+      items[(index + 1) % items.length]?.focus();
+      break;
+    case 'ArrowUp':
+      items[(index - 1 + items.length) % items.length]?.focus();
+      break;
+    case 'Home':
+      items[0]?.focus();
+      break;
+    case 'End':
+      items[items.length - 1]?.focus();
+      break;
+    case 'ArrowLeft': // Sub-menus open to the left
+      item.querySelector<HTMLElement>(':scope > .drop-menu > .drop-menu__item')?.focus();
+      break;
+    case 'ArrowRight':
+      item.parentElement?.closest<HTMLElement>('.drop-menu__item')?.focus();
+      break;
+    case 'Enter':
+    case ' ':
+      if (ev.target === item) item.click();
+      break;
+    default:
+      handled = false;
+  }
+
+  if (handled) {
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+}
+
+/** Close when focus tabs out of the top-level menu. */
+function handleFocusOut(ev: FocusEvent) {
+  if (!isTopLevel()) return;
+
+  const next = ev.relatedTarget;
+  if (next instanceof Element && !menu.value?.contains(next)) {
+    emit('close');
+  }
+}
+
 onMounted(() => {
   document.addEventListener('click', handleClickOutside);
+
+  if (!isTopLevel()) return;
+
+  // Only move focus into the menu if it was opened with the keyboard
+  let openedWithKeyboard = false;
+
+  try {
+    openedWithKeyboard = !!previouslyFocused?.matches(':focus-visible');
+  } catch {
+    // `:focus-visible` unsupported
+  }
+
+  if (openedWithKeyboard) {
+    getSiblingItems()[0]?.focus();
+  }
 });
 
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside);
+
+  if (!isTopLevel()) return;
+
+  // Return focus to the opener, unless focus has already gone elsewhere
+  const active = document.activeElement;
+  const focusInMenu = active === document.body || !!menu.value?.contains(active);
+
+  if (focusInMenu && previouslyFocused?.isConnected) {
+    previouslyFocused.focus();
+  }
 });
 </script>
 
@@ -96,6 +202,12 @@ $list-bg-colour: var(--colour__tertiary);
 
   &:hover {
     background-color: var(--colour__tertiary-light);
+  }
+
+  // Default ring is the same colour as the menu background
+  &:focus-visible {
+    outline: 2px solid var(--colour__white);
+    outline-offset: -2px;
   }
 
   // Increase hover hit box
@@ -133,7 +245,8 @@ $list-bg-colour: var(--colour__tertiary);
     right: calc(100% + v.$drop-menu-padding);
   }
 
-  &:hover {
+  &:hover,
+  &:focus-within {
     &::before {
       display: none;
     }
