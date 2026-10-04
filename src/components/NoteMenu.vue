@@ -173,9 +173,9 @@ function handleNoteKeydown(ev: KeyboardEvent) {
 // Ensure selected note is scrolled into view
 watch(
   [() => noteState.selectedNote],
-  () => {
+  (newSelectedNote, oldSelectedNote) => {
     // Selected note edited instead of different note selected
-    if (noteState.selectedNote.uuid === noteState.notes[0]?.uuid) {
+    if (newSelectedNote[0].uuid === oldSelectedNote[0].uuid) {
       // `scrollTo` is undefined in tests
       noteList.value?.scrollTo?.({ top: 0 });
 
@@ -183,7 +183,7 @@ watch(
     }
 
     const selectedNoteEl = noteList.value?.querySelector(
-      `[data-note-uuid="${noteState.selectedNote.uuid}"]`
+      `[data-note-uuid="${newSelectedNote[0].uuid}"]`
     );
 
     // `scrollIntoView` is undefined in tests
