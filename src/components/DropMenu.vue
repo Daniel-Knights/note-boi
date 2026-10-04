@@ -86,7 +86,7 @@ function getSiblingItems(): HTMLElement[] {
   );
 }
 
-/** Keyboard support: arrows, Enter, Escape, and sub-menu in/out. */
+/** Keyboard support: Enter activates the focused item, Escape closes. */
 function handleKeydown(ev: KeyboardEvent) {
   if (ev.key === 'Escape') {
     emit('close'); // Not stopped, so it bubbles up from sub-menus to the top-level menu
@@ -95,35 +95,11 @@ function handleKeydown(ev: KeyboardEvent) {
   }
 
   const item = (ev.target as HTMLElement).closest<HTMLElement>('.drop-menu__item');
-  if (!item || item.parentElement !== menu.value) return;
 
-  const items = getSiblingItems();
-  const index = items.indexOf(item);
-  let handled = true;
-
-  switch (ev.key) {
-    case 'ArrowDown':
-      items[(index + 1) % items.length]?.focus();
-      break;
-    case 'ArrowUp':
-      items[(index - 1 + items.length) % items.length]?.focus();
-      break;
-    case 'ArrowLeft': // Sub-menus open to the left
-      item.querySelector<HTMLElement>(':scope > .drop-menu > .drop-menu__item')?.focus();
-      break;
-    case 'ArrowRight':
-      item.parentElement?.closest<HTMLElement>('.drop-menu__item')?.focus();
-      break;
-    case 'Enter':
-      if (ev.target === item) item.click();
-      break;
-    default:
-      handled = false;
-  }
-
-  if (handled) {
+  if (ev.key === 'Enter' && item && ev.target === item) {
     ev.preventDefault();
     ev.stopPropagation();
+    item.click();
   }
 }
 
