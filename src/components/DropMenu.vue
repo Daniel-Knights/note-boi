@@ -173,12 +173,6 @@ $list-bg-colour: var(--colour__tertiary);
     background-color: var(--colour__tertiary-light);
   }
 
-  // Default ring is the same colour as the menu background
-  &:focus-visible {
-    outline: 2px solid var(--colour__white);
-    outline-offset: -2px;
-  }
-
   // Increase hover hit box
   &::after {
     content: '';
