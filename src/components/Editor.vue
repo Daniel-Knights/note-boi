@@ -291,12 +291,6 @@ $utility-button-padding: (v.$utility-button-spacing-x - $spacing-x) * 2;
         .ql-picker-item:hover {
           color: var(--colour__highlight-hover);
         }
-
-        // Default ring is the same colour as the dropdown background
-        .ql-picker-item:focus-visible {
-          outline: 2px solid var(--colour__white);
-          outline-offset: -2px;
-        }
       }
     }
 
