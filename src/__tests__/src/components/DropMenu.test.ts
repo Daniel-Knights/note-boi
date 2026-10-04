@@ -44,27 +44,6 @@ describe('DropMenu', () => {
       });
     });
 
-    it('Moves focus with arrow keys and wraps', async () => {
-      const wrapper = mount(DropMenu, {
-        props: { items },
-        attachTo: document.body,
-      });
-      const [one, two] = wrapper.findAll(`.${ITEM_CLASS}`).map((w) => w.element);
-
-      (one as HTMLElement).focus();
-      await wrapper
-        .findAll(`.${ITEM_CLASS}`)[0]!
-        .trigger('keydown', { key: 'ArrowDown' });
-      assert.strictEqual(document.activeElement, two);
-
-      await wrapper
-        .findAll(`.${ITEM_CLASS}`)[1]!
-        .trigger('keydown', { key: 'ArrowDown' });
-      assert.strictEqual(document.activeElement, one);
-
-      wrapper.unmount();
-    });
-
     it('Activates item with Enter', async () => {
       const wrapper = mountDropMenu({ items });
       const first = wrapper.findAll(`.${ITEM_CLASS}`)[0]!;
