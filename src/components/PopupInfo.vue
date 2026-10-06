@@ -1,7 +1,7 @@
 <template>
-  <Popup @close="emit('close')">
+  <Popup @close="emit('close')" labelled-by="popup-info-heading">
     <div id="popup-info" data-test-id="popup-info">
-      <h2>Info</h2>
+      <h2 id="popup-info-heading">Info</h2>
       <dl class="popup-info__description-list">
         <div
           v-if="syncState.username"

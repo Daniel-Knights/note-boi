@@ -1,9 +1,14 @@
 <template>
-  <Popup @close="emit('close')">
+  <Popup @close="emit('close')" labelled-by="change-password-heading">
     <div id="change-password" data-test-id="popup-change-password">
-      <h2 data-test-id="heading">Change Password</h2>
+      <h2 id="change-password-heading" data-test-id="heading">Change Password</h2>
       <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
+        <label for="change-password-current" class="sr-only">Current Password</label>
         <input
+          id="change-password-current"
+          autocomplete="current-password"
+          :aria-invalid="!validation.currentPassword"
+          :aria-describedby="errorId"
           v-model="syncState.password"
           @input="validation.currentPassword = true"
           class="form__input"
@@ -14,7 +19,12 @@
           ref="current-password"
           data-test-id="current-password"
         />
+        <label for="change-password-new" class="sr-only">New Password</label>
         <input
+          id="change-password-new"
+          autocomplete="new-password"
+          :aria-invalid="!validation.newPassword"
+          :aria-describedby="errorId"
           v-model="syncState.newPassword"
           @input="validation.newPassword = true"
           class="form__input"
@@ -24,7 +34,12 @@
           placeholder="New Password"
           data-test-id="new-password"
         />
+        <label for="change-password-confirm" class="sr-only">Confirm New Password</label>
         <input
+          id="change-password-confirm"
+          autocomplete="new-password"
+          :aria-invalid="!validation.confirmNewPassword"
+          :aria-describedby="errorId"
           v-model="confirmNewPassword"
           @input="validation.confirmNewPassword = true"
           class="form__input"
@@ -36,7 +51,9 @@
         />
         <p
           v-if="syncState.appError.display?.form"
+          id="change-password-error"
           class="form__error"
+          role="alert"
           data-test-id="error-message"
         >
           {{ syncState.appError.message || 'Something went wrong' }}
@@ -48,7 +65,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, ref, useTemplateRef } from 'vue';
+import { computed, onMounted, reactive, ref, useTemplateRef } from 'vue';
 
 import { changePassword } from '../api';
 import { AppError, ERROR_CODE } from '../classes';
@@ -62,6 +79,11 @@ const emit = defineEmits(['close']);
 const currentPassword = useTemplateRef('current-password');
 
 const confirmNewPassword = ref('');
+
+/** Id of the form error, linked to the inputs while an error is displayed. */
+const errorId = computed(() =>
+  syncState.appError.display?.form ? 'change-password-error' : undefined
+);
 
 const validation = reactive({
   currentPassword: true,
