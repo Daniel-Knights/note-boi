@@ -1,5 +1,108 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`SyncStatus > Announces sync state to assistive tech > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > openedPopup 1`] = `undefined`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > selectedTheme 1`] = `"System"`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": true,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "d",
+}
+`;
+
+exports[`SyncStatus > Announces sync state to assistive tech > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`SyncStatus > Displays error icon and opens popup on click > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`SyncStatus > Displays error icon and opens popup on click > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;

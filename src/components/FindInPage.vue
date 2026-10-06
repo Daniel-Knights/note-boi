@@ -284,6 +284,7 @@ function clearHighlights() {
   &__button {
     cursor: pointer;
     margin-left: 6px;
+    height: 24px; // Minimum target size (WCAG 2.5.8)
     color: var(--colour__tertiary);
 
     &--nav {
@@ -291,7 +292,7 @@ function clearHighlights() {
     }
 
     &--close {
-      width: 20px;
+      width: 24px;
     }
 
     &:hover {

@@ -1,0 +1,428 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > allCalls 1`] = `[]`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > openedPopup 1`] = `undefined`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > selectedTheme 1`] = `"System"`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup accessibility > Focuses inside, marks the background inert, and restores focus > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > allCalls 1`] = `[]`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > openedPopup 1`] = `undefined`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > selectedTheme 1`] = `"System"`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup accessibility > Is a labelled modal dialog > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > openedPopup 1`] = `undefined`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > selectedTheme 1`] = `"System"`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup accessibility > Labels sync auth inputs with correct autocomplete > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Popup accessibility > Links form errors to inputs > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup accessibility > Links form errors to inputs > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Popup accessibility > Links form errors to inputs > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup accessibility > Links form errors to inputs > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`Popup accessibility > Links form errors to inputs > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup accessibility > Links form errors to inputs > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup accessibility > Links form errors to inputs > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup accessibility > Links form errors to inputs > allCalls 1`] = `[]`;
+
+exports[`Popup accessibility > Links form errors to inputs > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Popup accessibility > Links form errors to inputs > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup accessibility > Links form errors to inputs > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Popup accessibility > Links form errors to inputs > openedPopup 1`] = `undefined`;
+
+exports[`Popup accessibility > Links form errors to inputs > selectedTheme 1`] = `"System"`;
+
+exports[`Popup accessibility > Links form errors to inputs > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 10,
+    "display": {
+      "form": true,
+    },
+    "message": "Oops",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup accessibility > Links form errors to inputs > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > allCalls 1`] = `[]`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > openedPopup 1`] = `undefined`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > selectedTheme 1`] = `"System"`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`Popup accessibility > Traps Tab focus within the dialog > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
