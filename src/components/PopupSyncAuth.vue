@@ -1,10 +1,15 @@
 <template>
-  <Popup @close="emit('close')">
+  <Popup @close="emit('close')" labelled-by="sync-auth-heading">
     <div id="sync-auth" data-test-id="popup-auth">
-      <h2 data-test-id="heading">{{ capitalise(mode) }}</h2>
+      <h2 id="sync-auth-heading" data-test-id="heading">{{ capitalise(mode) }}</h2>
       <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
+        <label for="sync-auth-username" class="sr-only">Username</label>
         <input
           v-model="syncState.username"
+          id="sync-auth-username"
+          autocomplete="username"
+          :aria-invalid="!validation.username"
+          :aria-describedby="errorId"
           @input="validation.username = true"
           class="form__input"
           name="popup-sync-auth-username"
@@ -14,8 +19,13 @@
           ref="username-input"
           data-test-id="username"
         />
+        <label for="sync-auth-password" class="sr-only">Password</label>
         <input
           v-model="syncState.password"
+          id="sync-auth-password"
+          :autocomplete="mode === 'login' ? 'current-password' : 'new-password'"
+          :aria-invalid="!validation.password"
+          :aria-describedby="errorId"
           @input="validation.password = true"
           class="form__input"
           name="popup-sync-auth-password"
@@ -24,8 +34,15 @@
           placeholder="Password"
           data-test-id="password"
         />
+        <label v-if="mode === 'signup'" for="sync-auth-confirm-password" class="sr-only">
+          Confirm Password
+        </label>
         <input
           v-if="mode === 'signup'"
+          id="sync-auth-confirm-password"
+          autocomplete="new-password"
+          :aria-invalid="!validation.confirmPassword"
+          :aria-describedby="errorId"
           v-model="confirmPassword"
           @input="validation.confirmPassword = true"
           class="form__input"
@@ -37,7 +54,9 @@
         />
         <p
           v-if="syncState.appError.display?.form"
+          id="sync-auth-error"
           class="form__error"
+          role="alert"
           data-test-id="error-message"
         >
           {{ syncState.appError.message || 'Something went wrong' }}
@@ -62,7 +81,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, ref, useTemplateRef } from 'vue';
+import { computed, onMounted, reactive, ref, useTemplateRef } from 'vue';
 
 import { login, signup } from '../api';
 import { AppError, ERROR_CODE } from '../classes';
@@ -77,6 +96,11 @@ const emit = defineEmits(['close']);
 const usernameInput = useTemplateRef('username-input');
 
 const mode = ref<'login' | 'signup'>('login');
+
+/** Id of the form error, linked to the inputs while an error is displayed. */
+const errorId = computed(() =>
+  syncState.appError.display?.form ? 'sync-auth-error' : undefined
+);
 const confirmPassword = ref('');
 
 const validation = reactive({

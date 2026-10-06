@@ -35,6 +35,14 @@ describe('App', () => {
     assert.isTrue(calls.listeners.has('signup'));
   });
 
+  it('Renders a skip link to the editor', () => {
+    mockApi();
+    const wrapper = mount(App);
+    const skipLink = wrapper.get('.skip-link');
+
+    assert.strictEqual(skipLink.attributes('href'), '#editor');
+  });
+
   it('Shows loading spinner when update is downloading', async () => {
     mockApi();
 

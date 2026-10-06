@@ -54,6 +54,17 @@ describe('SyncStatus', () => {
     assert.isTrue(calls.listeners.has('signup'));
   });
 
+  it('Announces sync state to assistive tech', () => {
+    mockApi();
+    s.syncState.username = 'd';
+    s.syncState.isLoggedIn = true;
+
+    const wrapper = mount(SyncStatus);
+
+    assert.strictEqual(wrapper.get('#sync-status').attributes('role'), 'status');
+    assert.include(findByTestId(wrapper, 'success').text(), 'Changes synced');
+  });
+
   it('Displays loading spinner', async () => {
     mockApi();
 

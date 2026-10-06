@@ -1,6 +1,10 @@
 <template>
-  <Popup @close="emit('close')" data-test-id="popup-error">
-    <div class="sync-error__message" data-test-id="error-message">
+  <Popup
+    @close="emit('close')"
+    labelled-by="sync-error-message"
+    data-test-id="popup-error"
+  >
+    <div id="sync-error-message" class="sync-error__message" data-test-id="error-message">
       Error: {{ syncState.appError.message || 'Something went wrong' }}
     </div>
     <div>
