@@ -220,6 +220,14 @@ describe('NoteMenu', () => {
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[5]);
   });
 
+  it('Is inert while the menu is hidden', () => {
+    const hidden = mountNoteMenu({ showNoteMenu: false });
+    const shown = mountNoteMenu({ showNoteMenu: true });
+
+    assert.isTrue(hidden.get('#note-menu').element.hasAttribute('inert'));
+    assert.isFalse(shown.get('#note-menu').element.hasAttribute('inert'));
+  });
+
   it('Makes every note focusable and marks the selected one', () => {
     const wrapper = mountNoteMenu();
     const noteEls = wrapper.findAll('.note-menu__note');
