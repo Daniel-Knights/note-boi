@@ -2,6 +2,7 @@
   <nav
     id="note-menu"
     aria-label="Notes"
+    :inert="!showNoteMenu || undefined"
     @click="listIsFocused = true"
     class="note-menu"
     :class="{
