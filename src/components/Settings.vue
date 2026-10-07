@@ -4,6 +4,7 @@
       @click.stop="show = !show"
       class="button"
       data-test-id="settings-button"
+      ref="settings-button"
       title="Settings"
       aria-label="Settings"
       aria-haspopup="menu"
@@ -23,7 +24,7 @@
 
 <script lang="ts" setup>
 import { check } from '@tauri-apps/plugin-updater';
-import { computed, ref } from 'vue';
+import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 
 import { deleteAccount, logout } from '../api';
 import { COLOUR_THEMES, UPDATE_STRATEGIES } from '../constant';
@@ -39,7 +40,18 @@ import PopupChangePassword from './PopupChangePassword.vue';
 import PopupInfo from './PopupInfo.vue';
 import CogIcon from './svg/CogIcon.vue';
 
+const settingsButton = useTemplateRef('settings-button');
 const show = ref(false);
+
+// The menu item that opened a popup is removed along with the menu,
+// so return focus to the settings button when the popup closes
+watch(openedPopup, async (popup, prevPopup) => {
+  if (popup || !prevPopup) return;
+
+  await nextTick();
+
+  if (document.activeElement === document.body) settingsButton.value?.focus();
+});
 
 const menuItems = computed<DropMenuItemData[]>(() => [
   {
