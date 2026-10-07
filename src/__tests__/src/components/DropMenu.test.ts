@@ -28,6 +28,40 @@ describe('DropMenu', () => {
     assert.strictEqual(calls.size, 0);
   });
 
+  describe('Keyboard', () => {
+    const items = [
+      { label: 'One', clickHandler: vi.fn() },
+      { label: 'Two', clickHandler: vi.fn() },
+    ];
+
+    it('Has menu roles and focusable items', () => {
+      const wrapper = mountDropMenu({ items });
+
+      assert.strictEqual(wrapper.attributes('role'), 'menu');
+      wrapper.findAll(`.${ITEM_CLASS}`).forEach((item) => {
+        assert.strictEqual(item.attributes('role'), 'menuitem');
+        assert.strictEqual(item.attributes('tabindex'), '0');
+      });
+    });
+
+    it('Activates item with Enter', async () => {
+      const wrapper = mountDropMenu({ items });
+      const first = wrapper.findAll(`.${ITEM_CLASS}`)[0]!;
+
+      await first.trigger('keydown', { key: 'Enter' });
+
+      assert.strictEqual(items[0]!.clickHandler.mock.calls.length, 1);
+    });
+
+    it('Emits close on Escape', async () => {
+      const wrapper = mountDropMenu({ items });
+
+      await wrapper.findAll(`.${ITEM_CLASS}`)[0]!.trigger('keydown', { key: 'Escape' });
+
+      assert.lengthOf(wrapper.emitted('close')!, 1);
+    });
+  });
+
   it('Emits close on click outside', () => {
     const wrapper = mountDropMenu();
 

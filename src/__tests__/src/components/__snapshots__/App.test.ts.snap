@@ -1053,6 +1053,109 @@ exports[`App > Mounts > updateState 1`] = `
 }
 `;
 
+exports[`App > Renders a skip link to the editor > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`App > Renders a skip link to the editor > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`App > Renders a skip link to the editor > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`App > Renders a skip link to the editor > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`App > Renders a skip link to the editor > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`App > Renders a skip link to the editor > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`App > Renders a skip link to the editor > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`App > Renders a skip link to the editor > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "logout",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`App > Renders a skip link to the editor > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`App > Renders a skip link to the editor > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`App > Renders a skip link to the editor > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`App > Renders a skip link to the editor > openedPopup 1`] = `undefined`;
+
+exports[`App > Renders a skip link to the editor > selectedTheme 1`] = `"System"`;
+
+exports[`App > Renders a skip link to the editor > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`App > Renders a skip link to the editor > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`App > Shows loading spinner when update is downloading > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`App > Shows loading spinner when update is downloading > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;

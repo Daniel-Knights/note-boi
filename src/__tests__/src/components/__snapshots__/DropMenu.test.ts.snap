@@ -738,6 +738,252 @@ exports[`DropMenu > Handles sub-menus > updateState 1`] = `
 }
 `;
 
+exports[`DropMenu > Keyboard > Activates item with Enter > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > allCalls 1`] = `[]`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > openedPopup 1`] = `undefined`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > selectedTheme 1`] = `"System"`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`DropMenu > Keyboard > Activates item with Enter > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > allCalls 1`] = `[]`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > openedPopup 1`] = `undefined`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > selectedTheme 1`] = `"System"`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`DropMenu > Keyboard > Emits close on Escape > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > allCalls 1`] = `[]`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > openedPopup 1`] = `undefined`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > selectedTheme 1`] = `"System"`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`DropMenu > Keyboard > Has menu roles and focusable items > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`DropMenu > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`DropMenu > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;

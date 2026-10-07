@@ -1154,3 +1154,85 @@ exports[`Utils > unixToDateTime > updateState 1`] = `
   "strategy": "manual",
 }
 `;
+
+exports[`initInputModality > Sets modality based on how focus arrived > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > allCalls 1`] = `[]`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > openedPopup 1`] = `undefined`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > selectedTheme 1`] = `"System"`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 0,
+    "display": undefined,
+    "message": undefined,
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`initInputModality > Sets modality based on how focus arrived > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;

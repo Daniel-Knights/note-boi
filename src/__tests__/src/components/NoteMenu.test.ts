@@ -220,6 +220,38 @@ describe('NoteMenu', () => {
     assert.deepEqual(n.noteState.selectedNote, n.noteState.notes[5]);
   });
 
+  it('Is inert while the menu is hidden', () => {
+    const hidden = mountNoteMenu({ showNoteMenu: false });
+    const shown = mountNoteMenu({ showNoteMenu: true });
+
+    assert.isTrue(hidden.get('#note-menu').element.hasAttribute('inert'));
+    assert.isFalse(shown.get('#note-menu').element.hasAttribute('inert'));
+  });
+
+  it('Makes every note focusable and marks the selected one', () => {
+    const wrapper = mountNoteMenu();
+    const noteEls = wrapper.findAll('.note-menu__note');
+
+    assert.lengthOf(noteEls, n.noteState.notes.length);
+    noteEls.forEach((el) => assert.strictEqual(el.attributes('tabindex'), '0'));
+    assert.lengthOf(wrapper.findAll('[aria-current="true"]'), 1);
+  });
+
+  it('Selects a note on Enter, and opens the context menu on the selected note', async () => {
+    const wrapper = mountNoteMenu();
+    const wrapperVm = wrapper.vm as unknown as { contextMenuEv?: MouseEvent };
+    const [, second] = wrapper.findAll('.note-menu__note');
+
+    await second!.trigger('keydown', { key: 'Enter' });
+
+    assert.strictEqual(n.noteState.selectedNote.uuid, n.noteState.notes[1]!.uuid);
+    assert.isUndefined(wrapperVm.contextMenuEv);
+
+    await wrapper.findAll('.note-menu__note')[1]!.trigger('keydown', { key: 'Enter' });
+
+    assert.isDefined(wrapperVm.contextMenuEv);
+  });
+
   it('Sets contextmenu ev', async () => {
     const wrapper = mountNoteMenu();
     const wrapperVm = wrapper.vm as unknown as {

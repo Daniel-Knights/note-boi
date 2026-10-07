@@ -23,6 +23,27 @@ describe('Editor', () => {
     assert.strictEqual(calls.size, 0);
   });
 
+  it('Lets Tab through to the browser after Escape', () => {
+    const wrapper = mount(Editor, { props: { isTouchDevice: false } });
+    const body = getByTestId(wrapper, 'body');
+    const root = body.find('.ql-editor').element;
+    const press = (key: string) => {
+      const ev = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true });
+      const spy = vi.fn();
+
+      root.addEventListener('keydown', spy);
+      root.dispatchEvent(ev);
+      root.removeEventListener('keydown', spy);
+
+      return spy.mock.calls.length;
+    };
+
+    assert.strictEqual(press('Tab'), 1); // Reaches Quill
+    press('Escape');
+    assert.strictEqual(press('Tab'), 0); // Skips Quill
+    assert.strictEqual(press('Tab'), 1); // Back to normal
+  });
+
   it('Has the correct timestamp', () => {
     const wrapper = mount(Editor, { props: { isTouchDevice: false } });
     const timestamp = getByTestId(wrapper, 'timestamp');
@@ -101,6 +122,30 @@ describe('Editor', () => {
     await nextTick();
 
     assert.isTrue(wrapper.getComponent(FindInPage).isVisible());
+  });
+
+  it('Focuses the find-in-page input on open and on repeated shortcut', async () => {
+    const wrapper = mount(Editor, {
+      props: { isTouchDevice: false },
+      attachTo: document.body,
+    });
+    const open = () =>
+      window.dispatchEvent(new KeyboardEvent('keydown', { metaKey: true, key: 'f' }));
+
+    open();
+    await nextTick();
+
+    const input = wrapper.getComponent(FindInPage).find('input').element;
+
+    assert.strictEqual(document.activeElement, input);
+
+    input.blur();
+    open();
+    await nextTick();
+
+    assert.strictEqual(document.activeElement, input);
+
+    wrapper.unmount();
   });
 
   it('Does not show find-in-page on touch devices', async () => {
