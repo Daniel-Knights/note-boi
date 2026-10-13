@@ -103,6 +103,17 @@ describe('FindInPage', () => {
     await nextButton.trigger('click');
     assertActiveEl(highlightsContainerEl, 0);
   });
+
+  it('Restores focus to opener el', () => {
+    const opener = document.createElement('button');
+    document.body.appendChild(opener);
+    opener.focus();
+    const wrapper = mount(FindInPage, { props: defaultProps });
+    wrapper.unmount();
+
+    assert.strictEqual(document.activeElement, opener);
+    opener.remove();
+  });
 });
 
 //// Helpers

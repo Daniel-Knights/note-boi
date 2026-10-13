@@ -91,6 +91,8 @@ const searchText = defineModel<string>();
 const currentIndex = ref(-1);
 const currentMatchBounds = ref<Bounds[]>([]);
 
+const openerEl = document.activeElement as HTMLElement | null;
+
 let currentMatches: RegExpMatchArray[] = [];
 let resizeTimeout: number;
 
@@ -113,6 +115,8 @@ onMounted(() => {
 onBeforeUnmount(() => {
   clearHighlights();
   rootElResizeObserver.disconnect();
+  // Return focus to whatever element was active when popup was opened
+  if (openerEl?.isConnected) openerEl.focus();
 });
 
 // Update highlights when text changes
