@@ -14,4 +14,11 @@ describe('Loading', () => {
     assert.isTrue(wrapper.isVisible());
     assert.strictEqual(calls.size, 0);
   });
+
+  it('Is announced as a status', () => {
+    const wrapper = mount(Loading);
+
+    assert.strictEqual(wrapper.attributes('role'), 'status');
+    assert.strictEqual(wrapper.attributes('aria-label'), 'Loading');
+  });
 });
