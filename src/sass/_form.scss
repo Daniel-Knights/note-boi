@@ -11,7 +11,7 @@
   }
 
   // Visually hidden label shouldn't add spacing before the first field
-  > .sr-only:first-child + * {
+  > .screenreader-only:first-child + * {
     margin-top: 0;
   }
 

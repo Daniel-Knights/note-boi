@@ -3,7 +3,7 @@
     <div id="sync-auth" data-test-id="popup-auth">
       <h2 id="sync-auth-heading" data-test-id="heading">{{ capitalise(mode) }}</h2>
       <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
-        <label for="sync-auth-username" class="sr-only">Username</label>
+        <label for="sync-auth-username" class="screenreader-only">Username</label>
         <input
           v-model="syncState.username"
           id="sync-auth-username"
@@ -19,7 +19,7 @@
           ref="username-input"
           data-test-id="username"
         />
-        <label for="sync-auth-password" class="sr-only">Password</label>
+        <label for="sync-auth-password" class="screenreader-only">Password</label>
         <input
           v-model="syncState.password"
           id="sync-auth-password"
@@ -34,7 +34,11 @@
           placeholder="Password"
           data-test-id="password"
         />
-        <label v-if="mode === 'signup'" for="sync-auth-confirm-password" class="sr-only">
+        <label
+          v-if="mode === 'signup'"
+          for="sync-auth-confirm-password"
+          class="screenreader-only"
+        >
           Confirm Password
         </label>
         <input
