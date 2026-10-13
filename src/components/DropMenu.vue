@@ -37,11 +37,12 @@ import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue';
 
 import { DropMenuItemData } from '../types';
 
-const emit = defineEmits(['close']);
 const props = defineProps<{
   items: DropMenuItemData[];
   closeOnClick?: boolean;
 }>();
+
+const emit = defineEmits(['close']);
 
 const menu = useTemplateRef('menu');
 const previouslyFocused = document.activeElement as HTMLElement | null;

@@ -96,11 +96,6 @@ const emit = defineEmits(['close']);
 const usernameInput = useTemplateRef('username-input');
 
 const mode = ref<'login' | 'signup'>('login');
-
-/** Id of the form error, linked to the inputs while an error is displayed. */
-const errorId = computed(() =>
-  syncState.appError.display?.form ? 'sync-auth-error' : undefined
-);
 const confirmPassword = ref('');
 
 const validation = reactive({
@@ -108,6 +103,11 @@ const validation = reactive({
   password: true,
   confirmPassword: true,
 });
+
+/** Id of the form error, linked to the inputs while an error is displayed. */
+const errorId = computed(() =>
+  syncState.appError.display?.form ? 'sync-auth-error' : undefined
+);
 
 async function handleSubmit() {
   validation.username = !!syncState.username;

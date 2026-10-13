@@ -80,16 +80,16 @@ const currentPassword = useTemplateRef('current-password');
 
 const confirmNewPassword = ref('');
 
-/** Id of the form error, linked to the inputs while an error is displayed. */
-const errorId = computed(() =>
-  syncState.appError.display?.form ? 'change-password-error' : undefined
-);
-
 const validation = reactive({
   currentPassword: true,
   newPassword: true,
   confirmNewPassword: true,
 });
+
+/** Id of the form error, linked to the inputs while an error is displayed. */
+const errorId = computed(() =>
+  syncState.appError.display?.form ? 'change-password-error' : undefined
+);
 
 async function handleSubmit() {
   validation.currentPassword = !!syncState.password;
