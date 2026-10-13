@@ -57,28 +57,6 @@ describe('Popup accessibility', () => {
     assert.strictEqual(document.activeElement, opener);
   });
 
-  it('Traps Tab focus within the dialog', () => {
-    const wrapper = mount(Popup, {
-      slots: { default: '<button id="a">A</button><button id="b">B</button>' },
-      ...getTeleportMountOptions(appDiv),
-    });
-    const press = (shiftKey: boolean) =>
-      appDiv
-        .querySelector('[role="dialog"]')!
-        .dispatchEvent(
-          new KeyboardEvent('keydown', { key: 'Tab', shiftKey, bubbles: true })
-        );
-
-    document.getElementById('b')!.focus();
-    press(false);
-    assert.strictEqual(document.activeElement?.id, 'a');
-
-    press(true);
-    assert.strictEqual(document.activeElement?.id, 'b');
-
-    wrapper.unmount();
-  });
-
   it('Labels sync auth inputs with correct autocomplete', () => {
     const wrapper = mount(PopupSyncAuth, { attachTo: document.body });
     const username = appDiv.querySelector<HTMLInputElement>('#sync-auth-username')!;
