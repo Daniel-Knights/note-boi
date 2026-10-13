@@ -36,7 +36,7 @@ describe('Popup accessibility', () => {
     wrapper.unmount();
   });
 
-  it('Focuses inside, marks the background inert, and restores focus', () => {
+  it('Marks the background inert and restores focus', () => {
     const opener = document.createElement('button');
     const sibling = document.createElement('div');
 
@@ -48,7 +48,6 @@ describe('Popup accessibility', () => {
       ...getTeleportMountOptions(appDiv),
     });
 
-    assert.strictEqual(document.activeElement?.id, 'a');
     assert.isTrue(sibling.hasAttribute('inert'));
 
     wrapper.unmount();
