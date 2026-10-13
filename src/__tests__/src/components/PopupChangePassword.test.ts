@@ -197,4 +197,20 @@ describe('PopupChangePassword', () => {
       accessToken: 'test-token',
     });
   });
+
+  it('Links form errors to inputs', () => {
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.FORM_VALIDATION,
+      message: 'Oops',
+      display: { form: true },
+    });
+
+    const wrapper = mountPopupChangePassword();
+
+    assert.strictEqual(wrapper.get('#change-password-error').attributes('role'), 'alert');
+    assert.strictEqual(
+      wrapper.get('#change-password-new').attributes('aria-describedby'),
+      'change-password-error'
+    );
+  });
 });

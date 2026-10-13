@@ -409,4 +409,18 @@ describe('PopupSyncAuth', () => {
     // Button should be enabled again
     assert.isFalse(submitButtonAfterLoading.element.disabled);
   });
+
+  it('Labels inputs with correct autocomplete', () => {
+    mockApi();
+
+    const wrapper = mountPopupSyncAuth();
+    const username = wrapper.get<HTMLInputElement>('#sync-auth-username');
+    const password = wrapper.get<HTMLInputElement>('#sync-auth-password');
+
+    assert.isTrue(wrapper.find('label[for="sync-auth-username"]').exists());
+    assert.isTrue(wrapper.find('label[for="sync-auth-password"]').exists());
+    assert.strictEqual(username.element.autocomplete, 'username');
+    assert.strictEqual(password.element.autocomplete, 'current-password');
+    assert.strictEqual(username.attributes('aria-invalid'), 'false');
+  });
 });
