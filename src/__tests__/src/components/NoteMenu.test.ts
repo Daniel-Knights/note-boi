@@ -240,14 +240,14 @@ describe('NoteMenu', () => {
   it('Selects a note on Enter, and opens the context menu on the selected note', async () => {
     const wrapper = mountNoteMenu();
     const wrapperVm = wrapper.vm as unknown as { contextMenuEv?: MouseEvent };
-    const [, second] = wrapper.findAll('.note-menu__note');
+    const [, secondNoteEl] = wrapper.findAll('.note-menu__note');
 
-    await second!.trigger('keydown', { key: 'Enter' });
+    await secondNoteEl!.trigger('keydown', { key: 'Enter' });
 
     assert.strictEqual(n.noteState.selectedNote.uuid, n.noteState.notes[1]!.uuid);
     assert.isUndefined(wrapperVm.contextMenuEv);
 
-    await wrapper.findAll('.note-menu__note')[1]!.trigger('keydown', { key: 'Enter' });
+    await secondNoteEl!.trigger('keydown', { key: 'Enter' });
 
     assert.isDefined(wrapperVm.contextMenuEv);
   });
