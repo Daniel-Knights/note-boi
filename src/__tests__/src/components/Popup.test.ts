@@ -7,7 +7,7 @@ import Popup from '../../../components/Popup.vue';
 
 const SLOT_CONTENT = '<div>Hello World</div>';
 
-function mountPopup() {
+function mountPopup(props?: { labelledBy?: string }) {
   const appDiv = getAppDiv();
 
   document.body.appendChild(appDiv);
@@ -16,6 +16,7 @@ function mountPopup() {
 
   return mount(Popup, {
     ...teleportMountOptions,
+    props,
     slots: {
       default: SLOT_CONTENT,
     },
@@ -76,5 +77,37 @@ describe('Popup', () => {
     assert.lengthOf(wrapper.emitted('close')!, 1);
     expect(removeWindowListenerSpy).toHaveBeenCalledOnce();
     expect(removeBodyListenerSpy).toHaveBeenCalledOnce();
+  });
+
+  it('Is a labelled modal dialog', () => {
+    const wrapper = mountPopup({ labelledBy: 'heading' });
+    const dialog = document.querySelector('[role="dialog"]')!;
+
+    assert.strictEqual(dialog.getAttribute('aria-modal'), 'true');
+    assert.strictEqual(dialog.getAttribute('aria-labelledby'), 'heading');
+
+    wrapper.unmount();
+  });
+
+  it('Marks the background inert and restores focus', () => {
+    const opener = document.createElement('button');
+    const sibling = document.createElement('div');
+
+    const appDiv = getAppDiv();
+    document.body.appendChild(appDiv);
+    appDiv.append(opener, sibling);
+    opener.focus();
+
+    const wrapper = mount(Popup, {
+      slots: { default: SLOT_CONTENT },
+      ...getTeleportMountOptions(appDiv),
+    });
+
+    assert.isTrue(sibling.hasAttribute('inert'));
+
+    wrapper.unmount();
+
+    assert.isFalse(sibling.hasAttribute('inert'));
+    assert.strictEqual(document.activeElement, opener);
   });
 });
