@@ -6,7 +6,7 @@
       class="sync-status__loading-spinner"
       data-test-id="loading"
     >
-      <span class="sr-only">Syncing</span>
+      <span class="screenreader-only">Syncing</span>
     </div>
     <!-- Error -->
     <button
@@ -26,7 +26,7 @@
       data-test-id="success"
     >
       <CloudTickIcon />
-      <span class="sr-only">Changes synced</span>
+      <span class="screenreader-only">Changes synced</span>
     </div>
     <!-- Sync ready -->
     <button

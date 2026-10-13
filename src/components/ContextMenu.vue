@@ -123,7 +123,7 @@ watch(props, async () => {
 
   let { clientX, clientY } = props.ev;
 
-  // Keyboard-triggered events (Shift+F10 / Menu key) have no pointer position
+  // Use note center for keyboard-triggered events, as they have no pointer position
   if (clientX === 0 && clientY === 0 && closestNote) {
     const rect = closestNote.getBoundingClientRect();
 

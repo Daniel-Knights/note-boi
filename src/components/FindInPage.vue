@@ -82,6 +82,8 @@ const props = defineProps<{
 
 const emit = defineEmits(['close']);
 
+defineExpose({ focus: focusInput });
+
 const searchInput = useTemplateRef('search-input');
 const highlightEls = useTemplateRef('highlight-els');
 
@@ -131,8 +133,6 @@ function focusInput() {
   input.select();
   input.click();
 }
-
-defineExpose({ focus: focusInput });
 
 async function handleSearch() {
   findAndHighlight();

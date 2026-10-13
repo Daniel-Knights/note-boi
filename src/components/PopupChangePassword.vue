@@ -3,7 +3,9 @@
     <div id="change-password" data-test-id="popup-change-password">
       <h2 id="change-password-heading" data-test-id="heading">Change Password</h2>
       <form @submit.prevent="handleSubmit" class="form" data-test-id="form">
-        <label for="change-password-current" class="sr-only">Current Password</label>
+        <label for="change-password-current" class="screenreader-only"
+          >Current Password</label
+        >
         <input
           id="change-password-current"
           autocomplete="current-password"
@@ -19,7 +21,7 @@
           ref="current-password"
           data-test-id="current-password"
         />
-        <label for="change-password-new" class="sr-only">New Password</label>
+        <label for="change-password-new" class="screenreader-only">New Password</label>
         <input
           id="change-password-new"
           autocomplete="new-password"
@@ -34,7 +36,9 @@
           placeholder="New Password"
           data-test-id="new-password"
         />
-        <label for="change-password-confirm" class="sr-only">Confirm New Password</label>
+        <label for="change-password-confirm" class="screenreader-only"
+          >Confirm New Password</label
+        >
         <input
           id="change-password-confirm"
           autocomplete="new-password"
