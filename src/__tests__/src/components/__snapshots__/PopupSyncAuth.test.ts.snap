@@ -360,6 +360,105 @@ exports[`PopupSyncAuth > Labels inputs with correct autocomplete > updateState 1
 }
 `;
 
+exports[`PopupSyncAuth > Links form errors to inputs > KeyStore.getKey() 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > PersistentStorage.get('MENU_WIDTH') 1`] = `null`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > PersistentStorage.get('THEME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > PersistentStorage.get('UPDATE_SEEN') 1`] = `null`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > PersistentStorage.get('UPDATE_STRATEGY') 1`] = `null`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > PersistentStorage.get('USERNAME') 1`] = `null`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > allCalls 1`] = `
+[
+  [
+    "listeners",
+    {
+      "name": "login",
+    },
+  ],
+  [
+    "listeners",
+    {
+      "name": "signup",
+    },
+  ],
+]
+`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > document.body.outerHTML 1`] = `"<body class="theme--system"></body>"`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > mockDb 1`] = `
+{
+  "deletedNotes": undefined,
+  "encryptedNotes": [],
+  "users": {
+    "d": "1",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > noteState 1`] = `
+{
+  "extraSelectedNotes": [],
+  "notes": [],
+  "selectedNote": Note {
+    "content": {
+      "body": "",
+      "delta": {
+        "ops": [],
+      },
+      "title": "",
+    },
+    "timestamp": 0,
+    "uuid": "uuid",
+  },
+}
+`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > openedPopup 1`] = `undefined`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > selectedTheme 1`] = `"System"`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > syncState 1`] = `
+{
+  "appError": AppError {
+    "code": 10,
+    "display": {
+      "form": true,
+    },
+    "message": "Oops",
+    "originalError": undefined,
+    "retry": [Function],
+    "retryConfig": undefined,
+  },
+  "encryptedNotesCache": Map {},
+  "isLoggedIn": false,
+  "loadingCount": 0,
+  "newPassword": "",
+  "password": "",
+  "unsyncedNotes": UnsyncedNotesManager {
+    "deleted": [],
+    "edited": Set {},
+    "new": "",
+  },
+  "username": "",
+}
+`;
+
+exports[`PopupSyncAuth > Links form errors to inputs > updateState 1`] = `
+{
+  "isAvailable": false,
+  "isDownloading": false,
+  "strategy": "manual",
+}
+`;
+
 exports[`PopupSyncAuth > Mounts > KeyStore.getKey() 1`] = `undefined`;
 
 exports[`PopupSyncAuth > Mounts > PersistentStorage.get('ACCESS_TOKEN') 1`] = `null`;
