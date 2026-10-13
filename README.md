@@ -16,6 +16,7 @@
 - [x] Mobile
 - [x] Find in page
 - [x] Light/dark themes
+- [x] Accessibility
 
 <p align="center">
 <img src="artwork/example.gif" width="714" alt="NoteBoi screenshot" >
