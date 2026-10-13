@@ -423,4 +423,39 @@ describe('PopupSyncAuth', () => {
     assert.strictEqual(password.element.autocomplete, 'current-password');
     assert.strictEqual(username.attributes('aria-invalid'), 'false');
   });
+
+  it('Links form errors to inputs', async () => {
+    mockApi();
+    const wrapper = mountPopupSyncAuth();
+    const switchAuthButton = getByTestId(wrapper, 'switch');
+    assert.strictEqual(switchAuthButton.text(), 'Switch to signup');
+    await switchAuthButton.trigger('click');
+
+    assert.isUndefined(wrapper.get('#sync-auth-username').attributes('aria-describedby'));
+    assert.isUndefined(wrapper.get('#sync-auth-password').attributes('aria-describedby'));
+    assert.isUndefined(
+      wrapper.get('#sync-auth-confirm-password').attributes('aria-describedby')
+    );
+
+    s.syncState.appError = new AppError({
+      code: ERROR_CODE.FORM_VALIDATION,
+      message: 'Oops',
+      display: { form: true },
+    });
+    await nextTick();
+
+    assert.strictEqual(wrapper.get('#sync-auth-error').attributes('role'), 'alert');
+    assert.strictEqual(
+      wrapper.get('#sync-auth-username').attributes('aria-describedby'),
+      'sync-auth-error'
+    );
+    assert.strictEqual(
+      wrapper.get('#sync-auth-password').attributes('aria-describedby'),
+      'sync-auth-error'
+    );
+    assert.strictEqual(
+      wrapper.get('#sync-auth-confirm-password').attributes('aria-describedby'),
+      'sync-auth-error'
+    );
+  });
 });

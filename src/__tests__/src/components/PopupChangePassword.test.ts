@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import * as a from '../../../api';
 import * as s from '../../../store/sync';
@@ -198,18 +199,38 @@ describe('PopupChangePassword', () => {
     });
   });
 
-  it('Links form errors to inputs', () => {
+  it('Links form errors to inputs', async () => {
+    mockApi();
+    const wrapper = mountPopupChangePassword();
+
+    assert.isUndefined(
+      wrapper.get('#change-password-current').attributes('aria-describedby')
+    );
+    assert.isUndefined(
+      wrapper.get('#change-password-new').attributes('aria-describedby')
+    );
+    assert.isUndefined(
+      wrapper.get('#change-password-confirm').attributes('aria-describedby')
+    );
+
     s.syncState.appError = new AppError({
       code: ERROR_CODE.FORM_VALIDATION,
       message: 'Oops',
       display: { form: true },
     });
-
-    const wrapper = mountPopupChangePassword();
+    await nextTick();
 
     assert.strictEqual(wrapper.get('#change-password-error').attributes('role'), 'alert');
     assert.strictEqual(
+      wrapper.get('#change-password-current').attributes('aria-describedby'),
+      'change-password-error'
+    );
+    assert.strictEqual(
       wrapper.get('#change-password-new').attributes('aria-describedby'),
+      'change-password-error'
+    );
+    assert.strictEqual(
+      wrapper.get('#change-password-confirm').attributes('aria-describedby'),
       'change-password-error'
     );
   });
