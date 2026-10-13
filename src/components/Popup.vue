@@ -6,7 +6,6 @@
         role="dialog"
         aria-modal="true"
         :aria-labelledby="labelledBy"
-        tabindex="-1"
         ref="content"
       >
         <slot />
@@ -24,9 +23,6 @@ defineProps<{
   labelledBy?: string;
 }>();
 
-const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
-
 const content = useTemplateRef('content');
 
 const openerEl = document.activeElement as HTMLElement | null;
@@ -43,12 +39,6 @@ function closePopup() {
   document.body.removeEventListener('mouseup', clickCloseHandler);
 
   emit('close');
-}
-
-function getFocusableEls(): HTMLElement[] {
-  return Array.from(
-    content.value?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR) ?? []
-  );
 }
 
 function keyboardCloseHandler(event: KeyboardEvent) {
@@ -74,11 +64,6 @@ onMounted(() => {
     el.setAttribute('inert', '');
     inertEls.push(el);
   });
-
-  // Child components may already have focused something (e.g. a form input)
-  if (!content.value?.contains(document.activeElement)) {
-    (getFocusableEls()[0] ?? content.value)?.focus();
-  }
 });
 
 onBeforeUnmount(() => {
@@ -104,10 +89,6 @@ onBeforeUnmount(() => {
   z-index: 100;
 
   &__content {
-    &:focus {
-      outline: none; // Only focused programmatically as a fallback
-    }
-
     padding: 1em;
     max-width: min(95vw, 400px);
     color: var(--colour__primary);
