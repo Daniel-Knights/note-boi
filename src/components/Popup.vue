@@ -17,18 +17,19 @@
 <script lang="ts" setup>
 import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue';
 
-const emit = defineEmits(['close']);
 defineProps<{
-  /** Id of the element that labels the dialog. */
+  /** ID of the element that labels the dialog. */
   labelledBy?: string;
 }>();
 
+const emit = defineEmits(['close']);
+
 const content = useTemplateRef('content');
+
+const hasClosed = ref(false);
 
 const openerEl = document.activeElement as HTMLElement | null;
 const inertEls: Element[] = [];
-
-const hasClosed = ref(false);
 
 function closePopup() {
   // Prevent unmount calling this a 2nd time
@@ -71,6 +72,7 @@ onBeforeUnmount(() => {
 
   inertEls.forEach((el) => el.removeAttribute('inert'));
 
+  // Return focus to whatever element was active when popup was opened
   if (openerEl?.isConnected) openerEl.focus();
 });
 </script>
