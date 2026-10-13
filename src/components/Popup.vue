@@ -2,7 +2,6 @@
   <Teleport to="#app">
     <div class="popup" v-bind="$attrs">
       <div
-        @keydown="trapFocus"
         class="popup__content"
         role="dialog"
         aria-modal="true"
@@ -50,32 +49,6 @@ function getFocusableEls(): HTMLElement[] {
   return Array.from(
     content.value?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR) ?? []
   );
-}
-
-/** Keeps Tab focus within the dialog. */
-function trapFocus(ev: KeyboardEvent) {
-  if (ev.key !== 'Tab') return;
-
-  const focusable = getFocusableEls();
-  const first = focusable[0];
-  const last = focusable[focusable.length - 1];
-
-  if (!first || !last) {
-    ev.preventDefault();
-    content.value?.focus();
-
-    return;
-  }
-
-  const active = document.activeElement;
-
-  if (ev.shiftKey && (active === first || active === content.value)) {
-    ev.preventDefault();
-    last.focus();
-  } else if (!ev.shiftKey && active === last) {
-    ev.preventDefault();
-    first.focus();
-  }
 }
 
 function keyboardCloseHandler(event: KeyboardEvent) {
