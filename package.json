@@ -31,56 +31,56 @@
     "changenog": "changenog --commit-filter-preset=angular --commit-filter-preset=angular-readme-only-docs"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.11.1",
-    "@tauri-apps/plugin-dialog": "~2.7.2",
-    "@tauri-apps/plugin-log": "~2.9.0",
-    "@tauri-apps/plugin-process": "~2.3.1",
-    "@tauri-apps/plugin-shell": "~2.3.5",
-    "@tauri-apps/plugin-updater": "~2.10.1",
+    "@tauri-apps/api": "^2.12.4",
+    "@tauri-apps/plugin-dialog": "~2.8.2",
+    "@tauri-apps/plugin-log": "~2.10.1",
+    "@tauri-apps/plugin-process": "~2.4.0",
+    "@tauri-apps/plugin-shell": "~2.5.0",
+    "@tauri-apps/plugin-updater": "~2.13.3",
     "fflate": "^0.8.3",
     "quill": "^2.0.3",
-    "vue": "^3.5.41"
+    "vue": "^3.5.44"
   },
   "devDependencies": {
-    "@babel/types": "^8.0.4",
+    "@babel/types": "^8.0.6",
     "@eslint/js": "^10.0.1",
-    "@tauri-apps/cli": "^2.11.4",
+    "@tauri-apps/cli": "^2.12.2",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/eslint": "^9.6.1",
-    "@types/node": "^26.2.0",
-    "@typescript-eslint/parser": "^8.67.0",
-    "@vitejs/plugin-vue": "^6.0.8",
+    "@types/node": "^26.6.5",
+    "@typescript-eslint/parser": "^8.71.2",
+    "@vitejs/plugin-vue": "^6.0.10",
     "@vue/eslint-config-typescript": "^14.9.0",
-    "@vue/test-utils": "2.4.11",
+    "@vue/test-utils": "2.5.1",
     "changenog": "^2.0.7",
-    "eslint": "^10.8.1",
+    "eslint": "^10.12.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prettier": "^5.5.6",
-    "eslint-plugin-vue": "^10.10.0",
+    "eslint-plugin-prettier": "^5.5.7",
+    "eslint-plugin-vue": "^10.11.1",
     "fake-indexeddb": "^6.2.5",
-    "globals": "^17.11.0",
-    "jsdom": "^30.0.1",
-    "prettier": "^3.9.6",
+    "globals": "^17.13.0",
+    "jsdom": "^30.1.2",
+    "prettier": "^3.9.10",
     "quill-delta": "^5.1.0",
-    "sass-embedded": "1.102.0",
-    "tsx": "^4.23.12",
+    "sass-embedded": "1.105.1",
+    "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "typescript-eslint": "~8.66.0",
-    "vite": "^8.2.1",
+    "typescript-eslint": "~8.71.2",
+    "vite": "^8.3.4",
     "vitest": "4.1.10",
     "vue-eslint-parser": "^10.4.1",
-    "vue-tsc": "^3.3.9"
+    "vue-tsc": "^3.3.13"
   },
   "engines": {
     "node": ">=22.0.0"
   },
-  "packageManager": "pnpm@11.21.0",
+  "packageManager": "pnpm@12.11.2+sha512.25a51652a196785af5f28bda6dfe8dc582ebefa4ac1d180221ce1390231c5fb76637822ea4b6e4633ce74acdcb0a77f725af11bad38177fdeddaee818a955cb9",
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.21.0"
+      "version": "12.11.2"
     }
   }
 }
