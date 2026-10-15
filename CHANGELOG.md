@@ -1,3 +1,10 @@
+## [v4.4.0](https://github.com/Daniel-Knights/note-boi/compare/v4.3.0...v4.4.0) (15/10/2026)
+
+- feat(a11y): improve keyboard, screen reader and focus accessibility (WCAG 2.2 AA)- #49
+ ([#49](https://github.com/Daniel-Knights/note-boi/pull/49))
+- fix(editor): prevent pasted links from being parsed as links ([ebdec4a](https://github.com/Daniel-Knights/note-boi/commit/ebdec4a28f909ca74606721b7ecf316ceeb86a39))
+- fix(update): loading spinner z-index ([02f4ce1](https://github.com/Daniel-Knights/note-boi/commit/02f4ce17f425fc854133d4e0223ce8e27d8e835a))
+
 ## [v4.3.0](https://github.com/Daniel-Knights/note-boi/compare/v4.2.0...v4.3.0) (31/05/2026)
 
 - fix(NoteMenu): don't close on small screens when modifier key is held ([c576aad](https://github.com/Daniel-Knights/note-boi/commit/c576aada7ebf2b9a5068a8d12b9f97fff5cb2e19))
