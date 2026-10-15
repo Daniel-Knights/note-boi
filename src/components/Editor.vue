@@ -37,7 +37,7 @@
       v-if="quillEditorInitialised && editorBody && openFindInPage && !isTouchDevice"
       :text="editorText"
       :root-el="editorBody!"
-      :get-bounds-at-index="(i, len) => quillEditor!.getBounds(i, len)"
+      :get-bounds-at-index="getBoundsAtIndex"
       @close="closeFindInPage"
     />
   </main>
@@ -66,6 +66,10 @@ const editorText = ref('');
 // to do with how Quill works internally
 let quillEditor: Quill | undefined;
 let ignoreTextChange = false;
+
+function getBoundsAtIndex(index: number, length: number) {
+  return quillEditor!.getBounds(index, length);
+}
 
 function newNoteEventHandler() {
   // Timeout to wait for note to be created/selected
